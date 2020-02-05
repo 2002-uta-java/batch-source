@@ -8,6 +8,7 @@ public class Driver{
 		lula.setName("Lula");
 		lula.work();
 		lula.takeBreak(30);
+		lula.promote("Senior Developer");
 		
 		SeniorDeveloper mila = new SeniorDeveloper();
 		mila.setName("Mila");
