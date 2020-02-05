@@ -1,3 +1,5 @@
+package com.Revature.Animals;
+
 public class Driver{
 
     public static void checkException() throws MyException{

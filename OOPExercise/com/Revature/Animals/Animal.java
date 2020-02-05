@@ -1,3 +1,5 @@
+package com.Revature.Animals;
+
 public abstract class Animal{
 
     public Animal(){
