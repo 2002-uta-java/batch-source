@@ -67,6 +67,12 @@ public class Person extends Living implements CanWork, CanSpeak {
 		System.out.println(name+" has been born.");
 	}
 	
+	@Override 
+	public void die() {
+		System.out.println(name + " has died.");
+		this.setAlive(false);
+	}
+	
 	@Override
 	public void speak() {
 		if (getAlive()) {

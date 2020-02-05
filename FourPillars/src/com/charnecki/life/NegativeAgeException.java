@@ -1,6 +1,6 @@
 package com.charnecki.life;
 
-public class NegativeAgeException extends RuntimeException {
+public class NegativeAgeException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 

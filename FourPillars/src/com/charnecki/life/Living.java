@@ -49,7 +49,11 @@ public abstract class Living {
 			this.age = age;
 		} else {
 			// Throws an exception if someone's age is set to a negative number
-			throw new NegativeAgeException();
+			try {
+				throw new NegativeAgeException();
+			} catch (NegativeAgeException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

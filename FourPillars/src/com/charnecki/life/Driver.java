@@ -36,12 +36,16 @@ public class Driver {
 		
 		t2.die();
 		
+		// Try to make a person with a negative age, should throw exception and default to 0
+		Person p4 = new Person("Robert", -50);
+
+		System.out.println(p4);
+		
 		// Kill Phil 1
 		p1.die();
 		
 		// See if Phil 1 can work
 		p1.doWork();
-
 	}
 
 }
