@@ -1,5 +1,3 @@
-package Animals;
-
 public class Dog extends Animal implements Mammal, Walkable{
     
     private String noise = "Bark!";

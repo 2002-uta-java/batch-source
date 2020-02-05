@@ -1,5 +1,3 @@
-package Animals;
-
 public interface Mammal{
     
     abstract void giveBirth();

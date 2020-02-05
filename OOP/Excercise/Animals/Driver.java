@@ -1,5 +1,3 @@
-package Animals;
-
 public class Driver {
 
     public static void checkException() throws MyException{

@@ -1,11 +1,7 @@
-package Animals;
-
 public abstract class Animal{
-
     public Animal(){
         super();
     }
-
     private boolean living;
 
     public boolean isAlive(){
@@ -13,5 +9,4 @@ public abstract class Animal{
     }
 
     abstract void makeNoise();
-
 }
