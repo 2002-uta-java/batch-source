@@ -20,17 +20,18 @@ public class Driver {
 				i.report();
 			} catch(ScuvryDogException e) {
 				if (i.getMutinous()) {
-					for(SailorAbstract j : sailors) {
-						if (j.getRank() == "Captain") {
-							((Pirate)i).mutiny(j);
+					for(int j = 0; j< sailors.length;j++) {
+						if (sailors[j].getRank() == "Captain") {
+							;
+							sailors[j] = new Pirate(((Pirate)i).mutiny(sailors[j]));
 						}
 					}
 				}
 			}
 		}
+	
 		arrayCheck(sailors);
 	}
-	
 	public static void arrayCheck(SailorAbstract[] arr) {
 		System.out.println("\n-----\nArray Check\n-----\n");
 		for (SailorAbstract i : arr) {

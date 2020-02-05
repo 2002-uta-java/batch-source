@@ -22,14 +22,10 @@ public class Pirate extends SailorAbstract {
 		
 	}
 	
-	public void mutiny(SailorAbstract bob){
-		String takenRank = bob.getRank();
-		String takenDuty = bob.getDuty();
-		String theirName = bob.getName();
-		
-		bob = new Pirate(theirName);
-		
-		this.promoted("Infamous Pirate "+takenRank, takenDuty);
+	public String mutiny(SailorAbstract formerCaptain){
+		String theirName = formerCaptain.getName();		
+		this.promoted("Infamous Pirate "+formerCaptain.getRank(), formerCaptain.getDuty());
+		return theirName;
 		
 	}
 	
