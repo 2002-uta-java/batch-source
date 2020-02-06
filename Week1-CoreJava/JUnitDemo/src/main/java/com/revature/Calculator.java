@@ -34,7 +34,7 @@ public class Calculator {
 		
 		// handle the condition of 1 number 
 		if(inputArr.length == 1) {
-			if(inputArr[0].matches("^\\d+$")) {
+			if(inputArr[0].matches("-?\\d+$")) {
 				return Integer.parseInt(inputArr[0]);
 			} else {
 				return -1;
@@ -43,7 +43,7 @@ public class Calculator {
 		
 		// handle the condition of 2 numbers
 		if(inputArr.length == 2) {
-			if(inputArr[0].matches("^\\d+$") && inputArr[1].matches("^\\d+$")) {
+			if(inputArr[0].matches("-?\\d+$") && inputArr[1].matches("-?\\d+$")) {
 				return Integer.parseInt(inputArr[0])+Integer.parseInt(inputArr[1]);
 			} else {
 				return -1;
