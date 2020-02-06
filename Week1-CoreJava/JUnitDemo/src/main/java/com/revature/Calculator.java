@@ -1,6 +1,9 @@
 package com.revature;
 
 public class Calculator {
+	public static void main(String[] args) {
+		System.out.println(add("-1"));
+	}
 	
 	/*
 	 * We will create an add method which accepts strings and which return an int
@@ -33,22 +36,28 @@ public class Calculator {
 		String[] inputArr = input.split(",");
 		
 		// handle the condition of 1 number 
-		if(inputArr.length == 1) {
-			if(inputArr[0].matches("^\\d+$")) {
-				return Integer.parseInt(inputArr[0]);
-			} else {
-				return -1;
+		
+		boolean allNumeric = true;
+		for (String num : inputArr) {
+			if (!num.matches("^-?\\d+$")) {
+				allNumeric = false;
 			}
+		}
+		if (allNumeric) {
+			int sum = 0;
+			for (String num : inputArr) {
+				Integer currNum = Integer.parseInt(num);
+				if (currNum < 0) {
+					System.out.println("I'm triggered");
+					throw new IllegalArgumentException("you cannot put negative number");
+				}
+				if (currNum <= 1000) {
+					sum += currNum;
+				}
+			}
+			return sum;
 		}
 		
-		// handle the condition of 2 numbers
-		if(inputArr.length == 2) {
-			if(inputArr[0].matches("^\\d+$") && inputArr[1].matches("^\\d+$")) {
-				return Integer.parseInt(inputArr[0])+Integer.parseInt(inputArr[1]);
-			} else {
-				return -1;
-			}
-		}
 		
 		return -1;
 	}
