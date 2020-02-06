@@ -3,11 +3,7 @@ package com.exercise.piracy;
 public class Driver {
 
 	public static void main(String[] args) {
-		
-		/* Polymorphism:
-		 * 	All the derived classes of SailorAbstract can be treated as a reference to that SailorAbstract.
-		 * */
-		
+			
 		SailorAbstract[] sailors = new SailorAbstract[3];
 		sailors[0] = new Swabby("Terry");
 		sailors[1] = new Captain("Jerry");
@@ -22,7 +18,6 @@ public class Driver {
 				if (i.getMutinous()) {
 					for(int j = 0; j< sailors.length;j++) {
 						if (sailors[j].getRank() == "Captain") {
-							;
 							sailors[j] = new Pirate(((Pirate)i).mutiny(sailors[j]));
 						}
 					}

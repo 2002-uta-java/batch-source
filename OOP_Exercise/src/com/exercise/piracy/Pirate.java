@@ -37,6 +37,10 @@ public class Pirate extends SailorAbstract {
 		throw new ScuvryDogException();
 	}
 	
+	/*POLYMORPHISM:
+	 * 	Pirate overrides a method derived from SailorAbstract 
+	 * (well, technically the Sailing interface, but Pirate inherited it from SailorAbstract)
+	 * */
 	@Override
 	public void ahoy() {
 		System.out.println("Yarr!");

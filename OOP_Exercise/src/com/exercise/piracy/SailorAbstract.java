@@ -6,6 +6,10 @@ package com.exercise.piracy;
  * */
 
 public abstract class SailorAbstract implements Sailing {
+	
+	/*ENCAPSULATION:
+	 * 	Classes derived from sailor abstract will have private data members only accessible, thus ensuring their data is secure 
+	 * */
 	private String name = "Bob";
 	private String duty = "";
 	private String rank = "";
@@ -59,7 +63,9 @@ public abstract class SailorAbstract implements Sailing {
 	}
 
 	
-	//Implements equals and hash_code according to to the name, rank, and  duty of the given sailor
+	/*HASHCODE AND EQUALS
+	 * Implements equals and hash_code according to to the name, rank, and  duty of the given sailor
+	 */
 
 	@Override
 	public int hashCode() {
