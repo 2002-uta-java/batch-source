@@ -53,7 +53,7 @@ public class CalculatorTest {
 		String expected = ""; 
 				
 		try {
-			Calculator.add("-1,0");
+			Calculator.add("-1,0,-1");
 		} catch (Exception e){
 			expected = e.getMessage();
 		}
@@ -62,7 +62,7 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void multipleThousands() {
+	public void testmultipleThousands() {
 		int expected = 1005;
 		int actual = Calculator.add("5,8000,1001,1000");
 		assertEquals(expected, actual);
