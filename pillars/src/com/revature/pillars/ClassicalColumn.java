@@ -14,6 +14,9 @@ public class ClassicalColumn extends Column {
 		return "classical " + type + " column";
 	}
 	
+	/* This reimplementation of raze is an example of method overriding
+	 * which is an expression of polymorphism.
+	 */
 	@Override
 	public void raze() throws ConstructionException {
 		throw new ConstructionException("History must be preserved");

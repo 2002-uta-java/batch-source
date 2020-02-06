@@ -21,6 +21,9 @@ public class Driver {
 		columns.get(0).setHeight(3);
 		columns.add(new Column(100));
 		columns.add(new Column("stone"));
+		// Adding a ClassicalColumn object to an ArrayList of Column type and calling
+		// the same methods on Columns and ClassicalColumns is an example
+		// of covariance.
 		columns.add(new ClassicalColumn(ClassicalColumn.COLUMN_TYPE.DORIC));
 		columns.get(3).setHeight(10);
 		columns.add(new Column(4));

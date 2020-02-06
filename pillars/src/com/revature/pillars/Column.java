@@ -4,6 +4,9 @@ import com.revature.construction.Buildable;
 import com.revature.construction.ConstructionException;
 
 public class Column extends Pillar implements Buildable {
+	/* The height field being private and having getters and setters
+	 * are an example of encapsulation.
+	 */
 	private int height;
 	private boolean built;
 	
@@ -14,7 +17,9 @@ public class Column extends Pillar implements Buildable {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-
+	/* With the three constructors with differing signatures, we 
+	 * see the overloading type of polymorphism.
+	 */
 	public Column() {
     	height = 0;
     	name = "random";
@@ -30,6 +35,7 @@ public class Column extends Pillar implements Buildable {
     	height = 0;
     }
 
+    // The two build methods are another instance of overloading.
     @Override
 	public void build() throws ConstructionException {
     	
@@ -47,6 +53,8 @@ public class Column extends Pillar implements Buildable {
 		built = true;
 	}
 
+	// This isn't really overriding as the method it's overriding is abstract.
+	// So there's no reimplementation here, just implementation.
 	@Override
 	public void raze() throws ConstructionException {
 		//height = 0;		

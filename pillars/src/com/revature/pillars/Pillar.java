@@ -1,5 +1,9 @@
 package com.revature.pillars;
 
+/* Pillar is the base class of my hierarchy.  Tenet and Column directly derive from it.
+ * That derivation is an example of inheritance, one of the pillars of OOP.
+ */
+
 public abstract class Pillar {
 	protected String name;
 	
