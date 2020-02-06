@@ -47,4 +47,27 @@ public class CalculatorTest {
 		assertEquals(-1, Calculator.add(null));
 	}
 	
+	@Test
+	public void testNegative() {
+		
+		String expected = ""; 
+				
+		try {
+			Calculator.add("-1,0");
+		} catch (Exception e){
+			expected = e.getMessage();
+		}
+		
+		assertEquals("Cannot call add on negative numbers",expected);
+	}
+	
+	@Test
+	public void multipleThousands() {
+		int expected = 1005;
+		int actual = Calculator.add("5,8000,1001,1000");
+		assertEquals(expected, actual);
+	}
+	
+	
+	
 }

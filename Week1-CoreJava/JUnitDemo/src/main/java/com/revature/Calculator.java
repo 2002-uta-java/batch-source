@@ -31,28 +31,25 @@ public class Calculator {
 		}
 		
 		String[] inputArr = input.split(",");
-		
-		// handle the condition of 1 number 
-		if(inputArr.length == 1) {
-			if(inputArr[0].matches("^\\d+$")) {
-				return Integer.parseInt(inputArr[0]);
-			} else {
-				return -1;
+		int sum = 0;
+		for (String i: inputArr) {
+			
+			if (i.charAt(0) =='-') 
+			{
+				throw new IllegalArgumentException("Cannot call add on negative numbers");
+			} else if(!(i.matches("^\\d+$"))){
+			 return -1;
+			}
+			else {
+				
+				if (Integer.parseInt(i) > 1000) {
+					sum += 0;
+				} else {
+					sum += Integer.parseInt(i);
+				}
 			}
 		}
 		
-		// handle the condition of 2 numbers
-		if(inputArr.length == 2) {
-			if(inputArr[0].matches("^\\d+$") && inputArr[1].matches("^\\d+$")) {
-				return Integer.parseInt(inputArr[0])+Integer.parseInt(inputArr[1]);
-			} else {
-				return -1;
-			}
-		}
-		
-		return -1;
+		return sum;
 	}
-	
-	
-
 }
