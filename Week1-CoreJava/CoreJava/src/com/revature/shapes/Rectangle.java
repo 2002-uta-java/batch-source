@@ -21,7 +21,9 @@ public class Rectangle extends Shape {
 	}
 	
 	public void setHeight(int height) {
-		this.height = height;
+		if(height>0) {
+			this.height = height;
+		}
 	}
 	
 	public int getWidth() {
@@ -29,7 +31,9 @@ public class Rectangle extends Shape {
 	}
 	
 	public void setWidth(int width) {
-		this.width = width;
+		if(width>0) {
+			this.width = width;
+		}
 	}
 
 	@Override
