@@ -50,7 +50,7 @@ public interface RealFunction {
 	}
 
 	/**
-	 * Uses a trapezoid method to integrate over the given region. This uses the
+	 * Uses a trapezoid method to integrate over the given region. This uses
 	 * NUM_PARTITIONS to break the integral up.
 	 * 
 	 * @param f     the function to integrate

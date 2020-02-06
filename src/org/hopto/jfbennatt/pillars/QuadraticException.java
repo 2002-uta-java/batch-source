@@ -8,8 +8,18 @@ public class QuadraticException extends Exception {
 	 */
 	private static final long serialVersionUID = -2673398029280598732L;
 
+	/**
+	 * Message for there being no real solutions
+	 */
 	public static final String NO_REAL_SOLUTIONS = "There are no real solutions to this quadratic";
+	/**
+	 * Message for there being infinite solutions
+	 */
 	public static final String INFINITE_SOLUTIONS = "There are infinite solutions to this quadratic";
+	/**
+	 * Message for when trying to get a y-intercept when from a trivial quadratic
+	 * function (f(x) = 0).
+	 */
 	public static final String NO_Y_INTERCEPT = "There are infinite solutions, thus no y-intercept";
 
 	/**

@@ -53,6 +53,11 @@ public class Polynomial implements RealFunction {
 		}
 	}
 
+	/**
+	 * Returns a Polynomial that represents an anti-derivative of this polynomial.
+	 * 
+	 * @return A new polynomial that is this polyomial's anti-derivative.
+	 */
 	public Polynomial integrate() {
 		if (coeffs.length == 0)
 			return new Polynomial();
@@ -68,6 +73,14 @@ public class Polynomial implements RealFunction {
 		return new Polynomial(coeffs);
 	}
 
+	/**
+	 * This evaluates ("exactly"--as much as floating point operations are exact)
+	 * the integral of this polynomial over the given range.
+	 * 
+	 * @param left  Left limit of integral
+	 * @param right right limit of integral
+	 * @return evaluation of integral.
+	 */
 	public double integrate(final double left, final double right) {
 		double xxLeft = left;
 		double xxRight = right;

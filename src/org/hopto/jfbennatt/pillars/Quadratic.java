@@ -5,8 +5,18 @@ public class Quadratic extends Polynomial {
 	// behavior from Polynomial (but also adds to it, for instance "exact"
 	// solutions").
 
+	/**
+	 * This reprsents the "normal" case where there are real solution/s.
+	 */
 	public static final int NORMAL = 0;
+	/**
+	 * This is the case that there are no x-intercepts and thus only complex
+	 * solutions.
+	 */
 	public static final int NO_REAL_SOLUTIONS = 1;
+	/**
+	 * This represents the case that the quadratic is trivial (i.e. f(x) = 0).
+	 */
 	public static final int INFINITE_SOLUTIONS = 2;
 
 	/**
@@ -68,6 +78,14 @@ public class Quadratic extends Polynomial {
 		}
 	}
 
+	/**
+	 * Returns the y-coordinate of the y-intercept for this function. This always
+	 * exists unless the quadratic was trivial (f(x) = 0), in which case a
+	 * QuadraticException is thrown.
+	 * 
+	 * @return y-coordinate of the y-intercept
+	 * @throws QuadraticException thrown if this quadratic is trivial (f(x) = 0).
+	 */
 	public double yIntercept() throws QuadraticException {
 		if (type != INFINITE_SOLUTIONS)
 			return yInt;
@@ -75,6 +93,13 @@ public class Quadratic extends Polynomial {
 		throw new QuadraticException(QuadraticException.NO_Y_INTERCEPT);
 	}
 
+	/**
+	 * Gives the smaller (or more negative) zero of this function (or the
+	 * x-coordinate of the more left x-intercept).
+	 * 
+	 * @return Smallest zero of this quadratic
+	 * @throws QuadraticException thrown if there are no real solutions.
+	 */
 	public double leftSolution() throws QuadraticException {
 		if (type == NORMAL)
 			return left;
@@ -89,6 +114,13 @@ public class Quadratic extends Polynomial {
 		}
 	}
 
+	/**
+	 * Gives the larger (more positive) zero for this quadratic (or the x-coordinate
+	 * of the more right x-intercept).
+	 * 
+	 * @return larger zero of this quadratic.
+	 * @throws QuadraticException thrown if there are no real solutions
+	 */
 	public double rightSolution() throws QuadraticException {
 		if (type == NORMAL)
 			return right;
@@ -103,12 +135,26 @@ public class Quadratic extends Polynomial {
 		}
 	}
 
+	/**
+	 * Returns the discriminant for this quadratic
+	 * 
+	 * @return the discriminant for this quadratic function.
+	 */
 	public double discriminant() {
 		// This is polymporphism because I'm overloading the discriminant method (one
 		// here as an instance method and the one below, a static method)
 		return disc;
 	}
 
+	/**
+	 * Calculates the discriminant for a quadratic function of the form ax^2 + bx +
+	 * c.
+	 * 
+	 * @param a coefficient of quadratic term.
+	 * @param b coefficient of linear term.
+	 * @param c coefficient of constant term.
+	 * @return the discriminant of the given quadratic function
+	 */
 	public static double discriminant(final double a, final double b, final double c) {
 		return b * b - 4 * a * c;
 	}
