@@ -1,3 +1,5 @@
+show search_path;
+set search_path to chinook;
 --2.1.a Select all records from the Employee table.
 select * from "Employee";
 
@@ -39,6 +41,33 @@ update "Customer" set "FirstName" = 'Robert', "LastName" = 'Walter' where "First
 
 --2.3.b Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
 update "Artist" set "Name" = 'CCR' where "Name" = 'Creedence Clearwater Revial';
+
+--3.1.a Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+select "LastName", "FirstName", "InvoiceId" from "Customer" join "Invoice" on "Invoice"."CustomerId" = "Customer"."CustomerId";
+
+--3.2.a Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+select "Customer"."CustomerId", "LastName", "FirstName", "InvoiceId", "Total" from "Customer" full join "Invoice" on "Invoice"."CustomerId" = "Customer"."CustomerId";
+
+--3.3.a Create a right join that joins album and artist specifying artist name and title.
+select "Artist"."Name", "Album"."Title" from "Album" right join "Artist" on "Album"."ArtistId" = "Artist"."ArtistId";
+
+--3.4.a Create a cross join that joins album and artist and sorts by artist name in ascending order.
+select * from "Album" cross join "Artist" order by "Artist"."Name";
+
+--3.5.a Perform a self-join on the employee table, joining on the reportsto column.	
+select * from "Employee" as "Employee" join "Employee" as "Manager" on "Employee"."ReportsTo" = "Manager"."EmployeeId";
+
+--3.6.a Create a query that shows the customer first name and last name as FULL_NAME (you can use || to concatenate two strings) with the total amount of money they have spent as TOTAL.
+select "FirstName" || ' ' || "LastName" as "FULL_NAME", sum("Total") as "TOTAL" from "Customer" join "Invoice" on "Invoice"."CustomerId" = "Customer"."CustomerId" group by "Customer"."CustomerId";
+
+--3.6.b Create a query that shows the employee that has made the highest total value of sales (total of all invoices).
+select "Employee"."FirstName" || ' ' || "Employee"."LastName" as "FULL_NAME", sum("Invoice"."Total") as "TOTAL_SALES" from "Employee" join "Customer" on "Customer"."SupportRepId" = "Employee"."EmployeeId" 
+
+
+
+
+
+
 
 
 
