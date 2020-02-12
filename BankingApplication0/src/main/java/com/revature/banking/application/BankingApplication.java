@@ -34,14 +34,35 @@ public class BankingApplication {
 		this.input = new BufferedReader(new InputStreamReader(System.in));
 	}
 
-	public void start() {
+	public void begin() {
 		// keep going until
 		while (true) {
-
+			// TODO need to figure out what to do from here
+			switch (beginningPrompt()) {
+			case CREATE_LOGIN:
+				createLoginPrompt();
+				break;
+			case LOGIN:
+				loginPrompt();
+				break;
+			case EXIT_RESPONSE:
+				// exit loop and function
+				return;
+			}
 		}
 	}
 
-	private int loginPrompt() {
+	private void loginPrompt() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createLoginPrompt() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private int beginningPrompt() {
 		System.out
 				.println("What would you like to do? Please type 1 or 2 (you may exit at any time by typing \"exit\"");
 		System.out.println("1) Login to an existing account");
@@ -60,26 +81,30 @@ public class BankingApplication {
 			// tell the user to type 1 or 2 and re-prompt
 			default:
 				System.out.println(response + " wasn't an option, please try again.");
-				return loginPrompt();
+				return beginningPrompt();
 			}
 		} catch (IllegalChoiceException e) {
 			System.out.println(
 					"Please choose 1,2, or \"exit\". You typed: \"" + e.getMessage() + "\"; please try again.");
-			return loginPrompt();
+			return beginningPrompt();
 		}
 
 	}
 
-	private int readChoice() throws IllegalChoiceException {
-		String line;
+	private String readLine() {
 		try {
-			line = input.readLine();
+			return input.readLine();
 		} catch (IOException e) {
-			// TODO Eventually should remove this stack trace for user (hopefully this never
-			// happens
+			System.out.println(
+					"Could not read your input and the program is now exiting (if program does not exit, try pressing ctrl-c). If you continue to have this issue please copy the error message below and send to it to a developer.");
 			e.printStackTrace();
-			
+			System.exit(1);
+			return null; // not sure how (or why) System.exit(1) would fail
 		}
+	}
+
+	private int readChoice() throws IllegalChoiceException {
+		String line = readLine();
 		if (line.trim().toLowerCase().equals(EXIT_STRING))
 			return EXIT_RESPONSE;
 		if (INTEGER_PATTERN.matcher(line).matches())
