@@ -61,7 +61,12 @@ select * from "Employee" as "Employee" join "Employee" as "Manager" on "Employee
 select "FirstName" || ' ' || "LastName" as "FULL_NAME", sum("Total") as "TOTAL" from "Customer" join "Invoice" on "Invoice"."CustomerId" = "Customer"."CustomerId" group by "Customer"."CustomerId";
 
 --3.6.b Create a query that shows the employee that has made the highest total value of sales (total of all invoices).
-select "Employee"."FirstName" || ' ' || "Employee"."LastName" as "FULL_NAME", sum("Invoice"."Total") as "TOTAL_SALES" from "Employee" join "Customer" on "Customer"."SupportRepId" = "Employee"."EmployeeId" 
+select "Employee"."FirstName" || ' ' || "Employee"."LastName" as "EMPLOYEE_NAME", sum("Invoice"."Total") as "TOTAL_SALES" from "Employee" join "Customer" on "Customer"."SupportRepId" = "Employee"."EmployeeId" join "Invoice" on "Invoice"."CustomerId" = "Customer"."CustomerId" group by "Employee"."EmployeeId" order by "TOTAL_SALES" desc limit 1;
+
+--3.6.c Create a query which shows the number of purchases per each genre. Display the name of each genre and number of purchases. Show the most popular genre first.
+select "Genre"."Name", count("InvoiceLine"."InvoiceLineId") as "NUM_PURCHASES" from "Genre" join "Track" on "Track"."GenreId" = "Genre"."GenreId" join "InvoiceLine" on "InvoiceLine"."TrackId" = "Track"."TrackId" group by "Genre"."GenreId" order by "NUM_PURCHASES" desc;
+
+--4.0.a Create a function that returns the average total of all invoices.
 
 
 
