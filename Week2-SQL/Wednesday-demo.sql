@@ -114,4 +114,76 @@ where e.monthly_salary =
 	(select min(monthly_salary)
 	from employee);
 
+-- average employee salary in each department, displayed with that department name
+select round(avg(e.monthly_salary),2) "average salary", d.dept_name "department"
+from department d
+join employee e
+on e.dept_id = d.dept_id 
+group by d.dept_name;
+
+select d.dept_name "department", d.monthly_budget "budget", sum(e.monthly_salary) "total spending"
+from department d 
+join employee e 
+on e.dept_id = d.dept_id 
+group by d.dept_name, d.monthly_budget;
+
+/*
+ * Views
+ * - saved queries 
+ * - result set from a view is not physically stored in the database
+ * - instead, the criteria to access that information is
+ * 
+ * create view [view name] as [query]
+ * 
+ */
+
+create view department_spending as 
+select d.dept_name "department", d.monthly_budget "budget", sum(e.monthly_salary) "total spending"
+from department d 
+join employee e 
+on e.dept_id = d.dept_id 
+group by d.dept_name, d.monthly_budget;
+
+select * from department_spending;
+
+
+/*
+ * Materialized Views
+ * - a materialized view, unlike a normal view, actually stores the results in memory
+ * - the results are not going to automatically be updated when the information the 
+ *    materialized view is based on is updated
+ * - the materialized view must be refreshed to see those changes
+ * 
+ */ 
+
+create materialized view department_spending_2 as 
+select d.dept_name "department", d.monthly_budget "budget", sum(e.monthly_salary) "total spending"
+from department d 
+join employee e 
+on e.dept_id = d.dept_id 
+group by d.dept_name, d.monthly_budget;
+
+select * from department_spending;
+
+/* basically the equivalent of:
+    select * from (
+		select d.dept_name "department", d.monthly_budget "budget", sum(e.monthly_salary) "total spending"
+		from department d 
+		join employee e 
+		on e.dept_id = d.dept_id 
+		group by d.dept_name, d.monthly_budget	
+	) as "department_spending"
+ */
+select * from department_spending_2;
+
+update department 
+set monthly_budget = 22000
+where dept_id = 1;
+
+update employee 
+set monthly_salary = 3000
+where empl_id = 10;
+
+refresh materialized view department_spending_2;
+
 
