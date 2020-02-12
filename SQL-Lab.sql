@@ -114,11 +114,80 @@ select g."Name", sum(il."Quantity") as n from "InvoiceLine" il join "Track" t on
 
 --4.0 User Defined Functions
 -- a. Create a function that returns the average total of all invoices.
+CREATE or replace FUNCTION invoices_average_total()
+RETURNS NUMERIC AS $$
+declare
+	average_total numeric;
+BEGIN
+    SELECT avg(i."Total") into average_total FROM "Invoice" i;
+	return average_total;
+END;
+$$ LANGUAGE plpgsql;
+
+select invoices_total();
+
 -- b. Create a function that returns all employees who are born after 1968.
+CREATE or replace FUNCTION post68_employees()
+RETURNS table("EmployeeId" int4 ,
+	"LastName" varchar(20) ,
+	"FirstName" varchar(20) ,
+	"Title" varchar(30),
+	"ReportsTo" int4,
+	"BirthDate" timestamp ,
+	"HireDate" timestamp ,
+	"Address" varchar(70) ,
+	"City" varchar(40) ,
+	"State" varchar(40) ,
+	"Country" varchar(40) ,
+	"PostalCode" varchar(10) ,
+	"Phone" varchar(24) ,
+	"Fax" varchar(24) ,
+	"Email" varchar(60)
+) AS $$
+BEGIN
+   return query SELECT * from "Employee" e where extract(year from e."BirthDate") > 1968;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE or replace FUNCTION post68_employees2()
+RETURNS setof text AS $$
+BEGIN
+   return query SELECT e."FirstName" || ' ' || e."LastName" from "Employee" e where extract(year from e."BirthDate") > 1968;
+END;
+$$ LANGUAGE plpgsql;
+
+
+select * from post68_employees();
+select * from post68_employees2();
+
 -- c. Create a function that returns the manager of an employee, given the id of the employee.
+CREATE or replace FUNCTION manager(employee int4)
+RETURNS text AS $$
+declare manager_name text;
+BEGIN
+	SELECT into manager_name m."FirstName" || ' ' || m."LastName"
+		from "Employee" e join "Employee" m on e."ReportsTo" = m."EmployeeId"
+		where e."EmployeeId" = employee;
+	return manager_name;
+END;
+$$ LANGUAGE plpgsql;
+
+select manager(2);
+select manager(e."EmployeeId") from "Employee" e ;
+
 -- d. Create a function that returns the price of a particular playlist, given the id for that playlist.
+CREATE or replace FUNCTION playlist_price(playlist int4)
+RETURNS numeric AS $$
+declare total_price numeric;
+BEGIN
+	select sum(t."UnitPrice" ) into total_price from "PlaylistTrack" p join "Track" t on p."TrackId" = t."TrackId"
+	where p."PlaylistId" = playlist;
+	return total_price;
+END;
+$$ LANGUAGE plpgsql;
 
-
+select playlist_price("PlaylistId") from "Playlist" p ;
+select playlist_price(3);
 
 
 
