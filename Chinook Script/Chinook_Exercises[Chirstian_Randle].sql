@@ -172,7 +172,7 @@
 			) repSales group by "SupportRepId"
 		) totalSales
 	on totalSales."SupportRepId" = e2."EmployeeId" order by sales desc
-	limit 1
+	limit 1;
 
 -- 3.6-C Create a query which shows the number of purchases per each genre. Display the name of each genre and number of purchases. Show the most popular genre first.
 /*
@@ -192,7 +192,7 @@
 	    join "InvoiceLine" i2
 	on i2."TrackId"  = genretrack."TrackId" 
 	group by "Name" 
-	order by purchases desc  
+	order by purchases desc;
 	
 	
 /*----------------------------------------------------------------------------------------------------------
