@@ -252,6 +252,7 @@ public class BankingApplication {
 						"" + amount);
 				System.out.println("New Balance:");
 				System.out.println('\t' + updatedAccount.get(0));
+				// TODO is this done???
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
