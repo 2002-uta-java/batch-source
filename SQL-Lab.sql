@@ -82,7 +82,6 @@ select ar."Name" , al."Title"
 select ar."Name"
 	from "Album" al 
 	cross join "Artist" ar 
-	--where al."ArtistId" = Ar."ArtistId" 
 	order by ar."Name";
 
 --3.5 SELF
