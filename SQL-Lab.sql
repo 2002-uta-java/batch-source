@@ -27,8 +27,14 @@ select "Title", count("EmployeeId" ) from "Employee" e group by "Title";
 
 --2.2 INSERT INTO
 -- a. Insert two new records into Genre table
+-- explicit IDs
 insert into "Genre" ("GenreId", "Name" ) values (300, 'Indie');
 insert into "Genre" ("GenreId", "Name" ) values (301, 'Black Metal');
+
+-- automatically determined IDs
+insert into "Genre" ("GenreId", "Name" ) values 
+	((select max("GenreId")+1 from "Genre"), 'Good Jazz'),
+	((select max("GenreId")+2 from "Genre"), 'Bad Jazz');
 
 -- b. Insert two new records into Employee table
 insert into "Employee" ("EmployeeId", "FirstName", "LastName") values (250, 'Dave', 'Thomas');
