@@ -42,9 +42,7 @@ insert into "Employee" ("EmployeeId", "FirstName", "LastName") values (251, 'Bob
 
 -- c. Insert two new records into Customer table
 insert into "Customer" ("CustomerId","FirstName","LastName","Email")
-	values (100, 'Leslie', 'Knope', 'poehler@nbc.com');
-insert into "Customer" ("CustomerId","FirstName","LastName","Email")
-	values (101, 'Ann', 'Perkins', 'jones@nbc.com');
+	values (100, 'Leslie', 'Knope', 'poehler@nbc.com'), (101, 'Ann', 'Perkins', 'jones@nbc.com');
 
 --2.3 UPDATE
 -- a. Update Aaron Mitchell in Customer table to Robert Walter
