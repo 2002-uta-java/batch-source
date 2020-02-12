@@ -28,7 +28,7 @@ select "Title", count("Title") from "Employee" group by "Title";
 -- inserting into genre table
 insert into "Genre" ("GenreId", "Name") values (26, 'Pop Punk');
 insert into "Genre" values (27, 'Folk Rock');
-
+insert into "Genre" ("GenreId") values (28);
 -- inserting two records into employee table
 
 -- myself, title is "Trainee" and I report to Laura (id 8), born 02/27/1983, hired on 02/03/2020, 
