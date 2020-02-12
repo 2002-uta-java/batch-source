@@ -59,3 +59,68 @@ update "Artist"
 set "Name" = 'CCR'
 where "Name" = 'Creedence Clearwater Revival';
 
+-- Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+select c."FirstName", i."InvoiceId" 
+from "Customer" c 
+inner join 
+"Invoice" i
+on c."CustomerId" = i."CustomerId";
+
+-- Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+select c."FirstName", c."LastName", i."InvoiceId", i."Total" 
+from "Customer" c 
+full outer join 
+"Invoice" i
+on c."CustomerId" = i."CustomerId";
+
+-- Create a right join that joins album and artist specifying artist name and title.
+select artist."Name" , album."Title" 
+from "Album" album 
+right join "Artist" artist 
+on album."ArtistId"  = artist."ArtistId" ;
+
+-- Create a cross join that joins album and artist and sorts by artist name in ascending order.
+select *
+from "Album" album
+cross join "Artist" artist
+order by artist."Name" asc;
+
+-- Perform a self-join on the employee table, joining on the reportsto column.	
+select *
+from "Employee" employee
+join "Employee" reportsto 
+on employee."EmployeeId" = reportsto."EmployeeId";
+
+-- Create a query that shows the customer first name and last name as FULL_NAME (you can use || to concatenate two strings) with the total amount of money they have spent as TOTAL.
+select (c."FirstName" || c."LastName") FULL_NAME , i."Total" TOTAL
+from "Customer" c
+join "Invoice" i
+on c."CustomerId" = i."CustomerId";
+
+-- Create a query that shows the employee that has made the highest total value of sales (total of all invoices).
+select e."FirstName", sum(i."Total") total_sales
+from "Employee" e
+join "Customer" c
+on e."EmployeeId" = c."SupportRepId" 
+join "Invoice" i
+on i."CustomerId" = c."CustomerId" 
+group by e."EmployeeId" 
+order by total_sales desc limit 1;
+
+
+-- Create a query which shows the number of purchases per each genre. Display the name of each genre and number of purchases. Show the most popular genre first.
+select g."Name", sum(il."Quantity") total_purchases
+from "Track" t 
+join "InvoiceLine" iL 
+on t."TrackId" = iL."TrackId" 
+join "Genre" g
+on g."GenreId" = t."GenreId" 
+group by g."Name"
+order by total_purchases desc;
+
+-- Create a function that returns the average total of all invoices.
+-- Create a function that returns all employees who are born after 1968.
+-- Create a function that returns the manager of an employee, given the id of the employee.
+-- Create a function that returns the price of a particular playlist, given the id for that playlist.
+
+
