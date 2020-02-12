@@ -1,8 +1,10 @@
 package com.revature.bank;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 
+import com.revature.bank.application.BankApplication;
 import com.revature.bank.exceptions.InvalidPasswordException;
 import com.revature.bank.validation.Validation;
 
@@ -43,11 +45,11 @@ public class Password implements Serializable {
 	 * @param digest   - MessageDigest object used to hash the password string.
 	 * @throws InvalidPasswordException
 	 */
-	public static Password createPassword(final String password, final MessageDigest digest, final Validation validator)
-			throws InvalidPasswordException {
+	public static Password createPassword(final String password, final MessageDigest digest, final Validation validator,
+			final Charset charset) throws InvalidPasswordException {
 		if (!validator.validatePassword(password))
 			throw new InvalidPasswordException(password);
 		// use the charset specified by the Banking Interface (which will be UTF-8)
-		return new Password(digest.digest(password.getBytes(Bank.DEFAULT_CHARSET)));
+		return new Password(digest.digest(password.getBytes(charset)));
 	}
 }
