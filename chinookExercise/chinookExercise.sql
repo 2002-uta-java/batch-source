@@ -67,6 +67,33 @@ select "Employee"."FirstName" || ' ' || "Employee"."LastName" as "EMPLOYEE_NAME"
 select "Genre"."Name", count("InvoiceLine"."InvoiceLineId") as "NUM_PURCHASES" from "Genre" join "Track" on "Track"."GenreId" = "Genre"."GenreId" join "InvoiceLine" on "InvoiceLine"."TrackId" = "Track"."TrackId" group by "Genre"."GenreId" order by "NUM_PURCHASES" desc;
 
 --4.0.a Create a function that returns the average total of all invoices.
+create function calculateAverageOfTotalOfInvoices()
+returns numeric(7,2)
+language plpgsql
+as $$
+declare
+	average_total numeric(7,2);
+	sum_total numeric(7,2);
+	num_invoices numeric(7,2);
+begin
+	select sum("Invoice"."Total") into sum_total
+	from "Invoice";
+
+	select count("Invoice"."InvoiceId") into num_invoices
+	from "Invoice";
+
+	return sum_total / num_invoices;
+end
+$$
+
+--4.0.b Create a function that returns all employees who are born after 1968.
+create function employeesBornAfter1968()
+returns setof "Employee"
+language plpgsql
+as $$
+begin
+	
+end
 
 
 
