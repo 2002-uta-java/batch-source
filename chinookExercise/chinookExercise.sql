@@ -87,13 +87,16 @@ end
 $$
 
 --4.0.b Create a function that returns all employees who are born after 1968.
-create function employeesBornAfter1968()
+create or replace function employeesBornAfter1968()
 returns setof "Employee"
 language plpgsql
 as $$
 begin
-	
+	return query select * from "Employee" where "BirthDate" > timestamp '1968-12-31 00:00:00';
 end
+$$
+
+select employeesBornAfter1968();
 
 
 
