@@ -29,15 +29,17 @@ public class BankingApplication {
 	private static final int LOGIN = 1;
 	private static final int CREATE_LOGIN = 2;
 
-	private static final int VIEW_FUNDS = 1;
-	private static final int ADD_FUNDS = 2;
-	private static final int WITHDRAW_FUNDS = 3;
-	private static final int OPEN_NEW_ACCOUNT = 4;
-	private static final int CLOSE_ACCOUNT = 5;
-	private static final int TRANSFER_FUNDS = 6;
-	private static final int REQUEST_FUNDS = 7;
+	private static final int VIEW_BALANCE = 1;
+	private static final int VIEW_BANK_STATEMENT = 2;
+	private static final int ADD_FUNDS = 3;
+	private static final int WITHDRAW_FUNDS = 4;
+	private static final int OPEN_NEW_ACCOUNT = 5;
+	private static final int CLOSE_ACCOUNT = 6;
+	private static final int TRANSFER_FUNDS = 7;
+	private static final int REQUEST_FUNDS = 8;
 
-	private static final String VIEW_FUNDS_PROMPT = "View funds.";
+	private static final String VIEW_BALANCE_PROMPT = "View balance.";
+	private static final String VIEW_BANK_STATEMENT_PROMPT = "View transaction history.";
 	private static final String ADD_FUNDS_PROMPT = "Add funds.";
 	private static final String WITHDRAW_FUNDS_PROMPT = "Withdraw Funds.";
 	private static final String OPEN_NEW_ACCOUNT_PROMPT = "Open new account";
@@ -51,7 +53,8 @@ public class BankingApplication {
 	private static final TreeMap<Integer, String> TRANSACTION_PROMPTS = new TreeMap<>();
 
 	static {
-		TRANSACTION_PROMPTS.put(VIEW_FUNDS, VIEW_FUNDS_PROMPT);
+		TRANSACTION_PROMPTS.put(VIEW_BALANCE, VIEW_BALANCE_PROMPT);
+		TRANSACTION_PROMPTS.put(VIEW_BANK_STATEMENT, VIEW_BANK_STATEMENT_PROMPT);
 		TRANSACTION_PROMPTS.put(ADD_FUNDS, ADD_FUNDS_PROMPT);
 		TRANSACTION_PROMPTS.put(WITHDRAW_FUNDS, WITHDRAW_FUNDS_PROMPT);
 		TRANSACTION_PROMPTS.put(OPEN_NEW_ACCOUNT, OPEN_NEW_ACCOUNT_PROMPT);
@@ -118,6 +121,7 @@ public class BankingApplication {
 
 				try {
 					final int choice = readChoice();
+					boolean logout = false;
 
 					// if they choose something besides exit or logout, do the transaction, exit the
 					// switch statement, then start back over with begin_transaction (i.e. stay
@@ -126,12 +130,15 @@ public class BankingApplication {
 					case EXIT_RESPONSE:
 						return;// exit
 					case LOGOUT_RESPONSE:
-						// goto beginning of method
 						System.out.println();
 						System.out.println();
-						continue begin_prompt;
-					case VIEW_FUNDS:
-						viewFundsPrompt();
+						logout = true;
+						break;
+					case VIEW_BALANCE:
+						viewBalancePrompt();
+						break;
+					case VIEW_BANK_STATEMENT:
+						viewBankStatementPrompt();
 						break;
 					case ADD_FUNDS:
 						addFundsPrompt();
@@ -149,20 +156,24 @@ public class BankingApplication {
 						transferFundsPrompt();
 						break;
 					case CLOSE_ACCOUNT:
-						closeAccountPrompt();
+						logout = closeAccountAndLogoutPrompt();
 						break;
 					default:
 						System.out.println("Please choose a valid transaction. You chose " + choice);
-						System.out.println();
-						System.out.println();
-						continue begin_transaction;
 					}
+					if (logout) {
+						teller.doTransaction(BankTeller.USER_LOGOUT);
+						continue begin_prompt;
+					}
+					// else continue to transaction loop (print white space below)
 				} catch (IllegalChoiceException e) {
 					System.out.println("Please choose a number or type " + LOGOUT_STRING + " or " + EXIT_STRING
 							+ ". You typed: \"" + e.getMessage() + "\".");
-					System.out.println();
-					System.out.println();
-					continue begin_transaction;
+				} catch (TransactionException e) {
+					System.out.println(e.getMessage());
+					// only way this should happen is if we were trying to logout, so go ahead and
+					// go back to login prompt
+					continue begin_prompt;
 				}
 
 				// the only way out of this method is to type exit (if you reach this point, the
@@ -171,13 +182,43 @@ public class BankingApplication {
 				// print some white space to make it more obvious that we're starting over
 				System.out.println();
 				System.out.println();
+				continue begin_transaction;// continue transaction loop (this isn't actually necessary)
 			}
 		}
 	}
 
-	private void viewFundsPrompt() {
+	private void viewBankStatementPrompt() {
+		while (true) {
+			try {
+				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				int choice = 1;
+
+				if (accounts.size() > 1) {
+					System.out.println("Plese choose an account to view the statement for (1, 2, etc)");
+					choice = chooseAccountPrompt(accounts);
+				}
+
+				List<String> statement = teller.doTransaction(BankTeller.VIEW_STATEMENT, "" + (choice - 1));
+
+				for (final String transaction : statement)
+					System.out.println('\t' + transaction);
+				// exit method (it was successful)
+				return;
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				return;// exit method if we get an error
+			} catch (IllegalChoiceException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return;
+				// else continue loop and retry
+			}
+		}
+	}
+
+	private void viewBalancePrompt() {
 		try {
-			final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNTS);
+			final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
 			System.out.println("Accounts:");
 			for (final String account : accounts)
 				System.out.println('\t' + account);
@@ -186,8 +227,53 @@ public class BankingApplication {
 		}
 	}
 
-	private void closeAccountPrompt() {
-		// TODO Auto-generated method stub
+	/**
+	 * Returns a boolean to signal to the application to logout.
+	 * 
+	 * @return true if you should logout, false otherwise.
+	 */
+	private boolean closeAccountAndLogoutPrompt() {
+		while (true) {
+			try {
+				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+
+				if (accounts.size() > 1) {
+					System.out.println("Which account would you like to close (please choose 1, 2, etc.?");
+					final int choice = chooseAccountPrompt(accounts);
+					final List<String> remaining = teller.doTransaction(BankTeller.CLOSE_ACCOUNT, "" + (choice - 1));
+					System.out.println("Here are your remaining accounts:");
+					for (final String account : remaining)
+						System.out.println('\t' + account);
+				} else {
+					// this is the only account which means it will remove the user as well
+					System.out.println(
+							"This is your only account. If you remove it, you will be removed from our system and no longer be able to log in.");
+					System.out.println("Do you still want to close this account and be removed? (y/n)");
+					final int choice = readChoice();
+
+					if (choice == YES_RESPONSE) {
+						// close only account (index 0)
+						teller.doTransaction(BankTeller.CLOSE_ACCOUNT, "0");
+						teller.doTransaction(BankTeller.DELETE_USER);
+						System.out.println("Your account has been close and you have been removed from the system");
+						return true;
+					} else if (choice == NO_RESPONSE) {
+						System.out.println("You account has not been removed");
+						return false;
+					} else {
+						throw new IllegalArgumentException("Please choose y/n.");
+					}
+				}
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				return false;// don't try to redo on banking error
+			} catch (IllegalChoiceException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return false;
+				// else keep looping and retry
+			}
+		}
 
 	}
 
@@ -217,8 +303,7 @@ public class BankingApplication {
 		while (true) {
 			try {
 				// get the accounts
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNTS);
-				int numAccounts = 0;
+				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
 				int choice = 1;// we're going to subtract 1 from choice, if there is only 1 account that would
 								// have to be the "first" account
 
@@ -226,18 +311,7 @@ public class BankingApplication {
 				// which one to place money into
 				if (accounts.size() > 1) {
 					System.out.println("Please choose an account to add funds to (1, 2, etc.):");
-
-					for (final String account : accounts) {
-						System.out.println("\t" + ++numAccounts + ") " + account);
-					}
-
-					choice = readChoice();
-
-					if (choice < 1 || choice > numAccounts)
-						throw new IllegalArgumentException("You must choose a number from 1 to " + numAccounts);
-
-					// send back the index of the account to add to (for this user). This will be
-					// zero indexed, so subtract one from choice
+					choice = chooseAccountPrompt(accounts);
 				} else {
 					// display their one account for them
 					System.out.println('\t' + accounts.get(0));
@@ -252,21 +326,16 @@ public class BankingApplication {
 						"" + amount);
 				System.out.println("New Balance:");
 				System.out.println('\t' + updatedAccount.get(0));
-				// TODO is this done???
+				// this was successful, return from this method
+				return;
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println(e.getMessage());
+				return; // exit method (don't try to re-add
 			} catch (IllegalChoiceException e) {
 				System.out.println(e.getMessage());
-				System.out.println("Would you like to try again?(y/n)");
-				try {
-					final int choice = readChoice();
-					if (choice != YES_RESPONSE)
-						return;// exit from trying to add funds
-				} catch (IllegalChoiceException e1) {
-					// don't care what they typed if it wasn't "y"
-					return;// stop trying to add funds
-				}
+				if (!retryPrompt())
+					return;// exit method
+				// continue loop and retry to add funds
 			}
 		}
 	}
@@ -279,6 +348,46 @@ public class BankingApplication {
 	private void createLoginPrompt() {
 		// TODO Auto-generated method stub
 
+	}
+
+	private boolean retryPrompt() {
+		System.out.println("Would you like to try again?(" + YES_STRING + "/" + NO_STRING + ")");
+		try {
+			final int choice = readChoice();
+			if (choice != YES_RESPONSE)
+				return false;// do no retry unless they type "y"
+			else {
+				// add padding for retrying prompt
+				System.out.println();
+				System.out.println();
+				return true;
+			}
+		} catch (IllegalChoiceException e1) {
+			// don't care what they typed if it wasn't "y"
+			return false;// stop trying to add funds
+		}
+	}
+
+	/**
+	 * This assumes there's more than one account (there's not check against that)
+	 * 
+	 * @param accounts
+	 * @return
+	 * @throws IllegalChoiceException
+	 */
+	private int chooseAccountPrompt(final List<String> accounts) throws IllegalChoiceException {
+		int numAccounts = 0;
+		for (final String account : accounts) {
+			System.out.println("\t" + ++numAccounts + ") " + account);
+		}
+
+		final int choice = readChoice();
+
+		if (choice < 1 || choice > numAccounts)
+			throw new IllegalArgumentException("You must choose a number from 1 to " + numAccounts);
+
+		// else choice was valid, return it
+		return choice;
 	}
 
 	private int beginningPrompt() {
