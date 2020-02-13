@@ -124,4 +124,63 @@ group by genre_name
 order by sold desc
 nulls last;
 
+-- user defined function that returns the average total of all invoices
+create or replace function netavg()
+returns numeric(10,2)
+language plpgsql
+as $$
+begin 
+	return (select round(avg("Total"),2) total from "Invoice");
+end
+$$
 
+-- calling the function 
+select netavg();
+
+-- user defined function that returns all employees who were born ater 1998
+create or replace function bornAfter()
+returns setof "Employee"
+language plpgsql
+as $$
+begin 
+	return query (select * from "Employee" where "BirthDate"<'1998-01-01');
+end
+$$
+
+select bornAfter();
+
+-- user defined function that returns the manager name based on given employee id
+create or replace function getManager(id integer)
+returns setof "Employee"
+language plpgsql
+as $$
+begin 
+	return query (
+	select *
+	from "Employee" 
+	where (
+			select "ReportsTo" from "Employee" where id="EmployeeId"
+		) = "EmployeeId"
+	);
+end
+$$
+
+select getManager(5);
+
+-- user defined function that returns the price of a playlist given the playlist id
+create or replace function getPlaylistPrice(id integer)
+returns dec(10,2)
+language plpgsql
+as $$
+begin 
+	return (
+		select sum(t."UnitPrice")
+		from "PlaylistTrack" pt
+		join "Track" t
+		on pt."TrackId"=t."TrackId"
+		where pt."PlaylistId"=id
+	);
+end
+$$
+
+select getPlaylistPrice();
