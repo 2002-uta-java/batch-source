@@ -33,4 +33,20 @@ VALUES (61, N'Daenerys', N'Stormborn', N'871 Targaryen Rd', N'Mountain View', N'
 update "Customer" set "FirstName" = 'Robert', "LastName" = 'Walter' where "FirstName" = 'Aaron';
 -- update Creedence Clearwater Revival to CCR
 update "Artist" set "Name" = 'CCR' where "Name" = 'Creedence Clearwater Revival';
+--inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+select c2."FirstName", c2."LastName", i2."InvoiceId" from "Customer" c2 inner join "Invoice" i2 on c2."CustomerId" = i2."CustomerId";
 -- outer join of Customer and Invoice giving CustomerID, firstname, lastname, invoiceID, and total
+select c."CustomerId", "FirstName", "LastName", "InvoiceId", "Total" from "Customer" c full join "Invoice" i on c."CustomerId" = i."CustomerId";
+-- right join that joins album and artist specifying artist name and title.
+select art."Name", a."Title" from "Album" a right join "Artist" art on a."ArtistId" = art."ArtistId";
+-- cross join that joins album and artist and sorts by artist name in ascending order.
+select * from "Album" a1 cross join "Artist" art1 order by "Name" asc;
+-- self-join on the employee table, joining on the reportsto column.
+select * from "Employee" e inner join "Employee" e1 on e."ReportsTo" = e1."ReportsTo";
+-- shows the customer first name and last name as FULL_NAME with the total amount of money they have spent as TOTAL
+select "FirstName" || "LastName" as "FULL_NAME", sum(i."Total") from "Customer" c inner join "Invoice" i on c."CustomerId" = i."CustomerId" group by "FULL_NAME";
+-- shows the employee that has made the highest total value of sales (total of all invoices)
+select e."FirstName" || e."LastName" as "Employee Name", sum(i."Total") as "sum_of_total" from "Employee" e inner join "Customer" c on e."EmployeeId" = c."SupportRepId" inner join "Invoice" i on c."CustomerId" = i."CustomerId"
+group by e."EmployeeId" order by "sum_of_total" desc limit 1;
+-- shows the number of purchases per each genre. Display the name of each genre and number of purchases. Show the most popular genre first
+select g."Name", sum(il."Quantity") as "quantity" from "Genre" g inner join "Track" t on g."GenreId" = t."GenreId" inner join "InvoiceLine" il on il."TrackId" = t."TrackId" group by g."GenreId" order by "quantity";
