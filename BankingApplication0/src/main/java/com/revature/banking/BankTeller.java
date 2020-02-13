@@ -2,7 +2,7 @@ package com.revature.banking;
 
 import java.util.List;
 
-public abstract class BankTeller {
+public interface BankTeller {
 	public static final int USER_LOGIN = 0;
 	public static final int CREATE_ACCOUNT = 1;
 	public static final int VIEW_ACCOUNT_BALANCES = 2;
@@ -30,38 +30,38 @@ public abstract class BankTeller {
 	 *                              message should be included explaining why the
 	 *                              transaction failed.
 	 */
-	public List<String> doTransaction(int type, String... args) throws TransactionException {
-		switch (type) {
-		case USER_LOGIN:
-			return userLogin(args[0], args[1]);
-		case USER_LOGOUT:
-			return userLogout();
-		case CREATE_ACCOUNT:
-			return createAccount(args[0], args[1], args[2], args[3], args[4]);
-		case ADD_FUNDS:
-			return addFunds(Integer.parseInt(args[0]), Double.parseDouble(args[1]));
-		case VIEW_ACCOUNT_BALANCES:
-			return viewAccounts();
-		case VIEW_STATEMENT:
-			return viewStatement(Integer.parseInt(args[0]));
-		case CLOSE_ACCOUNT:
-			return closeAccount(Integer.parseInt(args[0]));
-		case DELETE_USER:
-			return deleteUser();
-		case TRANSFER_FUNDS:
-			return transferFunds(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]));
-		case OPEN_NEW_ACCOUNT:
-			return openNewAccount();
-		case WITHDRAW_FUNDS:
-			return withdrawFunds(Integer.parseInt(args[0]), Double.parseDouble(args[1]));
-		case CHECK_USER_NAME:
-			return checkUserName(args[0]);
-		case CHECK_PASSWORD:
-			return checkPassword(args[0]);
-		default:
-			throw new TransactionException("This operation isn't supported");
-		}
-	}
+//	public List<String> doTransaction(int type, String... args) throws TransactionException {
+//		switch (type) {
+//		case USER_LOGIN:
+//			return userLogin(args[0], args[1]);
+//		case USER_LOGOUT:
+//			return userLogout();
+//		case CREATE_ACCOUNT:
+//			return createAccount(args[0], args[1], args[2], args[3], args[4]);
+//		case ADD_FUNDS:
+//			return addFunds(Integer.parseInt(args[0]), Double.parseDouble(args[1]));
+//		case VIEW_ACCOUNT_BALANCES:
+//			return viewAccounts();
+//		case VIEW_STATEMENT:
+//			return viewStatement(Integer.parseInt(args[0]));
+//		case CLOSE_ACCOUNT:
+//			return closeAccount(Integer.parseInt(args[0]));
+//		case DELETE_USER:
+//			return deleteUser();
+//		case TRANSFER_FUNDS:
+//			return transferFunds(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]));
+//		case OPEN_NEW_ACCOUNT:
+//			return openNewAccount();
+//		case WITHDRAW_FUNDS:
+//			return withdrawFunds(Integer.parseInt(args[0]), Double.parseDouble(args[1]));
+//		case CHECK_USER_NAME:
+//			return checkUserName(args[0]);
+//		case CHECK_PASSWORD:
+//			return checkPassword(args[0]);
+//		default:
+//			throw new TransactionException("This operation isn't supported");
+//		}
+//	}
 
 	/**
 	 * Checks to see if the password is valid.
@@ -70,7 +70,7 @@ public abstract class BankTeller {
 	 * @return the returned value is not used.
 	 * @throws TransactionException thrown if this password isn't valid.
 	 */
-	protected abstract List<String> checkPassword(String password) throws TransactionException;
+	public abstract List<String> checkPassword(String password) throws TransactionException;
 
 	/**
 	 * Provides a check for when trying to get a username. This returns a list of
@@ -81,7 +81,7 @@ public abstract class BankTeller {
 	 *         invalid for whatever reason, this will throw an exception.
 	 * @throws TransactionException thrown if this username isn't valid.
 	 */
-	protected abstract List<String> checkUserName(String username) throws TransactionException;
+	public abstract List<String> checkUserName(String username) throws TransactionException;
 
 	/**
 	 * Withdraws the amount specified from the specified account.
@@ -91,7 +91,7 @@ public abstract class BankTeller {
 	 * @return Display information for the account after the withdrawal.
 	 * @throws TransactionException
 	 */
-	protected abstract List<String> withdrawFunds(int account, double withdrawal) throws TransactionException;
+	public abstract List<String> withdrawFunds(int account, double withdrawal) throws TransactionException;
 
 	/**
 	 * Creates a new account for currently logged on user.
@@ -99,7 +99,7 @@ public abstract class BankTeller {
 	 * @return Returns the new bank account (its balance will be zero). This should
 	 *         return the full bank account number.
 	 */
-	protected abstract List<String> openNewAccount() throws TransactionException;
+	public abstract List<String> openNewAccount() throws TransactionException;
 
 	/**
 	 * Transfers funds between two accounts (owned by the same, logged in, user).
@@ -109,7 +109,7 @@ public abstract class BankTeller {
 	 * @param amount          Amount to transfer.
 	 * @return List of the two accounts that were modified.
 	 */
-	protected abstract List<String> transferFunds(int withdrawAccount, int transferAccount, double amount)
+	public abstract List<String> transferFunds(int withdrawAccount, int transferAccount, double amount)
 			throws TransactionException;
 
 	/**
@@ -117,14 +117,14 @@ public abstract class BankTeller {
 	 * 
 	 * @return null (nothing to return)
 	 */
-	protected abstract List<String> userLogout() throws TransactionException;
+	public abstract List<String> userLogout() throws TransactionException;
 
 	/**
 	 * Deletes user from system (returns nothing).
 	 * 
 	 * @return
 	 */
-	protected abstract List<String> deleteUser() throws TransactionException;
+	public abstract List<String> deleteUser() throws TransactionException;
 
 	/**
 	 * Close (deletes) the specified account and returns a list of updated accounts
@@ -134,7 +134,7 @@ public abstract class BankTeller {
 	 *                accounts
 	 * @return List of remaining accounts (or an empty list if none remain).
 	 */
-	protected abstract List<String> closeAccount(int account) throws TransactionException;
+	public abstract List<String> closeAccount(int account) throws TransactionException;
 
 	/**
 	 * Return a List of strings representing the specified accounts bank statements
@@ -144,7 +144,7 @@ public abstract class BankTeller {
 	 * @return List of Strings representing transactions on this account given in
 	 *         the order they happened
 	 */
-	protected abstract List<String> viewStatement(final int account) throws TransactionException;
+	public abstract List<String> viewStatement(final int account) throws TransactionException;
 
 	/**
 	 * This method should return a list of Strings that represent the state of the
@@ -152,7 +152,7 @@ public abstract class BankTeller {
 	 * 
 	 * @return
 	 */
-	protected abstract List<String> viewAccounts() throws TransactionException;
+	public abstract List<String> viewAccounts() throws TransactionException;
 
 	/**
 	 * This should add the amount specified to the account specified for this user.
@@ -163,7 +163,7 @@ public abstract class BankTeller {
 	 *         account.
 	 * @throws TransactionException
 	 */
-	protected abstract List<String> addFunds(int account, final double amount) throws TransactionException;
+	public abstract List<String> addFunds(int account, final double amount) throws TransactionException;
 
 	/**
 	 * Creates an account (and opens a bank account with zero balance) with the
@@ -177,7 +177,7 @@ public abstract class BankTeller {
 	 * @return The returned value is not used
 	 * @throws TransactionException
 	 */
-	protected abstract List<String> createAccount(final String firstName, final String lastName, final String taxID,
+	public abstract List<String> createAccount(final String firstName, final String lastName, final String taxID,
 			final String username, final String password) throws TransactionException;
 
 	/**
@@ -189,5 +189,5 @@ public abstract class BankTeller {
 	 * @return the returned value is not used.
 	 * @throws TransactionException
 	 */
-	protected abstract List<String> userLogin(final String username, final String password) throws TransactionException;
+	public abstract List<String> userLogin(final String username, final String password) throws TransactionException;
 }

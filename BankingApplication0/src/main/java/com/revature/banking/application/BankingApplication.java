@@ -168,7 +168,7 @@ public class BankingApplication {
 						System.out.println("Please choose a valid transaction. You chose " + choice);
 					}
 					if (logout) {
-						teller.doTransaction(BankTeller.USER_LOGOUT);
+						teller.userLogout();
 						continue begin_prompt;
 					}
 					// else continue to transaction loop (print white space below)
@@ -196,7 +196,7 @@ public class BankingApplication {
 	private void viewBankStatementPrompt() {
 		while (true) {
 			try {
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				final List<String> accounts = teller.viewAccounts();
 				int choice = 1;
 
 				if (accounts.size() > 1) {
@@ -204,7 +204,7 @@ public class BankingApplication {
 					choice = chooseAccountPrompt(accounts);
 				}
 
-				List<String> statement = teller.doTransaction(BankTeller.VIEW_STATEMENT, "" + (choice - 1));
+				List<String> statement = teller.viewStatement(choice - 1);
 
 				for (final String transaction : statement)
 					System.out.println('\t' + transaction);
@@ -224,7 +224,7 @@ public class BankingApplication {
 
 	private void viewBalancePrompt() {
 		try {
-			final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+			final List<String> accounts = teller.viewAccounts();
 			System.out.println("Accounts:");
 			for (final String account : accounts)
 				System.out.println('\t' + account);
@@ -241,12 +241,12 @@ public class BankingApplication {
 	private boolean closeAccountAndLogoutPrompt() {
 		while (true) {
 			try {
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				final List<String> accounts = teller.viewAccounts();
 
 				if (accounts.size() > 1) {
 					System.out.println("Which account would you like to close (please choose 1, 2, etc.?");
 					final int choice = chooseAccountPrompt(accounts);
-					final List<String> remaining = teller.doTransaction(BankTeller.CLOSE_ACCOUNT, "" + (choice - 1));
+					final List<String> remaining = teller.closeAccount(choice - 1);
 					System.out.println("Here are your remaining accounts:");
 					for (final String account : remaining)
 						System.out.println('\t' + account);
@@ -259,8 +259,8 @@ public class BankingApplication {
 
 					if (choice == YES_RESPONSE) {
 						// close only account (index 0)
-						teller.doTransaction(BankTeller.CLOSE_ACCOUNT, "0");
-						teller.doTransaction(BankTeller.DELETE_USER);
+						teller.closeAccount(0);
+						teller.deleteUser();
 						System.out.println("Your account has been close and you have been removed from the system");
 						return true;
 					} else if (choice == NO_RESPONSE) {
