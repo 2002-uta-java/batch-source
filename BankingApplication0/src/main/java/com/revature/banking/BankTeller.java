@@ -146,7 +146,8 @@ public interface BankTeller {
 	 * This method should return a list of Strings that represent the state of the
 	 * currently logged on user's accounts.
 	 * 
-	 * @return
+	 * @return A list of Strings representing each of the user's accounts.
+	 * @throws TransactionException
 	 */
 	public abstract List<String> viewAccounts() throws TransactionException;
 
@@ -182,7 +183,6 @@ public interface BankTeller {
 	 * 
 	 * @param username - username of user
 	 * @param password - password of user
-	 * @return the returned value is not used.
 	 * @throws TransactionException
 	 */
 	public abstract void userLogin(final String username, final String password) throws TransactionException;
