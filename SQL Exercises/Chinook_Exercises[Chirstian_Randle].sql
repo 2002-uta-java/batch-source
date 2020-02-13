@@ -204,10 +204,10 @@
  *						4.0 USER DEFINED FUNCTIONS
  ----------------------------------------------------------------------------------------------------------*/
 --4.0-A Create a function that returns the average total of all invoices.
-create or replace  function total_average_invoices() returns setof numeric as $$
+create or replace  function total_average_invoices() returns setof "Invoice"."Total"%type as $$
  	select avg("Total" ) from "Invoice" i ;
  $$ language sql;
-	--select * from total_average_invoices();
+	select * from total_average_invoices();
 
 
 --4.0-B Create a function that returns all employees who are born after 1968.
@@ -219,18 +219,18 @@ create or replace  function total_average_invoices() returns setof numeric as $$
 
 
 --4.0-C Create a function that returns the manager of an employee, given the id of the employee.
-create or replace  function manager_of( id numeric) returns setof "Employee" as $$
+create or replace  function manager_of( id "Employee"."EmployeeId"%type ) returns setof "Employee" as $$
  select * from "Employee" e2 where e2."EmployeeId" = 
  	(
 	 select e."ReportsTo"  from "Employee" e  where "EmployeeId" = id
 	) 
  $$ language sql;
-	--select * from manager_of();
+	--select * from manager_of(3);
 
 
 
 --4.0-D	Create a function that returns the price of a particular playlist, given the id for that playlist.
-create or replace  function playlist_price( id numeric) returns numeric as $$
+create or replace  function playlist_price( id "Track"."UnitPrice" %type) returns "Track"."UnitPrice" %type as $$
  	select sum("UnitPrice" )
  	from "Track" t2 
  	right join(
