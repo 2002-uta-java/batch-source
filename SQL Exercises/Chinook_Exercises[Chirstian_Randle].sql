@@ -46,8 +46,10 @@
 	insert  into "Genre" ("Name","GenreId") 
 	values 
 		('Bluegrass',26),
-		('Ska',27);
+		('Ska',27)
+	on conflict do nothing ;
 	--select * from "Genre";
+	
 		
 --		2.2-B Insert two new records into Employee table
 	insert  into "Employee" ("EmployeeId" ,"LastName" ,"FirstName" ,"Title" ,"ReportsTo",
@@ -57,7 +59,8 @@
 							'916655','111-222-3333' ,'111-222-4444' ,'notReal87@chinookcorp.com' ),
 							
 		(10 ,'Stanners' ,'Stanley' ,'IT Staff' ,6,'07-12-1907' ,'07-12-2008' ,'1223 Origin Drive' ,'Santa Cruz' ,'CA' ,'United States',
-							'916655','111-222-3333' ,'111-222-4444' ,'notReal77@chinookcorp.com' );
+							'916655','111-222-3333' ,'111-222-4444' ,'notReal77@chinookcorp.com' )
+	on conflict do nothing ;
 							
 	--select * from "Employee";
 
@@ -66,7 +69,8 @@
 							"City","State","Country","PostalCode","Phone","Fax","Email","SupportRepId")
 	values 
 		(60, 'Luna','Lucia','Noon Drive 12','Redwood City','CA','United States','121245','222-333-888','222-555-999','lunLuciaa@ca.gov',3),
-		(61, 'Sol','Sully','Brightplace way 15','Minneapolis','MN','United States','122245','111-323-888','222-555-222','sunnyboi@mn.edu',3);
+		(61, 'Sol','Sully','Brightplace way 15','Minneapolis','MN','United States','122245','111-323-888','222-555-222','sunnyboi@mn.edu',3)
+	on conflict do nothing ;
 							
 	--select * from "Customer";
 
@@ -237,16 +241,16 @@ create or replace  function playlist_price( id numeric) returns numeric as $$
  	on  list_Ids."TrackId" = t2."TrackId" 
 
  $$ language sql;
-	-- select * from playlist_price(1);
+	--select * from playlist_price(1);
 	
 /*----------------------------------------------------------------------------------------------------------
  *						Function to reset chinnook to initial state for testing (not run by default)
  ----------------------------------------------------------------------------------------------------------*/
 create or replace function reset_chinook() returns void as $$
-	drop function playlist_price("numeric");
-	drop function born_after_68();
-	drop function total_average_invoices() ;
-	drop function manager_of("numeric") ;
+	drop function  if exists playlist_price("numeric");
+	drop function  if exists born_after_68();
+	drop function  if exists total_average_invoices() ;
+	drop function  if exists manager_of("numeric") ;
 	delete  from "Customer" where "CustomerId"  = 60;
 	delete  from "Customer" where "CustomerId"  = 61;
 	delete  from "Employee" where "EmployeeId"  = 9;
@@ -266,4 +270,4 @@ create or replace function reset_chinook() returns void as $$
  $$language sql;	
 
 --select reset_chinook();
-drop function reset_chinook() ;
+drop function if exists  reset_chinook();
