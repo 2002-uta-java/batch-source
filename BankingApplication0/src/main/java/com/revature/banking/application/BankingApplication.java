@@ -1,6 +1,7 @@
 package com.revature.banking.application;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -60,7 +61,7 @@ public class BankingApplication {
 		TRANSACTION_PROMPTS.put(OPEN_NEW_ACCOUNT, OPEN_NEW_ACCOUNT_PROMPT);
 		TRANSACTION_PROMPTS.put(CLOSE_ACCOUNT, CLOSE_ACCOUNT_PROMPT);
 		TRANSACTION_PROMPTS.put(TRANSFER_FUNDS, TRANSFER_FUNDS_PROMPT);
-		TRANSACTION_PROMPTS.put(REQUEST_FUNDS, REQUEST_FUNDS_PROMPT);
+//		TRANSACTION_PROMPTS.put(REQUEST_FUNDS, REQUEST_FUNDS_PROMPT);
 	}
 
 	/**
@@ -80,11 +81,16 @@ public class BankingApplication {
 	private static final Pattern DECIMAL_PATTERN = Pattern.compile("-?\\d+(\\.\\d{1,2})?");
 
 	private final BankTeller teller;
-	private final BufferedReader input;
+	private final Console console;
+	private final BufferedReader br;
 
 	public BankingApplication(final BankTeller teller) {
 		this.teller = teller;
-		this.input = new BufferedReader(new InputStreamReader(System.in));
+		this.console = System.console();
+		if (console == null)
+			br = new BufferedReader(new InputStreamReader(System.in));
+		else
+			br = null;
 	}
 
 	public void begin() {
@@ -330,13 +336,47 @@ public class BankingApplication {
 	}
 
 	private void openNewAccountPrompt() {
-		// TODO Auto-generated method stub
-
+		try {
+			final List<String> newAccount = teller.doTransaction(BankTeller.OPEN_NEW_ACCOUNT);
+			System.out.println("Here is your new account");
+			System.out.println('\t' + newAccount.get(0));
+		} catch (TransactionException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void withdrawFundsPrompt() {
-		// TODO Auto-generated method stub
+		while (true) {
+			try {
+				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				int choice = 1;
 
+				if (accounts.size() > 1) {
+					System.out.println("Please choose an account to withdraw from:");
+					choice = chooseAccountPrompt(accounts);
+				}
+
+				System.out.println("How much would you like to withdraw?");
+				double withdrawal = readAmount();
+
+				final List<String> updatedAccount = teller.doTransaction(BankTeller.WITHDRAW_FUNDS, "" + (choice - 1),
+						"" + withdrawal);
+
+				System.out.println('\t' + updatedAccount.get(0));
+				return;// this was successful, exit method
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				return;// exit method if there's a banking error
+			} catch (IllegalChoiceException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return; // exit method
+
+				// else try again
+				System.out.println();
+				System.out.println();
+			}
+		}
 	}
 
 	private void addFundsPrompt() {
@@ -385,13 +425,73 @@ public class BankingApplication {
 	}
 
 	private void loginPrompt() {
-		// TODO Auto-generated method stub
+		System.out.println("user name: ");
+		final String user = readLine();
+		System.out.println("password: ");
+		final String password = readPassword();
 
+		try {
+			teller.doTransaction(BankTeller.USER_LOGIN, user, password);
+		} catch (TransactionException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void createLoginPrompt() {
-		// TODO Auto-generated method stub
+		System.out.println("We will need your name and tax id:");
+		System.out.println("First Name: ");
+		final String firstName = readLine();
+		System.out.println("Last Name: ");
+		final String lastName = readLine();
+		System.out.println("Tax ID: ");
+		final String taxID = readLine();
 
+		String username = null;
+
+		while (true) {
+			System.out.println("Please choose a username: ");
+			username = readLine();
+			try {
+				teller.doTransaction(BankTeller.CHECK_USER_NAME, username);
+				break;// break out of loop
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return; // give up
+				// else try again
+			}
+		}
+
+		String password = null;
+		while (true) {
+			System.out.println("Please provide a password: ");
+			password = readPassword();
+			try {
+				teller.doTransaction(BankTeller.CHECK_PASSWORD, password);
+				break;// password is good, break out of loop
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return;// give up
+				// else try again
+			}
+		}
+
+		try {
+			teller.doTransaction(BankTeller.CREATE_ACCOUNT, firstName, lastName, taxID, username, password);
+		} catch (TransactionException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private String readPassword() {
+		try {
+			return console != null ? new String(console.readPassword()) : br.readLine();
+		} catch (IOException e) {
+			System.out.println("well this is embarassing...I'll be exiting now");
+			System.exit(1);
+			return null;// don't know how this will happen
+		}
 	}
 
 	private boolean retryPrompt() {
@@ -481,13 +581,11 @@ public class BankingApplication {
 
 	private String readLine() {
 		try {
-			return input.readLine().trim();
+			return console != null ? console.readLine().trim() : br.readLine().trim();
 		} catch (IOException e) {
-			System.out.println(
-					"Could not read your input and the program is now exiting (if program does not exit, try pressing ctrl-c). If you continue to have this issue please copy the error message below and send to it to a developer.");
-			e.printStackTrace();
+			System.out.println("well this is embarassing...I'll be exiting now");
 			System.exit(1);
-			return null; // not sure how (or why) System.exit(1) would fail
+			return null;// don't know how this will happen
 		}
 	}
 
