@@ -128,22 +128,8 @@ select invoices_total();
 
 -- b. Create a function that returns all employees who are born after 1968.
 CREATE or replace FUNCTION post68_employees()
-RETURNS table("EmployeeId" int4 ,
-	"LastName" varchar(20) ,
-	"FirstName" varchar(20) ,
-	"Title" varchar(30),
-	"ReportsTo" int4,
-	"BirthDate" timestamp ,
-	"HireDate" timestamp ,
-	"Address" varchar(70) ,
-	"City" varchar(40) ,
-	"State" varchar(40) ,
-	"Country" varchar(40) ,
-	"PostalCode" varchar(10) ,
-	"Phone" varchar(24) ,
-	"Fax" varchar(24) ,
-	"Email" varchar(60)
-) AS $$
+RETURNS setof "Employee"
+AS $$
 BEGIN
    return query SELECT * from "Employee" e where extract(year from e."BirthDate") > 1968;
 END;
