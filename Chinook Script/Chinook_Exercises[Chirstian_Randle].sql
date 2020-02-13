@@ -240,7 +240,7 @@ create or replace  function playlist_price( id numeric) returns numeric as $$
 	-- select * from playlist_price(1);
 	
 /*----------------------------------------------------------------------------------------------------------
- *						Function to reset chinnook to initial state for testing ( not run by default)
+ *						Function to reset chinnook to initial state for testing (not run by default)
  ----------------------------------------------------------------------------------------------------------*/
 create or replace function reset_chinook() returns void as $$
 	drop function playlist_price("numeric");
@@ -265,5 +265,5 @@ create or replace function reset_chinook() returns void as $$
 
  $$language sql;	
 
-select reset_chinook();
+--select reset_chinook();
 drop function reset_chinook() ;
