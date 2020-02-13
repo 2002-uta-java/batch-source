@@ -278,8 +278,24 @@ public class BankingApplication {
 	}
 
 	private void transferFundsPrompt() {
-		// TODO Auto-generated method stub
+		while (true) {
+			try {
+				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				if (accounts.size() < 2) {
+					System.out.println("You only have one account. You cannot transfer funds.");
+					return;
+				}
+				// else
+				
+				// show available accounts
+				printAccountChoices(accounts);
+				// TODO need to finish
+			} catch (TransactionException e) {
+				System.out.println(e.getMessage());
+				return;// just return if transaction failed
+			}
 
+		}
 	}
 
 	private void requestFundsPrompt() {
@@ -376,18 +392,24 @@ public class BankingApplication {
 	 * @throws IllegalChoiceException
 	 */
 	private int chooseAccountPrompt(final List<String> accounts) throws IllegalChoiceException {
-		int numAccounts = 0;
-		for (final String account : accounts) {
-			System.out.println("\t" + ++numAccounts + ") " + account);
-		}
+		printAccountChoices(accounts);
+		return chooseAccount(accounts.size());
+	}
 
+	private int chooseAccount(final int numAccounts) throws IllegalChoiceException {
 		final int choice = readChoice();
-
 		if (choice < 1 || choice > numAccounts)
 			throw new IllegalArgumentException("You must choose a number from 1 to " + numAccounts);
 
 		// else choice was valid, return it
 		return choice;
+	}
+
+	private void printAccountChoices(final List<String> accounts) {
+		int numAccounts = 0;
+		for (final String account : accounts) {
+			System.out.println("\t" + ++numAccounts + ") " + account);
+		}
 	}
 
 	private int beginningPrompt() {
