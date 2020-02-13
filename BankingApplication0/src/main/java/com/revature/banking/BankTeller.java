@@ -64,34 +64,34 @@ public interface BankTeller {
 //	}
 
 	/**
-	 * Checks to see if the password is valid.
+	 * Checks to see if the password is valid. A valid password will return null
+	 * from this method (no error message).
 	 * 
 	 * @param password password to be checked
-	 * @return the returned value is not used.
-	 * @throws TransactionException thrown if this password isn't valid.
+	 * @return A String that represents an explanation for why this password is
+	 *         invalid or null if it is a valid password.
 	 */
-	public abstract List<String> checkPassword(String password) throws TransactionException;
+	public abstract String checkPassword(String password);
 
 	/**
-	 * Provides a check for when trying to get a username. This returns a list of
-	 * all names that match the given string (there should be at most one).
+	 * Check to see if username is valid. Returns a String explaining why it's
+	 * invalid or null if it is valid.
 	 * 
 	 * @param username Username to check
-	 * @return The return value is not used for this method. If the username is
-	 *         invalid for whatever reason, this will throw an exception.
-	 * @throws TransactionException thrown if this username isn't valid.
+	 * @return Null if username is valid or a String explaining why it's invalid.
 	 */
-	public abstract List<String> checkUserName(String username) throws TransactionException;
+	public abstract String checkUserName(String username);
 
 	/**
 	 * Withdraws the amount specified from the specified account.
 	 * 
 	 * @param account    0-indexed selection from list of accounts user has.
 	 * @param withdrawal amount to withdraw
-	 * @return Display information for the account after the withdrawal.
+	 * @return A string representing the information for the account after the
+	 *         withdrawal.
 	 * @throws TransactionException
 	 */
-	public abstract List<String> withdrawFunds(int account, double withdrawal) throws TransactionException;
+	public abstract String withdrawFunds(int account, double withdrawal) throws TransactionException;
 
 	/**
 	 * Creates a new account for currently logged on user.
@@ -99,7 +99,7 @@ public interface BankTeller {
 	 * @return Returns the new bank account (its balance will be zero). This should
 	 *         return the full bank account number.
 	 */
-	public abstract List<String> openNewAccount() throws TransactionException;
+	public abstract String openNewAccount() throws TransactionException;
 
 	/**
 	 * Transfers funds between two accounts (owned by the same, logged in, user).
@@ -113,18 +113,14 @@ public interface BankTeller {
 			throws TransactionException;
 
 	/**
-	 * Logs user out (discards any data needed to interact with this user)
-	 * 
-	 * @return null (nothing to return)
+	 * Logs user out (discards any data needed to interact with this user).
 	 */
-	public abstract List<String> userLogout() throws TransactionException;
+	public abstract void userLogout() throws TransactionException;
 
 	/**
-	 * Deletes user from system (returns nothing).
-	 * 
-	 * @return
+	 * Deletes user from system.
 	 */
-	public abstract List<String> deleteUser() throws TransactionException;
+	public abstract void deleteUser() throws TransactionException;
 
 	/**
 	 * Close (deletes) the specified account and returns a list of updated accounts
@@ -159,11 +155,10 @@ public interface BankTeller {
 	 * 
 	 * @param account The index of the account (for this user) to add funds to.
 	 * @param amount  The amount to add to the specified account.
-	 * @return Returns a singleton list containing the information for the modified
-	 *         account.
+	 * @return Returns a String representing the modified account.
 	 * @throws TransactionException
 	 */
-	public abstract List<String> addFunds(int account, final double amount) throws TransactionException;
+	public abstract String addFunds(int account, final double amount) throws TransactionException;
 
 	/**
 	 * Creates an account (and opens a bank account with zero balance) with the
@@ -174,10 +169,11 @@ public interface BankTeller {
 	 * @param taxID     - unique taxID of user.
 	 * @param username  - username for user to login with.
 	 * @param password  - password for user to login with.
-	 * @return The returned value is not used
+	 * @return String representation of newly created account (with account number
+	 *         and $0 balance).
 	 * @throws TransactionException
 	 */
-	public abstract List<String> createAccount(final String firstName, final String lastName, final String taxID,
+	public abstract String createAccount(final String firstName, final String lastName, final String taxID,
 			final String username, final String password) throws TransactionException;
 
 	/**
@@ -189,5 +185,5 @@ public interface BankTeller {
 	 * @return the returned value is not used.
 	 * @throws TransactionException
 	 */
-	public abstract List<String> userLogin(final String username, final String password) throws TransactionException;
+	public abstract void userLogin(final String username, final String password) throws TransactionException;
 }

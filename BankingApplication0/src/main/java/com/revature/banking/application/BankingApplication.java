@@ -44,7 +44,7 @@ public class BankingApplication {
 	private static final String ADD_FUNDS_PROMPT = "Add funds.";
 	private static final String WITHDRAW_FUNDS_PROMPT = "Withdraw Funds.";
 	private static final String OPEN_NEW_ACCOUNT_PROMPT = "Open new account";
-	private static final String REQUEST_FUNDS_PROMPT = "Request funds from external account.";
+//	private static final String REQUEST_FUNDS_PROMPT = "Request funds from external account.";
 	private static final String TRANSFER_FUNDS_PROMPT = "Transfer funds from one account to another.";
 	private static final String CLOSE_ACCOUNT_PROMPT = "Close an account.";
 
@@ -286,7 +286,7 @@ public class BankingApplication {
 	private void transferFundsPrompt() {
 		while (true) {
 			try {
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				final List<String> accounts = teller.viewAccounts();
 				if (accounts.size() < 2) {
 					System.out.println("You only have one account. You cannot transfer funds.");
 					return;
@@ -308,8 +308,7 @@ public class BankingApplication {
 				System.out.println("How much would you like to transfer?");
 				double amount = readAmount();
 
-				final List<String> modifiedAccounts = teller.doTransaction(BankTeller.TRANSFER_FUNDS, "" + choiceW,
-						"" + choiceT, "" + amount);
+				final List<String> modifiedAccounts = teller.transferFunds(choiceW - 1, choiceT - 1, amount);
 				System.out.println("Your funds have been transferred:");
 				for (final String account : modifiedAccounts)
 					System.out.println('\t' + account);
@@ -337,9 +336,9 @@ public class BankingApplication {
 
 	private void openNewAccountPrompt() {
 		try {
-			final List<String> newAccount = teller.doTransaction(BankTeller.OPEN_NEW_ACCOUNT);
+			final String newAccount = teller.openNewAccount();
 			System.out.println("Here is your new account");
-			System.out.println('\t' + newAccount.get(0));
+			System.out.println('\t' + newAccount);
 		} catch (TransactionException e) {
 			System.out.println(e.getMessage());
 		}
@@ -348,7 +347,7 @@ public class BankingApplication {
 	private void withdrawFundsPrompt() {
 		while (true) {
 			try {
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				final List<String> accounts = teller.viewAccounts();
 				int choice = 1;
 
 				if (accounts.size() > 1) {
@@ -359,10 +358,9 @@ public class BankingApplication {
 				System.out.println("How much would you like to withdraw?");
 				double withdrawal = readAmount();
 
-				final List<String> updatedAccount = teller.doTransaction(BankTeller.WITHDRAW_FUNDS, "" + (choice - 1),
-						"" + withdrawal);
+				final String updatedAccount = teller.withdrawFunds(choice - 1, withdrawal);
 
-				System.out.println('\t' + updatedAccount.get(0));
+				System.out.println('\t' + updatedAccount);
 				return;// this was successful, exit method
 			} catch (TransactionException e) {
 				System.out.println(e.getMessage());
@@ -385,7 +383,7 @@ public class BankingApplication {
 		while (true) {
 			try {
 				// get the accounts
-				final List<String> accounts = teller.doTransaction(BankTeller.VIEW_ACCOUNT_BALANCES);
+				final List<String> accounts = teller.viewAccounts();
 				int choice = 1;// we're going to subtract 1 from choice, if there is only 1 account that would
 								// have to be the "first" account
 
@@ -404,10 +402,9 @@ public class BankingApplication {
 
 				// give the teller the index of the account to add to (choice - 1) and the
 				// amount to add (both as strings).
-				final List<String> updatedAccount = teller.doTransaction(BankTeller.ADD_FUNDS, "" + (choice - 1),
-						"" + amount);
+				final String updatedAccount = teller.addFunds(choice - 1, amount);
 				System.out.println("New Balance:");
-				System.out.println('\t' + updatedAccount.get(0));
+				System.out.println('\t' + updatedAccount);
 				// this was successful, return from this method
 				return;
 			} catch (TransactionException e) {
@@ -426,12 +423,12 @@ public class BankingApplication {
 
 	private void loginPrompt() {
 		System.out.println("user name: ");
-		final String user = readLine();
+		final String username = readLine();
 		System.out.println("password: ");
 		final String password = readPassword();
 
 		try {
-			teller.doTransaction(BankTeller.USER_LOGIN, user, password);
+			teller.userLogin(username, password);
 		} catch (TransactionException e) {
 			System.out.println(e.getMessage());
 		}
@@ -451,34 +448,32 @@ public class BankingApplication {
 		while (true) {
 			System.out.println("Please choose a username: ");
 			username = readLine();
-			try {
-				teller.doTransaction(BankTeller.CHECK_USER_NAME, username);
-				break;// break out of loop
-			} catch (TransactionException e) {
-				System.out.println(e.getMessage());
+			final String explanation = teller.checkUserName(username);
+			if (explanation != null) {
+				System.out.println(explanation);
 				if (!retryPrompt())
-					return; // give up
-				// else try again
-			}
+					return;
+			} else
+				break;// break out of loop if username is valid
 		}
 
 		String password = null;
 		while (true) {
 			System.out.println("Please provide a password: ");
 			password = readPassword();
-			try {
-				teller.doTransaction(BankTeller.CHECK_PASSWORD, password);
-				break;// password is good, break out of loop
-			} catch (TransactionException e) {
-				System.out.println(e.getMessage());
+			final String explanation = teller.checkPassword(password);
+			if (explanation != null) {
+				System.out.println(explanation);
 				if (!retryPrompt())
-					return;// give up
-				// else try again
-			}
+					return;
+			} else
+				break;// break out of loop is password is valid
 		}
 
 		try {
-			teller.doTransaction(BankTeller.CREATE_ACCOUNT, firstName, lastName, taxID, username, password);
+			final String newAccount = teller.createAccount(firstName, lastName, taxID, username, password);
+			System.out.println("Here is your new account:");
+			System.out.println('\t' + newAccount);
 		} catch (TransactionException e) {
 			System.out.println(e.getMessage());
 		}
