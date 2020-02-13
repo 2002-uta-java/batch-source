@@ -96,8 +96,42 @@ begin
 end
 $$
 
-select employeesBornAfter1968();
+--4.0.c Create a function that returns the manager of an employee, given the id of the employee.
+create or replace function getManager(employee_id_input "Employee"."EmployeeId"%type)
+returns setof "Employee"
+language plpgsql
+as $$
+declare 
+	manager_id "Employee"."EmployeeId"%type;
+begin 
+	select m."EmployeeId" into manager_id
+	from "Employee" as e
+	join "Employee" as m
+	on e."ReportsTo" = m."EmployeeId" 
+	where e."EmployeeId" = employee_id_input;
 
+	return query select * from "Employee" where "Employee"."EmployeeId" = manager_id;
+end
+$$
+
+--4.0.d Create a function that returns the price of a particular playlist, given the id for that playlist.
+create or replace function getPriceOfPlaylist(playlist_id_input "Playlist"."PlaylistId"%type)
+returns "Track"."UnitPrice"%type
+language plpgsql
+as $$
+declare
+	price "Track"."UnitPrice"%type;
+begin
+	select "Track"."UnitPrice" into price
+	from "Playlist"
+	join "PlaylistTrack"
+	on "Playlist"."PlaylistId" = "PlaylistTrack"."PlaylistId" 
+	join "Track"
+	on "Track"."TrackId" = "PlaylistTrack"."TrackId"
+	where "Playlist"."PlaylistId" = playlist_id_input;
+	return price;
+end
+$$
 
 
 
