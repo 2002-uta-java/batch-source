@@ -50,3 +50,12 @@ select e."FirstName" || e."LastName" as "Employee Name", sum(i."Total") as "sum_
 group by e."EmployeeId" order by "sum_of_total" desc limit 1;
 -- shows the number of purchases per each genre. Display the name of each genre and number of purchases. Show the most popular genre first
 select g."Name", sum(il."Quantity") as "quantity" from "Genre" g inner join "Track" t on g."GenreId" = t."GenreId" inner join "InvoiceLine" il on il."TrackId" = t."TrackId" group by g."GenreId" order by "quantity";
+--  function that returns the average total of all invoices
+create or replace function avg_total()
+returns integer
+language plpgsql
+as $$
+begin
+	return query select avg(i."Total") from "Invoice" i;
+end
+$$
