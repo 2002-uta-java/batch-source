@@ -70,6 +70,7 @@
 							
 	--select * from "Customer";
 
+
 /* -----------------------------------------------------
 *			 2.3 UPDATE
 -----------------------------------------------------*/ 
@@ -199,41 +200,33 @@
  *						4.0 USER DEFINED FUNCTIONS
  ----------------------------------------------------------------------------------------------------------*/
 --4.0-A Create a function that returns the average total of all invoices.
- create function total_average_invoices() returns setof numeric as $$
+create or replace  function total_average_invoices() returns setof numeric as $$
  	select avg("Total" ) from "Invoice" i ;
  $$ language sql;
-	
-	select * from total_average_invoices();
-	--drop function born_after_68()
+	--select * from total_average_invoices();
+
 
 --4.0-B Create a function that returns all employees who are born after 1968.
- create function born_after_68() returns setof "Employee" as $$
+ create or replace  function born_after_68() returns setof "Employee" as $$
  	select * from "Employee" e  where  "BirthDate" > make_timestamp(1968, 12, 31, 11, 59, 59.00);
  $$ language sql;
-
-
-
 	--select * from born_after_68();
-	--drop function born_after_68()
+
 
 
 --4.0-C Create a function that returns the manager of an employee, given the id of the employee.
- create function manager_of( id numeric) returns setof "Employee" as $$
- 	
+create or replace  function manager_of( id numeric) returns setof "Employee" as $$
  select * from "Employee" e2 where e2."EmployeeId" = 
  	(
 	 select e."ReportsTo"  from "Employee" e  where "EmployeeId" = id
 	) 
  $$ language sql;
-
-
 	--select * from manager_of();
-	--drop function manager_of()
+
 
 
 --4.0-D	Create a function that returns the price of a particular playlist, given the id for that playlist.
- create function playlist_price( id numeric) returns numeric as $$
- 	
+create or replace  function playlist_price( id numeric) returns numeric as $$
  	select sum("UnitPrice" )
  	from "Track" t2 
  	right join(
@@ -244,8 +237,33 @@
  	on  list_Ids."TrackId" = t2."TrackId" 
 
  $$ language sql;
-
 	-- select * from playlist_price(1);
-	--drop function playlist_price()
-
 	
+/*----------------------------------------------------------------------------------------------------------
+ *						Function to reset chinnook to initial state for testing ( not run by default)
+ ----------------------------------------------------------------------------------------------------------*/
+create or replace function reset_chinook() returns void as $$
+	drop function playlist_price("numeric");
+	drop function born_after_68();
+	drop function total_average_invoices() ;
+	drop function manager_of("numeric") ;
+	delete  from "Customer" where "CustomerId"  = 60;
+	delete  from "Customer" where "CustomerId"  = 61;
+	delete  from "Employee" where "EmployeeId"  = 9;
+	delete  from "Employee" where "EmployeeId"  = 10;
+	delete  from "Genre"  where "GenreId" >= 26;
+
+	update "Customer" 
+	SET	
+		"FirstName" = 'Aaron',
+		"LastName" = 'Mitchell'
+	where ("FirstName" = 'Robert' and "LastName" = 'Walter');
+
+	update "Artist" 
+	SET	"Name" = 'Creedence Clearwater Revival'
+	where "Name" = 'CCR';
+
+ $$language sql;	
+
+select reset_chinook();
+drop function reset_chinook() ;
