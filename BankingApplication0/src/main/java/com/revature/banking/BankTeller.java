@@ -3,21 +3,21 @@ package com.revature.banking;
 import java.util.List;
 
 public interface BankTeller {
-	public static final int USER_LOGIN = 0;
-	public static final int CREATE_ACCOUNT = 1;
-	public static final int VIEW_ACCOUNT_BALANCES = 2;
-
-	public static final int ADD_FUNDS = 3;
-	public static final int VIEW_STATEMENT = 4;
-	public static final int CLOSE_ACCOUNT = 5;
-	public static final int DELETE_USER = 6;
-	public static final int USER_LOGOUT = 7;
-	public static final int TRANSFER_FUNDS = 8;
-	public static final int OPEN_NEW_ACCOUNT = 9;
-	public static final int WITHDRAW_FUNDS = 10;
-
-	public static final int CHECK_USER_NAME = 11;
-	public static final int CHECK_PASSWORD = 12;
+//	public static final int USER_LOGIN = 0;
+//	public static final int CREATE_ACCOUNT = 1;
+//	public static final int VIEW_ACCOUNT_BALANCES = 2;
+//
+//	public static final int ADD_FUNDS = 3;
+//	public static final int VIEW_STATEMENT = 4;
+//	public static final int CLOSE_ACCOUNT = 5;
+//	public static final int DELETE_USER = 6;
+//	public static final int USER_LOGOUT = 7;
+//	public static final int TRANSFER_FUNDS = 8;
+//	public static final int OPEN_NEW_ACCOUNT = 9;
+//	public static final int WITHDRAW_FUNDS = 10;
+//
+//	public static final int CHECK_USER_NAME = 11;
+//	public static final int CHECK_PASSWORD = 12;
 
 	/**
 	 * Performs the requested transaction with the given string arguments.
