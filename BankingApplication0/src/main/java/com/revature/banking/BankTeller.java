@@ -11,6 +11,7 @@ public abstract class BankTeller {
 	public static final int CLOSE_ACCOUNT = 5;
 	public static final int DELETE_USER = 6;
 	public static final int USER_LOGOUT = 7;
+	public static final int TRANSFER_FUNDS = 8;
 
 	/**
 	 * Performs the requested transaction with the given string arguments.
@@ -41,10 +42,22 @@ public abstract class BankTeller {
 			return closeAccount(Integer.parseInt(args[0]));
 		case DELETE_USER:
 			return deleteUser();
+		case TRANSFER_FUNDS:
+			return transferFunds(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]));
 		default:
 			throw new TransactionException("This operation isn't supported");
 		}
 	}
+
+	/**
+	 * Transfers funds between two accounts (owned by the same, logged in, user).
+	 * 
+	 * @param withdrawAccount 0-indexed value of account to withdraw from.
+	 * @param transferAccount 0-indexed value of account to transfer to.
+	 * @param amount          Amount to transfer.
+	 * @return List of the two accounts that were modified.
+	 */
+	protected abstract List<String> transferFunds(int withdrawAccount, int transferAccount, double amount);
 
 	/**
 	 * Logs user out (discards any data needed to interact with this user)

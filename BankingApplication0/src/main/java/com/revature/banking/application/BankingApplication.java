@@ -302,7 +302,13 @@ public class BankingApplication {
 				System.out.println("How much would you like to transfer?");
 				double amount = readAmount();
 
-				// TODO need to perform operation and print status of the two accounts
+				final List<String> modifiedAccounts = teller.doTransaction(BankTeller.TRANSFER_FUNDS, "" + choiceW,
+						"" + choiceT, "" + amount);
+				System.out.println("Your funds have been transferred:");
+				for (final String account : modifiedAccounts)
+					System.out.println('\t' + account);
+				// this was successful, exit method
+				return;
 			} catch (TransactionException e) {
 				System.out.println(e.getMessage());
 				return;// just return if transaction failed
