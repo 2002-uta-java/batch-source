@@ -286,13 +286,33 @@ public class BankingApplication {
 					return;
 				}
 				// else
-				
+
 				// show available accounts
+				System.out.println("Please choose an account to withdraw funds from:");
 				printAccountChoices(accounts);
-				// TODO need to finish
+				int choiceW = chooseAccount(accounts.size());
+				System.out.println("Please choose an account to transfer funds to:");
+				printAccountChoices(accounts);
+				int choiceT = chooseAccount(accounts.size());
+
+				if (choiceW == choiceT)
+					throw new IllegalChoiceException(
+							"You cannot transfer to the same account you're withdrawing (that wouldn't be a transfer, now would it)");
+
+				System.out.println("How much would you like to transfer?");
+				double amount = readAmount();
+
+				// TODO need to perform operation and print status of the two accounts
 			} catch (TransactionException e) {
 				System.out.println(e.getMessage());
 				return;// just return if transaction failed
+			} catch (IllegalChoiceException e) {
+				System.out.println(e.getMessage());
+				if (!retryPrompt())
+					return;// exit
+				System.out.println();
+				System.out.println();
+				// loop, try again
 			}
 
 		}
@@ -352,6 +372,8 @@ public class BankingApplication {
 				if (!retryPrompt())
 					return;// exit method
 				// continue loop and retry to add funds
+				System.out.println();
+				System.out.println();
 			}
 		}
 	}
