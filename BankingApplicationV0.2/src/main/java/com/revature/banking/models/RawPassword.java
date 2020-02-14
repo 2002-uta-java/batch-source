@@ -1,6 +1,6 @@
 package com.revature.banking.models;
 
-public class RawPassword {
+public class RawPassword implements Password {
 	private String password;
 
 	public RawPassword() {

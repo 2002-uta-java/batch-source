@@ -21,6 +21,7 @@ public class Validation {
 	public static final String USERNAME_REGEX = "^\\p{Alpha}+(?:_?\\p{Alnum}+)*$";
 	private static final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);
 
+	public static final String PASSWORD_SPECIAL = "@#$^%!&*";
 	/**
 	 * Taken from
 	 * https://howtodoinjava.com/regex/how-to-build-regex-based-password-validator-in-java/
@@ -29,7 +30,8 @@ public class Validation {
 	 * special character (specifically one of @, #, $, %, !, &, *). And the length
 	 * should be at least 6 but no more than 16.
 	 */
-	public static final String PASSWORD_REGEX = "(^(?=.*\\p{Lower})(?=.*\\p{Digit})(?=.*[@#$^%!&*])(?=.*\\p{Upper}).{6,16})$";
+	public static final String PASSWORD_REGEX = "(^(?=.*\\p{Lower})(?=.*\\p{Digit})(?=.*[" + PASSWORD_SPECIAL
+			+ "])(?=.*\\p{Upper}).{6,16})$";
 	public static final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
 	public static final String TAXID_REGEX = "^\\d{10}$";

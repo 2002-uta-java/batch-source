@@ -8,9 +8,9 @@ import com.revature.model.Employee;
 public class EmployeeService {
 	private EmployeeDao eDao = null;
 
-	public EmployeeService() {
-		super();
-	}
+//	public EmployeeService() {
+//		super();
+//	}
 
 	public EmployeeService(final EmployeeDao eDao) {
 		setDao(eDao);
@@ -26,5 +26,13 @@ public class EmployeeService {
 
 	public List<Employee> getEmployees() {
 		return eDao.getEmployees();
+	}
+
+	public boolean createEmployee(final Employee e) {
+		final int empCreated = eDao.createEmployee(e);
+		if (empCreated != 0)
+			return true;
+		// else
+		return false;
 	}
 }

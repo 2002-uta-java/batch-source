@@ -11,8 +11,7 @@ firstname varchar(20) not null,
 lastname varchar(20) not null,
 username varchar(16) unique,
 password varchar(16));
+
 -- this is my junction table to link users and accounts. Neither column needs to be unique (and I expect multiples)
  create table user_accounts (tax_id varchar(10),
 account_no varchar(10));
-
-drop table users;

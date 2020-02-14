@@ -91,4 +91,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public void setDepartmentDao(DepartmentDao dd) {
 		this.dd = dd;
 	}
+
+	@Override
+	public int createEmployee(Employee e) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

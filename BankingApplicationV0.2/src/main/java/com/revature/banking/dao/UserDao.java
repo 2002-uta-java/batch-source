@@ -1,5 +1,10 @@
 package com.revature.banking.dao;
 
+import java.util.Map;
+
+import com.revature.banking.models.TaxID;
+import com.revature.banking.models.User;
+
 public interface UserDao {
 	/**
 	 * Maximum length of user's first and last names (separately).
@@ -25,4 +30,13 @@ public interface UserDao {
 	 * Length of tax id.
 	 */
 	public static final int TAXID_LENGTH = 10;
+
+	/**
+	 * Returns the user by given their tax id.
+	 * 
+	 * @param taxId unique tax id of a user.
+	 * @return The user, given, the taxId, or null if the user does not exist in
+	 *         this system.
+	 */
+	public User getUserByTaxId(TaxID taxId);
 }

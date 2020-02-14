@@ -2,6 +2,9 @@ package com.revature.banking.frontend;
 
 import java.io.IOException;
 
+import com.revature.banking.services.BankAccountService;
+import com.revature.banking.services.UserService;
+
 /**
  * This is the interface for interactions with the bank.F
  * 
@@ -16,7 +19,7 @@ public interface BankInteraction {
 	 */
 	public String getTitle();
 
-	public boolean interact(final CLI io) throws IOException;
+	public boolean interact(final CLI io, final BankAccountService bs, final UserService us) throws IOException;
 
 	public default boolean retry(final CLI io) throws IOException {
 		io.println("You you like to retry (y/n)?");

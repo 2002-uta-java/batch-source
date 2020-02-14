@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
 	private String firstName;
 	private String lastName;
-	private String taxId;
+	private TaxID taxId;
 	private String username;
 	private Password password;
 	private List<BankAccount> accounts = new ArrayList<>();
@@ -31,11 +31,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getTaxId() {
+	public TaxID getTaxId() {
 		return taxId;
 	}
 
-	public void setTaxId(String taxId) {
+	public void setTaxId(TaxID taxId) {
 		this.taxId = taxId;
 	}
 
@@ -63,7 +63,7 @@ public class User {
 		accounts.add(account);
 	}
 
-	public User(String firstName, String lastName, String taxId, String username, Password password) {
+	public User(String firstName, String lastName, TaxID taxId, String username, Password password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

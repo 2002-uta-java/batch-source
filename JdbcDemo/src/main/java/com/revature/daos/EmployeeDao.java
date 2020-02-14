@@ -10,4 +10,6 @@ public interface EmployeeDao {
 	public Employee getEmployeeById(final int id);
 
 	public void setDepartmentDao(final DepartmentDao dd);
+
+	public int createEmployee(final Employee e);
 }

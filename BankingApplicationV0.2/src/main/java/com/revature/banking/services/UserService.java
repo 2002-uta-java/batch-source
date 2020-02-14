@@ -1,6 +1,8 @@
 package com.revature.banking.services;
 
 import com.revature.banking.dao.UserDao;
+import com.revature.banking.models.TaxID;
+import com.revature.banking.models.User;
 
 public class UserService {
 	/**
@@ -33,6 +35,19 @@ public class UserService {
 	 */
 	public static final int TAXID_LENGTH = UserDao.TAXID_LENGTH;
 
+	/**
+	 * This new user information is fine.
+	 */
+	public static final int CHECK_NEW_USER_PASS = 0;
+	/**
+	 * This new user's account already exists.
+	 */
+	public static final int CHECK_NEW_USER_ACCOUNT_EXISTS = 1;
+	/**
+	 * This new user's first and last don't match the existing tax id.
+	 */
+	public static final int CHECK_NEW_USER_TAXID_MISMATCH = 2;
+
 	private UserDao ud = null;
 
 	public UserService() {
@@ -48,8 +63,56 @@ public class UserService {
 		this.ud = ud;
 	}
 
-	public boolean checkTaxId(final User user) {
-		// TODO
+	/**
+	 * Returns the user given their tax id.
+	 * 
+	 * @param taxId The TaxID object representing the tax id of a user.
+	 * @return The user (as a User object) that exists in the db or null if the user
+	 *         does not exist.
+	 */
+	public User getUserByTaxId(final TaxID taxId) {
+		return ud.getUserByTaxId(taxId);
+	}
+
+	/**
+	 * This method is intended to be used to check whether or not a new user is
+	 * actually a new user <i>and</i> is a "valid" new user (e.g. an old user that
+	 * closed an account, but their tax id matches the information on file). This
+	 * method returns an integer value explaining the status of this new user's
+	 * information.
+	 * 
+	 * @param user Checks whether the new user's taxid is consistent with the what's
+	 *             already in the database.
+	 * @return An integer value that explains whether or not this user's information
+	 *         is valid and if not, why.
+	 * @see {@link #CHECK_NEW_USER_PASS}, {@link #CHECK_NEW_USER_ACCOUNT_EXISTS},
+	 *      {@link #CHECK_NEW_USER_TAXID_MISMATCH}
+	 */
+	public int checkNewUserTaxid(final User user) {
+		final User checkUser = this.getUserByTaxId(user.getTaxId());
+
+		// if the "found" user is null, they do not exist in this system. This is
+		// definitely a new user.
+		if (checkUser == null)
+			return UserService.CHECK_NEW_USER_PASS;
+
+		// else this user exists. The should not have an account. If the user deleted
+		// their account then their user id should be null.
+		if (checkUser.getUsername() != null)
+			return UserService.CHECK_NEW_USER_ACCOUNT_EXISTS;
+
+		// check the first and last name on file, they should match
+		if (user.getFirstName().equalsIgnoreCase(checkUser.getFirstName())
+				&& user.getLastName().equalsIgnoreCase(checkUser.getLastName()))
+			return UserService.CHECK_NEW_USER_PASS;
+
+		// else this didn't match what's already in our db
+		return UserService.CHECK_NEW_USER_TAXID_MISMATCH;
+
+	}
+
+	public boolean createNewUser(User newUser) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }
