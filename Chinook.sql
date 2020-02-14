@@ -55,14 +55,34 @@ set "Name" = 'CCR'
 where "Name" = 'Creedence Clearwater Revival';
 
 -- 3.1 Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+select c."FirstName", c."LastName", i."InvoiceId"
+from "Customer" c
+inner join "Invoice" i
+on c."CustomerId" = i."CustomerId";
 
 -- 3.2 Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+select c."CustomerId", c."FirstName", c."LastName", i."InvoiceId", i."Total"
+from "Customer" c
+full outer join "Invoice" i
+on c."CustomerId" = i."CustomerId";
 
--- 3.3 Create a right join that joins album and arist specifying arist name and title.
+-- 3.3 Create a right join that joins album and arist specifying artist name and title.
+select a2."Name", a1."Title" 
+from "Album" a1
+right join "Artist" a2
+on a1."ArtistId" = a2."ArtistId";
 
 -- 3.4 Create a cross join that joins album and artist and sorts by artist name in ascending order.
+select *
+from "Album" a1
+cross join "Artist" a2
+order by a2."Name" asc;
 
 -- 3.5 Perform a self-join on the employee table, joining on the reportsto column.
+select *
+from "Employee" e1
+inner join "Employee" e2
+on e1."ReportsTo" = e2."ReportsTo";
 
 -- 3.6 JOINED QUERIES
 -- a. Create a query that shows the customer first name and last name as FULL_NAME (you can use|| to concatenate two strings) with the total amount of money they have spent as TOTAL.
