@@ -46,8 +46,13 @@ insert into "Customer" values (61, 'Queen', 'May', null, '456 Fake St', 'Fake Ci
 
 -- 2.3 UPDATE
 -- a. Update Aaron Mitchell in Customer table to Robert Walter.
-
+update "Customer" 
+set "FirstName" = 'Robert', "LastName" = 'Walter'
+where "FirstName" = 'Aaron' and "LastName" = 'Mitchell';
 -- b. Update name of artist in the Artist table "Creedence Clearwater Revival" to "CCR".
+update "Artist"
+set "Name" = 'CCR'
+where "Name" = 'Creedence Clearwater Revival';
 
 -- 3.1 Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
 
