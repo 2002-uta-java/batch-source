@@ -1,4 +1,4 @@
-package com.revature.oopexcercise;
+package com.revature.exceptions;
 
 public class NegativeWheelsException extends Exception {
 
