@@ -39,6 +39,7 @@ public class ConnectionUtil {
 		 * Using System.getenv("key") returns the value of the environment 
 		 * 	variable, whether set in the system or in STS
 		 */
+	
 	public static Connection getConnection() throws SQLException {
 		String url = System.getenv("JDBC_DB_HOST");
 		String username = System.getenv("JDBC_DB_USER");
