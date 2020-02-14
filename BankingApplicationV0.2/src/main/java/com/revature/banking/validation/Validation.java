@@ -2,6 +2,8 @@ package com.revature.banking.validation;
 
 import java.util.regex.Pattern;
 
+import com.revature.banking.services.UserService;
+
 public class Validation {
 	/**
 	 * Taken from StackOverflow and slightly modified:
@@ -27,41 +29,34 @@ public class Validation {
 	 * special character (specifically one of @, #, $, %, !, &, *). And the length
 	 * should be at least 6 but no more than 16.
 	 */
-	public static final String PASSWORD_REGEX = "((?=.*\\p{Lower})(?=.*\\p{Digit})(?=.*[@#$^%!&*])(?=.*\\p{Upper}).{6,16})";
+	public static final String PASSWORD_REGEX = "(^(?=.*\\p{Lower})(?=.*\\p{Digit})(?=.*[@#$^%!&*])(?=.*\\p{Upper}).{6,16})$";
 	public static final Pattern PASSWORD_PATTERN = Pattern.compile(PASSWORD_REGEX);
 
-	private final Pattern userPattern, passwordPattern;
+	public static final String TAXID_REGEX = "^\\d{10}$";
+	public static final Pattern TAXID_PATTERN = Pattern.compile(TAXID_REGEX);
 
-	public Validation() {
-		this(USERNAME_PATTERN, PASSWORD_PATTERN);
+	public static boolean validateUserName(final String username) {
+		if (USERNAME_PATTERN.matcher(username).matches()) {
+			final int length = username.length();
+			return length >= UserService.USER_NAME_MIN_LENGTH && length <= UserService.USER_NAME_MAX_LENGTH;
+		} else
+			return false;
 	}
 
-	/**
-	 * Creates a Validation given the regex's.
-	 * 
-	 * @param userRegex     Regex for username creation
-	 * @param passwordRegex Regex for password creation.
-	 */
-	public Validation(final String userRegex, final String passwordRegex) {
-		this(Pattern.compile(userRegex), Pattern.compile(passwordRegex));
+	public static boolean validatePassword(final String password) {
+		if (PASSWORD_PATTERN.matcher(password).matches()) {
+			final int length = password.length();
+			return length >= UserService.PASSWORD_MIN_LENGTH && length <= UserService.PASSWORD_MAX_LENGTH;
+		} else
+			return false;
 	}
 
-	/**
-	 * Creates a Validation object given the Pattern objects used for validation.
-	 * 
-	 * @param userPattern     Pattern used for user's validation.
-	 * @param passwordPattern Pattern used for password's validation.
-	 */
-	public Validation(final Pattern userPattern, final Pattern passwordPattern) {
-		this.userPattern = userPattern;
-		this.passwordPattern = passwordPattern;
+	public static boolean validateName(final String name) {
+		final int length = name.length();
+		return length != 0 && length <= UserService.NAME_LENGTH;
 	}
 
-	public boolean validateUserName(final String username) {
-		return userPattern.matcher(username).matches();
-	}
-
-	public boolean validatePassword(final String password) {
-		return passwordPattern.matcher(password).matches();
+	public static boolean validateTaxid(final String taxid) {
+		return TAXID_PATTERN.matcher(taxid).matches();
 	}
 }
