@@ -1,5 +1,7 @@
 show search_path;
 set search_path to chinook;
+
+ALTER DATABASE postgres SET search_path TO public;
 --2.1.a Select all records from the Employee table.
 select * from "Employee";
 

@@ -34,6 +34,13 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSingleNegNumber() {
+		int expected = -97;
+		int actual = Calculator.add("-97");
+		assertEquals(expected, actual);
+	}
+	
+	@Test
 	public void testTwoNumbers() {
 		int expected = 13;
 		int actual = Calculator.add("5,8");

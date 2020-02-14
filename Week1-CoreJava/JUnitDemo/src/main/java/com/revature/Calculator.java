@@ -36,6 +36,7 @@ public class Calculator {
 		String[] inputArr = input.split(",");
 		
 		// handle the condition of 1 number 
+<<<<<<< HEAD
 		
 		boolean allNumeric = true;
 		for (String num : inputArr) {
@@ -54,6 +55,22 @@ public class Calculator {
 				if (currNum <= 1000) {
 					sum += currNum;
 				}
+=======
+		if(inputArr.length == 1) {
+			if(inputArr[0].matches("-?\\d+$")) {
+				return Integer.parseInt(inputArr[0]);
+			} else {
+				return -1;
+			}
+		}
+		
+		// handle the condition of 2 numbers
+		if(inputArr.length == 2) {
+			if(inputArr[0].matches("-?\\d+$") && inputArr[1].matches("-?\\d+$")) {
+				return Integer.parseInt(inputArr[0])+Integer.parseInt(inputArr[1]);
+			} else {
+				return -1;
+>>>>>>> 9ded321fd172f86d60e1031bf772c3940067fd6d
 			}
 			return sum;
 		}
