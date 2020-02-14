@@ -52,10 +52,51 @@ group by e."EmployeeId" order by "sum_of_total" desc limit 1;
 select g."Name", sum(il."Quantity") as "quantity" from "Genre" g inner join "Track" t on g."GenreId" = t."GenreId" inner join "InvoiceLine" il on il."TrackId" = t."TrackId" group by g."GenreId" order by "quantity";
 --  function that returns the average total of all invoices
 create or replace function avg_total()
-returns integer
+returns numeric
 language plpgsql
 as $$
+declare
+	count numeric;
+	sums  numeric;
 begin
-	return query select avg(i."Total") from "Invoice" i;
+	select sum(i2."Total") into sums from "Invoice" i2;
+	select count(i."InvoiceId") into count from "Invoice" i;
+	return sums / count;
+end
+$$
+
+-- function that returns all employees who were born after 1968
+create or replace function employeeBirths()
+returns setof "Employee"
+language plpgsql
+as $$
+begin 
+	return query select * from "Employee" e where e."BirthDate" > timestamp '1969-1-1 00:00:00';
+end
+$$
+
+-- function that returns the manager of an employee, given the id of the employee
+create or replace function employeeManager(empl_id_input "Employee"."EmployeeId"%type)
+returns setof "Employee"
+language plpgsql
+as $$
+declare
+	manager_id "Employee"."EmployeeId"%type;
+begin
+	select e3."EmployeeId" into manager_id from "Employee" e3 join "Employee" e4 on e4."ReportsTo" = e3."EmployeeId" where e3."EmployeeId" = empl_id_input;
+	return query select * from "Employee" e2 where e2."EmployeeId" = manager_id;
+end
+$$
+
+-- function that returns the price of a particular playlist, given the id for that playlist
+create or replace function playlistPrice(playlist_id_input "PlaylistTrack"."PlaylistId"%type)
+returns numeric
+language plpgsql
+as $$
+declare
+	track_id_sums numeric;
+begin
+	select sum(t."UnitPrice") into track_id_sums from "PlaylistTrack" pt inner join "Track" t on pt."TrackId" = t."TrackId" where pt."PlaylistId" = playlist_id_input;
+	return track_id_sums;
 end
 $$
