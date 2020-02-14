@@ -52,4 +52,9 @@ public class PrintStreamCLI implements CLI {
 	public String readLine() throws IOException {
 		return in.readLine();
 	}
+
+	@Override
+	public String readPassword() throws IOException {
+		return readLine();
+	}
 }

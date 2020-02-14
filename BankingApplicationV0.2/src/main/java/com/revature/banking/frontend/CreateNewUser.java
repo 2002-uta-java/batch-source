@@ -24,10 +24,17 @@ public class CreateNewUser implements BankInteraction {
 		return false;
 	}
 
-	private String getTaxId(CLI io) {
+	private String getTaxId(CLI io) throws IOException {
 		while (true) {
 			io.println("Please enter your unique, 10 digit, tax id:");
 			final String taxid = io.readLine().trim();
+			
+			if(!Validation.validateTaxid(taxid)) {
+				io.println(taxid + " is not a valid tax id");
+				if(!retry(io))
+					return null;
+				// else try again
+			}else if()//TODO
 		}
 	}
 

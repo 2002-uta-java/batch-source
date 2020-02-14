@@ -8,4 +8,6 @@ public interface CLI {
 	public void print(final String line);
 
 	public String readLine() throws IOException;
+
+	public String readPassword() throws IOException;
 }
