@@ -86,10 +86,34 @@ on e1."ReportsTo" = e2."ReportsTo";
 
 -- 3.6 JOINED QUERIES
 -- a. Create a query that shows the customer first name and last name as FULL_NAME (you can use|| to concatenate two strings) with the total amount of money they have spent as TOTAL.
+select c."FirstName" || c."LastName" "FULL_NAME", sum(i."Total") "TOTAL"
+from "Customer" c
+inner join "Invoice" i
+on c."CustomerId" = i."CustomerId"
+group by c."CustomerId";
 
--- b. Create a query that shows the employee that has made the highest total value of sales (total ofall invoices).
+-- b. Create a query that shows the employee that has made the highest total value of sales (total of all invoices).
+select sum(i."Total") "Total_Spending", c."FirstName" || c."LastName" "Name"
+from "Customer" c
+inner join "Invoice" i
+on i."CustomerId" = c."CustomerId"
+where i."CustomerId" = 
+	(select i."CustomerId" as "Max_Id"
+	from "Invoice" i
+	group by i."CustomerId"
+	order by sum(i."Total" ) desc
+	limit 1)
+group by c."CustomerId"
+limit 1;
 
 -- c. Create a query which shows the number of purchases per each genre. Display the name of eachgenre and number of purchases. Show the most popular genre first
+select g."Name", sum(i."Quantity") "Total_Sold"
+from "InvoiceLine" i
+inner join "Genre" g
+on i."InvoiceId" = g."GenreId"
+group by g."GenreId"
+order by sum(i."Quantity") desc;
+
 
 -- 4.0 USER DEFINED FUNCTIONS
 -- a. Create a function that returns the average total of all invoices.
@@ -99,4 +123,10 @@ on e1."ReportsTo" = e2."ReportsTo";
 -- c. Create a function that returns the manager of an employee, given the id of the employee.
 
 -- d. Create a function that returns the price of a particular playlist, given the id for that playlist.
+
+
+
+
+
+
 
