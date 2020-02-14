@@ -147,13 +147,13 @@ group by e."EmployeeId"
 order by "sum_of_total" desc limit 1;
 
 --c
-
-
-select g."Name" 
-from "Genre" g;
-select i.Invoice
-
-from "InvoiceLine" i
+select "Genre"."Name", count("InvoiceLine"."InvoiceLineId") as "purchases"
+from "Genre"
+join "Track"
+on "Track"."GenreId" = "Genre"."GenreId" 
+join "InvoiceLine" on "InvoiceLine"."TrackId" = "Track"."TrackId"
+group by "Genre"."GenreId"
+order by "purchases" desc;
 
 --4.0
 --a
@@ -170,23 +170,63 @@ begin
 	return average_total;
 end
 $$
-select get_average_total();
 
 --b
-
 create or replace function get_after_68()
 returns setof "Employee"
 language plpgsql
 as $$
-declare
-	setof "Employee" as born_after_68;
 begin
+	return query 
 	select * 
-	into born_after_68
-	from "Employee";
-	where "BirthDate" >= '1968-01-01 00:00:00';
-	return born_after_68
+	from "Employee"
+	where "BirthDate" >= timestamp '1968-01-01 00:00:00';
 end
 $$
 
-select get_after_68();
+--c
+create or replace function get_manager(employeeId "Employee."EmployeeId"%type)
+returns setof "Employee"
+language plpgsql
+as $$
+declare 
+	managerId "Employee"."EmployeeId"%type;
+begin
+	select manager."EmployeeId" into managerId
+	from "Employee" as employee
+	join "Employee" as manager
+	on employee."ReportsTo" = manager."EmployeeId"
+	where employee."EmployeeId" = employeeId;
+	select * from "Employee" into result
+	where "Employee."EmployeeId" = managerId;
+	return result;
+end
+
+--d
+create or replace function get_playlist_price(playlistId "Playlist"."PlaylistId"%type)
+returns "Track"."UnitPrice"%type
+language plpgsql
+as $$
+declare
+	price "Track"."UnitPrice"%type;
+begin
+	select "Track"."UnitPrice" into price
+	from "Playlist"
+	join "PlaylistTrack"
+	on "Playlist"."PlaylistId" = "PlaylistTrack"."PlaylistId" 
+	join "Track"
+	on "Track"."TrackId" = "PlaylistTrack"."TrackId"
+	where "Playlist"."PlaylistId" = playlistId;
+	return price;
+end
+$$
+
+
+
+
+
+
+
+
+
+
