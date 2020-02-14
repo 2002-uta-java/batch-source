@@ -140,13 +140,35 @@ begin
 	select *
 	from "Employee"
 	where "BirthDate" >= timestamp '1969-1-1 00:00:00';
-	
 end
 $$
 
 -- c. Create a function that returns the manager of an employee, given the id of the employee.
+create or replace function get_manager(empl "Employee"."EmployeeId"%type)
+returns setof "Employee"."FirstName"%type
+language plpgsql
+as $$
+begin
+	return query
+	select e2."FirstName"
+	from "Employee" e
+	inner join "Employee" e2
+	on e."ReportsTo" = e2."EmployeeId"
+	where empl = e."EmployeeId";
+end
+$$
 
 -- d. Create a function that returns the price of a particular playlist, given the id for that playlist.
+
+
+
+
+
+
+
+
+
+
 
 
 
