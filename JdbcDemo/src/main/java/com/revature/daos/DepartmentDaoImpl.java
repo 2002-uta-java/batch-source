@@ -68,18 +68,51 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	}
 
 	public int createDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		final String sql = "insert into Department (dept_name, monthly_budget) values (?, ?)";
+		int deptCreated = 0;
+
+		try (final Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+			ps.setString(1, d.getName());
+			ps.setDouble(2, d.getMonthlyBudget());
+
+			deptCreated = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return deptCreated;
 	}
 
 	public int updateDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		final String sql = "update department set dept_name = ?, monthly_budget = ? where dept_id = ?";
+		int updatedDepts = 0;
+		try (final Connection c = ConnectionUtil.getConnection();
+				final PreparedStatement ps = c.prepareStatement(sql);) {
+			ps.setString(1, d.getName());
+			ps.setDouble(2, d.getMonthlyBudget());
+			ps.setInt(3, d.getId());
+
+			updatedDepts = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return updatedDepts;
 	}
 
 	public int deleteDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		final String sql = "delete from department where dept_id = ?";
+		int rowsDeleted = 0;
+		try (final Connection c = ConnectionUtil.getConnection();
+				final PreparedStatement ps = c.prepareStatement(sql);) {
+			ps.setInt(1, d.getId());
+			rowsDeleted = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rowsDeleted;
 	}
 
 }
