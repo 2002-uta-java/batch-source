@@ -33,11 +33,17 @@ from "Employee";
 
 -- 2.2 INSERT INTO
 -- Insert two new records into Genre table
-
+insert into "Genre" values (26, 'Modern');
+insert into "Genre" values (27, 'Dubstep');
 -- Insert two new records into Employee table
-
+insert into "Employee" values (9, 'Tang', 'Michael', 'COO', 1, '1/1/2000', '1/2/2000', '123 Fake St', 'Fake City', 'Florida', 'USA', '33072', '9548349259', 'Fax', 'fake@gmail.com');
+insert into "Employee" values (10, 'Junior', 'Morton', 'COV', 1, '6/6/1996', '6/6/2006', '666 Fire St', 'Fire City', 'Virginia', 'USA', '66651', '6661800412', 'Fax2', 'fake2@gmail.com');
 -- Insert two new records into Customer table
- 
+select *
+from "Customer";
+insert into "Customer" values (60, 'King', 'Martin', null, '345 Fake St', 'Fake City 2', 'Washington', 'USA', '43071', '9548349259', null, 'fake2@gmail.com');
+insert into "Customer" values (61, 'Queen', 'May', null, '456 Fake St', 'Fake City 3', 'Nevada', 'USA', '40123', '9504219002', null, 'fake3@gmail.com');
+
 -- 2.3 UPDATE
 -- a. Update Aaron Mitchell in Customer table to Robert Walter.
 
