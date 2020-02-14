@@ -17,8 +17,9 @@ public class DepartmentService {
 		return departmentDao.getDepartmentById(id);
 	}
 
-	public boolean createDepartment(final Department dept) {
-		return departmentDao.createDepartment(dept) != 0;
+	public Department createDepartment(final Department dept) {
+//		return departmentDao.createDepartment(dept) != 0;
+		return departmentDao.createDepartentWithFunction(dept);
 	}
 
 	public boolean updateDepartment(final Department d) {

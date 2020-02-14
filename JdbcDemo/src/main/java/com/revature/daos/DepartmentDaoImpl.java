@@ -1,5 +1,6 @@
 package com.revature.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,7 +60,6 @@ public class DepartmentDaoImpl implements DepartmentDao {
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}
@@ -113,6 +113,39 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		}
 
 		return rowsDeleted;
+	}
+
+	@Override
+	public Department createDepartentWithFunction(Department d) {
+		final String sql = "{call add_dept(?,?)}";
+		ResultSet rs = null;
+
+		try (final Connection c = ConnectionUtil.getConnection(); final CallableStatement cs = c.prepareCall(sql);) {
+			cs.setString(1, d.getName());
+			cs.setDouble(2, d.getMonthlyBudget()); // this is going to be a problem because numeric isn't the same as
+													// double...need to modify function to accommodate the double type
+
+			if (cs.execute()) { // returns a boolean
+				rs = cs.getResultSet();
+				while (rs.next()) {
+					// we passed in name and monthly budget, just get id and set it
+					int newId = rs.getInt("dept_id");
+					d.setId(newId);
+				}
+			} else // if we couldn't add, set d to null to be returned
+				d = null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return d;
 	}
 
 }

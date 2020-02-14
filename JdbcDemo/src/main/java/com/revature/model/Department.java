@@ -13,6 +13,10 @@ public class Department implements Serializable {
 		super();
 	}
 
+	public Department(final int id) {
+		this.id = id;
+	}
+
 	public Department(final String name, final double budget) {
 		this.deptName = name;
 		this.monthlyBudget = budget;

@@ -12,9 +12,9 @@ public class Validation {
 	 * 
 	 * The ?: marks the parenthesis as a non-capturing group
 	 * 
-	 * This should require alphanumeric names, starting with an alphabetic character,
-	 * no special symbols, and only underscores in between and must end in an
-	 * alphanumeric character.
+	 * This should require alphanumeric names, starting with an alphabetic
+	 * character, no special symbols, and only underscores in between and must end
+	 * in an alphanumeric character.
 	 */
 	public static final String USERNAME_REGEX = "^\\p{Alpha}+(?:_?\\p{Alnum}+)*$";
 	private static final Pattern USERNAME_PATTERN = Pattern.compile(USERNAME_REGEX);

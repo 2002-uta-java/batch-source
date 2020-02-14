@@ -94,8 +94,8 @@ public class Employee {
 		return result;
 	}
 
-	public void setDeptId(Department deptId) {
-		this.dept = deptId;
+	public void setDept(Department dept) {
+		this.dept = dept;
 	}
 
 	public void setId(int id) {

@@ -14,4 +14,6 @@ public interface DepartmentDao {
 	public int updateDepartment(final Department d);
 
 	public int deleteDepartment(final Department d);
+
+	public Department createDepartentWithFunction(final Department d);
 }
