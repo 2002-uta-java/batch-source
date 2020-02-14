@@ -161,9 +161,8 @@ begin
 	update department 
 	set monthly_budget = monthly_budget + increase_amount
 	where dept_id = dept_id_input;
-end;
+end
 $$
-
 
 select increase_budget(3000,2);
 select increase_budget(3800,3);
@@ -177,7 +176,7 @@ select increase_budget(3800,3);
 
 
 create or replace function assess_raise(empl_id_input employee.empl_id%type, raise_amount employee.monthly_salary%type)
-return numeric
+returns numeric
 language plpgsql
 as $$
 declare 
@@ -207,7 +206,7 @@ begin
 	where empl_id = empl_id_input;
 
 	-- compare budget with department spending + raise amount to determine raise outcome
-	if (budget_used+raise_amount)>dept_budget then
+	if(budget_used+raise_amount)>dept_budget then
 		return current_salary;
 	else
 		update employee
@@ -217,5 +216,47 @@ begin
 	end if;
 end;
 $$
-/
+
+select assess_raise(12, 2000);
+select assess_raise(5, 200);
+
+
+insert into department values (2, 'Some cool department', 3000);
+
+/*
+ * 1. create a function which returns a value of type "trigger"
+ * 2. create a trigger, associating the functionality of the function 
+ * 		we created to a particular operation in the db
+ */
+
+create function check_dept_id_uniqueness()
+returns trigger 
+language plpgsql
+as $$
+declare
+	id_count integer;
+begin 
+	
+	select count(dept_id) into id_count
+	from department 
+	where dept_id = new.dept_id;
+
+	if id_count>0 then
+		new.dept_id = nextval('department_dept_id_seq');
+	end if;
+
+	return new;
+end
+$$
+
+create trigger assure_unique_dept_id
+before insert
+on department
+for each row
+execute procedure check_dept_id_uniqueness();
+
+
+insert into department values (2, 'Some cool department', 3000);
+
+
 
