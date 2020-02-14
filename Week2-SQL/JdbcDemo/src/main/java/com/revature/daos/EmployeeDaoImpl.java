@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +23,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				+ "department on (employee.dept_id=department.dept_id)}";
 		
 		try(Connection c = ConnectionUtil.getConnection();
-				PreparedStatement ps = c.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()){
+				Statement ps = c.createStatement();
+				ResultSet rs = ps.executeQuery(sql)){
 			
-//			for(int i=0; i<rs.getMetaData().getColumnCount(); i++) {
-//				System.out.println(rs.getMetaData().getColumnName(i+1));
-//			}
+			for(int i=0; i<rs.getMetaData().getColumnCount(); i++) {
+				System.out.println(rs.getMetaData().getColumnName(i+1));
+			}
 			
 			while(rs.next()) {
 				// get data from each employee
