@@ -114,9 +114,20 @@ on i."InvoiceId" = g."GenreId"
 group by g."GenreId"
 order by sum(i."Quantity") desc;
 
-
 -- 4.0 USER DEFINED FUNCTIONS
 -- a. Create a function that returns the average total of all invoices.
+create or replace function return_avg()
+returns numeric(7, 2)
+language plpgsql
+as $$
+declare
+	avg_sal numeric(7, 2);
+begin
+	select round(avg("Total"), 2) into avg_sal
+    from "Invoice";
+    return avg_sal;
+end
+$$
 
 -- b. Create a function that returns all employees who are born after 1968.
 
