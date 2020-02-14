@@ -159,8 +159,19 @@ end
 $$
 
 -- d. Create a function that returns the price of a particular playlist, given the id for that playlist.
-
-
+create or replace function get_price(playlist_id "PlaylistTrack"."PlaylistId"%type)
+returns setof "Track"."UnitPrice"%type
+language plpgsql
+as $$
+begin 
+	return query
+	select t."UnitPrice"
+	from "PlaylistTrack" p
+	inner join "Track" t
+	on p."TrackId" = t."TrackId"
+	where playlist_id = p."PlaylistId";
+end
+$$
 
 
 
