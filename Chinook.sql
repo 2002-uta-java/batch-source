@@ -7,17 +7,29 @@ select *
 from "Employee"
 where "LastName" = 'King';
 -- c. Select all albums in Album table and sort result set in descending order by title.
-
+select *
+from "Album"
+order by "Title" desc;
 -- d. Select first name from Customer and sort result set in ascending order by city.
-
+select "FirstName"
+from "Customer"
+order by "City" asc;
 -- e. Select all invoices with a billing address like "T%".
-
+select *
+from "Invoice"
+where "BillingAddress" like 'T%';
 -- f. Select the name of the longest track.
-
+select "Name", "Milliseconds"
+from "Track"
+where "Milliseconds" =
+	(select min("Milliseconds")
+	from "Track");
 -- g. Find the average invoice total.
-
+select avg("Total")
+from "Invoice";
 -- h. Find the total number of emplyees in each position.
-
+select count("EmployeeId")
+from "Employee";
 
 -- 2.2 INSERT INTO
 -- Insert two new records into Genre table
