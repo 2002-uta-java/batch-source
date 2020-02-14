@@ -119,8 +119,80 @@ group by g."Name"
 order by total_purchases desc;
 
 -- Create a function that returns the average total of all invoices.
+create function get_avg_invoices()
+returns numeric(4,2)
+language plpgsql
+as $$
+	declare invoice_total_avg numeric(4,2);
+begin
+	select round(avg(i."Total")) into invoice_total_avg
+	from "Invoice" i;
+	return invoice_total_avg;
+end
+$$
+
+select get_avg_invoices();
+
+
 -- Create a function that returns all employees who are born after 1968.
+create or replace function get_employees_born_after_1968()
+returns integer
+language plpgsql
+as $$
+declare
+	employees_born_after_1968 integer;
+begin
+	select * into employees_born_after_1968
+	from "Employee" e
+	where e."BirthDate" >= timestamp '1969-01-01 00:00:00';
+	return employees_born_after_1968;
+end
+$$
+
+select get_employees_born_after_1968();
+
 -- Create a function that returns the manager of an employee, given the id of the employee.
+create or replace function get_manager(empl_id_input "Employee"."EmployeeId"%type)
+returns varchar(20)
+language plpgsql
+as $$
+declare
+	manager_of_empl varchar(20);
+begin
+	select (m."FirstName" || m."LastName") into manager_of_empl
+	from "Employee" e
+	join "Employee" m
+	on  m."EmployeeId" = e."ReportsTo"
+	where empl_id_input = e."EmployeeId";
+	return manager_of_empl;
+end
+$$
+
+select get_manager(2);
+
+
+
 -- Create a function that returns the price of a particular playlist, given the id for that playlist.
+
+create function get_playlist_price(playlist_id "Playlist"."PlaylistId"%type)
+returns numeric(10,2)
+language plpgsql
+as $$
+declare 
+	playlist_price numeric(10,2);
+begin
+	select sum(t."UnitPrice") into playlist_price
+	from "Playlist" p
+	inner join "PlaylistTrack" pt 
+		on p."PlaylistId" = pt."PlaylistId" 
+	inner join "Track" t 
+		on t."TrackId" = pt."TrackId" 
+	where p."PlaylistId" = playlist_id;
+	return playlist_price;
+	
+end
+$$
+
+select get_playlist_price(1);
 
 
