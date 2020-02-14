@@ -1,5 +1,6 @@
 package com.revature.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,7 +67,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if(rs!=null) {
+					rs.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -77,20 +80,95 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
 	@Override
 	public int createDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "insert into department (dept_name, monthly_budget) values (?, ?)";
+		int departmentsCreated = 0;
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)){
+			
+			ps.setString(1, d.getName());
+			ps.setDouble(2, d.getMonthlyBudget());
+			
+			departmentsCreated = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return departmentsCreated;
 	}
 
 	@Override
 	public int updateDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update department set dept_name = ?, monthly_budget = ? where dept_id = ?";
+		int departmentsUpdated = 0;
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)){
+			ps.setString(1, d.getName());
+			ps.setDouble(2, d.getMonthlyBudget());
+			ps.setInt(3, d.getId());
+			
+			departmentsUpdated = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return departmentsUpdated;
 	}
 
 	@Override
 	public int deleteDepartment(Department d) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "delete from department where dept_id = ?";
+		int rowsDeleted = 0;
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)){
+			ps.setInt(1, d.getId());
+//			ps.setString(1, "Hello World"); // this throws a sql exception bc we're not using the correct types
+			rowsDeleted = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rowsDeleted;
+	}
+
+	@Override
+	public Department createDepartmentWithFunction(Department d) {
+		String sql = "{call add_dept(?, ?)}";
+		
+		ResultSet rs = null;
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				CallableStatement cs = c.prepareCall(sql)){
+			cs.setString(1, d.getName());
+			cs.setDouble(2, d.getMonthlyBudget());
+			
+			cs.execute();
+			
+			rs = cs.getResultSet();
+			
+			while(rs.next()) {
+				int newId = rs.getInt("dept_id");
+				d.setId(newId);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return d;
 	}
 
 }

@@ -18,12 +18,15 @@ public class DepartmentService {
 		return departmentDao.getDepartmentById(id);
 	}
 	
-	public boolean createDepartment(Department d) {
+	public Department createDepartment(Department d) {
+		/*
 		int deptsCreated = departmentDao.createDepartment(d);
 		if(deptsCreated != 0 ) {
 			return true;
 		}
 		return false;
+		*/
+		return departmentDao.createDepartmentWithFunction(d);
 	}
 	
 	public boolean updateDepartment(Department d) {
