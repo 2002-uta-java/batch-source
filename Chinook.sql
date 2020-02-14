@@ -130,6 +130,19 @@ end
 $$
 
 -- b. Create a function that returns all employees who are born after 1968.
+create or replace function zoomers()
+returns setof "Employee"
+language plpgsql
+as $$
+declare
+begin 
+	return query 
+	select *
+	from "Employee"
+	where "BirthDate" >= timestamp '1969-1-1 00:00:00';
+	
+end
+$$
 
 -- c. Create a function that returns the manager of an employee, given the id of the employee.
 
