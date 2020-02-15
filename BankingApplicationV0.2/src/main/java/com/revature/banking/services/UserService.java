@@ -96,7 +96,7 @@ public class UserService {
 		if (checkUser == null)
 			return UserService.CHECK_NEW_USER_PASS;
 
-		// else this user exists. The should not have an account. If the user deleted
+		// else this user exists. They should not have an account. If the user deleted
 		// their account then their user id should be null.
 		if (checkUser.getUsername() != null)
 			return UserService.CHECK_NEW_USER_ACCOUNT_EXISTS;
