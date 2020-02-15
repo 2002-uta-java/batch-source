@@ -43,7 +43,13 @@ public class CreateNewUser implements BankInteraction {
 
 		newUser.setPassword(password);
 
-		return us.createNewUser(newUser);
+		if (us.createNewUser(newUser)) {
+			io.println("You have been added to the system. You should be able to login now.");
+			return true;
+		} else {
+			io.println("The was an error and you were not added");
+			return false;
+		}
 	}
 
 	private String getUserName(CLI io) throws IOException {
