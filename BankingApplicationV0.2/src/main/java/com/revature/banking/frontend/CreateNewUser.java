@@ -135,7 +135,7 @@ public class CreateNewUser implements BankInteraction {
 		return TITLE;
 	}
 
-	private String getName(final String firstLast, final CLI io) throws IOException {
+	public String getName(final String firstLast, final CLI io) throws IOException {
 		while (true) {
 			io.println(firstLast + " Name:");
 			final String name = io.readLine().trim();
