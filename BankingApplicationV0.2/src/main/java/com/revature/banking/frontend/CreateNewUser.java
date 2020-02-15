@@ -1,8 +1,6 @@
 package com.revature.banking.frontend;
 
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
-
 import com.revature.banking.models.Password;
 import com.revature.banking.models.RawPassword;
 import com.revature.banking.models.TaxID;
