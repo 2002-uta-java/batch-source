@@ -13,38 +13,40 @@ public class CreateNewUser implements BankInteraction {
 	public static final String TITLE = "Create new user and account.";
 
 	@Override
-	public void interact(final CLI io, final BankAccountService bs, final UserService us) throws IOException {
+	public boolean interact(final CLI io, final BankAccountService bs, final UserService us) throws IOException {
 		final String firstName = getName("First", io);
 		if (firstName == null)
-			return;
+			return false;
 
 		final String lastName = getName("Last", io);
 		if (lastName == null)
-			return;
+			return false;
 
 		final User newUser = getTaxId(io, us, firstName, lastName);
 		if (newUser == null)
-			return;
+			return false;
 
 		// this user has successfully given their first and last name and a "valid" tax
 		// id. This user is ready to be added to the database and an account created.
 
 		final String username = getUserName(io);
 		if (username == null)
-			return;
+			return false;
 
 		newUser.setUsername(username);
 
 		final Password password = getPassword(io);
 		if (password == null)
-			return;
+			return false;
 
 		newUser.setPassword(password);
 
 		if (us.createNewUser(newUser)) {
 			io.println("You have been added to the system. You should be able to login now.");
+			return true;
 		} else {
 			io.println("There was an error and you were not added.");
+			return false;
 		}
 	}
 
