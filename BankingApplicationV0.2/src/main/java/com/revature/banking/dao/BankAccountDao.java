@@ -1,5 +1,11 @@
 package com.revature.banking.dao;
 
-public interface BankAccountDao {
+import com.revature.banking.models.EncryptedBankAccount;
+import com.revature.banking.models.EncryptedUser;
+import com.revature.banking.services.BankAccountService;
 
+public interface BankAccountDao {
+	public void setBankAccountService(final BankAccountService bas);
+
+	public EncryptedBankAccount createNewBankAccount(final EncryptedUser eu);
 }

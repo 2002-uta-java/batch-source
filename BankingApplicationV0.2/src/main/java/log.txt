@@ -1,1 +1,9 @@
 2020-02-15 18:11:03 ERROR TestingLogger:13 method: calculate - incorrect input provided
+2020-02-15 22:27:27 FATAL BankApplication:58 method: getDBKey - [Ljava.lang.StackTraceElement;@5b480cf9
+2020-02-15 22:28:14 FATAL BankApplication:60 method: getDBKey - [Ljava.lang.StackTraceElement;@5b480cf9
+2020-02-15 22:37:55 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@66d2e7d9
+2020-02-15 22:39:41 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@66d2e7d9
+2020-02-15 22:44:59 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-15 22:46:40 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-15 22:48:43 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-15 22:49:04 ERROR UserDaoImpl:68 method: createNewUser - Failed to create a new user: EncryptedUser [encryptedPassword=SYuA+LGyXDAlsqWra9hkbCAKzl9711MtDa3KMjuMs4pMzMU1pItgf/J0zfcbcqdT, firstName=YMwIAR3sTkttc39C6pOdag==, lastName=DAfArqr0guqAv729RB/vjw==, taxId=k84ydCkV444eZbj+2JdaL96SmrYd6XT0, username=ahIe1T6MyDzQ6HjMAr/9YqevlezOoL+u]

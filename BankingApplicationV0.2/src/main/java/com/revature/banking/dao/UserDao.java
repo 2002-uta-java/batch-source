@@ -43,4 +43,6 @@ public interface UserDao {
 	public EncryptedUser getUserByTaxId(String encryptedTaxId);
 
 	public EncryptedBankAccount createNewUser(final EncryptedUser user);
+
+	public void setBankAccountDao(final BankAccountDao bad);
 }

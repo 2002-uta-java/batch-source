@@ -55,7 +55,7 @@ public class CreateNewUser implements BankInteraction {
 
 			if (Validation.validateName(username)) {
 				final int length = username.length();
-				if (length >= UserService.USER_NAME_MIN_LENGTH && length <= UserService.USER_NAME_MIN_LENGTH)
+				if (length >= UserService.USER_NAME_MIN_LENGTH && length <= UserService.USER_NAME_MAX_LENGTH)
 					return username;
 				else
 					io.println("Your user name should be " + UserService.USER_NAME_MIN_LENGTH + " to "
@@ -72,15 +72,15 @@ public class CreateNewUser implements BankInteraction {
 
 	private String getPassword(CLI io) throws IOException {
 		while (true) {
-			io.println("Please provide a username: ");
+			io.println("Please provide a password: ");
 			final String password = io.readPassword();
 
-			if (Validation.validateName(password)) {
+			if (Validation.validatePassword(password)) {
 				final int length = password.length();
-				if (length >= UserService.PASSWORD_MIN_LENGTH && length <= UserService.PASSWORD_MIN_LENGTH)
-					return password;// TODO need to think about how to modularize this
+				if (length >= UserService.PASSWORD_MIN_LENGTH && length <= UserService.PASSWORD_MAX_LENGTH)
+					return password;
 				else
-					io.println("Your user name should be " + UserService.PASSWORD_MIN_LENGTH + " to "
+					io.println("Your password should be " + UserService.PASSWORD_MIN_LENGTH + " to "
 							+ UserService.PASSWORD_MAX_LENGTH + " characters long.");
 			} else {
 				io.println(
