@@ -1,7 +1,7 @@
 package com.revature.banking.dao;
 
 import com.revature.banking.frontend.models.User;
-import com.revature.banking.services.models.EncryptedUser;
+import com.revature.banking.models.EncryptedUser;
 
 public interface UserDao {
 	/**
