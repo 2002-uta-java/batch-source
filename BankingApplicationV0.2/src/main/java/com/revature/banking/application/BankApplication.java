@@ -14,6 +14,7 @@ import com.revature.banking.frontend.BankInteraction;
 import com.revature.banking.frontend.CLI;
 import com.revature.banking.frontend.ConsoleCLI;
 import com.revature.banking.frontend.CreateNewUser;
+import com.revature.banking.security.SecurityService;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 
@@ -25,15 +26,17 @@ public class BankApplication {
 		final UserDao ud = new UserDaoImpl();
 		final BankAccountDao bad = new BankAccountDaoImpl();
 		final CLI console = new ConsoleCLI();
+		final SecurityService ss = new SecurityService();
 		final String dbKey = System.getenv("DB_KEY");
 
 		System.out.println("dbKey: " + dbKey);
+		ss.setKey(dbKey);
 
-		bas.setKey(dbKey);
 		bas.setDao(bad);
-		us.setKey(dbKey);
+		bas.setSecurityService(ss);
 		us.setDao(ud);
-		us.setBankAccountService(bas);
+		us.setSecurityService(ss);
+
 		ud.setBankAccountDao(bad);
 		bad.setBankAccountService(bas);
 

@@ -70,3 +70,33 @@
 2020-02-16 01:25:16 DEBUG EncryptedService:28 method: encrypt - Encryping Message: bennattj to 6zQdfx4z9xQ4802Ic8gNs0rrvhdIWM/8 with org.jasypt.util.text.StrongTextEncryptor@59e84876
 2020-02-16 01:25:17 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 9347027606 to sE/ul2yfdRqf9mmu/vpn0Q0JYYw5g+jU with org.jasypt.util.text.StrongTextEncryptor@2f943d71
 2020-02-16 01:25:17 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 0.0 to CTp6MyzUinSIQNiC5A9yiA== with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 13:36:02 DEBUG SecurityService:72 method: encrypt - Encryping Message: 1234567890 to B24TPJa/UxoM8leAd9bGUrqW8UHHMnP8 with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:03 DEBUG UserService:102 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 13:36:11 DEBUG SecurityService:72 method: encrypt - Encryping Message: Jared to 1sRhzhzN/A5sNGEoyklt/Q== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:11 DEBUG SecurityService:72 method: encrypt - Encryping Message: Bennatt to oC5LjUpysesE91ERZloPMA== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:11 DEBUG SecurityService:72 method: encrypt - Encryping Message: 1234567890 to kwmdFcsaBJ6GaRjfpJkrg5Muzv3gl9W2 with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:11 DEBUG SecurityService:72 method: encrypt - Encryping Message: bennattj to UknMuoWzlE7hbHq6Rzo01E0MOxHLzBsD with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:12 DEBUG SecurityService:72 method: encrypt - Encryping Message: 2895235036 to tiSLt3zUmrav4QpbLummIqWWOZzTEjFs with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:12 DEBUG SecurityService:72 method: encrypt - Encryping Message: 0.0 to QOcoty/VVfBb9az49UGBRg== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:13 DEBUG SecurityService:66 method: decrypt - Decrypting string "tYXzoZFtnozr2Q4JNJzn9GZTBNvJertv" to "2895235036"
+2020-02-16 13:36:13 DEBUG SecurityService:66 method: decrypt - Decrypting string "6FkW96FAC3ornASMCh+JDA==" to "0.0"
+2020-02-16 13:36:27 DEBUG SecurityService:72 method: encrypt - Encryping Message: 1234567890 to Be3qkAQs52fdNuFAv0xejROOe5twbHG+ with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:28 DEBUG UserService:102 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: Jared to HGII9MnWOntVJDSUp0IIwA== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: Bennatt to TW3aws4YBXQNEsRxo2BseA== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: 1234567890 to X7/qp34tilI6hYUaR6NThdwYn1Dzpmr2 with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: bennattj to F20NTHSZ/lIFb0o9+PLefuE4/tF5MetD with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:38 DEBUG SecurityService:66 method: decrypt - Decrypting string "tYXzoZFtnozr2Q4JNJzn9GZTBNvJertv" to "2895235036"
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: 9811226694 to WG0i+i3rcxqZQtIt0cmvyzYbJmtJRVQd with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:38 DEBUG SecurityService:72 method: encrypt - Encryping Message: 0.0 to avRar8L7mFy0SVrPBs8y/A== with org.jasypt.util.text.StrongTextEncryptor@13a57a3b
+2020-02-16 13:36:39 DEBUG SecurityService:66 method: decrypt - Decrypting string "MtHc/cGwBtrLMMPWBGH5v6yFiLUZlMSO" to "9811226694"
+2020-02-16 13:36:39 DEBUG SecurityService:66 method: decrypt - Decrypting string "iyFOXnS/jz0uYErUZaTQNw==" to "0.0"
+2020-02-16 13:40:29 DEBUG SecurityService:18 method: setKey - Setting key for text encryption to: null
+2020-02-16 13:41:18 DEBUG SecurityService:18 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-16 13:41:18 DEBUG SecurityService:73 method: encrypt - Encryping Message: Jared to DkSn0wQh0eH0LmO92TAPvQ== with org.jasypt.util.text.StrongTextEncryptor@6276ae34
+2020-02-16 13:41:23 DEBUG SecurityService:18 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-16 13:41:23 DEBUG SecurityService:73 method: encrypt - Encryping Message: Jared to FPbNumx3fePSzjqCpn9lqA== with org.jasypt.util.text.StrongTextEncryptor@6276ae34
+2020-02-16 13:41:24 DEBUG SecurityService:18 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-16 13:41:24 DEBUG SecurityService:73 method: encrypt - Encryping Message: Jared to T2vdKA93izvN+qKaONwOnA== with org.jasypt.util.text.StrongTextEncryptor@6276ae34
+2020-02-16 13:41:25 DEBUG SecurityService:18 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-16 13:41:25 DEBUG SecurityService:73 method: encrypt - Encryping Message: Jared to 0Li18Mg3ubOpsARAR366tw== with org.jasypt.util.text.StrongTextEncryptor@6276ae34

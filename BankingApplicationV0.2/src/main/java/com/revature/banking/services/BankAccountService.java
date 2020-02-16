@@ -9,7 +9,7 @@ import com.revature.banking.dao.BankAccountDao;
 import com.revature.banking.frontend.models.BankAccount;
 import com.revature.banking.models.EncryptedBankAccount;
 
-public class BankAccountService extends EncryptedService {
+public class BankAccountService extends Service {
 	public static final int BANK_ACCOUNT_NO_LENGTH = 10;
 
 	private BankAccountDao bad = null;
@@ -19,31 +19,31 @@ public class BankAccountService extends EncryptedService {
 		super();
 	}
 
-	public BankAccountService(final String dbKey) {
-		super(dbKey);
-	}
-
 	public BankAccountService(final BankAccountDao bad) {
 		super();
 		this.setDao(bad);
-	}
-
-	public BankAccountService(final BankAccountDao bad, final String dbKey) {
-		super(dbKey);
-		setDao(bad);
 	}
 
 	public void setDao(final BankAccountDao bad) {
 		this.bad = bad;
 	}
 
+	/**
+	 * This is a method that the Dao uses to get a new account (this method makes
+	 * sure bank account numbers are unique).
+	 * 
+	 * @param encryptedBankAccountNos List of current bank accounts (needed to make
+	 *                                sure new account number is unique).
+	 * @return Returns an EncryptedBankAccount that is read to be updloaded to db by
+	 *         dao.
+	 */
 	public EncryptedBankAccount createNewAccount(final List<String> encryptedBankAccountNos) {
 		final BankAccount ba = new BankAccount();
 		final Set<String> decryptedBankAccountNos = decryptAccountNos(encryptedBankAccountNos);
 		ba.setAccountNo(getUniqueAccountNo(decryptedBankAccountNos));
 		ba.setBalance(0);
 
-		return encrypt(ba);
+		return super.ss.encrypt(ba);
 	}
 
 	private String getUniqueAccountNo(Set<String> encryptedBankAccountNos) {
@@ -65,26 +65,10 @@ public class BankAccountService extends EncryptedService {
 	private Set<String> decryptAccountNos(List<String> encryptedBankAccountNos) {
 		final Set<String> decrypted = new HashSet<>(encryptedBankAccountNos.size());
 		for (final String encrypted : encryptedBankAccountNos) {
-			decrypted.add(super.decrypt(encrypted));
+			decrypted.add(super.ss.decrypt(encrypted));
 		}
 
 		return decrypted;
-	}
-
-	public BankAccount decrypt(final EncryptedBankAccount eba) {
-		if (eba == null)
-			return null;
-		final BankAccount ba = new BankAccount();
-		ba.setAccountNo(super.decrypt(eba.getAccountNo()));
-		ba.setBalance(Double.parseDouble(super.decrypt(eba.getBalance())));
-		return ba;
-	}
-
-	public EncryptedBankAccount encrypt(final BankAccount ba) {
-		final EncryptedBankAccount eba = new EncryptedBankAccount();
-		eba.setAccountNo(super.encrypt(ba.getAccountNo()));
-		eba.setBalance(super.encrypt("" + ba.getBalance()));
-		return eba;
 	}
 
 }

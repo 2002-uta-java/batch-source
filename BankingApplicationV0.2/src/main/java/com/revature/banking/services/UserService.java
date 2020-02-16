@@ -10,7 +10,7 @@ import com.revature.banking.frontend.models.User;
 import com.revature.banking.models.EncryptedBankAccount;
 import com.revature.banking.models.EncryptedUser;
 
-public class UserService extends EncryptedService {
+public class UserService extends Service {
 	/**
 	 * Maximum length of user's first and last names (separately). This value should
 	 * correspond with the value in UserDao.
@@ -55,15 +55,9 @@ public class UserService extends EncryptedService {
 	public static final int CHECK_NEW_USER_TAXID_MISMATCH = 2;
 
 	private UserDao ud = null;
-	private final PasswordEncryptor pwEncryptor = new StrongPasswordEncryptor();
-	private BankAccountService bas;
 
 	public UserService() {
 		super();
-	}
-
-	public UserService(final String dbKey) {
-		super(dbKey);
 	}
 
 	public UserService(final UserDao ud) {
@@ -71,17 +65,8 @@ public class UserService extends EncryptedService {
 		this.setDao(ud);
 	}
 
-	public UserService(final UserDao ud, final String dbKey) {
-		super(dbKey);
-		this.setDao(ud);
-	}
-
 	public void setDao(final UserDao ud) {
 		this.ud = ud;
-	}
-
-	public void setBankAccountService(final BankAccountService bas) {
-		this.bas = bas;
 	}
 
 	/**
@@ -92,28 +77,10 @@ public class UserService extends EncryptedService {
 	 *         does not exist.
 	 */
 	public User getUserByTaxId(final String taxId) {
-		Logger.getRootLogger().debug("taxid " + taxId + " encrypted to (searched for) " + super.encrypt(taxId));
-		final EncryptedUser eu = ud.getUserByTaxId(super.encrypt(taxId));
+//		Logger.getRootLogger().debug("taxid " + taxId + " encrypted to (searched for) " + super.ss.encrypt(taxId));
+		final EncryptedUser eu = ud.getUserByTaxId(super.ss.encrypt(taxId));
 
-		return decryptUser(eu);
-	}
-
-	public User decryptUser(EncryptedUser eu) {
-		if (eu == null)
-			return null;
-		// else decrypt user
-		final User user = new User();
-		user.setFirstName(super.decrypt(eu.getFirstName()));
-		Logger.getRootLogger().debug("decrpyting \"" + eu.getFirstName() + "\" to " + super.decrypt(eu.getFirstName()));
-		user.setLastName(super.decrypt(eu.getLastName()));
-		user.setTaxId(super.decrypt(eu.getTaxId()));
-		if (eu.getUsername() != null) {
-			// if the user name exists, the password should also
-			user.setUsername(super.decrypt(eu.getUsername()));
-			user.setPassword(super.decrypt(eu.getEncryptedPassword()));
-		}
-
-		return user;
+		return super.ss.decryptUser(eu);
 	}
 
 	/**
@@ -155,19 +122,8 @@ public class UserService extends EncryptedService {
 	}
 
 	public BankAccount createNewUser(User newUser) {
-		final EncryptedUser eu = encryptUser(newUser);
+		final EncryptedUser eu = super.ss.encryptUser(newUser);
 		final EncryptedBankAccount eba = ud.createNewUser(eu);
-		return bas.decrypt(eba);
-	}
-
-	public EncryptedUser encryptUser(User newUser) {
-		final EncryptedUser eu = new EncryptedUser();
-		eu.setFirstName(super.encrypt(newUser.getFirstName()));
-		eu.setLastName(super.encrypt(newUser.getLastName()));
-		eu.setTaxId(super.encrypt(newUser.getTaxId()));
-		eu.setUsername(super.encrypt(newUser.getUsername()));
-		eu.setEncryptedPassword(pwEncryptor.encryptPassword(newUser.getPassword()));
-
-		return eu;
+		return super.ss.decrypt(eba);
 	}
 }
