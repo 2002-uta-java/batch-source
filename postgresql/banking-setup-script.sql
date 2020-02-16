@@ -1,4 +1,3 @@
-
 -- table of accounts, only holds account number (primary key) and account balance. No values can be null
  create table accounts (account_no varchar(10) constraint pk_account_id primary key,
 balance double precision not null);
