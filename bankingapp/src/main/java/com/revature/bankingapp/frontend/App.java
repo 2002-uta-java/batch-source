@@ -80,7 +80,17 @@ public class App
 	}
 	
 	private static void createTransaction() {
-		Transaction t = new Transaction();
+		
+		System.out.print("Amount: ");
+		Double amount = sc.nextDouble();
+		
+		System.out.print("Account From: ");
+		int accountFrom = sc.nextInt();
+		
+		System.out.print("Account To: ");
+		int accountTo = sc.nextInt();
+		
+		Transaction t = new Transaction(amount, accountFrom, accountTo);
 		
 		// add transaction to database
 	}
@@ -89,10 +99,16 @@ public class App
 		System.out.print("Username: ");
 		String uName = sc.nextLine();
 		
-		System.out.print("Password");
+		System.out.print("Password: ");
 		String password = sc.nextLine();
 		
-		UserAccount creation = new UserAccount(uName, password);
+		System.out.print("Email: ");
+		String email = sc.nextLine();
+		
+		System.out.print("Phone number: ");
+		String phoneNumber = sc.nextLine();
+		
+		UserAccount creation = new UserAccount(uName, password, email, phoneNumber);
 		
 		// add user to the database
 	}
