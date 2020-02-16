@@ -1,9 +1,7 @@
 package com.revature.banking.dao;
 
-import java.util.Map;
-
-import com.revature.banking.models.TaxID;
-import com.revature.banking.models.User;
+import com.revature.banking.frontend.models.User;
+import com.revature.banking.services.models.EncryptedUser;
 
 public interface UserDao {
 	/**
@@ -32,11 +30,14 @@ public interface UserDao {
 	public static final int TAXID_LENGTH = 10;
 
 	/**
-	 * Returns the user by given their tax id.
+	 * Returns the user given by their tax id. If the user exists, this should, at a
+	 * minimum, give the tax id, first name, and last name. It does <i>not</i>
+	 * populated the bank accounts. If the user has an account, it should also
+	 * return the username and encrypted password.
 	 * 
 	 * @param taxId unique tax id of a user.
 	 * @return The user, given, the taxId, or null if the user does not exist in
 	 *         this system.
 	 */
-	public User getUserByTaxId(TaxID taxId);
+	public EncryptedUser getUserByTaxId(String encryptedTaxId);
 }

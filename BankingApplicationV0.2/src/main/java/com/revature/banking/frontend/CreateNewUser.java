@@ -1,10 +1,8 @@
 package com.revature.banking.frontend;
 
 import java.io.IOException;
-import com.revature.banking.models.Password;
-import com.revature.banking.models.RawPassword;
-import com.revature.banking.models.TaxID;
-import com.revature.banking.models.User;
+
+import com.revature.banking.frontend.models.User;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.validation.Validation;
@@ -35,7 +33,7 @@ public class CreateNewUser implements BankInteraction {
 
 		newUser.setUsername(username);
 
-		final Password password = getPassword(io);
+		final String password = getPassword(io);
 		if (password == null)
 			return false;
 
@@ -72,7 +70,7 @@ public class CreateNewUser implements BankInteraction {
 
 	}
 
-	private Password getPassword(CLI io) throws IOException {
+	private String getPassword(CLI io) throws IOException {
 		while (true) {
 			io.println("Please provide a username: ");
 			final String password = io.readPassword();
@@ -80,7 +78,7 @@ public class CreateNewUser implements BankInteraction {
 			if (Validation.validateName(password)) {
 				final int length = password.length();
 				if (length >= UserService.PASSWORD_MIN_LENGTH && length <= UserService.PASSWORD_MIN_LENGTH)
-					return new RawPassword(password);// TODO need to think about how to modularize this
+					return password;// TODO need to think about how to modularize this
 				else
 					io.println("Your user name should be " + UserService.PASSWORD_MIN_LENGTH + " to "
 							+ UserService.PASSWORD_MAX_LENGTH + " characters long.");
@@ -108,7 +106,7 @@ public class CreateNewUser implements BankInteraction {
 					return null;
 				// else try again
 			} else {
-				final TaxID newTaxId = new TaxID(taxid);
+				final String newTaxId = taxid;
 				final User user = new User();
 				user.setFirstName(firstName);
 				user.setLastName(lastName);

@@ -1,4 +1,4 @@
-package com.revature.banking.models;
+package com.revature.banking.frontend.models;
 
 public class BankAccount {
 	private String accountNo;

@@ -1,10 +1,10 @@
 package com.revature.banking.services;
 
 import com.revature.banking.dao.UserDao;
-import com.revature.banking.models.TaxID;
-import com.revature.banking.models.User;
+import com.revature.banking.frontend.models.User;
+import com.revature.banking.services.models.EncryptedUser;
 
-public class UserService {
+public class UserService extends EncryptedService {
 	/**
 	 * Maximum length of user's first and last names (separately). This value should
 	 * correspond with the value in UserDao.
@@ -54,8 +54,17 @@ public class UserService {
 		super();
 	}
 
+	public UserService(final String dbKey) {
+		super(dbKey);
+	}
+
 	public UserService(final UserDao ud) {
 		super();
+		this.setDao(ud);
+	}
+
+	public UserService(final UserDao ud, final String dbKey) {
+		super(dbKey);
 		this.setDao(ud);
 	}
 
@@ -70,8 +79,27 @@ public class UserService {
 	 * @return The user (as a User object) that exists in the db or null if the user
 	 *         does not exist.
 	 */
-	public User getUserByTaxId(final TaxID taxId) {
-		return ud.getUserByTaxId(taxId);
+	public User getUserByTaxId(final String taxId) {
+		final EncryptedUser eu = ud.getUserByTaxId(super.encrypt(taxId));
+
+		return decryptUser(eu);
+	}
+
+	private User decryptUser(EncryptedUser eu) {
+		if (eu == null)
+			return null;
+		// else decrypt user
+		final User user = new User();
+		user.setFirstName(super.decrypt(eu.getFirstName()));
+		user.setLastName(super.decrypt(eu.getLastName()));
+		user.setTaxId(super.decrypt(eu.getTaxId()));
+		if (eu.getUsername() != null) {
+			// if the user name exists, the password should also
+			user.setUsername(super.decrypt(eu.getUsername()));
+			user.setPassword(super.decrypt(eu.getEncryptedPassword()));
+		}
+
+		return user;
 	}
 
 	/**
