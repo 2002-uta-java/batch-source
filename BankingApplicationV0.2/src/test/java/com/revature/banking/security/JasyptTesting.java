@@ -34,7 +34,7 @@ public class JasyptTesting {
 		System.out.println("Testing text encryption: ");
 
 		for (int i = 0; i < 10; ++i) {
-			final String text = getRandomString(1000);
+			final String text = getRandomString(20);
 			final String key = getRandomString(1000);
 			final StrongTextEncryptor encryptor = new StrongTextEncryptor();
 			encryptor.setPassword(key);
@@ -44,8 +44,10 @@ public class JasyptTesting {
 //			System.out.println("text: " + text + " (" + text.length() + ")");
 //			System.out.println("encrypted: " + encrypted + " (" + encrypted.length() + ")");
 //			System.out.println("decrypted: " + decrypted + ", matched? " + text.equals(decrypted));
-			System.out.println();
+			System.out.println(encrypted.length());
 		}
+
+		System.out.println(getRandomString(20));
 	}
 
 	public static String getRandomString(final int length) {
