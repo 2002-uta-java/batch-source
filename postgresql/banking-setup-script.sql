@@ -19,4 +19,6 @@ password varchar(64));
  create table user_accounts (tax_id varchar(64),
 account_no varchar(64));
 
-select * from users;
+truncate table users;
+truncate table accounts;
+truncate table user_accounts;
