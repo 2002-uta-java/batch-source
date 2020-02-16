@@ -1,6 +1,7 @@
 package com.revature.banking.dao;
 
 import com.revature.banking.frontend.models.User;
+import com.revature.banking.models.EncryptedBankAccount;
 import com.revature.banking.models.EncryptedUser;
 
 public interface UserDao {
@@ -40,4 +41,6 @@ public interface UserDao {
 	 *         this system.
 	 */
 	public EncryptedUser getUserByTaxId(String encryptedTaxId);
+
+	public EncryptedBankAccount createNewUser(final EncryptedUser user);
 }

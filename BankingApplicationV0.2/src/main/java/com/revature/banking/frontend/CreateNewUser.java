@@ -39,7 +39,7 @@ public class CreateNewUser implements BankInteraction {
 
 		newUser.setPassword(password);
 
-		if (us.createNewUser(newUser)) {
+		if (us.createNewUser(newUser) != null) {
 			io.println("You have been added to the system. You should be able to login now.");
 			return true;
 		} else {

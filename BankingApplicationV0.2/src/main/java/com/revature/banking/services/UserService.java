@@ -1,7 +1,12 @@
 package com.revature.banking.services;
 
+import org.jasypt.util.password.PasswordEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
+
 import com.revature.banking.dao.UserDao;
+import com.revature.banking.frontend.models.BankAccount;
 import com.revature.banking.frontend.models.User;
+import com.revature.banking.models.EncryptedBankAccount;
 import com.revature.banking.models.EncryptedUser;
 
 public class UserService extends EncryptedService {
@@ -49,6 +54,8 @@ public class UserService extends EncryptedService {
 	public static final int CHECK_NEW_USER_TAXID_MISMATCH = 2;
 
 	private UserDao ud = null;
+	private final PasswordEncryptor pwEncryptor = new StrongPasswordEncryptor();
+	private BankAccountService bas;
 
 	public UserService() {
 		super();
@@ -72,6 +79,10 @@ public class UserService extends EncryptedService {
 		this.ud = ud;
 	}
 
+	public void setBankAccountService(final BankAccountService bas) {
+		this.bas = bas;
+	}
+
 	/**
 	 * Returns the user given their tax id.
 	 * 
@@ -85,7 +96,7 @@ public class UserService extends EncryptedService {
 		return decryptUser(eu);
 	}
 
-	private User decryptUser(EncryptedUser eu) {
+	public User decryptUser(EncryptedUser eu) {
 		if (eu == null)
 			return null;
 		// else decrypt user
@@ -139,8 +150,20 @@ public class UserService extends EncryptedService {
 
 	}
 
-	public boolean createNewUser(User newUser) {
-		// TODO Auto-generated method stub
-		return false;
+	public BankAccount createNewUser(User newUser) {
+		final EncryptedUser eu = encryptUser(newUser);
+		final EncryptedBankAccount eba = ud.createNewUser(eu);
+		return bas.decrypt(eba);
+	}
+
+	public EncryptedUser encryptUser(User newUser) {
+		final EncryptedUser eu = new EncryptedUser();
+		eu.setFirstName(super.encrypt(newUser.getFirstName()));
+		eu.setLastName(super.encrypt(newUser.getLastName()));
+		eu.setTaxId(super.encrypt(newUser.getTaxId()));
+		eu.setUsername(super.encrypt(newUser.getUsername()));
+		eu.setEncryptedPassword(pwEncryptor.encryptPassword(newUser.getPassword()));
+
+		return eu;
 	}
 }
