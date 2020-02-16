@@ -7,3 +7,66 @@
 2020-02-15 22:46:40 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
 2020-02-15 22:48:43 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
 2020-02-15 22:49:04 ERROR UserDaoImpl:68 method: createNewUser - Failed to create a new user: EncryptedUser [encryptedPassword=SYuA+LGyXDAlsqWra9hkbCAKzl9711MtDa3KMjuMs4pMzMU1pItgf/J0zfcbcqdT, firstName=YMwIAR3sTkttc39C6pOdag==, lastName=DAfArqr0guqAv729RB/vjw==, taxId=k84ydCkV444eZbj+2JdaL96SmrYd6XT0, username=ahIe1T6MyDzQ6HjMAr/9YqevlezOoL+u]
+2020-02-15 23:33:33 ERROR UserDaoImpl:39 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-15 23:39:15 ERROR UserDaoImpl:40 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-16 00:03:37 ERROR UserDaoImpl:40 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-16 00:05:49 ERROR UserDaoImpl:40 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@78e67e0a
+2020-02-16 00:09:32 ERROR UserDaoImpl:40 method: getUserByTaxId - [Ljava.lang.StackTraceElement;@80503
+2020-02-16 00:13:42 ERROR UserDaoImpl:40 method: getUserByTaxId - ERROR: column "tax_id" does not exist
+  Position: 26
+2020-02-16 00:19:47 ERROR UserDaoImpl:40 method: getUserByTaxId - org.postgresql.util.PSQLException: ERROR: column "tax_id" does not exist
+  Position: 26ERROR: column "tax_id" does not exist
+  Position: 26
+2020-02-16 00:33:05 DEBUG UserService:134 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 00:35:54 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) yOWAKzfWJRKr1vTgOGE4s5fdL0co/hN9
+2020-02-16 00:35:55 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 00:37:05 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) PTU6OYBF5GdgZ1feVlynHXaQTrslPAGD
+2020-02-16 00:37:06 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 00:41:25 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) hOiLodsnfhQPMTsg4KJ3CI8qQk8kNRaq
+2020-02-16 00:41:25 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 00:41:45 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) DsJGxqoIrG6FSq5l3keah/R2JUWt68Ni
+2020-02-16 00:41:46 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 00:48:22 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 00:48:22 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 00:48:32 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) +f4ENqGUlAzAkmimBgiDPrgijP6W1EhL
+2020-02-16 00:48:33 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 01:12:07 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:12:07 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:17:00 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:17:00 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:17:15 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to GOdaobrMRFrZksimWtdHxWR9zsizI6eG with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:15 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) zngVO3ufO6+DlWVVMcqi/lPvRg00HDhJ
+2020-02-16 01:17:15 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to e2m1L1pUnO9USGsSZ5EwBlniLU5YyWWa with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:17 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Jared to EPNYmblGlkE1mqVF8frmPw== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Bennatt to juFZM3AFl9on+hhYA3PUYQ== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to 4LSIJY8UsWoiRDwhOQ1CqDmKSG25/JtJ with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: bennattj to 18dIEom3wZ+1ccWkBWnuZI9G7A6pGIPd with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1254830736 to B8d7z1pDWTKI5L3Pysu9kIQ7lj6FfioQ with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 01:17:28 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 0.0 to u0WxxrTEAZcTub691J7Jsw== with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 01:18:29 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:18:29 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:18:46 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:18:46 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:19:01 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to aw5M8Dk9fquO1vOZRVAVfoJiYGe4Mlw5 with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:01 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) 0o4WJc/vckKMco9kRkqFlSZmaz3XSnJS
+2020-02-16 01:19:01 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to dMAD5s2QUSD0MWUJwYg+kbeyO6xVT1Ar with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:01 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Jared to amiyJtE91fQ3WCLAWjXrjg== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Bennatt to Kacy/ig52OuiPPnGsrxrMQ== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to PuL/Tg6WhiFdM8hze50fJabnPAelkLnq with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: bennattj to 2j2XcZI0vZUx6LuIZJpGS6DZD52jqWjS with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 5661387490 to veD0lWYfMzM5bw5TTIlTV75mQUjelNgN with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 01:19:22 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 0.0 to RGjkiuugV9oWvWoZ4/r9Hw== with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 01:24:47 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:24:47 DEBUG EncryptedService:19 method: setKey - Setting password to fBi7m2OjRBUrN4B6h
+2020-02-16 01:25:05 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to WR85L6KtRXObp3zN1zeyO9PzI+oC9MhL with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:05 DEBUG UserService:95 method: getUserByTaxId - taxid 1234567890 encrypted to (searched for) MQtgqSMnSdDDerevusAEpBX1DeY+vKcx
+2020-02-16 01:25:05 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to +pEPcgl9BB3eFWmJi3MPDXMNM2waym10 with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:06 DEBUG UserService:135 method: checkNewUserTaxid - checked tax id 1234567890,found user: null
+2020-02-16 01:25:16 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Jared to TBgnd18RJ51rvphcLAhv1g== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:16 DEBUG EncryptedService:28 method: encrypt - Encryping Message: Bennatt to +bea0iOQAtv0Ca1AqMzkSQ== with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:16 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 1234567890 to 1AFtS7iIgWX2UYBmWhAhMuJve8dnOGTf with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:16 DEBUG EncryptedService:28 method: encrypt - Encryping Message: bennattj to 6zQdfx4z9xQ4802Ic8gNs0rrvhdIWM/8 with org.jasypt.util.text.StrongTextEncryptor@59e84876
+2020-02-16 01:25:17 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 9347027606 to sE/ul2yfdRqf9mmu/vpn0Q0JYYw5g+jU with org.jasypt.util.text.StrongTextEncryptor@2f943d71
+2020-02-16 01:25:17 DEBUG EncryptedService:28 method: encrypt - Encryping Message: 0.0 to CTp6MyzUinSIQNiC5A9yiA== with org.jasypt.util.text.StrongTextEncryptor@2f943d71

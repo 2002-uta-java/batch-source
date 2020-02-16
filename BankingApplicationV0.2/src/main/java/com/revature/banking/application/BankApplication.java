@@ -1,10 +1,6 @@
 package com.revature.banking.application;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +43,7 @@ public class BankApplication {
 		try {
 			interactions.get(0).interact(console, bas, us);
 		} catch (IOException e) {
-			Logger.getRootLogger().error(e.getStackTrace());
+			Logger.getRootLogger().error(e.getMessage());
 		}
 	}
 }

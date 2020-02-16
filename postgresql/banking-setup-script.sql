@@ -18,3 +18,5 @@ password varchar(64));
 -- this is my junction table to link users and accounts. Neither column needs to be unique (and I expect multiples)
  create table user_accounts (tax_id varchar(64),
 account_no varchar(64));
+
+select * from users;

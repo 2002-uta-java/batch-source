@@ -1,5 +1,6 @@
 package com.revature.banking.services;
 
+import org.apache.log4j.Logger;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
@@ -91,6 +92,7 @@ public class UserService extends EncryptedService {
 	 *         does not exist.
 	 */
 	public User getUserByTaxId(final String taxId) {
+		Logger.getRootLogger().debug("taxid " + taxId + " encrypted to (searched for) " + super.encrypt(taxId));
 		final EncryptedUser eu = ud.getUserByTaxId(super.encrypt(taxId));
 
 		return decryptUser(eu);
@@ -102,6 +104,7 @@ public class UserService extends EncryptedService {
 		// else decrypt user
 		final User user = new User();
 		user.setFirstName(super.decrypt(eu.getFirstName()));
+		Logger.getRootLogger().debug("decrpyting \"" + eu.getFirstName() + "\" to " + super.decrypt(eu.getFirstName()));
 		user.setLastName(super.decrypt(eu.getLastName()));
 		user.setTaxId(super.decrypt(eu.getTaxId()));
 		if (eu.getUsername() != null) {
@@ -129,6 +132,7 @@ public class UserService extends EncryptedService {
 	 */
 	public int checkNewUserTaxid(final User user) {
 		final User checkUser = this.getUserByTaxId(user.getTaxId());
+		Logger.getRootLogger().debug("checked tax id " + user.getTaxId() + ",found user: " + checkUser);
 
 		// if the "found" user is null, they do not exist in this system. This is
 		// definitely a new user.

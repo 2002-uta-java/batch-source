@@ -23,10 +23,11 @@ public class JasyptTesting {
 			final String password = getRandomString(20);
 			final PasswordEncryptor encryptor = new StrongPasswordEncryptor();
 			final String encrypted = encryptor.encryptPassword(password);
+			final PasswordEncryptor decryptor = new StrongPasswordEncryptor();
 
-			System.out.println("password: " + password + " (" + password.length() + ")");
-			System.out.println("encrypted: " + encrypted + " (" + encrypted.length() + ")");
-			System.out.println("matches? " + encryptor.checkPassword(password, encrypted));
+//			System.out.println("password: " + password + " (" + password.length() + ")");
+//			System.out.println("encrypted: " + encrypted + " (" + encrypted.length() + ")");
+			System.out.println("matches? " + decryptor.checkPassword(password, encrypted));
 		}
 
 		System.out.println();
@@ -40,11 +41,14 @@ public class JasyptTesting {
 			encryptor.setPassword(key);
 			final String encrypted = encryptor.encrypt(text);
 			final String decrypted = encryptor.decrypt(encrypted);
+			final StrongTextEncryptor decryptor = new StrongTextEncryptor();
+			decryptor.setPasswordCharArray(key.toCharArray());
 
 //			System.out.println("text: " + text + " (" + text.length() + ")");
 //			System.out.println("encrypted: " + encrypted + " (" + encrypted.length() + ")");
 //			System.out.println("decrypted: " + decrypted + ", matched? " + text.equals(decrypted));
-			System.out.println(encrypted.length());
+//			System.out.println(encrypted.length());
+			System.out.println(text.equals(decryptor.decrypt(encrypted)));
 		}
 
 		System.out.println(getRandomString(20));

@@ -17,7 +17,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public EncryptedUser getUserByTaxId(String encryptedTaxId) {
-		final String sql = "select * from user where tax_id = ?";
+		final String sql = "select * from users where tax_id = ?";
 		ResultSet rs = null;
 		EncryptedUser eu = null;
 
@@ -34,16 +34,17 @@ public class UserDaoImpl implements UserDao {
 				eu.setTaxId(rs.getString("tax_id"));
 				eu.setUsername(rs.getString("username"));
 				eu.setEncryptedPassword(rs.getString("password"));
+				Logger.getRootLogger().debug("Retrieved encrypted user: " + eu);
 			}
 		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getStackTrace());
+			Logger.getRootLogger().error(e + e.getMessage());
 			return null;
 		} finally {
 			if (rs != null)
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					Logger.getRootLogger().error(e.getStackTrace());
+					Logger.getRootLogger().error(e.getMessage());
 				}
 		}
 
@@ -62,12 +63,8 @@ public class UserDaoImpl implements UserDao {
 			ps.setString(4, user.getUsername());
 			ps.setString(5, user.getEncryptedPassword());
 
-			if (ps.execute()) {
-				eba = bad.createNewBankAccount(user);
-			} else {
-				Logger.getRootLogger().error("Failed to create a new user: " + user);
-				return null;
-			}
+			ps.execute();
+			eba = bad.createNewBankAccount(user);
 		} catch (SQLException e) {
 			Logger.getRootLogger().error(e.getStackTrace());
 			return null;

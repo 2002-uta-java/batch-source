@@ -1,5 +1,6 @@
 package com.revature.banking.services;
 
+import org.apache.log4j.Logger;
 import org.jasypt.util.text.StrongTextEncryptor;
 
 public abstract class EncryptedService {
@@ -15,6 +16,7 @@ public abstract class EncryptedService {
 	}
 
 	public void setKey(final String dbKey) {
+		Logger.getRootLogger().debug("Setting password to " + dbKey);
 		encryptor.setPassword(dbKey);
 	}
 
@@ -23,6 +25,8 @@ public abstract class EncryptedService {
 	}
 
 	protected String encrypt(final String message) {
+		Logger.getRootLogger().debug("Encryping Message: " + message + " to " + encryptor.encrypt(message) + " with "
+				+ encryptor.toString());
 		return encryptor.encrypt(message);
 	}
 }

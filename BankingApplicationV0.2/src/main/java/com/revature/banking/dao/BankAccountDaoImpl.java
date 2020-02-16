@@ -39,7 +39,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
 				accountNos.add(rs.getString("account_no"));
 			}
 		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getStackTrace());
+			Logger.getRootLogger().error(e.getMessage());
 			return null;
 		}
 
@@ -50,10 +50,9 @@ public class BankAccountDaoImpl implements BankAccountDao {
 				final PreparedStatement ps = con.prepareStatement(insertSQL)) {
 			ps.setString(1, eba.getAccountNo());
 			ps.setString(2, eba.getBalance());
-			if (!ps.execute())
-				return null;
+			ps.execute();
 		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getStackTrace());
+			Logger.getRootLogger().error(e.getMessage());
 			return null;
 		}
 
@@ -64,12 +63,9 @@ public class BankAccountDaoImpl implements BankAccountDao {
 				final PreparedStatement ps = con.prepareStatement(junctionSQL)) {
 			ps.setString(1, eu.getTaxId());
 			ps.setString(2, eba.getAccountNo());
-			if (!ps.execute()) {
-				// TODO I should attempt to remove the bank account if this fails.
-				return null;
-			}
+			ps.execute();
 		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getStackTrace());
+			Logger.getRootLogger().error(e.getMessage());
 		}
 		// if we made it this far, things went well...return the newly created
 		// BankAccount
