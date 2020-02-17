@@ -66,7 +66,10 @@ public class BankAccountService {
     			float MAX_BAL = (float) 999999999.99; // 11 total digits.
     			System.out.println("Depositing $" + depositRequest);
     			
-    			if (newBalance > MAX_BAL) {
+    			if (depositRequest < 0) {
+    				System.out.println("Deposit amount cannot be negative.");
+    			}
+    			else if (newBalance > MAX_BAL) {
     				System.out.println("Cancelling deposit (max balance breached).");
     			}
     			else {
@@ -106,7 +109,10 @@ public class BankAccountService {
     			float MIN_BAL = (float) 0.00;
     			System.out.println("Withdrawing $" + withdrawalRequest);
     			
-    			if (newBalance < MIN_BAL) {
+    			if (withdrawalRequest < 0) {
+    				System.out.println("Withdrawal amount cannot be negative.");
+    			}
+    			else if (newBalance < MIN_BAL) {
     				System.out.println("Cancelling withdrawal (min balance breached).");
     			}
     			else {
