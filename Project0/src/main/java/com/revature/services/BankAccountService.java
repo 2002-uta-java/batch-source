@@ -59,7 +59,7 @@ public class BankAccountService {
 		while (true) {
     		System.out.println("Enter your deposit amount (max balance = $999,999,999.99). Press # to cancel.");
     		try {
-    			float depositRequest = (float) Math.round(s.nextFloat() * 100f) / 100f; // Round to two decimal places.
+    			float depositRequest = roundTwoDecimal(s.nextFloat());
     			float oldBalance = b.getBalance();
     			float newBalance = oldBalance + depositRequest;
     			float MAX_BAL = (float) 999999999.99; // 11 total digits.
@@ -99,7 +99,7 @@ public class BankAccountService {
 		while (true) {
     		System.out.println("Enter your withdrawal amount (min balance = $0.00). Press # to cancel.");
     		try {
-    			float withdrawalRequest = (float) Math.round(s.nextFloat() * 100f) / 100f; // Round to two decimal places.
+    			float withdrawalRequest = roundTwoDecimal(s.nextFloat());
     			float oldBalance = b.getBalance();
     			float newBalance = oldBalance - withdrawalRequest;
     			float MIN_BAL = (float) 0.00;
@@ -133,7 +133,11 @@ public class BankAccountService {
 		}
 	}
 	
-	public void viewBalance(BankAccount b) {
+	public void viewBalance (BankAccount b) {
 		System.out.println("Your balance = " + b.getBalance());
+	}
+	
+	public float roundTwoDecimal(float f) {
+		return (float) Math.round(f * 100f) / 100f;
 	}
 }
