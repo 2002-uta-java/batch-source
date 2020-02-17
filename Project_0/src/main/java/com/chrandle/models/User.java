@@ -7,26 +7,19 @@ public class User {
  * -------------------------------
  */
 	private String username = "";
-	private long userid = 0;
+	private long userid;
 	private String password = " "; 
+	private String email = "";
+	private Account account;
 
 /*
  * -------------------------------
  * Constructors
  * -------------------------------
  */
-	public User(String u, String p, long id) {
+
+	public User() {
 		super();
-		this.username = u;
-		this.password = p;
-		this.userid = id;
-	}
-	
-	public User(String u, String p) {
-		super();
-		this.username = u;
-		this.password = p;
-		//TODO: randomly generate userID
 	}
 
 /*
@@ -71,6 +64,33 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+/*
+ * -------------------------------
+ * toString
+ * -------------------------------
+ */
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", userid=" + userid + ", password=" + password + ", email=" + email
+				+ "]";
 	}
 	
 	

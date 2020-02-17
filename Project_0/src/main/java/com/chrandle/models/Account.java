@@ -19,18 +19,6 @@ public class Account {
 		super();
 	}
 	
-	Account(long id){
-		super();
-		this.accountid = id;
-	}
-
-/*
- * -------------------------------
- * Methods
- * -------------------------------
- */
-	
-	
 /*
  * -------------------------------
  * Getters and Setters	
@@ -58,6 +46,18 @@ public class Account {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+
+/*
+ * -------------------------------
+ * toString
+ * -------------------------------
+ */
+
+	@Override
+	public String toString() {
+		return "Account [accountid=" + accountid + ", balance=" + balance + ", type=" + type + "]";
 	}
 	
 	

@@ -11,6 +11,7 @@
 create table "Users"
 (
 	"UserID" bigint not null,
+	"UserEmail" VARCHAR (180),
 	"UserName" VARCHAR(180) not null,
 	"Password" VARCHAR(180) not null,
 	constraint "PK_Users" primary key ("UserID")

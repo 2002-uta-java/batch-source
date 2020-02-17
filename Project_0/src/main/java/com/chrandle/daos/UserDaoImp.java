@@ -26,8 +26,9 @@ public class UserDaoImp implements UserDao {
 				long userID = userRsltSt.getLong("UserID");
 				String userName = userRsltSt.getString("UserName");
 				String password = userRsltSt.getString("password");
+				String email = userRsltSt.getString("UserEmail");
 				
-				User u = new User(userName,password,userID);
+				User u = new User();
 			}
 		} catch (SQLException e) {
 			//TODO: send exception message to log?
