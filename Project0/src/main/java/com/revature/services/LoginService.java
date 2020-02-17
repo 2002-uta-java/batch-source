@@ -26,7 +26,7 @@ public class LoginService {
 		    	switch (request) {
 		    	case 1:
 		    		while (true) {
-			    		System.out.println("Enter your username (1-25 characters). (Press # to cancel.)");
+			    		System.out.println("Enter your username (1-25 characters). Press # to cancel.");
 			    		String usernameRequest = s.nextLine();
 			    		
 			    		if (usernameRequest == "#") {
@@ -73,7 +73,5 @@ public class LoginService {
 		    	System.out.println("Invalid input.");
 		    }
 		}
-		
 	}
-
 }

@@ -6,6 +6,11 @@ public class UserAccount {
 	private String password;
 	private int bankId;
 	
+	public UserAccount(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
 	public UserAccount(String username, String password, int bankId) {
 		this.username = username;
 		this.password = password;
