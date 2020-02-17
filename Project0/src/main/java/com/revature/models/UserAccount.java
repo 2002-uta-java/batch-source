@@ -10,9 +10,6 @@ public class UserAccount {
 		this.username = username;
 		this.password = password;
 		this.bankId = bankId;
-		
-		// TODO: ADD useraccount to db, assign create bank account and unique bankId in response.
-		
 	}
 
 	public String getUsername() {
@@ -27,7 +24,7 @@ public class UserAccount {
 		return password;
 	}
 
-	public void setUsername(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

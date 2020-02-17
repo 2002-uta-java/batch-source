@@ -13,5 +13,4 @@ public interface AccountDao {
 	BankAccount getBankAccount(UserAccount u);
 	void updateBankAccount(BankAccount b);
 	
-	
 }
