@@ -17,7 +17,9 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		System.out.println("Application opening...");
-		LoginService.loginMenu();
+		
+		LoginService app = new LoginService();
+		app.loginMenu();
 		
 		System.out.println("Application closing...");
 

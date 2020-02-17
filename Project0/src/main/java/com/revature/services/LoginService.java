@@ -3,9 +3,17 @@ package com.revature.services;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LoginService {
+import com.revature.daos.AccountDao;
+import com.revature.daos.AccountDaoImpl;
+import com.revature.models.UserAccount;
 
-	public static void loginMenu() {
+public class LoginService {
+	
+	private AccountDao dao = new AccountDaoImpl();
+	private UserAccountService uas = new UserAccountService();
+	private BankAccountService bas = new BankAccountService();
+
+	public void loginMenu() {
 		Scanner s = new Scanner(System.in);
 		boolean running = true;
 		
@@ -20,25 +28,44 @@ public class LoginService {
 		    		while (true) {
 			    		System.out.println("Enter your username (1-25 characters). (Press # to cancel.)");
 			    		String usernameRequest = s.nextLine();
-			    		// check if #? -> break
-			    		// check if valid input length
-			    		// check if username exists (not null return)
-			    		// ask for password
-			    		// if passwords match, refer to bankaccountmenu ->break
-			    		// if not, back to enter username
-			    		System.out.println("usernamereq = " + usernameRequest);
-			    		break;
+			    		
+			    		if (usernameRequest == "#") {
+			    			break;
+			    		}
+			    		else {
+			    			// Validate length of input.
+			    			int len = usernameRequest.length();
+			    			
+			    			if (len < 1 || len > 25) {
+			    				System.out.println("Invalid input (username must be between 1-25 characters).");
+			    			}
+			    			else {
+			    				if (uas.userAccountExist(usernameRequest)) {
+			    					UserAccount u = dao.getUserAccount(usernameRequest);
+			    					
+			    					System.out.println("Enter your password.");
+			    					String passwordAttempt = s.nextLine();
+			    					
+			    					if (passwordAttempt == u.getPassword()) { // would rather use u.passwordMatch(passwordAttempt)
+			    						bas.bankAccountMenu(u);				  // but pointless because of dao
+			    						break;
+			    					}
+			    					else {
+			    						System.out.println("Password incorrect.");
+			    					}
+			    				}
+			    			}
+			    		}
 		    		}
 		    		break;
 		    	case 2:
-		    		System.out.println("2"); // refer to useraccountmenu
+		    		uas.userAccountMenu();
 		    		break;
 		    	case 3:
-		    		System.out.println("3");
 		    		running = false;
 		    		break;
 		    	default:
-		    		System.out.println("Invalid input.");
+		    		System.out.println("Invalid input (choose option 1, 2, or 3).");
 		    	}
 		    }
 		    catch (InputMismatchException e) {

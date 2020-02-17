@@ -14,19 +14,19 @@ public class BankAccountService {
 	}
 	
 	
-	public boolean checkUsernameUnique(String username) {;
-		AccountDao accountDao = new AccountDaoImpl();
-		
-		List<UserAccount> userAccounts = accountDao.getUserAccounts();
-		
-		for (UserAccount dbUser: userAccounts) {
-			if (username == dbUser.getUsername()) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
+//	public boolean checkUsernameUnique(String username) {;
+//		AccountDao accountDao = new AccountDaoImpl();
+//		
+//		List<UserAccount> userAccounts = accountDao.getUserAccounts();
+//		
+//		for (UserAccount dbUser: userAccounts) {
+//			if (username == dbUser.getUsername()) {
+//				return false;
+//			}
+//		}
+//		
+//		return true;
+//	}
 	
 	public void deposit(BankAccount b) {
 		// ask for deposit amount, offer cancel
