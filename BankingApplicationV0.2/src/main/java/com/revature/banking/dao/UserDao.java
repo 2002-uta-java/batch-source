@@ -1,8 +1,10 @@
 package com.revature.banking.dao;
 
-import com.revature.banking.frontend.models.User;
+import com.revature.banking.models.BankAccount;
 import com.revature.banking.models.EncryptedBankAccount;
 import com.revature.banking.models.EncryptedUser;
+import com.revature.banking.models.User;
+import com.revature.banking.security.SecurityService;
 
 public interface UserDao {
 	/**
@@ -40,9 +42,11 @@ public interface UserDao {
 	 * @return The user, given, the taxId, or null if the user does not exist in
 	 *         this system.
 	 */
-	public EncryptedUser getUserByTaxId(String encryptedTaxId);
+	public User getUserByTaxId(String encryptedTaxId);
 
-	public EncryptedBankAccount createNewUser(final EncryptedUser user);
+	public BankAccount createNewUser(final EncryptedUser user);
 
 	public void setBankAccountDao(final BankAccountDao bad);
+
+	public void setSecurityService(final SecurityService ss);
 }

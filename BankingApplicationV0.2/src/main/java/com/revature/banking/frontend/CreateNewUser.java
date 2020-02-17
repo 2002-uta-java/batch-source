@@ -2,7 +2,7 @@ package com.revature.banking.frontend;
 
 import java.io.IOException;
 
-import com.revature.banking.frontend.models.User;
+import com.revature.banking.models.User;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.validation.Validation;

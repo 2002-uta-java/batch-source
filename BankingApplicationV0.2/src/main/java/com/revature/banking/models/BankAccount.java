@@ -1,22 +1,19 @@
-package com.revature.banking.frontend.models;
+package com.revature.banking.models;
 
 public class BankAccount {
 	private String accountNo;
 	private double balance;
+	private int rowKey;
 
 	public BankAccount() {
 		super();
 	}
 
-	public BankAccount(String accountNo) {
-		super();
-		this.accountNo = accountNo;
-	}
-
-	public BankAccount(String accountNo, double balance) {
+	public BankAccount(String accountNo, double balance, int rowKey) {
 		super();
 		this.accountNo = accountNo;
 		this.balance = balance;
+		this.rowKey = rowKey;
 	}
 
 	public String getAccountNo() {
@@ -27,12 +24,20 @@ public class BankAccount {
 		return balance;
 	}
 
+	public int getRowKey() {
+		return rowKey;
+	}
+
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
 	}
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	public void setRowKey(int rowKey) {
+		this.rowKey = rowKey;
 	}
 
 	@Override
@@ -51,6 +56,8 @@ public class BankAccount {
 			return false;
 		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
+		if (rowKey != other.rowKey)
+			return false;
 		return true;
 	}
 
@@ -62,11 +69,12 @@ public class BankAccount {
 		long temp;
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + rowKey;
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "BankAccount [accountNo=" + accountNo + ", balance=" + balance + "]";
+		return "BankAccount [accountNo=" + accountNo + ", balance=" + balance + ", rowKey=" + rowKey + "]";
 	}
 }

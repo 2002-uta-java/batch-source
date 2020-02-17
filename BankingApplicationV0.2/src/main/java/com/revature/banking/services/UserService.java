@@ -5,10 +5,10 @@ import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import com.revature.banking.dao.UserDao;
-import com.revature.banking.frontend.models.BankAccount;
-import com.revature.banking.frontend.models.User;
+import com.revature.banking.models.BankAccount;
 import com.revature.banking.models.EncryptedBankAccount;
 import com.revature.banking.models.EncryptedUser;
+import com.revature.banking.models.User;
 
 public class UserService extends Service {
 	/**
@@ -122,7 +122,7 @@ public class UserService extends Service {
 	}
 
 	public BankAccount createNewUser(User newUser) {
-		final EncryptedUser eu = super.ss.encryptUser(newUser);
+		final EncryptedUser eu = super.ss.encryptNewUser(newUser);
 		final EncryptedBankAccount eba = ud.createNewUser(eu);
 		return super.ss.decrypt(eba);
 	}

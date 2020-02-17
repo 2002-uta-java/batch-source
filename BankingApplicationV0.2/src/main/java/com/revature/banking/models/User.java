@@ -1,7 +1,9 @@
 package com.revature.banking.models;
 
-public class EncryptedUser {
+import java.util.List;
 
+public class User {
+	private List<BankAccount> accounts;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -9,19 +11,24 @@ public class EncryptedUser {
 	private String taxId;
 	private String username;
 
-	public EncryptedUser() {
+	public User() {
 		super();
 	}
 
-	public EncryptedUser(String encryptedPassword, String firstName, String lastName, String taxId, String username,
-			int rowKey) {
+	public User(List<BankAccount> accounts, String encryptedPassword, String firstName, String lastName, String taxId,
+			String username, int rowKey) {
 		super();
+		this.accounts = accounts;
 		this.password = encryptedPassword;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.taxId = taxId;
 		this.username = username;
 		this.rowKey = rowKey;
+	}
+
+	public List<BankAccount> getAccounts() {
+		return accounts;
 	}
 
 	public String getPassword() {
@@ -46,6 +53,10 @@ public class EncryptedUser {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public void setAccounts(List<BankAccount> accounts) {
+		this.accounts = accounts;
 	}
 
 	public void setPassword(String encryptedPassword) {
@@ -80,7 +91,12 @@ public class EncryptedUser {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EncryptedUser other = (EncryptedUser) obj;
+		User other = (User) obj;
+		if (accounts == null) {
+			if (other.accounts != null)
+				return false;
+		} else if (!accounts.equals(other.accounts))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -115,6 +131,7 @@ public class EncryptedUser {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accounts == null) ? 0 : accounts.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -126,7 +143,7 @@ public class EncryptedUser {
 
 	@Override
 	public String toString() {
-		return "EncryptedUser [encryptedPassword=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", taxId=" + taxId + ", username=" + username + ", rowKey=" + rowKey + "]";
+		return "User [accounts=" + accounts + ", encryptedPassword=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", taxId=" + taxId + ", username=" + username + ", rowKey=" + rowKey + "]";
 	}
 }

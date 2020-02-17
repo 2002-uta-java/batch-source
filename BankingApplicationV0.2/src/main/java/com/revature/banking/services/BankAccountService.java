@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 import com.revature.banking.dao.BankAccountDao;
-import com.revature.banking.frontend.models.BankAccount;
+import com.revature.banking.models.BankAccount;
 import com.revature.banking.models.EncryptedBankAccount;
 
 public class BankAccountService extends Service {
@@ -37,19 +37,18 @@ public class BankAccountService extends Service {
 	 * @return Returns an EncryptedBankAccount that is read to be updloaded to db by
 	 *         dao.
 	 */
-	public EncryptedBankAccount createNewAccount(final List<String> encryptedBankAccountNos) {
+	public BankAccount createNewAccount(final Set<String> bankAccountNos) {
 		final BankAccount ba = new BankAccount();
-		final Set<String> decryptedBankAccountNos = decryptAccountNos(encryptedBankAccountNos);
-		ba.setAccountNo(getUniqueAccountNo(decryptedBankAccountNos));
+		ba.setAccountNo(getUniqueAccountNo(bankAccountNos));
 		ba.setBalance(0);
 
-		return super.ss.encrypt(ba);
+		return ba;
 	}
 
-	private String getUniqueAccountNo(Set<String> encryptedBankAccountNos) {
+	private String getUniqueAccountNo(Set<String> bankAccountNos) {
 		while (true) {
 			final String newNo = randomBankAccountNo();
-			if (!encryptedBankAccountNos.contains(newNo))
+			if (!bankAccountNos.contains(newNo))
 				return newNo;
 		}
 	}
@@ -60,15 +59,6 @@ public class BankAccountService extends Service {
 			string[i] = (char) ('0' + rand.nextInt(10));
 
 		return new String(string);
-	}
-
-	private Set<String> decryptAccountNos(List<String> encryptedBankAccountNos) {
-		final Set<String> decrypted = new HashSet<>(encryptedBankAccountNos.size());
-		for (final String encrypted : encryptedBankAccountNos) {
-			decrypted.add(super.ss.decrypt(encrypted));
-		}
-
-		return decrypted;
 	}
 
 }
