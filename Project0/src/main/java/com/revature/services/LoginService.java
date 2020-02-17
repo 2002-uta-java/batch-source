@@ -47,6 +47,7 @@ public class LoginService {
 			    					String passwordAttempt = s.nextLine();
 			    					
 			    					if (passwordAttempt == u.getPassword()) { // would rather use u.passwordMatch(passwordAttempt)
+			    						System.out.println("Logging in...");
 			    						bas.bankAccountMenu(u);				  // but pointless because of dao
 			    						break;
 			    					}
