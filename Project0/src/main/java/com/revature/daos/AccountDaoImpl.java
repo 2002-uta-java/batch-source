@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.models.BankAccount;
 import com.revature.models.UserAccount;
 import com.revature.util.ConnectionUtil;
 
@@ -44,15 +45,78 @@ public class AccountDaoImpl implements AccountDao{
 		
 		return userAccounts;
 	}
-
+	
 	@Override
-	public void updateBalance(UserAccount u) {
-		// TODO Auto-generated method stub
+	public UserAccount getUserAccount(String username) {
+		String sql = "select * from user_account where username = ?";
+		UserAccount u = null;
+		ResultSet rs = null;
 		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+			
+			ps.setString(1, username);
+			
+			while (rs.next()) {
+				String uN = rs.getString("username");
+				String password = rs.getString("user_password");
+				int bankId = rs.getInt("bank_id");
+				u = new UserAccount(uN, password, bankId);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return u;
+	}
+	
+	@Override
+	public BankAccount getBankAccount(UserAccount u) {
+		String sql = "select * from bank_account where bank_id = ?";
+		BankAccount b = null;
+		ResultSet rs = null;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+			
+			ps.setInt(1, u.getBankId());
+			
+			while (rs.next()) {
+				int bankId = rs.getInt("bank_id");
+				float balance = rs.getFloat("balance");
+				b = new BankAccount(bankId, balance);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return b;
 	}
 
 	@Override
-	public void getBalance(UserAccount u) {
+	public void updateBankAccount(BankAccount b) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.revature.daos.AccountDao;
 import com.revature.daos.AccountDaoImpl;
+import com.revature.models.BankAccount;
 import com.revature.models.UserAccount;
 import com.revature.util.ConnectionUtil;
 
@@ -32,11 +33,11 @@ public class UserAccountService {
 		return true;
 	}
 	
-	public void deposit(UserAccount u) {
+	public void deposit(UserAccount u, BankAccount b) {
 		
 	}
 	
-	public void withdraw(UserAccount u) {
+	public void withdraw(UserAccount u, BankAccount b) {
 		
 	}
 	

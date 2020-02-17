@@ -3,23 +3,26 @@ package com.revature.models;
 public class BankAccount {
 
 	private int bankId;
-	private int balance;
+	private float balance;
+	
+	public BankAccount (int bankId, float balance) {
+		this.bankId = bankId;
+		this.balance = balance;
+	}
 	
 	public int getBankId() {
 		return this.bankId;
 	}
 	
-	public void setBankId(int newBankId) {
+	public void setBankId(int newBankId) { // is this needed?
 		bankId = newBankId;
 	}
 	
-	public int getBalance() {
+	public float getBalance() {
 		return this.balance;
 	}
 	
-	// TODO: do i need get bankId? how to go from user -> bank account based on bankid?
-	
-	public void setBalance(int newBalance) { // probably handle negative balance check in bank account services.
+	public void setBalance(float newBalance) { // probably handle negative balance check in bank account services.
 		balance = newBalance;
 	}
 	
