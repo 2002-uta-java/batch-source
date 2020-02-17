@@ -1,5 +1,6 @@
 package com.revature.bankingapp.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 		return bankAccounts;
 	}
 
-	public BankAccount getBankAccountById(int id) throws SQLException {
+	public BankAccount getBankAccountById(int id) {
 		String selectOneAccount = "select * from BankAccount where ?";
 		BankAccount ba = null;
 		ResultSet rs = null;
@@ -54,7 +55,7 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 		return ba;
 	}
 
-	public int createBankAccount(BankAccount ba) throws SQLException {
+	public int createBankAccount(BankAccount ba) {
 		String addAccount = "insert into BankAccount (id, balance) values (?, ?)";
 		int accountsAdded = 0;
 		
@@ -62,6 +63,7 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 				PreparedStatement createAccount = databaseConnection.prepareStatement(addAccount)) {
 			createAccount.setInt(1, ba.getAccountNumber());
 			createAccount.setDouble(2, ba.getBalance());
+
 			accountsAdded = createAccount.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,22 +72,33 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 	}
 
 	public int updateBankAccount(BankAccount ba) {
-		String updateAccount = "update BankAccount set id = ?, balance = ?";
+		String updateAccount = "{call update_account(?, ?)}";
 		int accountUpdated = 0;
 		
 		try (Connection databaseConnection = ConnectionUtil.getConnection();
-				)
-		return 0;
+				 CallableStatement sendUpdate = databaseConnection.prepareCall(updateAccount)) {
+			sendUpdate.setInt(1, ba.getAccountNumber());
+			sendUpdate.setDouble(2, ba.getBalance());
+			
+			accountUpdated = sendUpdate.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return accountUpdated;
 	}
 
 	public int deleteBankAccount(BankAccount ba) {
-		// TODO Auto-generated method stub
-		return 0;
+		String deleteAccount = "delete from BankAccount where id = ?";
+		int accountDeleted = 0;
+		
+		try (Connection databaseConnection = ConnectionUtil.getConnection();
+				PreparedStatement sendDelete = databaseConnection.prepareStatement(deleteAccount)) {
+			sendDelete.setInt(1, ba.getAccountNumber());
+			
+			accountDeleted = sendDelete.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return accountDeleted;
 	}
-
-	public BankAccount createBankAccountWithFunction(BankAccount ba) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

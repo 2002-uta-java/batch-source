@@ -2,6 +2,7 @@ package com.revature.bankingapp.frontend;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.bankingapp.dao.*;
@@ -34,30 +35,33 @@ import com.revature.bankingapp.model.*;
  */
 public class App 
 {
-	private static Scanner sc = new Scanner(System.in);
+	private static Scanner intsc = new Scanner(System.in);
+	private static Scanner strsc = new Scanner(System.in);
 	private static boolean keepGoing = true;
 	private static Connection databaseConnection = null;
+	private static BankAccountDaoImpl badao = new BankAccountDaoImpl();
+	private static TransactionDaoImpl tdao  = new TransactionDaoImpl();
+	private static UserAccountDaoImpl uadao = new UserAccountDaoImpl();
 	
 	static boolean begin() {
 		System.out.println("Welcome to University of the Wizards Bank!");
 		System.out.println("Would you like to Login or Create Account?");
 		
-		String command = sc.nextLine();
+		String command = strsc.nextLine();
 		
-		if (command == "Create Account") {
+		if (command.equals("Create Account")) {
 			createAccount();
 		}
 		
 		System.out.print("Username: ");
-		String uName = sc.nextLine();
+		String uName = strsc.nextLine();
 		
 		System.out.print("Password: ");
-		String password = sc.nextLine();
-//		if (uName /* is not correct */ || password /* also not correct */) {
-//			System.out.println("Username or Password Incorrect. Try again");
-//		}
+		String password = strsc.nextLine();
+		if (uadao.getUserAccountByUsername(uName) || uadao.getUserAccountByPassword(password))
+			return true;
 		
-		return true;
+		return false;
 	}
 	
 	static void end() {
@@ -68,49 +72,74 @@ public class App
 	private static void doTransaction() {
 		System.out.println("Commands: Quit, Sign out, Transaction");
 		System.out.println("What would you like to do? ");
-		String command = sc.nextLine();
+		String command = strsc.nextLine();
 		
-		if (command == "Quit")
+		if (command.equals("Quit"))
 			keepGoing = false;
-		else if (command == "Sign out")
+		else if (command.equals("Sign out"))
 			begin();
-		else if (command == "Transaction")
+		else if (command.equals("Transaction"))
 			createTransaction();
 		
 	}
 	
 	private static void createTransaction() {
+
+		List<Transaction> transactions = tdao.getTransaction();
+		int transactionId = transactions.size();
 		
 		System.out.print("Amount: ");
-		Double amount = sc.nextDouble();
+		Double amount = intsc.nextDouble();
 		
 		System.out.print("Account From: ");
-		int accountFrom = sc.nextInt();
+		int accountFrom = intsc.nextInt();
 		
 		System.out.print("Account To: ");
-		int accountTo = sc.nextInt();
+		int accountTo = intsc.nextInt();
 		
-		Transaction t = new Transaction(amount, accountFrom, accountTo);
+		Transaction t = new Transaction(transactionId, amount, accountFrom, accountTo);
 		
 		// add transaction to database
+		
+		tdao.createTransaction(t);
+	}
+	
+	static void createBankAccount() {
+		
 	}
 
 	static void createAccount() {
+		
+		List<UserAccount> userAccounts = uadao.getUserAccount();
+		int uaId = 0;
+		int baId = 0;
+		if (userAccounts.size() != 0)
+			uaId = userAccounts.size();
+			
+		List<BankAccount> bankAccounts = badao.getBankAccounts();
+		if (bankAccounts.size() != 0)
+			baId = bankAccounts.size();
+		
 		System.out.print("Username: ");
-		String uName = sc.nextLine();
+		String uName = strsc.nextLine();
 		
 		System.out.print("Password: ");
-		String password = sc.nextLine();
+		String password = strsc.nextLine();
 		
 		System.out.print("Email: ");
-		String email = sc.nextLine();
+		String email = strsc.nextLine();
 		
 		System.out.print("Phone number: ");
-		String phoneNumber = sc.nextLine();
+		String phoneNumber = strsc.nextLine();
 		
-		UserAccount creation = new UserAccount(uName, password, email, phoneNumber);
+		BankAccount account = new BankAccount(baId, 0);
+		
+		UserAccount creation = new UserAccount(uaId, uName, password, email, phoneNumber);
 		
 		// add user to the database
+		uadao.createUserAccount(creation);
+		badao.createBankAccount(account);
+		
 	}
 	
     public static void main( String[] args ) throws SQLException

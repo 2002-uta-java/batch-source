@@ -1,16 +1,26 @@
 package com.revature.bankingapp.model;
 
 public class Transaction {
+	int transactionId = 0;
 	double amount   = 0.0d;
 	int accountFrom = 0;
 	int accountTo   = 0;
 	
 	public Transaction() {}
 	
-	public Transaction(double amount, int accountFrom, int accountTo) {
+	public Transaction(int transactionId, double amount, int accountFrom, int accountTo) {
+		this.transactionId = transactionId;
 		this.amount = amount;
 		this.accountFrom = accountFrom;
 		this.accountTo = accountTo;
+	}
+
+	public int getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public double getAmount() {
@@ -46,6 +56,7 @@ public class Transaction {
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + transactionId;
 		return result;
 	}
 
@@ -64,11 +75,14 @@ public class Transaction {
 			return false;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
+		if (transactionId != other.transactionId)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Transaction [amount=" + amount + ", accountFrom=" + accountFrom + ", accountTo=" + accountTo + "]";
+		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", accountFrom=" + accountFrom
+				+ ", accountTo=" + accountTo + "]";
 	}
 }

@@ -2,19 +2,28 @@ package com.revature.bankingapp.model;
 
 public class UserAccount {
 
+	private int    id = 0;
 	private String uName = "";
 	private String password = "";
 	private String email = "";
 	private String phoneNumber = "";
-	private int bankAccount = 0;
 	
 	public UserAccount() {}
 	
-	public UserAccount(String uName, String password, String email, String phoneNumber) {
+	public UserAccount(int id, String uName, String password, String email, String phoneNumber) {
+		this.id = id;
 		this.uName = uName;
 		this.password = password;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
@@ -33,14 +42,6 @@ public class UserAccount {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getBankAccount() {
-		return bankAccount;
-	}
-
-	public void setBankAccount(int bankAccount) {
-		this.bankAccount = bankAccount;
-	}
-
 	public String getuName() {
 		return uName;
 	}
@@ -56,13 +57,13 @@ public class UserAccount {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + bankAccount;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((uName == null) ? 0 : uName.hashCode());
@@ -78,12 +79,12 @@ public class UserAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		UserAccount other = (UserAccount) obj;
-		if (bankAccount != other.bankAccount)
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (id != other.id)
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -105,11 +106,7 @@ public class UserAccount {
 
 	@Override
 	public String toString() {
-		return "UserAccount [uName=" + uName + ", password=" + password + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", bankAccount=" + bankAccount + "]";
+		return "UserAccount [id=" + id + ", uName=" + uName + ", password=" + password + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + "]";
 	}
-	
-	
-	
-	
 }

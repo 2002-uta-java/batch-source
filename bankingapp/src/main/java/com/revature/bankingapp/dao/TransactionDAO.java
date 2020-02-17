@@ -1,5 +1,6 @@
 package com.revature.bankingapp.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.bankingapp.model.Transaction;
@@ -10,5 +11,4 @@ public interface TransactionDAO {
 	public int createTransaction(Transaction t);
 	public int updateTransaction(Transaction t);
 	public int deleteTransaction(Transaction t);
-	public Transaction createTransactionWithFunction(Transaction t);
 }
