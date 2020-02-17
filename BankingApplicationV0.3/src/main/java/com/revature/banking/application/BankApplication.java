@@ -61,11 +61,13 @@ public class BankApplication {
 	private void setupUserService() {
 		uService.setSecurityService(secService);
 		uService.setBankAccountService(baService);
+		uService.setUserDao(uDao);
 //		uService.setBankAccountDao(baDao);
 	}
 
 	private void setupBankAccountService() {
 		baService.setSecurityService(secService);
+		baService.setBankAccountDao(baDao);
 //		baService.setUserDao(uDao);// TODO I don't think I need this
 	}
 

@@ -12,6 +12,7 @@ public class CreateNewUser extends BankInteraction {
 
 	public CreateNewUser() {
 		super();
+		super.setTitle(TITLE);
 	}
 
 	@Override
@@ -158,11 +159,6 @@ public class CreateNewUser extends BankInteraction {
 			}
 		}
 
-	}
-
-	@Override
-	public String getTitle() {
-		return TITLE;
 	}
 
 	public String getName(final String firstLast) throws IOException {

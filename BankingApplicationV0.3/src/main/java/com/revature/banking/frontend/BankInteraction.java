@@ -23,6 +23,7 @@ public abstract class BankInteraction {
 	protected CLI io = null;
 	protected BankAccountService baService = null;
 	protected UserService uService = null;
+	private String title;
 
 	protected BankInteraction() {
 		super();
@@ -32,7 +33,13 @@ public abstract class BankInteraction {
 	 * 
 	 * @return
 	 */
-	public abstract String getTitle();
+	public String getTitle() {
+		return title;
+	}
+
+	protected void setTitle(final String title) {
+		this.title = title;
+	}
 
 	public abstract int interact() throws IOException;
 
@@ -46,6 +53,23 @@ public abstract class BankInteraction {
 
 	public void setUserService(final UserService uService) {
 		this.uService = uService;
+	}
+
+	/**
+	 * Returns whether or not this interaction has a menu. The default is that it
+	 * does not.
+	 * 
+	 * @return Whether or not this interaction has a menu.
+	 */
+	public boolean hasMenu() {
+		return false;
+	}
+
+	/**
+	 * Prints the menu for this interaction. The default is that it prints nothing.
+	 */
+	public void printMenu() {
+		// does nothing by default
 	}
 
 	public boolean retry(final CLI io) throws IOException {

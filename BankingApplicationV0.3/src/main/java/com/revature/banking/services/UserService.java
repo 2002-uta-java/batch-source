@@ -137,7 +137,7 @@ public class UserService extends Service {
 	 */
 	public BankAccount createNewUser(User newUser) {
 		final EncryptedUser eUser = secService.encrypt(newUser);
-		final EncryptedBankAccount eba = baService.createNewAccount();
+		final EncryptedBankAccount eba = baService.getNewAccount();
 
 		if (uDao.createNewUser(eUser, eba))
 			return secService.decrypt(eba);
@@ -156,7 +156,7 @@ public class UserService extends Service {
 	 */
 	public BankAccount updateUserCreateNewAccount(User updatedUser) {
 		final EncryptedUser eUser = secService.encrypt(updatedUser);
-		final EncryptedBankAccount eba = baService.createNewAccount();
+		final EncryptedBankAccount eba = baService.getNewAccount();
 		if (uDao.updateUserCreateNewAccount(eUser, eba))
 			return secService.decrypt(eba);
 		// else it failed, return null

@@ -21,7 +21,12 @@ public class BankAccountService extends Service {
 		this.baDao = baDao;
 	}
 
-	public EncryptedBankAccount createNewAccount() {
+	/**
+	 * This creates a new account but <i>does not</i> add it to the database.
+	 * 
+	 * @return
+	 */
+	public EncryptedBankAccount getNewAccount() {
 		// grab all account from database so that I can decrypt the account numbers and
 		// generate a new one
 		final Set<EncryptedBankAccount> encryptedAccounts = baDao.getAllAccounts();
@@ -39,7 +44,6 @@ public class BankAccountService extends Service {
 		newAccount.setAccountNo(newAccountNo);
 		newAccount.setBalance(0);
 
-		// return encrypted bank account
 		return secService.encrypt(newAccount);
 	}
 

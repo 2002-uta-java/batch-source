@@ -84,10 +84,6 @@ public class UserDaoPostgres implements UserDao {
 
 			rs = ps.executeQuery();
 
-			// check to make sure query 1) was executed and 2) executed correctly
-			if (!ps.execute()) {
-				Logger.getRootLogger().error("Failed to execute update on updated user, " + eUser);
-			}
 			if (ps.getUpdateCount() != 1) {
 				Logger.getRootLogger().debug("Update user account didn't update anything for user: " + eUser);
 				return false;
