@@ -58,8 +58,7 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 
 	@Override
 	public boolean createNewAccount(EncryptedBankAccount eba) {
-		// TODO Auto-generated method stub
-		return false;
+
 	}
 
 	@Override
@@ -71,6 +70,6 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	@Override
 	public void deleteAccount(EncryptedBankAccount eba) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

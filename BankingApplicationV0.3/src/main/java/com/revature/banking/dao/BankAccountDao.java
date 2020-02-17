@@ -14,6 +14,8 @@ import com.revature.banking.services.security.models.EncryptedUser;
  *
  */
 public interface BankAccountDao {
+	public static final int BANK_ACCOUNT_NO_LENGTH = 10;
+
 	/**
 	 * Set the BankAccountService used by this DAO (this is necessary because the
 	 * service layer determines new bank account numbers).
