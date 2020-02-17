@@ -8,7 +8,7 @@ import com.revature.models.UserAccount;
 public interface AccountDao {
 	
 	public List<UserAccount> getUserAccounts();
-	public void createAccount(String username, String password);
+	public UserAccount createAccount(UserAccount u);
 	UserAccount getUserAccount(String username);
 	BankAccount getBankAccount(UserAccount u);
 	void updateBankAccount(BankAccount b);

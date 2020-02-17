@@ -1,5 +1,6 @@
 package com.revature.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,10 +16,39 @@ import com.revature.util.ConnectionUtil;
 public class AccountDaoImpl implements AccountDao{
 
 	@Override
-	public void createAccount(String username, String password) {
-		// TODO: DO NOT CREATE CLASS, simply add the user/pass to db, AND generate bankaccount -> bankId
-		// NOTE: no instances of classes seem to be created in this application.
-		// assumed that username does not exist.
+	public UserAccount createAccount(UserAccount u) {
+		String sql = "{call create_account(?, ?)}";
+		ResultSet rs = null;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				CallableStatement cs = c.prepareCall(sql)) {
+			cs.setString(1, u.getUsername());
+			cs.setString(2, u.getPassword());
+			
+			cs.execute();
+			
+			rs = cs.getResultSet();
+			
+			while (rs.next()) {
+				int bankId = rs.getInt("bank_id");
+				u.setBankId(bankId);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return u;
 	}
 
 	@Override
@@ -117,8 +147,16 @@ public class AccountDaoImpl implements AccountDao{
 
 	@Override
 	public void updateBankAccount(BankAccount b) {
-		// TODO Auto-generated method stub
+		String sql = "update bank_account set balance = ? where bank_id = ?";
 		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql)) {
+			ps.setFloat(1, b.getBalance());
+			ps.setInt(2, b.getBankId());
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	
