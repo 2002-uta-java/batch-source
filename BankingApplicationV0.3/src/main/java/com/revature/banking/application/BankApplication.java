@@ -1,7 +1,8 @@
 package com.revature.banking.application;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
 
 import com.revature.banking.dao.BankAccountDao;
 import com.revature.banking.dao.UserDao;
@@ -10,7 +11,7 @@ import com.revature.banking.dao.postgres.UserDaoPostgres;
 import com.revature.banking.frontend.BankInteraction;
 import com.revature.banking.frontend.CLI;
 import com.revature.banking.frontend.ConsoleCLI;
-import com.revature.banking.frontend.CreateNewUser;
+import com.revature.banking.frontend.MainMenu;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.security.SecurityService;
@@ -23,8 +24,7 @@ public class BankApplication {
 	private final BankAccountDao baDao;
 	private final SecurityService secService;
 
-	private final List<BankInteraction> logIn;
-	private final List<BankInteraction> userActions;
+	private final BankInteraction mainMenu;
 
 	public BankApplication() {
 		console = new ConsoleCLI();
@@ -33,9 +33,7 @@ public class BankApplication {
 		uDao = new UserDaoPostgres();
 		baDao = new BankAccountDaoPostgres();
 		secService = new SecurityService();
-
-		this.logIn = new ArrayList<>();
-		this.userActions = new ArrayList<>();
+		this.mainMenu = new MainMenu(console, uService, baService);
 
 		setupInteractions();
 		setupBankAccountService();
@@ -72,22 +70,19 @@ public class BankApplication {
 	}
 
 	private void setupInteractions() {
-		// TODO probably going to rethink this
-		final BankInteraction createNewUser = new CreateNewUser();
-
-		// should just add my interactions to list, then set up list in a loop because
-		// everything is going to need these things.
-		createNewUser.setCLI(console);
-		createNewUser.setBankAccountService(baService);
-		createNewUser.setUserService(uService);
-		logIn.add(createNewUser);
 	}
 
 	public void run() {
-		// TODO need to run program
+		try {
+			mainMenu.interact();
+		} catch (IOException e) {
+			Logger.getRootLogger().error("We got an IOException: " + e.getMessage());
+		}
 	}
 
 	public static void main(String[] args) {
+		final BankApplication application = new BankApplication();
 
+		application.run();
 	}
 }

@@ -3,6 +3,7 @@ package com.revature.banking.frontend;
 import java.io.IOException;
 
 import com.revature.banking.frontend.validation.Validation;
+import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
 import com.revature.banking.services.models.User;
@@ -10,8 +11,8 @@ import com.revature.banking.services.models.User;
 public class CreateNewUser extends BankInteraction {
 	public static final String TITLE = "Create new user and account.";
 
-	public CreateNewUser() {
-		super();
+	public CreateNewUser(final CLI cli, final UserService uService, final BankAccountService baService) {
+		super(cli, uService, baService);
 		super.setTitle(TITLE);
 	}
 
@@ -83,7 +84,7 @@ public class CreateNewUser extends BankInteraction {
 			} else {
 				io.println("That's in invalid user name. User names must only contain characters and underscores.");
 			}
-			if (!this.retry(io))
+			if (!this.retry())
 				return null;
 			// else try again
 		}
@@ -107,7 +108,7 @@ public class CreateNewUser extends BankInteraction {
 						"That's in invalid password. Passwords should contain at least one of each of: lower case letters, upper case letters, numbers, and special characters ("
 								+ Validation.PASSWORD_SPECIAL + ")");
 			}
-			if (!this.retry(io))
+			if (!this.retry())
 				return null;
 			// else try again
 		}
@@ -121,7 +122,7 @@ public class CreateNewUser extends BankInteraction {
 
 			if (!Validation.validateTaxid(taxid)) {
 				io.println(taxid + " is not a valid tax id");
-				if (!retry(io))
+				if (!retry())
 					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
 				// else try again
 			} else {
@@ -153,7 +154,7 @@ public class CreateNewUser extends BankInteraction {
 				// if the above switch statement didn't return anything, then we had a tax id
 				// mismatch. Ask the user to try again (if they wish) or just return that status
 				// code.
-				if (!this.retry(io))
+				if (!this.retry())
 					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
 				// else continue
 			}
@@ -169,12 +170,12 @@ public class CreateNewUser extends BankInteraction {
 			if (!Validation.validateName(name)) {
 				if (name.length() == 0) {
 					io.println("You didn't enter anything");
-					if (!this.retry(io))
+					if (!this.retry())
 						return null;
 				} else {
 					io.println("You typed: " + name);
 					io.println("This name is too long for our system. Do you go by another, shorter name?");
-					if (!this.retry(io))
+					if (!this.retry())
 						return null;
 				}
 				// if they chose to retry loop again, try again

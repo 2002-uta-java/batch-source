@@ -2,35 +2,55 @@ package com.revature.banking.frontend;
 
 import java.io.IOException;
 
+import com.revature.banking.services.BankAccountService;
+import com.revature.banking.services.UserService;
+
 public class MainMenu extends BankInteraction {
 	public static final String TITLE = "Login/Create Account";
 
-	public static final String LOGIN_OPTION_STRING = "1. Login";
-	public static final String NEW_USER_OPTION_STRING = "2. Create New User";
-
-	public static final int LOGIN_OPTION = 1;
-	public static final int NEW_USER_OPTION = 2;
-
-	public MainMenu() {
-		super();
+	public MainMenu(final CLI cli, final UserService uService, final BankAccountService baService) {
+		super(cli, uService, baService);
 		super.setTitle(TITLE);
-	}
 
-	@Override
-	public boolean hasMenu() {
-		return true;
-	}
-
-	@Override
-	public void printMenu() {
-		io.println(LOGIN_OPTION_STRING);
-		io.println(LOGIN_OPTION_STRING);
-		io.println("Please choose an option (or type \"exit\" to exit program)");
+		this.addMenuOption(new LoginInteraction(cli, uService, baService));
+		this.addMenuOption(new CreateNewUser(cli, uService, baService));
 	}
 
 	@Override
 	public int interact() throws IOException {
-		
+		while (true) {
+			final int option = super.getMenu();
+
+			switch (option) {
+			case BankInteraction.EXIT:
+				return BankInteraction.EXIT;
+			// if they fail to choose an option or they choose to logout, start over with
+			// the main menu
+			case BankInteraction.FAILURE:
+				io.println();
+				io.println();
+				continue;
+			case BankInteraction.LOGOUT:
+				io.println("Dude, you're like, already logged out...please try again");
+				continue;// if they type logout, just give them the main menu again
+			}
+
+			// this is the "normal" behavior, do one of the options.
+			switch (super.interact(option)) {
+			case BankInteraction.FAILURE:
+				io.println("That failed, I'm taking you back to the main menu");
+				break;
+			case BankInteraction.LOGOUT:
+				io.clearScreen();
+				break;// continue loop
+			case BankInteraction.EXIT:
+				return BankInteraction.EXIT;
+			default:
+				// the default would be a success, in which case the interaction has finished
+				// and should go back to the main menu
+				io.clearScreen();
+			}
+		}
 	}
 
 }

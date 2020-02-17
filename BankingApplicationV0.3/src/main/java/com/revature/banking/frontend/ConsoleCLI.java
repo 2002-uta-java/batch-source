@@ -58,4 +58,17 @@ public class ConsoleCLI implements CLI {
 			return in.readLine();
 	}
 
+	@Override
+	public void println() {
+		if (console != null)
+			console.printf(System.lineSeparator());
+		else
+			out.println();
+	}
+
+	@Override
+	public void clearScreen() {
+		this.print(CLI.CLEAR_LINUX_SCREEN);
+	}
+
 }

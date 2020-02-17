@@ -1,0 +1,4 @@
+2020-02-17 15:42:43 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 15:44:23 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 15:44:52 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 15:45:19 FATAL UserDaoPostgres:97 method: createNewUser - Create New User, EncryptedUser [userKey=0, taxId=CgauJc/BKbA0JmxcZNID9m5a+eufiHuw, firstName=N66hJX7lZE1j5vJYlwvTWw==, lastName=JqrKkLxVyFh0Mu2UXWbV+A==, userName=bennattj, password=+QmECoCprMPN46RhLVsDys8kuxjHzycvNoGWwGwgjLECaK3tE76J+zDqLrag3fQG], failed: No results were returned by the query.

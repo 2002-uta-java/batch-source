@@ -37,6 +37,9 @@ public class Validation {
 	public static final String TAXID_REGEX = "^\\d{10}$";
 	public static final Pattern TAXID_PATTERN = Pattern.compile(TAXID_REGEX);
 
+	public static final String NATURAL_NUMBER_REGEX = "^[1-9]\\d*$";
+	public static final Pattern NATURAL_NUMBER_PATTERN = Pattern.compile(NATURAL_NUMBER_REGEX);
+
 	public static boolean validateUserName(final String username) {
 		if (USERNAME_PATTERN.matcher(username).matches()) {
 			final int length = username.length();
@@ -60,5 +63,9 @@ public class Validation {
 
 	public static boolean validateTaxid(final String taxid) {
 		return TAXID_PATTERN.matcher(taxid).matches();
+	}
+
+	public static boolean isNaturalNumber(String option) {
+		return NATURAL_NUMBER_PATTERN.matcher(option).matches();
 	}
 }
