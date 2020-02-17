@@ -118,7 +118,7 @@ public class App
     	try {
     		
 			databaseConnection = ConnectionUtil.getConnection();
-			
+
 			if (begin()) {
 				while (keepGoing) {
 					doTransaction();

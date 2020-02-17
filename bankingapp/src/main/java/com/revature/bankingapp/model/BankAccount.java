@@ -1,22 +1,22 @@
 package com.revature.bankingapp.model;
 
 public class BankAccount {
-	private double accountNumber = 0;
+	private int accountNumber = 0;
 	private double balance = 0;
 	
 	
 	public BankAccount() {}
 	
-	public BankAccount(double accountNumber, double balance) {
+	public BankAccount(int accountNumber, double balance) {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 	}
 
-	public double getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(double accountNumber) {
+	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
@@ -28,13 +28,14 @@ public class BankAccount {
 		this.balance = balance;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + accountNumber;
 		long temp;
-		temp = Double.doubleToLongBits(accountNumber);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -49,7 +50,7 @@ public class BankAccount {
 		if (getClass() != obj.getClass())
 			return false;
 		BankAccount other = (BankAccount) obj;
-		if (Double.doubleToLongBits(accountNumber) != Double.doubleToLongBits(other.accountNumber))
+		if (accountNumber != other.accountNumber)
 			return false;
 		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
