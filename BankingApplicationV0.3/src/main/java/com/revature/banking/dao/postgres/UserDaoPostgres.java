@@ -1,6 +1,7 @@
 package com.revature.banking.dao.postgres;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -59,19 +60,56 @@ public class UserDaoPostgres implements UserDao {
 			}
 		} catch (SQLException e) {
 			// this is a fatal error (probably means we weren't able to connect)
-			// Returning null will likely cause a program crash (which is the desired effect
-			// since I don't want to call this method and get an empty result if the results
-			// shouldn't be empty)
-			Logger.getRootLogger().fatal(e.getMessage());
+			// returning null signals that this method failed
+			Logger.getRootLogger().fatal("getAllUsers failed: " + e.getMessage());
 			return null;
 		}
 		return users;
 	}
 
 	@Override
-	public EncryptedBankAccount createNewUser(EncryptedUser eUser) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean createNewUser(final EncryptedUser eUser, final EncryptedBankAccount eba) {
+		// add new user to database
+		final String newUserSQL = "insert into users (tax_id, firstname, lastname, "
+				+ "username, password) values (?,?,?,?,?)";
+		ResultSet rs = null;
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(newUserSQL);) {
+			ps.setString(1, eUser.getTaxId());
+			ps.setString(2, eUser.getFirstName());
+			ps.setString(3, eUser.getLastName());
+			ps.setString(4, eUser.getUserName());
+			ps.setString(5, eUser.getPassword());
+
+			rs = ps.executeQuery();
+
+			if (!rs.first()) {
+				// check to make sure this actually inserted a new row
+				Logger.getRootLogger().error("Failed to create new user: " + eUser);
+				return false;
+			}
+
+			while (rs.next()) {
+				// give eUser the user_key
+				eUser.setUserKey(rs.getInt("user_key"));
+			}
+		} catch (SQLException e) {
+			// this is a fatal error (probably means we weren't able to connect)
+			// returning null signals that this failed
+			Logger.getRootLogger().fatal("Create New User, " + eUser + ", failed: " + e.getMessage());
+			return false;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+		}
+
+		// TODO need to add account to database and then link them
+		return true;
 	}
 
 	@Override

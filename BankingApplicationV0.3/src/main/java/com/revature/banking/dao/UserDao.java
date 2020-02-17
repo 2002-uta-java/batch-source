@@ -53,15 +53,15 @@ public interface UserDao {
 	public Set<EncryptedUser> getAllUsers();
 
 	/**
-	 * This creates a new user in the database and sets up a new bank account for
-	 * the new user.
+	 * This creates a new user in the database and creates (and links) the given
+	 * bank account to their user account.
 	 * 
 	 * @param eUser The user record to be created (should contain, at least the
 	 *              first name, last name, tax id, user name, and password).
-	 * @return The newly created bank account encrypted (as it appears in the
-	 *         database) as an {@link EncryptedBankAccount} object.
+	 * @param eba   Bank Account information to be added to the database.
+	 * @return Wether or not this action was successful.
 	 */
-	public EncryptedBankAccount createNewUser(EncryptedUser eUser);
+	public boolean createNewUser(final EncryptedUser eUser, final EncryptedBankAccount eba);
 
 	/**
 	 * This is intended to be used when a User already exists but has no open
@@ -74,5 +74,5 @@ public interface UserDao {
 	 * @return The newly created bank account encrypted (as it appears in the
 	 *         database) as an {@link EncryptedBankAccount} object.
 	 */
-	public EncryptedBankAccount updateUserCreateNewAccount(EncryptedUser eUser);
+	public EncryptedBankAccount updateUserCreateNewAccount(final EncryptedUser eUser);
 }
