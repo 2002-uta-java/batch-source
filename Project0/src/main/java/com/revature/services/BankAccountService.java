@@ -54,26 +54,29 @@ public class BankAccountService {
 	    
 	
 	public void deposit(BankAccount b) {
-		// ask for deposit amount, offer cancel
-		// if cancel break
-		// valid entry (must be float any limit, perhaps test enormous float)
-		// if valid, do overflow balance calculation (999billion.99)
-		// if overflow return error
-		// if valid, perform operation, say deposit successful, return updated balance.
 		Scanner s = new Scanner(System.in);
 		
 		while (true) {
     		System.out.println("Enter your deposit amount (max balance = $999,999,999.99). Press # to cancel.");
     		try {
-    			float depositRequest = s.nextFloat();
-//    			s.nextLine()
+    			float depositRequest = (float) Math.round(s.nextFloat() * 100f) / 100f; // Round to two decimal places.
+    			float oldBalance = b.getBalance();
+    			float newBalance = oldBalance + depositRequest;
+    			float MAX_BAL = (float) 999999999.99; // 11 total digits.
+    			System.out.println("Depositing $" + depositRequest);
     			
-    			// TODO: is float, proceed with valid length check, break at end of this
-    			// need to round excess decimals
+    			if (newBalance > MAX_BAL) {
+    				System.out.println("Cancelling deposit (max balance breached).");
+    			}
+    			else {
+    				b.setBalance(newBalance);
+    				dao.updateBankAccount(b);
+    				System.out.println("Deposit successful!");
+    				break;
+    			}
     		}
     		catch (InputMismatchException e) {
     			try {
-//    				s.nextLine();
     				String depositRequest = s.nextLine();
     				if (depositRequest == "#") {
 		    			break;
@@ -91,26 +94,29 @@ public class BankAccountService {
 	}
 	
 	public void withdraw(BankAccount b) {
-		// ask for withdrawal amount, offer cancel
-		// if cancel break
-		// validate entry (must be float any limit)
-		// if valid, do negative balance calculation
-		// if negative return error
-		// if valid, perform operation, say operation successful, return updated balance.
 		Scanner s = new Scanner(System.in);
 		
 		while (true) {
     		System.out.println("Enter your withdrawal amount (min balance = $0.00). Press # to cancel.");
     		try {
-    			float withdrawalRequest = s.nextFloat();
-//    			s.nextLine()
+    			float withdrawalRequest = (float) Math.round(s.nextFloat() * 100f) / 100f; // Round to two decimal places.
+    			float oldBalance = b.getBalance();
+    			float newBalance = oldBalance - withdrawalRequest;
+    			float MIN_BAL = (float) 0.00;
+    			System.out.println("Withdrawing $" + withdrawalRequest);
     			
-    			// TODO: is float, proceed with valid length check, break at end of this
-    			// need to round excess decimals
+    			if (newBalance < MIN_BAL) {
+    				System.out.println("Cancelling withdrawal (min balance breached).");
+    			}
+    			else {
+    				b.setBalance(newBalance);
+    				dao.updateBankAccount(b);
+    				System.out.println("Withdrawal successful!");
+    				break;
+    			}
     		}
     		catch (InputMismatchException e) {
     			try {
-//    				s.nextLine();
     				String withdrawalRequest = s.nextLine();
     				if (withdrawalRequest == "#") {
 		    			break;
