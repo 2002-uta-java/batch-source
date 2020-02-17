@@ -28,8 +28,6 @@ public class LoginService {
 		    		while (true) {
 			    		System.out.println("Enter your username. Press # to cancel.");
 			    		String usernameRequest = s.nextLine();
-			    		System.out.println("usernamerequest = " + usernameRequest);
-			    		System.out.println(usernameRequest.length());
 			    		
 			    		if (usernameRequest.equals("#")) {
 			    			break;
@@ -48,9 +46,9 @@ public class LoginService {
 			    					System.out.println("Enter your password.");
 			    					String passwordAttempt = s.nextLine();
 			    					
-			    					if (passwordAttempt == u.getPassword()) { // would rather use u.passwordMatch(passwordAttempt)
-			    						System.out.println("Logging in...");
-			    						bas.bankAccountMenu(u);				  // but pointless because of dao
+			    					if (passwordAttempt.equals(u.getPassword())) { // would rather use u.passwordMatch(passwordAttempt)
+			    						System.out.println("Logging in...");	   // but pointless because of dao.
+			    						bas.bankAccountMenu(u);	
 			    						break;
 			    					}
 			    					else {

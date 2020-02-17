@@ -64,7 +64,7 @@ public class UserAccountService {
 		List<UserAccount> userAccounts = dao.getUserAccounts();
 		
 		for (UserAccount u: userAccounts) {
-			if (u.getUsername() == username) {
+			if (username.equals(u.getUsername())) {
 				return true;
 			}
 		}

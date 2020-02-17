@@ -24,7 +24,6 @@ public class AccountDaoImpl implements AccountDao{
 				CallableStatement cs = c.prepareCall(sql)) {
 			cs.setString(1, u.getUsername());
 			cs.setString(2, u.getPassword());
-			
 			cs.execute();
 			
 			rs = cs.getResultSet();
@@ -155,6 +154,8 @@ public class AccountDaoImpl implements AccountDao{
 				PreparedStatement ps = c.prepareStatement(sql)) {
 			ps.setFloat(1, b.getBalance());
 			ps.setInt(2, b.getBankId());
+			
+			ps.executeUpdate();
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
