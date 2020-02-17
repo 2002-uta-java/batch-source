@@ -40,26 +40,44 @@ public class BankApplication {
 		setupInteractions();
 		setupBankAccountService();
 		setupUserService();
-		setSecurityService();
+		setupSecurityService();
+		setupUserDao();
+		setupBankAccountDao();
 	}
 
-	private void setSecurityService() {
+	private void setupBankAccountDao() {
+		// TODO I don't think this needs any setup
+
+	}
+
+	private void setupUserDao() {
+		uDao.setBankAccountDao(baDao);
+	}
+
+	private void setupSecurityService() {
 		secService.setKey(System.getenv("DB_KEY"));
 	}
 
 	private void setupUserService() {
 		uService.setSecurityService(secService);
-		uService.setBankAccountDao(baDao);
+		uService.setBankAccountService(baService);
+//		uService.setBankAccountDao(baDao);
 	}
 
 	private void setupBankAccountService() {
 		baService.setSecurityService(secService);
-		baService.setUserDao(uDao);
+//		baService.setUserDao(uDao);// TODO I don't think I need this
 	}
 
 	private void setupInteractions() {
+		// TODO probably going to rethink this
 		final BankInteraction createNewUser = new CreateNewUser();
+
+		// should just add my interactions to list, then set up list in a loop because
+		// everything is going to need these things.
 		createNewUser.setCLI(console);
+		createNewUser.setBankAccountService(baService);
+		createNewUser.setUserService(uService);
 		logIn.add(createNewUser);
 	}
 

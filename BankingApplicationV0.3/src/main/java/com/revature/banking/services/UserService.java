@@ -63,9 +63,19 @@ public class UserService extends Service {
 	 * this before ever calling this method.
 	 */
 	public static final int CHECK_NEW_USER_INVALID_TAX_ID = 4;
+	private BankAccountService baService = null;
+	private UserDao uDao = null;
 
 	public UserService() {
 		super();
+	}
+
+	public void setUserDao(final UserDao uDao) {
+		this.uDao = uDao;
+	}
+
+	public void setBankAccountService(final BankAccountService baService) {
+		this.baService = baService;
 	}
 
 	/**
@@ -127,8 +137,12 @@ public class UserService extends Service {
 	 */
 	public BankAccount createNewUser(User newUser) {
 		final EncryptedUser eUser = secService.encrypt(newUser);
-		final EncryptedBankAccount eba = uDao.createNewUser(eUser);
-		return secService.decrypt(eba);
+		final EncryptedBankAccount eba = baService.createNewAccount();
+
+		if (uDao.createNewUser(eUser, eba))
+			return secService.decrypt(eba);
+		// else it failed, return null
+		return null;
 	}
 
 	/**
