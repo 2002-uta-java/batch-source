@@ -25,7 +25,8 @@ public interface BankAccountDao {
 	/**
 	 * This adds the passed bank account to the database.
 	 * 
-	 * @param eba Bank account to be added.
+	 * @param eba Bank account to be added. This method should set eba's
+	 *            account_key.
 	 * @return Whether or not this action was successful.
 	 */
 	public boolean createNewAccount(final EncryptedBankAccount eba);
@@ -39,13 +40,32 @@ public interface BankAccountDao {
 	public Set<EncryptedBankAccount> getAllAccounts();
 
 	/**
-	 * This essentially adds an existing account to a user.
+	 * Adds a user to an account.
 	 * 
-	 * @param eUser   User to add an account to. The passed user <i>must</i> contain
-	 *                a valid user_key.
-	 * @param account The bank account to link to this user. The passed account
-	 *                <i>must</i> contain a valid account_id.
+	 * @param eUser User to add an account to. The passed user <i>must</i> contain a
+	 *              valid user_key.
+	 * @param eba   The bank account to link to this user. The passed account
+	 *              <i>must</i> contain a valid account_id.
 	 */
-	public boolean linkUserAndAccount(final EncryptedUser eUser, final EncryptedBankAccount account);
+	public boolean addUserToAccount(final EncryptedUser eUser, final EncryptedBankAccount eba);
+
+	/**
+	 * Removes this user from an account.
+	 * 
+	 * @param eUser User to be removed (must have user_key set).
+	 * @param eba   Bank account to be remove from (must have account_key set).
+	 * @return whether or not this action was successful.
+	 */
+	public boolean removeUserFromAccount(final EncryptedUser eUser, final EncryptedBankAccount eba);
+
+	/**
+	 * Deletes this bank account from the database. There are no checks to make sure
+	 * that this account isn't linked to someone else (or does any de-linking
+	 * whatsoever).
+	 * 
+	 * @param eba Bank account to be deleted. This must include, at least the
+	 *            account_key.
+	 */
+	public void deleteAccount(final EncryptedBankAccount eba);
 
 }

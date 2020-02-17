@@ -71,8 +71,31 @@ public interface UserDao {
 	 * @param eUser The user record to be updated (should contain every field:
 	 *              user_key, first name, last name, tax id, user name, and
 	 *              password).
-	 * @return The newly created bank account encrypted (as it appears in the
-	 *         database) as an {@link EncryptedBankAccount} object.
+	 * @param eba   The new account to be added and linked to this user.
+	 * @return Whether or not this was successful.
 	 */
-	public EncryptedBankAccount updateUserCreateNewAccount(final EncryptedUser eUser);
+	public boolean updateUserCreateNewAccount(final EncryptedUser eUser, final EncryptedBankAccount eba);
+
+	/**
+	 * Completely deletes user from the system. This deletes the record from the
+	 * database.
+	 * 
+	 * @param eUser User to be deleted. This needs to have, at least, the user_key
+	 *              set.
+	 * @return Whether or not this action was successful.
+	 * @see {@link #removeUser(EncryptedUser)}
+	 */
+	public boolean deleteUser(final EncryptedUser eUser);
+
+	/**
+	 * This removes the user from the system. This does <i>not</i> remove the user's
+	 * record, it only invalidates their login (by deleting the username and
+	 * password).
+	 * 
+	 * @param eUser User to be removed. This needs to have, at least, the user_key
+	 *              set.
+	 * @return Whether or not this action was successful.
+	 * @see {@link #deleteUser(EncryptedUser)}
+	 */
+	public boolean removeUser(final EncryptedUser eUser);
 }

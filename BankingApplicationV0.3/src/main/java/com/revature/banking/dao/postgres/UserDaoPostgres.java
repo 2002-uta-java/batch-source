@@ -75,7 +75,7 @@ public class UserDaoPostgres implements UserDao {
 		ResultSet rs = null;
 
 		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(newUserSQL);) {
+				final PreparedStatement ps = con.prepareStatement(newUserSQL, Statement.RETURN_GENERATED_KEYS);) {
 			ps.setString(1, eUser.getTaxId());
 			ps.setString(2, eUser.getFirstName());
 			ps.setString(3, eUser.getLastName());
@@ -84,19 +84,20 @@ public class UserDaoPostgres implements UserDao {
 
 			rs = ps.executeQuery();
 
-			if (!rs.first()) {
-				// check to make sure this actually inserted a new row
-				Logger.getRootLogger().error("Failed to create new user: " + eUser);
+			// check to make sure query 1) was executed and 2) executed correctly
+			if (!ps.execute()) {
+				Logger.getRootLogger().error("Failed to execute update on updated user, " + eUser);
+			}
+			if (ps.getUpdateCount() != 1) {
+				Logger.getRootLogger().debug("Update user account didn't update anything for user: " + eUser);
 				return false;
 			}
-
 			while (rs.next()) {
 				// give eUser the user_key
 				eUser.setUserKey(rs.getInt("user_key"));
 			}
 		} catch (SQLException e) {
 			// this is a fatal error (probably means we weren't able to connect)
-			// returning null signals that this failed
 			Logger.getRootLogger().fatal("Create New User, " + eUser + ", failed: " + e.getMessage());
 			return false;
 		} finally {
@@ -108,13 +109,83 @@ public class UserDaoPostgres implements UserDao {
 				}
 		}
 
-		// TODO need to add account to database and then link them
+		// create the new account
+		if (!baDao.createNewAccount(eba)) {
+			// the user was added but the creation of their bank account failed. So try to
+			// remove the user.
+			this.deleteUser(eUser);
+			return false;
+		}
+
+		// link the accounts
+		if (!baDao.addUserToAccount(eUser, eba)) {
+			// both the user and account were added. Attempt to delete them.
+			this.deleteUser(eUser);
+			baDao.deleteAccount(eba);
+			return false;
+		}
+
+		// if we made it this far, this action was successful
 		return true;
 	}
 
 	@Override
-	public EncryptedBankAccount updateUserCreateNewAccount(EncryptedUser eUser) {
+	public boolean updateUserCreateNewAccount(final EncryptedUser eUser, final EncryptedBankAccount eba) {
+		final String sql = "update users " + "set tax_id=?, firstname=?, lastname=?, username=?,password=? "
+				+ "where user_key=?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, eUser.getTaxId());
+			ps.setString(2, eUser.getFirstName());
+			ps.setString(3, eUser.getLastName());
+			ps.setString(4, eUser.getUserName());
+			ps.setString(5, eUser.getPassword());
+			ps.setInt(6, eUser.getUserKey());
+
+			// check to make sure query 1) was executed and 2) executed correctly
+			if (!ps.execute()) {
+				Logger.getRootLogger().error("Failed to execute update on updated user, " + eUser);
+			}
+			if (ps.getUpdateCount() != 1) {
+				Logger.getRootLogger().debug("Update user account didn't update anything for user: " + eUser);
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().fatal("Failed to update user, " + eUser + ": " + e.getMessage());
+			return false;
+		}
+
+		// create new account
+		if (!baDao.createNewAccount(eba)) {
+			// failed to create new account. Not the worst thing that could have happened,
+			// this user already existed in the system, so I'm not going to remove them
+			// (they'll just have no accounts)
+			Logger.getRootLogger().error("Failed to create new bank account, " + eba + ", for user " + eUser);
+			return false;
+		}
+
+		// link user and account
+		if (!baDao.addUserToAccount(eUser, eba)) {
+			// this failed, attempt to delete newly added account
+			baDao.deleteAccount(eba);
+			Logger.getRootLogger().error("Failed to link new account, " + eba + ", and user " + eUser);
+			return false;
+		}
+
+		// everything succeeded!!
+		return true;
+	}
+
+	@Override
+	public boolean deleteUser(EncryptedUser eUser) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
+	}
+
+	@Override
+	public boolean removeUser(EncryptedUser eUser) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

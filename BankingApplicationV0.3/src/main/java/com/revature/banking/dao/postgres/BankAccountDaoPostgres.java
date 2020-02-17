@@ -51,7 +51,7 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	}
 
 	@Override
-	public boolean linkUserAndAccount(EncryptedUser eUser, EncryptedBankAccount account) {
+	public boolean addUserToAccount(EncryptedUser eUser, EncryptedBankAccount account) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -60,5 +60,17 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	public boolean createNewAccount(EncryptedBankAccount eba) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean removeUserFromAccount(EncryptedUser eUser, EncryptedBankAccount eba) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteAccount(EncryptedBankAccount eba) {
+		// TODO Auto-generated method stub
+		
 	}
 }
