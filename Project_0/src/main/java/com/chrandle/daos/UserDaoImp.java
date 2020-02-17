@@ -15,20 +15,21 @@ public class UserDaoImp implements UserDao {
 	@Override
 	//Won't need this in final!
 	public List<User> getUsers() {
-		String query = "select * from Users";
+		String query = "select * from users";
 		List<User> users = new ArrayList<>();
 		
-		try(Connection userConn = ConnectionUtil.GetConnection()){
+		try(Connection userConn = ConnectionUtil.getConnection()){
 			Statement userStmnt = userConn.createStatement();
 			ResultSet userRsltSt = userStmnt.executeQuery(query);
 			
 			while(userRsltSt.next()) {
-				long userID = userRsltSt.getLong("UserID");
-				String userName = userRsltSt.getString("UserName");
+				long userid = userRsltSt.getLong("UserID");
+				String username = userRsltSt.getString("UserName");
 				String password = userRsltSt.getString("password");
 				String email = userRsltSt.getString("UserEmail");
 				
-				User u = new User();
+				User u = new User(username,userid,password, email);
+				users.add(u);
 			}
 		} catch (SQLException e) {
 			//TODO: send exception message to log?
@@ -44,7 +45,7 @@ public class UserDaoImp implements UserDao {
 		// TODO Auto-generated method stub
 		String query = "select * from Users";
 		
-		try(Connection userConn = ConnectionUtil.GetConnection()){
+		try(Connection userConn = ConnectionUtil.getConnection()){
 			Statement userStmnt = userConn.createStatement();
 			ResultSet userRsltSt = userStmnt.executeQuery(query);
 			
@@ -66,7 +67,7 @@ public class UserDaoImp implements UserDao {
 		// TODO Auto-generated method stub
 		String query = "select * from Users";
 		
-		try(Connection userConn = ConnectionUtil.GetConnection()){
+		try(Connection userConn = ConnectionUtil.getConnection()){
 			Statement userStmnt = userConn.createStatement();
 			ResultSet userRsltSt = userStmnt.executeQuery(query);
 			

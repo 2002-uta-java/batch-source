@@ -10,7 +10,7 @@ public class User {
 	private long userid;
 	private String password = " "; 
 	private String email = "";
-	private Account account;
+	private Account account = null;
 
 /*
  * -------------------------------
@@ -20,6 +20,27 @@ public class User {
 
 	public User() {
 		super();
+	}
+
+
+	
+	public User(String username, long userid, String password, String email) {
+		super();
+		this.username = username;
+		this.userid = userid;
+		this.password = password;
+		this.email = email;
+	}
+
+
+
+	public User(String username, long userid, String password, String email, Account account) {
+		super();
+		this.username = username;
+		this.userid = userid;
+		this.password = password;
+		this.email = email;
+		this.account = account;
 	}
 
 /*

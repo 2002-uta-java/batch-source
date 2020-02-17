@@ -15,7 +15,7 @@ public class Account {
  * Constructors	
  * -------------------------------
  */
-	Account(){
+	public Account(){
 		super();
 	}
 	
@@ -28,25 +28,27 @@ public class Account {
 		return accountid;
 	}
 
-	public void setAccountid(long accountid) {
-		this.accountid = accountid;
+	public void setAccountid(long a) {
+		this.accountid = a;
 	}
 
 	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(long balance) {
-		this.balance = balance;
+	public void setBalance(double d) {
+		this.balance = d;
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String t) {
+		this.type = t;
+		
 	}
+
 
 
 /*
@@ -59,6 +61,8 @@ public class Account {
 	public String toString() {
 		return "Account [accountid=" + accountid + ", balance=" + balance + ", type=" + type + "]";
 	}
+
+
 	
 	
 	

@@ -8,16 +8,14 @@ public class ConnectionUtil {
 
 	private static Connection connection;
 	
-	public static Connection GetConnection() throws SQLException{
-		String port = "5432";
-		String host = "localhost";
-		String database = "postgres"; 
-		String url = "jdbc:postgresql://";
+	public static Connection getConnection() throws SQLException{
+
+
 		String username = "postgres";
 		String password = "Geckobox34+";
-		
+
 		if (connection == null || connection.isClosed()){
-			connection = DriverManager.getConnection((url+host+"/"+port+"/"+database),
+			connection = DriverManager.getConnection("jdbc:postgresql://localhost/Project_0",
 			username,password);
 		} else {
 			throw new SQLException("Connection in use");

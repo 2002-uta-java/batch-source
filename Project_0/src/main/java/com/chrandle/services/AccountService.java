@@ -13,6 +13,6 @@ public class AccountService {
 	}
 	
 	public Account getAccountrById(long id) {
-		return aDao.getAccountrById(id);
+		return aDao.getAccountById(id);
 	}
 }
