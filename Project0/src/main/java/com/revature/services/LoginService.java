@@ -26,10 +26,12 @@ public class LoginService {
 		    	switch (request) {
 		    	case 1:
 		    		while (true) {
-			    		System.out.println("Enter your username (1-25 characters). Press # to cancel.");
+			    		System.out.println("Enter your username. Press # to cancel.");
 			    		String usernameRequest = s.nextLine();
+			    		System.out.println("usernamerequest = " + usernameRequest);
+			    		System.out.println(usernameRequest.length());
 			    		
-			    		if (usernameRequest == "#") {
+			    		if (usernameRequest.equals("#")) {
 			    			break;
 			    		}
 			    		else {
@@ -54,6 +56,9 @@ public class LoginService {
 			    					else {
 			    						System.out.println("Password incorrect.");
 			    					}
+			    				}
+			    				else {
+			    					System.out.println("Username does not exist.");
 			    				}
 			    			}
 			    		}

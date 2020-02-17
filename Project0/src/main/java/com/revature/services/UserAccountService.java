@@ -20,7 +20,7 @@ public class UserAccountService {
 			
 			try {
 				String newUsername = s.nextLine();
-				if (newUsername == "#") {
+				if (newUsername.equals("#")) {
 					break;
 				}
 				else {

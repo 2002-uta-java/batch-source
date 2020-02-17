@@ -78,7 +78,7 @@ public class BankAccountService {
     		catch (InputMismatchException e) {
     			try {
     				String depositRequest = s.nextLine();
-    				if (depositRequest == "#") {
+    				if (depositRequest.equals("#")) {
 		    			break;
 		    		}
     				else {
@@ -118,7 +118,7 @@ public class BankAccountService {
     		catch (InputMismatchException e) {
     			try {
     				String withdrawalRequest = s.nextLine();
-    				if (withdrawalRequest == "#") {
+    				if (withdrawalRequest.equals("#")) {
 		    			break;
 		    		}
     				else {
