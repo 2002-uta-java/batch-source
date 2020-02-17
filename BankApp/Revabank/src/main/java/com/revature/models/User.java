@@ -7,18 +7,16 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int user_id;
 	private String username;
-	private String email;
 	private String password;
 	
 	//Constructors
 	public User() {
 		super();
 	}
-	public User(int user_id, String username, String email, String password) {
+	public User(int user_id, String username, String password) {
 		super();
 		this.user_id = user_id;
 		this.username = username;
-		this.email = email;
 		this.password = password;
 	}
 	
@@ -35,12 +33,6 @@ public class User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -53,7 +45,6 @@ public class User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + user_id;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -68,11 +59,6 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -91,7 +77,6 @@ public class User implements Serializable {
 	//toString method
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ "]";
+		return "User [user_id=" + user_id + ", username=" + username  + ", password=" + password + "]";
 	}
 }

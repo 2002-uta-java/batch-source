@@ -7,13 +7,13 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int account_id;
 	private int user_id;
-	private double balance;
+	private long balance;
 	
 	//Constructors
 	public Account() {
 		super();
 	}
-	public Account(int account_id, int user_id, double balance) {
+	public Account(int account_id, int user_id, long balance) {
 		super();
 		this.account_id = account_id;
 		this.user_id = user_id;
@@ -33,10 +33,10 @@ public class Account implements Serializable {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public double getBalance() {
+	public long getBalance() {
 		return balance;
 	}
-	public void setBalance(double balance) {
+	public void setBalance(long balance) {
 		this.balance = balance;
 	}
 	
