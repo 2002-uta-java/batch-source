@@ -2,6 +2,8 @@ package com.revature.banking.services;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.revature.banking.dao.UserDao;
 import com.revature.banking.services.models.BankAccount;
 import com.revature.banking.services.models.User;
@@ -108,11 +110,13 @@ public class UserService extends Service {
 			if (newUser.getTaxID().equals(user.getTaxID())) {
 				// check to make sure this user doesn't already have an account
 				if (user.getUserName() != null) {
+					Logger.getRootLogger().debug("Found matching tax id and with an open account");
 					return CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
 				}
 				// check to make sure the first and last name match
 				if (!user.getFirstName().equals(newUser.getFirstName())
 						|| !user.getLastName().equals(newUser.getLastName())) {
+					Logger.getRootLogger().debug("Found matching tax id, but the name given didn't match");
 					return CHECK_NEW_USER_TAXID_MISMATCH;
 				}
 				// at this point the new user exists in the system, does not have an open
@@ -120,9 +124,11 @@ public class UserService extends Service {
 				// userKey so that they can access directly access this record (without having
 				// to do this search again).
 				newUser.setUserKey(user.getUserKey());
+				Logger.getRootLogger().debug("Found matching tax id and user did not have an open account");
 				return CHECK_NEW_USER_VALID_ALREADY_EXISTS;
 			}
 		}
+		Logger.getRootLogger().debug("no match was found for taxid: " + newUser.getTaxID());
 		// we never found a matching tax id, so this is a brand spanking new user
 		return CHECK_NEW_USER_BRAND_NEW;
 	}

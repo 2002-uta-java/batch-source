@@ -67,7 +67,8 @@ public interface BankAccountDao {
 	 * 
 	 * @param eba Bank account to be deleted. This must include, at least the
 	 *            account_key.
+	 * @returns Whether or not this delete was successful.
 	 */
-	public void deleteAccount(final EncryptedBankAccount eba);
+	public boolean deleteAccount(final EncryptedBankAccount eba);
 
 }

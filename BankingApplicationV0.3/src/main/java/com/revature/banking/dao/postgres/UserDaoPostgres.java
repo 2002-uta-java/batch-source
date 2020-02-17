@@ -51,6 +51,7 @@ public class UserDaoPostgres implements UserDao {
 				// setup EncryptedUser
 				final EncryptedUser eUser = new EncryptedUser();
 				eUser.setUserKey(rs.getInt("user_key"));
+				eUser.setTaxId(rs.getString("tax_id"));
 				eUser.setFirstName(rs.getString("firstname"));
 				eUser.setLastName(rs.getString("lastname"));
 				eUser.setUserName(rs.getString("username"));
@@ -81,13 +82,13 @@ public class UserDaoPostgres implements UserDao {
 			ps.setString(3, eUser.getLastName());
 			ps.setString(4, eUser.getUserName());
 			ps.setString(5, eUser.getPassword());
-
-			rs = ps.executeQuery();
-
-			if (ps.getUpdateCount() != 1) {
-				Logger.getRootLogger().debug("Update user account didn't update anything for user: " + eUser);
+			int updated = ps.executeUpdate();
+			if (updated != 1) {
+				Logger.getRootLogger().debug("Create new user updated " + updated + " rows (should have been 1).");
 				return false;
 			}
+
+			rs = ps.getGeneratedKeys();
 			while (rs.next()) {
 				// give eUser the user_key
 				eUser.setUserKey(rs.getInt("user_key"));
@@ -175,8 +176,27 @@ public class UserDaoPostgres implements UserDao {
 
 	@Override
 	public boolean deleteUser(EncryptedUser eUser) {
-		// TODO Auto-generated method stub
-		return false;
+		final String sql = "delete from users where user_key = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.setInt(1, eUser.getUserKey());
+			final int updated = ps.executeUpdate();
+
+			if (updated != 1) {
+				Logger.getRootLogger().error("Failed to delete user with user_key = " + eUser.getUserKey()
+						+ ", updated " + updated + " columns (should be 1)");
+				return false;
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().error("Failed to delete a user " + e.getMessage());
+			return false;
+		}
+
+		// everything went well
+		return true;
+
 	}
 
 	@Override

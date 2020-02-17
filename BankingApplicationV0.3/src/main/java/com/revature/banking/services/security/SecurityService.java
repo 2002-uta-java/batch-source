@@ -21,11 +21,15 @@ public class SecurityService {
 	}
 
 	public String decrypt(final String string) {
-		return ste.decrypt(string);
+		final String result = ste.decrypt(string);
+		Logger.getRootLogger().debug("Decrypting " + string + " to " + result);
+		return result;
 	}
 
 	public String encrypt(final String string) {
-		return ste.encrypt(string);
+		final String result = ste.encrypt(string);
+		Logger.getRootLogger().debug("Encrypting " + string + " to " + result);
+		return result;
 	}
 
 	/**

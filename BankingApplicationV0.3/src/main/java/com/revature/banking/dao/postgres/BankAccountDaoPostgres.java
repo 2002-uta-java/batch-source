@@ -58,17 +58,14 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql);) {
 			ps.setInt(1, eUser.getUserKey());
-			ps.setInt(1, eba.getAccountkey());
+			ps.setInt(2, eba.getAccountkey());
 
-			if (!ps.execute()) {
-				Logger.getRootLogger()
-						.error("Failed to execute SQL, didn't add user, " + eUser + ", to account " + eba);
-				return false;
-			}
+			final int updated = ps.executeUpdate();
 
-			if (ps.getUpdateCount() != 1) {
+			if (updated != 1) {
 				Logger.getRootLogger()
-						.error("Failed to execute SQL, didn't add user, " + eUser + ", to account " + eba);
+						.error("Adding user (user_key = " + eUser.getUserKey() + ") to account (account_key = "
+								+ eba.getAccountkey() + ") updated " + updated + " rows (should have been 1)");
 				return false;
 			}
 
@@ -84,21 +81,21 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 
 	@Override
 	public boolean createNewAccount(EncryptedBankAccount eba) {
-		final String sql = "insert into table accounts (account_no, balance) values (?, ?)";
+		final String sql = "insert into accounts (account_no, balance) values (?, ?)";
 		ResultSet rs = null;
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			ps.setString(1, eba.getAccountNo());
 			ps.setString(2, eba.getBalance());
 
-			rs = ps.executeQuery();
+			final int updated = ps.executeUpdate();
 
-			if (ps.getUpdateCount() != 1) {
-				Logger.getRootLogger().error("Didn't insert eba " + eba);
+			if (updated != 1) {
+				Logger.getRootLogger().error("Create New bank account updated " + updated + " rows (should be 1)");
 				return false;
 			}
+			rs = ps.getGeneratedKeys();
 
-			// need to set eba's account_key
 			while (rs.next()) {
 				eba.setAccountkey(rs.getInt("account_key"));
 			}
@@ -125,8 +122,23 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	}
 
 	@Override
-	public void deleteAccount(EncryptedBankAccount eba) {
-		// TODO Auto-generated method stub
+	public boolean deleteAccount(EncryptedBankAccount eba) {
+		final String sql = "delete from accounts where account_key = ?";
 
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.setInt(1, eba.getAccountkey());
+			final int updated = ps.executeUpdate();
+
+			if (updated != 1) {
+				Logger.getRootLogger().error("Delete Account, account_key = " + eba.getAccountkey() + ", deleted "
+						+ updated + " rows (should have been 1)");
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(
+					"Failed to delete account with account_key = " + eba.getAccountkey() + ": " + e.getMessage());
+		}
+		return true;
 	}
 }

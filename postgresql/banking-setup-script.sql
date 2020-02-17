@@ -34,3 +34,7 @@ drop table accounts;
 drop table user_accounts;
 
 drop table users;
+
+delete from user_accounts where user_key=5;
+
+select tax_id from users;
