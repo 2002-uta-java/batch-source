@@ -19,7 +19,7 @@ public class BankAccountService {
 		boolean running = true;
 		
 		while (running) {  
-			System.out.println("(Username: " + u.getUsername() + ")\nPress 1 to make a deposit, 2 to make a withdrawal, "
+			System.out.println("(Username: " + u.getUsername() + ") Press 1 to make a deposit, 2 to make a withdrawal, "
 																			  + "3 to view your balance, 4 to logout.");
 			
 		    try {
@@ -45,7 +45,8 @@ public class BankAccountService {
 		    	}
 		    }
 		    catch (InputMismatchException e) {
-		    	e.printStackTrace();
+//		    	e.printStackTrace();
+		    	s.nextLine();
 		    	System.out.println("Invalid input.");
 		    }
 		}
@@ -60,8 +61,8 @@ public class BankAccountService {
     		System.out.println("Enter your deposit amount (max balance = $999,999,999.99). Press # to cancel.");
     		try {
     			float depositRequest = roundTwoDecimal(s.nextFloat());
-    			float oldBalance = b.getBalance();
-    			float newBalance = oldBalance + depositRequest;
+    			float oldBalance = roundTwoDecimal(b.getBalance());
+    			float newBalance = roundTwoDecimal(oldBalance + depositRequest);
     			float MAX_BAL = (float) 999999999.99; // 11 total digits.
     			System.out.println("Depositing $" + depositRequest);
     			
@@ -100,8 +101,8 @@ public class BankAccountService {
     		System.out.println("Enter your withdrawal amount (min balance = $0.00). Press # to cancel.");
     		try {
     			float withdrawalRequest = roundTwoDecimal(s.nextFloat());
-    			float oldBalance = b.getBalance();
-    			float newBalance = oldBalance - withdrawalRequest;
+    			float oldBalance = roundTwoDecimal(b.getBalance());
+    			float newBalance = roundTwoDecimal(oldBalance - withdrawalRequest);
     			float MIN_BAL = (float) 0.00;
     			System.out.println("Withdrawing $" + withdrawalRequest);
     			

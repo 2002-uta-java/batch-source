@@ -73,7 +73,8 @@ public class LoginService {
 		    	}
 		    }
 		    catch (InputMismatchException e) {
-		    	e.printStackTrace();
+//		    	e.printStackTrace();
+		    	s.nextLine();
 		    	System.out.println("Invalid input.");
 		    }
 		}
