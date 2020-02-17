@@ -86,6 +86,7 @@ public class AccountDaoImpl implements AccountDao{
 				PreparedStatement ps = c.prepareStatement(sql);){
 			
 			ps.setString(1, username);
+			rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				String uN = rs.getString("username");
@@ -121,6 +122,7 @@ public class AccountDaoImpl implements AccountDao{
 				PreparedStatement ps = c.prepareStatement(sql);){
 			
 			ps.setInt(1, u.getBankId());
+			rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				int bankId = rs.getInt("bank_id");

@@ -9,7 +9,7 @@ import com.revature.models.UserAccount;
 
 public class BankAccountService {
 
-	public void bankAccountMenu(String username) {
+	public void bankAccountMenu(UserAccount u) {
 		
 	}
 	
