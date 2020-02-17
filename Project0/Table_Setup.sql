@@ -13,21 +13,26 @@ create table bank_account
 	primary key (bank_id)
 );
 
-create or replace procedure create_account (username user_account.username%type, user_password user_account.user_password%type)
+create or replace function create_account (un user_account.username%type, up user_account.user_password%type)
+returns setof user_account 
 language plpgsql
 as $$
 begin 
 	insert into bank_account (balance)
 	values (0.00);
 	insert into user_account (username, user_password)
-	values (username, user_password);
+	values (un, up);
+	return query select *
+				from user_account
+				where user_account.username = un;
 end
 $$
 
-call create_account('hitman', 'password');
+select create_account('javafix2', '2password');
 
 select *
 from bank_account;
 select *
 from user_account;
 
+drop function create_account;
