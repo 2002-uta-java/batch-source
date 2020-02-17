@@ -10,15 +10,14 @@ import com.revature.services.LoginService;
 // Persists data in PostGreSQL database using JDBC.
 // Showcases user accounts, usernames/passwords, login/out, bank accounts, balances,
 // deposit/withdraw/view, create account, ...
-// (hopefully include logging, checking/savings, transfer funds)
+// (hopefully include logging, mockito tests, checking/savings, transfer funds)
 
 public class Driver {
 
 	public static void main(String[] args) {
-		System.out.println("Application opening...");
 		
-		LoginService app = new LoginService();
-		app.login();
+		System.out.println("Application opening...");
+		LoginService.loginService();
 		
 		System.out.println("Application closing...");
 
