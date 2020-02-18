@@ -12,16 +12,12 @@ drop table if exists transactions;
 drop table if exists "authorization";
 drop table if exists Accounts;
 drop table if exists users;
-drop sequence if exists user_id_seq;
-drop sequence if exists accounts_id_seq;
-drop sequence if exists transactions_id_seq;
-
 
 
 create table Users
 (
 	UserID bigserial,
-	UserEmail VARCHAR (180),
+	UserEmail VARCHAR (180) unique not null,
 	UserName VARCHAR(180) not null,
 	Password VARCHAR(180) not null,
 	constraint PK_Users primary key (UserID)
@@ -35,27 +31,34 @@ create table Accounts
 	constraint PK_Accounts primary key (AccountID) 
 );
 
+create table "authorization"
+(
+	UserID bigserial  REFERENCES Users (UserID) on delete cascade,
+	AccountID bigserial REFERENCES Accounts (AccountID) on delete cascade,
+	TransactionID bigserial unique,
+	constraint Pk_Authorization primary key (TransactionID)
+);
+
+
 create table Transactions(
-	TransactionID bigserial unique not null,
+	TransactionID bigserial references "authorization" (TransactionID) on delete cascade,
 	Date timestamp not null,
 	Actions varChar(180),
 	tranasctionAmount double precision,
 	constraint Pk_Transactions primary key (TransactionID,Date) 
 );
 
-create table "authorization"
-(
-	UserID bigserial  REFERENCES Users (UserID) ON DELETE CASCADE ON UPDATE CASCADE,
-	AccountID bigserial REFERENCES Accounts (AccountID) ON DELETE CASCADE ON UPDATE cascade,
-	TransactionID bigserial references Transactions (TransactionID) on delete cascade on update cascade,
-	constraint Pk_Authorization primary key (UserID,AccountID)
-);
 
 
+-- create user
+create or replace function create_user(un users.username %type, ue users.useremail %type, pw users."password" %type ) returns bigint  as $$
+	insert into users (username, useremail ,"password" )
+	values (un,ue,pw)
+	returning userid
+$$ language sql;
 
-   
  -- returns the accounst matching the given userid  
-create or replace function accounts_by_userid(id "users"."userid" %type) returns setof accounts as $$
+create or replace function accounts_by_userid(id users.userid %type) returns setof accounts as $$
 	select * 
 	from accounts  a3 
 	where accountid  in
