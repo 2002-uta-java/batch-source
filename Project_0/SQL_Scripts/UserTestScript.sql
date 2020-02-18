@@ -34,16 +34,29 @@ $$ language sql;
 
 
  select create_user ('Bob', 'bob@something.com', '1234bob');
-select accounts_by_userid(1);
+
+select * 
+from users u1
+full outer join (
+	select * 
+	from "authorization" au1
+	full outer join accounts a1
+	on a1.accountid = au1.accountid 
+) as aau1
+on u1.userid = aau1.userid;
 
 
 
+delete  from users where userid = 1;
 
-
-
-delete from users;
-
-select * from users ;
-select * from "authorization";
-select * from accounts a ;
+select * 
+from users u1
+full outer join (
+	select * 
+	from "authorization" au1
+	full outer join accounts a1
+	on a1.accountid = au1.accountid 
+) as aau1
+on u1.userid = aau1.userid;
+alter sequence users_userid_seq restart with 1;
 -- view acount
