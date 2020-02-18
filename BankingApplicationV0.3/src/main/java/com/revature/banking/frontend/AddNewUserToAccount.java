@@ -1,17 +1,24 @@
 package com.revature.banking.frontend;
 
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
+import com.revature.banking.services.models.User;
 
 public class AddNewUserToAccount extends AccountInteraction {
 	public static final String TITLE = "Add a new user to this account.";
 
 	private BankAccount account;
+	private final CreateNewUser createNewUser;
 
 	protected AddNewUserToAccount(CLI io, UserService uService, BankAccountService baService) {
 		super(io, uService, baService);
 		this.setTitle(TITLE);
+		this.createNewUser = new CreateNewUser(io, uService, baService);
 	}
 
 	public void setAccount(final BankAccount account) {
@@ -20,8 +27,33 @@ public class AddNewUserToAccount extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
-//		final User newUser = 
-		return FAILURE;
+		io.clearScreen();
+		io.println("Create a New User:");
+		User newUser = null;
+		try {
+			newUser = createNewUser.getNewUser();
+		} catch (IOException e) {
+			Logger.getRootLogger().error("IOException: " + e.getMessage());
+			return FAILURE;
+		}
+
+		if (newUser == null)
+			return FAILURE;
+
+		// add this user to the account
+		if (baService.addUserToAccount(newUser.getUserKey(), account)) {
+			io.clearScreen();
+			io.println(newUser.getUserName() + " was successfully added to the following account:");
+			io.println('\t' + account.printAccountBalanceHideAccountno());
+			return SUCCESS;
+		} else {
+			// need to try and remove new user.
+			io.clearScreen();
+			io.println("There was an error trying to link " + newUser.getUserName() + " to the account");
+			if (uService.deleteUser(newUser))
+				io.println("We have removed " + newUser.getUserName() + " from our system.");
+			return FAILURE;
+		}
 	}
 
 }

@@ -16,6 +16,7 @@ public class LoginInteraction extends BankInteraction {
 		super.addMenuOption(new AddFunds(cli, uService, baService));
 		super.addMenuOption(new WithdrawFunds(cli, uService, baService));
 		super.addMenuOption(new OpenNewAccount(cli, uService, baService));
+		super.addMenuOption(new AddUserToAccount(cli, uService, baService));
 	}
 
 	@Override

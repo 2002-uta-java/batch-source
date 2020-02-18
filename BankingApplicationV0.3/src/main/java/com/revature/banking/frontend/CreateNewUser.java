@@ -130,7 +130,7 @@ public class CreateNewUser extends BankInteraction {
 		}
 	}
 
-	public User getNewUser() throws IOException {
+	protected User getNewUser() throws IOException {
 
 		final String firstName = getName("First");
 		if (firstName == null)

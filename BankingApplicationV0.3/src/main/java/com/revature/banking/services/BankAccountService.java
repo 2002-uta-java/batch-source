@@ -125,6 +125,13 @@ public class BankAccountService extends Service {
 		}
 	}
 
+	/**
+	 * Adds a user to the given account.
+	 * 
+	 * @param userKey user_key for the user to be added to this account.
+	 * @param account Bank account for the user to be added to.
+	 * @return Whether or not this operation was successful.
+	 */
 	public boolean addUserToAccount(final int userKey, final BankAccount account) {
 		return baDao.addUserToAccount(userKey, secService.encrypt(account));
 	}

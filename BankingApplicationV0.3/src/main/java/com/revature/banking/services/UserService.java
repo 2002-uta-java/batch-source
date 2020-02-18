@@ -219,7 +219,7 @@ public class UserService extends Service {
 
 	public boolean createUser(User newUser) {
 		final EncryptedUser eUser = secService.encrypt(newUser);
-		if (uDao.createNewUser(secService.encrypt(newUser))) {
+		if (uDao.createNewUser(eUser)) {
 			newUser.setUserKey(eUser.getUserKey());
 			return true;
 		}
