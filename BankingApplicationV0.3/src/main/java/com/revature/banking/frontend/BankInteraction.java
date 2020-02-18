@@ -58,7 +58,9 @@ public abstract class BankInteraction {
 	}
 
 	public int interact(final int choice) throws IOException {
-		return menuOptions.get(choice - 1).interact();
+		final int rtrn = menuOptions.get(choice - 1).interact();
+		Logger.getRootLogger().debug("interact returned " + rtrn);
+		return rtrn;
 	}
 
 	public abstract int interact() throws IOException;
@@ -94,7 +96,7 @@ public abstract class BankInteraction {
 				// number validation was successful, create an int and make sure it's a valid
 				// option
 				final int chosenOption = Integer.parseInt(chosen);
-				if (chosenOption < 1 || chosenOption > menuOptions.size()) {
+				if (chosenOption < 1 || chosenOption > numOptions) {
 					io.println(chosenOption + " is not a valid option");
 
 					if (!this.retry())

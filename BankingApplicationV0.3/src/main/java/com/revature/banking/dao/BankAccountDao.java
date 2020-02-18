@@ -82,4 +82,14 @@ public interface BankAccountDao {
 	 */
 	public List<EncryptedBankAccount> getAccountsByUserKey(int userKey);
 
+	/**
+	 * Updates the account given.
+	 * 
+	 * @param eba The account to updated (the balance and account_no will be
+	 *            overrided). It is assumed that the account_no does not actually
+	 *            change, only the encrypted value.
+	 * @return Whether or not this operation was successful.
+	 */
+	public boolean updateAccount(EncryptedBankAccount eba);
+
 }

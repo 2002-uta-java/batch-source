@@ -43,7 +43,7 @@ public class Validation {
 	/**
 	 * Regex for decimals with at most two decimal places
 	 */
-	public static final String AMOUNT_REGEX = "^\\d+(\\.\\d{1, 2})?$";
+	public static final String AMOUNT_REGEX = "^\\d+(\\.\\d{1,2})?$";
 	public static final Pattern AMOUNT_PATTERN = Pattern.compile(AMOUNT_REGEX);
 
 	public static final String DECIMAL_REGEX = "^-?\\d+(\\.\\d+)?$";

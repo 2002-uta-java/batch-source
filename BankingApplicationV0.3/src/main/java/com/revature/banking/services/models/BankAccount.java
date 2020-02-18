@@ -109,4 +109,8 @@ public class BankAccount {
 	public String toString() {
 		return "BankAccount [accountKey=" + accountKey + ", accountNo=" + accountNo + ", balance=" + balance + "]";
 	}
+
+	public void addFunds(double amount) {
+		this.balance += amount;
+	}
 }

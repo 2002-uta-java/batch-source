@@ -80,4 +80,9 @@ public class BankAccountService extends Service {
 
 		return accounts;
 	}
+
+	public boolean addFunds(final BankAccount account, final double amount) {
+		final EncryptedBankAccount eba = secService.encrypt(account);
+		return baDao.updateAccount(eba);
+	}
 }

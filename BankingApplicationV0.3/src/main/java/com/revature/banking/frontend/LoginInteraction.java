@@ -9,13 +9,11 @@ import com.revature.banking.services.models.User;
 public class LoginInteraction extends BankInteraction {
 	public static final String TITLE = "Login";
 
-	private final ViewAccountBalance viewBalance;
-
 	public LoginInteraction(final CLI cli, final UserService uService, final BankAccountService baService) {
 		super(cli, uService, baService);
 		super.setTitle(TITLE);
-		viewBalance = new ViewAccountBalance(cli, uService, baService);
-		super.addMenuOption(viewBalance);
+		super.addMenuOption(new ViewAccountBalance(cli, uService, baService));
+		super.addMenuOption(new AddFunds(cli, uService, baService));
 	}
 
 	@Override
@@ -55,6 +53,15 @@ public class LoginInteraction extends BankInteraction {
 				return BankInteraction.FAILURE;
 			default:
 				this.interact(choice);
+			}
+
+			switch (this.interact()) {
+			case BankInteraction.EXIT:
+				return BankInteraction.EXIT;
+			case BankInteraction.LOGOUT:
+				logoutUser();
+				return BankInteraction.LOGOUT;
+			// default is to just return to menu above
 			}
 		}
 	}

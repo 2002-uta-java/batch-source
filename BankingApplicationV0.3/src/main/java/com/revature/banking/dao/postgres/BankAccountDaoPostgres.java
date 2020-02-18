@@ -180,4 +180,27 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 
 		return accounts;
 	}
+
+	@Override
+	public boolean updateAccount(final EncryptedBankAccount eba) {
+		final String sql = "update accounts set account_no = ?, balance = ? where account_key = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.setString(1, eba.getAccountNo());
+			ps.setString(2, eba.getBalance());
+			ps.setInt(3, eba.getAccountkey());
+
+			int updated = ps.executeUpdate();
+			if (updated != 1) {
+				Logger.getRootLogger().error("Update account updated " + updated + " rows (should be 1)");
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().fatal("Failed to update account (" + eba.getAccountkey() + "):" + e.getMessage());
+			return false;
+		}
+
+		return true;
+	}
 }

@@ -89,3 +89,67 @@
 2020-02-17 20:12:21 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
 2020-02-17 20:12:26 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
 2020-02-17 20:12:26 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:37:37 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:39:11 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:39:22 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:39:22 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:39:22 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:39:25 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:39:25 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:39:28 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:39:28 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:40:25 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:40:35 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:40:35 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:40:35 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:40:38 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:40:38 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:42:48 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:42:59 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:42:59 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:42:59 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:43:04 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:43:04 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:43:12 DEBUG SecurityService:31 method: encrypt - Encrypting 2394876359 to v/f2NLEFlbG0UKnA68i2N/BLwWa6SHPo
+2020-02-17 21:43:12 DEBUG SecurityService:31 method: encrypt - Encrypting 50.0 to NyZGtvp5LzNkn6KL6QQj2Q==
+2020-02-17 21:43:13 FATAL BankAccountDaoPostgres:200 method: updateAccount - Failed to update account (1):ERROR: syntax error at or near "("
+  Position: 17
+2020-02-17 21:43:20 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:43:20 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:47:21 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:47:30 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:47:30 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:47:30 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:47:33 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 21:47:33 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 21:47:36 DEBUG SecurityService:31 method: encrypt - Encrypting 2394876359 to nJN62enguuGtg2xkbSVoBOWlouot7XMk
+2020-02-17 21:47:37 DEBUG SecurityService:31 method: encrypt - Encrypting 50.0 to jvMliKHuROngpwZ2ke7hKg==
+2020-02-17 21:47:46 DEBUG SecurityService:25 method: decrypt - Decrypting nJN62enguuGtg2xkbSVoBOWlouot7XMk to 2394876359
+2020-02-17 21:47:46 DEBUG SecurityService:25 method: decrypt - Decrypting jvMliKHuROngpwZ2ke7hKg== to 50.0
+2020-02-17 21:48:10 DEBUG SecurityService:25 method: decrypt - Decrypting nJN62enguuGtg2xkbSVoBOWlouot7XMk to 2394876359
+2020-02-17 21:48:10 DEBUG SecurityService:25 method: decrypt - Decrypting jvMliKHuROngpwZ2ke7hKg== to 50.0
+2020-02-17 21:48:15 DEBUG SecurityService:31 method: encrypt - Encrypting 2394876359 to 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8
+2020-02-17 21:48:15 DEBUG SecurityService:31 method: encrypt - Encrypting 69.0 to nZ5Ht8Sh1iy9fDhlqs1vtw==
+2020-02-17 21:48:22 DEBUG SecurityService:25 method: decrypt - Decrypting 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8 to 2394876359
+2020-02-17 21:48:22 DEBUG SecurityService:25 method: decrypt - Decrypting nZ5Ht8Sh1iy9fDhlqs1vtw== to 69.0
+2020-02-17 21:48:42 DEBUG SecurityService:25 method: decrypt - Decrypting 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8 to 2394876359
+2020-02-17 21:48:42 DEBUG SecurityService:25 method: decrypt - Decrypting nZ5Ht8Sh1iy9fDhlqs1vtw== to 69.0
+2020-02-17 21:49:52 DEBUG SecurityService:25 method: decrypt - Decrypting 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8 to 2394876359
+2020-02-17 21:49:52 DEBUG SecurityService:25 method: decrypt - Decrypting nZ5Ht8Sh1iy9fDhlqs1vtw== to 69.0
+2020-02-17 21:52:34 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:52:45 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:52:45 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:52:45 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:52:47 DEBUG SecurityService:25 method: decrypt - Decrypting 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8 to 2394876359
+2020-02-17 21:52:47 DEBUG SecurityService:25 method: decrypt - Decrypting nZ5Ht8Sh1iy9fDhlqs1vtw== to 69.0
+2020-02-17 21:53:24 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:53:24 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:53:24 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:58:27 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 21:58:39 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:58:39 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:58:39 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 21:58:42 DEBUG SecurityService:25 method: decrypt - Decrypting 6yqferUKokMS5GzXeGt6/6/Qp+ZO2aP8 to 2394876359
+2020-02-17 21:58:42 DEBUG SecurityService:25 method: decrypt - Decrypting nZ5Ht8Sh1iy9fDhlqs1vtw== to 69.0
+2020-02-17 21:58:49 DEBUG BankInteraction:62 method: interact - interact returned -5
+2020-02-17 21:59:03 DEBUG BankInteraction:62 method: interact - interact returned -3
