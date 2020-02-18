@@ -69,43 +69,9 @@ public class UserDaoPostgres implements UserDao {
 	}
 
 	@Override
-	public boolean createNewUser(final EncryptedUser eUser, final EncryptedBankAccount eba) {
-		// add new user to database
-		final String newUserSQL = "insert into users (tax_id, firstname, lastname, "
-				+ "username, password) values (?,?,?,?,?)";
-		ResultSet rs = null;
-
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(newUserSQL, Statement.RETURN_GENERATED_KEYS);) {
-			ps.setString(1, eUser.getTaxId());
-			ps.setString(2, eUser.getFirstName());
-			ps.setString(3, eUser.getLastName());
-			ps.setString(4, eUser.getUserName());
-			ps.setString(5, eUser.getPassword());
-			int updated = ps.executeUpdate();
-			if (updated != 1) {
-				Logger.getRootLogger().debug("Create new user updated " + updated + " rows (should have been 1).");
-				return false;
-			}
-
-			rs = ps.getGeneratedKeys();
-			while (rs.next()) {
-				// give eUser the user_key
-				eUser.setUserKey(rs.getInt("user_key"));
-			}
-		} catch (SQLException e) {
-			// this is a fatal error (probably means we weren't able to connect)
-			Logger.getRootLogger().fatal("Create New User, " + eUser + ", failed: " + e.getMessage());
+	public boolean createNewUserAndAccount(final EncryptedUser eUser, final EncryptedBankAccount eba) {
+		if (!createNewUser(eUser))
 			return false;
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
-				}
-		}
-
 		// create the new account
 		if (!baDao.createNewAccount(eba)) {
 			// the user was added but the creation of their bank account failed. So try to
@@ -239,5 +205,76 @@ public class UserDaoPostgres implements UserDao {
 		}
 
 		return eUser;
+	}
+
+	@Override
+	public boolean createNewUser(EncryptedUser eUser) {
+		// add new user to database
+		final String newUserSQL = "insert into users (tax_id, firstname, lastname, "
+				+ "username, password) values (?,?,?,?,?)";
+		ResultSet rs = null;
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(newUserSQL, Statement.RETURN_GENERATED_KEYS);) {
+			ps.setString(1, eUser.getTaxId());
+			ps.setString(2, eUser.getFirstName());
+			ps.setString(3, eUser.getLastName());
+			ps.setString(4, eUser.getUserName());
+			ps.setString(5, eUser.getPassword());
+			int updated = ps.executeUpdate();
+			if (updated != 1) {
+				Logger.getRootLogger().debug("Create new user updated " + updated + " rows (should have been 1).");
+				return false;
+			}
+
+			rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				// give eUser the user_key
+				eUser.setUserKey(rs.getInt("user_key"));
+			}
+		} catch (SQLException e) {
+			// this is a fatal error (probably means we weren't able to connect)
+			Logger.getRootLogger().fatal("Create New User, " + eUser + ", failed: " + e.getMessage());
+			return false;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+		}
+		// if we made it this far it was a success!!!
+		return true;
+	}
+
+	@Override
+	public boolean updateUser(EncryptedUser eUser) {
+		final String sql = "update users set tax_id=?, firstname=?, lastname=?,username=?, password=? where user_key=?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+
+			ps.setString(1, eUser.getTaxId());
+			ps.setString(2, eUser.getFirstName());
+			ps.setString(3, eUser.getLastName());
+			ps.setString(4, eUser.getUserName());
+			ps.setString(5, eUser.getPassword());
+			ps.setInt(6, eUser.getUserKey());
+
+			final int updated = ps.executeUpdate();
+
+			if (updated != 1) {
+				Logger.getRootLogger().error("UpdateUser updated " + updated + " rows (should have been 1)");
+				return false;
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().error("Failed to update user, " + eUser.getUserKey() + ": " + e.getMessage());
+			return false;
+		}
+
+		// everything went off without a hitch
+		return true;
 	}
 }

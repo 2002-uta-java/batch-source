@@ -54,6 +54,15 @@ public interface UserDao {
 	public List<EncryptedUser> getAllUsers();
 
 	/**
+	 * This creates a new user in the database. This does <i>not</i> create or link
+	 * an account.
+	 * 
+	 * @param eUser User crendentials to be added.
+	 * @return Whether or not this was succesful.
+	 */
+	public boolean createNewUser(final EncryptedUser eUser);
+
+	/**
 	 * This creates a new user in the database and creates (and links) the given
 	 * bank account to their user account.
 	 * 
@@ -62,7 +71,7 @@ public interface UserDao {
 	 * @param eba   Bank Account information to be added to the database.
 	 * @return Wether or not this action was successful.
 	 */
-	public boolean createNewUser(final EncryptedUser eUser, final EncryptedBankAccount eba);
+	public boolean createNewUserAndAccount(final EncryptedUser eUser, final EncryptedBankAccount eba);
 
 	/**
 	 * This is intended to be used when a User already exists but has no open
@@ -110,4 +119,15 @@ public interface UserDao {
 	 *         such record exists.
 	 */
 	public EncryptedUser getUserByUserName(String username);
+
+	/**
+	 * Updates a user that should already exist in the database. The user's user_key
+	 * must be set for this to work. This method will attempt to update everything
+	 * held in eUser (it does not check for consistency in terms of the tax id or
+	 * names not changing).
+	 * 
+	 * @param eUser The user to be updated.
+	 * @return Whether or not this was successful.
+	 */
+	public boolean updateUser(EncryptedUser eUser);
 }

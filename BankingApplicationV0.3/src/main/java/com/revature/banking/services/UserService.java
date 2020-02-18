@@ -173,11 +173,11 @@ public class UserService extends Service {
 	 *                user (first name, last name, tax id, user name, and password).
 	 * @return The newly created BankAccount object associated with this user.
 	 */
-	public BankAccount createNewUser(User newUser) {
+	public BankAccount createNewUserAndAccount(User newUser) {
 		final EncryptedUser eUser = secService.encrypt(newUser);
 		final EncryptedBankAccount eba = baService.getNewAccount();
 
-		if (uDao.createNewUser(eUser, eba))
+		if (uDao.createNewUserAndAccount(eUser, eba))
 			return secService.decrypt(eba);
 		// else it failed, return null
 		return null;
@@ -211,5 +211,22 @@ public class UserService extends Service {
 		// else either the username doesn't exist or the password didn't match (don't
 		// tell the user which one it was)
 		return null;
+	}
+
+	public boolean updateUser(User newUser) {
+		return uDao.updateUser(secService.encrypt(newUser));
+	}
+
+	public boolean createUser(User newUser) {
+		final EncryptedUser eUser = secService.encrypt(newUser);
+		if (uDao.createNewUser(secService.encrypt(newUser))) {
+			newUser.setUserKey(eUser.getUserKey());
+			return true;
+		}
+		return false;
+	}
+
+	public boolean deleteUser(User newUser) {
+		return uDao.deleteUser(secService.encrypt(newUser));
 	}
 }

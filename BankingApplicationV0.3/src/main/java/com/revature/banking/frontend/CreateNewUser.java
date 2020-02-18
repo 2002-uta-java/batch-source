@@ -7,6 +7,7 @@ import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
 import com.revature.banking.services.models.User;
+import com.revature.banking.services.security.models.EncryptedBankAccount;
 
 public class CreateNewUser extends BankInteraction {
 	public static final String TITLE = "Create new user and account.";
@@ -18,105 +19,30 @@ public class CreateNewUser extends BankInteraction {
 
 	@Override
 	public int interact() throws IOException {
-		final String firstName = getName("First");
-		if (firstName == null)
-			return BankInteraction.FAILURE;
+		final User newUser = getNewUser();
 
-		final String lastName = getName("Last");
-		if (lastName == null)
-			return BankInteraction.FAILURE;
-		final User newUser = new User();
-		newUser.setFirstName(firstName);
-		newUser.setLastName(lastName);
+		if (newUser != null) {
 
-		String taxId = getTaxId(newUser);
-		if (taxId == null)
-			return BankInteraction.FAILURE;
-
-		newUser.setTaxID(taxId);
-
-		// this user has successfully given their first and last name and a "valid" tax
-		// id. This user is ready to be added to the database and an account created.
-
-		// get a username for this person
-		String username = getUserName();
-		if (username == null)
-			return BankInteraction.FAILURE;
-
-		newUser.setUserName(username);
-
-		int checkUserNameTaxIdStatus;
-
-		while (true) {
-			// check tax id and username against what's in the database
-			checkUserNameTaxIdStatus = uService.checkNewUserTaxidAndUserName(newUser);
-
-			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT) {
-				io.println("You already have an account." + " If you need help logging in please call"
-						+ " our customer support line at 1-800-BAD-PHONE.");
-				return BankInteraction.FAILURE;
+			final BankAccount account = baService.createNewAccount();
+			if (account != null && baService.addUserToAccount(newUser.getUserKey(), account)) {
+				io.println("You have been added to the system.");
+				io.println("Your new bank account number is " + account.getAccountNo());
+				io.println("You should now be able to login to the system with your user name (" + newUser.getUserName()
+						+ ") and password.");
+				return BankInteraction.SUCCESS;
+			} else {
+				// attempt to delete the bank account and user
+				if (account != null) {
+					baService.deleteAccount(account);
+				}
+				// attempt to remove user
+				uService.deleteUser(newUser);
 			}
-
-			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_TAX_ID) {
-				io.println("The tax id and name you provided does not match" + " what we have on file. "
-						+ "Did you enter the wrong tax id?");
-				if (!super.retry())
-					return BankInteraction.FAILURE;
-
-				// try to get a new tax id
-				taxId = getTaxId(newUser);
-				if (taxId == null)
-					return BankInteraction.FAILURE;
-				// else reset taxid of newUser
-				newUser.setTaxID(taxId);
-				// loop and check again
-				continue;
-			}
-
-			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_USERNAME_EXISTS) {
-				io.println("This username already exists.");
-				if (!super.retry())
-					return BankInteraction.FAILURE;
-				// else set username and try again
-				username = getUserName();
-				if (username == null)
-					return BankInteraction.FAILURE;
-				// else reset newUser username and check again
-				newUser.setUserName(username);
-				continue;
-			}
-
-			// if we got this far, (without returning or continuing) the taxid and username
-			// check passed so break out of loop
-			break;
 		}
 
-		final String password = getPassword();
-		if (password == null)
-			return BankInteraction.FAILURE;
-
-		newUser.setPassword(password);
-
-		BankAccount account = null;
-
-		switch (checkUserNameTaxIdStatus) {
-		case UserService.CHECK_NEW_USER_BRAND_NEW:
-			account = uService.createNewUser(newUser);
-			break;
-		case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
-			account = uService.updateUserCreateNewAccount(newUser);
-		}
-
-		if (account != null) {
-			io.println("You have been added to the system.");
-			io.println("Your new bank account number is " + account.getAccountNo());
-			io.println("You should now be able to login to the system with your user name (" + newUser.getUserName()
-					+ ") and password.");
-			return BankInteraction.SUCCESS;
-		} else {
-			io.println("There was an error and you were not added.");
-			return BankInteraction.FAILURE;
-		}
+		// it would have returned it it were successful
+		io.println("There was an error and you were not added.");
+		return BankInteraction.FAILURE;
 	}
 
 	private String getUserName() throws IOException {
@@ -177,40 +103,6 @@ public class CreateNewUser extends BankInteraction {
 				// else try again
 			} else
 				return taxid;
-//			else {
-//				final String newTaxId = taxid;
-//				user.setTaxID(newTaxId);
-//				final int newUserCheck = uService.checkNewUserTaxid(user);
-//				switch (newUserCheck) {
-			// it's necessary to distinguish these two cases because if the user is already
-			// in the system, the checkNewUserTaxId will set the User's user_key so that
-			// when creating the login (user name and password) we can directly update the
-			// row instead of having to redo the search for tax id (or worse, creating a new
-			// record with a duplicate tax id).
-//				case UserService.CHECK_NEW_USER_BRAND_NEW:
-//					return UserService.CHECK_NEW_USER_BRAND_NEW;
-//				case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
-//					return UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS;
-//
-//				case UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT:
-//					io.println("You already have an account." + " If you need help logging in please call"
-//							+ " our customer support line at 1-800-BAD-PHONE.");
-//					return UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
-//				case UserService.CHECK_NEW_USER_INVALID_TAX_ID:
-//					io.println("The tax id and name you provided does not match" + " what we have on file. "
-//							+ "Did you enter the wrong tax id?");
-//					break;
-//				default:
-//					throw new RuntimeException("UserService returned an unrecognized value.");
-//				}
-			// if the above switch statement didn't return anything, then we had a tax id
-			// mismatch. Ask the user to try again (if they wish) or just return that status
-			// code.
-//				if (!this.retry())
-//					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
-			// else continue
-//		}
-//	}
 		}
 
 	}
@@ -236,5 +128,114 @@ public class CreateNewUser extends BankInteraction {
 			// else return their name
 			return name;
 		}
+	}
+
+	public User getNewUser() throws IOException {
+
+		final String firstName = getName("First");
+		if (firstName == null)
+			return null;
+
+		final String lastName = getName("Last");
+		if (lastName == null)
+			return null;
+		final User newUser = new User();
+		newUser.setFirstName(firstName);
+		newUser.setLastName(lastName);
+
+		String taxId = getTaxId(newUser);
+		if (taxId == null)
+			return null;
+
+		newUser.setTaxID(taxId);
+
+		// this user has successfully given their first and last name and a "valid" tax
+		// id. This user is ready to be added to the database and an account created.
+
+		// get a username for this person
+		String username = getUserName();
+		if (username == null)
+			return null;
+
+		newUser.setUserName(username);
+
+		int checkUserNameTaxIdStatus;
+
+		while (true) {
+			// check tax id and username against what's in the database
+			checkUserNameTaxIdStatus = uService.checkNewUserTaxidAndUserName(newUser);
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT) {
+				io.println("You already have an account." + " If you need help logging in please call"
+						+ " our customer support line at 1-800-BAD-PHONE.");
+				return null;
+			}
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_TAX_ID) {
+				io.println("The tax id and name you provided does not match" + " what we have on file. "
+						+ "Did you enter the wrong tax id?");
+				if (!super.retry())
+					return null;
+
+				// try to get a new tax id
+				taxId = getTaxId(newUser);
+				if (taxId == null)
+					return null;
+				// else reset taxid of newUser
+				newUser.setTaxID(taxId);
+				// loop and check again
+				continue;
+			}
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_USERNAME_EXISTS) {
+				io.println("This username already exists.");
+				if (!super.retry())
+					return null;
+				// else set username and try again
+				username = getUserName();
+				if (username == null)
+					return null;
+				// else reset newUser username and check again
+				newUser.setUserName(username);
+				continue;
+			}
+
+			// if we got this far, (without returning or continuing) the taxid and username
+			// check passed so break out of loop
+			break;
+		}
+
+		final String password = getPassword();
+		if (password == null)
+			return null;
+
+		newUser.setPassword(password);
+
+		BankAccount account = null;
+		if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS) {
+			if (uService.updateUser(newUser))
+				return newUser;
+			else
+				return null;
+
+		} else {
+			if (uService.createUser(newUser))
+				return newUser;
+			else
+				return null;
+		}
+
+//	{
+//		if (uService.createNewUserAndAccount(newUser)) {
+//			return newUser;
+//		}
+
+//		switch (checkUserNameTaxIdStatus) {
+//		case UserService.CHECK_NEW_USER_BRAND_NEW:
+//			account = uService.createNewUserAndAccount(newUser);
+//			break;
+//		case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
+//			account = uService.updateUserCreateNewAccount(newUser);
+//		}
 	}
 }

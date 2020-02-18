@@ -125,6 +125,10 @@ public class BankAccountService extends Service {
 		}
 	}
 
+	public boolean addUserToAccount(final int userKey, final BankAccount account) {
+		return baDao.addUserToAccount(userKey, secService.encrypt(account));
+	}
+
 	public BankAccount addAccountToUser(User user) {
 		final EncryptedBankAccount eba = this.getNewAccount();
 		if (baDao.createNewAccount(eba)) {
@@ -139,5 +143,18 @@ public class BankAccountService extends Service {
 			}
 		} else
 			return null;
+	}
+
+	public BankAccount createNewAccount() {
+		final EncryptedBankAccount eba = getNewAccount();
+		if (baDao.createNewAccount(eba)) {
+			return secService.decrypt(eba);
+		}
+		// else it failed
+		return null;
+	}
+
+	public boolean deleteAccount(BankAccount account) {
+		return baDao.deleteAccount(secService.encrypt(account));
 	}
 }
