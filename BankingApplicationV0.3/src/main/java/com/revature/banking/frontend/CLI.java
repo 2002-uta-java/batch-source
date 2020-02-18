@@ -3,7 +3,7 @@ package com.revature.banking.frontend;
 import java.io.IOException;
 
 public interface CLI {
-	public static final String CLEAR_LINUX_SCREEN = "\\033[H\\033[2J";
+	public static final String CLEAR_LINUX_SCREEN = "\033[H\033[2J";
 
 	public void println(final String line);
 
