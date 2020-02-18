@@ -19,7 +19,7 @@ public class BankAccountService {
 		boolean running = true;
 		
 		while (running) {  
-			System.out.println("(Username: " + u.getUsername() + "BankId: " + u.getBankId() + ")\n"
+			System.out.println("(Username: " + u.getUsername() + "  BankId: " + u.getBankId() + ")\n"
 				     + "Press 1 to make a deposit, 2 to make a withdrawal, 3 to view your balance, "
 															 + "4 to transfer funds, 5 to logout.");
 			
@@ -49,7 +49,6 @@ public class BankAccountService {
 		    	}
 		    }
 		    catch (InputMismatchException e) {
-//		    	e.printStackTrace();
 		    	s.nextLine();
 		    	System.out.println("Invalid input.");
 		    }
@@ -92,7 +91,6 @@ public class BankAccountService {
     				}
     			}
     			catch (InputMismatchException e1) {
-    				e1.printStackTrace();
     				System.out.println("Invalid input.");
     			}
     		}
@@ -135,7 +133,6 @@ public class BankAccountService {
     				}
     			}
     			catch (InputMismatchException e1) {
-    				e1.printStackTrace();
     				System.out.println("Invalid input.");
     			}
     		}
@@ -165,27 +162,36 @@ public class BankAccountService {
     			}
     			else {
     				System.out.println("Enter the BankId of the account you'd like to transfer funds to.");
-    				int bankId2 = s.nextInt(); // be able to handle the nextline bug, even with invalid entries
     				
-    				if (bankAccountExists(bankId2)) {
-	    				BankAccount b2 = dao.getBankAccountByBankId(bankId2);
-	    				float oldBalance2 = roundTwoDecimal(b2.getBalance());
-	        			float newBalance2 = roundTwoDecimal(oldBalance2 + transferRequest);
-	        			
-	        			if (newBalance2 > MAX_BAL) {
-	        				System.out.println("Cancelling transfer (max capacity issue).");
-	        			}
-	        			else {
-		    				b1.setBalance(newBalance1);
-		    				b2.setBalance(newBalance2);
-		    				dao.updateBankAccount(b1);
-		    				dao.updateBankAccount(b2);
-		    				System.out.println("Transfer successful!");
-		    				break;
-	        			}
+    				try {
+	    				int bankId2 = s.nextInt(); // be able to handle the nextline bug, even with invalid entries
+	    				s.nextLine();
+	    				
+	    				if (bankAccountExists(bankId2)) {
+		    				BankAccount b2 = dao.getBankAccountByBankId(bankId2);
+		    				float oldBalance2 = roundTwoDecimal(b2.getBalance());
+		        			float newBalance2 = roundTwoDecimal(oldBalance2 + transferRequest);
+		        			
+		        			if (newBalance2 > MAX_BAL) {
+		        				System.out.println("Cancelling transfer (max capacity issue).");
+		        			}
+		        			else {
+			    				b1.setBalance(newBalance1);
+			    				b2.setBalance(newBalance2);
+			    				dao.updateBankAccount(b1);
+			    				dao.updateBankAccount(b2);
+			    				System.out.println("Transfer successful!");
+			    				break;
+		        			}
+	    				}
+	    				else {
+		    				System.out.println("BankId does not exist.");
+	    				}
+	    				
     				}
-	    			else {
-	    				System.out.println("BankId does not exist.");
+    				catch (InputMismatchException e2) {
+    					s.nextLine();
+    					System.out.println("Invalid input.");
     				}
     			}
     		}
@@ -200,7 +206,6 @@ public class BankAccountService {
     				}
     			}
     			catch (InputMismatchException e1) {
-    				e1.printStackTrace();
     				System.out.println("Invalid input.");
     			}
     		}

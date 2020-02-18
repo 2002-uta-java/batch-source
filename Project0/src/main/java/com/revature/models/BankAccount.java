@@ -14,7 +14,7 @@ public class BankAccount {
 		return this.bankId;
 	}
 	
-	public void setBankId(int newBankId) { // is this needed?
+	public void setBankId(int newBankId) {
 		bankId = newBankId;
 	}
 	
@@ -22,7 +22,7 @@ public class BankAccount {
 		return this.balance;
 	}
 	
-	public void setBalance(float newBalance) { // probably handle negative balance check in bank account services.
+	public void setBalance(float newBalance) {
 		balance = newBalance;
 	}
 	

@@ -50,7 +50,7 @@ public class UserAccountService {
 	    						UserAccount u = new UserAccount(newUsername, newPassword);
 	    						u = dao.createAccount(u);
 	    						System.out.println("New user and bank account created! (username: " + u.getUsername() 
-	    																	 + " bankId: " + u.getBankId() + ")");
+	    																	 + "  bankId: " + u.getBankId() + ")");
 	    						break;
 	    					}
 	    				}
@@ -58,7 +58,6 @@ public class UserAccountService {
 				}
 			}
 			catch (InputMismatchException e) {
-				e.printStackTrace();
 				System.out.println("Invalid input.");
 			}
 		}
