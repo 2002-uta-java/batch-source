@@ -85,24 +85,14 @@ public abstract class BankInteraction {
 					return EXIT;
 				if (chosen.equalsIgnoreCase(LOGOUT_STRING))
 					return LOGOUT;
-				// else this is a bad input
-				io.println("Please choose an option, you typed " + chosen);
 
-				if (!this.retry())
-					return FAILURE;
-				else
-					return BankInteraction.TRY_AGAIN;
+				return FAILURE;
 			} else {
 				// number validation was successful, create an int and make sure it's a valid
 				// option
 				final int chosenOption = Integer.parseInt(chosen);
 				if (chosenOption < 1 || chosenOption > numOptions) {
-					io.println(chosenOption + " is not a valid option");
-
-					if (!this.retry())
-						return FAILURE;
-					else
-						return BankInteraction.TRY_AGAIN;
+					return FAILURE;
 				} else
 					return chosenOption;
 			}
@@ -121,25 +111,28 @@ public abstract class BankInteraction {
 			}
 			io.println("Please choose an option (or you can choose " + EXIT_STRING + " or " + LOGOUT_STRING + ").");
 
-			option = readOption(menuOptions.size());
-			if (option != BankInteraction.TRY_AGAIN)
-				return option;
-			// else try again
+			return readOption(menuOptions.size());
+			// TODO don't ask to retry here (most likely you should just re print the menu
 		}
 	}
 
-	public boolean retry() throws IOException {
-		io.println("Would you like to retry (y/n)?");
-		final String response = io.readLine().trim();
+	public boolean retry() {
+		try {
+			io.println("Would you like to retry (y/n)?");
+			final String response = io.readLine().trim();
 
-		if (response.equalsIgnoreCase("y")) {
-			io.println();
-			io.println();
-			return true;
-		} else if (response.equalsIgnoreCase("n"))
-			return false;
-		else {
-			io.println("You didn't type y or n, so I'm taking that as a no.");
+			if (response.equalsIgnoreCase("y")) {
+				io.println();
+				io.println();
+				return true;
+			} else if (response.equalsIgnoreCase("n"))
+				return false;
+			else {
+				io.println("You didn't type y or n, so I'm taking that as a no.");
+				return false;
+			}
+		} catch (IOException ioe) {
+			Logger.getRootLogger().error("IOExcetion: " + ioe.getMessage());
 			return false;
 		}
 	}

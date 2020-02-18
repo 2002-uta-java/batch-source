@@ -1,6 +1,7 @@
 package com.revature.banking.frontend;
 
 import java.io.BufferedReader;
+
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,12 +19,16 @@ public class ConsoleCLI implements CLI {
 	private final Console console;
 	private final BufferedReader in;
 	private final PrintStream out;
+//	private ConsoleReader console;
+	private final boolean isLinux;
 
 	public ConsoleCLI() {
 		super();
 		this.console = System.console();
+
 		this.in = console == null ? new BufferedReader(new InputStreamReader(System.in)) : null;
 		this.out = console == null ? System.out : null;
+		this.isLinux = System.getProperty("os.name").equals(CLI.LINUX_OS);
 	}
 
 	@Override
@@ -32,6 +37,7 @@ public class ConsoleCLI implements CLI {
 			console.printf(line + System.lineSeparator());
 		else
 			out.println(line);
+
 	}
 
 	@Override
@@ -52,9 +58,10 @@ public class ConsoleCLI implements CLI {
 
 	@Override
 	public String readPassword() throws IOException {
-		if (console != null)
-			return new String(console.readPassword());
-		else
+		if (console != null) {
+			final String password = new String(console.readPassword());
+			return password;
+		} else
 			return in.readLine();
 	}
 
@@ -68,7 +75,12 @@ public class ConsoleCLI implements CLI {
 
 	@Override
 	public void clearScreen() {
-		this.print(CLI.CLEAR_LINUX_SCREEN);
+		if (isLinux) {
+			this.print(CLI.CLEAR_LINUX_SCREEN);
+		} else {
+			this.println();
+			this.println();
+		}
 	}
 
 }

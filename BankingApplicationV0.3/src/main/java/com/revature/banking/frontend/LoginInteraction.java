@@ -29,8 +29,11 @@ public class LoginInteraction extends BankInteraction {
 				io.println("username/password pair is invalid.");
 				if (!super.retry())
 					return BankInteraction.FAILURE;
+				io.clearScreen();
+				continue;
 			}
 
+			io.clearScreen();
 			io.println("You are now logged in");
 			loginUser(user);
 			break;
@@ -41,27 +44,34 @@ public class LoginInteraction extends BankInteraction {
 
 			final int choice = getMenu();
 
-			switch (choice) {
-			case BankInteraction.EXIT:
-				return BankInteraction.EXIT;
-			case BankInteraction.LOGOUT:
-				logoutUser();
-				return BankInteraction.LOGOUT;
-			case BankInteraction.FAILURE:
-				io.println("You've been logged out.");
-				logoutUser();
-				return BankInteraction.FAILURE;
-			default:
-				this.interact(choice);
+			if (choice == BankInteraction.FAILURE) {
+				if (!retry())
+					return BankInteraction.LOGOUT;
+				io.clearScreen();
+				continue;
 			}
 
-			switch (this.interact()) {
+			switch (choice) {
 			case BankInteraction.EXIT:
-				return BankInteraction.EXIT;
+				return EXIT;
 			case BankInteraction.LOGOUT:
 				logoutUser();
 				return BankInteraction.LOGOUT;
-			// default is to just return to menu above
+			}
+
+			// clear the screen for the next interaction
+			io.clearScreen();
+
+			// do the interaction
+			switch (this.interact(choice)) {
+			case EXIT:
+				return EXIT;
+			case LOGOUT:
+				return LOGOUT;
+			// really doesn't matter if it passed or failed, we're going to redisplay the
+			// menu
+			default:
+				io.clearScreen();
 			}
 		}
 	}

@@ -19,30 +19,17 @@ public class AddFunds extends AccountInteraction {
 		super.setTitle(TITLE);
 	}
 
-	@Override
-	public int interact() throws IOException {
-		final List<BankAccount> accounts = baService.getAccounts(user);
-		while (true) {
-			io.println("Which account would you like to add funds to?");
-			int count = 1;
-			for (final BankAccount account : accounts) {
-				io.println("\t" + count++ + ". " + account.printAccountBalanceHideAccountno());
-			}
-			final int option = super.readOption(accounts.size());
-			if (option != BankInteraction.TRY_AGAIN) {
-				return addFunds(option, accounts);
-			} else // return the option (it wasn't try again)
-				return option;
-		} // else try again
-
-	}
-
-	private int addFunds(final int option, final List<BankAccount> accounts) throws IOException {
+	private int addFunds(final int option, final List<BankAccount> accounts) {
 		while (true) {
 			// this was a valid choice prompt user to add funds
 			io.print("How much would you like to add? $");
-			String amountString;
-			amountString = io.readLine();
+			String amountString = null;
+			try {
+				amountString = io.readLine();
+			} catch (IOException ioe) {
+				Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+				return FAILURE;
+			}
 			if (Validation.validateAmount(amountString)) {
 				final double amount = Double.parseDouble(amountString);
 				if (amount > BankAccountDao.MAX_DEPOSIT) {
@@ -83,6 +70,37 @@ public class AddFunds extends AccountInteraction {
 					return BankInteraction.FAILURE;
 			}
 		}
+	}
+
+	@Override
+	public int realInteraction() {
+		final List<BankAccount> accounts = baService.getAccounts(user);
+		while (true) {
+			io.println("Which account would you like to add funds to?");
+			int count = 1;
+			for (final BankAccount account : accounts) {
+				io.println("\t" + count++ + ". " + account.printAccountBalanceHideAccountno());
+			}
+			final int option = super.readOption(accounts.size());
+
+			switch (option) {
+			case EXIT:
+				return EXIT;
+			case LOGOUT:
+				return LOGOUT;
+			}
+
+			if (option == FAILURE) {
+				io.println("That's not a valid option");
+				if (!retry())
+					return FAILURE;
+				// else try again
+				io.clearScreen();
+				continue;
+			}
+			// else go to add funds prompt
+			return addFunds(option, accounts);
+		} // else try again
 	}
 
 }

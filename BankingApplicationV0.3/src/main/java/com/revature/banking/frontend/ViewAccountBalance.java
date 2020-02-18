@@ -16,14 +16,14 @@ public class ViewAccountBalance extends AccountInteraction {
 	}
 
 	@Override
-	public int interact() throws IOException {
+	public int realInteraction() {
 		final List<BankAccount> accounts = baService.getAccounts(user);
 
+		io.println("You Account Balances:");
 		for (final BankAccount account : accounts) {
 			io.println('\t' + account.printAccountBalanceHideAccountno());
 		}
 
 		return BankInteraction.SUCCESS;
 	}
-
 }
