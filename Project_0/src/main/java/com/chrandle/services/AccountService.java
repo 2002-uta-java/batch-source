@@ -8,7 +8,7 @@ import com.chrandle.daos.AccountDaoImp;
 public class AccountService {
 	private AccountDao aDao = new AccountDaoImp();
 	
-	public List<Account> getAllAccounts(){
+	public List<Account> getAccounts(){
 		return aDao.getAccounts();
 	}
 	

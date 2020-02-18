@@ -2,6 +2,7 @@ package com.chrandle.daos;
 
 import java.util.List;
 
+import com.chrandle.models.Account;
 import com.chrandle.models.User;
 import com.chrandle.util.ConnectionUtil;
 
@@ -27,8 +28,8 @@ public class UserDaoImp implements UserDao {
 				String username = userRsltSt.getString("UserName");
 				String password = userRsltSt.getString("password");
 				String email = userRsltSt.getString("UserEmail");
-				
-				User u = new User(username,userid,password, email);
+				Account account = null;
+				User u = new User(username,userid,password, email,account);
 				users.add(u);
 			}
 		} catch (SQLException e) {

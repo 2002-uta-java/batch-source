@@ -7,11 +7,11 @@
 ************************************/
 
 --NEED TO ADD UNIQUE CONSTRAINTS
-
- drop table if exists transactions;
- drop table if exists "authorization";
- drop table if exists accounts;
- drop table if exists users;
+drop function if exists accounts_by_userid("users".userid %type);
+drop table if exists transactions;
+drop table if exists "authorization";
+drop table if exists Accounts;
+drop table if exists users;
 
 create table Users
 (
@@ -35,7 +35,7 @@ create table Accounts
 	AccountID bigint unique not null,
 	Balance bigint not null,
 	"type" varchar(180) not null,
-	constraint PK_Accounts primary key (AccountID)
+	constraint PK_Accounts primary key (AccountID) 
 );
 
 create table Transactions(
@@ -43,7 +43,7 @@ create table Transactions(
 	Date timestamp not null,
 	Actions varChar(180),
 	tranasctionAmount double precision,
-	constraint Pk_Transactions primary key (TransactionID,Date)
+	constraint Pk_Transactions primary key (TransactionID,Date) 
 );
 
 
@@ -56,8 +56,17 @@ ALTER TABLE "authorization" ADD CONSTRAINT FK_AuthorizationA
 ALTER TABLE transactions ADD CONSTRAINT FK_Transactions
     FOREIGN KEY (TransactionID) REFERENCES "authorization" (TransactionID) ON DELETE CASCADE ON UPDATE CASCADE;
 
---copy Users(UserID, UserEmail,UserName,Password)
---from 'D:\Revature Training\batch-source\Project_0\SQL Scripts\Users.csv' delimiter ','CSV;
---   
    
+ -- returns the accounst matching the given userid  
+create or replace function accounts_by_userid(id "users"."userid" %type) returns setof accounts as $$
+	select * 
+	from accounts  a3 
+	where accountid  in
+		(
+			select accountid 
+			from users  u1
+			join "authorization"  au2 
+			on (u1.userid  = au2.userid and u1.userid = id)
+		)  
+$$ language sql;
 --indexes?

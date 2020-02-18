@@ -15,10 +15,19 @@ public class Driver {
 	public static void main(String[] args) {
 		System.out.println("		PROGRAM START		\n");
 		UserService uService = new UserService();
-		List<User> users = uService.getUsers();
+		AccountService aService = new AccountService();
 		
+		List<User> users = uService.getUsers();
+		List<Account> accounts = aService.getAccounts();
+		
+		System.out.println("				USERs\n");
 		for (User u: users) {
 			System.out.println(u.toString());
+		}
+		
+		System.out.println("				Accounts\n");
+		for (Account a: accounts) {
+			System.out.println(a.toString());
 		}
 		
 		System.out.println("\n		PROGRAM END		");

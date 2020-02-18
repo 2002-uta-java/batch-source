@@ -1,6 +1,9 @@
 package com.chrandle.models;
 
+
+
 public class User {
+
 /*
  * -------------------------------
  * Members	
@@ -8,7 +11,7 @@ public class User {
  */
 	private String username = "";
 	private long userid;
-	private String password = " "; 
+	private String password = null;
 	private String email = "";
 	private Account account = null;
 
@@ -22,18 +25,13 @@ public class User {
 		super();
 	}
 
-
-	
-	public User(String username, long userid, String password, String email) {
+	public User(String username, long userid) {
 		super();
 		this.username = username;
 		this.userid = userid;
-		this.password = password;
-		this.email = email;
 	}
 
-
-
+//Constructor for new account	
 	public User(String username, long userid, String password, String email, Account account) {
 		super();
 		this.username = username;
@@ -56,7 +54,8 @@ public class User {
 	public long Withdraw(long amount) {
 		return 0;
 	}
-			
+				
+	
 	
 /*
  * -------------------------------
@@ -110,10 +109,48 @@ public class User {
  */
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", userid=" + userid + ", password=" + password + ", email=" + email
+		return "User [username=" + username + ", userid=" + userid + ", email=" + email
 				+ "]";
 	}
+
 	
-	
+/*
+ * -------------------------------
+ * hashCode and Equals
+ * -------------------------------
+ */
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 
 }

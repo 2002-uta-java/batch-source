@@ -11,4 +11,5 @@ public interface AccountDao {
 	public double updateAccount(Account u,double amount) throws InvalidTransactionException;
 	public int deleteAccount(Account u);
 	Account getAccountById(long id);
+	public boolean uniqueAccountID(long i);
 }

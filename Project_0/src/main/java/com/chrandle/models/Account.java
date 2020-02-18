@@ -19,7 +19,13 @@ public class Account {
 		super();
 	}
 	
-/*
+	public Account(double balance, String type) {
+		super();
+		this.balance = balance;
+		this.type = type;
+	}
+
+	/*
  * -------------------------------
  * Getters and Setters	
  * -------------------------------
