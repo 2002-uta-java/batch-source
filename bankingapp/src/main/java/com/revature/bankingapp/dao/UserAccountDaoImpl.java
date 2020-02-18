@@ -60,7 +60,7 @@ public class UserAccountDaoImpl implements UserAccountDAO {
 		return ua;
 	}
 	
-	public boolean getUserAccountByUsername(String username) {
+	public UserAccount getUserAccountByUsername(String username) {
 		String selectOneAccount = "select * from UserAccount where username = ?";
 		UserAccount ua = null;
 		ResultSet rs = null;
@@ -70,36 +70,21 @@ public class UserAccountDaoImpl implements UserAccountDAO {
 			returnAll.setString(1, username);
 			rs = returnAll.executeQuery();
 			
-			if (rs.next())
-				return true;
-			else
-				return false;
+			while (rs.next()) {
+				int uaId        = rs.getInt("id");
+				String username1 = rs.getString("username");
+				String password = rs.getString("password");
+				String email    = rs.getString("email");
+				String phone    = rs.getString("phoneNumber");
+				ua = new UserAccount(uaId, username1, password, email, phone);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return ua;
 	}
 	
-	public boolean getUserAccountByPassword(String password) {
-		String selectOneAccount = "select * from UserAccount where password = ?";
-		UserAccount ua = null;
-		ResultSet rs = null;
-		
-		try (Connection databaseConnection = ConnectionUtil.getConnection();
-			PreparedStatement returnAll = databaseConnection.prepareStatement(selectOneAccount)) {
-			returnAll.setString(1, password);
-			rs = returnAll.executeQuery();
-			
-			if (rs.next())
-				return true;
-			else
-				return false;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
 
 	public int createUserAccount(UserAccount ua) {
 		String addUserAccount = "insert into UserAccount (id, username, password, email, phoneNumber) values (?, ?, ?, ?, ?)";

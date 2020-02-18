@@ -38,10 +38,10 @@ public class App
 	private static Scanner intsc = new Scanner(System.in);
 	private static Scanner strsc = new Scanner(System.in);
 	private static boolean keepGoing = true;
-	private static Connection databaseConnection = null;
 	private static BankAccountDaoImpl badao = new BankAccountDaoImpl();
 	private static TransactionDaoImpl tdao  = new TransactionDaoImpl();
 	private static UserAccountDaoImpl uadao = new UserAccountDaoImpl();
+	private static UserAccount user = null;
 	
 	static boolean begin() {
 		System.out.println("Welcome to University of the Wizards Bank!");
@@ -58,7 +58,10 @@ public class App
 		
 		System.out.print("Password: ");
 		String password = strsc.nextLine();
-		if (uadao.getUserAccountByUsername(uName) || uadao.getUserAccountByPassword(password))
+		
+		user = uadao.getUserAccountByUsername(uName);
+		
+		if (user.getuName().equals(uName) && user.getPassword().equals(password))
 			return true;
 		
 		return false;
@@ -150,20 +153,9 @@ public class App
 	
     public static void main( String[] args ) throws SQLException
     {
-    	try {
-    		
-			databaseConnection = ConnectionUtil.getConnection();
-
-			if (begin()) {
-				while (keepGoing) {
-					doTransaction();
-				}
-			}
-			
-			end();
-			
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}
+		if (begin())
+			while (keepGoing)
+				doTransaction();
+		end();
     }
 }
