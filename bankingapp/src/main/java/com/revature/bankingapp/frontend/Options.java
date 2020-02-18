@@ -81,8 +81,45 @@ public class Options {
 		
 	}
 	
-	void displayBalance(BankAccount ba) {
-		System.out.println(ba.getBalance());
+	void displayBalance() {
+		List<BankAccount> bankAccounts = badao.getBankAccounts();
+		
+		for (BankAccount ba: bankAccounts) {
+			System.out.println(ba.toString());
+		}
+	}
+	
+	void displayBankAccounts() {
+		List<BankAccount> bankAccounts = badao.getBankAccounts();
+		
+		for (BankAccount ba: bankAccounts) {
+			System.out.println(ba.toString());
+		}
+	}
+	
+	void depositMoney() {
+		
+		System.out.print("Amount to deposit: ");
+		double amount = intsc.nextDouble();
+		
+		System.out.print("BankAccount: ");
+		int id = intsc.nextInt();
+		
+		BankAccount ba = badao.getBankAccountById(id);
+		ba.addToBalance(amount);
+		badao.updateBankAccount(ba);
+	}
+	
+	void withdrawMoney() {
+		System.out.print("Amount to deposit: ");
+		double amount = intsc.nextDouble();
+		
+		System.out.print("BankAccount: ");
+		int id = intsc.nextInt();
+		
+		BankAccount ba = badao.getBankAccountById(id);
+		ba.subtractFromBalance(amount);
+		badao.updateBankAccount(ba);
 	}
 	
 }

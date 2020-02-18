@@ -27,6 +27,19 @@ public class BankAccount {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+	
+	public void addToBalance(double amount) {
+		this.balance += amount;
+	}
+	
+	public void subtractFromBalance(double amount) {
+		if (this.balance - amount < 0) {
+			System.out.println("Warning: Amount is greater than Balance");
+			return;
+		}
+		else
+			this.balance -= amount;
+	}
 
 	
 

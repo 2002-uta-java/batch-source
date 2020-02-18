@@ -31,8 +31,7 @@ import com.revature.bankingapp.model.*;
  * 
  * 
  */
-public class App 
-{
+public class App {
 	private static Scanner strsc = new Scanner(System.in);
 	private static boolean keepGoing = true;
 	private static BankAccountDaoImpl badao = new BankAccountDaoImpl();
@@ -57,6 +56,8 @@ public class App
 		System.out.print("Password: ");
 		String password = strsc.nextLine();
 		
+		options.displayBankAccounts();
+		
 		user = uadao.getUserAccountByUsername(uName);
 		
 		if (user.getuName().equals(uName) && user.getPassword().equals(password))
@@ -71,7 +72,7 @@ public class App
 	
 
 	private static void doTransaction() {
-		System.out.println("Commands: Quit, Sign out, Transaction, Create BankAccount");
+		System.out.println("Commands: Quit, Sign out, Transaction, Create BankAccount, Display BankAccounts, Balance, Deposit, Withdraw");
 		System.out.println("What would you like to do? ");
 		String command = strsc.nextLine();
 		
@@ -83,6 +84,14 @@ public class App
 			options.createTransaction();
 		else if (command.equals("Create BankAccount"))
 			options.createBankAccount();
+		else if (command.equals("Display BankAccounts"))
+			options.displayBankAccounts();
+		else if (command.equals("Balance"))
+			options.displayBalance();
+		else if (command.equals("Deposit"))
+			options.depositMoney();
+		else if (command.equals("Withdraw"))
+			options.withdrawMoney();
 		
 	}
 

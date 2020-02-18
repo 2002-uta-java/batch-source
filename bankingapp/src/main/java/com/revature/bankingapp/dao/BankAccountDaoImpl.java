@@ -35,7 +35,7 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 	}
 
 	public BankAccount getBankAccountById(int id) {
-		String selectOneAccount = "select * from BankAccount where ?";
+		String selectOneAccount = "select * from BankAccount where id = ?";
 		BankAccount ba = null;
 		ResultSet rs = null;
 		
@@ -78,7 +78,7 @@ public class BankAccountDaoImpl implements BankAccountDAO {
 		try (Connection databaseConnection = ConnectionUtil.getConnection();
 				 CallableStatement sendUpdate = databaseConnection.prepareCall(updateAccount)) {
 			sendUpdate.setInt(1, ba.getAccountNumber());
-			sendUpdate.setDouble(2, ba.getBalance());
+			sendUpdate.setInt(2, (int) ba.getBalance());
 			
 			accountUpdated = sendUpdate.executeUpdate();
 		} catch (SQLException e) {
