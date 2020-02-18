@@ -63,6 +63,15 @@ public abstract class BankInteraction {
 		return rtrn;
 	}
 
+	public void promptToContinue() {
+		try {
+			io.println("Press Enter to continue");
+			io.readLine();
+		} catch (IOException ioe) {
+			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+		}
+	}
+
 	public abstract int interact() throws IOException;
 
 	protected void addMenuOption(final BankInteraction menuOption) {
@@ -122,8 +131,6 @@ public abstract class BankInteraction {
 			final String response = io.readLine().trim();
 
 			if (response.equalsIgnoreCase("y")) {
-				io.println();
-				io.println();
 				return true;
 			} else if (response.equalsIgnoreCase("n"))
 				return false;

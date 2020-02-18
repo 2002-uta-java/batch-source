@@ -1,16 +1,21 @@
 package com.revature.banking.frontend;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.revature.banking.dao.BankAccountDao;
+import com.revature.banking.frontend.validation.Validation;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
+import com.revature.banking.services.models.BankAccount;
 import com.revature.banking.services.models.User;
 
 public abstract class AccountInteraction extends BankInteraction {
 
 	protected User user;
+	protected AmountReturn amount = new AmountReturn();
 
 	protected AccountInteraction(CLI io, UserService uService, BankAccountService baService) {
 		super(io, uService, baService);
@@ -33,13 +38,66 @@ public abstract class AccountInteraction extends BankInteraction {
 		case LOGOUT:
 			return result;
 		}
+		this.promptToContinue();
+		return result;
+	}
+
+	public int chooseAccount(final List<BankAccount> accounts) {
+		while (true) {
+			int count = 1;
+			for (final BankAccount account : accounts) {
+				io.println("\t" + count++ + ". " + account.printAccountBalanceHideAccountno());
+			}
+			final int option = super.readOption(accounts.size());
+
+			switch (option) {
+			case EXIT:
+				return EXIT;
+			case LOGOUT:
+				return LOGOUT;
+			}
+
+			if (option == FAILURE) {
+				io.println("That's not a valid option");
+				if (!retry())
+					return FAILURE;
+				// else try again
+				io.clearScreen();
+				continue;
+			}
+			// option was good, return it
+			return option;
+		}
+	}
+
+	public void readAmount() {
+		String amountString = null;
 		try {
-			io.println("Press Enter to continue");
-			io.readLine();
+			amountString = io.readLine();
 		} catch (IOException ioe) {
 			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+
+			amount.setReturnStatus(FAILURE);
+			return;
 		}
-		return result;
+		if (Validation.validateAmount(amountString)) {
+			amount.setAmount(Double.parseDouble(amountString));
+			amount.setReturnStatus(SUCCESS);
+			return;
+		} else {
+			if (Validation.validateDecimal(amountString)) {
+				final double value = Double.parseDouble(amountString);
+				if (value < 0) {
+					io.println("You cannot add a negative amount to your account.");
+				} else {
+					io.println("Amounts must have, at most, 2 decimal places");
+				}
+				amount.setReturnStatus(FAILURE);
+			} else {
+				io.println(amountString + " isn't a number");
+				amount.setReturnStatus(FAILURE);
+			}
+		}
 	}
 
 	public abstract int realInteraction();

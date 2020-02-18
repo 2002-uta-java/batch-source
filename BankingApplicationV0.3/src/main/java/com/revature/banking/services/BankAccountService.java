@@ -14,6 +14,15 @@ import com.revature.banking.services.security.models.EncryptedBankAccount;
 
 public class BankAccountService extends Service {
 
+	public static final double DEPOSIT_LIMIT = 10000.0;
+	public static final int ADD_FUNDS_SUCCESS = 0;
+	public static final int ADD_FUNDS_DEPOSIT_LIMIT = 1;
+	public static final int ADD_FUNDS_FAILURE = 2;
+
+	public static final int WITHDRAWAL_INSUFFICIENT_FUNDS = 0;
+	public static final int WITHDRAWAL_SUCCESS = 1;
+	public static final int WITHDRAWAL_FAILURE = 2;
+
 	private final Random rand = new Random();
 	private BankAccountDao baDao = null;
 
@@ -81,8 +90,39 @@ public class BankAccountService extends Service {
 		return accounts;
 	}
 
-	public boolean addFunds(final BankAccount account, final double amount) {
+	public boolean updateAccount(final BankAccount account) {
 		final EncryptedBankAccount eba = secService.encrypt(account);
 		return baDao.updateAccount(eba);
+	}
+
+	public int addFundsToAccount(BankAccount account, double amt) {
+		if (amt > DEPOSIT_LIMIT)
+			return ADD_FUNDS_DEPOSIT_LIMIT;
+
+		// else add the amoun to the account and update account
+		account.addFunds(amt);
+		if (updateAccount(account)) {
+			return ADD_FUNDS_SUCCESS;
+		} else {
+			// need to undo addFUnds
+			account.withdraw(amt);
+			return ADD_FUNDS_FAILURE;
+		}
+
+	}
+
+	public int withdrawFromAccount(BankAccount account, double amount) {
+		if (amount > account.getBalance())
+			return WITHDRAWAL_INSUFFICIENT_FUNDS;
+
+		// withdraw from account
+		account.withdraw(amount);
+		if (updateAccount(account)) {
+			return WITHDRAWAL_SUCCESS;
+		} else {
+			// need to add back funds
+			account.addFunds(amount);
+			return WITHDRAWAL_FAILURE;
+		}
 	}
 }

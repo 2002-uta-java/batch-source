@@ -110,7 +110,21 @@ public class BankAccount {
 		return "BankAccount [accountKey=" + accountKey + ", accountNo=" + accountNo + ", balance=" + balance + "]";
 	}
 
+	/**
+	 * There is no check here for consistency
+	 * 
+	 * @param amount
+	 */
 	public void addFunds(double amount) {
 		this.balance += amount;
+	}
+
+	/**
+	 * There is no check here for consistency
+	 * 
+	 * @param amount
+	 */
+	public void withdraw(double amount) {
+		this.balance -= amount;
 	}
 }
