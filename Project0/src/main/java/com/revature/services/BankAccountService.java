@@ -51,19 +51,17 @@ public class BankAccountService {
 		    }
 		}
 	}
-		    
-	    
 	
 	public void deposit(BankAccount b) {
 		Scanner s = new Scanner(System.in);
 		
 		while (true) {
-    		System.out.println("Enter your deposit amount (max balance = $999,999,999.99). Press # to cancel.");
+    		System.out.println("Enter your deposit amount (max balance = $20,000,000). Press # to cancel.");
     		try {
     			float depositRequest = roundTwoDecimal(s.nextFloat());
     			float oldBalance = roundTwoDecimal(b.getBalance());
     			float newBalance = roundTwoDecimal(oldBalance + depositRequest);
-    			float MAX_BAL = (float) 999999999.99; // 11 total digits.
+    			float MAX_BAL = (float) 20000000.00; // 11 digits in SQL, but max val of float is around 2.7*e7.
     			System.out.println("Depositing $" + depositRequest);
     			
     			if (depositRequest < 0) {
@@ -141,7 +139,7 @@ public class BankAccountService {
 	}
 	
 	public void viewBalance (BankAccount b) {
-		System.out.println("Your balance = " + b.getBalance());
+		System.out.println("Your balance = $" + b.getBalance());
 	}
 	
 	public float roundTwoDecimal(float f) {
