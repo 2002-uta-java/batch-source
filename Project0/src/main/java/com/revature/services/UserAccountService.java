@@ -38,12 +38,12 @@ public class UserAccountService {
 	    					System.out.println("Username already exists.");
 	    				}
 	    				else {
-	    					System.out.println("Enter your password (1-25 characters).");
+	    					System.out.println("Enter your password.");
 	    					String newPassword = s.nextLine();
 	    					len = newPassword.length();
 	    					
-	    					if (len < 1 || len > 25) {
-	    	    				System.out.println("Invalid input (password must be between 1-25 characters).");
+	    					if (len < 1) {
+	    	    				System.out.println("Invalid input (password cannot be empty).");
 	    	    			}
 	    					else {
 	    						newPassword = encryptPassword(newPassword);

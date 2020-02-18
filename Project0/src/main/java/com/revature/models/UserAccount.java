@@ -41,8 +41,4 @@ public class UserAccount {
 		this.bankId = bankId;
 	}
 	
-	
-	// TODO: should not need get password, only if theres a password match (true/false)
-	
-	// NOTE: ONLY uses this when RETRIEVING a user account from the db, NOT ENTERING.
 }

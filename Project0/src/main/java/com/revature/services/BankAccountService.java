@@ -15,12 +15,13 @@ public class BankAccountService {
 	
 	public void bankAccountMenu(UserAccount u) {
 		Scanner s = new Scanner(System.in);
-		BankAccount b = dao.getBankAccount(u);
+		BankAccount b = dao.getBankAccountByUserAccount(u);
 		boolean running = true;
 		
 		while (running) {  
-			System.out.println("(Username: " + u.getUsername() + ") Press 1 to make a deposit, 2 to make a withdrawal, "
-														 + "3 to view your balance, 4 to transfer funds, 5 to logout.");
+			System.out.println("(Username: " + u.getUsername() + "BankId: " + u.getBankId() + ")\n"
+				     + "Press 1 to make a deposit, 2 to make a withdrawal, 3 to view your balance, "
+															 + "4 to transfer funds, 5 to logout.");
 			
 		    try {
 		    	int request = s.nextInt();
@@ -37,6 +38,9 @@ public class BankAccountService {
 		    		viewBalance(b);
 		    		break;
 		    	case 4:
+		    		transferFunds(b);
+		    		break;
+		    	case 5:
 		    		running = false;
 		    		System.out.println("Logging out...");
 		    		break;
@@ -107,11 +111,11 @@ public class BankAccountService {
     			float MIN_BAL = (float) 0.00;
     			System.out.println("Withdrawing $" + withdrawalRequest);
     			
-    			if (withdrawalRequest < 0) {
+    			if (withdrawalRequest < 0.00) {
     				System.out.println("Withdrawal amount cannot be negative.");
     			}
     			else if (newBalance < MIN_BAL) {
-    				System.out.println("Cancelling withdrawal (min balance breached).");
+    				System.out.println("Cancelling withdrawal (insufficient funds).");
     			}
     			else {
     				b.setBalance(newBalance);
@@ -140,6 +144,79 @@ public class BankAccountService {
 	
 	public void viewBalance (BankAccount b) {
 		System.out.println("Your balance = $" + b.getBalance());
+	}
+	
+	public void transferFunds (BankAccount b1) {
+		Scanner s = new Scanner(System.in);
+		
+		while (true) {
+    		System.out.println("Enter your transfer amount (max balance = $20,000,000). Press # to cancel.");
+    		try {
+    			float transferRequest = roundTwoDecimal(s.nextFloat());
+    			float oldBalance1 = roundTwoDecimal(b1.getBalance()); // b1 = current account, b2 = target account
+    			float newBalance1 = roundTwoDecimal(oldBalance1 - transferRequest);
+    			float MAX_BAL = (float) 20000000.00;
+    			
+    			if (transferRequest < 0) {
+    				System.out.println("Transfer amount cannot be negative.");
+    			}
+    			else if (newBalance1 < 0) {
+    				System.out.println("Insufficient funds.");
+    			}
+    			else {
+    				System.out.println("Enter the BankId of the account you'd like to transfer funds to.");
+    				int bankId2 = s.nextInt(); // be able to handle the nextline bug, even with invalid entries
+    				
+    				if (bankAccountExists(bankId2)) {
+	    				BankAccount b2 = dao.getBankAccountByBankId(bankId2);
+	    				float oldBalance2 = roundTwoDecimal(b2.getBalance());
+	        			float newBalance2 = roundTwoDecimal(oldBalance2 + transferRequest);
+	        			
+	        			if (newBalance2 > MAX_BAL) {
+	        				System.out.println("Cancelling transfer (max capacity issue).");
+	        			}
+	        			else {
+		    				b1.setBalance(newBalance1);
+		    				b2.setBalance(newBalance2);
+		    				dao.updateBankAccount(b1);
+		    				dao.updateBankAccount(b2);
+		    				System.out.println("Transfer successful!");
+		    				break;
+	        			}
+    				}
+	    			else {
+	    				System.out.println("BankId does not exist.");
+    				}
+    			}
+    		}
+    		catch (InputMismatchException e) {
+    			try {
+    				String depositRequest = s.nextLine();
+    				if (depositRequest.equals("#")) {
+		    			break;
+		    		}
+    				else {
+    					System.out.println("Invalid input.");
+    				}
+    			}
+    			catch (InputMismatchException e1) {
+    				e1.printStackTrace();
+    				System.out.println("Invalid input.");
+    			}
+    		}
+		}
+	}
+	
+	public boolean bankAccountExists(int bankId) {
+		List<Integer> bankAccounts = dao.getBankAccounts();
+		
+		for (int dbBankId: bankAccounts) {
+			if (bankId == dbBankId) {
+				return true;
+			}	
+		}
+		
+		return false;
 	}
 	
 	public float roundTwoDecimal(float f) {

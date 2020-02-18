@@ -76,6 +76,28 @@ public class AccountDaoImpl implements AccountDao{
 	}
 	
 	@Override
+	public List<Integer> getBankAccounts() {
+		String sql = "select * from bank_account";
+		
+		List<Integer> bankIds = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection()) {
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				int bankId = rs.getInt("bank_id");
+				bankIds.add(bankId);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return bankIds;
+	}
+	
+	@Override
 	public UserAccount getUserAccount(String username) {
 		String sql = "select * from user_account where username = ?";
 		UserAccount u = null;
@@ -112,7 +134,7 @@ public class AccountDaoImpl implements AccountDao{
 	}
 	
 	@Override
-	public BankAccount getBankAccount(UserAccount u) {
+	public BankAccount getBankAccountByUserAccount(UserAccount u) {
 		String sql = "select * from bank_account where bank_id = ?";
 		BankAccount b = null;
 		ResultSet rs = null;
@@ -125,6 +147,40 @@ public class AccountDaoImpl implements AccountDao{
 			
 			while (rs.next()) {
 				int bankId = rs.getInt("bank_id");
+				float balance = rs.getFloat("balance");
+				b = new BankAccount(bankId, balance);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return b;
+	}
+	
+	@Override
+	public BankAccount getBankAccountByBankId(int bankId) {
+		String sql = "select * from bank_account where bank_id = ?";
+		BankAccount b = null;
+		ResultSet rs = null;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+			
+			ps.setInt(1, bankId);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
 				float balance = rs.getFloat("balance");
 				b = new BankAccount(bankId, balance);
 			}
