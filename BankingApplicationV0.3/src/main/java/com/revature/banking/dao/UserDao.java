@@ -1,5 +1,6 @@
 package com.revature.banking.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import com.revature.banking.services.security.models.EncryptedBankAccount;
@@ -50,7 +51,7 @@ public interface UserDao {
 	 * 
 	 * @return {@link Set} of all (encrypted) user records.
 	 */
-	public Set<EncryptedUser> getAllUsers();
+	public List<EncryptedUser> getAllUsers();
 
 	/**
 	 * This creates a new user in the database and creates (and links) the given
@@ -98,4 +99,15 @@ public interface UserDao {
 	 * @see {@link #deleteUser(EncryptedUser)}
 	 */
 	public boolean removeUser(final EncryptedUser eUser);
+
+	/**
+	 * Retrieves the information for this user from their username (which should be
+	 * unique). The returned user needs to set (at least) the user_key and the
+	 * password (so that it can be checked). The other fields are not necessary.
+	 * 
+	 * @param username Unique username of user trying to log in.
+	 * @return An {@link EncryptedUser} object of the found record or null if no
+	 *         such record exists.
+	 */
+	public EncryptedUser getUserByUserName(String username);
 }

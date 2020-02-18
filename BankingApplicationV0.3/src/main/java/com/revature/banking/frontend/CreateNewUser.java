@@ -29,19 +29,67 @@ public class CreateNewUser extends BankInteraction {
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 
-		final int taxIdStatus = getTaxId(newUser);
-		if (taxIdStatus != UserService.CHECK_NEW_USER_BRAND_NEW
-				&& taxIdStatus != UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS)
+		String taxId = getTaxId(newUser);
+		if (taxId == null)
 			return BankInteraction.FAILURE;
+
+		newUser.setTaxID(taxId);
 
 		// this user has successfully given their first and last name and a "valid" tax
 		// id. This user is ready to be added to the database and an account created.
 
-		final String username = getUserName();
+		// get a username for this person
+		String username = getUserName();
 		if (username == null)
 			return BankInteraction.FAILURE;
 
 		newUser.setUserName(username);
+
+		int checkUserNameTaxIdStatus;
+
+		while (true) {
+			// check tax id and username against what's in the database
+			checkUserNameTaxIdStatus = uService.checkNewUserTaxidAndUserName(newUser);
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT) {
+				io.println("You already have an account." + " If you need help logging in please call"
+						+ " our customer support line at 1-800-BAD-PHONE.");
+				return BankInteraction.FAILURE;
+			}
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_TAX_ID) {
+				io.println("The tax id and name you provided does not match" + " what we have on file. "
+						+ "Did you enter the wrong tax id?");
+				if (!super.retry())
+					return BankInteraction.FAILURE;
+
+				// try to get a new tax id
+				taxId = getTaxId(newUser);
+				if (taxId == null)
+					return BankInteraction.FAILURE;
+				// else reset taxid of newUser
+				newUser.setTaxID(taxId);
+				// loop and check again
+				continue;
+			}
+
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_USERNAME_EXISTS) {
+				io.println("This username already exists.");
+				if (!super.retry())
+					return BankInteraction.FAILURE;
+				// else set username and try again
+				username = getUserName();
+				if (username == null)
+					return BankInteraction.FAILURE;
+				// else reset newUser username and check again
+				newUser.setUserName(username);
+				continue;
+			}
+
+			// if we got this far, (without returning or continuing) the taxid and username
+			// check passed so break out of loop
+			break;
+		}
 
 		final String password = getPassword();
 		if (password == null)
@@ -50,13 +98,15 @@ public class CreateNewUser extends BankInteraction {
 		newUser.setPassword(password);
 
 		BankAccount account = null;
-		switch (taxIdStatus) {
+
+		switch (checkUserNameTaxIdStatus) {
 		case UserService.CHECK_NEW_USER_BRAND_NEW:
 			account = uService.createNewUser(newUser);
 			break;
 		case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
 			account = uService.updateUserCreateNewAccount(newUser);
 		}
+
 		if (account != null) {
 			io.println("You have been added to the system.");
 			io.println("Your new bank account number is " + account.getAccountNo());
@@ -115,7 +165,7 @@ public class CreateNewUser extends BankInteraction {
 
 	}
 
-	private int getTaxId(final User user) throws IOException {
+	private String getTaxId(final User user) throws IOException {
 		while (true) {
 			io.println("Please enter your unique, 10 digit, tax id:");
 			final String taxid = io.readLine().trim();
@@ -123,41 +173,44 @@ public class CreateNewUser extends BankInteraction {
 			if (!Validation.validateTaxid(taxid)) {
 				io.println(taxid + " is not a valid tax id");
 				if (!retry())
-					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
+					return null;
 				// else try again
-			} else {
-				final String newTaxId = taxid;
-				user.setTaxID(newTaxId);
-				final int newUserCheck = uService.checkNewUserTaxid(user);
-				switch (newUserCheck) {
-				// it's necessary to distinguish these two cases because if the user is already
-				// in the system, the checkNewUserTaxId will set the User's user_key so that
-				// when creating the login (user name and password) we can directly update the
-				// row instead of having to redo the search for tax id (or worse, creating a new
-				// record with a duplicate tax id).
-				case UserService.CHECK_NEW_USER_BRAND_NEW:
-					return UserService.CHECK_NEW_USER_BRAND_NEW;
-				case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
-					return UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS;
-
-				case UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT:
-					io.println("You already have an account." + " If you need help logging in please call"
-							+ " our customer support line at 1-800-BAD-PHONE.");
-					return UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
-				case UserService.CHECK_NEW_USER_INVALID_TAX_ID:
-					io.println("The tax id and name you provided does not match" + " what we have on file. "
-							+ "Did you enter the wrong tax id?");
-					break;
-				default:
-					throw new RuntimeException("UserService returned an unrecognized value.");
-				}
-				// if the above switch statement didn't return anything, then we had a tax id
-				// mismatch. Ask the user to try again (if they wish) or just return that status
-				// code.
-				if (!this.retry())
-					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
-				// else continue
-			}
+			} else
+				return taxid;
+//			else {
+//				final String newTaxId = taxid;
+//				user.setTaxID(newTaxId);
+//				final int newUserCheck = uService.checkNewUserTaxid(user);
+//				switch (newUserCheck) {
+			// it's necessary to distinguish these two cases because if the user is already
+			// in the system, the checkNewUserTaxId will set the User's user_key so that
+			// when creating the login (user name and password) we can directly update the
+			// row instead of having to redo the search for tax id (or worse, creating a new
+			// record with a duplicate tax id).
+//				case UserService.CHECK_NEW_USER_BRAND_NEW:
+//					return UserService.CHECK_NEW_USER_BRAND_NEW;
+//				case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
+//					return UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS;
+//
+//				case UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT:
+//					io.println("You already have an account." + " If you need help logging in please call"
+//							+ " our customer support line at 1-800-BAD-PHONE.");
+//					return UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
+//				case UserService.CHECK_NEW_USER_INVALID_TAX_ID:
+//					io.println("The tax id and name you provided does not match" + " what we have on file. "
+//							+ "Did you enter the wrong tax id?");
+//					break;
+//				default:
+//					throw new RuntimeException("UserService returned an unrecognized value.");
+//				}
+			// if the above switch statement didn't return anything, then we had a tax id
+			// mismatch. Ask the user to try again (if they wish) or just return that status
+			// code.
+//				if (!this.retry())
+//					return UserService.CHECK_NEW_USER_INVALID_TAX_ID;
+			// else continue
+//		}
+//	}
 		}
 
 	}

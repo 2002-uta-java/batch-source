@@ -66,3 +66,20 @@
 2020-02-17 17:02:22 DEBUG SecurityService:25 method: decrypt - Decrypting 7Gy6hkSRPVUF5zangW6AKw== to Bennatt
 2020-02-17 17:02:22 DEBUG SecurityService:25 method: decrypt - Decrypting GIcH/RpmHMOrJOSbHyaNU5h071PJDBOE to 1234567890
 2020-02-17 17:02:22 DEBUG UserService:113 method: checkNewUserTaxid - Found matching tax id and with an open account
+2020-02-17 19:03:48 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 19:04:08 DEBUG UserService:163 method: checkNewUserTaxidAndUserName - no match was found for taxid or username: 1234567890 and bennattj
+2020-02-17 19:04:15 DEBUG SecurityService:31 method: encrypt - Encrypting Jared to amu4rw1POR3PwpMsb7wcMg==
+2020-02-17 19:04:15 DEBUG SecurityService:31 method: encrypt - Encrypting Bennatt to r8GpaIOW/3BnR8D1eS3ZJQ==
+2020-02-17 19:04:15 DEBUG SecurityService:31 method: encrypt - Encrypting 1234567890 to EGNuImoShwQh9/Z/3FFsnNmsGYJ0fSNI
+2020-02-17 19:04:15 DEBUG SecurityService:31 method: encrypt - Encrypting 2394876359 to myrw1swQazV5s86ghwLfqysPlVzMqVoY
+2020-02-17 19:04:15 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to AA3luCHXGGiu4X1XdmT6hg==
+2020-02-17 19:04:16 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 19:04:16 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0
+2020-02-17 19:04:33 FATAL UserDaoPostgres:232 method: getUserByUserName - getting user by name (bennattj) failed: ERROR: syntax error at or near "table"
+  Position: 34
+2020-02-17 19:05:16 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 19:05:30 FATAL UserDaoPostgres:232 method: getUserByUserName - getting user by name (bennattj) failed: The column name user_key was not found in this ResultSet.
+2020-02-17 19:09:04 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null

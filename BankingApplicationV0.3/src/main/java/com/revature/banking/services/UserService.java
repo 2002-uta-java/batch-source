@@ -1,5 +1,6 @@
 package com.revature.banking.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -61,6 +62,11 @@ public class UserService extends Service {
 	public static final int CHECK_NEW_USER_VALID_ALREADY_EXISTS = 3;
 
 	/**
+	 * This "new user"'s username already existed so they need to choose another one
+	 */
+	public static final int CHECK_NEW_USER_INVALID_USERNAME_EXISTS = 4;
+
+	/**
 	 * This means the passed tax id was invalid (the front end should really check
 	 * this before ever calling this method.
 	 */
@@ -101,12 +107,19 @@ public class UserService extends Service {
 	 *      {@link #CHECK_NEW_USER_TAXID_MISMATCH},
 	 *      {@link #CHECK_NEW_USER_VALID_ALREADY_EXISTS}
 	 */
-	public int checkNewUserTaxid(User newUser) {
-		// pull entire list of users from database and search for a matching tax id
-		final Set<EncryptedUser> currentUsers = uDao.getAllUsers();
+	public int checkNewUserTaxidAndUserName(User newUser) {
+		// TODO need to combine this with username to make sure username isn't already
+		// taken
 
-		for (final EncryptedUser eUser : currentUsers) {
+		// pull entire list of users from database and search for a matching tax id
+		final List<EncryptedUser> currentUsers = uDao.getAllUsers();
+		final int numCurrUsers = currentUsers.size();
+
+		for (int i = 0; i < numCurrUsers; ++i) {
+			final EncryptedUser eUser = currentUsers.get(i);
 			final User user = secService.decrypt(eUser);
+
+			// first check tax id (if that doesn't match, then check username)
 			if (newUser.getTaxID().equals(user.getTaxID())) {
 				// check to make sure this user doesn't already have an account
 				if (user.getUserName() != null) {
@@ -125,10 +138,30 @@ public class UserService extends Service {
 				// to do this search again).
 				newUser.setUserKey(user.getUserKey());
 				Logger.getRootLogger().debug("Found matching tax id and user did not have an open account");
+
+				// Need to check the rest of the users to make sure this username isn't taken
+				for (++i; i < numCurrUsers; ++i) {
+					final String username = currentUsers.get(i).getUserName();
+					if (newUser.getUserName().equals(username)) {
+						Logger.getRootLogger().debug("Found matching tax id but also found a duplicate username");
+						return CHECK_NEW_USER_INVALID_USERNAME_EXISTS;
+					}
+				}
+				// checked the rest of the usernames, so the proposed username is fine
+
 				return CHECK_NEW_USER_VALID_ALREADY_EXISTS;
+			} else {
+				// the tax id didn't match. Make sure the username doesn't also
+				if (newUser.getUserName().equals(user.getUserName())) {
+					Logger.getRootLogger().debug("Found a duplicate username");
+					return CHECK_NEW_USER_INVALID_USERNAME_EXISTS;
+				}
 			}
 		}
-		Logger.getRootLogger().debug("no match was found for taxid: " + newUser.getTaxID());
+		// checked every taxid and username
+
+		Logger.getRootLogger().debug(
+				"no match was found for taxid or username: " + newUser.getTaxID() + " and " + newUser.getUserName());
 		// we never found a matching tax id, so this is a brand spanking new user
 		return CHECK_NEW_USER_BRAND_NEW;
 	}
@@ -166,6 +199,18 @@ public class UserService extends Service {
 		if (uDao.updateUserCreateNewAccount(eUser, eba))
 			return secService.decrypt(eba);
 		// else it failed, return null
+		return null;
+	}
+
+	public User login(String username, String password) {
+		final EncryptedUser eUser = uDao.getUserByUserName(username);
+		if (eUser != null) {
+			if (secService.checkPassword(password, eUser.getPassword())) {
+				return secService.decrypt(eUser);
+			}
+		}
+		// else either the username doesn't exist or the password didn't match (don't
+		// tell the user which one it was)
 		return null;
 	}
 }

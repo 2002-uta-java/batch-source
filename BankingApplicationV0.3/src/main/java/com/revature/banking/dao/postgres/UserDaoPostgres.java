@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -36,12 +38,12 @@ public class UserDaoPostgres implements UserDao {
 	}
 
 	@Override
-	public Set<EncryptedUser> getAllUsers() {
+	public List<EncryptedUser> getAllUsers() {
 		// grab all users from database
 		final String sql = "select * from users";
 
 		// setup set to be returned
-		final Set<EncryptedUser> users = new HashSet<>();
+		final List<EncryptedUser> users = new ArrayList<>();
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final Statement s = con.createStatement();
@@ -203,5 +205,41 @@ public class UserDaoPostgres implements UserDao {
 	public boolean removeUser(EncryptedUser eUser) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public EncryptedUser getUserByUserName(String username) {
+		final String sql = "select user_key, password from users where username = ?";
+		EncryptedUser eUser = null;
+		ResultSet rs = null;
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				if (eUser != null) {
+					Logger.getRootLogger().error("getUserByUserName returned more than 1 result (should be 1 or 0)");
+					return null;
+				}
+				eUser = new EncryptedUser();
+				eUser.setUserKey(rs.getInt("user_key"));
+				eUser.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().fatal("getting user by name (" + username + ") failed: " + e.getMessage());
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+		}
+
+		return eUser;
 	}
 }

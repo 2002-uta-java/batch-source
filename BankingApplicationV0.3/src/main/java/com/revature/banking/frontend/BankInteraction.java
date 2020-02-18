@@ -32,6 +32,7 @@ public abstract class BankInteraction {
 	protected final CLI io;
 	protected final BankAccountService baService;
 	protected final UserService uService;
+	
 	private String title;
 	private List<BankInteraction> menuOptions = new ArrayList<BankInteraction>();
 
@@ -71,7 +72,7 @@ public abstract class BankInteraction {
 			for (final BankInteraction menuOption : menuOptions) {
 				io.println(option++ + ". " + menuOption.getTitle());
 			}
-			io.println("Please choose an option (or you can choose " + EXIT_STRING + "or " + LOGOUT_STRING + ").");
+			io.println("Please choose an option (or you can choose " + EXIT_STRING + " or " + LOGOUT_STRING + ").");
 
 			try {
 				final String chosen = io.readLine();

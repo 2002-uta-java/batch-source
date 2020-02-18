@@ -13,7 +13,7 @@ balance varchar(64) not null);
  create table users (user_key serial constraint p_users_key primary key, tax_id varchar(64),
 firstname varchar(64) not null,
 lastname varchar(64) not null,
-username varchar(20),
+username varchar(20) unique,
 password varchar(64));
 -- this is my junction table to link users and accounts. Neither column needs to be unique (and I expect multiples)
  create table user_accounts (user_key integer, account_key integer);
