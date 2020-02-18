@@ -1,5 +1,8 @@
 package com.revature.services;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -12,7 +15,7 @@ public class UserAccountService {
 	
 	private AccountDao dao = new AccountDaoImpl();
 	
-	public void userAccountMenu() {
+	public void userAccountMenu() throws NoSuchAlgorithmException {
 		Scanner s = new Scanner(System.in);
 		
 		while (true) {
@@ -43,6 +46,7 @@ public class UserAccountService {
 	    	    				System.out.println("Invalid input (password must be between 1-25 characters).");
 	    	    			}
 	    					else {
+	    						newPassword = encryptPassword(newPassword);
 	    						UserAccount u = new UserAccount(newUsername, newPassword);
 	    						u = dao.createAccount(u);
 	    						System.out.println("New user and bank account created! (username: " + u.getUsername() 
@@ -70,6 +74,26 @@ public class UserAccountService {
 		}
 		
 		return false;
+	}
+	
+	public String encryptPassword(String password) throws NoSuchAlgorithmException {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+		
+		return (bytesToHex(encodedhash));
+	}
+	
+	private static String bytesToHex(byte[] hash) { // Code taken from: https://www.baeldung.com/sha-256-hashing-java
+	    StringBuffer hexString = new StringBuffer();
+	    
+	    for (int i = 0; i < hash.length; i++) {
+	    	String hex = Integer.toHexString(0xff & hash[i]);
+	    	
+	    	if (hex.length() == 1) hexString.append('0');
+	        hexString.append(hex);
+	    }
+	    
+	    return hexString.toString();
 	}
 	
 }

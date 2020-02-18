@@ -20,7 +20,7 @@ public class BankAccountService {
 		
 		while (running) {  
 			System.out.println("(Username: " + u.getUsername() + ") Press 1 to make a deposit, 2 to make a withdrawal, "
-																			  + "3 to view your balance, 4 to logout.");
+														 + "3 to view your balance, 4 to transfer funds, 5 to logout.");
 			
 		    try {
 		    	int request = s.nextInt();
@@ -41,7 +41,7 @@ public class BankAccountService {
 		    		System.out.println("Logging out...");
 		    		break;
 		    	default:
-		    		System.out.println("Invalid input (choose option 1, 2, 3, or 4).");
+		    		System.out.println("Invalid input (choose option 1, 2, 3, 4, or 5).");
 		    	}
 		    }
 		    catch (InputMismatchException e) {

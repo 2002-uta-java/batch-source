@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.nio.charset.StandardCharsets;
+import java.security.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public class LoginService {
 	private UserAccountService uas = new UserAccountService();
 	private BankAccountService bas = new BankAccountService();
 
-	public void loginMenu() {
+	public void loginMenu() throws NoSuchAlgorithmException {
 		Scanner s = new Scanner(System.in);
 		boolean running = true;
 		
@@ -25,42 +27,7 @@ public class LoginService {
 		    	
 		    	switch (request) {
 		    	case 1:
-		    		while (true) {
-			    		System.out.println("Enter your username. Press # to cancel.");
-			    		String usernameRequest = s.nextLine();
-			    		
-			    		if (usernameRequest.equals("#")) {
-			    			break;
-			    		}
-			    		else {
-			    			// Validate length of input.
-			    			int len = usernameRequest.length();
-			    			
-			    			if (len < 1 || len > 25) {
-			    				System.out.println("Invalid input (username must be between 1-25 characters).");
-			    			}
-			    			else {
-			    				if (uas.userAccountExist(usernameRequest)) {
-			    					UserAccount u = dao.getUserAccount(usernameRequest);
-			    					
-			    					System.out.println("Enter your password.");
-			    					String passwordAttempt = s.nextLine();
-			    					
-			    					if (passwordAttempt.equals(u.getPassword())) { // would rather use u.passwordMatch(passwordAttempt)
-			    						System.out.println("Logging in...");	   // but pointless because of dao.
-			    						bas.bankAccountMenu(u);	
-			    						break;
-			    					}
-			    					else {
-			    						System.out.println("Password incorrect.");
-			    					}
-			    				}
-			    				else {
-			    					System.out.println("Username does not exist.");
-			    				}
-			    			}
-			    		}
-		    		}
+		    		login();
 		    		break;
 		    	case 2:
 		    		uas.userAccountMenu();
@@ -77,6 +44,47 @@ public class LoginService {
 		    	s.nextLine();
 		    	System.out.println("Invalid input.");
 		    }
+		}
+	}
+	
+	public void login() throws NoSuchAlgorithmException {
+		Scanner s = new Scanner(System.in);
+		
+		while (true) {
+    		System.out.println("Enter your username. Press # to cancel.");
+    		String usernameRequest = s.nextLine();
+    		
+    		if (usernameRequest.equals("#")) {
+    			break;
+    		}
+    		else {
+    			// Validate length of input.
+    			int len = usernameRequest.length();
+    			
+    			if (len < 1 || len > 25) {
+    				System.out.println("Invalid input (username must be between 1-25 characters).");
+    			}
+    			else {
+    				if (uas.userAccountExist(usernameRequest)) {
+    					UserAccount u = dao.getUserAccount(usernameRequest);
+    					
+    					System.out.println("Enter your password.");
+    					String passwordAttempt = uas.encryptPassword(s.nextLine());
+    					
+    					if (passwordAttempt.equals(u.getPassword())) { // u.getpass already encrypted
+    						System.out.println("Logging in...");	   
+    						bas.bankAccountMenu(u);	
+    						break;
+    					}
+    					else {
+    						System.out.println("Password incorrect.");
+    					}
+    				}
+    				else {
+    					System.out.println("Username does not exist.");
+    				}
+    			}
+    		}
 		}
 	}
 }

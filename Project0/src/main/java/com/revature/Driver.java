@@ -1,5 +1,7 @@
 package com.revature;
 
+import java.security.NoSuchAlgorithmException;
+
 import com.revature.services.LoginService;
 
 // Project0
@@ -14,7 +16,7 @@ import com.revature.services.LoginService;
 
 public class Driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 		
 		System.out.println("Application opening...");
 		
