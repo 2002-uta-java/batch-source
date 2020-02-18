@@ -28,8 +28,7 @@ public class UserDaoImp implements UserDao {
 				String username = userRsltSt.getString("UserName");
 				String password = userRsltSt.getString("password");
 				String email = userRsltSt.getString("UserEmail");
-				Account account = null;
-				User u = new User(username,userid,password, email,account);
+				User u = new User(username,userid,password, email);
 				users.add(u);
 			}
 		} catch (SQLException e) {
@@ -44,50 +43,46 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public User getUserById(long id) {
 		// TODO Auto-generated method stub
-		String query = "select * from Users";
-		
-		try(Connection userConn = ConnectionUtil.getConnection()){
-			Statement userStmnt = userConn.createStatement();
-			ResultSet userRsltSt = userStmnt.executeQuery(query);
-			
-			while(userRsltSt.next()) {
-
-				
-			}
-		} catch (SQLException e) {
-			//TODO: send exception message to log?
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-		
 		return null;
 	}
 
 	@Override
 	public int createUser(User u) {
-		// TODO Auto-generated method stub
-		String query = "select * from Users";
-		
-		try(Connection userConn = ConnectionUtil.getConnection()){
-			Statement userStmnt = userConn.createStatement();
-			ResultSet userRsltSt = userStmnt.executeQuery(query);
-			
-			while(userRsltSt.next()) {
-
-				
+			try(Connection userConn = ConnectionUtil.getConnection()){
+			String insertion ="insert into users (username, useremail,password)"
+				+ " values ? ? ? ?";
+			PreparedStatement pstate = userConn.prepareStatement(insertion);
+			pstate.setString(parameterIndex, x);
+			int result = pstate.executeUpdate();
+			if (result>0) {
+				return result;
+			} else {
+				return -1;
 			}
-		} catch (SQLException e) {
-			//TODO: send exception message to log?
+		} catch(SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		return 0;
+			return -1;
 	}
 
 	@Override
 	public int updateUser(User u) {
-		// TODO Auto-generated method stub
-		return 0;
+		try(Connection userConn = ConnectionUtil.getConnection()){
+		String insertion ="insert into users (userid, username, useremail,password)"
+			+ " values ? ? ? ?";
+		PreparedStatement pstate = userConn.prepareStatement(insertion);
+		int result = pstate.executeUpdate();
+		if (result>0) {
+			return result;
+		} else {
+			return -1;
+		}
+	} catch(SQLException e) {
+		System.out.println(e.getMessage());
+		e.printStackTrace();
+	}
+		return -1;
 	}
 
 	@Override
@@ -96,10 +91,5 @@ public class UserDaoImp implements UserDao {
 		return 0;
 	}
 
-	@Override
-	public int createJointAccount(User u) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

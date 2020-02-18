@@ -12,49 +12,46 @@ drop table if exists transactions;
 drop table if exists "authorization";
 drop table if exists Accounts;
 drop table if exists users;
+drop sequence if exists user_id_seq;
+drop sequence if exists accounts_id_seq;
+drop sequence if exists transactions_id_seq;
+
+
 
 create table Users
 (
-	UserID bigint not null,
+	UserID bigserial,
 	UserEmail VARCHAR (180),
 	UserName VARCHAR(180) not null,
 	Password VARCHAR(180) not null,
 	constraint PK_Users primary key (UserID)
 );
 
-create table "authorization"
-(
-	UserID bigint not null,
-	AccountID bigint not null,
-	TransactionID bigint unique not null,
-	constraint Pk_Authorization primary key (UserID,AccountID)
-);
-
 create table Accounts
 (
-	AccountID bigint unique not null,
+	AccountID bigserial unique not null,
 	Balance bigint not null,
 	"type" varchar(180) not null,
 	constraint PK_Accounts primary key (AccountID) 
 );
 
 create table Transactions(
-	TransactionID bigint not null,
+	TransactionID bigserial unique not null,
 	Date timestamp not null,
 	Actions varChar(180),
 	tranasctionAmount double precision,
 	constraint Pk_Transactions primary key (TransactionID,Date) 
 );
 
+create table "authorization"
+(
+	UserID bigserial  REFERENCES Users (UserID) ON DELETE CASCADE ON UPDATE CASCADE,
+	AccountID bigserial REFERENCES Accounts (AccountID) ON DELETE CASCADE ON UPDATE cascade,
+	TransactionID bigserial references Transactions (TransactionID) on delete cascade on update cascade,
+	constraint Pk_Authorization primary key (UserID,AccountID)
+);
 
-ALTER TABLE "authorization" ADD CONSTRAINT FK_AuthorizationU
-    FOREIGN KEY (UserID) REFERENCES Users (UserID) ON DELETE CASCADE ON UPDATE CASCADE;
-   
-ALTER TABLE "authorization" ADD CONSTRAINT FK_AuthorizationA
-    FOREIGN KEY (AccountID) REFERENCES Accounts (AccountID) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE transactions ADD CONSTRAINT FK_Transactions
-    FOREIGN KEY (TransactionID) REFERENCES "authorization" (TransactionID) ON DELETE CASCADE ON UPDATE CASCADE;
 
    
  -- returns the accounst matching the given userid  

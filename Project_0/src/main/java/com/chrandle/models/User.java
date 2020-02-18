@@ -32,13 +32,12 @@ public class User {
 	}
 
 //Constructor for new account	
-	public User(String username, long userid, String password, String email, Account account) {
+	public User(String username, long userid, String password, String email) {
 		super();
 		this.username = username;
 		this.userid = userid;
 		this.password = password;
 		this.email = email;
-		this.account = account;
 	}
 
 /*

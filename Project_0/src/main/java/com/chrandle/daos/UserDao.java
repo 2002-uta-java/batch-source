@@ -10,8 +10,5 @@ public interface UserDao {
 	public int createUser(User u);
 	public int updateUser(User u);
 	public int deleteUser(User u);
-	public int createJointAccount(User u);
-	public double getBalance(User u);
-	public boolean uniqueUserID(long l);
-	public boolean uniqueEmail(String s);
+
 }

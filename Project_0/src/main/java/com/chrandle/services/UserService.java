@@ -14,18 +14,4 @@ public class UserService {
 		return uDao.getUsers();
 	}
 	
-	public User login(String un,String pw) {
-		return uDao.login);
-	}
-	
-	
-	public int createUserAccount(String un, String pw, String em,String t) {
-		Random rand = new Random();
-		long tempidu = 0;
-		long tempida = 0;		
-		Account tempa = new Account(0,t);
-		User tempu = new User(un,tempidu,pw,em,tempa);
-		
-		return 0;
-	}
 }
