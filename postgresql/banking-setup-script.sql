@@ -38,3 +38,22 @@ drop table users;
 delete from user_accounts where user_key=5;
 
 select tax_id from users;
+
+select user_key, "password" from users;
+
+create or replace function get_accounts(fn_user_key users.user_key%type)
+returns setof accounts 
+language plpgsql
+as $$
+begin
+	return query select a.account_key,a.account_no, a.balance
+	from (select ua.account_key as ak from user_accounts as ua where ua.user_key = user_key) as aks
+	inner join 
+	accounts as a 
+	on a.account_key = aks.ak;
+end
+$$;
+
+drop function get_accounts;
+
+select get_accounts(1);

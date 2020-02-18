@@ -18,8 +18,12 @@ public class ViewAccountBalance extends AccountInteraction {
 	@Override
 	public int interact() throws IOException {
 		final List<BankAccount> accounts = baService.getAccounts(user);
-		
-		
+
+		for (final BankAccount account : accounts) {
+			io.println('\t' + account.printAccountBalanceHideAccountno());
+		}
+
+		return BankInteraction.SUCCESS;
 	}
 
 }

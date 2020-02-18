@@ -40,6 +40,15 @@ public class Validation {
 	public static final String NATURAL_NUMBER_REGEX = "^[1-9]\\d*$";
 	public static final Pattern NATURAL_NUMBER_PATTERN = Pattern.compile(NATURAL_NUMBER_REGEX);
 
+	/**
+	 * Regex for decimals with at most two decimal places
+	 */
+	public static final String AMOUNT_REGEX = "^\\d+(\\.\\d{1, 2})?$";
+	public static final Pattern AMOUNT_PATTERN = Pattern.compile(AMOUNT_REGEX);
+
+	public static final String DECIMAL_REGEX = "^-?\\d+(\\.\\d+)?$";
+	public static final Pattern DECIMAL_PATTERN = Pattern.compile(DECIMAL_REGEX);
+
 	public static boolean validateUserName(final String username) {
 		if (USERNAME_PATTERN.matcher(username).matches()) {
 			final int length = username.length();
@@ -67,5 +76,13 @@ public class Validation {
 
 	public static boolean isNaturalNumber(String option) {
 		return NATURAL_NUMBER_PATTERN.matcher(option).matches();
+	}
+
+	public static boolean validateAmount(String amountString) {
+		return AMOUNT_PATTERN.matcher(amountString).matches();
+	}
+
+	public static boolean validateDecimal(final String decimal) {
+		return DECIMAL_PATTERN.matcher(decimal).matches();
 	}
 }

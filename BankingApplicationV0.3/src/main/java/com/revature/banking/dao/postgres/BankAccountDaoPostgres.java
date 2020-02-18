@@ -1,11 +1,15 @@
 package com.revature.banking.dao.postgres;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -140,5 +144,40 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 					"Failed to delete account with account_key = " + eba.getAccountkey() + ": " + e.getMessage());
 		}
 		return true;
+	}
+
+	@Override
+	public List<EncryptedBankAccount> getAccountsByUserKey(int userKey) {
+		final String sql = "{call get_accounts(?)}";
+		ResultSet rs = null;
+		final List<EncryptedBankAccount> accounts = new LinkedList<EncryptedBankAccount>();
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final CallableStatement cs = con.prepareCall(sql);) {
+			cs.setInt(1, userKey);
+
+			rs = cs.executeQuery();
+
+			while (rs.next()) {
+				final EncryptedBankAccount eba = new EncryptedBankAccount();
+				eba.setAccountkey(rs.getInt("account_key"));
+				eba.setAccountNo(rs.getString("account_no"));
+				eba.setBalance(rs.getString("balance"));
+				accounts.add(eba);
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().fatal("Get accounts failed for userkey " + userKey + ": " + e.getMessage());
+			return accounts;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet");
+				}
+		}
+
+		return accounts;
 	}
 }

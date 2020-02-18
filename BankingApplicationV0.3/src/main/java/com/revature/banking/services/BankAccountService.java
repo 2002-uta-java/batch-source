@@ -1,11 +1,15 @@
 package com.revature.banking.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 import com.revature.banking.dao.BankAccountDao;
 import com.revature.banking.services.models.BankAccount;
+import com.revature.banking.services.models.User;
 import com.revature.banking.services.security.models.EncryptedBankAccount;
 
 public class BankAccountService extends Service {
@@ -65,5 +69,15 @@ public class BankAccountService extends Service {
 			accountNo[i] = (char) ('0' + rand.nextInt(10));
 
 		return new String(accountNo);
+	}
+
+	public List<BankAccount> getAccounts(User user) {
+		final List<EncryptedBankAccount> encryptedAccounts = baDao.getAccountsByUserKey(user.getUserKey());
+		final List<BankAccount> accounts = new ArrayList<BankAccount>();
+
+		for (final EncryptedBankAccount eba : encryptedAccounts)
+			accounts.add(secService.decrypt(eba));
+
+		return accounts;
 	}
 }

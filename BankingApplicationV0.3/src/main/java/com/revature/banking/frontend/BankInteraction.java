@@ -25,6 +25,7 @@ public abstract class BankInteraction {
 	public static final int LOGOUT = -2;
 	public static final int EXIT = -3;
 	public static final int FAILURE = -4;
+	public static final int TRY_AGAIN = -5;
 
 	public static final String EXIT_STRING = "exit";
 	public static final String LOGOUT_STRING = "logout";
@@ -32,7 +33,7 @@ public abstract class BankInteraction {
 	protected final CLI io;
 	protected final BankAccountService baService;
 	protected final UserService uService;
-	
+
 	private String title;
 	private List<BankInteraction> menuOptions = new ArrayList<BankInteraction>();
 
@@ -66,6 +67,50 @@ public abstract class BankInteraction {
 		menuOptions.add(menuOption);
 	}
 
+	protected int getNumMenuOptions() {
+		return menuOptions.size();
+	}
+
+	protected BankInteraction getInteraction(final int i) {
+		return menuOptions.get(i);
+	}
+
+	public int readOption(final int numOptions) {
+		try {
+			final String chosen = io.readLine();
+			if (!Validation.isNaturalNumber(chosen)) {
+				if (chosen.equalsIgnoreCase(EXIT_STRING))
+					return EXIT;
+				if (chosen.equalsIgnoreCase(LOGOUT_STRING))
+					return LOGOUT;
+				// else this is a bad input
+				io.println("Please choose an option, you typed " + chosen);
+
+				if (!this.retry())
+					return FAILURE;
+				else
+					return BankInteraction.TRY_AGAIN;
+			} else {
+				// number validation was successful, create an int and make sure it's a valid
+				// option
+				final int chosenOption = Integer.parseInt(chosen);
+				if (chosenOption < 1 || chosenOption > menuOptions.size()) {
+					io.println(chosenOption + " is not a valid option");
+
+					if (!this.retry())
+						return FAILURE;
+					else
+						return BankInteraction.TRY_AGAIN;
+				} else
+					return chosenOption;
+			}
+
+		} catch (IOException e) {
+			Logger.getRootLogger().error("There was in IOException: " + e.getMessage());
+			return BankInteraction.FAILURE;
+		}
+	}
+
 	public int getMenu() {
 		int option = 1;
 		while (true) {
@@ -74,35 +119,10 @@ public abstract class BankInteraction {
 			}
 			io.println("Please choose an option (or you can choose " + EXIT_STRING + " or " + LOGOUT_STRING + ").");
 
-			try {
-				final String chosen = io.readLine();
-				if (!Validation.isNaturalNumber(chosen)) {
-					if (chosen.equalsIgnoreCase(EXIT_STRING))
-						return EXIT;
-					if (chosen.equalsIgnoreCase(LOGOUT_STRING))
-						return LOGOUT;
-					// else this is a bad input
-					io.println("Please choose an option, you typed " + chosen);
-
-					if (!this.retry())
-						return FAILURE;
-					// try again
-				} else {
-					// number validation was successful, create an int and make sure it's a valid
-					// option
-					final int chosenOption = Integer.parseInt(chosen);
-					if (chosenOption < 1 || chosenOption > menuOptions.size()) {
-						io.println(chosenOption + " is not a valid option");
-
-						if (!this.retry())
-							return FAILURE;
-					} else
-						return chosenOption;
-				}
-
-			} catch (IOException e) {
-				Logger.getRootLogger().error("There was in IOException: " + e.getMessage());
-			}
+			option = readOption(menuOptions.size());
+			if (option != BankInteraction.TRY_AGAIN)
+				return option;
+			// else try again
 		}
 	}
 

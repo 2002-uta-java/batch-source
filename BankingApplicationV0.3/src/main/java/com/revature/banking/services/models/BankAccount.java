@@ -1,5 +1,9 @@
 package com.revature.banking.services.models;
 
+import java.text.NumberFormat;
+
+import com.revature.banking.dao.BankAccountDao;
+
 /**
  * This is the model used by the front end to interact with a user. The service
  * layer will provide these objects to the front end and will also transform
@@ -9,6 +13,10 @@ package com.revature.banking.services.models;
  *
  */
 public class BankAccount {
+	public static final NumberFormat MONEY_FORMAT = NumberFormat.getCurrencyInstance();
+	public static final int NUM_HIDDEN_NOS = BankAccountDao.BANK_ACCOUNT_NO_LENGTH - 4;
+	public static final char HIDDEN_CHAR = '*';
+
 	private int accountKey;
 	private String accountNo;
 	private double balance;
@@ -79,6 +87,22 @@ public class BankAccount {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	public String getHiddenAccountNo() {
+		final char[] hidden = new char[BankAccountDao.BANK_ACCOUNT_NO_LENGTH];
+		for (int i = 0; i < NUM_HIDDEN_NOS; ++i) {
+			hidden[i] = HIDDEN_CHAR;
+		}
+
+		for (int i = NUM_HIDDEN_NOS; i < hidden.length; ++i)
+			hidden[i] = accountNo.charAt(i);
+
+		return new String(hidden);
+	}
+
+	public String printAccountBalanceHideAccountno() {
+		return getHiddenAccountNo() + ' ' + MONEY_FORMAT.format(balance);
 	}
 
 	@Override

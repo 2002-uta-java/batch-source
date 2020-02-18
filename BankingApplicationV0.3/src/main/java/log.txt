@@ -83,3 +83,9 @@
 2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
 2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
 2020-02-17 19:09:16 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 20:12:06 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-17 20:12:21 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 20:12:21 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 20:12:21 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-17 20:12:26 DEBUG SecurityService:25 method: decrypt - Decrypting myrw1swQazV5s86ghwLfqysPlVzMqVoY to 2394876359
+2020-02-17 20:12:26 DEBUG SecurityService:25 method: decrypt - Decrypting AA3luCHXGGiu4X1XdmT6hg== to 0.0

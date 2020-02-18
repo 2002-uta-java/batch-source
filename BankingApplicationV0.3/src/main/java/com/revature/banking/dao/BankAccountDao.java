@@ -1,5 +1,6 @@
 package com.revature.banking.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import com.revature.banking.services.BankAccountService;
@@ -15,6 +16,7 @@ import com.revature.banking.services.security.models.EncryptedUser;
  */
 public interface BankAccountDao {
 	public static final int BANK_ACCOUNT_NO_LENGTH = 10;
+	public static final double MAX_DEPOSIT = 10000;
 
 	/**
 	 * Set the BankAccountService used by this DAO (this is necessary because the
@@ -70,5 +72,14 @@ public interface BankAccountDao {
 	 * @returns Whether or not this delete was successful.
 	 */
 	public boolean deleteAccount(final EncryptedBankAccount eba);
+
+	/**
+	 * Returns the accounts associated with this user account based on the user's
+	 * key.
+	 * 
+	 * @param userKey user_key from the User stored in the database.
+	 * @return A list of encrypted bank accounts from database.
+	 */
+	public List<EncryptedBankAccount> getAccountsByUserKey(int userKey);
 
 }
