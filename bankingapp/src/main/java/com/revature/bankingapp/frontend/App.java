@@ -70,7 +70,7 @@ public class App
 	
 
 	private static void doTransaction() {
-		System.out.println("Commands: Quit, Sign out, Transaction");
+		System.out.println("Commands: Quit, Sign out, Transaction, Create BankAccount");
 		System.out.println("What would you like to do? ");
 		String command = strsc.nextLine();
 		
@@ -80,6 +80,8 @@ public class App
 			begin();
 		else if (command.equals("Transaction"))
 			createTransaction();
+		else if (command.equals("Create BankAccount"))
+			createBankAccount();
 		
 	}
 	
@@ -105,7 +107,11 @@ public class App
 	}
 	
 	static void createBankAccount() {
-		
+		List<BankAccount> bankAccounts = badao.getBankAccounts();
+		int bankAccountId = bankAccounts.size();
+		double amount = 0;
+		BankAccount ba = new BankAccount(bankAccountId, amount);
+		badao.createBankAccount(ba);
 	}
 
 	static void createAccount() {
