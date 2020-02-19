@@ -70,3 +70,7 @@ on a.account_key = aks.account_key;
 
 select ua.account_key from user_accounts as ua where ua.user_key =1;
 
+create index account_index on accounts (account_key);
+create index user_index on users (user_key);
+create index user_acount_index on user_accounts (user_key, account_key);
+
