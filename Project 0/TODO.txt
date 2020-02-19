@@ -1,0 +1,2 @@
+junit test email validation
+junit test username availability

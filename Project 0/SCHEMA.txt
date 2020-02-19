@@ -1,0 +1,30 @@
+User
+----
+username varchar(10) PK
+name varchar (40)
+password varchar(20)
+logged_in boolean
+
+
+Account
+-------
+account_id long PK
+balance numeric(10,2)
+
+
+
+UserAccount
+-----------
+username varchar(10)
+account_id serial
+
+
+
+Transactions
+------------
+transaction_id serial PK
+Username varchar(10)
+account_id serial
+Date timestamp
+Opening Balance numeric(10,2)
+Amount numeric(10,2)
