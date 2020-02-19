@@ -10,7 +10,20 @@ create or replace function add_account(i users.userid %type, bl accounts.balance
 		values (bl,ty) 
 		returning accountid
 	)
-	insert into "authorization" (userid,accountid) values (i,(select * from acd1))
+	insert into Authorizations (userid,accountid) values (i,(select * from acd1))
+$$ language sql;
+
+create or replace function delete_accounts(ui users.userid %type) returns void as $$
+	delete from accounts where accountid  in (
+		select accountid from authorizations 
+		left join users u1
+		on u1.userid = ui
+	)
+$$ language sql;
+
+create or replace function delete_user(ui users.userid %type) returns void as $$
+	select delete_accounts(ui);
+	delete from users where userid = ui;
 $$ language sql;
 
  -- returns the accounst matching the given userid  
@@ -21,7 +34,7 @@ create or replace function accounts_by_userid(id users.userid %type) returns set
 		(
 			select accountid 
 			from users  u1
-			join "authorization"  au2 
+			join Authorizations  au2 
 			on (u1.userid  = au2.userid and u1.userid = id)
 		)  
 $$ language sql;
@@ -34,28 +47,30 @@ select *
 from users u1
 full outer join (
 	select * 
-	from "authorization" au1
+	from Authorizations as au1
 	full outer join accounts a1
 	on a1.accountid = au1.accountid 
 ) as aau1
 on u1.userid = aau1.userid;
 
-select * from "authorization" a;
+select delete_user(1);
 
-delete  from users where userid = 1;
+
 
 select * 
 from users u1
 full outer join (
 	select * 
-	from "authorization" au1
+	from Authorizations as au1
 	full outer join accounts a1
 	on a1.accountid = au1.accountid 
 ) as aau1
 on u1.userid = aau1.userid;
 
 alter sequence users_userid_seq restart with 1;
-drop function accounts_by_userid(users.userid %type);
-drop function add_account(i users.userid %type, bl accounts.balance  %type, ty accounts."type" %type);
-drop function create_user(un users.username %type, ue users.useremail %type, pw users."password" %type );
+drop function if exists delete_account(ai accounts.accountid %type);
+drop function if exists delete_user(ui users.userid %type);
+drop function if exists accounts_by_userid(users.userid %type);
+drop function  if exists add_account(i users.userid %type, bl accounts.balance  %type, ty accounts."type" %type);
+drop function if exists create_user(un users.username %type, ue users.useremail %type, pw users."password" %type );
 -- view acount

@@ -7,11 +7,15 @@
 ************************************/
 
 --NEED TO ADD UNIQUE CONSTRAINTS
+drop function if exists delete_account(ai accounts.accountid %type);
+drop function if exists delete_user(ui users.userid %type);
 drop function if exists accounts_by_userid("users".userid %type);
 drop table if exists transactions;
-drop table if exists "authorization";
+drop table if exists Authorizations;
 drop table if exists Accounts;
 drop table if exists users;
+
+
 
 
 create table Users
@@ -31,7 +35,8 @@ create table Accounts
 	constraint PK_Accounts primary key (AccountID) 
 );
 
-create table "authorization"
+
+create table Authorizations
 (
 	UserID bigserial  REFERENCES Users (UserID) on delete cascade,
 	AccountID bigserial REFERENCES Accounts (AccountID) on delete cascade,
@@ -41,7 +46,7 @@ create table "authorization"
 
 
 create table Transactions(
-	TransactionID bigserial references "authorization" (TransactionID) on delete cascade,
+	TransactionID bigserial references Authorizations (TransactionID) on delete cascade,
 	Date timestamp not null,
 	Actions varChar(180),
 	tranasctionAmount double precision,
@@ -63,7 +68,7 @@ create or replace function add_account(i users.userid %type, bl accounts.balance
 		values (bl,ty) 
 		returning accountid
 	)
-	insert into "authorization" (userid,accountid) values (i,(select * from acd1))
+	insert into Authorizations (userid,accountid) values (i,(select * from acd1))
 $$ language sql;
 
  -- returns the accounst matching the given userid  
@@ -74,8 +79,21 @@ create or replace function accounts_by_userid(id users.userid %type) returns set
 		(
 			select accountid 
 			from users  u1
-			join "authorization"  au2 
+			join Authorizations  au2 
 			on (u1.userid  = au2.userid and u1.userid = id)
 		)  
 $$ language sql;
---indexes?
+
+create or replace function delete_accounts(ui users.userid %type) returns void as $$
+	delete from accounts where accountid  in (
+		select accountid from authorizations 
+		left join users u1
+		on u1.userid = ui
+	)
+$$ language sql;
+
+create or replace function delete_user(ui users.userid %type) returns void as $$
+	select delete_accounts(ui);
+	delete from users where userid = ui;
+$$ language sql;
+
