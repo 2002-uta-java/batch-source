@@ -1,4 +1,3 @@
-
 com.revature.banking.application
 com.revature.banking.connections
 com.revature.banking.dao
@@ -9,3 +8,4 @@ com.revature.banking.services
 com.revature.banking.services.models
 com.revature.banking.services.security
 com.revature.banking.services.security.models
+com.revature.testing
