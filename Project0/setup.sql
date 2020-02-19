@@ -15,7 +15,7 @@ create table user_account
 
 create or replace function create_account (un user_account.username%type, up user_account.user_password%type)
 returns setof user_account 
-as $func$
+as $$
 begin 
 	insert into bank_account (balance)
 	values (0.00);
@@ -25,11 +25,18 @@ begin
 				from user_account
 				where user_account.username = un;
 end
-$func$ language plpgsql;
+$$ language plpgsql;
 
 select create_account('user01', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
 select create_account('user02', 'password2');
 select create_account('user03', 'password3');
 select create_account('user04', 'password4');
+select create_account('user05', 'password5');
+select create_account('user06', 'password6');
+select create_account('user07', 'password7');
+select create_account('user05', 'password8');
+select create_account('user06', 'password9');
 update bank_account set balance = 50.00 where bank_id = 1;
 update bank_account set balance = 20000000 where bank_id = 2;
+update bank_account set balance = 10.50 where bank_id = 5;
+update bank_account set balance = 100.00 where bank_id = 6;

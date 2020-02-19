@@ -64,7 +64,7 @@ public class BankAccountService {
     			float depositRequest = roundTwoDecimal(s.nextFloat());
     			float oldBalance = roundTwoDecimal(b.getBalance());
     			float newBalance = roundTwoDecimal(oldBalance + depositRequest);
-    			float MAX_BAL = (float) 20000000.00; // 11 digits in SQL, but max val of float is around 2.7*e7.
+    			float MAX_BAL = (float) 20000000.00; // to avoid potential float overflow issues.
     			System.out.println("Depositing $" + depositRequest);
     			
     			if (depositRequest < 0) {
