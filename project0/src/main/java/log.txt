@@ -1,0 +1,81 @@
+2020-02-18 22:56:45 WARN  Bank:62 method: startCustomerOptions - Incorrect LOGIN combination
+
+
+2020-02-18 23:01:32 WARN  Bank:62 method: startCustomerOptions - Incorrect LOGIN combination
+
+
+2020-02-18 23:02:11 WARN  Bank:234 method: getUserOptions - Invalid input. Cannot WITHDRAW more money than you have
+
+
+2020-02-18 23:02:36 WARN  Bank:238 method: getUserOptions - Invalid input. Cannot WITHDRAW fifty
+
+
+2020-02-18 23:26:00 WARN  Bank:93 method: startCustomerOptions - Username 'username' is already taken.
+
+
+2020-02-18 23:26:14 WARN  Bank:96 method: startCustomerOptions - Email 'email' is already used by another account.
+
+
+2020-02-18 23:26:50 WARN  Bank:62 method: startCustomerOptions - Incorrect LOGIN combination
+
+
+2020-02-18 23:26:56 WARN  Bank:118 method: startCustomerOptions - Invalid customer option.
+
+
+2020-02-18 23:27:08 WARN  Bank:62 method: startCustomerOptions - Incorrect LOGIN combination
+
+
+2020-02-18 23:27:18 WARN  Bank:62 method: startCustomerOptions - Incorrect LOGIN combination
+
+
+2020-02-18 23:27:26 WARN  Bank:118 method: startCustomerOptions - Invalid customer option.
+
+
+2020-02-18 23:28:33 WARN  Bank:272 method: getUserOptions - Invalid ACCOUNT NUMBER. Please enter a valid ACCOUNT NUMBER
+
+
+2020-02-18 23:28:39 WARN  Bank:276 method: getUserOptions - Invalid ACCOUNT NUMBER. Please enter a valid ACCOUNT NUMBER
+
+
+2020-02-18 23:30:17 WARN  Bank:246 method: getUserOptions - Invalid ACCOUNT NUMBER. Please enter a valid ACCOUNT NUMBER
+
+
+2020-02-18 23:30:23 WARN  Bank:292 method: getUserOptions - Invalid user option.
+
+
+2020-02-18 23:30:24 WARN  Bank:292 method: getUserOptions - Invalid user option.
+
+
+2020-02-18 23:30:25 WARN  Bank:292 method: getUserOptions - Invalid user option.
+
+
+2020-02-18 23:30:38 WARN  Bank:292 method: getUserOptions - Invalid user option.
+
+
+2020-02-18 23:31:01 WARN  Bank:238 method: getUserOptions - Invalid input. Cannot WITHDRAW -$9
+
+
+2020-02-18 23:37:06 WARN  Bank:197 method: getUserOptions - Invalid ACCOUNT NUMBER. Please enter a valid ACCOUNT NUMBER
+
+
+2020-02-18 23:37:15 WARN  Bank:197 method: getUserOptions - Invalid ACCOUNT NUMBER. Please enter a valid ACCOUNT NUMBER
+
+
+2020-02-18 23:38:50 WARN  Bank:148 method: getUserOptions - Invalid ACCOUNT TYPE. Please select valid type 'CHECKING' or 'SAVINGS'
+
+
+2020-02-18 23:39:06 WARN  Bank:148 method: getUserOptions - Invalid ACCOUNT TYPE. Please select valid type 'CHECKING' or 'SAVINGS'
+
+
+2020-02-18 23:57:22 WARN  Bank:118 method: startCustomerOptions - Invalid customer option.
+
+
+2020-02-18 23:57:22 WARN  Bank:118 method: startCustomerOptions - Invalid customer option.
+
+
+2020-02-18 23:57:23 WARN  Bank:118 method: startCustomerOptions - Invalid customer option.
+
+
+2020-02-18 23:58:31 WARN  Bank:234 method: getUserOptions - Invalid input. Cannot WITHDRAW more money than you have
+
+
