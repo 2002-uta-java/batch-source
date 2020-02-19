@@ -25,7 +25,9 @@ public class AddUserToAccount extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
+		io.working();
 		final List<BankAccount> accounts = baService.getAccounts(user);
+		io.done();
 		io.clearScreen();
 		int option = this.chooseAccount(PROMPT, accounts);
 

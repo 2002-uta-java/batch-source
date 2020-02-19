@@ -26,18 +26,22 @@ public class AddNewUserToAccount extends AccountInteraction {
 		io.clearScreen();
 		io.println("Create a New User:");
 		User newUser = null;
+
 		newUser = createNewUser.getNewUser();
 
 		if (newUser == null)
 			return FAILURE;
 
 		// add this user to the account
+		io.working();
 		if (baService.addUserToAccount(newUser.getUserKey(), account)) {
+			io.done();
 			io.clearScreen();
 			io.println(newUser.getUserName() + " was successfully added to the following account:");
 			io.println('\t' + account.printAccountBalanceHideAccountno());
 			return SUCCESS;
 		} else {
+			io.done();
 			// need to try and remove new user.
 			io.clearScreen();
 			io.println("There was an error trying to link " + newUser.getUserName() + " to the account");

@@ -35,7 +35,9 @@ public class TransferFundsToExternalAccount extends AccountInteraction {
 			if (accountNo == null)
 				return FAILURE;
 
+			io.working();
 			final User otherUser = uService.getUserByUserName(username);
+			io.done();
 			if (otherUser != null) {
 				otherAccount = getOtherAccount(otherUser, accountNo);
 				if (otherAccount != null) {
@@ -52,7 +54,9 @@ public class TransferFundsToExternalAccount extends AccountInteraction {
 			// else try again, continue loop
 		}
 
+		io.working();
 		final List<BankAccount> yourAccounts = baService.getAccounts(user);
+		io.done();
 		// choose a bank account to transfer from
 		int yourAccountChoice = chooseAccount("Choose an account to transfer funds from:", yourAccounts);
 
@@ -91,7 +95,9 @@ public class TransferFundsToExternalAccount extends AccountInteraction {
 			// you chose an amount try to do the transfer:
 			final double amt = amount.getAmount();
 
+			io.working();
 			final int withdrawStatus = baService.withdrawFromAccount(yourAccount, amt);
+			io.done();
 			switch (withdrawStatus) {
 			case BankAccountService.WITHDRAWAL_FAILURE:
 				io.clearScreen();
@@ -106,7 +112,9 @@ public class TransferFundsToExternalAccount extends AccountInteraction {
 			}
 
 			// try to transfer the funds
+			io.working();
 			if (!baService.addFundsToAccountNoLimit(otherAccount, amt)) {
+				io.done();
 				// there was a problem, attempt to put the money back
 				baService.addFundsToAccountNoLimit(yourAccount, amt);
 				io.clearScreen();
@@ -114,6 +122,7 @@ public class TransferFundsToExternalAccount extends AccountInteraction {
 				io.println('\t' + yourAccount.printAccountBalanceHideAccountno());
 				return FAILURE;
 			}
+			io.done();
 
 			// the transfer was a success!!!
 			io.clearScreen();

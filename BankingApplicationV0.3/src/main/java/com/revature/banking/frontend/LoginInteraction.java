@@ -26,7 +26,9 @@ public class LoginInteraction extends BankInteraction {
 			io.println("Password: ");
 			final String password = io.readPassword();
 
+			io.working();
 			final User user = uService.login(username, password);
+			io.done();
 			if (user == null) {
 				io.println("username/password pair is invalid.");
 				if (!super.retry())

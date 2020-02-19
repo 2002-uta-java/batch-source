@@ -30,7 +30,9 @@ public class AddExistingUserToAccount extends AccountInteraction {
 			final String userName = io.readLine();
 			io.println("password:");
 			final String password = io.readPassword();
+			io.working();
 			final User newUser = uService.login(userName, password);
+			io.done();
 
 			if (newUser == null) {
 				io.println("Invalid username/password.");
@@ -40,8 +42,10 @@ public class AddExistingUserToAccount extends AccountInteraction {
 				continue;
 			}
 
+			io.working();
 			// first make sure this user doesn't already have access to this account
 			final List<BankAccount> newUserAccounts = baService.getAccounts(newUser);
+			io.done();
 
 			for (final BankAccount newUserAccount : newUserAccounts) {
 				if (newUserAccount.getAccountKey() == account.getAccountKey()) {
@@ -53,12 +57,15 @@ public class AddExistingUserToAccount extends AccountInteraction {
 
 			// can now attempt to add this user to this account
 
+			io.working();
 			if (baService.addUserToAccount(newUser.getUserKey(), account)) {
+				io.done();
 				io.clearScreen();
 				io.println(userName + " was successfully added to the following acount:");
 				io.println('\t' + account.printAccountBalanceHideAccountno());
 				return SUCCESS;
 			} else {
+				io.done();
 				io.println("There was an error and " + userName + " was not added.");
 				return FAILURE;
 			}

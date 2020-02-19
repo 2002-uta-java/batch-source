@@ -10,6 +10,7 @@ public class TransferFunds extends AccountInteraction {
 		super(io, uService, baService);
 		this.setTitle(TITLE);
 		this.addMenuOption(new TransferFundsToOwnAccounts(io, uService, baService));
+		this.addMenuOption(new TransferFundsToExternalAccount(io, uService, baService));
 	}
 
 	@Override

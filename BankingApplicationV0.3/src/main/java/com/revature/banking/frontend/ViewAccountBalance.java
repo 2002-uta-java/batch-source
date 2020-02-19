@@ -16,7 +16,9 @@ public class ViewAccountBalance extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
+		io.working();
 		final List<BankAccount> accounts = baService.getAccounts(user);
+		io.done();
 
 		io.println("You Account Balances:");
 		for (final BankAccount account : accounts) {

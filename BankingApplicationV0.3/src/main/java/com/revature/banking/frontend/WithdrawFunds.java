@@ -19,7 +19,9 @@ public class WithdrawFunds extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
+		io.working();
 		final List<BankAccount> accounts = baService.getAccounts(user);
+		io.done();
 		final int option = super.chooseAccount(PROMPT, accounts);
 
 		switch (option) {
@@ -55,7 +57,9 @@ public class WithdrawFunds extends AccountInteraction {
 			amt = amount.getAmount();
 			// else amt is good, withdraw it
 
+			io.working();
 			final int withdrawalStatus = baService.withdrawFromAccount(account, amt);
+			io.done();
 
 			switch (withdrawalStatus) {
 			case BankAccountService.WITHDRAWAL_SUCCESS:

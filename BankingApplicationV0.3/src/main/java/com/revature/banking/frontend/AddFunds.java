@@ -41,7 +41,9 @@ public class AddFunds extends AccountInteraction {
 
 		// else it was a success, perform the operation
 		final double amt = amount.getAmount();
+		io.working();
 		final int addFundsStatus = baService.addFundsToAccount(account, amt);
+		io.done();
 
 		switch (addFundsStatus) {
 		case BankAccountService.ADD_FUNDS_SUCCESS:
@@ -68,7 +70,9 @@ public class AddFunds extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
+		io.working();
 		final List<BankAccount> accounts = baService.getAccounts(user);
+		io.done();
 
 		int option = super.chooseAccount(PROMPT, accounts);
 

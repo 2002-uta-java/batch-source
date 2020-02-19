@@ -20,8 +20,10 @@ public class CreateNewUser extends BankInteraction {
 
 		if (newUser != null) {
 
+			io.working();
 			final BankAccount account = baService.createNewAccount();
 			if (account != null && baService.addUserToAccount(newUser.getUserKey(), account)) {
+				io.done();
 				io.println("You have been added to the system.");
 				io.println("Your new bank account number is " + account.getAccountNo());
 				io.println("You should now be able to login to the system with your user name (" + newUser.getUserName()
@@ -35,6 +37,7 @@ public class CreateNewUser extends BankInteraction {
 				}
 				// attempt to remove user
 				uService.deleteUser(newUser);
+				io.done();
 			}
 		}
 
@@ -161,7 +164,10 @@ public class CreateNewUser extends BankInteraction {
 
 		while (true) {
 			// check tax id and username against what's in the database
+
+			io.working();
 			checkUserNameTaxIdStatus = uService.checkNewUserTaxidAndUserName(newUser);
+			io.done();
 
 			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_HAS_OPEN_ACCOUNT) {
 				io.println("You already have an account." + " If you need help logging in please call"
@@ -221,18 +227,5 @@ public class CreateNewUser extends BankInteraction {
 			else
 				return null;
 		}
-
-//	{
-//		if (uService.createNewUserAndAccount(newUser)) {
-//			return newUser;
-//		}
-
-//		switch (checkUserNameTaxIdStatus) {
-//		case UserService.CHECK_NEW_USER_BRAND_NEW:
-//			account = uService.createNewUserAndAccount(newUser);
-//			break;
-//		case UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS:
-//			account = uService.updateUserCreateNewAccount(newUser);
-//		}
 	}
 }

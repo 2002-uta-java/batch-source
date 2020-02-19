@@ -35,7 +35,9 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 
 	@Override
 	public int realInteraction() {
+		io.working();
 		final List<BankAccount> accounts = baService.getAccounts(user);
+		io.done();
 
 		final int withdrawFromChoice = chooseTransferFrom(accounts);
 
@@ -72,7 +74,10 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 		final BankAccount transferTo = accounts.get(transferToChoice - 1);
 		final double amt = amount.getAmount();
 		// attempt to withdraw from the first account
+		io.working();
 		final int withdrawStatus = baService.withdrawFromAccount(withdrawFrom, amt);
+		io.done();
+
 		switch (withdrawStatus) {
 		case BankAccountService.WITHDRAWAL_FAILURE:
 			io.clearScreen();
@@ -89,7 +94,9 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 		}
 		// else the withdrawal was successful, attempt to transfer the funds
 
+		io.working();
 		if (!baService.addFundsToAccountNoLimit(transferTo, amt)) {
+			io.done();
 			io.clearScreen();
 			io.println("We were unable to perform the transfer, sorry.");
 			// attempt to transfer the money back into the withdrawn account
@@ -98,6 +105,7 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 			io.println('\t' + transferTo.printAccountBalanceHideAccountno());
 			return FAILURE;
 		}
+		io.done();
 
 		// the transfer was successful
 		io.clearScreen();

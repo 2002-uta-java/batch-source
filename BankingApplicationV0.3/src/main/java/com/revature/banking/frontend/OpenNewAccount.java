@@ -21,8 +21,10 @@ public class OpenNewAccount extends AccountInteraction {
 
 		// else open a new account
 		io.clearScreen();
-		io.println("Opening a new account...");
+		io.print("Opening a new account...");
+		io.working();
 		final BankAccount newAccount = baService.addAccountToUser(user);
+		io.done();
 		if (newAccount != null) {
 			io.println('\t' + newAccount.printFullAccount());
 			return SUCCESS;

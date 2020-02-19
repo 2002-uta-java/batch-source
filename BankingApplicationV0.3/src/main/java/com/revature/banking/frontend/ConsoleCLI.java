@@ -25,6 +25,7 @@ public class ConsoleCLI implements CLI {
 	private final boolean isLinux;
 	private final boolean isWindows;
 	private final ProcessBuilder windowsClearCommand;
+	private final WorkingAnimation animation;
 
 	public ConsoleCLI() {
 		super();
@@ -38,6 +39,8 @@ public class ConsoleCLI implements CLI {
 			windowsClearCommand = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
 		} else
 			windowsClearCommand = null;
+
+		this.animation = new WorkingAnimation(this);
 	}
 
 	@Override
@@ -122,4 +125,15 @@ public class ConsoleCLI implements CLI {
 			out.flush();
 	}
 
+	@Override
+	public void working() {
+		if (isLinux)
+			(new Thread(animation)).start();
+	}
+
+	@Override
+	public void done() {
+		if (isLinux)
+			animation.stop();
+	}
 }
