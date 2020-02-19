@@ -65,18 +65,18 @@ public class Driver {
 			switch (i) {
 			case 1:
 				login();
-				if (loggedUser != null)
+				if (loggedUser != null) {
 					userMenu();
+					continue startMenuloop;
+				}
 				else
 					continue startMenuloop;
 				
 			case 2:
-			{
 				newUser();
 				userMenu();
-			}
 				break;
-				
+			
 			case 3:
 				System.out.println("\n		PROGRAM END		");
 				System.exit(0);
@@ -146,7 +146,7 @@ public class Driver {
 			switch (i) {
 			case 1:
 				List<Account> a = uService.viewAccounts(loggedUser.getUserid());
-				if (a == null) {
+				if (a.size()==0) {
 					System.out.println("You have no accounts open currently");
 					continue;
 				}
