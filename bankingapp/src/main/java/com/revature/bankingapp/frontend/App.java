@@ -34,8 +34,6 @@ import com.revature.bankingapp.model.*;
 public class App {
 	private static Scanner strsc = new Scanner(System.in);
 	private static boolean keepGoing = true;
-	private static BankAccountDaoImpl badao = new BankAccountDaoImpl();
-	private static TransactionDaoImpl tdao  = new TransactionDaoImpl();
 	private static UserAccountDaoImpl uadao = new UserAccountDaoImpl();
 	private static UserAccount user = null;
 	private static Options options = new Options();
@@ -60,7 +58,7 @@ public class App {
 		
 		user = uadao.getUserAccountByUsername(uName);
 		
-		if (user.getuName().equals(uName) && user.getPassword().equals(password))
+		if (user.getPassword().equals(password))
 			return true;
 		
 		return false;

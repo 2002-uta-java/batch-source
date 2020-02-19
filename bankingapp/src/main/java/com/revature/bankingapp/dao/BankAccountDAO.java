@@ -1,6 +1,5 @@
 package com.revature.bankingapp.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 import com.revature.bankingapp.model.*;
 
