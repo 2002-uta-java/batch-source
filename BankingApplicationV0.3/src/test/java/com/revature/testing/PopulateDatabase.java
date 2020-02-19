@@ -111,8 +111,8 @@ public class PopulateDatabase {
 
 			while ((line = br.readLine()) != null) {
 				final User user = readUser(line);
-				System.out.println("Creating user: " + user);
 				uService.createUser(user);
+				System.out.println("Creating user: " + user);
 				final BankAccount account = baService.createNewAccount();
 				baService.addUserToAccount(user.getUserKey(), account);
 

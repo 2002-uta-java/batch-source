@@ -293,4 +293,10 @@ public class ValidationTest {
 		final String number = "00023";
 		assertTrue(Validation.validateDecimal(number));
 	}
+
+	@Test
+	public void validatePasswordBad() {
+		final String password = "YAParmy39";
+		assertFalse(Validation.validatePassword(password));
+	}
 }

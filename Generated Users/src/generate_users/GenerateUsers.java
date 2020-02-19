@@ -21,6 +21,7 @@ public class GenerateUsers {
 
 	public static final int NUM_PEOPLE = 30;
 
+	private static final Set<String> usernames = new HashSet<String>();
 	private static final Set<String> ids = new HashSet<String>();
 	private static final Random rand = new Random();
 	private static final List<String> words3 = new ArrayList<String>();
@@ -99,10 +100,10 @@ public class GenerateUsers {
 			}
 		}
 
-		final int numNums = rand.nextInt(4);
+		final int numNums = 1 + rand.nextInt(4);
 		for (int i = 0; i < numNums; ++i)
 			password += (char) ('0' + rand.nextInt(10));
-		final int numSpecials = rand.nextInt(3);
+		final int numSpecials = 1 + rand.nextInt(3);
 
 		for (int i = 0; i < numSpecials; ++i) {
 			password += randomSpecial();
@@ -128,8 +129,20 @@ public class GenerateUsers {
 	public static String genUserName(String first, String last) {
 		first = first.toLowerCase();
 		last = last.toLowerCase();
+		String username = first.substring(0, 2) + last.substring(0, 3);
 
-		return first.substring(0, 2) + last.substring(0, 3);
+		if (usernames.contains(username)) {
+			int count = 0;
+			String newUsername = username + count++;
+			while (usernames.contains(newUsername)) {
+				newUsername = username + count++;
+			}
+			username = newUsername;
+		}
+
+		usernames.add(username);
+
+		return username;
 	}
 
 	public static String generateTaxID() {
