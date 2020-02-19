@@ -22,6 +22,14 @@ public class AccountServices {
 		System.out.println("Unable to create, please try again\n");
 		return false;
 	}
+	
+	public boolean createAccountWithFunction(Account a) {
+		Account account = accountDaos.createDepartmentWithFunction(a);
+		if(a.getUser_id() == account.getUser_id() && a.getBalance() == account.getBalance())
+			return true;
+		System.out.println("Unable to create, please try again\n");
+		return false;
+	}
 
 	public boolean updateAccount(Account a) {
 		int accountUpdated = accountDaos.updateAccount(a);

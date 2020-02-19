@@ -137,7 +137,12 @@ public class UIDriver {
 		if(us.createUser(user)) {
 			user = us.getUserByUsername(username);
 			account = new Account(user.getUser_id());
+			/* This method creates an account using a prepared statement
 			if(as.createAccount(account)) {
+				account = as.getAccount(user.getUser_id());
+				welcome();
+			}*/
+			if(as.createAccountWithFunction(account)) {
 				account = as.getAccount(user.getUser_id());
 				welcome();
 			}
@@ -185,12 +190,4 @@ public class UIDriver {
 		
 		return h;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -29,14 +29,16 @@ public class UserDaosImplementation implements UserDaos{
 				user.setPassword(rs.getString("pwd"));
 				user.setUser_id(rs.getInt("user_id"));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		} 
+		catch (SQLException e) {
+			//e.printStackTrace();
+		} 
+		finally {
 			if(rs!=null) {
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 			}
 		}
@@ -56,8 +58,9 @@ public class UserDaosImplementation implements UserDaos{
 			ps.setString(2, pwd);
 			userCreated = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} 
+		catch (SQLException e) {
+			//e.printStackTrace();
 		}
 		
 		return userCreated;
@@ -74,8 +77,9 @@ public class UserDaosImplementation implements UserDaos{
 			ps.setInt(3, u.getUser_id());
 			userUpdated = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} 
+		catch (SQLException e) {
+			//e.printStackTrace();
 		}
 		
 		return userUpdated;
@@ -90,8 +94,9 @@ public class UserDaosImplementation implements UserDaos{
 			ps.setInt(1, u.getUser_id());
 			rowsDeleted = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} 
+		catch (SQLException e) {
+			//e.printStackTrace();
 		}
 		
 		return rowsDeleted;
@@ -110,8 +115,9 @@ public class UserDaosImplementation implements UserDaos{
 			users.add(new User(userId, username, pwd));
 		}
 		
-	} catch (SQLException e) {
-		e.printStackTrace();
+	} 
+	catch (SQLException e) {
+		//e.printStackTrace();
 	}
 	
 	return users;

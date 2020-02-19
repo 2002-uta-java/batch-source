@@ -7,4 +7,5 @@ public interface AccountDaos {
 	public int createAccount(Account a);
 	public int updateAccount(Account a);
 	public int deleteAccount(Account a);
+	public Account createDepartmentWithFunction(Account a);
 }

@@ -1,5 +1,6 @@
 package com.revature.daos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,14 +29,14 @@ public class AccountDaosImplementation implements AccountDaos {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			try {
 				if(rs!=null) {
 					rs.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		
@@ -55,10 +56,40 @@ public class AccountDaosImplementation implements AccountDaos {
 			
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return accountCreated;
+	}
+	
+	@Override
+	public Account createDepartmentWithFunction(Account a) {
+		String sql = "{call add_account(?)}";
+		ResultSet rs = null;
+		
+		try(Connection c = ConnectionUtil.getConnection();CallableStatement cs = c.prepareCall(sql)){
+			cs.setInt(1, a.getUser_id());
+			cs.execute();
+			rs = cs.getResultSet();
+			
+			while(rs.next()) {
+				a.setAccount_id(rs.getInt("account_id"));
+				a.setBalance(rs.getDouble("balance"));
+			}
+			
+		} catch (SQLException e) {
+			//e.printStackTrace();
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return a;
 	}
 
 	@Override
@@ -88,7 +119,7 @@ public class AccountDaosImplementation implements AccountDaos {
 			rowsDeleted = ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return rowsDeleted;
