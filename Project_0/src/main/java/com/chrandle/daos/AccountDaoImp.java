@@ -103,15 +103,30 @@ public class AccountDaoImp implements AccountDao {
 	}
 
 	@Override
-	public double updateAccount(Account a, double amount) throws InvalidTransactionException {
+	public double updateAccount(Account a, double amount) {
 		
 		if(amount <0 && (a.getBalance() - amount <0) ) {
-			throw new InvalidTransactionException("Withdrawal over curent balance");
+			return -1;
 		} else {
-			a.setBalance(a.getBalance() + amount);
+		
+			
+			String query = "update accounts set balance = ?::numeric::money where accountid = ? " ; 
+			ResultSet result = null;
+			try(Connection c = ConnectionUtil.getConnection();
+					PreparedStatement pstatement =  c.prepareStatement(query)) {
+					
+					pstatement.setDouble(1, a.getBalance()+amount);
+					pstatement.setLong(2, a.getAccountid());
+				    pstatement.executeUpdate();
+					return a.getBalance();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+					return -1;
+				} 
 		}
 		
-		return a.getBalance();
+	
 	}
 
 	@Override

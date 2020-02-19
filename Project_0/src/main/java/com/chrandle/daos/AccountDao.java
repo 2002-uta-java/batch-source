@@ -8,7 +8,7 @@ import com.chrandle.util.InvalidTransactionException;
 public interface AccountDao {
 	public List<Account> getAccounts();
 	public Account getAccountById(long id);
-	public double updateAccount(Account u,double amount) throws InvalidTransactionException;
+	public double updateAccount(Account u,double amount);
 	public int deleteAccount(Account u);
 	public long createAccount(long uid,double balance, String type);
 	

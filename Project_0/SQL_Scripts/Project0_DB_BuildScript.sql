@@ -85,9 +85,9 @@ $$ language sql;
 
 create or replace function delete_accounts(ui users.userid %type) returns void as $$
 	delete from accounts where accountid  in (
-		select accountid from authorizations 
-		left join users u1
-		on u1.userid = ui
+		select accountid from authorizations au1
+		inner join users u1
+		on (u1.userid = au1.userid and u1.userid =ui)
 	)
 $$ language sql;
 

@@ -109,6 +109,13 @@ public class Driver {
 			System.out.print("Please Enter a password: ");
 			pw = input.nextLine();
 			added = uService.createUser (usern, email, pw);
+			
+			if (added==0) {
+				System.out.print("that email"
+						+ " address is in use; please enter a different email address: \n");
+				added =-1;
+				continue;
+			}
 		}
 		loggedUser = uService.getUserById(added);
 		System.out.println("Account Created for"+loggedUser.getEmail());
@@ -120,11 +127,10 @@ public class Driver {
 					+ "What would you like to do?\n"
 					+ "Please enter a numeric input\n"
 					+ "		1: View Accounts\n"
-					+ "		2: Withdraw from an account\n"
-					+ "		3: Deposit to an account\n"
-					+ "		4: Create an an account\n"
-					+ "		5: Delete user\n"
-					+ "		6. Logout\n");
+					+ "		2: Withdraw/deposit from an account\n"
+					+ "		3: Create an an account\n"
+					+ "		4: Delete user\n"
+					+ "		5. Logout\n");
 			int i = 0;
 			
 			try {
@@ -147,18 +153,17 @@ public class Driver {
 				}
 				break;
 			case 2:
-				//TODO:
+				transactionMenu();
 				break;
 			case 3:
-				//TODO:
-				break;
-			case 4:
 				accountCreation();
 				break;
+			case 4:
+				uService.deleteUser(loggedUser.getUserid());
+				System.out.println("USER AND ASSOCIATED ACCOUNTS DELETED");
+				return;
+
 			case 5:
-				//TODO:
-				break;
-			case 6:
 				return;
 			default:
 				break;
@@ -219,8 +224,42 @@ public class Driver {
 				System.out.println("account specs invalid, please try again");
 				continue;
 			}
-				
+		}
+	}
+	
+	static void transactionMenu() {
+		while(true) {
+			String aid, bal;
+			long accid;
+			double bl;
+			System.out.println("Please the accountid of the account you wish to access:  ");
+			aid = input.nextLine();
+			System.out.println("Please enter a +/- amount for the transaction");
+			bal = input.nextLine();
 			
+			try {
+				accid = Long.parseLong(aid);
+				bl = Double.parseDouble(bal);
+			} catch(Exception e) {
+				System.out.print("\n------------------------------------\n"
+						+ "Please enter a positive or negative value in decimal format"
+						+ "\n------------------------------------\n");
+				continue;
+			}
+			
+			Account a = aService.getAccountById(accid);
+			double  rslt = aService.transaction(a, bl);
+			a = aService.getAccountById(accid);
+			
+			if (rslt < 0) {
+				System.out.print("\n------------------------------------\n"
+						+  "Transaction not allowed, please try again."
+						+ "\n------------------------------------\n");
+				continue;
+			} else {
+					System.out.println("Account #"+a.getAccountid()+" now has a balance of "+a.getBalance());
+					return;
+			}
 		}
 	}
 	

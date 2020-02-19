@@ -111,7 +111,7 @@ public class UserDaoImp implements UserDao {
 			} else return 0;
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			e.printStackTrace();
+			//e.printStackTrace();
 			return 0;
 		}
 	}
@@ -125,7 +125,7 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public int deleteUser(long uid) {
-		String sql = "{select delete_user(?)}";
+		String sql = "{call delete_user(?)}";
 		ResultSet result = null;
 		try(Connection userConn = ConnectionUtil.getConnection()){
 			CallableStatement pcall =  userConn.prepareCall(sql);

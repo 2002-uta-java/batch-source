@@ -19,4 +19,9 @@ public class AccountService {
 	public long createAccount(long userid, double i, String ty) {
 		return aDao.createAccount( userid,i, ty);
 	}
+	
+	public double transaction(Account a, double amount)
+	{
+		return aDao.updateAccount(a, amount);
+	}
 }

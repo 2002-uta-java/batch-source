@@ -2,8 +2,8 @@
 
 
  select create_user ('billy', 'bob@something.com', 'gruff');
- select add_account (1::bigint,32.0::money;'Checking');
- select add_account (1::bigint,3882.0::money;'Savings');
+ select add_account (1::bigint,32.09::money,'Checking');
+ select add_account (1::bigint,3882.0::money,'Savings');
 --
 --update account where accountid  in
 --		(
@@ -23,7 +23,7 @@ full outer join (
 ) as aau1
 on u1.userid = aau1.userid;
 
-select delete_user(1);
+--select delete_user(1);
 
 
 
