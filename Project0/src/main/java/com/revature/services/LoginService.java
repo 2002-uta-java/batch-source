@@ -71,7 +71,7 @@ public class LoginService {
     					String passwordAttempt = uas.encryptPassword(s.nextLine());
     					
     					if (passwordAttempt.equals(u.getPassword())) { // u.getpass already encrypted
-    						System.out.println("Logging in...");	   
+    						System.out.println("Logging in...");
     						bas.bankAccountMenu(u);	
     						break;
     					}

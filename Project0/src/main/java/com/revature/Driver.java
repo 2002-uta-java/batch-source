@@ -11,8 +11,7 @@ import com.revature.services.LoginService;
 // Communicates with user via console.
 // Persists data in PostGreSQL database using JDBC.
 // Showcases user accounts, usernames/passwords, login/out, bank accounts, balances,
-// deposit/withdraw/view, create account, ...
-// (hopefully include logging, mockito tests, checking/savings, transfer funds)
+// deposit/withdraw/view, create account, transfer funds, password encryption.
 
 public class Driver {
 
