@@ -129,9 +129,9 @@ public class BankAccountService extends Service {
 	 * @param amount  Amount to withdraw.
 	 * @return a status code which explains whether or not there was a problem and,
 	 *         if so, what the problem was.
-	 * @see {@link #WITHDRAWAL_FAILURE}
-	 * @see {@link #WITHDRAWAL_INSUFFICIENT_FUNDS}
-	 * @see {@link #WITHDRAWAL_SUCCESS}
+	 * @see #WITHDRAWAL_FAILURE
+	 * @see #WITHDRAWAL_INSUFFICIENT_FUNDS
+	 * @see #WITHDRAWAL_SUCCESS
 	 */
 	public int withdrawFromAccount(BankAccount account, double amount) {
 		if (amount > account.getBalance())

@@ -115,18 +115,21 @@ public class BankAccount {
 	}
 
 	/**
-	 * There is no check here for consistency
+	 * There is no check here for consistency. You should check whether or not the
+	 * amount is negative before calling this method.
 	 * 
-	 * @param amount
+	 * @param amount amount to be added to this bank account.
 	 */
 	public void addFunds(double amount) {
 		this.balance += amount;
 	}
 
 	/**
-	 * There is no check here for consistency
+	 * Withdraws a specified amount from this bank account. There are no consistency
+	 * checks for this method. You should check whether or not amount is negative or
+	 * more than the balance before calling this method.
 	 * 
-	 * @param amount
+	 * @param amount amount to withdraw from this bank account.
 	 */
 	public void withdraw(double amount) {
 		this.balance -= amount;

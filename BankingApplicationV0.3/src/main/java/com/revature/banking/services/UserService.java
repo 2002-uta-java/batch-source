@@ -87,19 +87,24 @@ public class UserService extends Service {
 	 * This method returns an integer value explaining the status of this new user's
 	 * information.
 	 * 
+	 * This method simultaneously checks whether or not the proposed user name is
+	 * not already in the database.
+	 * 
 	 * Note: if the user is already in the system but they have no open accounts,
 	 * then they can re-open an account. In this case this method will set the
 	 * user's user_key so that the next call to the database does not have to pull
 	 * every user and search by tax id again.
 	 * 
-	 * @param user Checks whether the new user's taxid is consistent with what's
-	 *             already in the database.
+	 * @param newUser Checks whether the new user's taxid is consistent with what's
+	 *                already in the database <i>and</i> that the proposed user name
+	 *                is not already taken.
 	 * @return An integer value that explains whether or not this user's information
 	 *         is valid and if not, why.
-	 * @see {@link #CHECK_NEW_USER_BRAND_NEW},
-	 *      {@link #CHECK_NEW_USER_HAS_OPEN_ACCOUNT},
-	 *      {@link #CHECK_NEW_USER_TAXID_MISMATCH},
-	 *      {@link #CHECK_NEW_USER_VALID_ALREADY_EXISTS}
+	 * @see #CHECK_NEW_USER_BRAND_NEW
+	 * @see #CHECK_NEW_USER_VALID_ALREADY_EXISTS
+	 * @see #CHECK_NEW_USER_HAS_OPEN_ACCOUNT
+	 * @see #CHECK_NEW_USER_INVALID_USERNAME_EXISTS
+	 * @see #CHECK_NEW_USER_TAXID_MISMATCH
 	 */
 	public int checkNewUserTaxidAndUserName(User newUser) {
 		// TODO need to combine this with username to make sure username isn't already

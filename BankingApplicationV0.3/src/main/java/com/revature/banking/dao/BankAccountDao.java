@@ -45,10 +45,10 @@ public interface BankAccountDao {
 	/**
 	 * Adds a user to an account.
 	 * 
-	 * @param eUser User to add an account to. The passed user <i>must</i> contain a
-	 *              valid user_key.
-	 * @param eba   The bank account to link to this user. The passed account
-	 *              <i>must</i> contain a valid account_id.
+	 * @param userKey user_key of user to be added to this account.
+	 * @param eba     The bank account to link to this user. The passed account
+	 *                <i>must</i> contain a valid account_id.
+	 * @return Whether or not the user was successfully added to the account.
 	 */
 	public boolean addUserToAccount(final int userKey, final EncryptedBankAccount eba);
 
@@ -68,7 +68,7 @@ public interface BankAccountDao {
 	 * 
 	 * @param eba Bank account to be deleted. This must include, at least the
 	 *            account_key.
-	 * @returns Whether or not this delete was successful.
+	 * @return Whether or not this delete was successful.
 	 */
 	public boolean deleteAccount(final EncryptedBankAccount eba);
 

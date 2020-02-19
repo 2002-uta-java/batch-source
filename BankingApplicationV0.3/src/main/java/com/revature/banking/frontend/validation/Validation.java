@@ -27,8 +27,8 @@ public class Validation {
 	 * https://howtodoinjava.com/regex/how-to-build-regex-based-password-validator-in-java/
 	 * 
 	 * This should require a lower case letter, upper case letter, digit, and
-	 * special character (specifically one of @, #, $, %, !, &, *). And the length
-	 * should be at least 6 but no more than 16.
+	 * special character (specifically one of @, #, $, %, !, &amp;, *). And the
+	 * length should be at least 6 but no more than 16.
 	 */
 	public static final String PASSWORD_REGEX = "(^(?=.*\\p{Lower})(?=.*\\p{Digit})(?=.*[" + PASSWORD_SPECIAL
 			+ "])(?=.*\\p{Upper}).{6,16})$";

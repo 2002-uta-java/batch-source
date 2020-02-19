@@ -1,11 +1,14 @@
 package com.revature.banking.services.security.models;
 
+import com.revature.banking.services.models.BankAccount;
+import com.revature.banking.services.models.User;
+
 /**
  * The account number and balance are encrypted in the database, only the
  * account_key is not encrypted. This model is used as a bridge between the
  * service layer and the database layer. The DAO's will only deal with these
  * encrypted models and the service layer will decipher them and transform them
- * into Users/BankAccount models suitable for the frontend.
+ * into {@link User}/{@link BankAccount} models suitable for the frontend.
  * 
  * @author Jared F Bennatt
  *

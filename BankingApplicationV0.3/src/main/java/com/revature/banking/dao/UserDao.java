@@ -93,7 +93,7 @@ public interface UserDao {
 	 * @param eUser User to be deleted. This needs to have, at least, the user_key
 	 *              set.
 	 * @return Whether or not this action was successful.
-	 * @see {@link #removeUser(EncryptedUser)}
+	 * @see #removeUser(EncryptedUser)
 	 */
 	public boolean deleteUser(final EncryptedUser eUser);
 
@@ -105,7 +105,7 @@ public interface UserDao {
 	 * @param eUser User to be removed. This needs to have, at least, the user_key
 	 *              set.
 	 * @return Whether or not this action was successful.
-	 * @see {@link #deleteUser(EncryptedUser)}
+	 * @see #deleteUser(EncryptedUser)
 	 */
 	public boolean removeUser(final EncryptedUser eUser);
 
