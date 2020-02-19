@@ -44,7 +44,7 @@ public class Driver {
 	
 	public static void startMenu() {
 		
-		loop: while (true) {
+		startMenuloop: while (true) {
 			
 			System.out.print("\nWhat would you like to do?\n"
 					+ "Please enter a numeric input\n"
@@ -68,7 +68,7 @@ public class Driver {
 				if (loggedUser != null)
 					userMenu();
 				else
-					continue loop;
+					continue startMenuloop;
 				
 			case 2:
 			{
@@ -124,7 +124,7 @@ public class Driver {
 	}
 	
 	static public void userMenu(){
-		while (true) {
+		userMenuLoop: while (true) {
 			System.out.print("\n Welcome "+""+"\n"
 					+ "What would you like to do?\n"
 					+ "Please enter a numeric input\n"
@@ -159,7 +159,7 @@ public class Driver {
 				break;
 			case 3:
 				accountCreation();
-				break;
+				continue userMenuLoop;
 			case 4:
 				uService.deleteUser(loggedUser.getUserid());
 				loggedUser = null;
@@ -262,6 +262,7 @@ public class Driver {
 				System.out.print("\n------------------------------------\n"
 						+  "Transaction not allowed, please try again."
 						+ "\n------------------------------------\n");
+				return;
 			} 
 		}
 	}
