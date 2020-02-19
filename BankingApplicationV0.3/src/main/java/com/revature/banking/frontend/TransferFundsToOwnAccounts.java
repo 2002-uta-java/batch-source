@@ -49,7 +49,7 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 
 		final BankAccount withdrawFrom = accounts.get(withdrawFromChoice - 1);
 
-		final int transferToChoice = chooseTransferTo(accounts, withdrawFromChoice);
+		int transferToChoice = chooseTransferTo(accounts, withdrawFromChoice);
 
 		switch (transferToChoice) {
 		case EXIT:
@@ -57,6 +57,17 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 		case FAILURE:
 			return transferToChoice;
 		}
+
+		// the choice here is wrong because the above choice has been decremented (hard
+		// to tell from where).
+
+		// The withdraw choice removes an option. It will have no effect on the ordering
+		// of the accounts below it. So if my transferToChoice is below withdrawFrom,
+		// it's the correct value. But if it equals withdrawFrom or is above, I need to
+		// add one (because all of the ones above withdrawFrom have been decremented in
+		// the selection)
+		if (transferToChoice >= withdrawFromChoice)
+			++transferToChoice;
 
 		final BankAccount transferTo = accounts.get(transferToChoice - 1);
 		final double amt = amount.getAmount();
@@ -66,12 +77,14 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 		case BankAccountService.WITHDRAWAL_FAILURE:
 			io.clearScreen();
 			io.println("There was an error. Your funds were not transferred.");
-			this.promptToContinue();
+			io.println('\t' + withdrawFrom.printAccountBalanceHideAccountno());
+			io.println('\t' + transferTo.printAccountBalanceHideAccountno());
 			return FAILURE;
 		case BankAccountService.WITHDRAWAL_INSUFFICIENT_FUNDS:
 			io.clearScreen();
 			io.println("There were insufficient funds to perform the transfer.");
 			io.println('\t' + withdrawFrom.printAccountBalanceHideAccountno());
+			io.println('\t' + transferTo.printAccountBalanceHideAccountno());
 			return FAILURE;
 		}
 		// else the withdrawal was successful, attempt to transfer the funds
@@ -83,7 +96,6 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 			baService.addFundsToAccountNoLimit(withdrawFrom, amt);
 			io.println('\t' + withdrawFrom.printAccountBalanceHideAccountno());
 			io.println('\t' + transferTo.printAccountBalanceHideAccountno());
-			this.promptToContinue();
 			return FAILURE;
 		}
 
@@ -92,7 +104,6 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 		io.println("Your funds were successfully transferred.");
 		io.println('\t' + withdrawFrom.printAccountBalanceHideAccountno());
 		io.println('\t' + transferTo.printAccountBalanceHideAccountno());
-		this.promptToContinue();
 		return SUCCESS;
 	}
 
@@ -107,12 +118,13 @@ public class TransferFundsToOwnAccounts extends AccountInteraction {
 			return option;
 		}
 
-		final BankAccount account = accounts.get(option - 1);
+		final BankAccount withdrawFrom = accounts.get(withdrawFromChoice - 1);
 
 		// else try to get amount
 		while (true) {
 			io.clearScreen();
-			this.printChosenAccountWithPrompt("How much would you like to transfer?", account);
+			this.printChosenAccountWithPrompt("How much would you like to transfer?", withdrawFrom);
+			io.print("Amount to transfer: $");
 			this.readAmount();
 
 			int returnStatus = amount.getReturnStatus();

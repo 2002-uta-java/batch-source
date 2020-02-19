@@ -1,7 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
 import com.revature.banking.frontend.validation.Validation;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
@@ -17,7 +15,7 @@ public class CreateNewUser extends BankInteraction {
 	}
 
 	@Override
-	public int interact() throws IOException {
+	public int interact() {
 		final User newUser = getNewUser();
 
 		if (newUser != null) {
@@ -45,7 +43,7 @@ public class CreateNewUser extends BankInteraction {
 		return BankInteraction.FAILURE;
 	}
 
-	private String getUserName() throws IOException {
+	private String getUserName() {
 		while (true) {
 			io.println("Please provide a username: ");
 			final String username = io.readLine();
@@ -67,7 +65,7 @@ public class CreateNewUser extends BankInteraction {
 
 	}
 
-	private String getPassword() throws IOException {
+	private String getPassword() {
 		while (true) {
 			io.println("Please provide a password: ");
 			final String password = io.readPassword();
@@ -91,7 +89,7 @@ public class CreateNewUser extends BankInteraction {
 
 	}
 
-	private String getTaxId(final User user) throws IOException {
+	private String getTaxId(final User user) {
 		while (true) {
 			io.println("Please enter your unique, 10 digit, tax id:");
 			final String taxid = io.readLine().trim();
@@ -107,7 +105,7 @@ public class CreateNewUser extends BankInteraction {
 
 	}
 
-	public String getName(final String firstLast) throws IOException {
+	public String getName(final String firstLast) {
 		while (true) {
 			io.println(firstLast + " Name:");
 			final String name = io.readLine().trim();
@@ -130,7 +128,7 @@ public class CreateNewUser extends BankInteraction {
 		}
 	}
 
-	protected User getNewUser() throws IOException {
+	protected User getNewUser() {
 
 		final String firstName = getName("First");
 		if (firstName == null)

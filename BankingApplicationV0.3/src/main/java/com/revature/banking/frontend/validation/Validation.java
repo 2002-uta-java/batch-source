@@ -49,6 +49,9 @@ public class Validation {
 	public static final String DECIMAL_REGEX = "^-?(\\d+(\\.\\d+)?|\\.\\d{1,2})$";
 	public static final Pattern DECIMAL_PATTERN = Pattern.compile(DECIMAL_REGEX);
 
+	public static final String ACCOUNT_NO_REGEX = "^\\d{10}$";
+	public static final Pattern ACCOUN_NO_PATTERN = Pattern.compile(ACCOUNT_NO_REGEX);
+
 	public static boolean validateUserName(final String username) {
 		if (USERNAME_PATTERN.matcher(username).matches()) {
 			final int length = username.length();
@@ -84,5 +87,9 @@ public class Validation {
 
 	public static boolean validateDecimal(final String decimal) {
 		return DECIMAL_PATTERN.matcher(decimal).matches();
+	}
+
+	public static boolean validateAccountNo(final String accountNo) {
+		return ACCOUN_NO_PATTERN.matcher(accountNo).matches();
 	}
 }

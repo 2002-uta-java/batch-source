@@ -1,6 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,22 +58,18 @@ public abstract class BankInteraction {
 		this.title = title;
 	}
 
-	public int interact(final int choice) throws IOException {
+	public int interact(final int choice) {
 		final int rtrn = menuOptions.get(choice - 1).interact();
 		Logger.getRootLogger().debug("interact returned " + rtrn);
 		return rtrn;
 	}
 
 	public void promptToContinue() {
-		try {
-			io.println("Press Enter to continue");
-			io.readLine();
-		} catch (IOException ioe) {
-			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
-		}
+		io.println("Press the any key to continue");
+		io.readLine();
 	}
 
-	public abstract int interact() throws IOException;
+	public abstract int interact();
 
 	protected void addMenuOption(final BankInteraction menuOption) {
 		menuOptions.add(menuOption);
@@ -89,38 +84,32 @@ public abstract class BankInteraction {
 	}
 
 	public int readOption(final int numOptions) {
-		try {
-			final String chosen = io.readLine();
-			if (!Validation.isNaturalNumber(chosen)) {
-				if (chosen.equalsIgnoreCase(EXIT_STRING))
-					return EXIT;
-				if (chosen.equalsIgnoreCase(LOGOUT_STRING))
-					return LOGOUT;
+		final String chosen = io.readLine();
+		if (!Validation.isNaturalNumber(chosen)) {
+			if (chosen.equalsIgnoreCase(EXIT_STRING))
+				return EXIT;
+			if (chosen.equalsIgnoreCase(LOGOUT_STRING))
+				return LOGOUT;
 
+			return FAILURE;
+		} else {
+			// number validation was successful, create an int and make sure it's a valid
+			// option
+			final int chosenOption = Integer.parseInt(chosen);
+			if (chosenOption < 1 || chosenOption > numOptions) {
 				return FAILURE;
-			} else {
-				// number validation was successful, create an int and make sure it's a valid
-				// option
-				final int chosenOption = Integer.parseInt(chosen);
-				if (chosenOption < 1 || chosenOption > numOptions) {
-					return FAILURE;
-				} else
-					return chosenOption;
-			}
-
-		} catch (IOException e) {
-			Logger.getRootLogger().error("There was in IOException: " + e.getMessage());
-			return BankInteraction.FAILURE;
+			} else
+				return chosenOption;
 		}
 	}
 
 	public int getMenu() {
 		int option = 1;
 		while (true) {
-			for (final BankInteraction menuOption : menuOptions) {
-				io.println(option++ + ". " + menuOption.getTitle());
-			}
 			io.println("Please choose an option (or you can choose " + EXIT_STRING + " or " + LOGOUT_STRING + ").");
+			for (final BankInteraction menuOption : menuOptions) {
+				io.println("\t" + option++ + ". " + menuOption.getTitle());
+			}
 
 			return readOption(menuOptions.size());
 			// TODO don't ask to retry here (most likely you should just re print the menu
@@ -128,18 +117,13 @@ public abstract class BankInteraction {
 	}
 
 	public int readYesOrNo() {
-		try {
-			final String response = io.readLine().trim();
+		final String response = io.readLine().trim();
 
-			if (response.equalsIgnoreCase("y")) {
-				return YES;
-			} else if (response.equalsIgnoreCase("n"))
-				return NO;
-			else {
-				return FAILURE;
-			}
-		} catch (IOException ioe) {
-			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+		if (response.equalsIgnoreCase("y")) {
+			return YES;
+		} else if (response.equalsIgnoreCase("n"))
+			return NO;
+		else {
 			return FAILURE;
 		}
 	}

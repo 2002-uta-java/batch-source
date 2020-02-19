@@ -1,7 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 
@@ -17,7 +15,7 @@ public class MainMenu extends BankInteraction {
 	}
 
 	@Override
-	public int interact() throws IOException {
+	public int interact() {
 		io.clearScreen();
 		io.println("Welcome to the BoB");
 		while (true) {

@@ -1,9 +1,6 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
@@ -30,44 +27,40 @@ public class AddExistingUserToAccount extends AccountInteraction {
 			io.clearScreen();
 			io.println("You will need to have the user login to give them access to this account.");
 			io.println("username:");
-			try {
-				final String userName = io.readLine();
-				io.println("password:");
-				final String password = io.readPassword();
-				final User newUser = uService.login(userName, password);
+			final String userName = io.readLine();
+			io.println("password:");
+			final String password = io.readPassword();
+			final User newUser = uService.login(userName, password);
 
-				if (newUser == null) {
-					io.println("Invalid username/password.");
-					if (!retry())
-						return FAILURE;
-					// else try again, continue
-					continue;
-				}
+			if (newUser == null) {
+				io.println("Invalid username/password.");
+				if (!retry())
+					return FAILURE;
+				// else try again, continue
+				continue;
+			}
 
-				// first make sure this user doesn't already have access to this account
-				final List<BankAccount> newUserAccounts = baService.getAccounts(newUser);
+			// first make sure this user doesn't already have access to this account
+			final List<BankAccount> newUserAccounts = baService.getAccounts(newUser);
 
-				for (final BankAccount newUserAccount : newUserAccounts) {
-					if (newUserAccount.getAccountKey() == account.getAccountKey()) {
-						io.clearScreen();
-						io.println(userName + " already has access to this account");
-						return FAILURE;
-					}
-				}
-
-				// can now attempt to add this user to this account
-
-				if (baService.addUserToAccount(newUser.getUserKey(), account)) {
+			for (final BankAccount newUserAccount : newUserAccounts) {
+				if (newUserAccount.getAccountKey() == account.getAccountKey()) {
 					io.clearScreen();
-					io.println(userName + " was successfully added to the following acount:");
-					io.println('\t' + account.printAccountBalanceHideAccountno());
-					return SUCCESS;
-				} else {
-					io.println("There was an error and " + userName + " was not added.");
+					io.println(userName + " already has access to this account");
 					return FAILURE;
 				}
-			} catch (IOException ioe) {
-				Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+			}
+
+			// can now attempt to add this user to this account
+
+			if (baService.addUserToAccount(newUser.getUserKey(), account)) {
+				io.clearScreen();
+				io.println(userName + " was successfully added to the following acount:");
+				io.println('\t' + account.printAccountBalanceHideAccountno());
+				return SUCCESS;
+			} else {
+				io.println("There was an error and " + userName + " was not added.");
+				return FAILURE;
 			}
 		}
 	}

@@ -1,9 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 
@@ -26,12 +22,7 @@ public class TransferFunds extends AccountInteraction {
 			return choice;
 		}
 
-		try {
-			return interact(choice);
-		} catch (IOException e) {
-			Logger.getRootLogger().error("IOException: " + e.getMessage());
-			return FAILURE;
-		}
+		return interact(choice);
 	}
 
 }

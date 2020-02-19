@@ -58,20 +58,30 @@ public class ConsoleCLI implements CLI {
 	}
 
 	@Override
-	public String readLine() throws IOException {
+	public String readLine() {
 		if (console != null)
 			return console.readLine();
 		else
-			return in.readLine();
+			try {
+				return in.readLine();
+			} catch (IOException e) {
+				Logger.getRootLogger().error("IOException: " + e.getMessage());
+				return null;
+			}
 	}
 
 	@Override
-	public String readPassword() throws IOException {
+	public String readPassword() {
 		if (console != null) {
 			final String password = new String(console.readPassword());
 			return password;
 		} else
-			return in.readLine();
+			try {
+				return in.readLine();
+			} catch (IOException e) {
+				Logger.getRootLogger().error("IOException: " + e.getMessage());
+				return null;
+			}
 	}
 
 	@Override

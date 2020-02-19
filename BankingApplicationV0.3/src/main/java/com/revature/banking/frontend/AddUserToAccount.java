@@ -1,9 +1,6 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
@@ -52,12 +49,7 @@ public class AddUserToAccount extends AccountInteraction {
 			return option;
 		}
 
-		try {
-			return interact(option);
-		} catch (IOException e) {
-			Logger.getRootLogger().error("IOException: " + e.getMessage());
-			return FAILURE;
-		}
+		return interact(option);
 	}
 
 }

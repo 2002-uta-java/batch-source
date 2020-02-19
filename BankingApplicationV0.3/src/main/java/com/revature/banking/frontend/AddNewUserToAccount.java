@@ -1,9 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
@@ -30,12 +26,7 @@ public class AddNewUserToAccount extends AccountInteraction {
 		io.clearScreen();
 		io.println("Create a New User:");
 		User newUser = null;
-		try {
-			newUser = createNewUser.getNewUser();
-		} catch (IOException e) {
-			Logger.getRootLogger().error("IOException: " + e.getMessage());
-			return FAILURE;
-		}
+		newUser = createNewUser.getNewUser();
 
 		if (newUser == null)
 			return FAILURE;

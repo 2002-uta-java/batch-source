@@ -1,9 +1,5 @@
 package com.revature.banking.application;
 
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import com.revature.banking.dao.BankAccountDao;
 import com.revature.banking.dao.UserDao;
 import com.revature.banking.dao.postgres.BankAccountDaoPostgres;
@@ -73,11 +69,7 @@ public class BankApplication {
 	}
 
 	public void run() {
-		try {
-			mainMenu.interact();
-		} catch (IOException e) {
-			Logger.getRootLogger().error("We got an IOException: " + e.getMessage());
-		}
+		mainMenu.interact();
 	}
 
 	public static void main(String[] args) {

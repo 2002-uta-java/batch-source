@@ -197,6 +197,14 @@ public class UserService extends Service {
 		return null;
 	}
 
+	public User getUserByUserName(final String username) {
+		final EncryptedUser eUser = uDao.getUserByUserName(username);
+		if (eUser != null)
+			return secService.decrypt(eUser);
+		// else return null, user doesn't exist
+		return null;
+	}
+
 	public User login(String username, String password) {
 		final EncryptedUser eUser = uDao.getUserByUserName(username);
 		if (eUser != null) {

@@ -1,10 +1,6 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
 import java.util.List;
-
-import org.apache.log4j.Logger;
 
 import com.revature.banking.frontend.validation.Validation;
 import com.revature.banking.services.BankAccountService;
@@ -110,14 +106,7 @@ public abstract class AccountInteraction extends BankInteraction {
 
 	public void readAmount() {
 		String amountString = null;
-		try {
-			amountString = io.readLine();
-		} catch (IOException ioe) {
-			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
-
-			amount.setReturnStatus(FAILURE);
-			return;
-		}
+		amountString = io.readLine();
 		if (Validation.validateAmount(amountString)) {
 			amount.setAmount(Double.parseDouble(amountString));
 			amount.setReturnStatus(SUCCESS);

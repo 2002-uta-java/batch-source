@@ -1,7 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
-
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.User;
@@ -21,7 +19,7 @@ public class LoginInteraction extends BankInteraction {
 	}
 
 	@Override
-	public int interact() throws IOException {
+	public int interact() {
 		while (true) {
 			io.println("Username: ");
 			final String username = io.readLine();
