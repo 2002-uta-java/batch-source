@@ -8,7 +8,7 @@ import com.revature.models.User;
 
 public class UserServices {
 	
-	private UserDaos userDaos = new UserDaosImplementation();
+	private  UserDaos userDaos = new UserDaosImplementation();
 	
 	public User getUserByUsername(String username) {
 		return userDaos.getUserByUsername(username);
@@ -16,11 +16,11 @@ public class UserServices {
 
 	public User validateUser(String username, String password) {
 		User user = userDaos.getUserByUsername(username);
-		if(user != null) {
+		if(user != null && !(password.equals("")||password.equals(" "))) {
 			if(password.equals(user.getPassword()))
 				return user;
 			else {
-				System.out.println("\nInvalid username or password.\n" + user +"\n" + password + username);
+				System.out.println("\nInvalid username or password.\n");
 				return null;
 			}
 		}
