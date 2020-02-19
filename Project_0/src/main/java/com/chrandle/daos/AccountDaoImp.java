@@ -104,12 +104,7 @@ public class AccountDaoImp implements AccountDao {
 
 	@Override
 	public double updateAccount(Account a, double amount) {
-		
-		if(amount <0 && (a.getBalance() - amount <0) ) {
-			return -1;
-		} else {
-		
-			
+
 			String query = "update accounts set balance = ?::numeric::money where accountid = ? " ; 
 			ResultSet result = null;
 			try(Connection c = ConnectionUtil.getConnection();
@@ -127,7 +122,7 @@ public class AccountDaoImp implements AccountDao {
 		}
 		
 	
-	}
+	
 
 	@Override
 	public int deleteAccount(Account a) {

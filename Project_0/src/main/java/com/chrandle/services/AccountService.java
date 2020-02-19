@@ -22,6 +22,10 @@ public class AccountService {
 	
 	public double transaction(Account a, double amount)
 	{
+		if (((a.getBalance() + amount) <0 ) || (a==null))  {
+			return -1;
+		} else {
 		return aDao.updateAccount(a, amount);
+		}
 	}
 }

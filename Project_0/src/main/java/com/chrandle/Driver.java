@@ -44,7 +44,7 @@ public class Driver {
 	
 	public static void startMenu() {
 		
-		while (true) {
+		loop: while (true) {
 			
 			System.out.print("\nWhat would you like to do?\n"
 					+ "Please enter a numeric input\n"
@@ -65,8 +65,10 @@ public class Driver {
 			switch (i) {
 			case 1:
 				login();
-				userMenu();
-				break;
+				if (loggedUser != null)
+					userMenu();
+				else
+					continue loop;
 				
 			case 2:
 			{
@@ -128,7 +130,7 @@ public class Driver {
 					+ "Please enter a numeric input\n"
 					+ "		1: View Accounts\n"
 					+ "		2: Withdraw/deposit from an account\n"
-					+ "		3: Create an an account\n"
+					+ "		3: Create an account\n"
 					+ "		4: Delete user\n"
 					+ "		5. Logout\n");
 			int i = 0;
@@ -160,10 +162,12 @@ public class Driver {
 				break;
 			case 4:
 				uService.deleteUser(loggedUser.getUserid());
+				loggedUser = null;
 				System.out.println("USER AND ASSOCIATED ACCOUNTS DELETED");
 				return;
 
 			case 5:
+				loggedUser = null;
 				return;
 			default:
 				break;
@@ -187,7 +191,7 @@ public class Driver {
 				return;
 			} else {
 				System.out.println("Credentials invalid, please try again");
-				continue;
+				return;
 			}
 				
 			
@@ -247,19 +251,18 @@ public class Driver {
 				continue;
 			}
 			
+			double  rslt = -1;
 			Account a = aService.getAccountById(accid);
-			double  rslt = aService.transaction(a, bl);
-			a = aService.getAccountById(accid);
-			
-			if (rslt < 0) {
+			if (a!=null) {
+				 rslt = aService.transaction(a, bl);
+				a = aService.getAccountById(accid);
+				System.out.println("Account #"+a.getAccountid()+" now has a balance of "+a.getBalance());
+				return;
+			} else if (rslt < 0) {
 				System.out.print("\n------------------------------------\n"
 						+  "Transaction not allowed, please try again."
 						+ "\n------------------------------------\n");
-				continue;
-			} else {
-					System.out.println("Account #"+a.getAccountid()+" now has a balance of "+a.getBalance());
-					return;
-			}
+			} 
 		}
 	}
 	
