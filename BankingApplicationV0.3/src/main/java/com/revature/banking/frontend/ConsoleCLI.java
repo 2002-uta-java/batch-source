@@ -127,13 +127,11 @@ public class ConsoleCLI implements CLI {
 
 	@Override
 	public void working() {
-		if (isLinux)
-			(new Thread(animation)).start();
+		(new Thread(animation)).start();
 	}
 
 	@Override
 	public void done() {
-		if (isLinux)
-			animation.stop();
+		animation.stop();
 	}
 }
