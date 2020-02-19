@@ -57,6 +57,15 @@ create or replace function create_user(un users.username %type, ue users.userema
 	returning userid
 $$ language sql;
 
+create or replace function add_account(i users.userid %type, bl accounts.balance  %type, ty accounts."type" %type) returns void  as $$
+	with acd1 as (
+		insert into accounts (balance, "type")
+		values (bl,ty) 
+		returning accountid
+	)
+	insert into "authorization" (userid,accountid) values (i,(select * from acd1))
+$$ language sql;
+
  -- returns the accounst matching the given userid  
 create or replace function accounts_by_userid(id users.userid %type) returns setof accounts as $$
 	select * 

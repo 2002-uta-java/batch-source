@@ -48,40 +48,13 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public int createUser(User u) {
-			try(Connection userConn = ConnectionUtil.getConnection()){
-			String insertion ="insert into users (username, useremail,password)"
-				+ " values ? ? ? ?";
-			PreparedStatement pstate = userConn.prepareStatement(insertion);
-			pstate.setString(parameterIndex, x);
-			int result = pstate.executeUpdate();
-			if (result>0) {
-				return result;
-			} else {
-				return -1;
-			}
-		} catch(SQLException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+
 			return -1;
 	}
 
 	@Override
 	public int updateUser(User u) {
-		try(Connection userConn = ConnectionUtil.getConnection()){
-		String insertion ="insert into users (userid, username, useremail,password)"
-			+ " values ? ? ? ?";
-		PreparedStatement pstate = userConn.prepareStatement(insertion);
-		int result = pstate.executeUpdate();
-		if (result>0) {
-			return result;
-		} else {
-			return -1;
-		}
-	} catch(SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	}
+
 		return -1;
 	}
 

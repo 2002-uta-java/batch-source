@@ -100,4 +100,10 @@ public class AccountDaoImp implements AccountDao {
 		return 0;
 	}
 
+	@Override
+	public boolean uniqueAccountID(long i) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
