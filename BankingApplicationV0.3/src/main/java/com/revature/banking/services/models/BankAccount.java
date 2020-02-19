@@ -105,6 +105,10 @@ public class BankAccount {
 		return getHiddenAccountNo() + ' ' + MONEY_FORMAT.format(balance);
 	}
 
+	public String printFullAccount() {
+		return accountNo + ' ' + MONEY_FORMAT.format(balance);
+	}
+
 	@Override
 	public String toString() {
 		return "BankAccount [accountKey=" + accountKey + ", accountNo=" + accountNo + ", balance=" + balance + "]";

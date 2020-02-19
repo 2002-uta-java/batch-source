@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,26 +55,25 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	}
 
 	@Override
-	public boolean addUserToAccount(EncryptedUser eUser, EncryptedBankAccount eba) {
+	public boolean addUserToAccount(final int userKey, EncryptedBankAccount eba) {
 		final String sql = "insert into user_accounts values(?,?)";
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql);) {
-			ps.setInt(1, eUser.getUserKey());
+			ps.setInt(1, userKey);
 			ps.setInt(2, eba.getAccountkey());
 
 			final int updated = ps.executeUpdate();
 
 			if (updated != 1) {
-				Logger.getRootLogger()
-						.error("Adding user (user_key = " + eUser.getUserKey() + ") to account (account_key = "
-								+ eba.getAccountkey() + ") updated " + updated + " rows (should have been 1)");
+				Logger.getRootLogger().error("Adding user (user_key = " + userKey + ") to account (account_key = "
+						+ eba.getAccountkey() + ") updated " + updated + " rows (should have been 1)");
 				return false;
 			}
 
 		} catch (SQLException e) {
 			Logger.getRootLogger()
-					.fatal("Failed to add user, " + eUser + ", to account " + eba + ": " + e.getMessage());
+					.fatal("Failed to add user, " + userKey + ", to account " + eba + ": " + e.getMessage());
 			return false;
 		}
 

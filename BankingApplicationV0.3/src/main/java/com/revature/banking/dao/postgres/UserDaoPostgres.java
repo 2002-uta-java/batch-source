@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -117,7 +115,7 @@ public class UserDaoPostgres implements UserDao {
 		}
 
 		// link the accounts
-		if (!baDao.addUserToAccount(eUser, eba)) {
+		if (!baDao.addUserToAccount(eUser.getUserKey(), eba)) {
 			// both the user and account were added. Attempt to delete them.
 			this.deleteUser(eUser);
 			baDao.deleteAccount(eba);
@@ -165,7 +163,7 @@ public class UserDaoPostgres implements UserDao {
 		}
 
 		// link user and account
-		if (!baDao.addUserToAccount(eUser, eba)) {
+		if (!baDao.addUserToAccount(eUser.getUserKey(), eba)) {
 			// this failed, attempt to delete newly added account
 			baDao.deleteAccount(eba);
 			Logger.getRootLogger().error("Failed to link new account, " + eba + ", and user " + eUser);

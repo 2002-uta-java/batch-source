@@ -26,6 +26,8 @@ public abstract class BankInteraction {
 	public static final int EXIT = -3;
 	public static final int FAILURE = -4;
 	public static final int TRY_AGAIN = -5;
+	public static final int YES = -6;
+	public static final int NO = -7;
 
 	public static final String EXIT_STRING = "exit";
 	public static final String LOGOUT_STRING = "logout";
@@ -125,21 +127,32 @@ public abstract class BankInteraction {
 		}
 	}
 
-	public boolean retry() {
+	public int readYesOrNo() {
 		try {
-			io.println("Would you like to retry (y/n)?");
 			final String response = io.readLine().trim();
 
 			if (response.equalsIgnoreCase("y")) {
-				return true;
+				return YES;
 			} else if (response.equalsIgnoreCase("n"))
-				return false;
+				return NO;
 			else {
-				io.println("You didn't type y or n, so I'm taking that as a no.");
-				return false;
+				return FAILURE;
 			}
 		} catch (IOException ioe) {
-			Logger.getRootLogger().error("IOExcetion: " + ioe.getMessage());
+			Logger.getRootLogger().error("IOException: " + ioe.getMessage());
+			return FAILURE;
+		}
+	}
+
+	public boolean retry() {
+		io.println("Would you like to retry (y/n)?");
+		switch (readYesOrNo()) {
+		case YES:
+			return true;
+		case NO:
+			return false;
+		default:
+			io.println("You didn't type y or n, so I'm taking that as a no.");
 			return false;
 		}
 	}

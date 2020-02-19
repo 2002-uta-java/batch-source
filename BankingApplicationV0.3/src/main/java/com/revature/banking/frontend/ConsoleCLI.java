@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+import org.apache.log4j.Logger;
+
 /**
  * This class uses a Console object if possible but if not, it falls back on a
  * BufferedReader with System.in.
@@ -21,6 +23,8 @@ public class ConsoleCLI implements CLI {
 	private final PrintStream out;
 //	private ConsoleReader console;
 	private final boolean isLinux;
+	private final boolean isWindows;
+	private final ProcessBuilder windowsClearCommand;
 
 	public ConsoleCLI() {
 		super();
@@ -28,7 +32,12 @@ public class ConsoleCLI implements CLI {
 
 		this.in = console == null ? new BufferedReader(new InputStreamReader(System.in)) : null;
 		this.out = console == null ? System.out : null;
-		this.isLinux = System.getProperty("os.name").equals(CLI.LINUX_OS);
+		this.isLinux = System.getProperty("os.name").contains(CLI.LINUX_OS);
+		this.isWindows = System.getProperty("os.name").contains(WINDOWS_OS);
+		if (this.isWindows) {
+			windowsClearCommand = new ProcessBuilder("cmd", "/c", "cls").inheritIO();
+		} else
+			windowsClearCommand = null;
 	}
 
 	@Override
@@ -77,6 +86,18 @@ public class ConsoleCLI implements CLI {
 	public void clearScreen() {
 		if (isLinux) {
 			this.print(CLI.CLEAR_LINUX_SCREEN);
+		} else if (isWindows) {
+			try {
+				this.windowsClearCommand.start().waitFor();
+			} catch (InterruptedException e) {
+				Logger.getRootLogger().error("Trying to clear dos cmd caused InterruptedException: " + e.getMessage());
+				this.println();
+				this.println();
+			} catch (IOException e) {
+				Logger.getRootLogger().error("Trying to clear dos cmd caused IOException: " + e.getMessage());
+				this.println();
+				this.println();
+			}
 		} else {
 			this.println();
 			this.println();

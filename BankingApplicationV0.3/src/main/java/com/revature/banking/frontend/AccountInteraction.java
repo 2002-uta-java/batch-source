@@ -1,11 +1,11 @@
 package com.revature.banking.frontend;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.revature.banking.dao.BankAccountDao;
 import com.revature.banking.frontend.validation.Validation;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
@@ -29,6 +29,11 @@ public abstract class AccountInteraction extends BankInteraction {
 		user = null;
 	}
 
+	public void printChosenAccountWithPrompt(final String prompt, final BankAccount account) {
+		io.println(prompt);
+		io.println('\t' + account.printAccountBalanceHideAccountno());
+	}
+
 	@Override
 	public final int interact() {
 		final int result = realInteraction();
@@ -42,8 +47,9 @@ public abstract class AccountInteraction extends BankInteraction {
 		return result;
 	}
 
-	public int chooseAccount(final List<BankAccount> accounts) {
+	public int chooseAccount(final String prompt, final List<BankAccount> accounts) {
 		while (true) {
+			io.println(prompt);
 			int count = 1;
 			for (final BankAccount account : accounts) {
 				io.println("\t" + count++ + ". " + account.printAccountBalanceHideAccountno());

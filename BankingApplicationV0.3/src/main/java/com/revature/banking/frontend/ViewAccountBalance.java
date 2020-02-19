@@ -1,6 +1,5 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.revature.banking.services.BankAccountService;

@@ -1,18 +1,17 @@
 package com.revature.banking.frontend;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.revature.banking.dao.BankAccountDao;
-import com.revature.banking.frontend.validation.Validation;
 import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
 
 public class AddFunds extends AccountInteraction {
 	public static final String TITLE = "Add funds";
+	public static final String PROMPT = "Which account would you like to add funds to?";
 
 	protected AddFunds(CLI io, UserService uService, BankAccountService baService) {
 		super(io, uService, baService);
@@ -21,6 +20,8 @@ public class AddFunds extends AccountInteraction {
 
 	private int addFunds(final BankAccount account) {
 		while (true) {
+			io.clearScreen();
+			super.printChosenAccountWithPrompt(PROMPT, account);
 			// this was a valid choice prompt user to add funds
 			io.print("How much would you like to add? $");
 			readAmount();
@@ -68,8 +69,8 @@ public class AddFunds extends AccountInteraction {
 	@Override
 	public int realInteraction() {
 		final List<BankAccount> accounts = baService.getAccounts(user);
-		io.println("Which account would you like to add funds to?");
-		int option = super.chooseAccount(accounts);
+
+		int option = super.chooseAccount(PROMPT, accounts);
 
 		switch (option) {
 		case EXIT:

@@ -2,7 +2,6 @@ package com.revature.banking.services;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -39,7 +38,7 @@ public class BankAccountService extends Service {
 	 * 
 	 * @return
 	 */
-	public EncryptedBankAccount getNewAccount() {
+	protected EncryptedBankAccount getNewAccount() {
 		// grab all account from database so that I can decrypt the account numbers and
 		// generate a new one
 		final Set<EncryptedBankAccount> encryptedAccounts = baDao.getAllAccounts();
@@ -124,5 +123,21 @@ public class BankAccountService extends Service {
 			account.addFunds(amount);
 			return WITHDRAWAL_FAILURE;
 		}
+	}
+
+	public BankAccount addAccountToUser(User user) {
+		final EncryptedBankAccount eba = this.getNewAccount();
+		if (baDao.createNewAccount(eba)) {
+			// successfully created account
+			// now add user to it
+			if (baDao.addUserToAccount(user.getUserKey(), eba)) {
+				return secService.decrypt(eba);
+			} else {
+				// attempt to delete newly created account
+				baDao.deleteAccount(eba);
+				return null;
+			}
+		} else
+			return null;
 	}
 }

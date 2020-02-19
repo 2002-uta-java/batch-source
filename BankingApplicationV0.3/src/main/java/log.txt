@@ -182,3 +182,8 @@
 2020-02-18 10:22:10 DEBUG SecurityService:31 method: encrypt - Encrypting 119.69 to r3bkdBCVsDVfE9Up4Xwsmg==
 2020-02-18 10:22:15 DEBUG BankInteraction:62 method: interact - interact returned -1
 2020-02-18 10:30:34 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:49:51 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:50:09 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:50:09 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:50:09 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:50:10 DEBUG BankInteraction:62 method: interact - interact returned -3

@@ -3,7 +3,6 @@ package com.revature.banking.dao;
 import java.util.List;
 import java.util.Set;
 
-import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.security.models.EncryptedBankAccount;
 import com.revature.banking.services.security.models.EncryptedUser;
 
@@ -51,7 +50,7 @@ public interface BankAccountDao {
 	 * @param eba   The bank account to link to this user. The passed account
 	 *              <i>must</i> contain a valid account_id.
 	 */
-	public boolean addUserToAccount(final EncryptedUser eUser, final EncryptedBankAccount eba);
+	public boolean addUserToAccount(final int userKey, final EncryptedBankAccount eba);
 
 	/**
 	 * Removes this user from an account.

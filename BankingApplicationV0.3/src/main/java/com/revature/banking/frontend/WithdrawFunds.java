@@ -10,6 +10,7 @@ import com.revature.banking.services.models.BankAccount;
 
 public class WithdrawFunds extends AccountInteraction {
 	public static final String TITLE = "Withdraw Funds";
+	public static final String PROMPT = "Which account would you like to withdraw from?";
 
 	protected WithdrawFunds(CLI io, UserService uService, BankAccountService baService) {
 		super(io, uService, baService);
@@ -19,8 +20,7 @@ public class WithdrawFunds extends AccountInteraction {
 	@Override
 	public int realInteraction() {
 		final List<BankAccount> accounts = baService.getAccounts(user);
-		io.println("Which account would you like to withdraw from?");
-		final int option = super.chooseAccount(accounts);
+		final int option = super.chooseAccount(PROMPT, accounts);
 
 		switch (option) {
 		case EXIT:
@@ -35,6 +35,8 @@ public class WithdrawFunds extends AccountInteraction {
 	private int withdrawFunds(BankAccount account) {
 		double amt = 0;
 		while (true) {
+			io.clearScreen();
+			super.printChosenAccountWithPrompt(PROMPT, account);
 			io.print("How much would you like to withdraw? $");
 			this.readAmount();
 			switch (amount.getReturnStatus()) {
