@@ -1,6 +1,7 @@
 package com.chrandle.models;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -13,7 +14,7 @@ public class User {
 	private long userid;
 	private String password = null;
 	private String email = "";
-	private Account account = null;
+	private List<Account> accounts = new ArrayList<>();
 
 /*
  * -------------------------------
@@ -93,15 +94,21 @@ public class User {
 		this.email = email;
 	}
 
-	public Account getAccount() {
-		return account;
+
+	public List<Account> getAccount() {
+		return accounts;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccount(List<Account> account) {
+		this.accounts = account;
+	}
+	
+	public void addAcount(Account account) {
+		this.accounts.add(account);
 	}
 
-/*
+
+	/*
  * -------------------------------
  * toString
  * -------------------------------

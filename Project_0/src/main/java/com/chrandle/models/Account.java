@@ -19,8 +19,9 @@ public class Account {
 		super();
 	}
 	
-	public Account(double balance, String type) {
+	public Account(long accountid, double balance, String type) {
 		super();
+		this.accountid = accountid;
 		this.balance = balance;
 		this.type = type;
 	}

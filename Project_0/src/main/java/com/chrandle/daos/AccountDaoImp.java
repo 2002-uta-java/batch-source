@@ -2,6 +2,7 @@ package com.chrandle.daos;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -43,13 +44,13 @@ public class AccountDaoImp implements AccountDao {
 
 	@Override
 	public Account getAccountById(long id) {
-		String query = "Select * from Account where AccountID = ? ";
+		String query = "Select * from Accounts where AccountID = ? ";
 		Account account = null;
 		ResultSet result = null;
 		
-		try {
-			Connection c = ConnectionUtil.getConnection();
-			PreparedStatement pstatement =  c.prepareStatement(query);
+		try(Connection c = ConnectionUtil.getConnection();
+			PreparedStatement pstatement =  c.prepareStatement(query)) {
+			
 			pstatement.setLong(1, id);
 			result = pstatement.executeQuery();
 			
@@ -77,8 +78,27 @@ public class AccountDaoImp implements AccountDao {
 	}
 
 	@Override
-	public int createAccount(Account a) {
-		// TODO Auto-generated method stub
+	 public long createAccount(long uid,double balance, String type) {
+		String sql = "{call add_account(?::bigint, ?::numeric::money, ?)}";
+		ResultSet result = null;
+		try(Connection userConn = ConnectionUtil.getConnection()){
+			CallableStatement pcall =  userConn.prepareCall(sql);
+			pcall.setLong(1, uid);
+			pcall.setDouble(2, balance);
+			pcall.setString(3,type);
+			pcall.execute();
+			result = pcall.getResultSet();
+			
+			if (result.next()) {
+				return result.getLong(1);
+			}
+			
+			
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			return 0;
+		}
 		return 0;
 	}
 
@@ -86,7 +106,7 @@ public class AccountDaoImp implements AccountDao {
 	public double updateAccount(Account a, double amount) throws InvalidTransactionException {
 		
 		if(amount <0 && (a.getBalance() - amount <0) ) {
-			throw new InvalidTransactionException("Withdrawal over balance");
+			throw new InvalidTransactionException("Withdrawal over curent balance");
 		} else {
 			a.setBalance(a.getBalance() + amount);
 		}
@@ -98,12 +118,6 @@ public class AccountDaoImp implements AccountDao {
 	public int deleteAccount(Account a) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public boolean uniqueAccountID(long i) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

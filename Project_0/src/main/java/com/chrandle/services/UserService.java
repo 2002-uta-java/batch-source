@@ -14,4 +14,25 @@ public class UserService {
 		return uDao.getUsers();
 	}
 	
+	public User userLogin(String name, String pw) {
+		return uDao.getUserByCred(name,pw);
+	}
+	
+	public User getUserById(long id) {
+		return uDao.getUserById(id);
+	}
+	public long createUser(String uname, String em, String pw){
+		return uDao.createUser(uname, em, pw);
+	}
+	
+	public List<Account> viewAccounts(long id){
+		return uDao.getUserAccounts(id);
+	}
+	
+	public void deleteUser(long uid) {
+		 uDao.deleteUser(uid);
+		 return;
+	}
+	
+
 }

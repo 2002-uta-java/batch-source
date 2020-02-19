@@ -12,7 +12,11 @@ public class AccountService {
 		return aDao.getAccounts();
 	}
 	
-	public Account getAccountrById(long id) {
+	public Account getAccountById(long id) {
 		return aDao.getAccountById(id);
+	}
+
+	public long createAccount(long userid, double i, String ty) {
+		return aDao.createAccount( userid,i, ty);
 	}
 }
