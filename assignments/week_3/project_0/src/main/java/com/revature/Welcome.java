@@ -2,9 +2,6 @@ package com.revature;
 
 import java.util.Scanner;
 
-import com.revature.models.Client;
-import com.revature.service.ClientService;
-
 public class Welcome {
 	
 	private static Scanner sc = new Scanner(System.in);
@@ -45,7 +42,13 @@ public class Welcome {
 				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
 				break;
 			default:
-				
+				System.out.println(">");
+				System.out.println(">");
+				System.out.println("> Invalid input, please try again. PRESS ENTER TO CONTINUE...");
+				System.out.println(">");
+				System.out.println(">");
+				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+				sc.nextLine();
 			}	
 		
 		} while (proceed);

@@ -10,21 +10,9 @@ import com.revature.models.UserAccount;
 import com.revature.util.ConnectionUtil;
 
 public class UserAccountDaoImpl implements UserAccountDao{
-
-	@Override
-	public int createUserAccount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	public int createUserAccount(String uName, String password) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	public UserAccount createUserAccount(UserAccount ua) {
 		
-//		int response = 0;
 		String sql = "{call add_user_account(?,?,?,?)}";
 		
 		ResultSet rs = null;
@@ -62,22 +50,8 @@ public class UserAccountDaoImpl implements UserAccountDao{
 	}
 
 	@Override
-	public int updateUserAccount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteUserAccount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public UserAccount getUserAccount(String identifier, String password) {
-		
-//		int response = 0;
-		
+				
 		UserAccount ua = new UserAccount();
 		
 		String sql = "select * from user_account ua where ((ua.username = ? and ua.client_password = ?) or (ua.email = ? and ua.client_password = ?))";

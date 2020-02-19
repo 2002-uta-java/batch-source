@@ -7,8 +7,13 @@ public class UserToBankAccountService {
 	
 	private UserToBankAccountDao utbad = new UserToBankAccountDaoImpl();
 	
-	public void establishAssociation(int userAccountId, int bankAccountId) {
-		utbad.establishAssociation(userAccountId, bankAccountId);
+	public boolean establishAssociation(int userAccountId, int bankAccountId) {
+		
+		boolean didItExecute = false;
+		
+		didItExecute = utbad.establishAssociation(userAccountId, bankAccountId);
+		
+		return didItExecute;
 	}
 
 }

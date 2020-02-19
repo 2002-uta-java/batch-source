@@ -30,8 +30,11 @@ public class LogIn {
 		if(ua.getId() == 0) {
 			System.out.println(">");
 			System.out.println(">");
-			System.out.println("> No user was found with credentials provided, please try again.........................................................");
+			System.out.println("> No user was found with credentials provided, please start over. PRESS ENTER TO CONTINUE...............................");
 			System.out.println(">");
+			System.out.println(">");
+			System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+			sc.nextLine();
 			return;
 		}
 		

@@ -25,7 +25,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 				CallableStatement cs = con.prepareCall(sql)){
 			
 			cs.setString(1, ba.getAccountType());
-			cs.setInt(2, ba.getBalance());
+			cs.setDouble(2, ba.getBalance());
 			
 			cs.execute();
 			
@@ -54,12 +54,6 @@ public class BankAccountDaoImpl implements BankAccountDao{
 	}
 
 	@Override
-	public int updateBankAccount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public List<BankAccount> getAccounts(int userAccountId) {
 		
 		String sql = "select * from bank_account ba join user_to_bank_account utba on ba.id = utba.account_id where utba.user_id = " + userAccountId;
@@ -72,11 +66,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 			
 			
 			while(rs.next()) {
-//				int accountId = ;
-//				String accountType = ;
-//				int accountBalance = ;
-//				int accountNumber = ;
-				BankAccount ba = new BankAccount(rs.getInt("id"), rs.getString("account_type"), rs.getInt("balance"), rs.getInt("account_number"));
+				BankAccount ba = new BankAccount(rs.getInt("id"), rs.getString("account_type"), rs.getDouble("balance"), rs.getInt("account_number"));
 				bankAccounts.add(ba);
 				
 			}
@@ -88,31 +78,9 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		return bankAccounts;
 	}
 
-//	@Override
-//	public int getBalance(int accountId) {
-//		
-//		int currentBalance = 0;
-//		
-//		String sql = "select balance from bank_account where id = " + accountId;
-//		
-//		try (Connection con = ConnectionUtil.getConnection();
-//				Statement s = con.createStatement();
-//				ResultSet rs = s.executeQuery(sql)){
-//			
-//			while (rs.next()) {
-//				currentBalance = rs.getInt("balance");
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return currentBalance;
-//	}
-
 
 	@Override
-	public int updateBalance(BankAccount ba, int newBalance) {
+	public int updateBalance(BankAccount ba, double newBalance) {
 		
 		int amountWasUpdated = 0 ;
 		
@@ -121,7 +89,7 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		try (Connection con = ConnectionUtil.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql)){
 			
-			ps.setInt(1, newBalance);
+			ps.setDouble(1, newBalance);
 			ps.setInt(2, ba.getId());
 			
 			amountWasUpdated = ps.executeUpdate();
@@ -139,12 +107,5 @@ public class BankAccountDaoImpl implements BankAccountDao{
 		return amountWasUpdated;
 		
 	}
-
-//	@Override
-//	public void depositAmount(int accountNumber, int newBalance) {
-//		
-//		String sql = 
-//		
-//	}
 
 }

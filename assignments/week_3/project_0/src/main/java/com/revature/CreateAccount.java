@@ -24,8 +24,12 @@ public class CreateAccount {
 		System.out.print("> Please enter a first name: ");
 		c.setFirstName(sc.nextLine());
 		
+		// VALIDATE HERE
+		
 		System.out.print("> Please enter a last name: ");
 		c.setLastName(sc.nextLine());
+		
+		// VALIDATE HERE
 		
 		cs.createClient(c);
 		
@@ -35,6 +39,8 @@ public class CreateAccount {
 		
 		System.out.print("> Please enter an email: ");
 		ua.setEmail(sc.nextLine());
+		
+		// VALIDATE HERE
 		
 		System.out.println(">");
 		System.out.print("> Would you like to use a username? (y/n): ");
@@ -46,19 +52,23 @@ public class CreateAccount {
 		} else if (userInput.contentEquals("n")){
 			//
 		} else {
-			System.out.println("> Invalid input - will not use username");
+			System.out.println("> Invalid input - will continue without username");
 		}
 		
 		System.out.println("> ");
 		System.out.print("> Please set a password for your user account: ");
 		ua.setPassword(sc.nextLine());
 		
+		// VALIDATE HERE
+		
 		uas.createUserAccount(ua);
 
 		System.out.println(">");
 		System.out.println(">");
-		System.out.println("> Account created. Please proceed to the login screen and log in........................................................");
+		System.out.println("> Account created. Please proceed to the login screen and log in. PRESS ENTER TO CONTINUE..............................");
 		System.out.println(">");
+		System.out.println(">");
+		sc.hasNextLine();
 		
 	}
 

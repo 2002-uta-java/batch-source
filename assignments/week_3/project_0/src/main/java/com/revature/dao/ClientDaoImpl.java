@@ -5,22 +5,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.revature.models.Client;
 import com.revature.util.ConnectionUtil;
 
 public class ClientDaoImpl implements ClientDao{
-
-	@Override
-	public int createClient() {
-		return 0;
-	}
 	
 	@Override
 	public Client createClient(Client c) {
 		
-//		int response = 0;
 		String sql = "{call add_client(?, ?)}";
 		
 		ResultSet rs = null;
@@ -53,37 +46,6 @@ public class ClientDaoImpl implements ClientDao{
 		}
 		
 		return c;
-	}
-	
-//	public static int createClient(String firstName, String lastName) {
-//		
-//		int response = 0;
-//		String sql = "insert into client (first_name, last_name) values (?, ?)";
-//		
-//		try (Connection	c = ConnectionUtil.getConnection();
-//			PreparedStatement ps = c.prepareStatement(sql);) {
-//			
-//			ps.setString(1, firstName);
-//			ps.setString(2, lastName);
-//			
-//			response = ps.executeUpdate();
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return response;					
-//	}
-
-	@Override
-	public int updateClient() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int removeClient() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override

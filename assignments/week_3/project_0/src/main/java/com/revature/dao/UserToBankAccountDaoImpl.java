@@ -1,25 +1,36 @@
 package com.revature.dao;
 
 import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 import com.revature.util.ConnectionUtil;
 
 public class UserToBankAccountDaoImpl implements UserToBankAccountDao{
 
 	@Override
-	public void establishAssociation(int userAccountId, int bankAccountId) {
+	public boolean establishAssociation(int userAccountId, int bankAccountId) {
 		
-		String sql = "insert into user_to_bank_account (user_id, account_id) values (" + userAccountId + "," + bankAccountId + ")";
+		boolean didItExecute = false;
+		int queryResult = 0;
+		
+		String sql = "insert into user_to_bank_account (user_id, account_id) values (?, ?)";
 		
 		try (Connection con = ConnectionUtil.getConnection();
-				Statement s = con.createStatement()){
+				PreparedStatement ps = con.prepareStatement(sql)){
 			
-			s.execute(sql);
+			ps.setInt(1, userAccountId);
+			ps.setInt(2, bankAccountId);
+			
+			queryResult = ps.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		if(queryResult > 0) {
+			didItExecute = true;
+		}
+		
+		return didItExecute;
 	}
 }

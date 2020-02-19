@@ -75,21 +75,37 @@ public class LoggedIn {
 				
 				accountNumber = sc.nextInt();
 				
+				if(accountNumber < 0 || accountNumber > (userBankAccounts.size() - 1)) {
+					System.out.println(">");
+					System.out.println(">");
+					System.out.println("> Invalid input, aborting process. PRESS ENTER TO CONTINUE..............................................................");
+					System.out.println(">");
+					System.out.println(">");
+					System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+					sc.nextLine();
+					sc.nextLine();
+					break;
+				}
+				
 				System.out.println(">");
 				System.out.println("> Your current balance is: " + userBankAccounts.get(accountNumber).getBalance());
 				
 				System.out.print("> Enter amount of deposit: ");
 				
-				int depositAmount = sc.nextInt();
+				double depositAmount = sc.nextDouble();
+				
+				// validate here
 				
 				// deposit amount into account
 				success = bas.depositAmount(userBankAccounts.get(accountNumber), depositAmount);
 				
 				if (success == 1) {
 					System.out.println(">");
-					System.out.println("> Success. Deposit made to account......................................................................................");
+					System.out.println("> Success. Deposit made to account. PRESS ENTER TO CONTINUE.............................................................");
 					System.out.println(">");
 					System.out.println(">");
+					System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+					sc.nextLine();
 				}
 				
 				sc.nextLine();
@@ -111,22 +127,45 @@ public class LoggedIn {
 				System.out.print("> Input the number left of the account: ");
 				
 				accountNumber = sc.nextInt();
-				
+					
+				if(accountNumber < 0 || accountNumber > (userBankAccounts.size() - 1)) {
+					System.out.println(">");
+					System.out.println(">");
+					System.out.println("> Invalid input, aborting process. PRESS ENTER TO CONTINUE..............................................................");
+					System.out.println(">");
+					System.out.println(">");
+					System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+					sc.nextLine();
+					sc.nextLine();
+					break;
+				}
+					
 				System.out.println(">");
 				System.out.println("> Your current balance is: " + userBankAccounts.get(accountNumber).getBalance());
 				
 				System.out.print("> Enter amount to withdraw: ");
 				
-				int withdrawAmount = sc.nextInt();
+				double withdrawAmount = sc.nextDouble();
+				
+				// validate here
 				
 				// withdraw amount from account
 				success = bas.withdrawAmount(userBankAccounts.get(accountNumber), withdrawAmount);
 				
 				if (success == 1) {
 					System.out.println(">");
-					System.out.println("> Success. Withdraw made from account...................................................................................");
+					System.out.println("> Success. Withdraw made from account. PRESS ENTER TO CONTINUE..........................................................");
 					System.out.println(">");
 					System.out.println(">");
+					System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+					sc.nextLine();
+				} else if (success == 3) {
+					System.out.println(">");
+					System.out.println("> Insufficient funds. PRESS ENTER TO CONTINUE...........................................................................");
+					System.out.println(">");
+					System.out.println(">");
+					System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+					sc.nextLine();
 				}
 				
 				sc.nextLine();
@@ -135,15 +174,35 @@ public class LoggedIn {
 			case "3":
 				// CHECKINGS
 				BankAccount cba = new BankAccount(1 , 0);
-				System.out.println(bas.createBankAccount(cba));
+				bas.createBankAccount(cba);
 				utbas.establishAssociation(ua.getId(), cba.getId());
+				
+				System.out.println(">");
+				System.out.println("> Success. Created the following CHECKING account:");
+				System.out.println(">");
+				System.out.println("> " + cba);
+				System.out.println(">");
+				System.out.println("> PRESS ENTER TO CONTINUE...............................................................................................");
+				System.out.println(">");
+				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+				sc.nextLine();
 
 				break;
 			case "4":
 				// SAVINGS
 				BankAccount sba = new BankAccount(2 , 0);
-				System.out.println(bas.createBankAccount(sba));
+				bas.createBankAccount(sba);
 				utbas.establishAssociation(ua.getId(), sba.getId());
+				
+				System.out.println(">");
+				System.out.println("> Success. Created the following SAVINGS account:");
+				System.out.println(">");
+				System.out.println("> " + sba);
+				System.out.println(">");
+				System.out.println("> PRESS ENTER TO CONTINUE...............................................................................................");
+				System.out.println(">");
+				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+				sc.nextLine();
 				
 				break;
 			case "5":
@@ -153,8 +212,16 @@ public class LoggedIn {
 				System.out.println("> Logging out..........................................................................................................#");
 				System.out.println(">");
 				System.out.println(">");
+				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
 				break;
 			default:
+				System.out.println(">");
+				System.out.println(">");
+				System.out.println("> Invalid input, please try again. PRESS ENTER TO CONTINUE...");
+				System.out.println(">");
+				System.out.println(">");
+				System.out.println("#----------------------------------------------------------------------------------------------------------------------#");
+				sc.nextLine();
 			}
 		}
 	}
