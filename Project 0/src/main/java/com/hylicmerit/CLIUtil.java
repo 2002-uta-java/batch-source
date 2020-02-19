@@ -3,8 +3,6 @@ package com.hylicmerit;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.commons.validator.routines.EmailValidator;
-
 import com.hylicmerit.models.Account;
 import com.hylicmerit.models.Transaction;
 import com.hylicmerit.models.User;
@@ -53,10 +51,10 @@ public class CLIUtil {
 			}
 		} else {
 			System.out.println("\nWelcome, " + user.getName() + ". Please enter one of the following options: \n"
-					+ "\nlogout (exit the application) create account (creates a new checkings/savings account)"
-					+ "\nbalance (displays the current balance of your accounts) deposit (deposit into account)"
-					+ "\nwithdraw (withdraw from account) delete profile (removes user profile and accounts from database)"
-					+ "\ndelete account (removes selected account from database) show transactions (view transactions from an account) \n");
+					+ "\n---    logout      --- || ---    create account   ---"
+					+ "\n---    balance     --- || ---       deposit       ---"
+					+ "\n---    withdraw    --- || ---    delete profile   ---"
+					+ "\n--- delete account --- || ---   show transactions ---\n");
 
 			String profileOption = scan.nextLine();
 			switch (profileOption) {
@@ -118,7 +116,8 @@ public class CLIUtil {
 
 			while (scan.hasNextLine()) {
 				String password = scan.nextLine();
-				if (password.equals(user.getPassword())) {
+				String actual = new String(uService.decryptPassword(user.getPassword()));
+				if (password.equals(actual)) {
 					break;
 				} else {
 					System.out.println("Wrong credentials. Please try again: ");
@@ -161,6 +160,8 @@ public class CLIUtil {
 		System.out.println("Please enter a secure password (max 20 characters): ");
 
 		String password = scan.nextLine();
+
+		password = new String(uService.encryptPassword(password));
 		
 		String email = validateEmail();
 
@@ -232,14 +233,34 @@ public class CLIUtil {
 				types.append(a.getType());
 				System.out.println(a.getType());
 			}
-			String answer = scan.nextLine();
+			String answer = new String();
 			Account a = null;
+			while(scan.hasNextLine()) {
+				answer = scan.nextLine();
+				if("savings".equals(answer) || "checking".equals(answer)) {
+					break;
+				} else {
+					System.out.println("Please enter a valid option.");
+				}
+			}
 			if(types.indexOf(answer) == -1) {
 				System.out.println("You currently don't have a " + answer + " account.");
 			}
 			else {
 				System.out.println("Enter the amount you would like to " + option + " : \n");
-				int amount = Integer.parseInt(scan.nextLine());
+				int amount = 0;
+				while(scan.hasNextLine()) {
+					try {
+						amount = Integer.parseInt(scan.nextLine());
+						if(amount > 0) {
+							break;
+						} else {
+							System.out.println("Please enter a positive numeric amount: ");
+						}
+					} catch(NumberFormatException e) {
+						System.out.println("Please enter a numeric amount: ");
+					}
+				}
 				if(accounts.get(0).getType().equals(answer)) {
 					a = accounts.get(0);
 				}
@@ -357,7 +378,7 @@ public class CLIUtil {
 
 		String email = scan.nextLine();
 		
-		if(EmailValidator.getInstance().isValid(email)) {
+		if(uService.validateEmail(email)) {
 			return email;
 		} else {
 			System.out.println("Please provide a valid email.");

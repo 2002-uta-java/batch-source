@@ -1,2 +1,2 @@
-junit test email validation
-junit test username availability
+debug deposit/withdraw
+add money transfer

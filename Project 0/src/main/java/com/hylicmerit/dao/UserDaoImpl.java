@@ -45,17 +45,19 @@ public class UserDaoImpl implements UserDao {
 	public int checkUsernameAvailability(String username) {
 		String sql = "select * from \"user\" where username=?";
 		ResultSet rs = null;
-		int numRowsAffected = 0;
-		try (Connection c = ConnectionUtil.getConnection();
-			PreparedStatement ps = c.prepareStatement(sql,
-					ResultSet.TYPE_SCROLL_INSENSITIVE, 
-				    ResultSet.CONCUR_READ_ONLY);){
-			ps.setString(1, username);
-			rs = ps.executeQuery();
-			rs.last();
-			numRowsAffected = rs.getRow();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		int numRowsAffected = -1;
+		if(username != null) {
+			try (Connection c = ConnectionUtil.getConnection();
+					PreparedStatement ps = c.prepareStatement(sql,
+							ResultSet.TYPE_SCROLL_INSENSITIVE, 
+						    ResultSet.CONCUR_READ_ONLY);){
+					ps.setString(1, username);
+					rs = ps.executeQuery();
+					rs.last();
+					numRowsAffected = rs.getRow();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 		return numRowsAffected;
 	}

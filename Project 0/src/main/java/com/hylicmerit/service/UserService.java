@@ -1,5 +1,8 @@
 package com.hylicmerit.service;
 
+import org.apache.commons.validator.routines.EmailValidator;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+
 import com.hylicmerit.dao.UserDao;
 import com.hylicmerit.dao.UserDaoImpl;
 import com.hylicmerit.models.User;
@@ -13,7 +16,7 @@ public class UserService {
 	
 	public boolean checkUsernameAvailability(String username) {
 		if(!"".equals(username)) {
-			if(userDao.checkUsernameAvailability(username) ==0) {
+			if(userDao.checkUsernameAvailability(username) == 0) {
 				return true;
 			}
 			else {
@@ -61,5 +64,27 @@ public class UserService {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean validateEmail(String email) {
+		if(EmailValidator.getInstance().isValid(email)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public String encryptPassword(String pw) {
+		StandardPBEStringEncryptor passwordEncryptor = new StandardPBEStringEncryptor();
+		passwordEncryptor.setPassword("some_salt");
+		String password = new String(passwordEncryptor.encrypt(pw));
+		return password;
+	}
+	
+	public String decryptPassword(String pw) {
+		StandardPBEStringEncryptor passwordEncryptor = new StandardPBEStringEncryptor();
+		passwordEncryptor.setPassword("some_salt");
+		String password = new String(passwordEncryptor.decrypt(pw));
+		return password;
 	}
 }
