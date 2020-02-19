@@ -1,0 +1,54 @@
+body{
+    background-image: url("https://cdn.shopify.com/s/files/1/1297/3303/products/standard-walnut-chess-board-21184254145_1024x1024.jpg?v=1575932118");
+}
+
+#content-div{
+    background-color: rgba(255, 255, 255, .6);
+    padding: 50px;
+    border-radius: 20px;
+    margin: 50px;
+}
+
+form{
+    margin: 20px;
+    background-color: blanchedalmond;  
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#form-title{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: chartreuse;
+}
+
+.formatted-par{
+    font-family: 'Courier New', Courier, monospace;
+    color: navy;
+    font-weight: 700;
+}
+
+p{
+    font-size: 20px;
+}
+
+th, td{
+    padding: 8px;
+    border: solid 2px;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    margin-left: 50px;
+    background-color: white;
+}
+
+#submit-btn{
+    background-color: saddlebrown;
+    color:blanchedalmond;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px;
+}
