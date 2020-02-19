@@ -23,6 +23,7 @@ public abstract class AccountInteraction extends BankInteraction {
 
 	public void setUser(final User user) {
 		this.user = user;
+		loginUser();
 	}
 
 	public void removeUser() {
@@ -35,7 +36,7 @@ public abstract class AccountInteraction extends BankInteraction {
 	}
 
 	@Override
-	public final int interact() {
+	public int interact() {
 		final int result = realInteraction();
 		// don't need to prompt user to logout or exit, just do it
 		switch (result) {
@@ -49,6 +50,7 @@ public abstract class AccountInteraction extends BankInteraction {
 
 	public int chooseAccount(final String prompt, final List<BankAccount> accounts) {
 		while (true) {
+			io.clearScreen();
 			io.println(prompt);
 			int count = 1;
 			for (final BankAccount account : accounts) {
@@ -68,7 +70,37 @@ public abstract class AccountInteraction extends BankInteraction {
 				if (!retry())
 					return FAILURE;
 				// else try again
-				io.clearScreen();
+				continue;
+			}
+			// option was good, return it
+			return option;
+		}
+	}
+
+	public int chooseAccount(final String prompt, final List<BankAccount> accounts, final int except) {
+		while (true) {
+			io.clearScreen();
+			io.println(prompt);
+			int count = 1;
+			final int size = accounts.size();
+			for (int i = 0; i < size; ++i) {
+				if (i != except - 1)
+					io.println("\t" + count++ + ". " + accounts.get(i).printAccountBalanceHideAccountno());
+			}
+			final int option = super.readOption(accounts.size());
+
+			switch (option) {
+			case EXIT:
+				return EXIT;
+			case LOGOUT:
+				return LOGOUT;
+			}
+
+			if (option == FAILURE) {
+				io.println("That's not a valid option");
+				if (!retry())
+					return FAILURE;
+				// else try again
 				continue;
 			}
 			// option was good, return it
@@ -103,6 +135,14 @@ public abstract class AccountInteraction extends BankInteraction {
 				io.println(amountString + " isn't a number");
 				amount.setReturnStatus(FAILURE);
 			}
+		}
+	}
+
+	private void loginUser() {
+		final int options = getNumMenuOptions();
+		for (int i = 0; i < options; ++i) {
+			final AccountInteraction interaction = (AccountInteraction) getMenuOption(i);
+			interaction.setUser(user);
 		}
 	}
 

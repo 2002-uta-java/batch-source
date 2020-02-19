@@ -17,6 +17,7 @@ public class LoginInteraction extends BankInteraction {
 		super.addMenuOption(new WithdrawFunds(cli, uService, baService));
 		super.addMenuOption(new OpenNewAccount(cli, uService, baService));
 		super.addMenuOption(new AddUserToAccount(cli, uService, baService));
+		super.addMenuOption(new TransferFunds(cli, uService, baService));
 	}
 
 	@Override
@@ -82,7 +83,7 @@ public class LoginInteraction extends BankInteraction {
 	private void loginUser(User user) {
 		final int numInteractions = super.getNumMenuOptions();
 		for (int i = 0; i < numInteractions; ++i) {
-			final AccountInteraction ai = (AccountInteraction) super.getInteraction(i);
+			final AccountInteraction ai = (AccountInteraction) super.getMenuOption(i);
 			ai.setUser(user);
 		}
 	}
@@ -90,7 +91,7 @@ public class LoginInteraction extends BankInteraction {
 	private void logoutUser() {
 		final int numInteractions = super.getNumMenuOptions();
 		for (int i = 0; i < numInteractions; ++i) {
-			final AccountInteraction ai = (AccountInteraction) super.getInteraction(i);
+			final AccountInteraction ai = (AccountInteraction) super.getMenuOption(i);
 			ai.removeUser();
 		}
 	}

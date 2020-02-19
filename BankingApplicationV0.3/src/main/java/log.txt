@@ -43,3 +43,5 @@
 2020-02-18 17:25:04 DEBUG SecurityService:25 method: decrypt - Decrypting 5z+ic3mtTGvd3cUjYNl0QA== to 0.0
 2020-02-18 17:25:06 DEBUG BankInteraction:64 method: interact - interact returned -1
 2020-02-18 17:27:35 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 18:05:55 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:13:00 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h

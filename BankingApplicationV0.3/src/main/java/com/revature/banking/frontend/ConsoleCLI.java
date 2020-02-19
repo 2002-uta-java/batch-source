@@ -104,4 +104,12 @@ public class ConsoleCLI implements CLI {
 		}
 	}
 
+	@Override
+	public void flush() {
+		if (console != null)
+			console.flush();
+		else
+			out.flush();
+	}
+
 }

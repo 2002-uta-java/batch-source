@@ -19,4 +19,6 @@ public interface CLI {
 	public void println();
 
 	public void clearScreen();
+
+	public void flush();
 }

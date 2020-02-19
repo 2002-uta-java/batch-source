@@ -19,6 +19,7 @@ public class MainMenu extends BankInteraction {
 	@Override
 	public int interact() throws IOException {
 		io.clearScreen();
+		io.println("Welcome to the BoB");
 		while (true) {
 			final int option = super.getMenu();
 

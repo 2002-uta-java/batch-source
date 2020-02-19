@@ -7,7 +7,6 @@ import com.revature.banking.services.BankAccountService;
 import com.revature.banking.services.UserService;
 import com.revature.banking.services.models.BankAccount;
 import com.revature.banking.services.models.User;
-import com.revature.banking.services.security.models.EncryptedBankAccount;
 
 public class CreateNewUser extends BankInteraction {
 	public static final String TITLE = "Create new user and account.";
@@ -29,6 +28,7 @@ public class CreateNewUser extends BankInteraction {
 				io.println("Your new bank account number is " + account.getAccountNo());
 				io.println("You should now be able to login to the system with your user name (" + newUser.getUserName()
 						+ ") and password.");
+				this.promptToContinue();
 				return BankInteraction.SUCCESS;
 			} else {
 				// attempt to delete the bank account and user
@@ -171,7 +171,7 @@ public class CreateNewUser extends BankInteraction {
 				return null;
 			}
 
-			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_INVALID_TAX_ID) {
+			if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_TAXID_MISMATCH) {
 				io.println("The tax id and name you provided does not match" + " what we have on file. "
 						+ "Did you enter the wrong tax id?");
 				if (!super.retry())
@@ -211,7 +211,6 @@ public class CreateNewUser extends BankInteraction {
 
 		newUser.setPassword(password);
 
-		BankAccount account = null;
 		if (checkUserNameTaxIdStatus == UserService.CHECK_NEW_USER_VALID_ALREADY_EXISTS) {
 			if (uService.updateUser(newUser))
 				return newUser;

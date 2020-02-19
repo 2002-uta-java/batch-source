@@ -26,7 +26,7 @@ public class AddNewUserToAccount extends AccountInteraction {
 	}
 
 	@Override
-	public int realInteraction() {
+	public int interact() {
 		io.clearScreen();
 		io.println("Create a New User:");
 		User newUser = null;
@@ -54,6 +54,12 @@ public class AddNewUserToAccount extends AccountInteraction {
 				io.println("We have removed " + newUser.getUserName() + " from our system.");
 			return FAILURE;
 		}
+	}
+
+	@Override
+	public int realInteraction() {
+		// this is bad code but this needs to be a AccountInteraction
+		return 0;
 	}
 
 }

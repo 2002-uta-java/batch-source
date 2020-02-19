@@ -65,11 +65,6 @@ public class UserService extends Service {
 	 */
 	public static final int CHECK_NEW_USER_INVALID_USERNAME_EXISTS = 4;
 
-	/**
-	 * This means the passed tax id was invalid (the front end should really check
-	 * this before ever calling this method.
-	 */
-	public static final int CHECK_NEW_USER_INVALID_TAX_ID = 4;
 	private BankAccountService baService = null;
 	private UserDao uDao = null;
 
@@ -120,16 +115,17 @@ public class UserService extends Service {
 
 			// first check tax id (if that doesn't match, then check username)
 			if (newUser.getTaxID().equals(user.getTaxID())) {
-				// check to make sure this user doesn't already have an account
-				if (user.getUserName() != null) {
-					Logger.getRootLogger().debug("Found matching tax id and with an open account");
-					return CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
-				}
+				// check name match first (don't tell them the ID they entered has an account.
 				// check to make sure the first and last name match
 				if (!user.getFirstName().equals(newUser.getFirstName())
 						|| !user.getLastName().equals(newUser.getLastName())) {
 					Logger.getRootLogger().debug("Found matching tax id, but the name given didn't match");
 					return CHECK_NEW_USER_TAXID_MISMATCH;
+				}
+				// check to make sure this user doesn't already have an account
+				if (user.getUserName() != null) {
+					Logger.getRootLogger().debug("Found matching tax id and with an open account");
+					return CHECK_NEW_USER_HAS_OPEN_ACCOUNT;
 				}
 				// at this point the new user exists in the system, does not have an open
 				// account, AND the first and last name match our records. Give the user the

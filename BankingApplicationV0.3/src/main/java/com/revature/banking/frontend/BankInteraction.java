@@ -84,7 +84,7 @@ public abstract class BankInteraction {
 		return menuOptions.size();
 	}
 
-	protected BankInteraction getInteraction(final int i) {
+	protected BankInteraction getMenuOption(final int i) {
 		return menuOptions.get(i);
 	}
 

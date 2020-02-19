@@ -98,7 +98,7 @@ public class BankAccountService extends Service {
 		if (amt > DEPOSIT_LIMIT)
 			return ADD_FUNDS_DEPOSIT_LIMIT;
 
-		// else add the amoun to the account and update account
+		// else add the amount to the account and update account
 		account.addFunds(amt);
 		if (updateAccount(account)) {
 			return ADD_FUNDS_SUCCESS;
@@ -107,9 +107,32 @@ public class BankAccountService extends Service {
 			account.withdraw(amt);
 			return ADD_FUNDS_FAILURE;
 		}
-
 	}
 
+	public boolean addFundsToAccountNoLimit(BankAccount account, double amt) {
+		// else add the amount to the account and update account
+		account.addFunds(amt);
+		if (updateAccount(account)) {
+			return true;
+		} else {
+			// need to undo addFUnds
+			account.withdraw(amt);
+			return false;
+		}
+	}
+
+	/**
+	 * This method attempts to withdraw the amount given from the bank account
+	 * given.
+	 * 
+	 * @param account Bank account to withdraw from.
+	 * @param amount  Amount to withdraw.
+	 * @return a status code which explains whether or not there was a problem and,
+	 *         if so, what the problem was.
+	 * @see {@link #WITHDRAWAL_FAILURE}
+	 * @see {@link #WITHDRAWAL_INSUFFICIENT_FUNDS}
+	 * @see {@link #WITHDRAWAL_SUCCESS}
+	 */
 	public int withdrawFromAccount(BankAccount account, double amount) {
 		if (amount > account.getBalance())
 			return WITHDRAWAL_INSUFFICIENT_FUNDS;

@@ -1,0 +1,208 @@
+2020-02-18 18:06:09 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:08:59 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:09:40 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:13:17 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:14:02 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:20:07 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:22:17 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:28:49 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:29:04 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 18:29:45 DEBUG UserService:162 method: checkNewUserTaxidAndUserName - no match was found for taxid or username: 1234567890 and bennattj
+2020-02-18 18:29:50 DEBUG SecurityService:31 method: encrypt - Encrypting Jared to Cu6Ms2WUS4ZLEzYtPuAUjg==
+2020-02-18 18:29:50 DEBUG SecurityService:31 method: encrypt - Encrypting Bennatt to GngxCgy1LRwvigXj9vCIUw==
+2020-02-18 18:29:50 DEBUG SecurityService:31 method: encrypt - Encrypting 1234567890 to JTrZpsipQjj+UT/TTwID9NtDMA/B47fM
+2020-02-18 18:29:51 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU
+2020-02-18 18:29:51 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to VqP7qQerlhTp7N2CpXu66g==
+2020-02-18 18:29:51 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:29:51 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:29:51 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to qkKbltAlrAjbCVT88uZ9gDHpah29dxLn
+2020-02-18 18:29:51 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to EVTMZHhRs7oqU5CchyfamQ==
+2020-02-18 18:29:51 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:30:05 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:30:05 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:30:05 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:30:08 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:30:08 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:30:09 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:30:11 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 18:32:17 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:32:29 DEBUG SecurityService:25 method: decrypt - Decrypting Cu6Ms2WUS4ZLEzYtPuAUjg== to Jared
+2020-02-18 18:32:29 DEBUG SecurityService:25 method: decrypt - Decrypting GngxCgy1LRwvigXj9vCIUw== to Bennatt
+2020-02-18 18:32:29 DEBUG SecurityService:25 method: decrypt - Decrypting JTrZpsipQjj+UT/TTwID9NtDMA/B47fM to 1234567890
+2020-02-18 18:32:29 DEBUG UserService:162 method: checkNewUserTaxidAndUserName - no match was found for taxid or username: 0987654321 and jamiebennatt
+2020-02-18 18:32:33 DEBUG SecurityService:31 method: encrypt - Encrypting Jamie to 2ytz7YnAhMZnp/mDV0smbg==
+2020-02-18 18:32:33 DEBUG SecurityService:31 method: encrypt - Encrypting Bennatt to Q2w8ScU2YZDQ8Qoj17efUg==
+2020-02-18 18:32:33 DEBUG SecurityService:31 method: encrypt - Encrypting 0987654321 to QUcJ/JehjobqUlLULcAa5j7Z8lG+57iv
+2020-02-18 18:32:34 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:32:34 DEBUG SecurityService:31 method: encrypt - Encrypting 2074788304 to 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt
+2020-02-18 18:32:34 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to T15EHIoqkeAGs81H59M3zA==
+2020-02-18 18:32:34 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:32:34 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:32:34 DEBUG SecurityService:31 method: encrypt - Encrypting 2074788304 to orVXt1O+4GAhspgUZ0l7mAaGlYVm+kC7
+2020-02-18 18:32:34 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to rDxzl6rao9jlvHTts+ywyw==
+2020-02-18 18:32:43 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:32:51 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:32:51 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:32:51 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:32:55 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:32:55 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:33:10 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:33:10 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:33:10 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:33:11 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:33:11 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:33:11 DEBUG SecurityService:31 method: encrypt - Encrypting 2074788304 to WtsYJt7RPbKeF1CngWhoTztsnsf1AogH
+2020-02-18 18:33:11 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to 1duxFdUiwQdt4Qltzjluwg==
+2020-02-18 18:33:19 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:36:15 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:36:16 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 18:36:31 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:36:49 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:36:49 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:36:49 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:36:52 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:36:52 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:36:52 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:36:52 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:37:07 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:07 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:07 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:08 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:37:08 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:37:08 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 18:37:10 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 18:37:12 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:37:12 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:37:12 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:37:12 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:37:23 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:23 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:23 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:24 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:37:24 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:37:24 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to +tCz5OOfInsD0lFLaceE4YbwNxYi2moK
+2020-02-18 18:37:24 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to sn2BkQCuoGjIVXfZ9ynlog==
+2020-02-18 18:37:24 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:37:28 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:37:31 DEBUG BankInteraction:64 method: interact - interact returned -2
+2020-02-18 18:37:38 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:38 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:38 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:37:42 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:37:42 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:37:42 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:37:42 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:37:43 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:37:48 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:37:48 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:37:48 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 18:37:48 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting Cu6Ms2WUS4ZLEzYtPuAUjg== to Jared
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting GngxCgy1LRwvigXj9vCIUw== to Bennatt
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting JTrZpsipQjj+UT/TTwID9NtDMA/B47fM to 1234567890
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting 2ytz7YnAhMZnp/mDV0smbg== to Jamie
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting Q2w8ScU2YZDQ8Qoj17efUg== to Bennatt
+2020-02-18 18:38:05 DEBUG SecurityService:25 method: decrypt - Decrypting QUcJ/JehjobqUlLULcAa5j7Z8lG+57iv to 0987654321
+2020-02-18 18:38:05 DEBUG UserService:162 method: checkNewUserTaxidAndUserName - no match was found for taxid or username: 6789054321 and vbennatt
+2020-02-18 18:38:11 DEBUG SecurityService:31 method: encrypt - Encrypting Violet to eNbC7aTUyN9xpkxI2ug5cw==
+2020-02-18 18:38:11 DEBUG SecurityService:31 method: encrypt - Encrypting Bennatt to XF65P3XQelQBSKeS0P81Xg==
+2020-02-18 18:38:11 DEBUG SecurityService:31 method: encrypt - Encrypting 6789054321 to OS8dbZ7eJeE/EbGxfU6YmXbMoa/VaZZd
+2020-02-18 18:38:11 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to xQDeT+PaW+0V1WtguwhRdji7hBRZt6MD
+2020-02-18 18:38:11 DEBUG SecurityService:31 method: encrypt - Encrypting 0.0 to 91xdkTRNp2XMSXBmciIogw==
+2020-02-18 18:38:12 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:38:15 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:38:17 DEBUG BankInteraction:64 method: interact - interact returned -2
+2020-02-18 18:38:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:38:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:38:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 18:38:31 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 18:38:31 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 18:38:32 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 18:38:35 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 18:39:05 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting Cu6Ms2WUS4ZLEzYtPuAUjg== to Jared
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting GngxCgy1LRwvigXj9vCIUw== to Bennatt
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting JTrZpsipQjj+UT/TTwID9NtDMA/B47fM to 1234567890
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting 2ytz7YnAhMZnp/mDV0smbg== to Jamie
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting Q2w8ScU2YZDQ8Qoj17efUg== to Bennatt
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting QUcJ/JehjobqUlLULcAa5j7Z8lG+57iv to 0987654321
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting eNbC7aTUyN9xpkxI2ug5cw== to Violet
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting XF65P3XQelQBSKeS0P81Xg== to Bennatt
+2020-02-18 18:39:21 DEBUG SecurityService:25 method: decrypt - Decrypting OS8dbZ7eJeE/EbGxfU6YmXbMoa/VaZZd to 6789054321
+2020-02-18 18:39:21 DEBUG UserService:125 method: checkNewUserTaxidAndUserName - Found matching tax id and with an open account
+2020-02-18 18:39:21 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 18:44:08 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting Cu6Ms2WUS4ZLEzYtPuAUjg== to Jared
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting GngxCgy1LRwvigXj9vCIUw== to Bennatt
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting JTrZpsipQjj+UT/TTwID9NtDMA/B47fM to 1234567890
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting 2ytz7YnAhMZnp/mDV0smbg== to Jamie
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting Q2w8ScU2YZDQ8Qoj17efUg== to Bennatt
+2020-02-18 18:44:21 DEBUG SecurityService:25 method: decrypt - Decrypting QUcJ/JehjobqUlLULcAa5j7Z8lG+57iv to 0987654321
+2020-02-18 18:44:21 DEBUG UserService:122 method: checkNewUserTaxidAndUserName - Found matching tax id, but the name given didn't match
+2020-02-18 18:44:27 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 18:45:15 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 18:46:01 DEBUG BankInteraction:64 method: interact - interact returned -4
+2020-02-18 19:52:19 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 19:52:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:52:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:52:29 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:52:31 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 19:52:31 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 19:52:31 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 19:52:31 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 19:52:33 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 19:52:35 DEBUG SecurityService:25 method: decrypt - Decrypting 7NwCsU9MA4t1swgEkb2MvaER+SQW75XU to 2002222341
+2020-02-18 19:52:35 DEBUG SecurityService:25 method: decrypt - Decrypting VqP7qQerlhTp7N2CpXu66g== to 0.0
+2020-02-18 19:52:35 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 19:52:35 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 19:52:38 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to cPRqaGF7letL0hTsy+iWUPTvrDK49D2N
+2020-02-18 19:52:38 DEBUG SecurityService:31 method: encrypt - Encrypting 100.0 to bTbU83Uu53Hn/2CrCKvqkg==
+2020-02-18 19:52:40 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 19:52:42 DEBUG SecurityService:25 method: decrypt - Decrypting 1pA98X3ruCgzKxFQWxBcktD5m5zDvcrt to 2074788304
+2020-02-18 19:52:42 DEBUG SecurityService:25 method: decrypt - Decrypting T15EHIoqkeAGs81H59M3zA== to 0.0
+2020-02-18 19:52:42 DEBUG SecurityService:25 method: decrypt - Decrypting cPRqaGF7letL0hTsy+iWUPTvrDK49D2N to 2002222341
+2020-02-18 19:52:42 DEBUG SecurityService:25 method: decrypt - Decrypting bTbU83Uu53Hn/2CrCKvqkg== to 100.0
+2020-02-18 19:52:46 DEBUG SecurityService:31 method: encrypt - Encrypting 2074788304 to AoC2lUFcqX7RR3zCI36o8SqH59SP6JqH
+2020-02-18 19:52:46 DEBUG SecurityService:31 method: encrypt - Encrypting 100.0 to 7Gv7tRgd5MsFg7XafUGEbQ==
+2020-02-18 19:52:47 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 19:52:51 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 19:53:22 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 19:53:31 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:53:31 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:53:31 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:56:44 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 19:56:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:56:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:56:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 19:57:02 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 19:57:02 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 20:05:00 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 20:05:08 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:05:08 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:05:08 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:07:43 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 20:07:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:07:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:07:52 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:08:04 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 20:08:04 DEBUG BankInteraction:64 method: interact - interact returned -3
+2020-02-18 20:10:43 DEBUG SecurityService:19 method: setKey - Setting key for text encryption to: fBi7m2OjRBUrN4B6h
+2020-02-18 20:10:50 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:10:50 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:10:50 DEBUG SecurityService:25 method: decrypt - Decrypting null to null
+2020-02-18 20:10:58 DEBUG SecurityService:25 method: decrypt - Decrypting cPRqaGF7letL0hTsy+iWUPTvrDK49D2N to 2002222341
+2020-02-18 20:10:58 DEBUG SecurityService:25 method: decrypt - Decrypting bTbU83Uu53Hn/2CrCKvqkg== to 100.0
+2020-02-18 20:10:58 DEBUG SecurityService:25 method: decrypt - Decrypting AoC2lUFcqX7RR3zCI36o8SqH59SP6JqH to 2074788304
+2020-02-18 20:10:58 DEBUG SecurityService:25 method: decrypt - Decrypting 7Gv7tRgd5MsFg7XafUGEbQ== to 100.0
+2020-02-18 20:11:21 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to Nd+BvE2OYx4oyf2fKoIi1MlCPSt79AER
+2020-02-18 20:11:21 DEBUG SecurityService:31 method: encrypt - Encrypting 25.0 to 4Ls7GwW/qvpePfmE4wNpVQ==
+2020-02-18 20:11:22 DEBUG SecurityService:31 method: encrypt - Encrypting 2002222341 to dJqu90g6UMpjBc9Ez2o64gNf3Nr7TqhO
+2020-02-18 20:11:22 DEBUG SecurityService:31 method: encrypt - Encrypting 100.0 to LHWOD6xiolTCmYgGHyBFzg==
+2020-02-18 20:11:26 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 20:11:27 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 20:11:29 DEBUG SecurityService:25 method: decrypt - Decrypting AoC2lUFcqX7RR3zCI36o8SqH59SP6JqH to 2074788304
+2020-02-18 20:11:29 DEBUG SecurityService:25 method: decrypt - Decrypting 7Gv7tRgd5MsFg7XafUGEbQ== to 100.0
+2020-02-18 20:11:29 DEBUG SecurityService:25 method: decrypt - Decrypting dJqu90g6UMpjBc9Ez2o64gNf3Nr7TqhO to 2002222341
+2020-02-18 20:11:29 DEBUG SecurityService:25 method: decrypt - Decrypting LHWOD6xiolTCmYgGHyBFzg== to 100.0
+2020-02-18 20:11:30 DEBUG BankInteraction:64 method: interact - interact returned -1
+2020-02-18 20:11:42 DEBUG BankInteraction:64 method: interact - interact returned -3

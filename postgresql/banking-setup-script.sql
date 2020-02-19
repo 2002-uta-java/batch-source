@@ -15,8 +15,10 @@ firstname varchar(64) not null,
 lastname varchar(64) not null,
 username varchar(20) unique,
 password varchar(64));
--- this is my junction table to link users and accounts. Neither column needs to be unique (and I expect multiples)
- create table user_accounts (user_key integer, account_key integer);
+
+-- this is my junction table to link users and accounts. Neither column needs to be unique (and I expect multiples). However the two keys together 
+--	SHOULD be unique and I enforce that by making them, together, a composite primary key.
+ create table user_accounts (user_key integer, account_key integer, constraint pk_user_accounts primary key (user_key, account_key));
 
 truncate
 	table users;
