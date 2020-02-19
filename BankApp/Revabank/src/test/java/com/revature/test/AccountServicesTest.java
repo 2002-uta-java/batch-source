@@ -1,37 +1,40 @@
 package com.revature.test;
 
 import static org.junit.Assert.assertEquals;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.when;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.revature.daos.AccountDaos;
-import com.revature.daos.AccountDaosImplementation;
 import com.revature.models.Account;
-import com.revature.util.ConnectionUtil;
+import com.revature.services.AccountServices;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AccountServicesTest {
-	AccountDaos as = new AccountDaosImplementation();
 	
-	@Test
-	public void testConnection() throws SQLException {
-		Connection c = ConnectionUtil.getConnection();
-		String driverName = c.getMetaData().getDriverName();
-		assertEquals("PostgreSQL JDBC Driver", driverName);
-	}
+	@InjectMocks
+	AccountServices as = new AccountServices();
+	
+	@Mock
+	AccountDaos ad;
 	
 	@Test
 	public void getAccountWithValidId() {
+		when(as.getAccount(1)).thenReturn(new Account(1,1,2000));
 		Account a = new Account(1,1,2000);
+		
 		assertEquals(a,as.getAccount(1));
 	}
 	
 	@Test
 	public void getAccountWithInvalidId() {
-		assertEquals(null, as.getAccount(30));
+		when(as.getAccount(30)).thenReturn(null);
+		assertNull(as.getAccount(30));
 	}
-	
 	
 }
