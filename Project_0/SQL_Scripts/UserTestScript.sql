@@ -53,7 +53,7 @@ full outer join (
 ) as aau1
 on u1.userid = aau1.userid;
 
-select delete_user(1);
+--select delete_user(1);
 
 
 
@@ -68,7 +68,7 @@ full outer join (
 on u1.userid = aau1.userid;
 
 alter sequence users_userid_seq restart with 1;
-drop function if exists delete_account(ai accounts.accountid %type);
+drop function if exists delete_accounts(ai accounts.accountid %type);
 drop function if exists delete_user(ui users.userid %type);
 drop function if exists accounts_by_userid(users.userid %type);
 drop function  if exists add_account(i users.userid %type, bl accounts.balance  %type, ty accounts."type" %type);

@@ -22,6 +22,7 @@ public class UserDaoImp implements UserDao {
 		try(Connection userConn = ConnectionUtil.getConnection()){
 			Statement userStmnt = userConn.createStatement();
 			ResultSet userRsltSt = userStmnt.executeQuery(query);
+		
 			
 			while(userRsltSt.next()) {
 				long userid = userRsltSt.getLong("UserID");

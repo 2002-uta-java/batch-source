@@ -9,7 +9,7 @@
 --NEED TO ADD UNIQUE CONSTRAINTS
 drop function if exists delete_account(ai accounts.accountid %type);
 drop function if exists delete_user(ui users.userid %type);
-drop function if exists accounts_by_userid("users".userid %type);
+drop function if exists accounts_by_userid(users.userid %type);
 drop table if exists transactions;
 drop table if exists Authorizations;
 drop table if exists Accounts;
