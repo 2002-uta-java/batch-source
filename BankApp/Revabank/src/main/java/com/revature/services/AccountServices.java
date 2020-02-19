@@ -43,30 +43,35 @@ public class AccountServices {
 		return false;
 	}
 	
-	public boolean deposit(Account a, long amount) {
-		a.setBalance(a.getBalance() + amount);
-		int accountUpdated = accountDaos.updateAccount(a);
-		if(accountUpdated != 0) {
-			System.out.println("Deposit successful");
-			return true;
+	public boolean deposit(Account a, double amount) {
+		if(amount >= 0) {
+			a.setBalance(a.getBalance() + amount);
+			int accountUpdated = accountDaos.updateAccount(a);
+			if(accountUpdated != 0) {
+				System.out.println("Deposit successful");
+				return true;
+			}
+			System.out.println("Unable to deposit, please try again\n");
+			return false;
 		}
-		System.out.println("Unable to deposit, please try again\n");
 		return false;
 	}
 	
-	public boolean withdraw(Account a, long amount) {
-		Account account = accountDaos.getAccount(a.getAccount_id());
-		if(account.getBalance() >= amount) {
-			account.setBalance(account.getBalance() - amount);
-			int accountUpdated = accountDaos.updateAccount(a);
-			if(accountUpdated != 0) {
-				System.out.println("Withdrawl successful");
-				return true;
+	public boolean withdraw(Account a, double amount) {
+		if(amount >= 0) {
+			if(a.getBalance() >= amount) {
+				a.setBalance(a.getBalance() - amount);
+				int accountUpdated = accountDaos.updateAccount(a);
+				if(accountUpdated != 0) {
+					System.out.println("Withdrawl successful");
+					return true;
+				}
+				System.out.println("Unable to withdraw, please try again\n");
+				return false;
 			}
-			System.out.println("Unable to withdraw, please try again\n");
+			System.out.println("Insuficient Funds");
 			return false;
 		}
-		System.out.println("Insuficient Funds");
 		return false;
 	}
 }

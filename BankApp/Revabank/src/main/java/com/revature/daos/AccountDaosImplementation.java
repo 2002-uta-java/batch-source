@@ -23,7 +23,7 @@ public class AccountDaosImplementation implements AccountDaos {
 			while(rs.next()) {
 				int account_id = rs.getInt("account_id");
 				int user_id = rs.getInt("user_id");
-				long balance = rs.getLong("balance");
+				double balance = rs.getDouble("balance");
 				account = new Account(account_id, user_id, balance);
 			}
 			
@@ -51,8 +51,10 @@ public class AccountDaosImplementation implements AccountDaos {
 			ps.setInt(1, a.getUser_id());
 			ps.setDouble(2, a.getBalance());
 			accountCreated = ps.executeUpdate();
+			return accountCreated;
 			
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		

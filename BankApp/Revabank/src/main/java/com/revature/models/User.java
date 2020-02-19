@@ -19,6 +19,11 @@ public class User implements Serializable {
 		this.username = username;
 		this.password = password;
 	}
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 	
 	//Setters and Getters
 	public int getUser_id() {

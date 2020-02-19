@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.models.User;
 import com.revature.util.ConnectionUtil;
@@ -20,7 +23,7 @@ public class UserDaosImplementation implements UserDaos{
 			ps.setString(1, username);
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				user = new User();
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("pwd"));
@@ -92,6 +95,26 @@ public class UserDaosImplementation implements UserDaos{
 		}
 		
 		return rowsDeleted;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		String sql = "select * from bank_user";
+		List<User> users = new ArrayList<>();
+	
+	try (Connection c = ConnectionUtil.getConnection();Statement s = c.createStatement();ResultSet rs = s.executeQuery(sql)){
+		while(rs.next()) {
+			int userId = rs.getInt("user_id");
+			String username = rs.getString("username");
+			String pwd = rs.getString("pwd");
+			users.add(new User(userId, username, pwd));
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	return users;
 	}
 
 }
