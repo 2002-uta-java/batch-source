@@ -103,7 +103,7 @@ public class Driver {
 			
 			while (!email.matches("^([a-zA-Z0-9_\\-\\.]+)@"
 					+ "([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
-				System.out.print("that is not a valid email address; please enter an email adress: ");
+				System.out.print("that is not a valid email address; please enter an email address: ");
 				email = input.nextLine();
 				continue;
 			}
