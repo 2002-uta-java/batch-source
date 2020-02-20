@@ -1,0 +1,27 @@
+h2{
+    text-align: center;
+    font-size: 70px;
+}
+
+body{
+    background-color: rgb(44, 44, 44);
+    color: greenyellow;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+details{
+    padding-left: 200px;
+    font-size: 35px;
+    padding: 30px;
+}
+
+#content{
+    /* position: relative;
+    left: 300px; */
+    text-align: center;
+}
+
+p{
+    margin-bottom: -5px;
+}
+
