@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+html, body {
+	height: 100%;
+	background-color: #B97929;
+	background-image: url("../pics/Horse-Psych.JPG");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+p {
+	font-size: 1.5em;
+}
+
+p span:hover {
+	background-color: #FDDE49;
+	border-radius: 2px;
+	box-shadow: 3px 3px;
+}
+
+#wrong span:hover {
+	background-color: red;
+	border-radius: 2px;
+	box-shadow: 3px 3px;	
+}
+
+#correct span:hover {
+	background-color: chartreuse;
+	border-radius: 2px;
+	box-shadow: 3px 3px;
+}
