@@ -8,7 +8,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        
     </head>
     <body>
         <div id="content-div" class="container">
@@ -16,18 +15,18 @@
                 <p>Hello <strong>World</strong></p>
 
                 <h3>Favorite Games</h3>
-                <ol class="list-group">
+                <ol class="list-group" id="game-list">
                     <li class="list-group-item">Chess</li>
                     <li class="list-group-item">Chess2</li>
                     <li class="list-group-item">Chess3D</li>
                 </ol>
             </div>
             <figure>
-                <img src="https://cdn.arstechnica.net/wp-content/uploads/2014/01/chess2-1-640x360.png" alt="A snapshot from chess2"/>
+                <img id="main-pic" src="https://cdn.arstechnica.net/wp-content/uploads/2014/01/chess2-1-640x360.png" alt="A snapshot from chess2"/>
                 <figcaption>Check out how great Chess2 is!</figcaption>
             </figure>
 
-            <p>Wanna try it out? <a href="https://store.steampowered.com/app/314340/Chess_2_The_Sequel/">Click Here!</a></p>
+            <p id="chess2-link">Wanna try it out? <a href="https://store.steampowered.com/app/314340/Chess_2_The_Sequel/">Click Here!</a></p>
 
             <hr>
 
@@ -95,5 +94,6 @@
                 <p class="col-sm-4">As trees get older they lose their chlorophyll. All you have to do is let your imagination go wild. And right there you got an almighty cloud. Every time you practice, you learn more. It takes dark in order to show light. Just relax and let it flow. That easy. It just happens - whether or not you worried about it or tried to plan it. Let's have a happy little tree in here. Everybody needs a friend. This is probably the greatest thing that's ever happened in my life. We artists are a different breed of people. We're a happy bunch. Now it's beginning to make a little sense. You have freedom here. The only guide is your heart.</p>
             </div>
         </div>
+        <script src="../js-dom-intro/main.js"></script>
     </body>
 </html>
