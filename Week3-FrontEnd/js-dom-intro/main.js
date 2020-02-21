@@ -25,7 +25,21 @@ newListItem.className = "list-group-item";
 gameList.prepend(newListItem);
 
 
+picElement.addEventListener("click", changePic);
 
 
+function changePic(event){
+    // let pic = event.target;
+    // console.log(event);
+    if(picElement.alt == "A snapshot from chess2"){
+        picElement.src = "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AAHgqfo.img?h=630&w=1119&m=6&q=60&o=f&l=f";
+        picElement.alt = "a pair of wombats";
+        mainPicCapt.innerHTML = "Check out this mama wombat with her joey";
+    } else {
+        picElement.src = "https://cdn.arstechnica.net/wp-content/uploads/2014/01/chess2-1-640x360.png";
+        picElement.alt = "A snapshot from chess2";
+        mainPicCapt.innerText = "Check out how great Chess2 is!";
+    }
+}
 
 
