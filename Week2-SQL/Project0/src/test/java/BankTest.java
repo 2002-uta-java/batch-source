@@ -20,53 +20,53 @@ public class BankTest {
 	static final Logger logger = Logger.getRootLogger();
 
 	@Test
-	public void shortUsernameNotValid() {
-		boolean isValidUsername = InputValidator.validUsername("mit");
-		assertFalse(isValidUsername);
+	public void shortUsernameInvalid() {
+		boolean isUsernameValid = InputValidator.validUsername("dean");
+		assertFalse(isUsernameValid);
 	}
 	
 	@Test
-	public void usernameWithSpecialCharactersNotValid() {
-		boolean isValidUsername = InputValidator.validUsername("mit@!!!");
-		assertFalse(isValidUsername);
+	public void usernameWithSpecialCharactersInvalid() {
+		boolean isUsernameValid = InputValidator.validUsername("dean!!!");
+		assertFalse(isUsernameValid);
 	}
 	
 	@Test
 	public void usernameWithProperLengthIsValid() {
-		boolean isValidUsername = InputValidator.validUsername("mitchup");
-		assertTrue(isValidUsername);
+		boolean isUsernameValid = InputValidator.validUsername("deanna");
+		assertTrue(isUsernameValid);
 	}
 	
 	@Test
 	public void shortPasswordIsInvalid() {
-		boolean isValidPassword = InputValidator.validPassword("123");
+		boolean isValidPassword = InputValidator.validPassword("some");
 		assertFalse(isValidPassword);
 	}
 	
 	@Test
-	public void shortComplexPasswordIsInvalid() {
-		boolean isValidPassword = InputValidator.validPassword("ac@1s");
+	public void shortPasswordWithSymbolsInvalid() {
+		boolean isValidPassword = InputValidator.validPassword("some@");
 		assertFalse(isValidPassword);
 	}
 	
 	@Test
-	public void longComplexPasswordIsValid() {
-		boolean isValidPassword = InputValidator.validPassword("RevaturE1!");
+	public void longPasswordWithUpperNumSymbolIsValid() {
+		boolean isValidPassword = InputValidator.validPassword("Something1!");
 		assertTrue(isValidPassword);
 	}
 	
 	
 	@Test
-	public void properlyFormatted() {
-		assertEquals("10.00", InputValidator.formatDecimals(10f));
+	public void properlyFormattedInput() {
+		assertEquals("88.00", InputValidator.formatDecimals(88f));
 	}
 	@Test
-	public void properlyFormatted2() {
-		assertEquals("10.33", InputValidator.formatDecimals(10.33f));
+	public void properlyFormatted2Precision() {
+		assertEquals("88.33", InputValidator.formatDecimals(88.33f));
 	}
 	@Test
-	public void properlyFormatted3() {
-		assertEquals("100.33", InputValidator.formatDecimals(100.33f));
+	public void properlyFormatted3Precision() {
+		assertEquals("888.33", InputValidator.formatDecimals(888.33f));
 	}
 
 }
