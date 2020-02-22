@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(188, 188, 188);
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.wrapper {
+    background-image:  url(./hero.jpg);
+    background-size: cover;
+    margin: 20vh auto;
+    padding: 50px;
+    width: 400px;
+    height: 550px;
+    text-align: center;
+    box-shadow: 3px 3px 20px black;
+}
+
+h1, 
+h2,
+h3,
+li {
+    font-weight: lighter;
+    color: white;
+}
+
+#lie {
+    font-style: italic;
+}
+
+#question {
+    margin: 15px;
+    font-family: 'Dancing Script', cursive;
+}
+
+ul {
+    margin-top: 30px;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 30px;
+}
+
+.border {
+    border-bottom: 1px solid white;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
