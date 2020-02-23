@@ -96,3 +96,7 @@ Servers/
 */.vscode
 
 .sts4-cache
+
+#WebStorm Configuration files
+
+.idea
