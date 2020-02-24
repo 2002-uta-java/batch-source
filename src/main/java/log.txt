@@ -6,3 +6,6 @@
 2020-02-24 15:22:01 FATAL ConnectionUtil:21 method: getConnection - [Ljava.lang.StackTraceElement;@139dec13
 2020-02-24 16:03:59 FATAL EmployeeDaoPostgres:71 method: updateSessionId - updateSessionId failed: ERROR: relation "employess" does not exist
   Position: 8
+2020-02-24 16:09:43 FATAL EmployeeDaoPostgres:71 method: updateSessionId - updateSessionId failed: ERROR: column "email" does not exist
+  Position: 44
+2020-02-24 16:43:32 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request

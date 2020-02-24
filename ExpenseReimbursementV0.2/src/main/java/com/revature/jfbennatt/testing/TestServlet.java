@@ -50,10 +50,23 @@ public class TestServlet extends HttpServlet {
 		if (cookies == null) {
 			Logger.getRootLogger().fatal("No cookies were sent with HTTP request");
 			response.setStatus(400);
-			// TODO need to send back an error page
+			// get html page to send back
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
+			try {
+				dispatcher.forward(request, response);
+			} catch (ServletException e) {
+				e.printStackTrace();
+				Logger.getRootLogger().error(e.getMessage());
+			} catch (IOException e) {
+				e.printStackTrace();
+				Logger.getRootLogger().error(e.getMessage());
+			}
 		} else {
 			final String email = TestServlet.getValue(EMAIL, cookies);
 			final String password = TestServlet.getValue(PASSWORD, cookies);
+
+			// delete the cookies once we read the email and password
+			deleteAllCookies(cookies);
 
 			final Employee emp = eDao.getEmployee(email);
 
@@ -62,7 +75,7 @@ public class TestServlet extends HttpServlet {
 			response.setContentType("text/html");
 
 			// check password
-			if (passEnc.checkPassword(password, emp.getPassword())) {
+			if (emp != null && passEnc.checkPassword(password, emp.getPassword())) {
 				// create a session_id and send it back to the browser via a cookie
 				final String sessionId = createSessionId();
 
@@ -83,14 +96,33 @@ public class TestServlet extends HttpServlet {
 				try {
 					dispather.forward(request, response);
 				} catch (ServletException e) {
+					e.printStackTrace();
 					Logger.getRootLogger().fatal(e.getMessage());
 				} catch (IOException e) {
+					e.printStackTrace();
 					Logger.getRootLogger().fatal(e.getMessage());
 				}
 			} else {
-				// email/password didn't match, set back message explaining this
-				// TODO need a "bad login" page
+				// TODO need to redirect to login page with message saying login failed
+
+				// get html page to send back
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
+				try {
+					dispatcher.forward(request, response);
+				} catch (ServletException e) {
+					e.printStackTrace();
+					Logger.getRootLogger().error(e.getMessage());
+				} catch (IOException e) {
+					e.printStackTrace();
+					Logger.getRootLogger().error(e.getMessage());
+				}
 			}
+		}
+	}
+
+	private void deleteAllCookies(Cookie[] cookies) {
+		for (final Cookie cookie : cookies) {
+			cookie.setMaxAge(0);
 		}
 	}
 

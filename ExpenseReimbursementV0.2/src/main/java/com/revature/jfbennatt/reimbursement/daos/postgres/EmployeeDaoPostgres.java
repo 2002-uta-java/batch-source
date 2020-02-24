@@ -53,7 +53,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 
 	@Override
 	public boolean updateSessionId(String email, String sessionId) {
-		final String sql = "update employees set session_id = ? where email = ?";
+		final String sql = "update employees set " + SESSION_ID_FIELD + " = ? where " + EMAIL_FIELD + " = ?";
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql)) {
