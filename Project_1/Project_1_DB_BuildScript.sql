@@ -8,27 +8,37 @@
 
 drop table if exists Requests;
 drop table if exists Accounts;
+drop table if exists Users;
 
 
-create table Accounts
+create table Users
 (
-	AccountID bigserial unique not null, 
+	UserID bigserial unique not null, 
 	firstName varchar(180),
 	lastName varchar(180),
 	userName varchar(180)unique not null,
 	email varchar (180) unique not null,
 	"password" varchar(180)unique not null,
-	constraint Accounts_PK primary key (AccountID,userName, "password"),
+	constraint Users_PK primary key (UserID,userName, "password"),
 	supervisor bigserial 
 );
+
+create table Accounts
+(
+	AccountID bigSerial unique not null,
+	UserID bigserial references Users (UserID) on delete cascade,
+	Balance numeric constraint account_postive check (balance>0.0),
+	constraint Accounts_PK primary key (AccountID)
+);
+
 
 create table Requests
 (
 	requestID bigserial unique not null,
-	sourceid bigserial references Accounts (AccountID) on delete cascade,
-	overseer bigserial references Accounts (AccountID) on delete cascade,
+	sourceID bigserial references Users (UserID) on delete cascade,
+	fromID bigserial references Users (UserID) on delete cascade,
 	status varchar(180),
-	amount money,
+	amount numeric,
 	constraint PK_Requests primary key (requestID)
 );
 
