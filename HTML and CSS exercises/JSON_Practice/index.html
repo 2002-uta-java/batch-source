@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+        qurery for full json (with api key):
+        https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=cnFcOs8BaU3clw3cSS2cZMqQZuVmDJQIwVM4wiTl    
+    /-->
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id = "id01"></div>
+    <script>
+        var url = "https://api.nasa.gov/"+
+            "mars-photos/api/v1/"+
+            "rovers/curiosity/latest_photos"+
+            "?api_key=cnFcOs8BaU3clw3cSS2cZMqQZuVmDJQIwVM4wiTl";
+
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200){
+                var myArr = JSON.parse(this.responseText).latest_photos;
+                parsePhotos(myArr);
+            }   
+        };
+
+        xhttp.open("GET",url,true);
+        xhttp.send();
+        
+        function parsePhotos(arr){
+            var outputText = "";
+            var index = 0;
+           console.log(arr);
+            for(index = 0; index < arr.length;index++){
+                outputText+='<a href = '+arr[index].img_src+'>'+
+                arr[index].earth_date+" "+index+'</a><br>';
+            }
+            document.getElementById("id01").innerHTML = outputText;
+        }
+    </script>
+</body>
+</html>
