@@ -1,0 +1,16 @@
+2020-02-14 13:25:39 WARN  Driver:13 method: main - warn
+2020-02-14 13:25:39 ERROR Driver:14 method: main - error
+2020-02-14 13:25:39 FATAL Driver:15 method: main - fatal
+2020-02-14 13:26:18 WARN  Driver:13 method: main - warn
+2020-02-14 13:26:18 ERROR Driver:14 method: main - error
+2020-02-14 13:26:18 FATAL Driver:15 method: main - fatal
+2020-02-14 13:26:29 WARN  Driver:13 method: main - warn
+2020-02-14 13:26:29 ERROR Driver:14 method: main - error
+2020-02-14 13:26:29 FATAL Driver:15 method: main - fatal
+2020-02-14 13:26:36 WARN  Driver:13 method: main - warn
+2020-02-14 13:26:36 ERROR Driver:14 method: main - error
+2020-02-14 13:26:36 FATAL Driver:15 method: main - fatal
+2020-02-14 13:26:48 WARN  Driver:13 method: main - warn
+2020-02-14 13:26:48 ERROR Driver:14 method: main - error
+2020-02-14 13:26:48 FATAL Driver:15 method: main - fatal
+2020-02-14 13:31:56 ERROR Driver:25 method: calculate - incorrect input provided

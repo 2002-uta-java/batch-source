@@ -17,5 +17,13 @@ public class EmployeeService {
 	public Employee getEmployeeById(int id) {
 		return ed.getEmployeeById(id);
 	}
+	
+	public boolean createEmployee(Employee e) {
+		int employeesCreated = ed.createEmployee(e);
+		if(employeesCreated!=0) {
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -26,9 +26,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				Statement ps = c.createStatement();
 				ResultSet rs = ps.executeQuery(sql)){
 			
-			for(int i=0; i<rs.getMetaData().getColumnCount(); i++) {
-				System.out.println(rs.getMetaData().getColumnName(i+1));
-			}
+//			for(int i=0; i<rs.getMetaData().getColumnCount(); i++) {
+//				System.out.println(rs.getMetaData().getColumnName(i+1));
+//			}
 			
 			while(rs.next()) {
 				// get data from each employee
@@ -92,6 +92,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		
 		return employee;
+	}
+
+	@Override
+	public int createEmployee(Employee e) {
+		return 0;
 	}
 
 }
