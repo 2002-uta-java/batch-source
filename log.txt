@@ -1,0 +1,11 @@
+2020-02-24 14:41:52 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@422fe635
+2020-02-24 14:43:20 DEBUG EmployeeDaoPostgres:20 method: getEmployee - Tryig to find employee: bennattj@gmail.com
+2020-02-24 14:43:20 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@4de030af
+2020-02-24 14:55:12 DEBUG EmployeeDaoPostgres:20 method: getEmployee - Tryig to find employee: bennattj@gmail.com
+2020-02-24 14:55:12 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@7888cef2
+2020-02-24 14:58:33 DEBUG EmployeeDaoPostgres:20 method: getEmployee - Tryig to find employee: benn
+2020-02-24 14:58:33 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@343b997d
+2020-02-24 14:58:43 DEBUG EmployeeDaoPostgres:20 method: getEmployee - Tryig to find employee: bennattj@gmail.com
+2020-02-24 14:58:43 FATAL ConnectionUtil:20 method: getConnection - [Ljava.lang.StackTraceElement;@16b159fc
+2020-02-24 14:59:45 DEBUG EmployeeDaoPostgres:20 method: getEmployee - Tryig to find employee: bennattj@gmail.com
+2020-02-24 14:59:45 FATAL ConnectionUtil:21 method: getConnection - [Ljava.lang.StackTraceElement;@152b48fb
