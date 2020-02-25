@@ -23,5 +23,9 @@ public class BirdService {
 	public List<Bird> getBirdsByBreed(String breed){
 		return birds.stream().filter(b->breed.equals(b.getBreed())).collect(Collectors.toList());
 	}
+	
+	public boolean addBird(Bird b) {
+		return birds.add(b);
+	}
 
 }

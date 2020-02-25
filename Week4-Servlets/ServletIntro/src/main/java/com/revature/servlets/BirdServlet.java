@@ -1,5 +1,6 @@
 package com.revature.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,6 +38,21 @@ public class BirdServlet extends HttpServlet {
 		try(PrintWriter pw = response.getWriter();){
 			pw.write(birdJson);
 		}
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		try(BufferedReader requestReader = request.getReader();){
+			String newBirdJson = requestReader.readLine();
+			ObjectMapper om = new ObjectMapper();
+			Bird b = om.readValue(newBirdJson, Bird.class);
+			boolean success = birdService.addBird(b);
+			if(success) {
+				response.setStatus(201);
+			} else {
+				response.sendError(400);
+			}
+		}
+		
 	}
 
 }
