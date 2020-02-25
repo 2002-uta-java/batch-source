@@ -1,5 +1,6 @@
 package com.revature.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,6 +23,20 @@ public class BirdServlet extends HttpServlet {
 
 	private final BirdService birdService = new BirdService();
 	private final ObjectMapper oMapper = new ObjectMapper();
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		boolean success = false;
+		try (final BufferedReader br = req.getReader()) {
+			final String newBird = br.readLine();
+			final Bird birdObj = oMapper.readValue(newBird, Bird.class);
+			success = birdService.addBird(birdObj);
+		}
+		if (success)
+			resp.setStatus(201);
+		else
+			resp.sendError(400);
+	}
 
 	@Override
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)

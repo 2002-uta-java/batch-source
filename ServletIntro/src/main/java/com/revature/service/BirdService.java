@@ -33,4 +33,8 @@ public class BirdService {
 
 		return birds.stream().filter(b -> breed.equalsIgnoreCase(b.getBreed())).collect(Collectors.toList());
 	}
+
+	public boolean addBird(final Bird newBird) {
+		return this.birds.add(newBird);
+	}
 }
