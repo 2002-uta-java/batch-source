@@ -45,6 +45,9 @@ public class TestServlet extends HttpServlet {
 
 	@Override
 	public void doGet(final HttpServletRequest request, final HttpServletResponse response) {
+		// TODO I'm going to rethink this. I think I can do more on the client side. I
+		// shouldn't be using cookies to send and receive information (just send back
+		// the session token, save it as a cookie, then read that each subsequent time)
 		final Cookie[] cookies = request.getCookies();
 
 		if (cookies == null) {

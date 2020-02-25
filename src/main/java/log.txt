@@ -9,3 +9,7 @@
 2020-02-24 16:09:43 FATAL EmployeeDaoPostgres:71 method: updateSessionId - updateSessionId failed: ERROR: column "email" does not exist
   Position: 44
 2020-02-24 16:43:32 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
+2020-02-25 09:29:26 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
+2020-02-25 09:29:27 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
+2020-02-25 09:30:39 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
+2020-02-25 09:30:39 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
