@@ -15,4 +15,14 @@
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>BirdServlet</servlet-name>
+		<servlet-class>com.revature.servlets.BirdServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BirdServlet</servlet-name>
+		<url-pattern>/birds</url-pattern>
+	</servlet-mapping>
+
 </web-app>
