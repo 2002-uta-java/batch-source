@@ -1,18 +1,93 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <title>Employee Reimbursment System</title>
-        <meta name="author" content="Keith Wheeler">
-    </head>
-    <body>
-        <h1>Login Page</h1>
-        <form action="login" method="Post">
-            Username: <input type="text" name="username"/><br/>
-            Password: <input type="password" name="password"/><br/>
-            <input type="submit" value="Login"/>
-        </form>
-        <form action="create-account" method="Post">
-            <button type="submit" id="btn-create-acct" style="color:red">Create Account</button>
-        </form>
-    </body>
+
+<head>
+    <title>Employee Reimbursment System</title>
+    <meta name="author" content="Keith Wheeler">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+</head>
+
+<body class="text-center">
+    <div class="jumbotron row">
+        <div class="col-sm-2">
+            <img src="https://ers.psu.edu/sites/ers/files/styles/400x200/public/psu-employees-clapping.jpg?itok=UqDN4UKj"
+                width=140 height="140">
+        </div>
+        <div class="col-sm-6">
+            <h1>Employee Reimbursment System</h1>
+        </div>
+        <div class="col">
+            <ul class="nav row">
+                <li class="nav-item">
+                    <a class="nav-link" href="loginPage.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="employeepage.html">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manager</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <form action="#">
+                <div class="col">
+                    <div class="form-group">
+                        <select class="form-control" id="loginType">
+                            <option>Login As</option>
+                            <option>Employee</option>
+                            <option>Manager</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="uName" class="form-control" placeholder="Enter Username" id="uName">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Enter Password" id="password">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn-primary" onclick="login()">Login</button>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn-secondary" onclick="createAccount()">Create Account</button>
+                    </div>
+                </div>
+            </form>
+            <div class="col">
+                <img
+                    src="https://www.buffalo.edu/content/www/administrative-services/business-travel/travel-expense-reimbursement-system/_jcr_content/par/image.img.680.244.jpg/1500581564124.jpg">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
 </html>
