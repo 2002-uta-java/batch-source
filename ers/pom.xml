@@ -5,7 +5,7 @@
   <groupId>com.revature</groupId>
   <artifactId>ers</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>ers</name>
   <url>http://maven.apache.org</url>
@@ -37,6 +37,11 @@
 	  <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.10.2</version>
 	</dependency>
   </dependencies>
 </project>
