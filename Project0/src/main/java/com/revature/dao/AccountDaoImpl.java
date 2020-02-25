@@ -68,7 +68,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 	@Override
 	public int getAccountNumber(int num) {
-		String sql = "select account_number from account where account_id = (select customer_id from customer where customer_id = ?)";
+		String sql = "select account_number from account where account_number = (select customer_id from customer where customer_id = ?)";
 		
 		ResultSet rs = null;
 		int a = 0;
