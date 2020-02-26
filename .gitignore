@@ -1,3 +1,6 @@
+# a plaintext file holding a password
+password.pw
+
 # Compiled class file
 *.class
 
