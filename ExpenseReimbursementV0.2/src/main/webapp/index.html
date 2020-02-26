@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Today's Weather</title>
+<title>Login Page</title>
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -21,25 +22,24 @@
 </head>
 <body>
 
-	<div class="container text-center">
-		<div class="jumbotron">
-			<h1>Current Weather</h1>
-			<h3>Enter the zipcode you would like to view:</h3>
+	<form>
+		<div class="form-group">
+			<div class="form-group">
+				<label for="input-email">Email Address</label> <input
+					id="input-email" type="email" class="form-control"
+					placeholder="name@example.com">
+			</div>
+			<div class="form-group">
+				<label for="input-password">Password</label> <input
+					id="input-password" type="password" class="form-control"
+					placeholder="Password">
+			</div>
+			<small id="invalid-login" style="color: red"></small>
 		</div>
-		<div class="form-group form-inline justify-content-center">
-			<input id="zip-input" type="number" class="form-control">
-			<button id="submit-btn" class="btn btn-info">Submit</button>
-		</div>
-	</div>
+		<button id="submit-btn" type="button" class="btn btn-primary"
+			value="submit">Login</button>
+	</form>
 
-	<div id="results" class="container text-center">
-		<h3 id="location"></h3>
-		<h4 id="condition"></h4>
-		<img id="icon">
-		<h4 id="temp"></h4>
-	</div>
-
-	<script type="text/javascript" src="weather.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
