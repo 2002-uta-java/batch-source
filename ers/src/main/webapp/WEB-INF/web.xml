@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
 	<display-name>ers</display-name>
-	
 	<welcome-file-list>
 		<welcome-file>com.revature.frontend.loginPage</welcome-file>
 	</welcome-file-list>
@@ -16,23 +15,4 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>ReimbursmentPageServlet</servlet-name>
-		<servlet-class>com.revature.servlets.ReimbursmentPageServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ReimbursmentPageServlet</servlet-name>
-		<url-pattern>/reimbursment</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>ProfileServlet</servlet-name>
-		<servlet-class>com.revature.servlets.ProfileServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ProfileServlet</servlet-name>
-		<url-pattern>/profile</url-pattern>
-	</servlet-mapping>
-
 </web-app>
