@@ -16,12 +16,13 @@ public class Bird implements Serializable {
 		super();
 	}
 
-	public Bird(int id, String name, int wingspan, String breed) {
+	public Bird(int id, String name, int wingspan, String breed, Habitat habitat) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.wingspan = wingspan;
 		this.breed = breed;
+		this.habitat = habitat;
 	}
 
 	public int getId() {

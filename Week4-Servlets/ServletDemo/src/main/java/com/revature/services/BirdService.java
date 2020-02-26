@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.revature.daos.BirdDao;
 import com.revature.daos.BirdDaoImpl;
@@ -12,6 +13,12 @@ public class BirdService {
 	
 	public List<Bird> getAllBirds(){
 		return birdDaoImpl.getAllBirds();
+	}
+	
+	public List<Bird> getBirdsByBreed(String breed){
+		return birdDaoImpl.getAllBirds().stream()
+				.filter(b->breed.equals(b.getBreed()))
+				.collect(Collectors.toList());
 	}
 	
 	public Bird getBirdById(int id) {

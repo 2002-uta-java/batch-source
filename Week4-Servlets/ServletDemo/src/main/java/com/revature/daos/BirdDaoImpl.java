@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.Bird;
+import com.revature.models.Habitat;
 
 public class BirdDaoImpl implements BirdDao {
 	
 	private List<Bird> birds = new ArrayList<>();
 	
 	public BirdDaoImpl() {
-		birds.add(new Bird(1,"Tweety",50,"Canary"));
-		birds.add(new Bird(2, "Fluffy", 20, "Crow"));
-		birds.add(new Bird(3, "Sam", 40, "Toucan" ));
+		birds.add(new Bird(1,"Tweety",50,"Canary",new Habitat(1, "Woodlands", 60, 520)));
+		birds.add(new Bird(2, "Fluffy", 20, "Crow", new Habitat(1, "Woodlands", 60, 520)));
+		birds.add(new Bird(3, "Sam", 40, "Toucan", new Habitat(2, "Tropical", 85, 350)));
 	}
 
 	@Override
