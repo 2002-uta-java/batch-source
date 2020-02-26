@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Bird;
+import com.revature.models.Habitat;
 import com.revature.services.BirdService;
+import com.revature.services.HabitatService;
 
 /**
  * Servlet implementation class BirdServlet
@@ -22,6 +24,7 @@ public class BirdServlet extends HttpServlet {
 	
 	
 	private BirdService birdService = new BirdService();
+	private HabitatService habitatService = new HabitatService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,12 +57,30 @@ public class BirdServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		try(BufferedReader requestReader = request.getReader();){
-			String newBirdJson = requestReader.readLine();
-			ObjectMapper om = new ObjectMapper();
-			Bird b = om.readValue(newBirdJson, Bird.class);
-			birdService.createBird(b);
-			response.setStatus(201);
+//		try(BufferedReader requestReader = request.getReader();){
+//			String newBirdJson = requestReader.readLine();
+//			System.out.println(newBirdJson);
+//			ObjectMapper om = new ObjectMapper();
+//			Bird b = om.readValue(newBirdJson, Bird.class);
+//			birdService.createBird(b);
+//			response.setStatus(201);
+//		}
+		
+		String birdName = request.getParameter("name");
+		String birdBreed = request.getParameter("breed");
+		String birdHabitatStr = request.getParameter("habitat");
+		
+		if(birdHabitatStr.matches("^\\d+$")) {
+			Bird newBird = new Bird(birdName, birdBreed);
+			Habitat birdHabitat = habitatService.getHabitatById(Integer.parseInt(birdHabitatStr));
+			// get the corresponding habitat with the parsed ID and set habitat
+			
+			newBird.setHabitat(birdHabitat);
+			birdService.createBird(newBird);
+//			response.setStatus(201);
+			response.sendRedirect("directory");
+		} else {
+			response.sendError(400);
 		}
 		
 	}

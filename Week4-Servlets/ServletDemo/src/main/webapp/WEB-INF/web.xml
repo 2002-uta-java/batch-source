@@ -21,4 +21,14 @@
     <servlet-name>BirdServlet</servlet-name>
     <url-pattern>/birds</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BirdIdServlet</display-name>
+    <servlet-name>BirdIdServlet</servlet-name>
+    <servlet-class>com.revature.servlets.api.BirdIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BirdIdServlet</servlet-name>
+    <url-pattern>/birds/*</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -24,6 +24,12 @@ public class Bird implements Serializable {
 		this.breed = breed;
 		this.habitat = habitat;
 	}
+	
+	public Bird(String name, String breed) {
+		super();
+		this.name = name;
+		this.breed = breed;
+	}
 
 	public int getId() {
 		return id;
