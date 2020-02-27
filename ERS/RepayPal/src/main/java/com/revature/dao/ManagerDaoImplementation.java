@@ -7,7 +7,7 @@ import com.revature.model.Manager;
 public class ManagerDaoImplementation implements ManagerDao{
 
 	@Override
-	public List<Manager> getManager() {
+	public List<Manager> getManagers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

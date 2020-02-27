@@ -32,7 +32,7 @@ private ManagerDao managerDao = new ManagerDaoImplementation();
 	public boolean createUser(Manager m) {
 		if(m == null)
 			return false;
-		List<Manager> managers = managerDao.getManager();
+		List<Manager> managers = managerDao.getManagers();
 		for(Manager manager: managers) {
 			if(m.getUsername().equals(manager.getUsername()) && m.getPwd().equals(manager.getPwd())) {
 				System.out.println("User already exists, please sign in...");

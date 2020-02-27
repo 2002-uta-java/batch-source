@@ -37,7 +37,7 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 	}
 
 	@Override
-	public Reimbursement createReimbursementtWithDefaultManager(Reimbursement r) {
+	public Reimbursement createReimbursementWithDefaultManager(Reimbursement r) {
 		// TODO Auto-generated method stub
 		return null;
 	}

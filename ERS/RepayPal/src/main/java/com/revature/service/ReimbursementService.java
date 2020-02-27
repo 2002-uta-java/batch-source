@@ -23,7 +23,7 @@ public class ReimbursementService {
 	}
 	
 	public boolean createReimbursementWithDefaultManager(Reimbursement r) {
-		Reimbursement reimbursement = reimbursementDao.createReimbursementtWithDefaultManager(r);
+		Reimbursement reimbursement = reimbursementDao.createReimbursementWithDefaultManager(r);
 		if(r.getEmployeeUsername() == reimbursement.getEmployeeUsername() && r.getAmount() == reimbursement.getAmount())
 			return true;
 		System.out.println("Unable to create, please try again\n");
