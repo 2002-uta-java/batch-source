@@ -12,8 +12,8 @@ public interface EmployeeDao {
 	public List<Reimbursement> getReimbursementsAll();
 	public List<Reimbursement> getReimbursementsByEmployee(Employee e);
 	
-	public Employee createEmployee(Employee e);
-	public Reimbursement createReimbursement(Reimbursement r);
+	public void createEmployee(Employee e);
+	public void createReimbursement(Reimbursement r);
 	
 	public void updateEmployee(Employee e);
 	public void updateReimbursement(Reimbursement r);
