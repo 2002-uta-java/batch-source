@@ -12,7 +12,7 @@ public class HabitatDaoImpl implements HabitatDao {
 	public HabitatDaoImpl() {
 		super();
 		habitats.add(new Habitat(1, "Woodlands", 60, 520));
-		habitats.add(new Habitat(2, "Tropical", 85, 350));
+//		habitats.add(new Habitat(2, "Tropical", 85, 350));
 		habitats.add(new Habitat(3, "Grasslands", 65, 350));
 		
 	}
