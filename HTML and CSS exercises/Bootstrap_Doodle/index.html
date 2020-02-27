@@ -1,24 +1,70 @@
 <!DOCTYPE html>
 <html>
-        <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Two Truths and a Lie</title>
-        <meta name="fiddling about">
-        
-            
-        <!--BOOTSTRAP LINK-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            
-        <link rel="stylesheet" href="doodle_style.css">
+    <head>
+        <!-- Bootstrap Core CSS-->
+        <link rel="stylesheet" href="css/bootstrap.css">
     </head>
-    <body>
-
-
-        <a class="btn btn-primary" href="#" role="button">Link button</a>
+      <body>
         
+        <!-- TITLE JUMBO-->   
+        <div class="jumbotron jumbotron-fluid text-center " style="background-color:aquamarine; margin: 0px;">
+          <div class="container">
+            <h1 class="display-3" h1>Title</h1>
+          </div>
+      </div>
 
-        
-        
+      <!-- NAVIGATION BAR-->
+      <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #305168;">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn" type="submit" style="color: aquamarine; border-style: solid; border-color: aquamarine;">Search</button>
+            </form>
+        </div>
+    </nav>
+
+      <!-- GRID CONTAINER-->
+      <div class="container-fluid">
+
+        <!-- LOGIN FORMS-->
+        <div class="form-group">
+          <br>
+          <div class="display-4"> User Login</div>
+          <label for="emailInput"> Email</label>
+          <input type="email" class="form-control" name="emailField" id="em01" aria-describedby="emailHelpId" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
+        </div>
+        <button type="submit" class="btn" style="background-color: aquamarine;">Login</button>
+
+      </div>
+
     </body>
+
+    <footer>
+        <!--JQuery 3.4.1-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+        <!--Bootstrap Core JS-->
+        <script src="js/bootstrap.js"> </script>
+    </footer>
 </html>
