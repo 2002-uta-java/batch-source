@@ -47,10 +47,10 @@ public class Employee {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public boolean isManager() {
+	public boolean getIsManager() {
 		return isManager;
 	}
-	public void setManager(boolean isManager) {
+	public void setIsManager(boolean isManager) {
 		this.isManager = isManager;
 	}
 	@Override

@@ -9,6 +9,7 @@ public class Reimbursment {
 	private Time time = null;
 	private int employeeId = 0;
 	
+	public Reimbursment() {}
 	public Reimbursment(int id, int amount, String stage, Time time, int employeeId) {
 		super();
 		this.id = id;
@@ -17,8 +18,6 @@ public class Reimbursment {
 		this.time = time;
 		this.employeeId = employeeId;
 	}
-	
-	public Reimbursment() {}
 
 	public int getId() {
 		return id;
