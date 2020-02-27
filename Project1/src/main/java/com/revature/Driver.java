@@ -9,6 +9,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		try {
 			Connection c = ConnectionUtil.getConnection();
 			String driverName = c.getMetaData().getDriverName();
