@@ -28,7 +28,7 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	public Set<EncryptedBankAccount> getAllAccounts() {
 		// get all accounts
 		final String sql = "select * from accounts";
-		final Set<EncryptedBankAccount> accounts = new HashSet<EncryptedBankAccount>();
+		final Set<EncryptedBankAccount> accounts = new HashSet<>();
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final Statement s = con.createStatement();
@@ -148,7 +148,7 @@ public class BankAccountDaoPostgres implements BankAccountDao {
 	public List<EncryptedBankAccount> getAccountsByUserKey(int userKey) {
 		final String sql = "{call get_accounts(?)}";
 		ResultSet rs = null;
-		final List<EncryptedBankAccount> accounts = new LinkedList<EncryptedBankAccount>();
+		final List<EncryptedBankAccount> accounts = new LinkedList<>();
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final CallableStatement cs = con.prepareCall(sql);) {
