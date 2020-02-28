@@ -1,5 +1,5 @@
 package com.revature.delegate;
 
-public class EmployeeDelegate {
+public class UserDelegate {
 
 }

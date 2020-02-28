@@ -5,9 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.delegate.EmployeeDelegate;
-import com.revature.delegate.ManagerDelegate;
 import com.revature.delegate.ReimbursementDelegate;
+import com.revature.delegate.UserDelegate;
 import com.revature.delegate.ViewDelegate;
 
 public class RequestHelper {
@@ -25,8 +24,7 @@ public class RequestHelper {
 	 */
 	
 	private ViewDelegate viewDelegate = new ViewDelegate();
-	private EmployeeDelegate employeeDelegate = new EmployeeDelegate();
-	private ManagerDelegate managerDelegate = new ManagerDelegate();
+	private UserDelegate userDelegate = new UserDelegate();
 	private ReimbursementDelegate reimbursementDelegate = new ReimbursementDelegate();
 
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
