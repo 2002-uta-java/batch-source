@@ -1,0 +1,6 @@
+<h4>Clicker</h4>
+<button class='btn btn-info' (click)='increment(1)'>Increment by 1</button>
+<!--Use *ngIf to display based on a condition (count is retrieved from clicker.component.ts ClickerComponent class-->
+<button class='btn btn-danger' *ngIf='count>0' (click)='increment(count)'>Double</button>
+<!-- <p [class]='(count % 5 == 0) ? "red-text" : "blue-text"'>Count: {{count}}</p> -->
+<p [class]='countColor'>Count: {{count}}</p>

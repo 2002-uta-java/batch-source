@@ -1,0 +1,16 @@
+<h4>Attribute Directives</h4>
+
+<label>Color Select:</label>
+<!-- Use two-way databind to get color-->
+<select class="form-control" [(ngModel)]='selectedColor'>
+    <option *ngFor='let color of colors' [value]='color'>{{color}}</option>
+</select>
+
+<br>
+<label>Format Select:</label>
+<select multiple class='form-control' (change)='updateSelectedFormats($event)'>
+    <option *ngFor='let format of formats'>{{format}}</option>
+</select>
+
+<!--Using a template literal??-->
+<p [ngStyle]='{color: selectedColor}' [ngClass]='selectedFormats'>some colored text</p>

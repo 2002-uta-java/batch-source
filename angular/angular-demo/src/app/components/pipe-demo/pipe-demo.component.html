@@ -1,0 +1,27 @@
+<h3>Pipe Demo</h3>
+<h4>Original</h4>
+<div class="container">
+    <p>String: {{str}}</p>
+    <p>Number: {{num}}</p>
+    <p>Date: {{day}}</p>
+    <hr>
+    <h4>Piped:</h4>
+    <p>String: {{str | uppercase}}</p>
+    <p>Number: {{num | currency}}</p>
+    <p>Date: {{day | date}}</p>
+    <hr>
+    <p>Number: {{num | currency: 'EUR'}}</p>
+    <p>Date: {{day | date: "MM/dd/yyyy"}}</p>
+    <hr>
+    <ul>
+        <li *ngFor='let word of strArr'>{{word | titlecase}}</li>
+    </ul>
+    <hr>
+    <ul>
+        <li *ngFor='let product of products'>{{product}}</li>
+    </ul>
+    <hr>
+    <ul>
+        <li *ngFor='let product of products'>{{product | convertToSpace: "e"}}</li>
+    </ul>
+</div>
