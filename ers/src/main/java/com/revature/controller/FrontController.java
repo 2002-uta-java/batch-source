@@ -32,7 +32,7 @@ public class FrontController extends DefaultServlet {
 			super.doGet(request, response);
 		} else {
 			// route GET request to appropriate delegate 
-			requestHelper.processGet(request, response);
+			rh.processGet(request, response);
 
 		}
 	}
