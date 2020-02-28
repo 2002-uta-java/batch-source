@@ -10,7 +10,8 @@ public class Employee {
 	private String gender;
 	private String password;
 	
-	public Employee(int id, String email, String position, String firstName, String lastName, String gender, String password) {
+	public Employee(int id, String email, String position, String firstName, String lastName,
+															String gender, String password) {
 		this.id = id;
 		this.email = email;
 		this.position = position;

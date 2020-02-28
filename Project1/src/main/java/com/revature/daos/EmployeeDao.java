@@ -9,12 +9,9 @@ public interface EmployeeDao {
 
 	public List<Employee> getEmployees();
 	public Employee getEmployeeById(int id);
-	public List<Reimbursement> getReimbursementsAll();
-	public List<Reimbursement> getReimbursementsByEmployee(Employee e);
 	
 	public void createEmployee(Employee e);
-	public void createReimbursement(Reimbursement r);
 	
 	public void updateEmployee(Employee e);
-	public void updateReimbursement(Reimbursement r, Employee e);
+	
 }

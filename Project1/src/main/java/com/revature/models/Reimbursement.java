@@ -46,7 +46,7 @@ public class Reimbursement {
 		return idEmployee;
 	}
 
-	public void setEmailEmployee(int idEmployee) {
+	public void setIdEmployee(int idEmployee) {
 		this.idEmployee = idEmployee;
 	}
 
