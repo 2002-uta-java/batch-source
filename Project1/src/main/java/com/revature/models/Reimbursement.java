@@ -5,16 +5,16 @@ public class Reimbursement {
 	private int id;
 	private String purpose;
 	private float amount;
-	private String emailEmployee;
-	private String emailManager;
+	private int idEmployee;
+	private int idManager;
 	private String status;
 	
-	public Reimbursement(int id, String purpose, float amount, String emailEmployee, String emailManager, String status){
+	public Reimbursement(int id, String purpose, float amount, int idEmployee, int idManager, String status){
 		this.id = id;
 		this.purpose = purpose;
 		this.amount = amount;
-		this.emailEmployee = emailEmployee;
-		this.emailManager = emailManager;
+		this.idEmployee = idEmployee;
+		this.idManager = idManager;
 		this.status = status;
 	}
 
@@ -42,20 +42,20 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public String getEmailEmployee() {
-		return emailEmployee;
+	public int getIdEmployee() {
+		return idEmployee;
 	}
 
-	public void setEmailEmployee(String emailEmployee) {
-		this.emailEmployee = emailEmployee;
+	public void setEmailEmployee(int idEmployee) {
+		this.idEmployee = idEmployee;
 	}
 
-	public String getEmailManager() {
-		return emailManager;
+	public int getIdManager() {
+		return idManager;
 	}
 
-	public void setEmailManager(String emailManager) {
-		this.emailManager = emailManager;
+	public void setIdManager(int idManager) {
+		this.idManager = idManager;
 	}
 
 	public String getStatus() {
