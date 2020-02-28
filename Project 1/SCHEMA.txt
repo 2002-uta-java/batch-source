@@ -1,0 +1,18 @@
+Employee
+--------
+employee_email varchar 30
+password varchar 60
+name varchar 40
+bio varchar 160
+birthday varchar 10
+role varchar 10
+reports_to varchar 30
+
+
+Reimbursement
+-------------
+rmb_id serial
+manager_email varchar 30
+employee_email varchar 30
+description varchar 60
+status varchar 15
