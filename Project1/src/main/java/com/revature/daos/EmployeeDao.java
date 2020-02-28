@@ -16,5 +16,5 @@ public interface EmployeeDao {
 	public void createReimbursement(Reimbursement r);
 	
 	public void updateEmployee(Employee e);
-	public void updateReimbursement(Reimbursement r);
+	public void updateReimbursement(Reimbursement r, Employee e);
 }

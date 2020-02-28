@@ -2,6 +2,7 @@ package com.revature.models;
 
 public class Employee {
 	
+	private int id;
 	private String email;
 	private String position; // Must be "employee" or "manager".
 	private String firstName;
@@ -9,13 +10,22 @@ public class Employee {
 	private String gender;
 	private String password;
 	
-	public Employee(String email, String position, String firstName, String lastName, String gender, String password) {
+	public Employee(int id, String email, String position, String firstName, String lastName, String gender, String password) {
+		this.id = id;
 		this.email = email;
 		this.position = position;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.password = password;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
