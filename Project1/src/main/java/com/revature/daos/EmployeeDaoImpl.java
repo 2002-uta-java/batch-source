@@ -2,9 +2,13 @@ package com.revature.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.models.Department;
 import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 import com.revature.util.ConnectionUtil;
@@ -13,14 +17,68 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public List<Employee> getEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from employee";
+		
+		List<Employee> employees = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection()) {
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String email = rs.getString("email");
+				String position = rs.getString("position");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String gender = rs.getString("gender");
+				String password = rs.getString("password");
+				Employee e = new Employee(id, email, firstName, lastName, gender, password, position);
+				employees.add(e);
+			}
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return employees;
 	}
 
 	@Override
 	public Employee getEmployeeById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from employee where id = ?";
+		Employee e = null;
+		ResultSet rs = null;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);) {
+			
+			ps.setInt(1, id);
+			
+			while(rs.next()) {
+				String email = rs.getString("email");
+				String position = rs.getString("position");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String gender = rs.getString("gender");
+				String password = rs.getString("password");
+				e = new Employee(id, email, firstName, lastName, gender, password, position);
+			}
+			
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+			}
+			catch (SQLException ex2) {
+				ex2.printStackTrace();
+			}
+		}
+		
+		return e;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import com.revature.models.Reimbursement;
 public interface EmployeeDao {
 
 	public List<Employee> getEmployees();
-	public Employee getEmployeeByEmail(String email);
+	public Employee getEmployeeById(int id);
 	public List<Reimbursement> getReimbursementsAll();
 	public List<Reimbursement> getReimbursementsByEmployee(Employee e);
 	

@@ -4,12 +4,12 @@ public class Reimbursement {
 
 	private int id;
 	private String purpose;
-	private int amount;
+	private float amount;
 	private String emailEmployee;
 	private String emailManager;
 	private String status;
 	
-	public Reimbursement(int id, String purpose, int amount, String emailEmployee, String emailManager, String status){
+	public Reimbursement(int id, String purpose, float amount, String emailEmployee, String emailManager, String status){
 		this.id = id;
 		this.purpose = purpose;
 		this.amount = amount;
@@ -34,7 +34,7 @@ public class Reimbursement {
 		this.purpose = purpose;
 	}
 
-	public int getAmount() {
+	public float getAmount() {
 		return amount;
 	}
 
