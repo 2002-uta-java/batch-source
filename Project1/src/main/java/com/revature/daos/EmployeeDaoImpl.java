@@ -27,11 +27,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			while(rs.next()) {
 				int id = rs.getInt("id"); 
 				String email = rs.getString("email");
-				String position = rs.getString("position");
+				String position = rs.getString("job_position");
 				String firstName = rs.getString("first_name");
 				String lastName = rs.getString("last_name");
 				String gender = rs.getString("gender");
-				String password = rs.getString("password");
+				String password = rs.getString("user_password");
 				Employee e = new Employee(id, email, firstName, lastName, gender, password, position);
 				employees.add(e);
 			}
@@ -57,11 +57,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			
 			while(rs.next()) {
 				String email = rs.getString("email");
-				String position = rs.getString("position");
+				String position = rs.getString("job_position");
 				String firstName = rs.getString("first_name");
 				String lastName = rs.getString("last_name");
 				String gender = rs.getString("gender");
-				String password = rs.getString("password");
+				String password = rs.getString("user_password");
 				e = new Employee(id, email, firstName, lastName, gender, password, position);
 			}
 			
@@ -75,7 +75,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	@Override
 	public void createEmployee(Employee e) {
-		String sql = "insert into employee (id, email, position, first_name, last_name, gender, password) "
+		String sql = "insert into employee (id, email, job_position, first_name, last_name, gender, user_password) "
 				+ "values (?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection c = ConnectionUtil.getConnection();
@@ -98,8 +98,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public void updateEmployee(Employee e) {
-		String sql = "update employee set email = ?, position = ?, first_name = ?, last_name = ?,"
-				+ " gender = ?, password = ? where id = ?";
+		String sql = "update employee set email = ?, job_position = ?, first_name = ?, last_name = ?,"
+				+ " gender = ?, user_password = ? where id = ?";
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql)) {
@@ -117,6 +117,21 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			ex.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public Employee getEmployeeByEmailAndPassword(String email, String password) {		
+		List<Employee> employees = getEmployees();
+		
+		for(Employee e: employees) {
+			if(e.getEmail() != null && e.getEmail().equals(email)) {
+				if(e.getPassword() != null && e.getPassword().equals(password)) {
+					return e;
+				}
+			}
+		}
+		
+		return null;
 	}
 
 }
