@@ -21,14 +21,12 @@ function requestLogin(){
 	xhr.open("POST", url);
 	
 	xhr.onreadystatechange = function(){
-		console.log(xhr.readyState);
-		console.log(xhr.status);
 		if(xhr.readyState == 4 && xhr.status == 200){
 			console.log("success!!!");
 			let auth = xhr.getResponseHeader("Authorization");
 			sessionStorage.setItem("token", auth);
 			console.log(auth);
-			// window.location.href="http://localhost:8080/Project1/home"
+			window.location.href="http://localhost:8080/Project1/homemanager"
 		} 
 		else if (xhr.readyState == 4){
 			console.log("incorrect credentials");
