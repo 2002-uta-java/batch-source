@@ -5,6 +5,7 @@ public class Employee {
 	private String fName = "";
 	private String lName = "";
 	private String email = "";
+	private String pass  = "";
 	private String phone = "";
 	private boolean isManager = false;
 	
@@ -47,12 +48,19 @@ public class Employee {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 	public boolean getIsManager() {
 		return isManager;
 	}
 	public void setIsManager(boolean isManager) {
 		this.isManager = isManager;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +70,7 @@ public class Employee {
 		result = prime * result + id;
 		result = prime * result + (isManager ? 1231 : 1237);
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
@@ -93,6 +102,11 @@ public class Employee {
 				return false;
 		} else if (!lName.equals(other.lName))
 			return false;
+		if (pass == null) {
+			if (other.pass != null)
+				return false;
+		} else if (!pass.equals(other.pass))
+			return false;
 		if (phone == null) {
 			if (other.phone != null)
 				return false;
@@ -100,9 +114,10 @@ public class Employee {
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phone=" + phone
+		return "Employee [id=" + id + ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", password" + pass + ", phone=" + phone
 				+ ", isManager=" + isManager + "]";
 	}
 }

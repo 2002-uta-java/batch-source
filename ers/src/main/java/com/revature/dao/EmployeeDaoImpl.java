@@ -32,6 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 				e.setlName(rs.getString("lastname"));
 				e.setEmail(rs.getString("email"));
 				e.setPhone(rs.getString("phone"));
+				e.setPass(rs.getString("pass"));
 				e.setIsManager(rs.getBoolean("isManager"));
 			}
 		} catch (SQLException e){
@@ -69,6 +70,45 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 				em.setlName(rs.getString("lastname"));
 				em.setEmail(rs.getString("email"));
 				em.setPhone(rs.getString("phone"));
+				em.setPass(rs.getString("pass"));
+				em.setIsManager(rs.getBoolean("isManager"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return em;
+	}
+	
+	@Override
+	public Employee getEmployee(String uName) {
+		Employee em = new Employee();
+		Connection connection = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			connection = DAOUtilities.getConnection();
+			String sql = "SELECT * FROM Employee WHERE email = ?";
+			stmt = connection.prepareStatement(sql);
+			stmt.setString(1, uName);
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				em.setId(rs.getInt("employee_id"));
+				em.setfName(rs.getString("firstname"));
+				em.setlName(rs.getString("lastname"));
+				em.setEmail(rs.getString("email"));
+				em.setPhone(rs.getString("phone"));
+				em.setPass(rs.getString("pass"));
 				em.setIsManager(rs.getBoolean("isManager"));
 			}
 		} catch (SQLException e) {
@@ -95,14 +135,15 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "INSERT INTO Employee (firstname, lastname, email, phone, isManager) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?)";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());
 			stmt.setString(2, employee.getlName());
 			stmt.setString(3, employee.getEmail());
 			stmt.setString(4, employee.getPhone());
-			stmt.setBoolean(5, employee.getIsManager());
+			stmt.setString(5, employee.getPass());
+			stmt.setBoolean(6, employee.getIsManager());
 			
 			success = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -161,15 +202,16 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Employee (firstname, lastname, email, phone, isManager) VALUES (?, ?, ?, ?, ?) WHERE employee_id = ?";
+			String sql = "Update Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?, ?) WHERE employee_id = ?";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());
 			stmt.setString(2, employee.getlName());
 			stmt.setString(3, employee.getEmail());
 			stmt.setString(4, employee.getPhone());
-			stmt.setBoolean(5, employee.getIsManager());
-			stmt.setInt(6, employee.getId());
+			stmt.setString(5, employee.getPass());
+			stmt.setBoolean(6, employee.getIsManager());
+			stmt.setInt(7, employee.getId());
 			
 			success = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -189,5 +231,4 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			throw new Exception("Insert Employee failed: " + employee);
 		}
 	}
-
 }

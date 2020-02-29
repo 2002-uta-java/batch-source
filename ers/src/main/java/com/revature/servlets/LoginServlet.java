@@ -1,44 +1,43 @@
 package com.revature.servlets;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import com.revature.dao.*;
+import com.revature.model.*;
 
-public class LoginServlet extends HttpServlet {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class LoginServlet {
+	private EmployeeDAO edao = new EmployeeDaoImpl();
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		String loginType = req.getParameter("loginType");
-		String uName     = req.getParameter("uName");
+	public void authenticate(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String uName     = req.getParameter("username");
 		String password  = req.getParameter("password");
+
+		Employee em = edao.getEmployee(uName);
 		
-		String session = (String) req.getAttribute("uName");
-		
-		res.getWriter().write("Signed in");
-		
-		System.out.println("Recieved from Login Page:" + loginType + " and " + uName + " and " + password);
+		if (em != null && em.getPass().equals(password)) {
+			String token = em.getId() + ":" + em.getEmail();
+			res.setStatus(200);
+			res.setHeader("Authorization", token);
+		} else
+			res.sendError(401);
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		String loginType = req.getParameter("loginType");
-		String uName     = req.getParameter("uName");
-		String password  = req.getParameter("password");
-		
-		System.out.println("Recieved from Login Page:" + loginType + " and " + uName + " and " + password);
-		
-		HttpSession userSession = req.getSession();
-		String verified = req.getParameter("uName");
-		userSession.setAttribute("uName", verified);
-		String session = (String) req.getAttribute("uName");
-		
-		res.getWriter().write("Signed in");
+	public boolean isAuthorized(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String authToken = req.getHeader("Authorization");
+		if (authToken != null) {
+			String[] tokenArr = authToken.split(":");
+			if(tokenArr.length == 2) {
+				String idStr = tokenArr[0];
+				String email = tokenArr[1];
+				if(idStr.matches("^\\d+$")) {
+					Employee em = edao.getEmployee(Integer.parseInt(idStr));
+					if(em !=null && em.getEmail().equals(email)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 }
