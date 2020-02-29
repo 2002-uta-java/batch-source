@@ -31,7 +31,7 @@ public class FrontController extends DefaultServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println(path);
+		System.out.println("GET");
 		
 		if(path.startsWith("/static")) {
 			super.doGet(request, response);
@@ -44,7 +44,7 @@ public class FrontController extends DefaultServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("Processing POST request...");
+		System.out.println("POST");
 		requestHelper.processPost(request, response);
 	}
 	

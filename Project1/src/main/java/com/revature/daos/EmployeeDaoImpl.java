@@ -32,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				String lastName = rs.getString("last_name");
 				String gender = rs.getString("gender");
 				String password = rs.getString("user_password");
-				Employee e = new Employee(id, email, firstName, lastName, gender, password, position);
+				Employee e = new Employee(id, email, position, firstName, lastName, gender, password);
 				employees.add(e);
 			}
 		}
@@ -62,7 +62,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				String lastName = rs.getString("last_name");
 				String gender = rs.getString("gender");
 				String password = rs.getString("user_password");
-				e = new Employee(id, email, firstName, lastName, gender, password, position);
+				e = new Employee(id, email, position, firstName, lastName, gender, password);
 			}
 			
 		}

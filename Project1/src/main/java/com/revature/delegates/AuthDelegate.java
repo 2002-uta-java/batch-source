@@ -16,7 +16,7 @@ public class AuthDelegate {
 	public void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email + " " + password);
+		System.out.println(email + "/" + password);
 		
 		Employee e = eDao.getEmployeeByEmailAndPassword(email, password);
 		
