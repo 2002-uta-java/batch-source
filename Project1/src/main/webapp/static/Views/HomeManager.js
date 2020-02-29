@@ -25,6 +25,7 @@ function displayName(xhr){
  * the url for that particular user 
  */
 let token = sessionStorage.getItem("token");
+console.log(token);
 
 if(!token){
 	window.location.href="http://localhost:8080/Project1/login";
