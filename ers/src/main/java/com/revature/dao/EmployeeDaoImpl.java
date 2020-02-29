@@ -20,19 +20,19 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			stmt = connection.createStatement();
 			String sql = "SELECT * FROM Employee";
+			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
 				Employee e = new Employee();
 				
-				e.setId(rs.getInt("employee_id"));
+				e.setId(rs.getInt("id"));
 				e.setfName(rs.getString("firstname"));
 				e.setlName(rs.getString("lastname"));
 				e.setEmail(rs.getString("email"));
 				e.setPhone(rs.getString("phone"));
-				e.setPass(rs.getString("pass"));
+				e.setPass(rs.getString("password"));
 				e.setIsManager(rs.getBoolean("isManager"));
 			}
 		} catch (SQLException e){
@@ -59,18 +59,18 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "SELECT * FROM Employee WHERE employee_id = ?";
+			String sql = "SELECT * FROM Employee WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				em.setId(rs.getInt("employee_id"));
+				em.setId(rs.getInt("id"));
 				em.setfName(rs.getString("firstname"));
 				em.setlName(rs.getString("lastname"));
 				em.setEmail(rs.getString("email"));
 				em.setPhone(rs.getString("phone"));
-				em.setPass(rs.getString("pass"));
+				em.setPass(rs.getString("password"));
 				em.setIsManager(rs.getBoolean("isManager"));
 			}
 		} catch (SQLException e) {
@@ -100,15 +100,15 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			String sql = "SELECT * FROM Employee WHERE email = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, uName);
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				em.setId(rs.getInt("employee_id"));
+				em.setId(rs.getInt("id"));
 				em.setfName(rs.getString("firstname"));
 				em.setlName(rs.getString("lastname"));
 				em.setEmail(rs.getString("email"));
 				em.setPhone(rs.getString("phone"));
-				em.setPass(rs.getString("pass"));
+				em.setPass(rs.getString("password"));
 				em.setIsManager(rs.getBoolean("isManager"));
 			}
 		} catch (SQLException e) {
@@ -172,7 +172,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "DELETE FROM Employee WHERE employee_id = ?";
+			String sql = "DELETE FROM Employee WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			success = stmt.executeUpdate();
@@ -202,7 +202,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?, ?) WHERE employee_id = ?";
+			String sql = "Update Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());

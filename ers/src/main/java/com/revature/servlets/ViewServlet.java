@@ -11,15 +11,15 @@ public class ViewServlet {
 	public void resolveView(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
 		switch (path) {
-		case "/":
+		case "/static/":
 			req.getRequestDispatcher("/static/loginPage.html").forward(req, res);
 			break;
-		case "/employeehome":
+		case "/static/employeehome":
 			req.getRequestDispatcher("/static/employeePage.html").forward(req, res);
 			break;
-		case "/managerhome":
+		case "/static/managerhome":
 			req.getRequestDispatcher("/static/managerPage.html").forward(req, res);
-		case "/profile":
+		case "/static/profile":
 			req.getRequestDispatcher("/static/profile.html").forward(req, res);
 		default:
 			res.sendError(404, "Resource not found");

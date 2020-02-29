@@ -23,7 +23,12 @@ public class FrontController extends DefaultServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		rh.processGet(request, response);
+		String path = request.getServletPath();
+		if(path.startsWith("/static/")) {
+			super.doGet(request, response);
+		} else {
+			rh.processGet(request, response);
+		}
 	}
 
 	/**

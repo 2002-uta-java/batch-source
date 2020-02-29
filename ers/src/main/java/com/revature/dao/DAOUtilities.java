@@ -13,9 +13,9 @@ import java.sql.SQLException;
  */
 public class DAOUtilities {
 
-	private static final String CONNECTION_USERNAME = "JDBC_USER";
-	private static final String CONNECTION_PASSWORD = "JDBC_PASS";
-	private static final String URL = "JDBC_HOST";
+	private static final String CONNECTION_USERNAME = "postgres";
+	private static final String CONNECTION_PASSWORD = "12345678";
+	private static final String URL = "jdbc:postgresql://revaturedb.cmvrnfahyjyr.us-east-2.rds.amazonaws.com:5432/postgres";
 	
 	private static Connection connection;
 

@@ -9,7 +9,7 @@ function requestLogin() {
     let pass = document.getElementById("password").value;
 
     let xhr = new XMLHttpRequest();
-    let url = "";
+    let url = "/login";
     xhr.open("POST", url);
 
     xhr.onreadystatechange = function() {

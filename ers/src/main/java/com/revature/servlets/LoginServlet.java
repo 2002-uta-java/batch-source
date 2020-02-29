@@ -1,6 +1,8 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.revature.dao.*;
@@ -9,7 +11,7 @@ import com.revature.model.*;
 public class LoginServlet {
 	private EmployeeDAO edao = new EmployeeDaoImpl();
 
-	public void authenticate(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void authenticate(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		String uName     = req.getParameter("username");
 		String password  = req.getParameter("password");
 
@@ -19,6 +21,7 @@ public class LoginServlet {
 			String token = em.getId() + ":" + em.getEmail();
 			res.setStatus(200);
 			res.setHeader("Authorization", token);
+			req.getRequestDispatcher("/static/employeepage.html").forward(req, res);
 		} else
 			res.sendError(401);
 	}
@@ -39,5 +42,9 @@ public class LoginServlet {
 			}
 		}
 		return false;
+	}
+
+	public void register(HttpServletRequest req, HttpServletResponse res) {
+		
 	}
 }

@@ -2,69 +2,76 @@
 <html lang="en">
 
 <head>
-    <title>Employee Reimbursment System</title>
-    <meta name="author" content="Keith Wheeler">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Employee Reimbursment System</title>
+<meta name="author" content="Keith Wheeler">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <div class="jumbotron">
-                    <h1>Register User</h1>
-                    <div id="setLogin">
-                        <form action="/register" method="POST">
-                            <label for="fname">First Name: </label>
-                            <input type="text" name="fname" id="fname" class="form-control">
-                            <label for="lname">Last Name: </label>
-                            <input type="text" name="lname" id="lname" class="form-control">
-                            <label for="empId">Employee Id</label>
-                            <input type="text" name="empId" class="form-control">
-                            <button id="find" class="btn btn-primary">Find</button>
-                            <div id="employeeFound" hidden="true">
-                                <p class="text-success">
-                                    <small> User found! Thank you {{ getFullName }}! You may now select your username
-                                        and password</small>
-                                </p>
-                                <h4>Please set a username and password</h4>
-                                <label for="username">Username: </label>
-                                <input type="text" name="username" class="form-control">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-2">
+				<div class="jumbotron">
+					<h1>Register User</h1>
+					<div id="setLogin">
+						<form action="/register" method="POST">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="First Name"
+									name="firstname">
+							</div>
 
-                                <p><strong>Please set a password</strong></p>
-                                <label for="password">Password: </label>
-                                <input type="password" name="password" class="form-control">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Last Name"
+									name="lastname">
+							</div>
 
-                                <div id="passWrong" hidden="true">
-                                    <p>
-                                        <small class='text-danger'>Password must have 2 numbers, 2 special characters
-                                            and be at least eight letters long</small>
-                                    </p>
-                                </div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Email"
+									name="email">
+							</div>
 
-                                <p><strong>Please confirm your password</strong></p>
-                                <label for="password">Password: </label>
-                                <input type="password" name="passwordChecker" class="form-control">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Phone #"
+									name="phone">
+							</div>
 
-                                <button id="addUser" class="btn btn-primary btn-block" type="submit">Add User</button>
-                            </div>
-                            <div id="employeeNotFound" hidden="true">
-                                <p class="text-danger">
-                                    No one was found. If you continue having problems, please speak with your manager.
-                                </p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="../script/register.js?43789" type="module"></script>
+							<div class="form-group">
+								<input type="password" class="form-control"
+									placeholder="Password" name="password">
+							</div>
+
+							<p>Are you a Manager?</p>
+							<div class="form-check">
+								<label class="form-check-label" for="radio1"> <input
+									type="radio" class="form-check-input" id="true"
+									name="optradio" value="isManagerTrue" checked>True
+								</label>
+							</div>
+							<div class="form-check">
+								<label class="form-check-label" for="radio2"> <input
+									type="radio" class="form-check-input" id="false"
+									name="optradio" value="isManagerFalse">False
+								</label>
+							</div><br>
+
+							<div class="form-group">
+								<button id="login-btn" class="btn-primary">Login</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../script/register.js?43789" type="module"></script>
 </body>
 
 </html>
