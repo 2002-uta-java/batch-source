@@ -51,6 +51,8 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
+		System.out.println("Path requested:" + path);
+		
 		switch(path) {
 		case "/login" :
 			authDelegate.authenticate(request, response);

@@ -19,10 +19,16 @@ public class FrontController extends DefaultServlet{
 	
 	private RequestHelper requestHelper = new RequestHelper();
 	
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
 	public FrontController() {
 		super();
 	}
 	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
 		System.out.println(path);
@@ -34,7 +40,11 @@ public class FrontController extends DefaultServlet{
 		}
 	}
 	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Processing POST request...");
 		requestHelper.processPost(request, response);
 	}
 	
