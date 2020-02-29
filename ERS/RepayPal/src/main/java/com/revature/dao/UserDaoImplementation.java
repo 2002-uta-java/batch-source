@@ -15,7 +15,7 @@ public class UserDaoImplementation implements UserDao{
 	
 	@Override
 	public User getUserByUsername(String username) {
-		String sql = "select * from bank_user where username = ?";
+		String sql = "select * from employee where username = ?";
 		User user = null;
 		ResultSet rs = null;
 		
@@ -26,7 +26,10 @@ public class UserDaoImplementation implements UserDao{
 			if(rs.next()) {
 				user = new User();
 				user.setUsername(rs.getString("username"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("last_name"));
 				user.setPassword(rs.getString("pwd"));
+				user.setManager((rs.getInt("isManager") == 1));
 			}
 		} 
 		catch (SQLException e) {
@@ -47,16 +50,18 @@ public class UserDaoImplementation implements UserDao{
 
 	@Override
 	public int createUser(User u) {
-		String sql = "insert into bank_user(username, pwd) values(?, ?)";
+		String sql = "insert into employee(username, first_name, last_name, pwd, isManager) values(?, ?, ?, ?, ?)";
 		int userCreated = 0;
-		
+		int x = 0;
 		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
-			String username = u.getUsername();
-			String pwd = u.getPassword();
-			ps.setString(1, username);
-			ps.setString(2, pwd);
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getFirstName());
+			ps.setString(3, u.getLastName());
+			ps.setString(4, u.getPassword());
+			if(u.isManager())
+				x = 1;
+			ps.setInt(5, x);
 			userCreated = ps.executeUpdate();
-			
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
@@ -69,12 +74,7 @@ public class UserDaoImplementation implements UserDao{
 	public int updateUser(User u) {
 		return 0;
 	}
-
-	@Override
-	public int deleteUser(User u) {
-		return 0;
-	}
-
+	
 	@Override
 	public List<User> getUsers() {
 		String sql = "select * from bank_user";

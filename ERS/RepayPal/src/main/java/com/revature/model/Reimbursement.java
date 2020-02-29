@@ -5,27 +5,25 @@ import java.io.Serializable;
 public class Reimbursement implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
 	private int id;
-	private String managerUsername;
-	private String employeeUsername;
+	private String username;
 	private String status;
 	private double amount;
 	private String description;
+	private String resolved;
 	
 	public Reimbursement() {
 		super();
 	}
 
-	public Reimbursement(int id, String managerUsername, String employeeUsername, String status, double amount,
-			String description) {
+	public Reimbursement(int id, String username, String status, double amount, String description, String resolved) {
 		super();
 		this.id = id;
-		this.managerUsername = managerUsername;
-		this.employeeUsername = employeeUsername;
+		this.username = username;
 		this.status = status;
 		this.amount = amount;
 		this.description = description;
+		this.resolved = resolved;
 	}
 
 	public int getId() {
@@ -36,20 +34,12 @@ public class Reimbursement implements Serializable{
 		this.id = id;
 	}
 
-	public String getManagerUsername() {
-		return managerUsername;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setManagerUsername(String managerUsername) {
-		this.managerUsername = managerUsername;
-	}
-
-	public String getEmployeeUsername() {
-		return employeeUsername;
-	}
-
-	public void setEmployeeUsername(String employeeUsername) {
-		this.employeeUsername = employeeUsername;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getStatus() {
@@ -76,6 +66,14 @@ public class Reimbursement implements Serializable{
 		this.description = description;
 	}
 
+	public String getResolved() {
+		return resolved;
+	}
+
+	public void setResolved(String resolved) {
+		this.resolved = resolved;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,10 +82,10 @@ public class Reimbursement implements Serializable{
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((employeeUsername == null) ? 0 : employeeUsername.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((managerUsername == null) ? 0 : managerUsername.hashCode());
+		result = prime * result + ((resolved == null) ? 0 : resolved.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -107,30 +105,30 @@ public class Reimbursement implements Serializable{
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (employeeUsername == null) {
-			if (other.employeeUsername != null)
-				return false;
-		} else if (!employeeUsername.equals(other.employeeUsername))
-			return false;
 		if (id != other.id)
 			return false;
-		if (managerUsername == null) {
-			if (other.managerUsername != null)
+		if (resolved == null) {
+			if (other.resolved != null)
 				return false;
-		} else if (!managerUsername.equals(other.managerUsername))
+		} else if (!resolved.equals(other.resolved))
 			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Reimbursement [id=" + id + ", managerUsername=" + managerUsername + ", employeeUsername="
-				+ employeeUsername + ", status=" + status + ", amount=" + amount + ", description=" + description + "]";
+		return "Reimbursement [id=" + id + ", username=" + username + ", status=" + status + ", amount=" + amount
+				+ ", description=" + description + ", resolved=" + resolved + "]";
 	}
 	
 }

@@ -12,6 +12,6 @@ create table reimbursement (
 	username varchar references employee(username),
 	status varchar default 'Pending',
 	amount numeric(20,2) not null,
-	description varchar
+	description varchar,
+	resolved varchar default 'Not Resolved'
 );
-

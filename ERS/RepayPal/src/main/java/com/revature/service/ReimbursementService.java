@@ -15,23 +15,15 @@ public class ReimbursementService {
 	public boolean createReimbursement(Reimbursement r) {
 		int reimbursementCreated = reimbursementDao.createReimbursement(r);
 		if(reimbursementCreated != 0) {
-			System.out.println("Account creation successful");
+			System.out.println("Reimbursement creation successful");
 			return true;
 		}
 		System.out.println("Unable to create, please try again\n");
 		return false;
 	}
-	
-	public boolean createReimbursementWithDefaultManager(Reimbursement r) {
-		Reimbursement reimbursement = reimbursementDao.createReimbursementWithDefaultManager(r);
-		if(r.getEmployeeUsername() == reimbursement.getEmployeeUsername() && r.getAmount() == reimbursement.getAmount())
-			return true;
-		System.out.println("Unable to create, please try again\n");
-		return false;
-	}
 
-	public boolean updateReimbursement(Reimbursement r) {
-		int reimbursementUpdated = reimbursementDao.updateAccount(r);
+	public boolean updateReimbursement(Reimbursement r, String managerUsername) {
+		int reimbursementUpdated = reimbursementDao.updateReimbursement(r, managerUsername);
 		if(reimbursementUpdated != 0) {
 			System.out.println("Reimbursement updated successful");
 			return true;
@@ -41,7 +33,7 @@ public class ReimbursementService {
 	}
 
 	public boolean deleteReimbursement(Reimbursement r) {
-		int reimbursementDeleted = reimbursementDao.deleteAccount(r);
+		int reimbursementDeleted = reimbursementDao.deleteReimbursement(r);
 		if(reimbursementDeleted != 0) {
 			System.out.println("Reimbursement deletion successful");
 			return true;
