@@ -26,7 +26,7 @@ function requestLogin(){
 			let auth = xhr.getResponseHeader("Authorization");
 			sessionStorage.setItem("token", auth);
 			console.log(auth);
-			window.location.href="http://localhost:8080/Project1/homemanager"
+			window.location.href="http://localhost:8080/Project1/homemanager" // for managers only! TODO: for employees
 		} 
 		else if (xhr.readyState == 4){
 			console.log("incorrect credentials");
