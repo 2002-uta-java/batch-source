@@ -86,9 +86,9 @@
 					<p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
 				  </div>
 				  
-				  <!-- NEED A FORM AND SUBMIT BUTTON -->
+				  <!-- EDIT PROFILE FORM BODY -->
 				  <div class="col-md-9">
-					<form>
+					<form id="edit-profile-form">
 						<div class="form-group row">
 							<label for="inputFirstName" class="col-sm-2 col-form-label col-form-label-sm">First Name</label>
 							<div class="col-sm-10">
@@ -116,11 +116,12 @@
 							</select>
 							</div>
 						</div>
-
 						
+						<!-- TODO: SUBMISSION & UPDATE DATABASE + HTML -->
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">Update Profile</button> <!-- TODO: UPDATE DATABASE & HTML -->
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<span id="edit-profile-form-status"></span> <!-- needs to be GREEN -->
+							<button type="button" class="btn btn-primary" id="update-profile-btn">Update Profile</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 
 					  </form>

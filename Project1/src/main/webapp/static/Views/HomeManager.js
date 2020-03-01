@@ -51,6 +51,24 @@ function logout() {
     window.location.href="http://localhost:8080/Project1/login";
 }
 
+// Update profile information based on form input.
+function updateProfile() {
+    let formInfo = document.getElementById("edit-profile-form");
+    let fName = formInfo.elements[0].value;
+    let lName = formInfo.elements[1].value;
+    let email = formInfo.elements[2].value;
+    let gender = formInfo.elements[3].value;
+
+    console.log(fName);
+    console.log(lName);
+    console.log(email);
+    console.log(gender);
+    
+    // TODO: gather all data (with proper validations) and send a POST request to update the database.
+    // then update the profile information (should not have to reload page).
+    document.getElementById("edit-profile-form-status").innerHTML = Profile successfully updated!;
+}
+
 // TODO: function that handles viewing/editing your profile.
 
 // MANAGER-EXCLUSIVE FUNCTIONS
@@ -72,6 +90,7 @@ function logout() {
 
 // ALL EVENT LISTENERS
 document.getElementById("logout-btn").addEventListener("click", logout);
+document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
 
 // TODO: get all reimbursements and display them (with proper features)
 let token = checkToken();
