@@ -172,7 +172,9 @@ public class UserDaoPostgres implements UserDao {
 	}
 
 	@Override
-	public EncryptedUser getUsernull;
+	public EncryptedUser getUserByUserName(String username) {
+		final String sql = "select user_key, password from users where username = ?";
+		EncryptedUser eUser = null;
 		ResultSet rs = null;
 
 		try (final Connection con = ConnectionUtil.getConnection();

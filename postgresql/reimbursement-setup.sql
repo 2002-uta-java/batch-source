@@ -1,9 +1,9 @@
-create table employees (empl_email varchar(40) constraint p_empl_key primary key,
-password varchar(64),
-empl_first_name varchar(20) NOT null,
-empl_last_name varchar(20) NOT null,
-session_id varchar(64) UNIQUE,
-is_manager boolean NOT null);
+create table employees (empl_id serial constraint p_empl_id primary key, empl_email varchar(40) unique not null,
+password varchar(64) not null,
+empl_first_name varchar(20) not null,
+empl_last_name varchar(20) not null,
+session_token varchar(64) unique,
+is_manager boolean not null);
 
 drop table employees;
 
