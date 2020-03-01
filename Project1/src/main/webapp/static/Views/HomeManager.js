@@ -34,12 +34,15 @@ function sendAjaxGet(url, callback, token){
 	xhr.send();
 }
 
-// Load the profile name into the navbar (top right).
-// Loads profile information (view profile option).
+// Load all page information.
 function loadPage(xhr){
     let user = JSON.parse(xhr.response);
+
+    // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
-    // TODO: profile information (id=profile-body)
+
+    // Load profile information (view profile button).
+    // TODO: (id=profile-body)
 }
 
 // Remove user token and return to the login menu.
