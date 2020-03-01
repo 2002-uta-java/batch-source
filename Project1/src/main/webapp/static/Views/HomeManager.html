@@ -37,7 +37,7 @@
 
 	<!-- Modal (for viewing profile) -->
 	<div class="modal fade" id="view-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-dialog-sm modal-dialog-centered" role="document">
 		<div class="modal-content">
 
 			<div class="modal-header">
@@ -47,15 +47,16 @@
 			<div class="modal-body">
 				<div class="row">
 				  <div class="col-md-3">
-					<p></p>
-					<p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
+					<p></p> <!-- TODO: PROFILE PICTURE/GENDER LOGIC -->
+					<p class="text-center"><img id="profile-picture" src="#" alt="[IMG HERE]"></p>>
 				  </div>
 		
 				  <div class="col-md-9">
 					<p>Name: <span id="modal-name"></span></p>
-					<p>Email: </p><span id="modal-email"></span>
+					<p>Email: <span id="modal-email"></span></p>
 					<p>Position: <span id="modal-position"></span></p>
 					<p>Gender: <span id="modal-gender"></span></p>
+					<p>Id: <span id="modal-id"></span></p>
 				  </div>
 				</div>
 			</div>	
