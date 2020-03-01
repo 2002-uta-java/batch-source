@@ -12,7 +12,7 @@
 <body>
 
 	<!-- NAVBAR ELEMENTS -->
-     <nav class="navbar navbar-inverse">
+     <nav class="navbar navbar-inverse navbar-static-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#">WebSiteName</a>
@@ -36,8 +36,6 @@
 	
 
 	<!-- Modal (for viewing profile) -->
-
-
 	<div class="modal fade" id="view-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -46,24 +44,90 @@
 			<h5 class="modal-title" id="exampleModalCenterTitle">Your Profile</h5>
 			</div>
 
-			<div class="modal-body" id="profile-body">
+			<div class="modal-body">
 				<div class="row">
 				  <div class="col-md-3">
 					<p></p>
-					<p class="text-center"><i>[IMGHERE]</i></p>
+					<p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
 				  </div>
 		
 				  <div class="col-md-9">
-					<p>Do you need more time to make a purchase decision?</p>
-					<p>No pressure, your product will be waiting for you in the cart.</p>
+					<p>Name: <span id="modal-name"></span></p>
+					<p>Email: </p><span id="modal-email"></span>
+					<p>Position: <span id="modal-position"></span></p>
+					<p>Gender: <span id="modal-gender"></span></p>
 				  </div>
 				</div>
 			</div>	
 
 			<div class="modal-footer">
-			<button type="button" class="btn btn-secondary">Edit Profile</button>
+			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#edit-profile">
+				Edit Profile</button> <!-- TODO: NEED NEW MODAL FUNCTIONALITY -->
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
+
+		</div>
+		</div>
+	</div>
+
+	<!-- Modal (for editing profile) -->
+	<div class="modal fade" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalCenterTitle2">Edit Profile</h5>
+			</div>
+
+			<div class="modal-body">
+				<div class="row">
+				  <div class="col-md-3">
+					<p></p>
+					<p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
+				  </div>
+				  
+				  <!-- NEED A FORM AND SUBMIT BUTTON -->
+				  <div class="col-md-9">
+					<form>
+						<div class="form-group row">
+							<label for="inputFirstName" class="col-sm-2 col-form-label col-form-label-sm">First Name</label>
+							<div class="col-sm-10">
+							  <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputLastName" class="col-sm-2 col-form-label col-form-label-sm">Last Name</label>
+							<div class="col-sm-10">
+							  <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputEmail" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+							<div class="col-sm-10">
+							  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputState" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+							<div class="col-sm-4">
+							<select id="inputState" class="form-control">
+							  <option selected>Male</option>
+							  <option>Female</option>
+							</select>
+							</div>
+						</div>
+
+						
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Update Profile</button> <!-- TODO: UPDATE DATABASE & HTML -->
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						</div>
+
+					  </form>
+				  </div>
+				</div>
+			</div>
+			
 
 		</div>
 		</div>

@@ -42,7 +42,7 @@ function loadPage(xhr){
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
 
     // Load profile information (view profile button).
-    // TODO: (id=profile-body)
+    // TODO: (id=profile-body) (model-name, etc.)
 }
 
 // Remove user token and return to the login menu.
