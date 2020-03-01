@@ -68,8 +68,12 @@ function updateProfile() {
     let myJSON = JSON.stringify(updateInfo);
 
     // Send a POST request to update the database, immediately re-build page (checkToken).
-    let url = "http://localhost:8080/Project1/updateuser";
-    sendAjaxPost(url, checkToken, myJSON);
+    let baseUrl = "http://localhost:8080/Project1/updateuser/";
+    let token = sessionStorage.getItem("token");
+    let tokenArr = token.split(":");
+	if(tokenArr.length===2) {
+        sendAjaxPost(baseUrl+tokenArr[0], checkToken, myJSON);
+    }
     document.getElementById("edit-profile-form-status").innerHTML = "Profile successfully updated!";
 }
 
@@ -81,7 +85,7 @@ function sendAjaxPost(url, callback, data){
 		if(this.readyState===4 && this.status===200){
 			callback(this);
 		} else if (this.readyState===4){
-            console.log("Ajax failure.")
+            console.log("Ajax failure.");
 		}
 	}
 	xhr.send(data);

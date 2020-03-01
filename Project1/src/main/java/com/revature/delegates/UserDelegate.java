@@ -43,4 +43,28 @@ public class UserDelegate {
 		}
 		
 	}
+
+	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String requestPath = request.getServletPath();
+		String idStr = requestPath.substring(12); // shaves off /updateuser/
+		System.out.println("Posting to ID: " + idStr);
+		
+		Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
+		
+		if (e == null) {
+			response.sendError(404, "No user with given ID");
+		} else {
+			// Unpack send data.
+			
+			
+			// Update employee with proper validation.
+			
+			try { // send to database.
+			}
+			finally {
+				System.out.println("placeholder");
+			}
+		}
+	}
+	
 }
