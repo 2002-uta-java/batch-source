@@ -63,10 +63,13 @@ function updateProfile() {
     let new_email = formInfo.elements[2].value;
     let new_gender = formInfo.elements[3].value;
 
-    // TODO: gather all data (null arguments handled in backend) and send a POST request to update the database.
+    // TODO: Gather all data (null arguments handled in backend).
     let updateInfo = {firstName: new_fName, lastName: new_lName, email: new_email, gender: new_gender};
     let myJSON = JSON.stringify(updateInfo);
-    sendAjaxPost(?, checkToken, myJSON) // sends post, and immediately re-builds page (checkToken).
+
+    // Send a POST request to update the database, immediately re-build page (checkToken).
+    let url = "http://localhost:8080/Project1/updateuser";
+    sendAjaxPost(url, checkToken, myJSON);
     document.getElementById("edit-profile-form-status").innerHTML = "Profile successfully updated!";
 }
 
@@ -81,7 +84,7 @@ function sendAjaxPost(url, callback, data){
             console.log("Ajax failure.")
 		}
 	}
-	xhr.send("data i want to send");
+	xhr.send(data);
 }
 
 // TODO: function that handles viewing/editing your profile.
