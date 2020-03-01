@@ -72,7 +72,25 @@ public class UserDaoImplementation implements UserDao{
 	
 	@Override
 	public int updateUser(User u) {
-		return 0;
+		String sql = "update employee set pwd = ?, first_name = ?, last_name = ?, isManager = ? where username = ?";
+		int userUpdated = 0;
+		int x = 0;
+		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
+			ps.setString(1, u.getPassword());
+			ps.setString(2, u.getFirstName());
+			ps.setString(3, u.getLastName());
+			if(u.isManager())
+				x = 1;
+			ps.setInt(4, x);
+			ps.setString(5, u.getUsername());
+			
+			userUpdated = ps.executeUpdate();
+		} 
+		catch (SQLException e) {
+			//e.printStackTrace();
+		}
+		
+		return userUpdated;
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImplementation;
 import com.revature.model.Reimbursement;
@@ -8,8 +10,8 @@ public class ReimbursementService {
 
 	ReimbursementDao reimbursementDao = new ReimbursementDaoImplementation();
 
-	public Reimbursement getReimbursement(String username) {
-		return reimbursementDao.getReimbursementByUsername(username);
+	public List<Reimbursement> getReimbursement(String username) {
+		return reimbursementDao.getReimbursementsByUsername(username);
 	}
 
 	public boolean createReimbursement(Reimbursement r) {
@@ -24,6 +26,7 @@ public class ReimbursementService {
 
 	public boolean updateReimbursement(Reimbursement r, String managerUsername) {
 		int reimbursementUpdated = reimbursementDao.updateReimbursement(r, managerUsername);
+		System.out.println(managerUsername);
 		if(reimbursementUpdated != 0) {
 			System.out.println("Reimbursement updated successful");
 			return true;

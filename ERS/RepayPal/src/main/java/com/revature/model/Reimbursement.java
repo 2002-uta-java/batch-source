@@ -26,6 +26,12 @@ public class Reimbursement implements Serializable{
 		this.resolved = resolved;
 	}
 
+	public Reimbursement(String username, double amount, String description) {
+		this.username = username;
+		this.amount = amount;
+		this.description = description;
+	}
+
 	public int getId() {
 		return id;
 	}

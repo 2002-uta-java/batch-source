@@ -33,18 +33,18 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 	}
 
 	@Override
-	public Reimbursement getReimbursementByUsername(String username) {
+	public List<Reimbursement> getReimbursementsByUsername(String username) {
 		String sql = "select * from reimbursement where username = ?";
-		Reimbursement reimbursement = null;
+		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
 		ResultSet rs = null;
 		
 		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql);){
 			ps.setString(1, username);
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
-				reimbursement = new Reimbursement(rs.getInt("id"), rs.getString("username"), rs.getString("status"), 
-						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved"));
+			while(rs.next()) {
+				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getString("username"), rs.getString("status"), 
+						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved")));
 			}
 			
 		} catch (SQLException e) {
@@ -59,7 +59,7 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 			}
 		}
 		
-		return reimbursement;
+		return reimbursements;
 	}
 
 	@Override
@@ -86,10 +86,12 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 	public int updateReimbursement(Reimbursement r, String managerUsername) {
 		String sql = "update reimbursement set status = ?, resolved = ? where id = ?";
 		int reimbursementUpdated = 0;
-		
+		String string = r.getResolved()+" by: "+ managerUsername;
+		System.out.println(string);
 		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
 			ps.setString(1, r.getStatus());
-			ps.setString(2, r.getResolved()+" by: "+managerUsername);
+			ps.setString(2, string);
+			ps.setInt(3, r.getId());
 			reimbursementUpdated = ps.executeUpdate();
 			
 		} catch (SQLException e) {

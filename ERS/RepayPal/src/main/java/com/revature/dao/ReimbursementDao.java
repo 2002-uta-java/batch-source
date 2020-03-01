@@ -7,7 +7,7 @@ import com.revature.model.Reimbursement;
 public interface ReimbursementDao {
 
 	public List<Reimbursement> getReimbursements();
-	public Reimbursement getReimbursementByUsername(String username);
+	public List<Reimbursement> getReimbursementsByUsername(String username);
 	public int createReimbursement(Reimbursement r);
 	public int updateReimbursement(Reimbursement r, String managerUsername);
 	public int deleteReimbursement(Reimbursement r);
