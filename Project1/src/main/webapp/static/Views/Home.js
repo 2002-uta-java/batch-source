@@ -37,7 +37,7 @@ function displayHomepage(xhr){
 	let user = JSON.parse(xhr.response);
     console.log(user); 
     
-    document.getElementById("user").innerHTML = `Welcome ${user.firstName} ${user.lastName}`;
+    document.getElementById("user").innerHTML = `Welcome ${user.firstName} ${user.lastName}!`;
 
     if (user.position == "manager") {
 		window.location.href="http://localhost:8080/Project1/homemanager";

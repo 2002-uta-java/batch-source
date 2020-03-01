@@ -1,16 +1,3 @@
-// Examples from previous projects.
-//
-// function sendAjaxGet(url, callback){
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("GET", url);
-//     xhr.onreadystatechange = function(){
-//         if(xhr.readyState==4 && xhr.status==200){
-//             callback(xhr.response);
-//         }
-//     }
-//     xhr.send();
-// }
-
 function requestLogin(){
     
 	let email = document.getElementById("email").value;
@@ -39,7 +26,7 @@ function requestLogin(){
 };
 
 // Debugging (check if js file loaded in Login.html)
-console.log("Login.js loaded.");
+// console.log("Login.js loaded.");
 
 // If submit button is pressed. send an ajax get request for password authentication i guess.
 document.getElementById("login-btn").addEventListener("click", requestLogin);
