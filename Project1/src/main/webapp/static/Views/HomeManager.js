@@ -8,16 +8,52 @@ function sendAjaxGet(url, callback){
 			window.location.href="http://localhost:8080/Project1/login";
 		}
 	}
-	xhr.setRequestHeader("Authorization",token);
+	xhr.setRequestHeader("Authorization", token);
 	xhr.send();
 }
 
-function displayName(xhr){
-	let user = JSON.parse(xhr.response); // should recieve the current employee logged in.
-	console.log(user); 
-	document.getElementById("user").innerHTML = `Welcome ${user.firstName} ${user.lastName}`;
+// Decides whether to display the Manager or Employee homepage.
+function displayHomepage(xhr){
+	let user = JSON.parse(xhr.response);
+    console.log(user); 
+    
+    document.getElementById("user").innerHTML = `Welcome ${user.firstName} ${user.lastName}`;
+
+    if (user.position == "manager") {
+        // Display MANAGER homepage.
+    }
+    else if (user.position == "employee") {
+        // Display EMPLOYEE homepage.
+    }
 	
 }
+
+// TODO: function that handles viewing/editing your profile.
+
+// TODO: function that handles click events for LOGGING OUT.
+
+// MANAGER-EXCLUSIVE FUNCTIONS
+// TODO: viewALLReimbursements (active by default)
+
+// TODO: viewPENDINGReimbursements (click event)
+
+// TODO: viewRESOLVEDReimbursements (click event)
+
+// TODO: resolveReimbursementTool (click event)
+
+// TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
+// TODO: viewONLYManagers (click event)
+
+// EMPLOYEE-EXCLUSIVE FUNCTIONS
+// TODO: viewALLMYReimbursements (active by default) + managerlink function
+
+// TODO: viewALLMYPendingReimbursements (click event)
+
+// TODO: viewALLMYResolvedReimbursements (click event)
+
+
+
+
 
 /*
  * (After successful login... on page load...)
@@ -25,7 +61,6 @@ function displayName(xhr){
  * the url for that particular user 
  */
 let token = sessionStorage.getItem("token");
-console.log(token);
 
 if(!token){
 	window.location.href="http://localhost:8080/Project1/login";
@@ -34,8 +69,10 @@ if(!token){
 	console.log(tokenArr);
 	if(tokenArr.length===2){
 		let baseUrl = "http://localhost:8080/Project1/api/users/";
-		sendAjaxGet(baseUrl+tokenArr[0], displayName);
+		sendAjaxGet(baseUrl+tokenArr[0], displayHomepage);
 	} else {
 		window.location.href="http://localhost:8080/Project1/login";
-	}
+    }
 }
+
+// console.log("no problems!");

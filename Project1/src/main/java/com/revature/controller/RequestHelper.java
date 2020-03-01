@@ -30,6 +30,7 @@ public class RequestHelper {
 	
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
+		
 		if(path.startsWith("/api/")) {
 			// Authenticate token here.
 			if(!authDelegate.isAuthorized(request)) {
@@ -38,12 +39,11 @@ public class RequestHelper {
 			}
 			
 			String record = path.substring(5); // i think this shaves off the /api/ part.
-			switch(record) {
-			case "users":
+			
+			if(record.startsWith("users")) {
 				userDelegate.getUsers(request, response);
-				break;
-			default:
-				response.sendError(404, "Record not found (user or reimbursement).");
+			} else {
+				response.sendError(404, "Request Record(s) Not Found");	
 			}
 		} else {
 			// requesting a view

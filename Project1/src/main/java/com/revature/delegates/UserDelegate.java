@@ -18,9 +18,9 @@ public class UserDelegate {
 
 	public void getUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
-		System.out.println(requestPath);
 		
 		if (requestPath.length() == "/api/users".length()) {
+			System.out.println("Getting all users...");
 			List<Employee> employees = eDao.getEmployees();
 			
 			try (PrintWriter pw = response.getWriter();) { // what the hell is printwriter and objectmapper?
@@ -29,8 +29,8 @@ public class UserDelegate {
 			
 		} else {
 			String idStr = request.getServletPath().substring(11); // shaves off /api/users/ i think.
-			System.out.println(idStr);
-				
+			System.out.println("Getting ID: " + idStr);
+			
 			Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
 			
 			if (e == null) {
