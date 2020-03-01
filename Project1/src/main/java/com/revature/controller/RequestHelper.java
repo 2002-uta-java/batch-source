@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.delegates.AuthDelegate;
+import com.revature.delegates.ReimbDelegate;
 import com.revature.delegates.UserDelegate;
 import com.revature.delegates.ViewDelegate;
 
@@ -27,6 +28,7 @@ public class RequestHelper {
 	private ViewDelegate viewDelegate = new ViewDelegate();
 	private AuthDelegate authDelegate = new AuthDelegate();
 	private UserDelegate userDelegate = new UserDelegate();
+	private ReimbDelegate reimbDelegate = new ReimbDelegate();
 	
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
@@ -42,7 +44,11 @@ public class RequestHelper {
 			
 			if(record.startsWith("users")) {
 				userDelegate.getUsers(request, response);
-			} else {
+			} 
+			else if(record.startsWith("reimb")) {
+				reimbDelegate.getReimbursements(request, response);
+			}
+			else {
 				response.sendError(404, "Request Record(s) Not Found");	
 			}
 		} else {

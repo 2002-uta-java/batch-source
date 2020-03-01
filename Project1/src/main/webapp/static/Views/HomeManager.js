@@ -1,5 +1,5 @@
-// Check token to remain on page.
-function checkToken() {
+// Check token to remain on page and load.
+function checkTokenAndLoadPage() {
 	let token = sessionStorage.getItem("token");
 
 	if(!token){
@@ -47,6 +47,9 @@ function loadPage(xhr){
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
     // TODO: picture depending on gender (id=)
+
+    // TODO: Load reimbursement information (all tabs?)
+    requestReimbursements();
 }
 
 // Remove user token and return to the login menu.
@@ -72,12 +75,12 @@ function updateProfile() {
     let token = sessionStorage.getItem("token");
     let tokenArr = token.split(":");
 	if(tokenArr.length===2) {
-        sendAjaxPost(baseUrl+tokenArr[0], checkToken, myJSON);
+        sendAjaxPostUpdateProfile(baseUrl+tokenArr[0], checkTokenAndLoadPage, myJSON);
     }
 }
 
 // updateProfile AJAX helper. 
-function sendAjaxPost(url, callback, data){
+function sendAjaxPostUpdateProfile(url, callback, data){
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url);
 	xhr.onreadystatechange = function(){
@@ -93,14 +96,46 @@ function sendAjaxPost(url, callback, data){
 	xhr.send(data);
 }
 
-// TODO: function that handles viewing/editing your profile.
-
 // MANAGER-EXCLUSIVE FUNCTIONS
 // TODO: viewALLReimbursements (active by default)
+function requestReimbursements(){
+    let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbursements list.
+    let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING
+    let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED
+    sendAjaxGetReimbursements(baseUrl1, loadReimbursements1);
+    sendAjaxGetReimbursements(baseUrl2, loadReimbursements2);
+    sendAjaxGetReimbursements(baseUrl3, loadReimbursements3);
+}
 
-// TODO: viewPENDINGReimbursements (click event)
+// Check token to remain on page.
+function sendAjaxGetReimbursements(url, callback) {
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+	}
+	xhr.send();
+}
 
-// TODO: viewRESOLVEDReimbursements (click event)
+// Recieve data and load ALL reimbursements.
+function loadReimbursements1(xhr) {
+
+}
+
+// Load PENDING reimbursements.
+function loadReimbursements2(xhr) {
+
+}
+
+// Load RESOLVED reimbursements.
+function loadReimbursements3(xhr) {
+
+}
+
 
 // TODO: resolveReimbursementTool (click event)
 
@@ -117,4 +152,4 @@ document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
 
 // TODO: get all reimbursements and display them (with proper features)
-let token = checkToken();
+let token = checkTokenAndLoadPage();
