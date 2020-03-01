@@ -1,4 +1,24 @@
-function sendAjaxGet(url, callback){
+// Check token and load appropriate user homepage. Redirected if bad token.
+function checkToken() {
+	let token = sessionStorage.getItem("token");
+	console.log(token);
+
+	if(!token){
+		window.location.href="http://localhost:8080/Project1/login";
+	} else {
+		let tokenArr = token.split(":");
+		console.log(tokenArr);
+		if(tokenArr.length===2){
+			let baseUrl = "http://localhost:8080/Project1/api/users/";
+			sendAjaxGet(baseUrl+tokenArr[0], displayHomepage, token); // user request here.
+		} else {
+			window.location.href="http://localhost:8080/Project1/login";
+		}
+	}
+}
+
+// checkToken AJAX helper. Will displayHomepage if successful authentication to specific user.
+function sendAjaxGet(url, callback, token){
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function(){
@@ -28,9 +48,12 @@ function displayHomepage(xhr){
 	
 }
 
-// TODO: function that handles viewing/editing your profile.
-
 // TODO: function that handles click events for LOGGING OUT.
+function logout () {
+
+}
+
+// TODO: function that handles viewing/editing your profile.
 
 // MANAGER-EXCLUSIVE FUNCTIONS
 // TODO: viewALLReimbursements (active by default)
@@ -52,27 +75,5 @@ function displayHomepage(xhr){
 // TODO: viewALLMYResolvedReimbursements (click event)
 
 
-
-
-
-/*
- * (After successful login... on page load...)
- * if we are not redirected when checking for the token, a request will be made to 
- * the url for that particular user 
- */
-let token = sessionStorage.getItem("token");
-
-if(!token){
-	window.location.href="http://localhost:8080/Project1/login";
-} else {
-	let tokenArr = token.split(":");
-	console.log(tokenArr);
-	if(tokenArr.length===2){
-		let baseUrl = "http://localhost:8080/Project1/api/users/";
-		sendAjaxGet(baseUrl+tokenArr[0], displayHomepage);
-	} else {
-		window.location.href="http://localhost:8080/Project1/login";
-    }
-}
-
-// console.log("no problems!");
+// Commands to execute on load.
+checkToken();
