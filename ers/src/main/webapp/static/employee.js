@@ -10,6 +10,8 @@ function sendAjaxGet(url, callback) {
 	}
 }
 
+sendAjaxGet(requestUrl, displayReimbursments);
+
 function addTableRow(r) {
     let table = document.getElementById("rTable");
 

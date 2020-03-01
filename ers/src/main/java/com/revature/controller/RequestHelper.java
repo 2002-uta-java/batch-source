@@ -25,6 +25,7 @@ public class RequestHelper {
 				return;
 			}
 			
+			System.out.println(path);
 			String record = path.substring(5);
 			if (record.startsWith("reimbursments"))
 				employee.getEmployee(req, res);
