@@ -1,37 +1,5 @@
 @charset "ISO-8859-1";
 
-#navbar{
-    background-color: #333;
-    color:#fff;
-}
-
-#navbar ul{
-    padding:0;
-    list-style:none;
-}
-
-#navbar li{
-    display:inline;
-}
-
-#navbar a{
-    color:#fff;
-    text-decoration:none;
-    font-size: 18px;
-    padding-right:15px;
-}
-
-.container{
-    width:80%;
-    margin:auto;
-    overflow:hidden;
-}
-
-.navbar-brand{
-	padding-right: 15px;
-}
-
-#main-header{
-    background-color:rgb(12, 12, 109);
-    color:#fff;
+#edit-profile-form-status{
+    visibility: hidden;
 }

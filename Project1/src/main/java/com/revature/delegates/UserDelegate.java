@@ -104,8 +104,6 @@ public class UserDelegate {
 		}
 		String data = buffer.toString();
 		
-		System.out.println(data);
-		
 		// If the String is not empty, parses the payload into a map
 		Employee e = null;
 		if (!data.isEmpty()) {

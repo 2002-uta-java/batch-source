@@ -83,7 +83,9 @@ function sendAjaxPost(url, callback, data){
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
             callback(this);
-            document.getElementById("edit-profile-form-status").innerHTML = "Profile successfully updated!";
+            let status = document.getElementById("edit-profile-form-status");
+            status.style.visibility = "visible"; // Display success message for short time.
+            setTimeout(function(){status.style.visibility = "hidden"; }, 4000);
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}
