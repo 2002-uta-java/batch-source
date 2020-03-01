@@ -40,18 +40,15 @@ function displayHomepage(xhr){
     document.getElementById("user").innerHTML = `Welcome ${user.firstName} ${user.lastName}`;
 
     if (user.position == "manager") {
-        // Display MANAGER homepage.
+		window.location.href="http://localhost:8080/Project1/homemanager";
     }
     else if (user.position == "employee") {
-        // Display EMPLOYEE homepage.
+        window.location.href="http://localhost:8080/Project1/homeemployee";
     }
 	
 }
 
 // TODO: function that handles click events for LOGGING OUT.
-function logout () {
-
-}
 
 // TODO: function that handles viewing/editing your profile.
 
