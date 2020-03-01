@@ -53,5 +53,17 @@
   			<artifactId>jackson-databind</artifactId>
   			<version>2.9.10.2</version>
   		</dependency>
+  		
+  		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>9.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
 	</dependencies>
 </project>

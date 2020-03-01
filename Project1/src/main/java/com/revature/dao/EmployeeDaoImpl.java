@@ -34,7 +34,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				   int emplId = rs.getInt("empl_id");
 				   String fname = rs.getString("empl_firstname");
 				   String lname = rs.getString("empl_lastname");
-				   String emplEmail = rs.getNString("empl_email");
+				   String emplEmail = rs.getString("empl_email");
 				   String title = rs.getString("empl_title");
 				   int mid = rs.getInt("manager_id");
 				   int report = rs.getInt("reports_to");
@@ -90,7 +90,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				rs = ps.executeQuery();
 			
 				while(rs.next()) {
-					String name = rs.getNString("empl_firstname");
+					String name = rs.getString("empl_firstname");
 					Employee e1 = new Employee();
 					e2 = e1.setFirstName(name);
 				}
@@ -119,7 +119,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					rs = ps.executeQuery();
 				
 					while(rs.next()) {
-						String name = rs.getNString("empl_lastname");
+						String name = rs.getString("empl_lastname");
 						Employee e1 = new Employee();
 						e2 = e1.setLastName(name);
 					}
@@ -176,7 +176,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					rs = ps.executeQuery();
 				
 					while(rs.next()) {
-						String name = rs.getNString("empl_title");
+						String name = rs.getString("empl_title");
 						Employee e1 = new Employee();
 						e2 = e1.setTitle(name);
 					}

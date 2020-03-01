@@ -1,0 +1,54 @@
+html {
+    font-family: 'Libre Baskerville';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding: 10px;
+}
+
+body { 
+    background: url(https://www.designbolts.com/wp-content/uploads/2012/12/SubtleNet-White-Simple-Seamless-Patterns-For-Website-Backgrounds.jpg)no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+h2 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 30px;
+
+}
+
+#l2 {
+    font-size: 18px;
+    font-weight: 300;
+
+
+
+}
+
+#f2 {
+    text-align: center;
+}
+
+
+#p3 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 30px;
+}
+.footer,
+.push {
+  height: 50px;
+}

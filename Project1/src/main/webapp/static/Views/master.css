@@ -1,0 +1,45 @@
+h1 {
+    font-family: 'Libre Baskerville'!important;
+}
+
+#p1 {
+    font-family: 'Libre Baskerville';
+    font-size: 10px;
+    color: red;
+}
+
+#p2 {
+    font-family: 'Libre Baskerville';
+    font-size: 16px;
+    color: black;
+}
+
+body { 
+    background: url(https://www.designbolts.com/wp-content/uploads/2012/12/SubtleNet-White-Simple-Seamless-Patterns-For-Website-Backgrounds.jpg)no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+hr {
+    position: relative; 
+    top: 10px; 
+    border: none; 
+    height: 8px; 
+    background: gray; 
+    margin-bottom: 10px
+}
+
+h4 {
+    font-family: 'Libre Baskerville';
+}
+
+.modal-body {
+    font-family: 'Libre Baskerville';
+}
+
+.btn btn-danger{
+    font-family: 'Libre Baskerville';
+}

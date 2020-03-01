@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html en>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/Project1/static/Views/master.css">
+    <title>Rev Logon Page</title>
+</head>
+<body>
+    <div id="flex-content-container">
+       
+       <div class="topofpage"> <br/><br/><hr/><br/><br/></div>
+        
+       <div class="maintitle col-12 offset -1 text-center">
+            <h1>Rev Expense Reimbursement System</h1>
+            <br/><br/><br/>
+            <p id=p1>Understand you are entering a monitored site and subject to federal and local laws when utilizing this site.</p>
+            <p id=p1>By logging in you agree to all company policies and applicable federal and state laws</p>
+        </div>
+        <br/><br/>
+        <div class="login col-10 offset-1 text-center">
+            <p id=p2>Press Log-on to enter credentials</p>
+            <button type="button" id="open" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Log-on</button>
+            
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h4 class="modal-title">Log-on</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            
+                <div class="modal-body">
+                    <form id="f1">
+                        <label for="email-input">User Email</label>
+                        <input type="email" name="email" id="email-input" required minlength="8">
+                        <span class="error" aria-live="polite"></span>
+                        <br/>
+                        <label>User Password</label>
+                        <input type="password" name ="password" value="" id="password-input">
+                        <input type="checkbox" onclick="showPassword()">Show Password
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special
+                            characters, or emoji.
+                        </small>
+                    </form>                       
+                </div>
+            
+                <div class="modal-footer">
+                    <button id="submit-btn1" type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+            </div>
+        </div>            
+        </div>
+    
+    </div>
+
+
+
+
+
+    <script src="/Project1/static/Scripts/projectonejs.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

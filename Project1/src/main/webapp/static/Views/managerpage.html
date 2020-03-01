@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html en>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/Project1/static/Views/managerpage.css">
+    <title>ManagerPage</title>
+</head>
+
+<body>
+    <div class="flex-content-container">
+
+        <nav class="navbar navbar-dark bg-primary justify-content-between">
+            <a class="navbar-brand">REV ERD INTERFACE</a>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="log-out">Log-out</button>
+        </nav>
+        <br />
+        <div class="main1 text-center">
+            <h1>Welcome to Reimbursement Manager Interface</h1>
+        </div>
+        <br />
+        <div class="row">
+            <div class="booyah-box col-4 offset-1" id="box1">
+                <h2>Message Center</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Date Posted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="booyah-box col-4 offset-2" id="box2">
+                <p id=p3>Main Menu</p>
+                <button type="button" id="create-button" class="btn btn-info btn-lg btn-block" data-toggle="modal"
+                    data-target="#myModal4">New Reimbursement</button>
+                <br />
+                <button type="button" id="create-button" class="btn btn-info btn-lg btn-block" data-toggle="modal"
+                    data-target="#myModal5">Search for Reimbursement</button>
+                <br />
+                <button type="button" id="create-button" class="btn btn-info btn-lg btn-block" data-toggle="modal"
+                    data-target="#myModal6">Approve Reimbursement</button>
+                <br />
+                <button type="button" id="create-button" class="btn btn-info btn-lg btn-block" data-toggle="modal"
+                    data-target="#myModal7">Generate Reports</button>
+                <br />
+                <button type="button" id="history-button" class="btn btn-info btn-lg btn-block">Search History</button>
+
+                <div class="modal" id="myModal4">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">New Reimbursement</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="f4">
+                                    <div class="form-group">
+                                        <label for="type-input">Type of Reimbursement</label>
+                                        <select class="form-control" name="type" id="type-input">
+                                            <option>Adminstrative</option>
+                                            <option>Education</option>
+                                            <option>Travel</option>
+                                            <option>Client Sales</option>
+                                            <option>Department Supplies</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <small id="typeHelpBlock" class="form-text text-muted">
+                                            Ensure to select proper type IAW Company manual. Failure results in denied
+                                            request.
+                                        </small>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="ramount-input">Total Amount Requested</label>
+                                        <input class="form-control" type="number" name="ramount" step="0.01" min="0"
+                                            id="ramount-input">
+                                        <small id="ramountHelpBlock" class="form-text text-muted">
+                                            Enter number with decimal point, do not include $ sign.
+                                        </small>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="notes-input">Notes</label>
+                                        <input class="form-control" type="text" name="notes" id="notes-input"
+                                            maxlength="200">
+                                        <small id="notestHelpBlock" class="form-text text-muted">
+                                            Required if type is Other.
+                                        </small>
+                                    </div>
+                                    <br />
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="submit-btn4" type="button" class="btn btn-primary"
+                                    data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="myModal5">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Search for Reimbursement</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="f5">
+                                    <div class="form-group">
+                                        <label for="type-input">Type of Reimbursement</label>
+                                        <select class="form-control" name="type" id="type-input">
+                                            <option>Adminstrative</option>
+                                            <option>Education</option>
+                                            <option>Travel</option>
+                                            <option>Client Sales</option>
+                                            <option>Department Supplies</option>
+                                            <option>Other</option>
+                                            <option>All Types</option>
+                                        </select>
+                                        <small id="typeHelpBlock" class="form-text text-muted">
+                                            Select type you which to search.
+                                        </small>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="rdate-input">Date Requested</label>
+                                        <input class="form-control" type="date" name="rdate" id="rdate-input">
+                                        <small id="rdateHelpBlock" class="form-text text-muted">
+                                            Enter date format mm/dd/yyyy.
+                                        </small>
+                                    </div>
+                                    <br />
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="submit-btn5" type="button" class="btn btn-primary"
+                                    data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="myModal6">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                                
+                        <div class="modal-header">
+                            <h4 class="modal-title">Approve Reimbursement</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                                
+                        <div class="modal-body">
+                            <form id="f6">
+                                <div class="form-group">
+                                    <label for="type-input">Reimbursement Id#</label>
+                                        <input class="form-control" type="number" name="type" id="type-input">
+                                        <small id="typeHelpBlock" class="form-text text-muted">
+                                            Enter Reimbursement Id# of desired record.
+                                        </small>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label for="type-input">Approved Amount</label>
+                                        <input class="form-control" type="number" name="type" set="0.01" min="0" id="type-input">
+                                        <small id="typeHelpBlock" class="form-text text-muted">
+                                            Enter approved amount.
+                                        </small>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="type-input">Update Status</label>
+                                    <select class="form-control" name="type" id="type-input">
+                                        <option>Approved</option>
+                                        <option>Denied</option>
+                                        <option>Resubmit</option>
+                                    </select>
+                                    <small id="typeHelpBlock" class="form-text text-muted"></small>
+                                    <small id="rdateHelpBlock" class="form-text text-muted"></small>
+                                        Update status of reimbursement.
+                                    </small>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <label for="rdate-input">Enter Date</label>
+                                    <input class="form-control" type="date" name="rdate" id="rdate-input">
+                                    <small id="rdateHelpBlock" class="form-text text-muted">
+                                        Enter date format mm/dd/yyyy.
+                                    </small>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <label for="notes-input">Notes</label>
+                                    <input class="form-control" type="text" name="notes" id="notes-input" maxlength="200">
+                                    <small id="notestHelpBlock" class="form-text text-muted">
+                                        Enter notes if required.
+                                    </small>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="submit-btn6" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal" id="myModal7">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                            
+                    <div class="modal-header">
+                        <h4 class="modal-title">Generate Report</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                            
+                    <div class="modal-body">
+                        <form id="f7">
+                        <div class="form-group">
+                            <label for="type-input">Type of Report</label>
+                                <select class="form-control" name="type" id="type-input">
+                                    <option>Employee By Id</option>
+                                    <option>Reimbursement By Type</option>
+                                    <option>All Assigned Employees</option>
+                                    <option>All Reimbursements</option>
+                                </select>
+                                <small id="typeHelpBlock" class="form-text text-muted">
+                                    Select type you which to search.
+                                </small>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label for="type-input">Search Criteria</label>
+                                <input class="form-control" type="text" name="rdate" id="type-input">
+                                <small id="typeHelpBlock" class="form-text text-muted">
+                                    Enter in employee id or reimbursement type. If an all report leave blank.
+                                </small>
+                        </div>
+                        <br />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="submit-btn7" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+        </div>       
+    </div>
+        </div>
+        <hr />
+        <div class="booyah-box col 10 offset-0.5" id="box3">
+            <h2>Result of Action</h2>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Requested Amount</th>
+                            <th scope="col">Date Requested</th>
+                            <th scope="col">Submitted Documents</th>
+                            <th scope="col">Requestor Notes</th>
+                            <th scope="col">Requestor Id</th>
+                            <th scope="col">Assigned Id</th>
+                            <th scope="col">Date Completed</th>
+                            <th scope="col">Approved Amount</th>
+                            <th scope="col">Manager Notes</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer">
+
+    </footer>
+
+
+
+    <script src="/Project1/static/Scripts/projectonejs.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
