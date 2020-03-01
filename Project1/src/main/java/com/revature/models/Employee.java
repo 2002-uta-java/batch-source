@@ -1,5 +1,8 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Employee {
 	
 	private int id;
@@ -10,8 +13,21 @@ public class Employee {
 	private String gender;
 	private String password;
 	
-	public Employee(int id, String email, String position, String firstName, String lastName,
-															String gender, String password) {
+//	public Employee(int id, String email, String position, String firstName, String lastName,
+//															String gender, String password) {
+//		this.id = id;
+//		this.email = email;
+//		this.position = position;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.gender = gender;
+//		this.password = password;
+//	}
+	
+	@JsonCreator 
+	public Employee(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("position") String position, 
+			@JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName,
+			@JsonProperty("gender") String gender, @JsonProperty("password") String password){
 		this.id = id;
 		this.email = email;
 		this.position = position;
@@ -19,7 +35,7 @@ public class Employee {
 		this.lastName = lastName;
 		this.gender = gender;
 		this.password = password;
-	}
+		}
 	
 	public int getId() {
 		return id;

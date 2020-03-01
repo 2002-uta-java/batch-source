@@ -1,5 +1,6 @@
 package com.revature.delegates;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -49,22 +50,79 @@ public class UserDelegate {
 		String idStr = requestPath.substring(12); // shaves off /updateuser/
 		System.out.println("Posting to ID: " + idStr);
 		
+		Employee eUpdate = readUserJson(request);
+		
 		Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
 		
 		if (e == null) {
 			response.sendError(404, "No user with given ID");
 		} else {
-			// Unpack send data.
-			
-			
 			// Update employee with proper validation.
 			
-			try { // send to database.
+			// Values that will not get updated if...
+			// id = 0 (should've been null)
+			// *email = ""
+			// position = null
+			// *firstName = ""
+			// *lastName = ""
+			// *gender = (must always have value)
+			// password = null
+			// Note: * means can be changed.
+			
+			String email = eUpdate.getEmail();
+			String firstName = eUpdate.getFirstName();
+			String lastName = eUpdate.getLastName();
+			String gender = eUpdate.getGender();
+			
+			if (!email.isEmpty()) {
+				e.setEmail(email);
 			}
-			finally {
-				System.out.println("placeholder");
+			if (!firstName.isEmpty()) {
+				e.setFirstName(firstName);
 			}
+			if (!lastName.isEmpty()) {
+				e.setLastName(lastName);
+			}
+			if (gender != e.getGender()) {
+				e.setGender(gender);
+			}
+			
+			// Send updated user information to database. (probably need try200/catch500s if Dao goes wrong)
+			eDao.updateEmployee(e);
+			response.setStatus(200);
+			System.out.println("User successfully updated!");
 		}
+	}
+	
+	public Employee readUserJson(HttpServletRequest request) throws IOException {
+		// Read the request payload into a String
+		StringBuilder buffer = new StringBuilder();
+		BufferedReader reader = request.getReader();
+		String line;
+		while ((line = reader.readLine()) != null) {
+		    buffer.append(line);
+		}
+		String data = buffer.toString();
+		
+		System.out.println(data);
+		
+		// If the String is not empty, parses the payload into a map
+		Employee e = null;
+		if (!data.isEmpty()) {
+		    ObjectMapper mapper = new ObjectMapper();
+		    e = mapper.readValue(data, Employee.class);
+		}
+		
+		// Debugging.
+//		System.out.println(e.getId());
+//		System.out.println(e.getEmail());
+//		System.out.println(e.getPosition());
+//		System.out.println(e.getFirstName());
+//		System.out.println(e.getLastName());
+//		System.out.println(e.getGender());
+//		System.out.println(e.getPassword());
+		
+		return e;
 	}
 	
 }

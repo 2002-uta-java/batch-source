@@ -61,10 +61,10 @@ function updateProfile() {
     let new_fName = formInfo.elements[0].value;
     let new_lName = formInfo.elements[1].value;
     let new_email = formInfo.elements[2].value;
-    let new_gender = formInfo.elements[3].value;
+    let new_gender = formInfo.elements[3].value.toLowerCase();
 
-    // TODO: Gather all data (null arguments handled in backend).
-    let updateInfo = {firstName: new_fName, lastName: new_lName, email: new_email, gender: new_gender};
+    // TODO: Gather all data (null arguments ignored in backend).
+    let updateInfo = {id: null, email: new_email, position: null, firstName: new_fName, lastName: new_lName, gender: new_gender, password: null};
     let myJSON = JSON.stringify(updateInfo);
 
     // Send a POST request to update the database, immediately re-build page (checkToken).
@@ -74,7 +74,6 @@ function updateProfile() {
 	if(tokenArr.length===2) {
         sendAjaxPost(baseUrl+tokenArr[0], checkToken, myJSON);
     }
-    document.getElementById("edit-profile-form-status").innerHTML = "Profile successfully updated!";
 }
 
 // updateProfile AJAX helper. 
@@ -83,7 +82,8 @@ function sendAjaxPost(url, callback, data){
 	xhr.open("POST", url);
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
-			callback(this);
+            callback(this);
+            document.getElementById("edit-profile-form-status").innerHTML = "Profile successfully updated!";
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}

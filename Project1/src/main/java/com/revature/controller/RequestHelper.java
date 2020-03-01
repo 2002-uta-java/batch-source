@@ -55,14 +55,13 @@ public class RequestHelper {
 		String path = request.getServletPath();
 		System.out.println("POST Path requested:" + path);
 		
-		switch(path) {
-		case "/login" :
+		if (path.startsWith("/login")) {
 			authDelegate.authenticate(request, response);
-			break;
-		case "/updateuser":
+		}
+		else if (path.startsWith("/updateuser/")) {
 			userDelegate.updateUser(request, response);
-			break;
-		default:
+		}
+		else {
 			response.sendError(405);
 		}
 	}
