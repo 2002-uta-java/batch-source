@@ -8,9 +8,9 @@ function checkToken() {
 		let tokenArr = token.split(":");
 		console.log(tokenArr);
 		if(tokenArr.length===2){
-            // Authentication success! Page will load (name, reimbursements)
+            // Authentication success! Page will load.
             let baseUrl = "http://localhost:8080/Project1/api/users/";
-            sendAjaxGet(baseUrl+tokenArr[0], loadName, token);
+            sendAjaxGet(baseUrl+tokenArr[0], loadPage, token);
 		} else {
 			window.location.href="http://localhost:8080/Project1/login";
 		}
@@ -35,9 +35,11 @@ function sendAjaxGet(url, callback, token){
 }
 
 // Load the profile name into the navbar (top right).
-function loadName(xhr){
+// Loads profile information (view profile option).
+function loadPage(xhr){
     let user = JSON.parse(xhr.response);
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
+    // TODO: profile information (id=profile-body)
 }
 
 // Remove user token and return to the login menu.
@@ -64,9 +66,9 @@ function logout() {
 
 
 // Commands to execute on load.
+
 // ALL EVENT LISTENERS
+document.getElementById("logout-btn").addEventListener("click", logout);
+
 // TODO: get all reimbursements and display them (with proper features)
 let token = checkToken();
-loadName();
-
-document.getElementById("logout-btn").addEventListener("click", logout);

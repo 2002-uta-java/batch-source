@@ -11,6 +11,7 @@
 </head>
 <body>
 
+	<!-- NAVBAR ELEMENTS -->
      <nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -24,7 +25,7 @@
 		    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 		    	<span class="glyphicon glyphicon-user"></span><span id="profile-name"></span><span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="#">View Profile</a></li>
+	            <li><a href="#" data-toggle="modal" data-target="#view-profile">View Profile</a></li>
 	            <li><a href="#" id="logout-btn">Logout</a></li>
 		      </ul>
 		    </li>
@@ -32,7 +33,30 @@
 	    </ul>
 	  </div>
 	</nav> 
-    
+	
+
+	<!-- Modal (for viewing profile) -->
+
+
+	<div class="modal fade" id="view-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalCenterTitle">Your Profile</h5>
+			</div>
+			<div class="modal-body" id="profile-body">
+			...
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-secondary">Edit Profile</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		</div>
+	</div>
+
+
+	<!-- REIMBURSEMENT LIST ELEMENTS-->
     <h1>MANAGER HOMEPAGE</h1>
     
     
