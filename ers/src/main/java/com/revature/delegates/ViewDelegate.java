@@ -1,4 +1,4 @@
-package com.revature.servlets;
+package com.revature.delegates;
 
 import java.io.IOException;
 
@@ -6,20 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ViewServlet {
+public class ViewDelegate {
 
 	public void resolveView(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
 		switch (path) {
-		case "/static/":
+		case "/":
 			req.getRequestDispatcher("/static/loginPage.html").forward(req, res);
 			break;
-		case "/static/employeehome":
+		case "/employeehome":
 			req.getRequestDispatcher("/static/employeePage.html").forward(req, res);
 			break;
-		case "/static/managerhome":
+		case "/managerhome":
 			req.getRequestDispatcher("/static/managerPage.html").forward(req, res);
-		case "/static/profile":
+		case "/profile":
 			req.getRequestDispatcher("/static/profile.html").forward(req, res);
 		default:
 			res.sendError(404, "Resource not found");

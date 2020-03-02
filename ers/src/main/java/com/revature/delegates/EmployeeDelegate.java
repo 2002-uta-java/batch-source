@@ -1,4 +1,4 @@
-package com.revature.servlets;
+package com.revature.delegates;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,29 +8,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.dao.ReimbursementDAO;
-import com.revature.dao.ReimbursmentDaoImpl;
-import com.revature.model.Reimbursment;
+import com.revature.dao.EmployeeDAO;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.model.Employee;
 
-public class ReimbursmentServlet {
-private ReimbursementDAO rdao = new ReimbursmentDaoImpl();
+public class EmployeeDelegate {
+	
+	private EmployeeDAO edao = new EmployeeDaoImpl();
 	
 	public void getEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestPath = req.getServletPath();
 		if (requestPath.length() =="/api/employees".length()) {
-			List<Reimbursment> rbs = rdao.getAllReimbursments();
+			List<Employee> ems = edao.getAllEmployees();
 			try (PrintWriter pw = res.getWriter()) {
-				pw.write(new ObjectMapper().writeValueAsString(rbs));
+				pw.write(new ObjectMapper().writeValueAsString(ems));
 			}
 		} else {
 			String idStr = req.getServletPath().substring(11);
 			if (idStr.matches("^\\d+$")) {
-				Reimbursment r = rdao.getReimbursment(Integer.parseInt(idStr));
-				if (r == null)
+				Employee em = edao.getEmployee(idStr);
+				if (em == null)
 					res.sendError(404, "No Employee with given id");
 				else {
 					try (PrintWriter pw = res.getWriter()) {
-						pw.write(new ObjectMapper().writeValueAsString(r));
+						pw.write(new ObjectMapper().writeValueAsString(em));
 					}
 				}
 			} else

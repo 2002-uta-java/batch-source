@@ -1,4 +1,4 @@
-package com.revature.servlets;
+package com.revature.delegates;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.dao.*;
 import com.revature.model.*;
 
-public class LoginServlet {
+public class LoginDelegate {
 	private EmployeeDAO edao = new EmployeeDaoImpl();
 
 	public void authenticate(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -21,7 +21,7 @@ public class LoginServlet {
 			String token = em.getId() + ":" + em.getEmail();
 			res.setStatus(200);
 			res.setHeader("Authorization", token);
-			req.getRequestDispatcher("/static/employeepage.html").forward(req, res);
+			res.sendRedirect("http://localhost:8080/ers/static/employeepage.html");
 		} else
 			res.sendError(401);
 	}

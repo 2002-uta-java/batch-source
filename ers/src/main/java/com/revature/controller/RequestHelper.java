@@ -6,18 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.servlets.EmployeeServlet;
-import com.revature.servlets.LoginServlet;
-import com.revature.servlets.ViewServlet;
+import com.revature.delegates.EmployeeDelegate;
+import com.revature.delegates.LoginDelegate;
+import com.revature.delegates.ViewDelegate;
 
 public class RequestHelper {
 	
-	private LoginServlet login = new LoginServlet();
-	private ViewServlet view = new ViewServlet();
-	private EmployeeServlet employee = new EmployeeServlet();
+	private LoginDelegate login = new LoginDelegate();
+	private ViewDelegate view = new ViewDelegate();
+	private EmployeeDelegate employee = new EmployeeDelegate();
+	
 	public void processGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String path = req.getServletPath();
-		if (path.startsWith("/loginpage")) {
+		String path = req.getRequestURI().substring(req.getContextPath().length());//req.getServletPath();
+		System.out.println(path);
+		if (path.startsWith("/")) {
 			req.getRequestDispatcher("/static/loginPage.html").forward(req, res);
 		} else if (path.startsWith("/api/")) {
 			if (!login.isAuthorized(req, res)) {
@@ -25,7 +27,6 @@ public class RequestHelper {
 				return;
 			}
 			
-			System.out.println(path);
 			String record = path.substring(5);
 			if (record.startsWith("reimbursments"))
 				employee.getEmployee(req, res);
@@ -37,9 +38,8 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
-		System.out.println(path);
 		switch (path) {
-		case "/loginpage":
+		case "/":
 			login.authenticate(req, res);
 			break;
 		case "/register":
