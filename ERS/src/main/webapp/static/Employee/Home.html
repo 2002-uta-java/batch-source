@@ -20,9 +20,20 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="/ERS/static/scripts/constants.js"></script>
 <script type="text/javascript" src="/ERS/static/scripts/cookies.js"></script>
-<script type="text/javascript" src="/ERS/static/scripts/home.js"></script>
+<script type="text/javascript"
+	src="/ERS/static/scripts/Employee/home.js"></script>
 </head>
 <body>
+	<!-- the href's are set in javascript -->
+	<nav class="nav nav-pills flex-column flex-sm-row">
+		<a class="flex-sm-fill text-sm-center nav-link" id="profile-link">Profile</a>
+		<a class="flex-sm-fill text-sm-center nav-link" id="view-reimb-link">View
+			Reimbursement Requests</a> <a
+			class="flex-sm-fill text-sm-center nav-link" id="submit-reimb-link">Submit
+			Reimbursement Request</a> <a
+			class="flex-sm-fill text-sm-center nav-link active" id="logout-link">Logout</a>
+	</nav>
+
 	<div class="jumbotron">
 		<h1 class="display-4" id="welcome-display"></h1>
 	</div>

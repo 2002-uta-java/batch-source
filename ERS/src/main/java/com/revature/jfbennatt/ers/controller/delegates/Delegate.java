@@ -46,7 +46,7 @@ public abstract class Delegate {
 	/**
 	 * Value used to set the max age of a cookie.
 	 */
-	private static final int COOKIE_TIME = 100;
+	private static final int COOKIE_TIME = -1;
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee
@@ -85,6 +85,9 @@ public abstract class Delegate {
 		final String encryptedToken = getAuthToken(cookies);
 		final Employee employee = empService.getEmployeeByToken(encryptedToken);
 
+		Logger.getRootLogger().debug("Employee from authToken: " + employee);
+		System.out.println("Employee from authToken: " + employee);
+
 		if (employee != null) {
 //			setAuthorizationCookie(employee, response);
 //			setNameCookies(employee, response);
@@ -119,8 +122,12 @@ public abstract class Delegate {
 		final Cookie lastName = new Cookie(LAST_NAME_HEADER, employee.getLastName());
 
 		// set lifetime to expire when the browser is closed
-//		firstName.setMaxAge(COOKIE_TIME);
-//		lastName.setMaxAge(COOKIE_TIME);
+		firstName.setMaxAge(COOKIE_TIME);
+		lastName.setMaxAge(COOKIE_TIME);
+
+		// need to set path so client always includes the cookie
+		firstName.setPath("/");
+		lastName.setPath("/");
 
 		response.addCookie(firstName);
 		response.addCookie(lastName);
@@ -142,9 +149,13 @@ public abstract class Delegate {
 		final Cookie authToken = new Cookie(AUTH_TOKEN_HEADER, employee.getToken());
 
 		// set cookie to be deleted when browser is closed
-//		authToken.setMaxAge(COOKIE_TIME);
+		authToken.setMaxAge(COOKIE_TIME);
 		authToken.setDomain("localhost");
+		// need to set the path so that the cookie is always sent
+		authToken.setPath("/");
+
 		response.addCookie(authToken);
+
 		Logger.getLogger("Setting Authorization cookie: " + employee.getToken());
 		System.out.println("Setting Authorization cookie: " + employee.getToken());
 	}
@@ -176,10 +187,13 @@ public abstract class Delegate {
 	 * @throws IOException
 	 * @throws ServletException
 	 */
-	public final void processRequest(final String path, final HttpServletRequest request,
-			final HttpServletResponse response) throws IOException, ServletException {
-		final Employee employee = authenticateEmployee(request, response);
+	public void processRequest(final String path, final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException, ServletException {
 
+		Logger.getRootLogger().debug("Requesting: " + path);
+		System.out.println("Requesting: " + path);
+
+		final Employee employee = authenticateEmployee(request, response);
 		if (employee == null) {
 			// forward to the login page
 			request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);

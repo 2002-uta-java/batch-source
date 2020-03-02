@@ -14,9 +14,6 @@ import org.apache.log4j.Logger;
 public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 1L;
 
-	public static final String STATIC = "/static";
-	public static final String CONTEXT_ROOT = "/ERS";
-
 	private final RequestDispatcher dispatcher = new RequestDispatcher();
 
 	/**
@@ -29,6 +26,12 @@ public class FrontController extends DefaultServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		dispatcher.setFrontController(this);
+	}
+
+	public void staticGet(final HttpServletRequest request, final HttpServletResponse response)
+			throws IOException, ServletException {
+		super.doGet(request, response);
 	}
 
 	/**
@@ -38,12 +41,10 @@ public class FrontController extends DefaultServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final String path = request.getServletPath();
-		if (path.startsWith(STATIC)) {
-			super.doGet(request, response);
-		} else {
-			dispatcher.dispatch(path, request, response);
-		}
+		dispatcher.dispatch(request, response);
+
+		System.out.println();
+		System.out.println();
 	}
 
 	/**

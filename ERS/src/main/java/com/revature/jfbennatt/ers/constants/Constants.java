@@ -33,7 +33,7 @@ public class Constants {
 			printVariable(ps, "LAST_NAME_HEADER", Delegate.LAST_NAME_HEADER,
 					"header for getting the last name of an employee");
 			printVariable(ps, "LOGIN_API",
-					FrontController.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.LOGIN,
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.LOGIN,
 					"URI for logging in a user");
 			printVariable(ps, "EMAIL_HEADER", Delegate.EMAIL_HEADER, "header for sending the email when logging in");
 			printVariable(ps, "PASSWORD_HEADER", Delegate.PASSWORD_HEADER,

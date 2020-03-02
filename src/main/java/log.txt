@@ -13,3 +13,558 @@
 2020-02-25 09:29:27 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
 2020-02-25 09:30:39 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
 2020-02-25 09:30:39 FATAL TestServlet:51 method: doGet - No cookies were sent with HTTP request
+2020-03-02 08:57:59 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 08:57:59 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 08:58:29 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 08:58:29 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-02 08:58:29 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 08:58:30 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-02 08:58:30 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=8TBLPZAHJa6nGPcOGBANANKjkv8sGCJ51HdQn4i152aGnx1Jj61ogTTr6JZcUdaK, email=ecisneros0@guardian.co.uk]
+2020-03-02 08:58:30 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: tBI1lChEsFONsIGmEYqLcaOJjtvh82eU96eX8aSo4BYbB9ClEMTPkBtIoDt9sjBv, fQZyXTnAf++QrvP2n3UoxoxtG/6UNHEFBnvO0FuF9W0NQxEkonVyOX4Ko+E8D6zFTRvybynXn2XGNyAWyyEi89MS1uDy+Nk5oEhYIpIilvc=
+2020-03-02 08:58:30 DEBUG Delegate:101 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=fQZyXTnAf++QrvP2n3UoxoxtG/6UNHEFBnvO0FuF9W0NQxEkonVyOX4Ko+E8D6zFTRvybynXn2XGNyAWyyEi89MS1uDy+Nk5oEhYIpIilvc=, email=ecisneros0@guardian.co.uk]
+2020-03-02 08:58:30 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 08:58:30 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 08:58:30 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 09:05:22 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, fQZyXTnAf++QrvP2n3UoxoxtG/6UNHEFBnvO0FuF9W0NQxEkonVyOX4Ko+E8D6zFTRvybynXn2XGNyAWyyEi89MS1uDy+Nk5oEhYIpIilvc=
+2020-03-02 09:05:23 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 09:05:23 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 09:05:23 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 09:23:00 DEBUG Delegate:155 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 09:23:00 DEBUG Delegate:155 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 09:23:00 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, 5RXjyQ/DwW9jDDW0LadJYpGC8qjBe9eDV8O9O3eMOJSl3Q0orJ1Q6HjtW3HPpmS5VhIi/q0962helQdH7wt26lURPffNir8EAWbP7KunEU0=
+2020-03-02 09:23:00 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 09:23:00 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 09:23:00 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 09:23:00 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 09:27:24 DEBUG Delegate:155 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 09:27:24 DEBUG Delegate:155 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 09:27:24 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, /EG0+R/GexV7HPDPDGwtetfkXtdl/njb8N7Fm5DEKnHAJVm5lTiuoB85Q8liVYtvHY8W1owh1SzCTtpEq+BkH/itRVcK1Wjzp/xdQlWn4OY=
+2020-03-02 09:27:24 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 09:27:25 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 09:27:25 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 09:27:25 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 09:31:21 DEBUG Delegate:155 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 09:31:21 DEBUG Delegate:155 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 09:31:21 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, oQKpYuemWA/UYa0JPZwppqvoiyY7mL40nIvX95iqIAoH88K5LAbf+UgEr55HwW1SMkAhq67NcB2w5YLLwAXg47auG1HrCGg4cITTTyVAMfQ=
+2020-03-02 09:31:21 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 09:31:22 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 09:31:22 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 09:31:22 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:10:12 DEBUG Delegate:155 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:10:12 DEBUG Delegate:155 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:10:12 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, nmPplhpY1venYQ7EGmw8mEYzKuEgxdsV2Xnn4phbThUo0L6v/CbL3uNgfJ9NfQ6pgC0WhQu9k+7wcX5RjbAZMK79GAc858zv6YzoO0R0+X0=
+2020-03-02 11:10:13 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:10:13 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 11:10:13 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:10:34 DEBUG Delegate:155 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:10:34 DEBUG Delegate:155 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:10:34 DEBUG Delegate:155 method: getAuthToken - Found cookie: session-token, g8IGO+qVq2Ww/bu9NtNXoLOryrwcOqkUnmRAMBChLujWM20nWd2EDQ53TSubFHDDP+n6dL/2pFmONRXMj5urjZbombSYhUPJcZlyZ4RCQVY=
+2020-03-02 11:10:34 DEBUG Delegate:129 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:10:34 DEBUG Delegate:161 method: getAuthToken - cookies was null
+2020-03-02 11:10:34 DEBUG Delegate:97 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:17:02 DEBUG Delegate:158 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:17:02 DEBUG Delegate:158 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:17:02 DEBUG Delegate:158 method: getAuthToken - Found cookie: session-token, T+gjk13FKrUnQRtYFku8MfEvO+RrnrNuwqQJ2nNP3uWUmVLeMASV7r/t0JSvSUqpNtS8AvzdbYclpvR5KBGP/3XO7LNsSKMMmBhJmuoJJDA=
+2020-03-02 11:17:02 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 11:17:02 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=b+K3V/dGoJJ87Rp4XSwJtAKRcBIofM9DxKZ6DSssW9e5dp81sLkim2+X2iwc1LAJL7TDoR/lVRmPhkPQiXQAmL/2NLlarMC8XDSX2dNAf10=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:17:02 DEBUG Delegate:132 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:17:02 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:17:02 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:17:02 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:42:36 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:42:36 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:42:36 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:44:28 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:44:28 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:44:28 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-02 11:44:28 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 11:44:29 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-02 11:44:29 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=tBI1lChEsFONsIGmEYqLcaOJjtvh82eU96eX8aSo4BYbB9ClEMTPkBtIoDt9sjBv, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:44:29 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: 1I0kX4RVBwvWKW2RMtxcYjm53kxz8g2DIoyMBd92DkTI5jgjyu5N6uZyJ8gZ31QD, /SduWespLmBl0cq/31yssCe/xGvPqUPo4kACxfTHWTUCxP8otDUWVIFrSSpCMMoxXIbgnXzr1y+MfAFLfipcPXA4BM32+J+BWiZwiEWreNQ=
+2020-03-02 11:44:29 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=/SduWespLmBl0cq/31yssCe/xGvPqUPo4kACxfTHWTUCxP8otDUWVIFrSSpCMMoxXIbgnXzr1y+MfAFLfipcPXA4BM32+J+BWiZwiEWreNQ=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:44:29 DEBUG Delegate:185 method: processRequest - Requesting: /api/login
+2020-03-02 11:44:29 DEBUG Delegate:132 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:44:29 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:44:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:44:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:44:29 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:46:21 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:46:21 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:46:21 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:46:21 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:46:49 DEBUG Delegate:158 method: getAuthToken - Found cookie: session-token, /SduWespLmBl0cq/31yssCe/xGvPqUPo4kACxfTHWTUCxP8otDUWVIFrSSpCMMoxXIbgnXzr1y+MfAFLfipcPXA4BM32+J+BWiZwiEWreNQ=
+2020-03-02 11:46:49 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 11:46:49 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=z+KKhk6FQk4srXHXg4IsINPlOy9lCtQO8KkwIjPwiY9O2idAsBu3Qeg9e9TteTeHUUXB0RIz3n33BsZeLJHX2qMr1Kygi5aaUqYKj1/Ruws=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:46:49 DEBUG Delegate:185 method: processRequest - Requesting: /api/login
+2020-03-02 11:46:49 DEBUG Delegate:132 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:46:49 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:46:49 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:46:50 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:46:50 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:48:06 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:48:06 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:48:06 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:48:06 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:48:27 DEBUG Delegate:185 method: processRequest - Requesting: /api/login
+2020-03-02 11:48:27 DEBUG Delegate:158 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:48:27 DEBUG Delegate:158 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:48:27 DEBUG Delegate:158 method: getAuthToken - Found cookie: session-token, z+KKhk6FQk4srXHXg4IsINPlOy9lCtQO8KkwIjPwiY9O2idAsBu3Qeg9e9TteTeHUUXB0RIz3n33BsZeLJHX2qMr1Kygi5aaUqYKj1/Ruws=
+2020-03-02 11:48:27 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 11:48:28 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=59uXqFU3fvsnyr6qI6wf1k2/T5hC2umzKwQ4l7SDjKiOJBIW5jFvTmMounl1UaNN2CAUhbWOQZcix5fuKzB7cZfQJF5ayc+PZsht+GA0cUw=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:48:28 DEBUG Delegate:132 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:48:28 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:48:28 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:48:28 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:48:28 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:49:10 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:49:10 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:49:10 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:49:10 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:49:13 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:49:13 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:49:13 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:49:13 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:49:18 DEBUG Delegate:185 method: processRequest - Requesting: /login
+2020-03-02 11:49:18 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:49:18 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:49:18 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:49:46 DEBUG Delegate:185 method: processRequest - Requesting: /api/login
+2020-03-02 11:49:46 DEBUG Delegate:158 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:49:46 DEBUG Delegate:158 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:49:46 DEBUG Delegate:158 method: getAuthToken - Found cookie: session-token, 59uXqFU3fvsnyr6qI6wf1k2/T5hC2umzKwQ4l7SDjKiOJBIW5jFvTmMounl1UaNN2CAUhbWOQZcix5fuKzB7cZfQJF5ayc+PZsht+GA0cUw=
+2020-03-02 11:49:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=oGxOXe0VUH6OziY4jVwRry+H+HEcsZzOTDeR0RzxUyKNYctzUC8WKV5qAkyoyigpK4Jn/PkO9ZQLweG7SfyGfIc7VixPW0/XO+OAxc75DNg=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:49:46 DEBUG Delegate:132 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:49:46 DEBUG Delegate:185 method: processRequest - Requesting: /
+2020-03-02 11:49:46 DEBUG Delegate:164 method: getAuthToken - cookies was null
+2020-03-02 11:49:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 11:49:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 11:59:12 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 11:59:12 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:59:12 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:59:12 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, oGxOXe0VUH6OziY4jVwRry+H+HEcsZzOTDeR0RzxUyKNYctzUC8WKV5qAkyoyigpK4Jn/PkO9ZQLweG7SfyGfIc7VixPW0/XO+OAxc75DNg=
+2020-03-02 11:59:12 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 11:59:12 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=mk4iqPuVrF2k72p1xGIIOwPmYf1WLP0KuNmD15DaJntgL8oj/jEs9rxVAgb/pqhqVtqEo0Mw/cKpjHRFXHq62J9hQuO/mHuv760QBrODbU4=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:59:12 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 11:59:12 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 11:59:12 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, mk4iqPuVrF2k72p1xGIIOwPmYf1WLP0KuNmD15DaJntgL8oj/jEs9rxVAgb/pqhqVtqEo0Mw/cKpjHRFXHq62J9hQuO/mHuv760QBrODbU4=
+2020-03-02 11:59:13 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=+K7Nttl6js9fh/uQI8NuPH6mSxiEh9wCdHkDJcTFOmXA2RrzmPs766V6TJSAVP+uR8qu1reW/UFg6yJKG4WpllIpo+ejHcSelhJuuWZwrmE=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:59:50 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 11:59:50 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 11:59:50 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 11:59:50 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, oGxOXe0VUH6OziY4jVwRry+H+HEcsZzOTDeR0RzxUyKNYctzUC8WKV5qAkyoyigpK4Jn/PkO9ZQLweG7SfyGfIc7VixPW0/XO+OAxc75DNg=
+2020-03-02 11:59:50 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=TsXQvfIdiG2G/FB6Wl3EzgF0CDLOoyZ6FKBfJOVRHG1uxocm2C4fwcTWyN0IBRyJfMQJjDAJY3ntKnHhF0+bHIafvsqR3mEZPxnQjFl4qIM=, email=ecisneros0@guardian.co.uk]
+2020-03-02 11:59:50 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-02 12:00:07 DEBUG Delegate:193 method: processRequest - Requesting: /blah
+2020-03-02 12:00:07 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 12:00:07 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 12:00:07 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, TsXQvfIdiG2G/FB6Wl3EzgF0CDLOoyZ6FKBfJOVRHG1uxocm2C4fwcTWyN0IBRyJfMQJjDAJY3ntKnHhF0+bHIafvsqR3mEZPxnQjFl4qIM=
+2020-03-02 12:00:07 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=iPldFjzrhw3XkhP+WHixN53pyc8rKN5iEbgcClhMjWvdKMPzVfgb73G5k+Dlwh8B0A/1FfcGCLAX53an2gD9A6xEC88ORz2BMnAS7myJf/U=, email=ecisneros0@guardian.co.uk]
+2020-03-02 12:00:16 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:00:16 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 12:00:16 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 12:00:16 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, TsXQvfIdiG2G/FB6Wl3EzgF0CDLOoyZ6FKBfJOVRHG1uxocm2C4fwcTWyN0IBRyJfMQJjDAJY3ntKnHhF0+bHIafvsqR3mEZPxnQjFl4qIM=
+2020-03-02 12:00:17 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=fyPMGBJgrtHLWKnc4DT3xkMEYSL7jy3ePigerqhgFKWvyNV283UpF8y7fVbxDPUyhKpgB8nyY0w42H5aaXZ3WHp3UW+pWLmUGMNrbimtYDA=, email=ecisneros0@guardian.co.uk]
+2020-03-02 12:28:00 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:28:00 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 12:28:00 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 12:28:00 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, TsXQvfIdiG2G/FB6Wl3EzgF0CDLOoyZ6FKBfJOVRHG1uxocm2C4fwcTWyN0IBRyJfMQJjDAJY3ntKnHhF0+bHIafvsqR3mEZPxnQjFl4qIM=
+2020-03-02 12:28:01 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Y7MeTRxdT5p1KWHxGsaBEuE+EsgutegFy9IbyWqt3qKLy0Ix0H32cJXXMFWXGtSNRNLzkaZ8HOaWBKsuGX/6ScNS7y19gUQLh5V3nU4LGfY=, email=ecisneros0@guardian.co.uk]
+2020-03-02 12:28:14 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:28:14 DEBUG Delegate:166 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-02 12:28:14 DEBUG Delegate:166 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-02 12:28:14 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, TsXQvfIdiG2G/FB6Wl3EzgF0CDLOoyZ6FKBfJOVRHG1uxocm2C4fwcTWyN0IBRyJfMQJjDAJY3ntKnHhF0+bHIafvsqR3mEZPxnQjFl4qIM=
+2020-03-02 12:28:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=ezrkpfeGfwwQ25SpqbT8AWm7uOTKkEcuoeLtn4Dc1rwkDs1VYPD4TaU5sU9OBZYLKWlHyknxBuiRc2/foLH/8MF5fWkJjKrzHqH1Euf7ThI=, email=ecisneros0@guardian.co.uk]
+2020-03-02 12:28:35 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:28:35 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:28:35 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:28:35 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:29:16 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 12:29:16 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:29:16 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:29:16 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: jdeath1@gravatar.com SF6ytDkUhs
+2020-03-02 12:29:17 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: jdeath1@gravatar.com
+2020-03-02 12:29:17 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=null, email=jdeath1@gravatar.com]
+2020-03-02 12:29:17 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: 943e9cxMC8PedZbmfn7ziyPaaOdKPBOR8rxQMInKP8fVsNOLfOHxyTdYbfKP1hu8, 0is/0S+hToZwN4tR7UgoFrUQiZjLg5FN7NXXg04e3yxjvd5WQwkony7R3KqSL9n9431//4Fc1aXDY9/+HWmrrC5jUyEjKqSrecVfByFcO/k=
+2020-03-02 12:29:17 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=0is/0S+hToZwN4tR7UgoFrUQiZjLg5FN7NXXg04e3yxjvd5WQwkony7R3KqSL9n9431//4Fc1aXDY9/+HWmrrC5jUyEjKqSrecVfByFcO/k=, email=jdeath1@gravatar.com]
+2020-03-02 12:29:17 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Julius De'Ath
+2020-03-02 12:29:17 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:29:17 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, 0is/0S+hToZwN4tR7UgoFrUQiZjLg5FN7NXXg04e3yxjvd5WQwkony7R3KqSL9n9431//4Fc1aXDY9/+HWmrrC5jUyEjKqSrecVfByFcO/k=
+2020-03-02 12:29:18 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=null, token=gTXAoKIKQ085DKX2/Li06jtlsy+ckahlcmwgjh31J9YZ+izKldlni+Ro2vNf/yo9FFMWXAl4pRTg+zuGzqkt4d5L2bh0z7oM2LiKYiQEc/Y=, email=jdeath1@gravatar.com]
+2020-03-02 12:29:35 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:29:35 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:29:35 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:29:35 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:29:50 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 12:29:50 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:29:50 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:29:50 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: jdeath1@gravatar.com SF6ytDkUhs
+2020-03-02 12:29:50 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: jdeath1@gravatar.com
+2020-03-02 12:29:50 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=943e9cxMC8PedZbmfn7ziyPaaOdKPBOR8rxQMInKP8fVsNOLfOHxyTdYbfKP1hu8, email=jdeath1@gravatar.com]
+2020-03-02 12:29:51 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: 46y0UxGucuCvEwCQb51dcQiC7P5EPaAVq6nXjBcz1TPSYjQqBiM1oZmqGrhM4Pzd, xg/2RMOiPD0dLzJ8VscgCvOjY7/83zy+78VhpSRpQeKV/PIYOPn3La3WBe/cEdAl8fxO7DCLPDH+NCgx1ClgJgYkY4xYGk/or0xnMB03REQ=
+2020-03-02 12:29:51 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=xg/2RMOiPD0dLzJ8VscgCvOjY7/83zy+78VhpSRpQeKV/PIYOPn3La3WBe/cEdAl8fxO7DCLPDH+NCgx1ClgJgYkY4xYGk/or0xnMB03REQ=, email=jdeath1@gravatar.com]
+2020-03-02 12:29:51 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Julius De'Ath
+2020-03-02 12:29:51 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:29:51 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, xg/2RMOiPD0dLzJ8VscgCvOjY7/83zy+78VhpSRpQeKV/PIYOPn3La3WBe/cEdAl8fxO7DCLPDH+NCgx1ClgJgYkY4xYGk/or0xnMB03REQ=
+2020-03-02 12:29:51 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=null, token=8OZuw1/hnDTXVziu3P4zr8GA2RHjjHqoR4oPz6ucJ0NGnm1Qmy7BGfx1Tyyrk1ITt4+kqiOkKwJc39USg1ks2syFtbWrDkzB8o8dLu4LLYE=, email=jdeath1@gravatar.com]
+2020-03-02 12:30:28 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:30:28 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:30:28 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:30:28 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:30:46 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 12:30:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:30:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:30:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: jwillmont4@timesonline.co.uk RPfslKu7PN9
+2020-03-02 12:30:47 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: jwillmont4@timesonline.co.uk
+2020-03-02 12:30:47 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=uCejZgdHT/vjrZRXHJEvJIL+x6zEgdCpR2nCOV67Q+8WZjiOf7adKeG4V9s9ISvM, token=fm6916688B53cL297zuuI7Ke4zJ102dOg9LA27QyG965iesM51B05771Y29447d6, email=jwillmont4@timesonline.co.uk]
+2020-03-02 12:30:47 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: FsB1hzdYIMsivuwVEeCt4cLzt7e7FkzK2OxcrHNnktO3yMaIFiwNtAPkJXwTMjHB, L0nh28Z+UhWTYQQq50orIcQtCFkki9M8js5X+t4WGZMmLejoNt8o+USRp1nFF52XPb8MhttxQPYR453/TTyJ9HnHP/dXIkyNW34Yx0tMczU=
+2020-03-02 12:30:47 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=uCejZgdHT/vjrZRXHJEvJIL+x6zEgdCpR2nCOV67Q+8WZjiOf7adKeG4V9s9ISvM, token=L0nh28Z+UhWTYQQq50orIcQtCFkki9M8js5X+t4WGZMmLejoNt8o+USRp1nFF52XPb8MhttxQPYR453/TTyJ9HnHP/dXIkyNW34Yx0tMczU=, email=jwillmont4@timesonline.co.uk]
+2020-03-02 12:30:47 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-02 12:30:47 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:30:47 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, L0nh28Z+UhWTYQQq50orIcQtCFkki9M8js5X+t4WGZMmLejoNt8o+USRp1nFF52XPb8MhttxQPYR453/TTyJ9HnHP/dXIkyNW34Yx0tMczU=
+2020-03-02 12:30:48 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=/p/bR3ZYalmi7VhkeiMfWNaC6jOAl7aAqxqAa+QjmplD80HlU39c43rDaeIg0TJJJ1iDPG8+a6vumVi3VJb+6Ph4zrOL1n2F3QgRX9g9nWU=, email=jwillmont4@timesonline.co.uk]
+2020-03-02 12:53:06 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:53:06 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:53:06 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:53:06 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:53:17 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:53:17 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:53:17 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:53:17 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:55:35 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:55:35 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:55:35 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:55:35 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:55:35 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:55:35 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:29 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:29 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:29 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:29 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:29 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:56:29 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:29 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:29 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:37 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:56:37 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:37 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:37 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Views/home.html
+2020-03-02 12:56:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:56:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 12:56:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:56:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:56:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 12:58:34 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Views/home.html
+2020-03-02 12:58:34 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 12:58:34 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 12:58:34 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:15 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:01:15 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:15 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:15 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:39 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:01:39 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:39 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:39 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:52 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Views/home.html
+2020-03-02 13:01:52 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:52 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:52 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:01:52 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:01:52 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:01:52 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:01:52 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:01 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:02:01 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:01 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:01 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:01 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:02:01 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:01 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:01 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:40 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:02:40 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:40 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:40 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:40 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:02:40 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:40 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:40 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:02:46 DEBUG StaticDelegate:27 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:02:46 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:02:46 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:02:46 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:39 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:05:39 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:39 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:39 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:39 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:05:39 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:39 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:39 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:42 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:05:42 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:42 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:42 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:42 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:05:42 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:42 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:42 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:05:45 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:05:45 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:05:45 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:05:45 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:09 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:06:09 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:09 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:09 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:09 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:06:09 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:09 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:09 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:11 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:06:11 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:11 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:11 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:11 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:06:11 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:11 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:11 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:41 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Views/Employees/home.html
+2020-03-02 13:06:41 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:41 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:41 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:06:41 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:06:41 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:06:41 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:06:41 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:07:27 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:07:27 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:07:27 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:07:27 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:07:27 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:07:27 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:07:27 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:07:27 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:07:37 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:07:37 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:07:37 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:07:37 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:07:37 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:07:37 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:07:37 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:07:37 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:08:10 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:08:10 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:08:10 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:08:10 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:08:10 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:08:10 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:08:10 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:08:10 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:08:44 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:08:44 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:08:44 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:08:44 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:08:44 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:08:44 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:08:44 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:08:44 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:09:22 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:09:22 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:09:22 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:09:22 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:09:22 DEBUG StaticDelegate:35 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:09:22 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:09:22 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:09:22 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:11:00 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:11:00 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:11:00 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:11:00 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:11:00 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:11:00 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:11:00 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:11:00 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:11:16 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:11:16 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:11:16 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:11:16 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:11:16 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:11:16 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:11:16 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:11:16 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:11:19 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:14:18 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:14:18 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:18 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:18 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:18 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:14:18 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:18 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:18 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:37 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:14:37 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:37 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:37 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:37 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:14:37 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:37 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:37 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:37 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:14:37 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:14:52 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:14:52 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:52 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:52 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:52 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:14:52 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:14:52 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:14:52 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:14:55 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:14:58 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 13:16:31 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 13:16:31 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:16:31 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:16:31 DEBUG Delegate:100 method: authenticateEmployee - Trying to login:  
+2020-03-02 13:16:31 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 13:16:31 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: 
+2020-03-02 13:16:31 DEBUG EmployeeService:94 method: loginEmployee - emp was null
+2020-03-02 13:16:31 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: null
+2020-03-02 13:16:31 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:16:31 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:16:31 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:16:31 DEBUG Delegate:100 method: authenticateEmployee - Trying to login:  
+2020-03-02 13:16:32 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: 
+2020-03-02 13:16:32 DEBUG EmployeeService:94 method: loginEmployee - emp was null
+2020-03-02 13:16:32 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: null
+2020-03-02 13:16:32 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:16:32 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:16:32 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:16:32 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:16:32 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 13:16:32 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:16:32 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:16:32 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: null null
+2020-03-02 13:16:50 DEBUG Delegate:193 method: processRequest - Requesting: /api/login
+2020-03-02 13:16:50 DEBUG Delegate:172 method: getAuthToken - cookies was null
+2020-03-02 13:16:50 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 13:16:50 DEBUG Delegate:100 method: authenticateEmployee - Trying to login: dcalabry2@craigslist.org uHGbNsB
+2020-03-02 13:16:50 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: dcalabry2@craigslist.org
+2020-03-02 13:16:50 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=Wbylluqq9wpuEhjOHoNdtw4T9sNh71QcfN7ZpZUUZwl3y0rb6sgquPAauD4DW1De, token=null, email=dcalabry2@craigslist.org]
+2020-03-02 13:16:51 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: DSlH6BFaJJ83R6VsqYH3SWMaVzS6V2f8IGhvSZdm3SM48j1ek9sFuloGi4OsGdcv, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:16:51 DEBUG Delegate:104 method: authenticateEmployee - Trying to login in: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=Wbylluqq9wpuEhjOHoNdtw4T9sNh71QcfN7ZpZUUZwl3y0rb6sgquPAauD4DW1De, token=s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=, email=dcalabry2@craigslist.org]
+2020-03-02 13:16:51 DEBUG Delegate:136 method: setNameCookies - Setting first and last name cookies: Dorita Calabry
+2020-03-02 13:16:51 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:16:51 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:16:51 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=ksTj7d4eJ4bTSqCq6mVIHdqHmRaSu8ychLc1cv3IZ8/RBLfgxpZtYTX+odDutVzMpOIMUK6kvbqcqjxF8HRKbikcAQynC2d5iy5YBtyp+9w=, email=dcalabry2@craigslist.org]
+2020-03-02 13:16:51 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-02 13:16:51 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:16:52 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=pAWVANhe89bqUBQovNUDnxV2HqwXwzQL84p1auqI65xjGpZ5G9DkrdVObgwDYnrJksMBEeoDtCQoVy8KTU6ezZjlR4yWTMEtUkBJXobW9Ak=, email=dcalabry2@craigslist.org]
+2020-03-02 13:16:52 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-02 13:16:52 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-02 13:17:24 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:17:24 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:17:25 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=OST5kbgtmcWAHRZ4DvUDLDNrza03ySMgUpIFtzOZOkeSLJESaUYaRkpa8YVAh81nIswudvQmXv/4/v65sRMepjeuJ2Wh17hcTmFQGV2mgfw=, email=dcalabry2@craigslist.org]
+2020-03-02 13:17:25 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-02 13:17:25 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:17:25 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=LEoSBrhXpjeuPRT25rVGJaY1r8J8/y4GX52QSgkzxZbUq/N5DFLzOQk+bH/SKbKZSpWpUxsD7cTAl9ftFLdmWU+moDKc06oNAkOeO88RKoY=, email=dcalabry2@craigslist.org]
+2020-03-02 13:17:25 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:17:25 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-02 13:17:25 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-02 13:17:26 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:17:27 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:17:27 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=H1dU7IiAIwWptSeth//JMiBJMZeABcisxQOc/tzoSm3/Fk7YCZqMh+0HypKyZnsTGJ9KyCx2jK1Fqn8Cl/G83q+1cYCV8uyCbyH875Y2gCI=, email=dcalabry2@craigslist.org]
+2020-03-02 13:17:27 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-02 13:17:27 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:17:27 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=qrZnwFSAx/eNFy/gmLW0uVoHHOijb8l+UadMV4Q+I52yRvZRSxnjCnKTaWBWB3mPydQ5tG2JG5MrYqGsmnBDw0EjJVA9PWVbPxoG7+wYiLg=, email=dcalabry2@craigslist.org]
+2020-03-02 13:17:27 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:17:27 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-02 13:17:27 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-02 13:18:58 DEBUG Delegate:193 method: processRequest - Requesting: /
+2020-03-02 13:18:58 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:18:59 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=VqZHPVX2Ua5rfDPPyoPUFR0+KObM1sm+ZoCbi/2/NR2l+SYN0rvUpgBtMGEaOIckPVEEisRBkkpzUFLMYIY/ZMQKPQ3/ZyOWi6B+fc6BXek=, email=dcalabry2@craigslist.org]
+2020-03-02 13:18:59 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-02 13:18:59 DEBUG Delegate:166 method: getAuthToken - Found cookie: session-token, s2b4Jb5LU3kZUdiNLCPdguoPzBv0AhG2OuMiZwgJ2pdU+a/4lRq4RWb5ZnhZ8ak1ax0XRinFzDWdP+Ib9DQX5XxTZFlEu3yTvf2xgpv7pLU=
+2020-03-02 13:18:59 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=3, firstName=Dorita, isManager=false, lastName=Calabry, password=null, token=cJ5u7LH9oiKnUJM7E6lLEFCxZIM7/3rqEJ3JkxTBnowouJ9IJvlj1Yf1qKcQSrVdFKIUR19YNH3KfIZiIWhNI1xEwBiLWzN+bdVyrn1WUCo=, email=dcalabry2@craigslist.org]
+2020-03-02 13:18:59 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 13:18:59 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-02 13:18:59 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/home.js
