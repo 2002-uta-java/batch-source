@@ -36,7 +36,7 @@ public class ReimbDelegate {
 				List<Reimbursement> r = rDao.getPendingReimbursements();
 				
 				try (PrintWriter pw = response.getWriter()) {
-						pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+						pw.write(new ObjectMapper().writeValueAsString(r));
 				}
 			}
 			else if (reimbPath.startsWith("r")) {
@@ -45,7 +45,7 @@ public class ReimbDelegate {
 				List<Reimbursement> r = rDao.getResolvedReimbursements();
 				
 				try (PrintWriter pw = response.getWriter()) {
-					pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+					pw.write(new ObjectMapper().writeValueAsString(r));
 				}
 			}
 			else if (reimbPath.startsWith("e/")) {
@@ -55,15 +55,33 @@ public class ReimbDelegate {
 				List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
 				
 				if (r == null) {
-					response.sendError(404, "No reimb. with given ID");
+					response.sendError(404, "No empl. with given ID");
 				} else {
 					try (PrintWriter pw = response.getWriter()) {
-						pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+						pw.write(new ObjectMapper().writeValueAsString(r));
 					}
 				}
 			}
 			else {
-				response.sendError(404, "Bad request");
+				try {
+			      int idStr = Integer.parseInt(reimbPath.trim());
+			      System.out.println("Getting ReimbId: " + idStr);
+			      
+			      Reimbursement r = rDao.getReimbursementById(idStr);
+			      
+			      if (r == null) {
+						response.sendError(404, "No reimb. with given ID");
+					} else {
+						try (PrintWriter pw = response.getWriter()) {
+							pw.write(new ObjectMapper().writeValueAsString(r));
+						}
+					}
+			    }
+			    catch (NumberFormatException nfe)
+			    {
+			      System.out.println("NumberFormatException: " + nfe.getMessage());
+			      response.sendError(404, "Bad request");
+			    }
 			}
 		}
 		

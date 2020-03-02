@@ -11,6 +11,7 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getPendingReimbursements();
 	public List<Reimbursement> getResolvedReimbursements();
 	public List<Reimbursement> getReimbursementsByEmployeeId(int id);
+	public Reimbursement getReimbursementById(int id);
 	public void createReimbursement(Reimbursement r);
 	public void updateReimbursement(Reimbursement r, Employee e);
 	

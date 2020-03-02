@@ -170,5 +170,34 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		
 		return reimbursements;
 	}
+
+	@Override
+	public Reimbursement getReimbursementById(int id) {
+		String sql = "select * from reimbursement where id = ?";
+		Reimbursement r = null;
+		ResultSet rs = null;
+		
+		try (Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);) {
+			
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String purpose = rs.getString("purpose");
+				Float amount = rs.getFloat("amount");
+				int idEmployee = rs.getInt("id_employee");
+				int idManager = rs.getInt("id_manager");
+				String status = rs.getString("status");
+				r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
+			}
+			
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return r;
+	}
 	
 }

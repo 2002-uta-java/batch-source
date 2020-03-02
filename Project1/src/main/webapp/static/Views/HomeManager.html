@@ -148,21 +148,11 @@
 			<li><a href="#resolved-reim" role="tab" data-toggle="tab">Resolved</a></li>
 		</ul>
 		
-		<!-- Tab panes -->
+		<!-- LIST OF REIMBURSEMENTS FOR EACH TAB -->
 		<div class="tab-content">
-			<div class="tab-pane active" id="all-reim">
-				<a href="#" data-toggle="modal" data-target="#view-reimbursement" class="list-group-item list-group-item-action">
-					<!-- Need the AMOUNT, name, purpose, riembId, STATUS for every button-->
-					<!-- ONLY PENDING reimbursements should have modals -->
-					[REIMB HERE] amount, name, purpose, reimbId, status
-				</a>
-			</div>
-			<div class="tab-pane" id="pending-reim">
-				<a href="#" class="list-group-item list-group-item-action">[PENDING REIMB HERE]</a>
-			</div>
-			<div class="tab-pane" id="resolved-reim">
-				<a href="#" class="list-group-item list-group-item-action">[RESOLVED REIMB HERE]</a>
-			</div>
+			<div class="tab-pane active" id="all-reim"></div>
+			<div class="tab-pane" id="pending-reim"></div>
+			<div class="tab-pane" id="resolved-reim"></div>
 		</div>
 
 	</div>
@@ -173,34 +163,32 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 
-			<div class="modal-header">
+			<div class="modal-header"> <!-- (x) close button) -->
 				<h5 class="modal-title" id="exampleModalCenterTitle3">Resolve Reimbursement</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 
-			<div class="modal-body">
-				  
-				<!-- EDIT PROFILE FORM BODY -->
-				<h1>[AMOUNT]</h1>
-				<p>[INFO]</p>
-				<p>[more info...]</p>
-						
-				<!-- SUBMISSION BUTTON (and close button) -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="approve-btn" data-dismiss="modal">
-						[CHECKMARK]
-					</button>
-					<button type="button" class="btn btn-secondary" id="reject-btn" data-dismiss="modal">
-						[DECLINE]
-					</button>
-				</div>
+			<div class="modal-body" id="resolve-reimbursement-info">
+				<!-- REIMBURSEMENT FORM INFO -->
+				<!-- TODO: MUST BE DYNAMIC -->
+				<h1 id="single-reimb-amount">[AMOUNT]</h1>
+				<p id="single-reimb-name">[INFO]</p>
+				<p id="single-reimb-purpose">[more info...]</p>
+			</div>
+				<!-- ACCEPT OR REJECT BUTTONS -->
+				<!-- TODO: functionality of buttons (update db, reload page) -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="approve-btn" data-dismiss="modal">
+					[CHECKMARK IMG] <!-- does NOT have to be dynamic -->
+				</button>
+				<button type="button" class="btn btn-secondary" id="reject-btn" data-dismiss="modal">
+					[DECLINE IMG]
+				</button>
+			</div>
 
-	  	    </div>
-			
-
-		</div>
+	  	</div>
 		</div>
 	</div>
 

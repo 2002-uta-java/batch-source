@@ -100,13 +100,83 @@ function requestReimbursements(){
     let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbursements.
     let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING
     let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED
-    sendAjaxGetReimbursements(baseUrl1, loadReimbursements1);
-    sendAjaxGetReimbursements(baseUrl2, loadReimbursements2);
-    sendAjaxGetReimbursements(baseUrl3, loadReimbursements3);
+    sendAjaxGetReimbursements(baseUrl1, loadReimbursements);
+    sendAjaxGetReimbursements(baseUrl2, loadReimbursements);
+    sendAjaxGetReimbursements(baseUrl3, loadReimbursements);
 }
 
-// Check token to remain on page.
+// requestReimbursements AJAX helper.
 function sendAjaxGetReimbursements(url, callback) {
+    let token = sessionStorage.getItem("token");
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(url, this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+    }
+    xhr.setRequestHeader("Authorization", token);
+	xhr.send();
+}
+
+// Recieve data and load ALL reimbursements.
+function loadReimbursements(baseUrl, xhr) {
+    let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbs.
+    let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING reimbs.
+    let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED reimbs
+    let reimbs = JSON.parse(xhr.response);
+    // console.log(reimbs);
+
+    for (let r of reimbs) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+        // TODO: PLUS ADD REQUEST FOR THE NAME based on idEmployee
+
+        let reimElement = document.createElement("a");
+
+        // record data for future potential purposes.
+        reimElement.setAttribute("data-id", r.id);
+        reimElement.setAttribute("data-purpose", r.purpose);
+        reimElement.setAttribute("data-amount", r.amount);
+        reimElement.setAttribute("data-idEmployee", r.idEmployee);
+        reimElement.setAttribute("data-idManager", r.idManager);
+        reimElement.setAttribute("data-status", r.status);
+        reimElement.setAttribute("href", "#");
+        reimElement.setAttribute("data-toggle", "modal");
+
+        if (status == "pending") { // Pending reimbursements can be resolved in modals.
+            reimElement.setAttribute("data-target", "#view-reimbursement");
+            reimElement.setAttribute("class", "list-group-item list-group-item-action");
+            reimElement.setAttribute("onclick", "requestSingleReimbursement(this)")
+        }
+        else { // Resolved reimbursements need the manager who resolved it.
+            // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
+        }
+
+        reimElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
+
+        if (baseUrl == baseUrl1) {document.getElementById("all-reim").appendChild(reimElement);}
+        if (baseUrl == baseUrl2) {document.getElementById("pending-reim").appendChild(reimElement);}
+        if (baseUrl == baseUrl3) {document.getElementById("resolved-reim").appendChild(reimElement);}
+    }
+}
+
+function requestSingleReimbursement(elem){
+    let baseUrl = "http://localhost:8080/Project1/api/reimb/"; // Certain reimbursements with reimbId.
+
+    let reimbId = elem.getAttribute("data-id");
+
+    sendAjaxGetSingleReimbursements(baseUrl+reimbId, loadSingleReimbursement);
+}
+
+// loadSingleReimbursement AJAX helper.
+function sendAjaxGetSingleReimbursement(url, callback) {
     let token = sessionStorage.getItem("token");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -121,82 +191,17 @@ function sendAjaxGetReimbursements(url, callback) {
 	xhr.send();
 }
 
-// Recieve data and load ALL reimbursements.
-function loadReimbursements1(xhr) {
-    let reimbs = JSON.parse(xhr.response);
-    // console.log(reimbs);
+function loadSingleReimbursement(xhr) {
+    let r = JSON.parse(xhr.response);
 
-    for (let r of reimbs) {
-        let id = r.id;
-        let purpose = r.purpose;
-        let amount = r.amount;
-        let idEmployee = r.idEmployee; // Use the IDs to 'GET' their names. just return xhr, DONT use a callback
-        let idManager = r.idManager;
-        let status = r.status;
+    let htmlAmount = document.getElementById("single-reimb-amount");
+    let htmlName = document.getElementById("single-reimb-name");
+    let htmlPurpose = document.getElementById("single-reimb-purpose");
 
-        if (status === "pending") {
-            let pendingElement = document.createElement("a");
-            pendingElement.setAttribute("href", "#");
-            pendingElement.setAttribute("data-toggle", "modal");
-            pendingElement.setAttribute("data-target", "#view-reimbursement");
-            pendingElement.setAttribute("class", "list-group-item list-group-item-action");
-            pendingElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
-            document.getElementById("all-reim").appendChild(pendingElement);
-        }
-        else {
-            let resolvedElement = document.createElement("a");
-            resolvedElement.setAttribute("href", "#");
-            resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
-            resolvedElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
-            document.getElementById("all-reim").appendChild(resolvedElement);
-        }
-    }
+    htmlAmount.innerHTML = r.amount;
+    htmlName.innerHTML = r.firstName + " " + r.lastName;
+    htmlPurpose.innerHTML = r.purpose;
 }
-
-// Load PENDING reimbursements.
-function loadReimbursements2(xhr) {
-    let reimbs = JSON.parse(xhr.response);
-    // console.log(reimbs);
-
-    for (let r of reimbs) {
-        let id = r.id;
-        let purpose = r.purpose;
-        let amount = r.amount;
-        let idEmployee = r.idEmployee;
-        let idManager = r.idManager;
-        let status = r.status;
-
-        let pendingElement = document.createElement("a");
-        pendingElement.setAttribute("href", "#");
-        pendingElement.setAttribute("data-toggle", "modal");
-        pendingElement.setAttribute("data-target", "#view-reimbursement");
-        pendingElement.setAttribute("class", "list-group-item list-group-item-action");
-        pendingElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
-        document.getElementById("pending-reim").appendChild(pendingElement);
-    }
-}
-
-// Load RESOLVED reimbursements.
-function loadReimbursements3(xhr) {
-    let reimbs = JSON.parse(xhr.response);
-    // console.log(reimbs);
-
-    for (let r of reimbs) {
-        let id = r.id;
-        let purpose = r.purpose;
-        let amount = r.amount;
-        let idEmployee = r.idEmployee;
-        let idManager = r.idManager;
-        let status = r.status;
-
-        let resolvedElement = document.createElement("a");
-        resolvedElement.setAttribute("href", "#");
-        resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
-        resolvedElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
-        document.getElementById("resolved-reim").appendChild(resolvedElement);
-    }
-}
-
 
 // TODO: resolveReimbursementTool (click event)
 // will update database...
