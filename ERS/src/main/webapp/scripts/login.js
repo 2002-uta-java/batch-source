@@ -27,5 +27,5 @@ function redirectToHomePage(xhr) {
 	const lastName = xhr.getResponseHeader(LAST_NAME_HEADER);
 	const token = xhr.getResponseHeader(AUTH_TOKEN_HEADER);
 	
-	
+		
 }
