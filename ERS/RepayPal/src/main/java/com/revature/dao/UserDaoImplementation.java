@@ -34,6 +34,9 @@ public class UserDaoImplementation implements UserDao{
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		} 
 		finally {
 			if(rs!=null) {
@@ -65,6 +68,9 @@ public class UserDaoImplementation implements UserDao{
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return userCreated;
@@ -88,6 +94,9 @@ public class UserDaoImplementation implements UserDao{
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return userUpdated;
@@ -106,6 +115,9 @@ public class UserDaoImplementation implements UserDao{
 	} 
 	catch (SQLException e) {
 		//e.printStackTrace();
+	} catch (ClassNotFoundException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
 	}
 	
 	return users;

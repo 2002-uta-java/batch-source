@@ -27,6 +27,9 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 		return reimbursements;
@@ -49,6 +52,9 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 			
 		} catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		} finally {
 			try {
 				if(rs!=null) {
@@ -77,6 +83,9 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 		} 
 		catch (SQLException e) {
 			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return reimbursementCreated;
@@ -96,6 +105,9 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return reimbursementUpdated;
