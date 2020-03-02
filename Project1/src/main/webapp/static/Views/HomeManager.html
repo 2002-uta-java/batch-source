@@ -140,8 +140,58 @@
 	<!-- REIMBURSEMENT LIST ELEMENTS-->
     <h1>MANAGER HOMEPAGE</h1>
 	
+	<div class="list-group">
+
+		<a href="#" data-toggle="modal" data-target="#view-reimbursement" class="list-group-item list-group-item-action">
+			<!-- Need the AMOUNT, name, purpose, riembId, STATUS for every button-->
+			<!-- ONLY PENDING reimbursements should have modals -->
+			<!-- Must be able to bring up modal form with accept/reject buttons (x) quit out button -->
+			amount, name, purpose, reimbId, status
+
+		</a>
+
+		<a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  		<a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+  		<a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+	</div>
 	
-	
+	<!-- MODAL REIMBURSEMENT TOOL -->
+	<div class="modal fade" id="view-reimbursement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle3">Resolve Reimbursement</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				  
+				<!-- EDIT PROFILE FORM BODY -->
+				<h1>[AMOUNT]</h1>
+				<p>[INFO]</p>
+				<p>[more info...]</p>
+						
+				<!-- SUBMISSION BUTTON (and close button) -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="approve-btn" data-dismiss="modal">
+						[CHECKMARK]
+					</button>
+					<button type="button" class="btn btn-secondary" id="reject-btn" data-dismiss="modal">
+						[DECLINE]
+					</button>
+				</div>
+
+	  	    </div>
+			
+
+		</div>
+		</div>
+	</div>
+
+
 	
 
 	<!-- JS import -->
