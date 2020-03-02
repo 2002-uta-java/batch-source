@@ -645,3 +645,57 @@
 2020-03-02 14:24:35 DEBUG LogoutDelegate:50 method: getAuthToken - Found cookie: session-token, BedGBFro1QjtguHzHYwfBsG3Sit3LtPo0rOczZnhXh7Fbl9F1UcHACCxQzVnVROQbVWe6VyO00OFWQhv8qV0wxQOn5EIduUH+KSnMHur7Bo=
 2020-03-02 14:24:35 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
 2020-03-02 14:24:36 DEBUG LogoutDelegate:40 method: deleteCookies - Deleting cookies
+2020-03-02 17:02:59 DEBUG Delegate:191 method: processRequest - Requesting: /
+2020-03-02 17:02:59 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:02:59 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:02:59 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, BedGBFro1QjtguHzHYwfBsG3Sit3LtPo0rOczZnhXh7Fbl9F1UcHACCxQzVnVROQbVWe6VyO00OFWQhv8qV0wxQOn5EIduUH+KSnMHur7Bo=
+2020-03-02 17:02:59 FATAL ConnectionUtil:34 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-02 17:03:00 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 17:03:00 DEBUG Delegate:98 method: authenticateEmployee - Trying to login: null null
+2020-03-02 17:03:00 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 17:03:00 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:00 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:00 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, BedGBFro1QjtguHzHYwfBsG3Sit3LtPo0rOczZnhXh7Fbl9F1UcHACCxQzVnVROQbVWe6VyO00OFWQhv8qV0wxQOn5EIduUH+KSnMHur7Bo=
+2020-03-02 17:03:00 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 17:03:00 DEBUG Delegate:98 method: authenticateEmployee - Trying to login: null null
+2020-03-02 17:03:00 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-02 17:03:00 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-02 17:03:17 DEBUG Delegate:191 method: processRequest - Requesting: /api/login
+2020-03-02 17:03:17 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:17 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:17 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, BedGBFro1QjtguHzHYwfBsG3Sit3LtPo0rOczZnhXh7Fbl9F1UcHACCxQzVnVROQbVWe6VyO00OFWQhv8qV0wxQOn5EIduUH+KSnMHur7Bo=
+2020-03-02 17:03:17 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 17:03:17 DEBUG Delegate:98 method: authenticateEmployee - Trying to login: jdeath1@gravatar.com SF6ytDkUhs
+2020-03-02 17:03:18 DEBUG EmployeeService:73 method: loginEmployee - Looking for employee by email: jdeath1@gravatar.com
+2020-03-02 17:03:18 DEBUG EmployeeService:76 method: loginEmployee - Found employee: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=null, email=jdeath1@gravatar.com]
+2020-03-02 17:03:18 DEBUG EmployeeService:85 method: loginEmployee - Setting employee's token: WUdZYbvWgaMor8l4QqtTgPfnJAepnP7LdgQjmgohGHDitvBRZzoByf4GOi0jwQ3S, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:18 DEBUG Delegate:102 method: authenticateEmployee - Trying to login in: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=hQkxlvJ97mUa2JZS+/kjiv/bnMlyUt1UyM8mL0p0rhGRRGAHbNmsn9zuv3h5ID/D, token=sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=, email=jdeath1@gravatar.com]
+2020-03-02 17:03:18 DEBUG Delegate:134 method: setNameCookies - Setting first and last name cookies: Julius De'Ath
+2020-03-02 17:03:18 DEBUG Delegate:191 method: processRequest - Requesting: /
+2020-03-02 17:03:18 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:18 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:18 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:19 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=null, token=d8X9++4WHPHLh04JkKG/J9qgtuh5nCikqF4iT/vtS/KKzUOH3uU92ZKFOzjEafQsLK3fGyVI4j85vU3XISo8NsTux8OWu6G2oc/ilA4G600=, email=jdeath1@gravatar.com]
+2020-03-02 17:03:19 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-02 17:03:19 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:19 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:19 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:19 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: Employee [empId=2, firstName=Julius, isManager=false, lastName=De'Ath, password=null, token=N8SkvilobwYCTQud/1k/fLOnR/R64IqSOQitafgWCeshuGw2Nl25Gok00XPpzUrmx6GzJPzlbZEkaiohbcJ8KOfvNaWvUM8ysi/ytvauQ34=, email=jdeath1@gravatar.com]
+2020-03-02 17:03:19 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-02 17:03:19 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-02 17:03:24 DEBUG LogoutDelegate:50 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:24 DEBUG LogoutDelegate:50 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:24 DEBUG LogoutDelegate:50 method: getAuthToken - Found cookie: session-token, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:24 DEBUG LogoutDelegate:40 method: deleteCookies - Deleting cookies
+2020-03-02 17:03:24 DEBUG Delegate:191 method: processRequest - Requesting: /
+2020-03-02 17:03:24 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:24 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:24 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:25 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 17:03:25 DEBUG Delegate:98 method: authenticateEmployee - Trying to login: null null
+2020-03-02 17:03:25 DEBUG StaticDelegate:23 method: processRequest - Requesting: /static/Login.html
+2020-03-02 17:03:25 DEBUG Delegate:164 method: getAuthToken - Found cookie: first-name, Julius
+2020-03-02 17:03:25 DEBUG Delegate:164 method: getAuthToken - Found cookie: last-name, De'Ath
+2020-03-02 17:03:25 DEBUG Delegate:164 method: getAuthToken - Found cookie: session-token, sug/Q6ezydYAcejoWPc9wLKkV8Vn8RdbHcyk1rEjkCed3yQPVEIOgupNCsKRCMSIT90Pfl39U68G/rCBjWVHmYoueQwRlGqZnafiSvUk5Ho=
+2020-03-02 17:03:25 DEBUG Delegate:88 method: authenticateEmployee - Employee from authToken: null
+2020-03-02 17:03:25 DEBUG Delegate:98 method: authenticateEmployee - Trying to login: null null

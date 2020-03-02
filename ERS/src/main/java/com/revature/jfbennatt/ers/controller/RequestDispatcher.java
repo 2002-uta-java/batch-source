@@ -64,6 +64,7 @@ public class RequestDispatcher {
 				break;
 			case LOGOUT:
 				logoutDelegate.processRequest(request, response);
+				break;
 			default:
 				response.sendError(404);
 			}
