@@ -32,6 +32,14 @@ public abstract class Delegate {
 	 * header name that the last name will be returned in.
 	 */
 	public static final String LAST_NAME_HEADER = "last-name";
+	/**
+	 * header name for the email when the user attempts to login
+	 */
+	public static final String EMAIL_HEADER = "email";
+	/**
+	 * header name for the password when the user attempts to login
+	 */
+	public static final String PASSWORD_HEADER = "password";
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee
@@ -54,6 +62,12 @@ public abstract class Delegate {
 	 * (first and last name and token). The client should always grab the token
 	 * because it may change.
 	 * 
+	 * This method also handles a login attempt. If the token is not set (or is
+	 * incorrect), then this method checks to see if an email and password are
+	 * included in the request, if so it attempts to login said employee and returns
+	 * an {@link Employee} object that has its fields set (particularly the token
+	 * needed to subsequent accesses).
+	 * 
 	 * @param request the http request being made.
 	 * @return The employee making the request or <code>null</code> if the request
 	 *         is unauthorized.
@@ -68,6 +82,14 @@ public abstract class Delegate {
 			setNameHeaders(employee, response);
 			return employee;
 		} else {
+			// try to see if the request is attempting to login
+			final String email = request.getParameter(EMAIL_HEADER);
+			final String password = request.getParameter(PASSWORD_HEADER);
+
+			if (email != null && password != null) {
+				return empService.loginEmployee(email, password);
+			}
+
 			return null;
 		}
 	}
@@ -98,13 +120,14 @@ public abstract class Delegate {
 	 * is the entry-point to this class. It is the only method that should be called
 	 * by an outside entity.
 	 * 
+	 * @param path     URI for this request.
 	 * @param request  http request being made.
 	 * @param response response to be given for this request.
 	 * @throws IOException
 	 * @throws ServletException
 	 */
-	public final void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	public final void processRequest(final String path, final HttpServletRequest request,
+			final HttpServletResponse response) throws IOException, ServletException {
 		final Employee employee = authenticateEmployee(request, response);
 
 		if (employee == null) {
@@ -112,7 +135,7 @@ public abstract class Delegate {
 			request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
 		} else {
 			// the employee was authenticated, send this along to actually do something
-			processRequest(employee, request, response);
+			processRequest(employee, path, request, response);
 		}
 	}
 
@@ -123,6 +146,7 @@ public abstract class Delegate {
 	 * 
 	 * @param employee {@link Employee} object used to perform data retrievals (if
 	 *                 necessary).
+	 * @param path     URI for this request.
 	 * @param request  http request being made
 	 * @param response http response to be returned. The Employee's session token
 	 *                 and first and last names have already been added to the
@@ -133,7 +157,7 @@ public abstract class Delegate {
 	 * @throws IOException
 	 * @see #processRequest(HttpServletRequest, HttpServletResponse)
 	 */
-	protected abstract void processRequest(Employee employee, HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException;
+	protected abstract void processRequest(Employee employee, String path, HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException;
 
 }

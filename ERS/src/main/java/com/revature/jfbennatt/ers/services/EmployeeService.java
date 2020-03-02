@@ -4,17 +4,19 @@ import java.util.Random;
 
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
-import org.jasypt.util.text.TextEncryptor;
 
 import com.revature.jfbennatt.ers.daos.EmployeeDao;
-import com.revature.jfbennatt.ers.daos.postgres.EmployeeDaoPostgres;
 import com.revature.jfbennatt.ers.models.Employee;
 
 public class EmployeeService {
 
-	private final EmployeeDao empDao = new EmployeeDaoPostgres();
+	private EmployeeDao empDao;
 	private final PasswordEncryptor passEnc = new StrongPasswordEncryptor();
 	private final Random rand = new Random();
+
+	public void setEmployeeDao(final EmployeeDao empDao) {
+		this.empDao = empDao;
+	}
 
 	/**
 	 * Get/authenticate an employee from their session token.
@@ -53,7 +55,7 @@ public class EmployeeService {
 			}
 		}
 		// either the employee wasn't found, wasn't authenticated, or setting the token
-		// failed, so return null signalling a failure to log in.
+		// failed, so return null signaling a failure to log in.
 		return null;
 	}
 

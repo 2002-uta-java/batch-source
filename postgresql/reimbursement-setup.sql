@@ -1,8 +1,8 @@
 create table employees (empl_id serial constraint p_empl_id primary key, empl_email varchar(40) unique not null,
-password varchar(64) not null,
+password char(64) not null,
 empl_first_name varchar(20) not null,
 empl_last_name varchar(20) not null,
-session_token varchar(64) unique,
+session_token char(64) unique,
 is_manager boolean not null);
 
 drop table employees;

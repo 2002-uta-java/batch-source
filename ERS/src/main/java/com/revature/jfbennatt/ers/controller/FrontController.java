@@ -15,6 +15,7 @@ public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String STATIC = "/static";
+	public static final String CONTEXT_ROOT = "/ERS";
 
 	private final RequestDispatcher dispatcher = new RequestDispatcher();
 
@@ -28,8 +29,6 @@ public class FrontController extends DefaultServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		Logger.getRootLogger().debug("adding employee service to viewDelegate");
-		dispatcher.init();
 	}
 
 	/**

@@ -14,6 +14,7 @@ public class ConnectionUtil {
 	private static final String URL = "jdbc:postgresql://" + AWS_URL + "/postgres";
 	private static final String USERNAME = System.getenv("JDBC_USERNAME");
 	private static final String PASSWORD = System.getenv("JDBC_PASSWORD");
+	private static final boolean IS_TEST = Boolean.parseBoolean(System.getenv("DB_TEST"));
 
 	private ConnectionUtil() {
 		super();
@@ -29,11 +30,27 @@ public class ConnectionUtil {
 	}
 
 	public static Connection getConnection() {
+		if (IS_TEST) {
+			return getH2Connection();
+		} else {
+			try {
+				if (con == null || con.isClosed())
+					con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			} catch (SQLException e) {
+				Logger.getRootLogger().fatal(e.getStackTrace());
+			}
+		}
+
+		return con;
+	}
+
+	public static Connection getH2Connection() {
 		try {
-			if (con == null || con.isClosed())
-				con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			if (con == null || con.isClosed()) {
+				con = DriverManager.getConnection("jdbc:h2:~/test");
+			}
 		} catch (SQLException e) {
-			Logger.getRootLogger().fatal(e.getStackTrace());
+			Logger.getRootLogger().fatal(e.getMessage());
 		}
 
 		return con;

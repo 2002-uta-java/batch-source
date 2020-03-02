@@ -96,8 +96,38 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	 */
 	@Override
 	public Employee getEmployeeByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_EMAIL + " = ?";
+		Employee emp = null;
+		ResultSet rs = null;
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				emp = new Employee();
+				emp.setEmpId(rs.getInt(EMP_ID));
+				emp.setEmail(rs.getString(EMP_EMAIL));
+				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
+				emp.setLastName(rs.getString(EMP_LAST_NAME));
+				emp.setPassword(rs.getString(EMP_PASSWORD));
+				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
+				emp.setToken(rs.getString(EMP_SESSION_TOKEN));
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return emp;
 	}
 
 	/**

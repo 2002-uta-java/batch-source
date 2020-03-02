@@ -1,1 +1,7 @@
 2020-02-28 16:02:18 DEBUG PasswordGen:14 method: main - 4Zvo0XePluiWf9PGHXYLuZXdPMJnIqdG3ljBmI+9Yj57WOyDBXQbai/ptXURgT15
+2020-03-01 20:14:46 ERROR EmployeeDaoPostgres:118 method: getEmployeeByEmail - Column "password" not found [42122-199]
+2020-03-01 20:15:37 ERROR EmployeeDaoPostgres:118 method: getEmployeeByEmail - Column "password" not found [42122-199]
+2020-03-01 20:20:36 ERROR EmployeeDaoPostgres:118 method: getEmployeeByEmail - Column "password" not found [42122-199]
+2020-03-01 20:20:37 ERROR EmployeeDaoPostgres:118 method: getEmployeeByEmail - Column "password" not found [42122-199]
+2020-03-01 20:21:42 ERROR EmployeeDaoPostgres:118 method: getEmployeeByEmail - Column "password" not found [42122-199]
+2020-03-01 21:17:26 ERROR EmployeeDaoPostgres:154 method: setTokenById - Failed to update employee 234

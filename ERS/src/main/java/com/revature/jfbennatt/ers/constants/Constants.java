@@ -6,6 +6,8 @@ import java.io.PrintStream;
 
 import org.apache.log4j.Logger;
 
+import com.revature.jfbennatt.ers.controller.FrontController;
+import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 
 /**
@@ -30,6 +32,12 @@ public class Constants {
 					"header for getting the first name of an employee");
 			printVariable(ps, "LAST_NAME_HEADER", Delegate.LAST_NAME_HEADER,
 					"header for getting the last name of an employee");
+			printVariable(ps, "LOGIN_API",
+					FrontController.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.LOGIN,
+					"URI for logging in a user");
+			printVariable(ps, "EMAIL_HEADER", Delegate.EMAIL_HEADER, "header for sending the email when logging in");
+			printVariable(ps, "PASSWORD_HEADER", Delegate.PASSWORD_HEADER,
+					"header for sending the password when logging in");
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
 		}
