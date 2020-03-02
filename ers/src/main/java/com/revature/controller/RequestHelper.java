@@ -19,9 +19,7 @@ public class RequestHelper {
 	public void processGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getRequestURI().substring(req.getContextPath().length());//req.getServletPath();
 		System.out.println(path);
-		if (path.startsWith("/")) {
-			req.getRequestDispatcher("/static/loginPage.html").forward(req, res);
-		} else if (path.startsWith("/api/")) {
+		if (path.startsWith("/api/")) {
 			if (!login.isAuthorized(req, res)) {
 				res.sendError(401);
 				return;

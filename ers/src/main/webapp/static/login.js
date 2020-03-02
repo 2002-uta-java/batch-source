@@ -3,6 +3,7 @@
  */
 
 document.getElementById("login-btn").addEventListener("click", requestLogin);
+console.log("hello from login.js");
 
 function requestLogin() {
     let user = document.getElementById("username").value;
