@@ -27,6 +27,13 @@ public class ConnectionUtil {
 		} catch (ClassNotFoundException e) {
 			Logger.getRootLogger().fatal("Failed to load Postgresql JDBC driver: " + e.getMessage());
 		}
+
+		try {
+			Class.forName("org.h2.Driver");
+		} catch (ClassNotFoundException e) {
+			Logger.getRootLogger().fatal("Failed to load Postgresql JDBC driver: " + e.getMessage());
+			System.out.println("Failed to load Postgresql JDBC driver: " + e.getMessage());
+		}
 	}
 
 	public static Connection getConnection() {

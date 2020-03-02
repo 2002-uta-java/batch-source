@@ -19,9 +19,8 @@ public class LoginDelegate extends Delegate {
 		// The Delegate class has already retrieved a valid employee, so this employee
 		// SHOULD be able to login. This just needs to set up the response headers for
 		// the client.
-		response.setHeader(FIRST_NAME_HEADER, employee.getFirstName());
-		response.setHeader(LAST_NAME_HEADER, employee.getLastName());
-		response.setHeader(AUTH_TOKEN_HEADER, employee.getToken());
+		setAuthorizationCookie(employee, response);
+		setNameCookies(employee, response);
 		response.setStatus(200);
 	}
 

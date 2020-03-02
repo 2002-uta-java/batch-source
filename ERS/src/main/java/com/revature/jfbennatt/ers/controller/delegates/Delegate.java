@@ -3,8 +3,11 @@ package com.revature.jfbennatt.ers.controller.delegates;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import com.revature.jfbennatt.ers.models.Employee;
 import com.revature.jfbennatt.ers.services.EmployeeService;
@@ -40,6 +43,10 @@ public abstract class Delegate {
 	 * header name for the password when the user attempts to login
 	 */
 	public static final String PASSWORD_HEADER = "password";
+	/**
+	 * Value used to set the max age of a cookie.
+	 */
+	public static final int COOKIE_TIME = 100;
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee
@@ -74,20 +81,26 @@ public abstract class Delegate {
 	 */
 	protected final Employee authenticateEmployee(final HttpServletRequest request,
 			final HttpServletResponse response) {
-		final String token = request.getHeader(AUTH_TOKEN_HEADER);
-		final Employee employee = empService.getEmployeeByToken(token);
+		final Cookie[] cookies = request.getCookies();
+		final String encryptedToken = getAuthToken(cookies);
+		final Employee employee = empService.getEmployeeByToken(encryptedToken);
 
 		if (employee != null) {
-			setAuthorizationHeader(employee, response);
-			setNameHeaders(employee, response);
+//			setAuthorizationCookie(employee, response);
+//			setNameCookies(employee, response);
 			return employee;
 		} else {
 			// try to see if the request is attempting to login
-			final String email = request.getParameter(EMAIL_HEADER);
-			final String password = request.getParameter(PASSWORD_HEADER);
+			final String email = request.getHeader(EMAIL_HEADER);
+			final String password = request.getHeader(PASSWORD_HEADER);
 
+			Logger.getRootLogger().debug("Trying to login: " + email + " " + password);
+			System.out.println("Trying to login: " + email + " " + password);
 			if (email != null && password != null) {
-				return empService.loginEmployee(email, password);
+				final Employee emp = empService.loginEmployee(email, password);
+				Logger.getRootLogger().debug("Trying to login in: " + emp);
+				System.out.println("Trying to login in: " + emp);
+				return emp;
 			}
 
 			return null;
@@ -95,24 +108,61 @@ public abstract class Delegate {
 	}
 
 	/**
-	 * Sets the authorization header for the response.
+	 * Sets the first and last name (unencrypted) cookie for the client. The cookies
+	 * are set to expire when the browser is closed.
 	 * 
-	 * @param employee Employee object to set token for.
-	 * @param response http response being returned.
+	 * @param employee {@link Employee} object to get the name from.
+	 * @param response HTTP response to add the cookies to.
 	 */
-	protected final void setAuthorizationHeader(final Employee employee, final HttpServletResponse response) {
-		response.setHeader(AUTH_TOKEN_HEADER, employee.getToken());
+	protected void setNameCookies(Employee employee, HttpServletResponse response) {
+		final Cookie firstName = new Cookie(FIRST_NAME_HEADER, employee.getFirstName());
+		final Cookie lastName = new Cookie(LAST_NAME_HEADER, employee.getLastName());
+
+		// set lifetime to expire when the browser is closed
+//		firstName.setMaxAge(COOKIE_TIME);
+//		lastName.setMaxAge(COOKIE_TIME);
+
+		response.addCookie(firstName);
+		response.addCookie(lastName);
+
+		Logger.getRootLogger()
+				.debug("Setting first and last name cookies: " + firstName.getValue() + " " + lastName.getValue());
+		System.out.println("Setting first and last name cookies: " + firstName.getValue() + " " + lastName.getValue());
 	}
 
 	/**
-	 * Sets the first and last name headers for the response.
+	 * Sets the cookie value for this employee so that the client can continue to
+	 * access the server resources. The cookie is set to expire when the browser is
+	 * closed.
 	 * 
-	 * @param employee Employee object to set names for.
-	 * @param response http response being returned.
+	 * @param employee {@link Employee} object which holds a token to be set.
+	 * @param response The HTTP response to add the cookie to.
 	 */
-	protected final void setNameHeaders(final Employee employee, final HttpServletResponse response) {
-		response.setHeader(FIRST_NAME_HEADER, employee.getFirstName());
-		response.setHeader(LAST_NAME_HEADER, employee.getLastName());
+	protected void setAuthorizationCookie(Employee employee, HttpServletResponse response) {
+		final Cookie authToken = new Cookie(AUTH_TOKEN_HEADER, employee.getToken());
+
+		// set cookie to be deleted when browser is closed
+//		authToken.setMaxAge(COOKIE_TIME);
+		authToken.setDomain("localhost");
+		response.addCookie(authToken);
+		Logger.getLogger("Setting Authorization cookie: " + employee.getToken());
+		System.out.println("Setting Authorization cookie: " + employee.getToken());
+	}
+
+	private String getAuthToken(Cookie[] cookies) {
+		if (cookies != null) {
+			for (final Cookie cookie : cookies) {
+				Logger.getRootLogger().debug("Found cookie: " + cookie.getName() + ", " + cookie.getValue());
+				System.out.println("Found cookie: " + cookie.getName() + ", " + cookie.getValue());
+				if (cookie.getName().equals(AUTH_TOKEN_HEADER))
+					return cookie.getValue();
+			}
+		} else {
+			Logger.getRootLogger().debug("cookies was null");
+			System.out.println("cookies was null");
+		}
+		// either there were no cookies or the auth-token wasn't set
+		return null;
 	}
 
 	/**
