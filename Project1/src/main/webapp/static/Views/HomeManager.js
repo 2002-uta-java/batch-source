@@ -96,10 +96,8 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 	xhr.send(data);
 }
 
-// MANAGER-EXCLUSIVE FUNCTIONS
-// TODO: viewALLReimbursements (active by default)
 function requestReimbursements(){
-    let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbursements list.
+    let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbursements.
     let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING
     let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED
     sendAjaxGetReimbursements(baseUrl1, loadReimbursements1);
@@ -126,14 +124,13 @@ function sendAjaxGetReimbursements(url, callback) {
 // Recieve data and load ALL reimbursements.
 function loadReimbursements1(xhr) {
     let reimbs = JSON.parse(xhr.response);
-    console.log(reimb);
+    // console.log(reimbs);
 
-    // PENDING must be modal
-    for (let r in riembs) {
+    for (let r of reimbs) {
         let id = r.id;
         let purpose = r.purpose;
         let amount = r.amount;
-        let idEmployee = r.idEmployee;
+        let idEmployee = r.idEmployee; // Use the IDs to 'GET' their names. just return xhr, DONT use a callback
         let idManager = r.idManager;
         let status = r.status;
 
@@ -143,12 +140,14 @@ function loadReimbursements1(xhr) {
             pendingElement.setAttribute("data-toggle", "modal");
             pendingElement.setAttribute("data-target", "#view-reimbursement");
             pendingElement.setAttribute("class", "list-group-item list-group-item-action");
+            pendingElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
             document.getElementById("all-reim").appendChild(pendingElement);
         }
         else {
             let resolvedElement = document.createElement("a");
             resolvedElement.setAttribute("href", "#");
             resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
+            resolvedElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
             document.getElementById("all-reim").appendChild(resolvedElement);
         }
     }
@@ -157,9 +156,9 @@ function loadReimbursements1(xhr) {
 // Load PENDING reimbursements.
 function loadReimbursements2(xhr) {
     let reimbs = JSON.parse(xhr.response);
-    console.log(reimb);
+    // console.log(reimbs);
 
-    for (let r in riembs) {
+    for (let r of reimbs) {
         let id = r.id;
         let purpose = r.purpose;
         let amount = r.amount;
@@ -172,6 +171,7 @@ function loadReimbursements2(xhr) {
         pendingElement.setAttribute("data-toggle", "modal");
         pendingElement.setAttribute("data-target", "#view-reimbursement");
         pendingElement.setAttribute("class", "list-group-item list-group-item-action");
+        pendingElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
         document.getElementById("pending-reim").appendChild(pendingElement);
     }
 }
@@ -179,9 +179,9 @@ function loadReimbursements2(xhr) {
 // Load RESOLVED reimbursements.
 function loadReimbursements3(xhr) {
     let reimbs = JSON.parse(xhr.response);
-    console.log(reimb);
+    // console.log(reimbs);
 
-    for (let r in riembs) {
+    for (let r of reimbs) {
         let id = r.id;
         let purpose = r.purpose;
         let amount = r.amount;
@@ -192,6 +192,7 @@ function loadReimbursements3(xhr) {
         let resolvedElement = document.createElement("a");
         resolvedElement.setAttribute("href", "#");
         resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
+        resolvedElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
         document.getElementById("resolved-reim").appendChild(resolvedElement);
     }
 }
