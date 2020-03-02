@@ -46,7 +46,7 @@ public abstract class Delegate {
 	/**
 	 * Value used to set the max age of a cookie.
 	 */
-	public static final int COOKIE_TIME = 100;
+	private static final int COOKIE_TIME = 100;
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee
