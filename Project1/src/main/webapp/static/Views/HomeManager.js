@@ -127,7 +127,6 @@ function loadReimbursements(baseUrl, xhr) {
     let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING reimbs.
     let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED reimbs
     let reimbs = JSON.parse(xhr.response);
-    // console.log(reimbs);
 
     for (let r of reimbs) {
         let id = r.id;
@@ -141,19 +140,22 @@ function loadReimbursements(baseUrl, xhr) {
         let reimElement = document.createElement("a");
 
         // record data for future potential purposes.
+        reimElement.setAttribute("id", "r" + r.id);
         reimElement.setAttribute("data-id", r.id);
         reimElement.setAttribute("data-purpose", r.purpose);
         reimElement.setAttribute("data-amount", r.amount);
         reimElement.setAttribute("data-idEmployee", r.idEmployee);
         reimElement.setAttribute("data-idManager", r.idManager);
         reimElement.setAttribute("data-status", r.status);
+        reimElement.setAttribute("data-eFirstName", "TODO");
+        reimElement.setAttribute("data-eLastName", "TODO");
         reimElement.setAttribute("href", "#");
-        reimElement.setAttribute("data-toggle", "modal");
+        reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
         if (status == "pending") { // Pending reimbursements can be resolved in modals.
             reimElement.setAttribute("data-target", "#view-reimbursement");
-            reimElement.setAttribute("class", "list-group-item list-group-item-action");
-            reimElement.setAttribute("onclick", "requestSingleReimbursement(this)")
+            reimElement.setAttribute("data-toggle", "modal");
+            reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + r.id + "')");
         }
         else { // Resolved reimbursements need the manager who resolved it.
             // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
@@ -167,40 +169,22 @@ function loadReimbursements(baseUrl, xhr) {
     }
 }
 
-function requestSingleReimbursement(elem){
-    let baseUrl = "http://localhost:8080/Project1/api/reimb/"; // Certain reimbursements with reimbId.
+function loadSingleReimbursement(reimbHtmlId){
+    // let baseUrl = "http://localhost:8080/Project1/api/reimb/"; // Certain reimbursements with reimbId.
 
-    let reimbId = elem.getAttribute("data-id");
-
-    sendAjaxGetSingleReimbursements(baseUrl+reimbId, loadSingleReimbursement);
-}
-
-// loadSingleReimbursement AJAX helper.
-function sendAjaxGetSingleReimbursement(url, callback) {
-    let token = sessionStorage.getItem("token");
-	let xhr = new XMLHttpRequest();
-	xhr.open("GET", url);
-	xhr.onreadystatechange = function(){
-		if(this.readyState===4 && this.status===200){
-            callback(this);
-		} else if (this.readyState===4){
-            console.log("Ajax failure.");
-		}
-    }
-    xhr.setRequestHeader("Authorization", token);
-	xhr.send();
-}
-
-function loadSingleReimbursement(xhr) {
-    let r = JSON.parse(xhr.response);
+    let r = document.getElementById(reimbHtmlId);
+    let purpose = r.getAttribute("data-purpose");
+    let firstName = r.getAttribute("data-eFirstName");
+    let lastName = r.getAttribute("data-eLastName");
+    let amount = r.getAttribute("data-amount");
 
     let htmlAmount = document.getElementById("single-reimb-amount");
     let htmlName = document.getElementById("single-reimb-name");
     let htmlPurpose = document.getElementById("single-reimb-purpose");
 
-    htmlAmount.innerHTML = r.amount;
-    htmlName.innerHTML = r.firstName + " " + r.lastName;
-    htmlPurpose.innerHTML = r.purpose;
+    htmlAmount.innerHTML = amount;
+    htmlName.innerHTML = firstName + " " + lastName;
+    htmlPurpose.innerHTML = purpose;
 }
 
 // TODO: resolveReimbursementTool (click event)
