@@ -28,6 +28,10 @@ public class Client implements Serializable {
 		this.clientPermissionId = clientPermissionId;
 	}
 
+	public Client(int clientId, String clientPassword) {
+
+	}
+
 	public int getClientId() {
 		return clientId;
 	}

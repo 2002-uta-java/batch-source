@@ -39,6 +39,18 @@ public class RequestHelper {
 			case "employeeemail" :
 				employeeDelegate.getEmail(request, response);
 				break;
+			case "reimbursementall":
+				reimbursementDelegate.getAllReimbursement(request, response);
+				break;
+			case "reimbursementid":
+				reimbursementDelegate.getReimbursementId(request, response);
+				break;
+			case "reimbursementstatus":
+				reimbursementDelegate.getStatus(request, response);
+				break;
+			case "reimbursementreciept":
+				reimbursementDelegate.getReciept(request, response);
+				break;
 			default:
 				response.sendError(404, "Record not supported");
 			}
@@ -56,6 +68,15 @@ public class RequestHelper {
 		case "/employeenew":
 			employeeDelegate.createEmployee(request, response);
 			break;
+		case "/reimbursementnew":
+			reimbursementDelegate.createReimbursemetn(request, response);
+			break;
+		case "/logon":
+			userDelegate.clientAuth(request, response);
+			break;
+		case "/clientnew":
+			userDelegate.clientCreate(request, response);
+			break;
 		default:
 			response.sendError(405);
 		}
@@ -66,6 +87,12 @@ public class RequestHelper {
 		switch(path) {
 		case "/employeeupdate":
 			employeeDelegate.updateEmployee(request, response);
+			break;
+		case "/reimbursementupdate":
+			reimbursementDelegate.updateReimbursement(request, response);
+			break;
+		case "/clientupdate":
+			userDelegate.updateClient(request, response);
 			break;
 		default:
 			response.sendError(405);
@@ -78,8 +105,8 @@ public class RequestHelper {
 		case "/employeedel":
 			employeeDelegate.deleteEmployee(request, response);
 			break;
-		case "":
-			
+		case "/reimbursementdel":
+			reimbursementDelegate.deleteReimbursement(request, response);
 			break;
 		default:
 			response.sendError(405);

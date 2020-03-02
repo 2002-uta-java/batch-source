@@ -15,6 +15,7 @@ public interface ClientDao {
 	public int getClientPermission(int id);
 	public int updateClientPermission(int permission, int id);
 	public int deleteClient(int id);
-	
+	public int verfiyClientId(int id);
+
 
 }

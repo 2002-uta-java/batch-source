@@ -133,7 +133,6 @@ public class ClientDaoImpl implements ClientDao {
 				
 				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			log.error("Unable to get user password" + e);
 		} finally {
 			try { if (rs!=null) {
@@ -301,4 +300,32 @@ public class ClientDaoImpl implements ClientDao {
 		return result;
 	}
 
+	@Override
+	public int verfiyClientId(int id) {
+		String sql = "select client_id from client where client_id = ?";
+		ResultSet rs = null;
+		int result = 0;
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);) {
+				ps.setInt(1, id);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					int i = rs.getInt("client_id");
+					Client cl1 = new Client();
+					result = cl1.setClientId(i);
+				}
+		} catch (SQLException e) {
+			log.error("Unable to verfiy clientId" + e);
+		} finally {
+			try {if (rs!=null) {
+				rs.close();
+				}
+			} catch (SQLException e) {
+				log.error("Unable to close resource for verfiy client" + e);
+				}
+			}
+			return result;
+		}
 }

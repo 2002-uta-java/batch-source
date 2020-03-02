@@ -46,6 +46,14 @@ public class Reimbursement extends Employee implements Serializable {
 		
 	}
 
+	public Reimbursement(String type, String rdate, double ramount, String reciept, String notes, int emplId,
+			int managerId, String adate, double amount, String comment, String status) {
+	}
+
+	public Reimbursement(String type, String adate, double amount, String comment, String status) {
+		
+	}
+
 	public int getRemId() {
 		return remId;
 	}
@@ -58,24 +66,24 @@ public class Reimbursement extends Employee implements Serializable {
 		return remType;
 	}
 
-	public void setRemType(String remType) {
-		this.remType = remType;
+	public String setRemType(String remType) {
+		return this.remType = remType;
 	}
 
 	public double getRemRequestedAmount() {
 		return remRequestedAmount;
 	}
 
-	public void setRemRequestedAmount(double remRequestedAmount) {
-		this.remRequestedAmount = remRequestedAmount;
+	public double setRemRequestedAmount(double remRequestedAmount) {
+		return this.remRequestedAmount = remRequestedAmount;
 	}
 
 	public String getRemRequestDate() {
 		return remRequestDate;
 	}
 
-	public void setRemRequestDate(String remRequestDate) {
-		this.remRequestDate = remRequestDate;
+	public String setRemRequestDate(String remRequestDate) {
+		return this.remRequestDate = remRequestDate;
 	}
 
 	public String getRemReciept() {
@@ -90,32 +98,32 @@ public class Reimbursement extends Employee implements Serializable {
 		return remNotes;
 	}
 
-	public void setRemNotes(String remNotes) {
-		this.remNotes = remNotes;
+	public String setRemNotes(String remNotes) {
+		return this.remNotes = remNotes;
 	}
 
 	public String getRemApprovedDate() {
 		return remApprovedDate;
 	}
 
-	public void setRemApprovedDate(String remApprovedDate) {
-		this.remApprovedDate = remApprovedDate;
+	public String setRemApprovedDate(String remApprovedDate) {
+		return this.remApprovedDate = remApprovedDate;
 	}
 
 	public double getRemApprovedAmount() {
 		return remApprovedAmount;
 	}
 
-	public void setRemApprovedAmount(double remApprovedAmount) {
-		this.remApprovedAmount = remApprovedAmount;
+	public double setRemApprovedAmount(double remApprovedAmount) {
+		return this.remApprovedAmount = remApprovedAmount;
 	}
 
 	public String getRemComment() {
 		return remComment;
 	}
 
-	public void setRemComment(String remComment) {
-		this.remComment = remComment;
+	public String setRemComment(String remComment) {
+		return this.remComment = remComment;
 	}
 
 	public String getRemStatus() {
