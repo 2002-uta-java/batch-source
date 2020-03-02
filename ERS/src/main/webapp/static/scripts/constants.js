@@ -15,3 +15,5 @@ const LOGIN_API = "/ERS/api/login";
 const EMAIL_HEADER = "email";
 // header for sending the password when logging in
 const PASSWORD_HEADER = "password";
+// URI for logging out a user
+const LOGOUT_API = "/ERS/api/logout";

@@ -125,4 +125,14 @@ public class EmployeeService {
 			return (char) ('0' + (c - 52));
 		}
 	}
+
+	public boolean deleteSessionToken(String encryptedToken) {
+		if (encryptedToken != null) {
+			final String token = textEnc.decrypt(encryptedToken);
+			return empDao.deleteSessionToken(token);
+		}
+
+		// there was no token to delete
+		return false;
+	}
 }

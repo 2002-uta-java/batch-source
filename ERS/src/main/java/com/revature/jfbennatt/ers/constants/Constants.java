@@ -21,7 +21,7 @@ import com.revature.jfbennatt.ers.controller.delegates.Delegate;
  *
  */
 public class Constants {
-	public static final String CONSTANTS_FILE = "src/main/webapp/scripts/constants.js";
+	public static final String CONSTANTS_FILE = "src/main/webapp/static/scripts/constants.js";
 
 	public static void main(String[] args) {
 		try (final PrintStream ps = new PrintStream(new File(CONSTANTS_FILE))) {
@@ -38,6 +38,9 @@ public class Constants {
 			printVariable(ps, "EMAIL_HEADER", Delegate.EMAIL_HEADER, "header for sending the email when logging in");
 			printVariable(ps, "PASSWORD_HEADER", Delegate.PASSWORD_HEADER,
 					"header for sending the password when logging in");
+			printVariable(ps, "LOGOUT_API",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.LOGOUT,
+					"URI for logging out a user");
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
 		}

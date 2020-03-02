@@ -43,4 +43,13 @@ public interface EmployeeDao {
 	 */
 	public boolean setTokenById(int empId, String token);
 
+	/**
+	 * Attempts to delete the plain text token from the database.
+	 * 
+	 * @param token Session token of the user that will be deleted (the token, not
+	 *              the user).
+	 * @return Whether or not the token was actually deleted
+	 */
+	public boolean deleteSessionToken(String token);
+
 }

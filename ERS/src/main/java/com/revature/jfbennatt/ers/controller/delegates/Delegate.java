@@ -89,8 +89,6 @@ public abstract class Delegate {
 		System.out.println("Employee from authToken: " + employee);
 
 		if (employee != null) {
-//			setAuthorizationCookie(employee, response);
-//			setNameCookies(employee, response);
 			return employee;
 		} else {
 			// try to see if the request is attempting to login
@@ -145,7 +143,7 @@ public abstract class Delegate {
 	 * @param employee {@link Employee} object which holds a token to be set.
 	 * @param response The HTTP response to add the cookie to.
 	 */
-	protected void setAuthorizationCookie(Employee employee, HttpServletResponse response) {
+	protected static void setAuthorizationCookie(Employee employee, HttpServletResponse response) {
 		final Cookie authToken = new Cookie(AUTH_TOKEN_HEADER, employee.getToken());
 
 		// set cookie to be deleted when browser is closed
@@ -160,7 +158,7 @@ public abstract class Delegate {
 		System.out.println("Setting Authorization cookie: " + employee.getToken());
 	}
 
-	private String getAuthToken(Cookie[] cookies) {
+	private static String getAuthToken(Cookie[] cookies) {
 		if (cookies != null) {
 			for (final Cookie cookie : cookies) {
 				Logger.getRootLogger().debug("Found cookie: " + cookie.getName() + ", " + cookie.getValue());

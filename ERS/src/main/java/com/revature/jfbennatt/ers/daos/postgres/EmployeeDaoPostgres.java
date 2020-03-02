@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import org.apache.log4j.Logger;
 
@@ -163,4 +164,33 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		// employee
 		return true;
 	}
+
+	/**
+	 * @see {@link EmployeeDao#deleteSessionToken(String)}
+	 */
+	@Override
+	public boolean deleteSessionToken(String token) {
+		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_SESSION_TOKEN + " = ? where " + EMP_SESSION_TOKEN
+				+ " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.setNull(1, Types.VARCHAR);
+			ps.setString(2, token);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed delete a token: " + token);
+				System.out.println("Failed delete a token: " + token);
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			System.out.println("deleteSessionToken failed: " + e.getMessage());
+		}
+		// if we get here, the delete was successful
+		return true;
+	}
+
 }

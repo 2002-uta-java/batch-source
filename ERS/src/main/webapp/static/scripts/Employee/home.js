@@ -4,7 +4,7 @@
 
 window.onload = function() {
 	// setup links for navigation
-	document.getElementById("logout-link").setAttribute("href", LOGOUT);
+	document.getElementById("logout-link").setAttribute("href", LOGOUT_API);
 
 	const jumbo = document.getElementById("welcome-display");
 	const firstName = getCookie(FIRST_NAME_HEADER);
