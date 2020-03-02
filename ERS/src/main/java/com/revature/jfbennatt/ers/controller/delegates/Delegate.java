@@ -22,7 +22,7 @@ public abstract class Delegate {
 	/**
 	 * Header name for the session token (or authorization token)
 	 */
-	public static final String AUTHORIZATION_HEADER = "Authorization";
+	public static final String AUTH_TOKEN_HEADER = "session-token";
 
 	/**
 	 * header name that the first name will be returned in
@@ -60,7 +60,7 @@ public abstract class Delegate {
 	 */
 	protected final Employee authenticateEmployee(final HttpServletRequest request,
 			final HttpServletResponse response) {
-		final String token = request.getHeader(AUTHORIZATION_HEADER);
+		final String token = request.getHeader(AUTH_TOKEN_HEADER);
 		final Employee employee = empService.getEmployeeByToken(token);
 
 		if (employee != null) {
@@ -79,7 +79,7 @@ public abstract class Delegate {
 	 * @param response http response being returned.
 	 */
 	protected final void setAuthorizationHeader(final Employee employee, final HttpServletResponse response) {
-		response.setHeader(AUTHORIZATION_HEADER, employee.getToken());
+		response.setHeader(AUTH_TOKEN_HEADER, employee.getToken());
 	}
 
 	/**

@@ -4,7 +4,7 @@
  */
 
 // header for the authorization token
-const AUTHORIZATION_HEADER = "Authorization";
+const AUTH_TOKEN_HEADER = "session-token";
 // header for getting the first name of an employee
 const FIRST_NAME_HEADER = "first-name";
 // header for getting the last name of an employee

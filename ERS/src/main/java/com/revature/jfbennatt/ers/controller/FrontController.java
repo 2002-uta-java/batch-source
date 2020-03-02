@@ -1,14 +1,12 @@
 package com.revature.jfbennatt.ers.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.servlets.DefaultServlet;
-
-import com.revature.jfbennatt.ers.controller.delegates.Delegate;
-import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
-import com.revature.jfbennatt.ers.services.EmployeeService;
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class FrontController
@@ -18,7 +16,7 @@ public class FrontController extends DefaultServlet {
 
 	public static final String STATIC = "/static";
 
-	private final Delegate viewDelegate = new ViewDelegate();
+	private final RequestDispatcher dispatcher = new RequestDispatcher();
 
 	/**
 	 * @see DefaultServlet#DefaultServlet()
@@ -30,8 +28,8 @@ public class FrontController extends DefaultServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		System.out.println("adding employee service to viewDelegate");
-		viewDelegate.setEmployeeService(new EmployeeService());
+		Logger.getRootLogger().debug("adding employee service to viewDelegate");
+		dispatcher.init();
 	}
 
 	/**
@@ -45,7 +43,7 @@ public class FrontController extends DefaultServlet {
 		if (path.startsWith(STATIC)) {
 			super.doGet(request, response);
 		} else {
-			viewDelegate.processRequest(request, response);
+			dispatcher.dispatch(path, request, response);
 		}
 	}
 

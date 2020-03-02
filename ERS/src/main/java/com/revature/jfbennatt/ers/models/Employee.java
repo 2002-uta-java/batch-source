@@ -1,6 +1,7 @@
 package com.revature.jfbennatt.ers.models;
 
 public class Employee {
+	private String email;
 	private int empId;
 	private String firstName;
 	private boolean isManager;
@@ -10,19 +11,18 @@ public class Employee {
 
 	public Employee() {
 		super();
-		firstName = "Joe";
-		lastName = "Blow";
-		token = "token";
 	}
 
-	public Employee(int empId, String firstName, String lastName, String password, String token, boolean isManager) {
+	public Employee(int empId, String firstName, boolean isManager, String lastName, String password, String token,
+			String email) {
 		super();
 		this.empId = empId;
 		this.firstName = firstName;
+		this.isManager = isManager;
 		this.lastName = lastName;
 		this.password = password;
 		this.token = token;
-		this.isManager = isManager;
+		this.email = email;
 	}
 
 	@Override
@@ -34,31 +34,45 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email)) {
+			return false;
+		}
 		if (empId != other.empId)
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!firstName.equals(other.firstName)) {
 			return false;
+		}
 		if (isManager != other.isManager)
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
-		} else if (!lastName.equals(other.lastName))
+		} else if (!lastName.equals(other.lastName)) {
 			return false;
+		}
 		if (password == null) {
 			if (other.password != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!password.equals(other.password)) {
 			return false;
+		}
 		if (token == null) {
 			if (other.token != null)
 				return false;
-		} else if (!token.equals(other.token))
+		} else if (!token.equals(other.token)) {
 			return false;
+		}
 		return true;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	public int getEmpId() {
@@ -85,6 +99,7 @@ public class Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + empId;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + (isManager ? 1231 : 1237);
@@ -96,6 +111,10 @@ public class Employee {
 
 	public boolean isManager() {
 		return isManager;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setEmpId(int empId) {
@@ -124,7 +143,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", password="
-				+ password + ", token=" + token + ", isManager=" + isManager + "]";
+		return "Employee [empId=" + empId + ", firstName=" + firstName + ", isManager=" + isManager + ", lastName="
+				+ lastName + ", password=" + password + ", token=" + token + ", email=" + email + "]";
 	}
+
 }

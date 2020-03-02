@@ -12,8 +12,8 @@ import com.revature.jfbennatt.ers.services.EmployeeService;
 
 public class ViewDelegate extends Delegate {
 
-	private final EmployeeViewDelegate evDelegate = new EmployeeViewDelegate();
-	private final ManagerViewDelegate mvDelegate = new ManagerViewDelegate();
+	private final Delegate evDelegate = new EmployeeViewDelegate();
+	private final Delegate mvDelegate = new ManagerViewDelegate();
 
 	public ViewDelegate() {
 		super();

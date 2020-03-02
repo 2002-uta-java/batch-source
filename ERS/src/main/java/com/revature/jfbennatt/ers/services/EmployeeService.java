@@ -1,8 +1,20 @@
 package com.revature.jfbennatt.ers.services;
 
+import java.util.Random;
+
+import org.jasypt.util.password.PasswordEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.jasypt.util.text.TextEncryptor;
+
+import com.revature.jfbennatt.ers.daos.EmployeeDao;
+import com.revature.jfbennatt.ers.daos.postgres.EmployeeDaoPostgres;
 import com.revature.jfbennatt.ers.models.Employee;
 
 public class EmployeeService {
+
+	private final EmployeeDao empDao = new EmployeeDaoPostgres();
+	private final PasswordEncryptor passEnc = new StrongPasswordEncryptor();
+	private final Random rand = new Random();
 
 	/**
 	 * Get/authenticate an employee from their session token.
@@ -11,10 +23,64 @@ public class EmployeeService {
 	 * @return The authenticated Employee object (all fields will be set except for
 	 *         the password).
 	 */
-	public Employee getEmployeeByToken(String token) {
-		// TODO need to use dao to actually authenticate token
-		return new Employee();
-
+	public Employee getEmployeeByToken(final String token) {
+		return empDao.getEmployeeByToken(token);
 	}
 
+	/**
+	 * Attempts to login an employee. This will return an {@link Employee} object
+	 * that will have (at least) the employee id, session token, and first and last
+	 * name set.
+	 * 
+	 * @param email    Email of the employee trying to log in.
+	 * @param password Password of the Employee trying to log in.
+	 * @return An {@link Employee} object representing the logged in employee or
+	 *         null if the employee doesn't exist or isn't authenticated.
+	 */
+	public Employee loginEmployee(final String email, final String password) {
+		final Employee emp = empDao.getEmployeeByEmail(email);
+		if (emp != null) {
+			// we found an employee, authenticate their password
+			if (passEnc.checkPassword(password, emp.getPassword())) {
+				final String token = generateToken();
+
+				// attempt to set the session token in the database
+				if (empDao.setTokenById(emp.getEmpId(), token)) {
+					// the token was set, so update the found employee's token
+					emp.setToken(token);
+					return emp;
+				}
+			}
+		}
+		// either the employee wasn't found, wasn't authenticated, or setting the token
+		// failed, so return null signalling a failure to log in.
+		return null;
+	}
+
+	private String generateToken() {
+		final char[] token = new char[empDao.getTokenLength()];
+
+		for (int i = 0; i < token.length; ++i) {
+			token[i] = randomChar();
+		}
+
+		return new String(token);
+	}
+
+	private char randomChar() {
+		// there are 26 alpha characters and 10 digits, so there are 2*26 + 10 = 62
+		// possible characters. This value is used to determine which character to use.
+		final int c = rand.nextInt(62);
+
+		if (c < 26) {
+			// return a lower case letter
+			return (char) ('a' + c);
+		} else if (c < 52) {
+			// return an upper case letter
+			return (char) ('A' + (c - 26));
+		} else {
+			// return a digit
+			return (char) ('0' + (c - 52));
+		}
+	}
 }
