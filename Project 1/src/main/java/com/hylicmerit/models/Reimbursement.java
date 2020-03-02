@@ -9,17 +9,19 @@ public class Reimbursement implements Serializable{
 	private String manager_email;
 	private String status;
 	private String description;
+	private String date;
 	
 	public Reimbursement() {
 		super();
 	}
-	public Reimbursement(int id, String employee_email, String manager_email, String status, String description) {
+	public Reimbursement(int id, String employee_email, String manager_email, String status, String description, String date) {
 		super();
 		this.id = id;
 		this.employee_email = employee_email;
 		this.manager_email = manager_email;
 		this.status = status;
 		this.description = description;
+		this.date = date;
 	}
 	public int getId() {
 		return id;
@@ -51,6 +53,12 @@ public class Reimbursement implements Serializable{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	@Override
 	public int hashCode() {

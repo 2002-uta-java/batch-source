@@ -16,7 +16,9 @@ public class Employee implements Serializable{
 		super();
 	}
 
-	public Employee (String employee_email, String password, String name, String bio, String birthday, String role, String manager) {
+	public Employee (
+			String employee_email, String password, String name, 
+			String bio, String birthday, String role, String manager) {
 		super();
 		this.employee_email = employee_email;
 		this.password = password;

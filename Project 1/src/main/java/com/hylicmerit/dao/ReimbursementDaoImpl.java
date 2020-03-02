@@ -1,5 +1,6 @@
 package com.hylicmerit.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,14 +13,12 @@ import com.hylicmerit.models.Reimbursement;
 import com.hylicmerit.util.ConnectionUtil;
 
 public class ReimbursementDaoImpl implements ReimbursementDao{
-
 	@Override
 	public List<Reimbursement> getAll() {
 		
 		String sql = "select * from reimbursement";
 		
 		List<Reimbursement> reimbursements = new ArrayList<>();
-		
 		try (Connection c = ConnectionUtil.getConnection();
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql)){
@@ -27,10 +26,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				int id = rs.getInt("rmb_id");
 				String employee_email = rs.getString("employee_email");
 				String manager_email = rs.getString("manager_email");
+				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
 				
-				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description);
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
 				
 				reimbursements.add(r);
 			}
@@ -41,22 +41,82 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 	}
 
 	@Override
-	public Reimbursement getById(int id) {
-		String sql = "select * from reimbursement where rmb_id=?";
-		Reimbursement r = null;
+	public List<Reimbursement> getAllByEmployee(String email) {
+		
+		String sql = "select * from reimbursement where employee_email=?";
+		
+		List<Reimbursement> reimbursements = new ArrayList<>();
 		ResultSet rs = null;
 		try (Connection c = ConnectionUtil.getConnection();
-			PreparedStatement ps = c.prepareStatement(sql);){
-			ps.setInt(1, id);
+			PreparedStatement ps = c.prepareStatement(sql)){
+			ps.setString(1, email);
 			rs = ps.executeQuery();
-			
 			while(rs.next()) {
+				int id = rs.getInt("rmb_id");
 				String employee_email = rs.getString("employee_email");
 				String manager_email = rs.getString("manager_email");
+				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
 				
-				r = new Reimbursement(id, employee_email, manager_email, status, description);
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				
+				reimbursements.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reimbursements;
+	}
+	
+	@Override
+	public List<Reimbursement> getAllByManager(String email) {
+		
+		String sql = "{call get_reimbursements_by_manager(?)}";
+		
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		ResultSet rs = null;
+		try (Connection c = ConnectionUtil.getConnection();
+			CallableStatement cs = c.prepareCall(sql)){
+			cs.setString(1, email);
+			rs = cs.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("rmb_id");
+				String employee_email = rs.getString("employee_email");
+				String manager_email = rs.getString("manager_email");
+				String date = rs.getString("date");
+				String status = rs.getString("status");
+				String description = rs.getString("description");
+				
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				
+				reimbursements.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reimbursements;
+	}
+	
+	@Override
+	public Reimbursement getById(int id) {
+		
+		String sql = "select * from reimbursement where rmb_id=?";
+		
+		Reimbursement r = null;
+		ResultSet rs = null;
+		try (Connection c = ConnectionUtil.getConnection();
+			PreparedStatement ps = c.prepareStatement(sql)){
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				String employee_email = rs.getString("employee_email");
+				String manager_email = rs.getString("manager_email");
+				String date = rs.getString("date");
+				String status = rs.getString("status");
+				String description = rs.getString("description");
+				
+				r = new Reimbursement(id, employee_email, manager_email, status, description, date);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,7 +141,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 
 	@Override
 	public int updateReimbursement(Reimbursement r) {
-		String sql = "update reimbursement set status=? where id=?";
+		String sql = "update reimbursement set status=? where rmb_id=?";
 		int numRowsAffected = 0;
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql)){
@@ -96,7 +156,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 
 	@Override
 	public int deleteReimbursement(Reimbursement r) {
-		String sql = "delete from reimbursement where id=?";
+		String sql = "delete from reimbursement where rmb_id=?";
 		int numRowsAffected = 0;
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql)){

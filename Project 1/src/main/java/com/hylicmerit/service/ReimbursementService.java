@@ -9,11 +9,19 @@ import com.hylicmerit.models.Reimbursement;
 public class ReimbursementService {
 	private ReimbursementDao rd = new ReimbursementDaoImpl();
 	
-	public List<Reimbursement> getAllReimbursements(){
+	public List<Reimbursement> getAll(){
 		return rd.getAll();
 	}
 	
-	public Reimbursement getReimbursementById(int id) {
+	public List<Reimbursement> getAllByEmployee(String email){
+		return rd.getAllByEmployee(email);
+	}
+	
+	public List<Reimbursement> getAllByManager(String email){
+		return rd.getAllByManager(email);
+	}
+	
+	public Reimbursement getById(int id) {
 		return rd.getById(id);
 	}
 	
@@ -43,4 +51,5 @@ public class ReimbursementService {
 			return false;
 		}
 	}
+
 }

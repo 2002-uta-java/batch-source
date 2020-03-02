@@ -19,7 +19,7 @@ public class ValidationDelegate {
 			//get password
 			String pass = request.getParameter("pass");
 			//get user based on given username
-			Employee e = (Employee) es.getEmployeeById(user);
+			Employee e = es.getEmployeeById(user);
 			if(e != null) {
 				if(e.getPassword().equals(pass)) {
 					//successful validation

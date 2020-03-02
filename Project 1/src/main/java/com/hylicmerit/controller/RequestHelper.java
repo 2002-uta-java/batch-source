@@ -41,8 +41,10 @@ public class RequestHelper {
 				break;
 			}
 			case "reimbursement":{
-				if(request.getParameterMap().containsKey("id")) {
-					rd.getReimbursementById(request, response);
+				if(request.getParameterMap().containsKey("employee")) {
+					rd.getAllByEmployee(request, response);
+				} else if(request.getParameterMap().containsKey("manager")) {
+					rd.getReimbursementByManager(request, response);
 				} else {
 					rd.getAllReimbursements(request, response);
 				}
@@ -68,6 +70,14 @@ public class RequestHelper {
 			case "employee":{
 				//update employee
 				ed.updateEmployee(request, response);
+			}
+			case "reimbursement":{
+				//update reimbursement
+				if(request.getParameterMap().containsKey("id")) {
+					rd.updateReimbursement(request, response);
+				} else {
+					response.sendError(400, "Reimbursement Id is required for this update.");
+				}
 			}
 			default:{
 				//send error if the api endpoint doesn't exist
