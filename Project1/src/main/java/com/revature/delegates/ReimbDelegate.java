@@ -18,7 +18,7 @@ public class ReimbDelegate {
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
-		String reimbPath = request.getServletPath().substring(11); // shaves off /api/reimb/ (if not /api/reimb)
+		System.out.println(requestPath);
 		
 		if (requestPath.length() == "/api/reimb".length()) {
 			System.out.println("Getting all reimbursements...");
@@ -27,41 +27,44 @@ public class ReimbDelegate {
 			try (PrintWriter pw = response.getWriter();) {
 				pw.write(new ObjectMapper().writeValueAsString(reimbursements)); // returns list of reimbursements
 			}
-		} 
-		else if (reimbPath.startsWith("p")) {
-			System.out.println("Getting pending reimbs: " + reimbPath);
-
-			List<Reimbursement> r = rDao.getPendingReimbursements();
+		} else {
+			String reimbPath = request.getServletPath().substring(11); // shaves off /api/reimb/
 			
-			try (PrintWriter pw = response.getWriter()) {
-					pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+			if (reimbPath.startsWith("p")) {
+				System.out.println("Getting pending reimbs: " + reimbPath);
+	
+				List<Reimbursement> r = rDao.getPendingReimbursements();
+				
+				try (PrintWriter pw = response.getWriter()) {
+						pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+				}
 			}
-		}
-		else if (reimbPath.startsWith("r")) {
-			System.out.println("Getting resolved reimbs: " + reimbPath);
-			
-			List<Reimbursement> r = rDao.getResolvedReimbursements();
-			
-			try (PrintWriter pw = response.getWriter()) {
-				pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
-			}
-		}
-		else if (reimbPath.startsWith("e/")) {
-			System.out.println("Getting employee ID: " + reimbPath);
-			
-			String idStr = reimbPath.substring(2);
-			List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
-			
-			if (r == null) {
-				response.sendError(404, "No reimb. with given ID");
-			} else {
+			else if (reimbPath.startsWith("r")) {
+				System.out.println("Getting resolved reimbs: " + reimbPath);
+				
+				List<Reimbursement> r = rDao.getResolvedReimbursements();
+				
 				try (PrintWriter pw = response.getWriter()) {
 					pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
 				}
 			}
-		}
-		else {
-			response.sendError(404, "Bad request");
+			else if (reimbPath.startsWith("e/")) {
+				System.out.println("Getting employee ID: " + reimbPath);
+				
+				String idStr = reimbPath.substring(2);
+				List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
+				
+				if (r == null) {
+					response.sendError(404, "No reimb. with given ID");
+				} else {
+					try (PrintWriter pw = response.getWriter()) {
+						pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+					}
+				}
+			}
+			else {
+				response.sendError(404, "Bad request");
+			}
 		}
 		
 	}

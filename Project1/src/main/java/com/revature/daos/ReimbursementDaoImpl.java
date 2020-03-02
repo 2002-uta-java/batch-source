@@ -128,7 +128,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				int idEmployee = rs.getInt("id_employee");
 				int idManager = rs.getInt("id_manager");
 				String status = rs.getString("status");
-				if (status == "pending") {
+				if (status.equals("pending")) {
 					Reimbursement r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
 					reimbursements.add(r);
 				}
@@ -158,7 +158,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				int idEmployee = rs.getInt("id_employee");
 				int idManager = rs.getInt("id_manager");
 				String status = rs.getString("status");
-				if (status == "resolved") {
+				if (!status.equals("pending")) {
 					Reimbursement r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
 					reimbursements.add(r);
 				}

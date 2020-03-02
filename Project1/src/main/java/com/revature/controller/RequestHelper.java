@@ -36,6 +36,7 @@ public class RequestHelper {
 		if(path.startsWith("/api/")) {
 			// Authenticate token here.
 			if(!authDelegate.isAuthorized(request)) {
+				System.out.println("Failed authentication.");
 				response.sendError(401);
 				return;
 			}

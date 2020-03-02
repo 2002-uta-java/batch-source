@@ -92,7 +92,7 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}
-	}
+	} // probably should authenticate to post; for later.
 	xhr.send(data);
 }
 
@@ -109,6 +109,7 @@ function requestReimbursements(){
 
 // Check token to remain on page.
 function sendAjaxGetReimbursements(url, callback) {
+    let token = sessionStorage.getItem("token");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function(){
@@ -117,33 +118,88 @@ function sendAjaxGetReimbursements(url, callback) {
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}
-	}
+    }
+    xhr.setRequestHeader("Authorization", token);
 	xhr.send();
 }
 
 // Recieve data and load ALL reimbursements.
 function loadReimbursements1(xhr) {
-    let reimb = JSON.parse(xhr.response);
+    let reimbs = JSON.parse(xhr.response);
+    console.log(reimb);
 
-    // All pending reimbursements need event listeners.
+    // PENDING must be modal
+    for (let r in riembs) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+
+        if (status === "pending") {
+            let pendingElement = document.createElement("a");
+            pendingElement.setAttribute("href", "#");
+            pendingElement.setAttribute("data-toggle", "modal");
+            pendingElement.setAttribute("data-target", "#view-reimbursement");
+            pendingElement.setAttribute("class", "list-group-item list-group-item-action");
+            document.getElementById("all-reim").appendChild(pendingElement);
+        }
+        else {
+            let resolvedElement = document.createElement("a");
+            resolvedElement.setAttribute("href", "#");
+            resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
+            document.getElementById("all-reim").appendChild(resolvedElement);
+        }
+    }
 }
 
 // Load PENDING reimbursements.
 function loadReimbursements2(xhr) {
-    let reimb = JSON.parse(xhr.response);
+    let reimbs = JSON.parse(xhr.response);
+    console.log(reimb);
 
-    // These also need event listeners.
+    for (let r in riembs) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+
+        let pendingElement = document.createElement("a");
+        pendingElement.setAttribute("href", "#");
+        pendingElement.setAttribute("data-toggle", "modal");
+        pendingElement.setAttribute("data-target", "#view-reimbursement");
+        pendingElement.setAttribute("class", "list-group-item list-group-item-action");
+        document.getElementById("pending-reim").appendChild(pendingElement);
+    }
 }
 
 // Load RESOLVED reimbursements.
 function loadReimbursements3(xhr) {
-    let reimb = JSON.parse(xhr.response);
+    let reimbs = JSON.parse(xhr.response);
+    console.log(reimb);
 
-    // no event listeners needed
+    for (let r in riembs) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+
+        let resolvedElement = document.createElement("a");
+        resolvedElement.setAttribute("href", "#");
+        resolvedElement.setAttribute("class", "list-group-item list-group-item-action");
+        document.getElementById("resolved-reim").appendChild(resolvedElement);
+    }
 }
 
 
 // TODO: resolveReimbursementTool (click event)
+// will update database...
+// then must CLEAR OUT all reimbursements and reload them appropriately.
 
 // TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
 // TODO: viewONLYManagers (click event)
