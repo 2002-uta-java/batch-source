@@ -1,0 +1,24 @@
+<h3> Structural Directives </h3>
+
+<div (click)='changeCondition()'>
+    <p *ngIf='condition'>Condition is met</p>
+    <p *ngIf='!condition'>Condition is not met</p>
+</div>
+
+<h4>Superbowl Winners</h4>
+<ul>
+    <li *ngFor='let team of winningTeams'>{{team.year}}: {{team.name}}</li>
+</ul>
+
+<table class='table table-hover' *ngIf='winningTeams.length>0'>
+    <tr>
+        <th> Year </th>
+        <th> Team </th>
+    </tr>
+    <tr *ngFor='let team of winningTeams'>
+        <td>{{team.year}}</td>
+        <td>{{team.name}}</td>
+    </tr>
+</table>
+
+
