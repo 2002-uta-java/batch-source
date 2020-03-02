@@ -43,7 +43,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 	}
 
 	@Override
-	public List<Reimbursement> getReimbursementsByEmployee(Employee e) {
+	public List<Reimbursement> getReimbursementsByEmployeeId(int id) {
 		String sql = "select * from reimbursement where id_employee = ?";
 		List<Reimbursement> reimbursements = new ArrayList<>();
 		ResultSet rs = null;
@@ -51,11 +51,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {
 			
-			ps.setInt(1, e.getId());
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				int id = rs.getInt("id");
 				String purpose = rs.getString("purpose");
 				Float amount = rs.getFloat("amount");
 				int idEmployee = rs.getInt("id_employee");
@@ -110,6 +109,66 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			ex.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<Reimbursement> getPendingReimbursements() {
+		String sql = "select * from reimbursement";
+		
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection()) {
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String purpose = rs.getString("purpose");
+				float amount = rs.getFloat("amount");
+				int idEmployee = rs.getInt("id_employee");
+				int idManager = rs.getInt("id_manager");
+				String status = rs.getString("status");
+				if (status == "pending") {
+					Reimbursement r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
+					reimbursements.add(r);
+				}
+			}
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return reimbursements;
+	}
+
+	@Override
+	public List<Reimbursement> getResolvedReimbursements() {
+		String sql = "select * from reimbursement";
+		
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		
+		try (Connection c = ConnectionUtil.getConnection()) {
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id = rs.getInt("id"); 
+				String purpose = rs.getString("purpose");
+				float amount = rs.getFloat("amount");
+				int idEmployee = rs.getInt("id_employee");
+				int idManager = rs.getInt("id_manager");
+				String status = rs.getString("status");
+				if (status == "resolved") {
+					Reimbursement r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
+					reimbursements.add(r);
+				}
+			}
+		}
+		catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		return reimbursements;
 	}
 	
 }

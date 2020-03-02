@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.daos.ReimbursementDao;
 import com.revature.daos.ReimbursementDaoImpl;
+import com.revature.models.Reimbursement;
 
 public class ReimbDelegate {
 	
@@ -17,28 +18,50 @@ public class ReimbDelegate {
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
+		String reimbPath = request.getServletPath().substring(11); // shaves off /api/reimb/ (if not /api/reimb)
 		
-		if (requestPath.length() == "/api/users".length()) {
-			System.out.println("Getting all users...");
-			List<Employee> employees = eDao.getEmployees();
+		if (requestPath.length() == "/api/reimb".length()) {
+			System.out.println("Getting all reimbursements...");
+			List<Reimbursement> reimbursements = rDao.getReimbursementsAll();
 			
-			try (PrintWriter pw = response.getWriter();) { // what the hell is printwriter and objectmapper?
-				pw.write(new ObjectMapper().writeValueAsString(employees)); // returns list of employees
+			try (PrintWriter pw = response.getWriter();) {
+				pw.write(new ObjectMapper().writeValueAsString(reimbursements)); // returns list of reimbursements
 			}
+		} 
+		else if (reimbPath.startsWith("p")) {
+			System.out.println("Getting pending reimbs: " + reimbPath);
+
+			List<Reimbursement> r = rDao.getPendingReimbursements();
 			
-		} else {
-			String idStr = request.getServletPath().substring(11); // shaves off /api/users/ i think.
-			System.out.println("Getting ID: " + idStr);
+			try (PrintWriter pw = response.getWriter()) {
+					pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+			}
+		}
+		else if (reimbPath.startsWith("r")) {
+			System.out.println("Getting resolved reimbs: " + reimbPath);
 			
-			Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
+			List<Reimbursement> r = rDao.getResolvedReimbursements();
 			
-			if (e == null) {
-				response.sendError(404, "No user with given ID");
+			try (PrintWriter pw = response.getWriter()) {
+				pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
+			}
+		}
+		else if (reimbPath.startsWith("e/")) {
+			System.out.println("Getting employee ID: " + reimbPath);
+			
+			String idStr = reimbPath.substring(2);
+			List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
+			
+			if (r == null) {
+				response.sendError(404, "No reimb. with given ID");
 			} else {
 				try (PrintWriter pw = response.getWriter()) {
-					pw.write(new ObjectMapper().writeValueAsString(e)); // returns specific employee
+					pw.write(new ObjectMapper().writeValueAsString(r)); // returns specific employee
 				}
 			}
+		}
+		else {
+			response.sendError(404, "Bad request");
 		}
 		
 	}

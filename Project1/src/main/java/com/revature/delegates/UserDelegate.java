@@ -30,7 +30,7 @@ public class UserDelegate {
 			
 		} else {
 			String idStr = request.getServletPath().substring(11); // shaves off /api/users/ i think.
-			System.out.println("Getting ID: " + idStr);
+			System.out.println("Getting user ID: " + idStr);
 			
 			Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
 			

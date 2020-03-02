@@ -123,17 +123,23 @@ function sendAjaxGetReimbursements(url, callback) {
 
 // Recieve data and load ALL reimbursements.
 function loadReimbursements1(xhr) {
+    let reimb = JSON.parse(xhr.response);
 
+    // All pending reimbursements need event listeners.
 }
 
 // Load PENDING reimbursements.
 function loadReimbursements2(xhr) {
+    let reimb = JSON.parse(xhr.response);
 
+    // These also need event listeners.
 }
 
 // Load RESOLVED reimbursements.
 function loadReimbursements3(xhr) {
+    let reimb = JSON.parse(xhr.response);
 
+    // no event listeners needed
 }
 
 
@@ -151,5 +157,5 @@ function loadReimbursements3(xhr) {
 document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
 
-// TODO: get all reimbursements and display them (with proper features)
+// LOAD PAGE + Authentication
 let token = checkTokenAndLoadPage();
