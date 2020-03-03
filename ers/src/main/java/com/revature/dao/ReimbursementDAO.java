@@ -2,12 +2,12 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.model.Reimbursment;
+import com.revature.model.Reimbursement;
 
 public interface ReimbursementDAO {
-	List<Reimbursment> getAllReimbursments();
-	Reimbursment getReimbursment(int id);
-	void addReimbursment(Reimbursment reimbursment) throws Exception;
-	void deleteReimbursment(int id) throws Exception;
-	void updateReimbursment(Reimbursment reimbursment) throws Exception;
+	List<Reimbursement> getAllReimbursements();
+	Reimbursement getReimbursement(int id);
+	void addReimbursement(Reimbursement reimbursement) throws Exception;
+	void deleteReimbursement(int id) throws Exception;
+	void updateReimbursement(Reimbursement reimbursement) throws Exception;
 }

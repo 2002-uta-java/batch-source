@@ -2,16 +2,15 @@
 <html lang="en-us">
 
 <head>
-    <title>Employee Reimbursment System</title>
+    <title>Employee Reimbursement System</title>
     <meta name="author" content="Keith Wheeler">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -22,18 +21,15 @@
                 width=140 height="140">
         </div>
         <div class="col-sm-6">
-            <h1>Employee Reimbursment System</h1>
+            <h1>Employee Reimbursement System</h1>
         </div>
         <div class="col">
             <ul class="nav row">
                 <li class="nav-item">
-                    <a class="nav-link" href="loginPage.html">Login</a>
+                    <a class="nav-link" href="http://localhost:8080/ers/">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="employeepage.html">Employee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Manager</a>
+                    <a class="nav-link" href="http://localhost:8080/ers/employeehome">Employee</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
@@ -45,10 +41,10 @@
     <div class="container-fluid" style="margin-top:30px">
         <div class="row">
             <div class="col">
-                <h3>Reimbursments</h3>
+                <h3>Reimbursements</h3>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary">+ Create New Expense</button>
+                <button type="button" class="btn btn-primary" id="create">+ Create New Reimbursement</button>
             </div>
         </div>
     </div>
@@ -58,17 +54,44 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Type</th>
                     <th scope="col">Status</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Time Created</th>
                     <th scope="col">Time Submitted</th>
                 </tr>
             </thead>
         </table>
     </div>
-
-    <script type="text/javascript" src="employee.js"></script>
+    
+    <div class="container-fluid" id="emTableDiv" style="margin-top: 30px" hidden=true>
+        <table class="table" id="emTable">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    
+    <div class="container-fluid" id="searchDiv" style="margin-top: 30px" hidden=true>
+    	<Input type="text" id="employeeSearchEmail" placeholder="Enter Employee Email">
+    	<button type="button" class="btn btn-primary" id="search">Search</button>
+    	<table class="table" id="semTable">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <script type="text/javascript" src="static/Scripts/employee.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,6 @@
  */
 
 document.getElementById("login-btn").addEventListener("click", requestLogin);
-console.log("hello from login.js");
 
 function requestLogin() {
     let user = document.getElementById("username").value;
@@ -17,6 +16,7 @@ function requestLogin() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let auth = xhr.getResponseHeader("Authorization");
             sessionStorage.setItem("token", auth);
+            window.location.href = "http://localhost:8080/ers/employeehome";
         } else if (xhr.readyState == 4) {
             console.log("Incorrect Credentials");
         }

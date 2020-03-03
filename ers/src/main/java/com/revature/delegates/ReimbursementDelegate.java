@@ -2,30 +2,41 @@ package com.revature.delegates;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.ReimbursementDAO;
-import com.revature.dao.ReimbursmentDaoImpl;
-import com.revature.model.Reimbursment;
+import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.model.Reimbursement;
 
-public class ReimbursmentDelegate {
-private ReimbursementDAO rdao = new ReimbursmentDaoImpl();
+public class ReimbursementDelegate {
+	private ReimbursementDAO rdao = new ReimbursementDaoImpl();
 	
 	public void getEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestPath = req.getServletPath();
-		if (requestPath.length() =="/api/employees".length()) {
-			List<Reimbursment> rbs = rdao.getAllReimbursments();
+		if (requestPath.length() == "/api/reimbursements".length()) {
+			String authToken = req.getHeader("Authorization");
+			String[] tokenArr = authToken.split(":");
+			String idStr = tokenArr[0];
+			List<Reimbursement> rbs = rdao.getAllReimbursements();
+			
+			List<Reimbursement> srbs = new ArrayList<>();
+			
+			for (Reimbursement r: rbs) {
+				if (Integer.parseInt(idStr) == r.getEmployeeId())
+					srbs.add(r);
+			}
+			
 			try (PrintWriter pw = res.getWriter()) {
-				pw.write(new ObjectMapper().writeValueAsString(rbs));
+				pw.write(new ObjectMapper().writeValueAsString(srbs));
 			}
 		} else {
 			String idStr = req.getServletPath().substring(11);
 			if (idStr.matches("^\\d+$")) {
-				Reimbursment r = rdao.getReimbursment(Integer.parseInt(idStr));
+				Reimbursement r = rdao.getReimbursement(Integer.parseInt(idStr));
 				if (r == null)
 					res.sendError(404, "No Employee with given id");
 				else {

@@ -34,6 +34,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 				e.setPhone(rs.getString("phone"));
 				e.setPass(rs.getString("password"));
 				e.setIsManager(rs.getBoolean("isManager"));
+				
+				employees.add(e);
 			}
 		} catch (SQLException e){
 			e.printStackTrace();

@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.model.Reimbursment;
+import com.revature.model.Reimbursement;
 
-public class ReimbursmentDaoImpl implements ReimbursementDAO {
+public class ReimbursementDaoImpl implements ReimbursementDAO {
 
 	@Override
-	public List<Reimbursment> getAllReimbursments() {
-			List<Reimbursment> reimbursments = new ArrayList<>();
+	public List<Reimbursement> getAllReimbursements() {
+			List<Reimbursement> reimbursements = new ArrayList<>();
 			Connection connection = null;
 			Statement stmt = null;
 			
@@ -25,13 +25,15 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				while (rs.next()) {
-					Reimbursment re = new Reimbursment();
+					Reimbursement re = new Reimbursement();
 					
-					re.setId(rs.getInt("reimbursment_id"));
+					re.setId(rs.getInt("id"));
 					re.setAmount(rs.getInt("amount"));
 					re.setStage(rs.getString("stage"));
-					re.setTime(rs.getTime("time"));
+					re.setTime(rs.getTime("timestamp"));
 					re.setEmployeeId(rs.getInt("employee_id"));
+					
+					reimbursements.add(re);
 				}
 			} catch (SQLException e){
 				e.printStackTrace();
@@ -46,27 +48,27 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 				}
 			}
 			
-			return reimbursments;
+			return reimbursements;
 	}
 
 	@Override
-	public Reimbursment getReimbursment(int id) {
-		Reimbursment re = new Reimbursment();
+	public Reimbursement getReimbursement(int id) {
+		Reimbursement re = new Reimbursement();
 		Connection connection = null;
 		PreparedStatement stmt = null;
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "SELECT * FROM Reimbursment WHERE reimbursment_id = ?";
+			String sql = "SELECT * FROM Reimbursment WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				re.setId(rs.getInt("reimbursment_id"));
+				re.setId(rs.getInt("id"));
 				re.setAmount(rs.getInt("amount"));
 				re.setStage(rs.getString("stage"));
-				re.setTime(rs.getTime("time"));
+				re.setTime(rs.getTime("timestamp"));
 				re.setEmployeeId(rs.getInt("employee_id"));
 			}
 		} catch (SQLException e) {
@@ -86,20 +88,20 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 	}
 
 	@Override
-	public void addReimbursment(Reimbursment reimbursment) throws Exception {
+	public void addReimbursement(Reimbursement reimbursement) throws Exception {
 		Connection connection = null;
 		PreparedStatement stmt = null;
 		int success = 0;
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "INSERT INTO Reimbursment (amount, stage, time, employee_id) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO Reimbursment (amount, stage, timestamp, employee_id) VALUES (?, ?, ?, ?)";
 			stmt = connection.prepareStatement(sql);
 			
-			stmt.setInt(1, reimbursment.getAmount());
-			stmt.setString(2, reimbursment.getStage());
-			stmt.setTime(3, reimbursment.getTime());
-			stmt.setInt(4, reimbursment.getEmployeeId());
+			stmt.setInt(1, reimbursement.getAmount());
+			stmt.setString(2, reimbursement.getStage());
+			stmt.setTime(3, reimbursement.getTime());
+			stmt.setInt(4, reimbursement.getEmployeeId());
 			
 			success = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -116,19 +118,19 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 		}
 		
 		if (success == 0) {
-			throw new Exception("Insert Reimbursment failed: " + reimbursment);
+			throw new Exception("Insert Reimbursement failed: " + reimbursement);
 		}
 	}
 
 	@Override
-	public void deleteReimbursment(int id) throws Exception {
+	public void deleteReimbursement(int id) throws Exception {
 		Connection connection = null;
 		PreparedStatement stmt = null;
 		int success = 0;
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "DELETE FROM Reimbursment WHERE reimbursment_id = ?";
+			String sql = "DELETE FROM Reimbursment WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
 			success = stmt.executeUpdate();
@@ -146,26 +148,26 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 		}
 		
 		if (success == 0) {
-			throw new Exception("Delete Reimbursment failed: " + id);
+			throw new Exception("Delete Reimbursement failed: " + id);
 		}
 	}
 
 	@Override
-	public void updateReimbursment(Reimbursment reimbursment) throws Exception {
+	public void updateReimbursement(Reimbursement reimbursement) throws Exception {
 		Connection connection = null;
 		PreparedStatement stmt = null;
 		int success = 0;
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Reimbursment (amount, stage, time, employee_id) VALUES (?, ?, ?, ?) WHERE reimbursment_id = ?";
+			String sql = "Update Reimbursment (amount, stage, timestamp, employee_id) VALUES (?, ?, ?, ?) WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
-			stmt.setInt(1, reimbursment.getAmount());
-			stmt.setString(2, reimbursment.getStage());
-			stmt.setTime(3, reimbursment.getTime());
-			stmt.setInt(4, reimbursment.getEmployeeId());
-			stmt.setInt(5, reimbursment.getId());
+			stmt.setInt(1, reimbursement.getAmount());
+			stmt.setString(2, reimbursement.getStage());
+			stmt.setTime(3, reimbursement.getTime());
+			stmt.setInt(4, reimbursement.getEmployeeId());
+			stmt.setInt(5, reimbursement.getId());
 			
 			success = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -182,7 +184,7 @@ public class ReimbursmentDaoImpl implements ReimbursementDAO {
 		}
 		
 		if (success == 0) {
-			throw new Exception("Insert Reimbursment failed: " + reimbursment);
+			throw new Exception("Insert Reimbursement failed: " + reimbursement);
 		}
 	}
 

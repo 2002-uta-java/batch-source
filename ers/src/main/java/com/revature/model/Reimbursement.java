@@ -2,15 +2,15 @@ package com.revature.model;
 
 import java.sql.Time;
 
-public class Reimbursment {
+public class Reimbursement {
 	private int id = 0;
 	private int amount = 0;
 	private String stage = "";
 	private Time time = null;
 	private int employeeId = 0;
 	
-	public Reimbursment() {}
-	public Reimbursment(int id, int amount, String stage, Time time, int employeeId) {
+	public Reimbursement() {}
+	public Reimbursement(int id, int amount, String stage, Time time, int employeeId) {
 		super();
 		this.id = id;
 		this.amount = amount;
@@ -79,7 +79,7 @@ public class Reimbursment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Reimbursment other = (Reimbursment) obj;
+		Reimbursement other = (Reimbursement) obj;
 		if (amount != other.amount)
 			return false;
 		if (employeeId != other.employeeId)
@@ -101,7 +101,7 @@ public class Reimbursment {
 
 	@Override
 	public String toString() {
-		return "Reimbursment [id=" + id + ", amount=" + amount + ", stage=" + stage + ", time=" + time + ", employeeId="
+		return "Reimbursement [id=" + id + ", amount=" + amount + ", stage=" + stage + ", time=" + time + ", employeeId="
 				+ employeeId + "]";
 	}
 }

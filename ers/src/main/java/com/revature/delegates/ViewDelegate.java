@@ -10,17 +10,16 @@ public class ViewDelegate {
 
 	public void resolveView(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
+		System.out.println(path);
 		switch (path) {
 		case "/":
-			req.getRequestDispatcher("/static/loginPage.html").forward(req, res);
+			req.getRequestDispatcher("/static/Views/loginPage.html").forward(req, res);
 			break;
 		case "/employeehome":
-			req.getRequestDispatcher("/static/employeePage.html").forward(req, res);
+			req.getRequestDispatcher("/static/Views/employeepage.html").forward(req, res);
 			break;
-		case "/managerhome":
-			req.getRequestDispatcher("/static/managerPage.html").forward(req, res);
 		case "/profile":
-			req.getRequestDispatcher("/static/profile.html").forward(req, res);
+			req.getRequestDispatcher("/static/Views/profile.html").forward(req, res);
 		default:
 			res.sendError(404, "Resource not found");
 		}

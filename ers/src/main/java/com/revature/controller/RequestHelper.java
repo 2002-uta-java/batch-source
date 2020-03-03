@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.delegates.EmployeeDelegate;
 import com.revature.delegates.LoginDelegate;
+import com.revature.delegates.ReimbursementDelegate;
 import com.revature.delegates.ViewDelegate;
 
 public class RequestHelper {
@@ -15,10 +16,10 @@ public class RequestHelper {
 	private LoginDelegate login = new LoginDelegate();
 	private ViewDelegate view = new ViewDelegate();
 	private EmployeeDelegate employee = new EmployeeDelegate();
+	private ReimbursementDelegate reimbursement = new ReimbursementDelegate();
 	
 	public void processGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getRequestURI().substring(req.getContextPath().length());//req.getServletPath();
-		System.out.println(path);
 		if (path.startsWith("/api/")) {
 			if (!login.isAuthorized(req, res)) {
 				res.sendError(401);
@@ -26,9 +27,11 @@ public class RequestHelper {
 			}
 			
 			String record = path.substring(5);
-			if (record.startsWith("reimbursments"))
+			if (record.startsWith("reimbursements")) {
+				reimbursement.getEmployee(req, res);
+			}else if (record.startsWith("employees")) {
 				employee.getEmployee(req, res);
-			else
+			}else
 				res.sendError(404, "Record(s) Not Found");
 		} else
 			view.resolveView(req, res);
@@ -37,11 +40,11 @@ public class RequestHelper {
 	public void processPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
 		switch (path) {
-		case "/":
+		case "/login":
 			login.authenticate(req, res);
 			break;
-		case "/register":
-			login.register(req, res);
+		case "/addReimbursement":
+			login.addReimbursement(req, res);
 			break;
 		default:
 			res.sendError(405);

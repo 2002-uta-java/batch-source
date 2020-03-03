@@ -18,10 +18,9 @@ public class LoginDelegate {
 		Employee em = edao.getEmployee(uName);
 		
 		if (em != null && em.getPass().equals(password)) {
-			String token = em.getId() + ":" + em.getEmail();
+			String token = em.getId() + ":" + em.getEmail() + ":" + em.getIsManager();
 			res.setStatus(200);
 			res.setHeader("Authorization", token);
-			res.sendRedirect("http://localhost:8080/ers/static/employeepage.html");
 		} else
 			res.sendError(401);
 	}
@@ -30,10 +29,11 @@ public class LoginDelegate {
 		String authToken = req.getHeader("Authorization");
 		if (authToken != null) {
 			String[] tokenArr = authToken.split(":");
-			if(tokenArr.length == 2) {
+			if(tokenArr.length == 3) {
 				String idStr = tokenArr[0];
 				String email = tokenArr[1];
 				if(idStr.matches("^\\d+$")) {
+					System.out.println(idStr);
 					Employee em = edao.getEmployee(Integer.parseInt(idStr));
 					if(em !=null && em.getEmail().equals(email)) {
 						return true;
@@ -44,7 +44,7 @@ public class LoginDelegate {
 		return false;
 	}
 
-	public void register(HttpServletRequest req, HttpServletResponse res) {
+	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) {
 		
 	}
 }
