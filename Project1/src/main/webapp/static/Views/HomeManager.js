@@ -142,11 +142,35 @@ async function sendAjaxGetReimbursements(url, callback) {
 
 // Recieve data and load ALL reimbursements.
 function loadReimbursements(baseUrl, xhr) {
+    let reimbs = JSON.parse(xhr.response);
+    let emplUrl = "http://localhost:8080/Project1/api/users";
+    sendAjaxGetEmployeeNames(emplUrl, continueLoadReimbursements, baseUrl, reimbs); // this is stupid.
+
+}
+
+// ajax helper for finding employeeNames
+function sendAjaxGetEmployeeNames(url, callback, baseUrl, reimbs) {
+    let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this, baseUrl, reimbs);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.")
+		}
+	}
+	xhr.setRequestHeader("Authorization", token);
+    xhr.send();
+}
+
+function continueLoadReimbursements(xhr, baseUrl, reimbs) {
+    let employees = JSON.parse(xhr.response);
+    let employeeNames = createEmployeeNameList(employees);
+
     let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbs.
     let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING reimbs.
-    let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED reimbs
-    let reimbs = JSON.parse(xhr.response);
-
+    let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED reimbs.
+    
     for (let r of reimbs) {
         let id = r.id;
         let purpose = r.purpose;
@@ -154,7 +178,7 @@ function loadReimbursements(baseUrl, xhr) {
         let idEmployee = r.idEmployee;
         let idManager = r.idManager;
         let status = r.status;
-        // TODO: PLUS ADD REQUEST FOR THE NAME based on idEmployee
+        let eFullName = findEmployeeName(idEmployee, employeeNames);
 
         let reimElement = document.createElement("a");
 
@@ -166,7 +190,7 @@ function loadReimbursements(baseUrl, xhr) {
         reimElement.setAttribute("data-idEmployee", idEmployee);
         reimElement.setAttribute("data-idManager", idManager);
         reimElement.setAttribute("data-status", status);
-        reimElement.setAttribute("data-eFullName", "TODO"); // TODO: ?
+        reimElement.setAttribute("data-eFullName", eFullName);
         reimElement.setAttribute("href", "#");
         reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
@@ -176,16 +200,41 @@ function loadReimbursements(baseUrl, xhr) {
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
         }
         else { // Resolved reimbursements need the manager who resolved it.
-            // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
-            reimElement.setAttribute("data-mFullName", "TODO"); // TODO: ?
+            let mFullName = findEmployeeName(idManager, employeeNames);
+            reimElement.setAttribute("data-mFullName", mFullName);
         }
 
-        reimElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
+        reimElement.innerHTML = `${amount}  ${purpose}  ${eFullName}  ${status}`;
 
         if (baseUrl == baseUrl1) {document.getElementById("all-reim").appendChild(reimElement);}
         if (baseUrl == baseUrl2) {document.getElementById("pending-reim").appendChild(reimElement);}
         if (baseUrl == baseUrl3) {document.getElementById("resolved-reim").appendChild(reimElement);}
     }
+}
+
+function createEmployeeNameList(employees) {
+    let employeeNames = []; // format: [ [id, fullName], [id, fullName], ...]
+
+    for (let e of employees) {
+        let id = e.id;
+        let fullName = e.firstName + " " + e.lastName;
+        employeeNames.push([id, fullName]);
+    }
+
+    return employeeNames;
+}
+
+function findEmployeeName(id, employeeNames) {
+    let arrayLength = employeeNames.length;
+
+    for (let i = 0; i < arrayLength; i++) {
+        eId = employeeNames[i][0];
+        eName = employeeNames[i][1];
+        if (id == eId) {
+            return eName;
+        }
+    }
+    return "Name missing (id error)."
 }
 
 function loadSingleReimbursement(reimbHtmlId){
@@ -203,7 +252,7 @@ function loadSingleReimbursement(reimbHtmlId){
     htmlAmount.innerHTML = amount;
     htmlName.innerHTML = fullName;
     htmlPurpose.innerHTML = purpose;
-    htmlId.innerHTML = id; // DO NOT CHANGE. can make this hidden if needed.
+    htmlId.innerHTML = id; // TODO: need to update [DO NOT CHANGE. can make this hidden if needed.
 } // also in viewemployee.js
 
 function approveReimbursement() {
