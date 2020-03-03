@@ -5,6 +5,7 @@
 	document.getElementById("user").innerHTML = `Welcome ${ta[0]}`;
 	document.getElementById("logout-btn").addEventListener("click", requestLogout);
 	document.getElementById("profile-btn").addEventListener("click", showProfile);
+	document.getElementById("empls-btn").addEventListener("click", showEmployees);
 	showReims();
 	console.log(ta);
 	function showReims(){
@@ -82,6 +83,11 @@
 		sendAjaxGet(baseUrl, displayProfile);
 	}
 	
+	function showEmployees(){
+		let baseUrl = "http://localhost:8080/RepayPal/api/users";
+		sendAjaxGet(baseUrl, displayUsers);
+	}
+	
 	function displayProfile(xhr){
 		let profile = JSON.parse(xhr.response);
 		console.log(profile);
@@ -92,6 +98,26 @@
 		document.getElementById("modalIsManager").innerText = profile.manager;
 	}
 	
+	
+	function displayUsers(xhr){
+		let users = JSON.parse(xhr.response);
+		let tableDiv = document.getElementById("users");
+		if (tableDiv.hasChildNodes()) {
+		    tableDiv.removeChild(tableDiv.childNodes[0]);
+		  }
+		let table = document.createElement("table");
+		table.className = "table table-stripped";
+		tableDiv.appendChild(table);
+		console.log(users);
+		let headerRow = document.createElement("tr");
+		headerRow.innerHTML = `<tr><th>Username:</th><th>First Name:</th><th>Last Name:</th><th>Manager:</th></tr>`;
+		table.appendChild(headerRow);
+		for(let user of users){
+			let newRow = document.createElement("tr");
+			newRow.innerHTML = `<tr><td>${user.username}</td><td>${user.firstName}</td><td>${user.lastName}</td><td>${user.manager}</td></tr>`;
+			table.appendChild(newRow);
+		}
+	}
 	
 	
 	/*
