@@ -37,7 +37,10 @@ function sendAjaxGet(url, callback, token){
 function loadPage(xhr){
     let user = JSON.parse(xhr.response);
 
-    // TODO: CLEAR REIMBURSEMENT INFORMATION
+    // Clear reimbursement lists.
+    clearList("all-reim");
+    clearList("pending-reim");
+    clearList("resolved-reim");
 
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
@@ -50,8 +53,16 @@ function loadPage(xhr){
     document.getElementById("modal-id").innerHTML = `${user.id}`;
     // TODO: picture depending on gender (id=)
 
-    // TODO: Load reimbursement information (all tabs?)
+    // Load reimbursement information
     requestReimbursements();
+}
+
+// Helper function to clear the reimbursements lists.
+function clearList(id) {
+    let parent = document.getElementById(id);
+    while (parent.firstChild) {
+        parent.firstChild.remove();
+    }
 }
 
 // Remove user token and return to the login menu.
@@ -193,11 +204,11 @@ function loadSingleReimbursement(reimbHtmlId){
 }
 
 function approveReimbursement() {
-    resolveReimbursement("approve");
+    resolveReimbursement("approved");
 }
 
 function rejectReimbursement() {
-    resolveReimbursement("reject");
+    resolveReimbursement("rejected");
 }
 
 
