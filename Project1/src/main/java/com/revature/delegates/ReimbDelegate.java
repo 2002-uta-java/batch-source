@@ -55,10 +55,10 @@ public class ReimbDelegate {
 				}
 			}
 			else if (reimbPath.startsWith("e/")) {
-				System.out.println("Getting employee ID: " + reimbPath);
-				
 				String idStr = reimbPath.substring(2);
 				List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
+				
+				System.out.println("Getting employee ID: " + idStr);
 				
 				if (r == null) {
 					response.sendError(404, "No empl. with given ID");

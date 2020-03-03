@@ -159,25 +159,25 @@ function loadReimbursements(baseUrl, xhr) {
         let reimElement = document.createElement("a");
 
         // record data for future potential purposes.
-        reimElement.setAttribute("id", "r" + r.id);
-        reimElement.setAttribute("data-id", r.id);
-        reimElement.setAttribute("data-purpose", r.purpose);
-        reimElement.setAttribute("data-amount", r.amount);
-        reimElement.setAttribute("data-idEmployee", r.idEmployee);
-        reimElement.setAttribute("data-idManager", r.idManager);
-        reimElement.setAttribute("data-status", r.status);
-        reimElement.setAttribute("data-eFirstName", "TODO");
-        reimElement.setAttribute("data-eLastName", "TODO");
+        reimElement.setAttribute("id", "r" + id);
+        reimElement.setAttribute("data-id", id);
+        reimElement.setAttribute("data-purpose", purpose);
+        reimElement.setAttribute("data-amount", amount);
+        reimElement.setAttribute("data-idEmployee", idEmployee);
+        reimElement.setAttribute("data-idManager", idManager);
+        reimElement.setAttribute("data-status", status);
+        reimElement.setAttribute("data-eFullName", "TODO"); // TODO: ?
         reimElement.setAttribute("href", "#");
         reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
         if (status == "pending") { // Pending reimbursements can be resolved in modals.
             reimElement.setAttribute("data-target", "#view-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
-            reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + r.id + "')");
+            reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
         }
         else { // Resolved reimbursements need the manager who resolved it.
             // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
+            reimElement.setAttribute("data-mFullName", "TODO"); // TODO: ?
         }
 
         reimElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
@@ -191,8 +191,7 @@ function loadReimbursements(baseUrl, xhr) {
 function loadSingleReimbursement(reimbHtmlId){
     let r = document.getElementById(reimbHtmlId);
     let purpose = r.getAttribute("data-purpose");
-    let firstName = r.getAttribute("data-eFirstName");
-    let lastName = r.getAttribute("data-eLastName");
+    let fullName = r.getAttribute("data-eFullName");
     let amount = r.getAttribute("data-amount");
     let id = r.getAttribute("data-id");
 
@@ -202,10 +201,10 @@ function loadSingleReimbursement(reimbHtmlId){
     let htmlId = document.getElementById("single-reimb-id");
 
     htmlAmount.innerHTML = amount;
-    htmlName.innerHTML = firstName + " " + lastName;
+    htmlName.innerHTML = fullName;
     htmlPurpose.innerHTML = purpose;
     htmlId.innerHTML = id; // DO NOT CHANGE. can make this hidden if needed.
-}
+} // also in viewemployee.js
 
 function approveReimbursement() {
     resolveReimbursement("approved");

@@ -49,10 +49,124 @@ function loadUser(xhr) {
 
 function loadEmployees(xhr) {
     let employees = JSON.parse(xhr.response);
-    console.log(employees);
-    // Load employees list (both employees and managers).
-    // TODO: Display list of users. Need logic to separate into empls/manags.
+    // console.log(employees);
 
+    // Load and display each employee appropriately.
+    for (let e of employees) {
+        let id = e.id;
+        let email = e.email;
+        let position = e.position;
+        let fullName = e.firstName + " " + e.lastName;
+        let gender = e.gender;
+        let emplElement = document.createElement("a");
+
+        // record data for future potential purposes.
+        emplElement.setAttribute("id", "e" + id);
+        emplElement.setAttribute("data-id", id)
+        emplElement.setAttribute("data-email", email);
+        emplElement.setAttribute("data-position", position);
+        emplElement.setAttribute("data-fullName", fullName);
+        emplElement.setAttribute("data-gender", gender);
+        emplElement.setAttribute("href", "#");
+        emplElement.setAttribute("class", "list-group-item list-group-item-action");
+
+        emplElement.innerHTML = "[PICTURE] " + `${fullName}  ${email}  ${position}  ${id}`;
+
+        if (position == "employee") { // Employees can have their reimbursements shown.
+            emplElement.setAttribute("onclick", "requestEmployeeReimbursements('e" + id + "')");
+            document.getElementById("employees").appendChild(emplElement);
+        }
+        else if (position == "manager" && id != 1) { // Ignores dummy manager.
+            document.getElementById("managers").appendChild(emplElement);
+        }
+
+    }    
+}
+
+function requestEmployeeReimbursements(eId) {
+    // Clear out current reimbursement list.
+    clearList("all-reim");
+
+    // Load the specific employees reimbursements on the side box.
+    let e = document.getElementById(eId);
+    let id = e.getAttribute("data-id");
+    let baseUrl = "http://localhost:8080/Project1/api/reimb/e/" + id;
+    sendAjaxGetEmployeeReimbursements(baseUrl, loadEmployeeReimbursements);
+}
+
+// requestEmployeeReimbursements AJAX helper.
+async function sendAjaxGetEmployeeReimbursements(url, callback) {
+    let token = sessionStorage.getItem("token");
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+    }
+    xhr.setRequestHeader("Authorization", token);
+	xhr.send();
+}
+
+function loadEmployeeReimbursements(xhr) {
+    let reimbursements = JSON.parse(xhr.response);
+
+    for (let r of reimbursements) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+
+        let reimElement = document.createElement("a");
+
+        // record data for future potential purposes.
+        reimElement.setAttribute("id", "r" + id);
+        reimElement.setAttribute("data-id", id);
+        reimElement.setAttribute("data-purpose", purpose);
+        reimElement.setAttribute("data-amount", amount);
+        reimElement.setAttribute("data-idEmployee", idEmployee);
+        reimElement.setAttribute("data-idManager", idManager);
+        reimElement.setAttribute("data-status", status);
+        reimElement.setAttribute("data-eFullName", "TODO"); // TODO: ? probably dont need this
+        reimElement.setAttribute("href", "#");
+        reimElement.setAttribute("class", "list-group-item list-group-item-action");
+
+        if (status == "pending") { // Pending reimbursements can be resolved in modals.
+            reimElement.setAttribute("data-target", "#view-reimbursement");
+            reimElement.setAttribute("data-toggle", "modal");
+            reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
+        }
+        else { // Resolved reimbursements need the manager who resolved it.
+            // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
+            reimElement.setAttribute("data-mFullName", "TODO");
+        }
+
+        reimElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
+
+        document.getElementById("all-reim").appendChild(reimElement);
+    }
+}
+
+function loadSingleReimbursement(reimbHtmlId){
+    let r = document.getElementById(reimbHtmlId);
+    let purpose = r.getAttribute("data-purpose");
+    let fullName = r.getAttribute("data-eFullName");
+    let amount = r.getAttribute("data-amount");
+    let id = r.getAttribute("data-id");
+
+    let htmlAmount = document.getElementById("single-reimb-amount");
+    let htmlName = document.getElementById("single-reimb-name");
+    let htmlPurpose = document.getElementById("single-reimb-purpose");
+    let htmlId = document.getElementById("single-reimb-id");
+
+    htmlAmount.innerHTML = amount;
+    htmlName.innerHTML = fullName;
+    htmlPurpose.innerHTML = purpose;
+    htmlId.innerHTML = id; // DO NOT CHANGE. can make this hidden if needed.
 }
 
 // Helper function to clear the reimbursements lists.
@@ -112,13 +226,6 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 	xhr.send(data);
 }
 
-
-
-// TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
-// TODO: viewONLYManagers (click event)
-
-
-// TODO: Redirect to manager homepage tab.
 
 
 
