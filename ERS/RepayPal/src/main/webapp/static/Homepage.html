@@ -2,101 +2,105 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-</head>
-<body>
-
-	<h2>Home Page</h2>
-	<span id="user"></span><br>
-	<span id="manager"></span>
-	<a href="http://localhost:8080/RepayPal/login" >Back</a>
-	<a href="http://localhost:8080/RepayPal/logout" >Logout</a>
-	<button id="view-reims">View Reimbursements</button>
-	<button>Add Reimbursements</button>
-	<table id="reims" hidden=true>
-		<tr>
-			<th>id</th>
-			<th>username</th>
-			<th>status</th>
-			<th>amount</th>
-			<th>description</th>
-			<th>resolution</th>
-		</tr>
-	</table>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<title>Home</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 		crossorigin="anonymous"></script>
+	<!-- Check if user is logged in -->
 	<script type="text/javascript">
 	let token = sessionStorage.getItem("token");
-	console.log(token);
-	
 	//user not logged in
 	if(!token){
 		window.location.href="http://localhost:8080/RepayPal/login";	
 	}
-	let ta = token.split(":");
-	document.getElementById("user").innerHTML = `Welcome ${ta[0]}`;
-	document.getElementById("view-reims").addEventListener("click",displayTable);
-	
-	
-	function displayTable(){
-		let baseUrl = "http://localhost:8080/RepayPal/api/";
-		if(ta[1] == true){
-			document.getElementById("manager").innerHTML = "Am I a manager?";
-			let newUrl = baseUrl+"reimbursements";
-			sendAjaxGet(newUrl, displayReimbursements);
-		}else{
-			document.getElementById("manager").innerHTML = "Am I an employee?";
-			let newUrl = baseUrl+"reimbursements/"+ta[0];
-			sendAjaxGet(newUrl, displayReimbursements);
-		}
-	}
-
-	function sendAjaxGet(url, callback){
-		let xhr = new XMLHttpRequest();
-		xhr.open("GET", url);
-		xhr.onreadystatechange = function(){
-			if(this.readyState===4 && this.status===200){
-				callback(this);
-			} else if (this.readyState===4){
-				window.location.href="http://localhost:8080/RepayPal/home";
-			}
-		}
-		xhr.setRequestHeader("Authorization",token);
-		xhr.send();
-	}
-	
-	function displayReimbursements(xhr){
-		let reimbursements = JSON.parse(xhr.response);
-		let table = document.getElementById("reims");
-		table.style.display = "block";
-		console.log(reimbursements);
-		for(let reimbursement of reimbursements){
-			let id = reimbursement.id;
-			let username = reimbursement.username;
-			let status = reimbursement.status;
-			let amount = reimbursement.amount;
-			let description = reimbursement.description;
-			let resolution = reimbursement.resolved;
-			let newRow = document.createElement("tr");
-			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td></tr>`;
-			table.appendChild(newRow);
-		}
-	}
 	</script>
+	<style>
+		.my-custom-scrollbar {
+			position: relative;
+			height: 300px;
+			overflow: auto;
+		}
+		.table-wrapper-scroll-y {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="container jumbotron" style="background-color:#FFFFFF">
+			<h2 class="text-center"><span id="user"></span></h2>
+			<h3 class="text-center"><span id="manager"></span></h3><br>
+			<div class="btn-group" style="width:100%">
+				<button id="profile-btn" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">Profile</button>
+				<button id="empls-btn" class="btn btn-success" data-toggle="modal" data-target="#empsModal">View Employees</button>
+				<button id="reims-btn" class="btn btn-success" data-toggle="modal" data-target="#reimsModal">Add Reimbursement</button>
+				<button id="logout-btn" class="btn btn-primary">Log out</button>
+			</div>
+		</div>
+		<div class="table-wrapper-scroll-y my-custom-scrollbar">
+			<table id="reims" class="table table-bordered table-striped mb-0">
+				<tr>
+					<th>id</th>
+					<th>username</th>
+					<th>status</th>
+					<th>amount</th>
+					<th>description</th>
+					<th>resolution</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Modal for Profile -->
+	<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="profileModalLabel">User Profile</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<h6>Username: <span id="modalUsername">Username here</span></h6>
+	      	<label for="modalFirstname">First Name: <input type="text" id="modalFirstname" value="first name" class="form-control"></label>
+	      	<label for="modalLastname">Last Name: <input type="text" id="modalLastname" value="last name" class="form-control"></label>
+	      	<label for="modalPassword">Password: <input type="text" id="modalPassword" value="password" class="form-control"></label>
+	      	<h6>is Manager: <span id="modalIsManager">Nel</span></h6>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" id="updateProfile">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	<!-- Modal for Reimbursement -->
+	<div class="modal fade" id="reimsModal" tabindex="-1" role="dialog" aria-labelledby="reimsModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="reimsModalLabel">Add Reimbursement</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<label for="modalAmount">Amount: <input type="text" id="modalAmount" value="0" class="form-control"></label>
+	      	<label for="modalDescription">Description: <input type="text" id="modalDescription" value=" " class="form-control textbox"></label>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-primary" id="addReims" data-dismiss="modal">Request</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script type="text/javascript" src="http://localhost:8080/RepayPal/static/homepage.js" ></script>
 </body>
 </html>
