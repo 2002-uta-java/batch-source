@@ -10,11 +10,12 @@ public class Reimbursement implements Serializable{
 	private String status;
 	private String description;
 	private String date;
+	private double amount;
 	
 	public Reimbursement() {
 		super();
 	}
-	public Reimbursement(int id, String employee_email, String manager_email, String status, String description, String date) {
+	public Reimbursement(int id, String employee_email, String manager_email, String status, String description, String date, double amount) {
 		super();
 		this.id = id;
 		this.employee_email = employee_email;
@@ -22,7 +23,18 @@ public class Reimbursement implements Serializable{
 		this.status = status;
 		this.description = description;
 		this.date = date;
+		this.amount = amount;
 	}
+	public Reimbursement(String employee_email, String manager_email, String status, String description, String date, double amount) {
+		super();
+		this.employee_email = employee_email;
+		this.manager_email = manager_email;
+		this.status = status;
+		this.description = description;
+		this.date = date;
+		this.amount = amount;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -59,6 +71,12 @@ public class Reimbursement implements Serializable{
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	@Override
 	public int hashCode() {

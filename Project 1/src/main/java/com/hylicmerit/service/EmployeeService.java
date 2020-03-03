@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hylicmerit.dao.EmployeeDaoImpl;
 import com.hylicmerit.dao.EmployeeDao;
 import com.hylicmerit.models.Employee;
@@ -23,8 +22,7 @@ public class EmployeeService {
 		return ed.getById(email);
 	}
 	
-	public boolean updateEmployee(String employee) throws JsonParseException, JsonMappingException, IOException {
-		Employee e = new ObjectMapper().readValue(employee, Employee.class);
+	public boolean updateEmployee(Employee e) throws JsonParseException, JsonMappingException, IOException {
 		if(ed.update(e) != 0) {
 			return true;
 		} else {

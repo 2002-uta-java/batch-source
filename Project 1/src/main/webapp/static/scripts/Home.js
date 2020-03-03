@@ -1,3 +1,16 @@
+//sign user out
+let signOut = () =>{
+	//login page url
+	let url = "http://localhost:8080/project1/login";
+	//check if token exists
+	if(sessionStorage.getItem("token").length !== 0){
+		//remove token
+		sessionStorage.removeItem("token");
+		//redirect to login page
+		window.location = url;
+	}
+}
+
 //render nav
 let renderNav = (name) =>{
 	//get nav div
@@ -17,31 +30,10 @@ let renderNav = (name) =>{
 			<button>Sign out</button>
 		</div>
 	`;
-}
-
-//render user profile
-let renderProfile = (user) =>{
-	// get profile div
-	let profile = document.querySelector("#profile");
-	// render user info
-	profile.innerHTML = 
-	`
-		<div class="image">
-			<img rel="Identifies the user." src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
-		</div>
-		<div class="content">
-			<div>
-				<h3><strong>${user.employee_email}</strong></h3><button>Edit Profile</button>
-			</div>
-			<div>
-				<h4><strong>Position: </strong></h4><pre>${user.role}</pre>
-				<h4><strong>Birthday: </strong></h4><pre>${user.birthday}</pre>
-			</div>
-			<div>
-				<h4><strong>${user.name}'s Bio:</strong></h4><pre>${user.bio}</pre>
-			</div>
-		</div>
-	`;
+	//get sign out button
+	let signoutBtn = document.querySelector("#nav button");
+	//add click event listener
+	signoutBtn.addEventListener("click", signOut);
 }
 
 // render reimbursement options
@@ -76,17 +68,29 @@ let renderReimbursement = (reimbursement, index, role) =>{
 		<hr>
 		<em>Date Submitted:</em>
 		<pre>${reimbursement.date}</pre>
+		<em>Amount:</em>
+		<pre>${reimbursement.amount}</pre>
 		<em>Details:</em>
 		<pre>${reimbursement.description}</pre>
 		<em>Status:</em>
-		<select disabled value=${reimbursement.status}>
-			<option value="pending">Pending</option>
-			<option value="approved">Approved</option>
-			<option value="denied">Denied</option>
-		</select>
 	`;
 	// set html for reimbursement
 	rmb.innerHTML= html;
+	//create select element with options
+	let select = document.createElement("select");
+	//disabled by default
+	select.setAttribute("disabled", true);
+	//add options
+	select.innerHTML = 
+	`
+		<option value="pending">Pending</option>
+		<option value="approved">Approved</option>
+		<option value="denied">Denied</option>
+	`;
+	//set current status
+	select.value = reimbursement.status;
+	//add to div
+	rmb.appendChild(select);
 	//add edit button if the user is a manager
 	if(role === 'manager'){
 		//create edit button
@@ -100,6 +104,28 @@ let renderReimbursement = (reimbursement, index, role) =>{
 	}
 	//render reimbursement
 	reimbursements.appendChild(rmb);
+}
+
+let renderCreateRmb = (user) =>{
+	// get reimbursement div
+	let reimbursements = document.querySelector("#reimbursements");
+	//add create reimbursement div
+	let createRmb = document.createElement("div");
+	//set class for styling
+	createRmb.className = "reimbursement";
+	//add unique id for layout change
+	createRmb.id = "new-rmb";
+	//add create button with plus sign
+	createRmb.innerHTML = 
+	`
+		<input type="button" value="+" id="create-rmb"/>
+	`;
+	//add to reimbursement section
+	reimbursements.appendChild(createRmb);
+	//get button to add click listener
+	let createBtn = document.querySelector("#create-rmb");
+	//add click listener
+	createBtn.addEventListener("click", ()=>{changeReimbursementLayout(user.employee_email)});
 }
 
 
@@ -119,6 +145,9 @@ let getReimbursements = (user) =>{
 				reimbursements.map((item, index)=>{
 					renderReimbursement(item, index, user.role);
 				});
+				if(user.role == "employee"){
+					renderCreateRmb(user);
+				}
 			}
 		}
 	}

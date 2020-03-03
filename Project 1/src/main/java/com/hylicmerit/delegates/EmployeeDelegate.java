@@ -31,11 +31,22 @@ public class EmployeeDelegate {
 	}
 	
 	public void updateEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String employeeJson = request.getParameter("employee");
-		//succeeds but doesn't forward in postman
-		if(es.updateEmployee(employeeJson)) {
+		//get email from request parameter
+		String email = request.getParameter("email");
+		//get birthday from request parameter
+		String birthday = request.getParameter("birthday");
+		//get bio from request parameter
+		String bio = request.getParameter("bio");
+		//get employee based on given email
+		Employee e = es.getEmployeeById(email);
+		//set new bio
+		e.setBio(bio);
+		//set new birthday
+		e.setBirthday(birthday);
+		//update employee
+		if(es.updateEmployee(e)) {
 			response.setStatus(200);
-			request.getRequestDispatcher("/api/employee").forward(request, response);
+			response.setHeader("Data", new ObjectMapper().writeValueAsString(e));
 		} else {
 			response.sendError(500, "We were unable to update this employee's profile at this time.");
 		}

@@ -29,8 +29,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
+				double amount = rs.getDouble("amount");
 				
-				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date, amount);
 				
 				reimbursements.add(r);
 			}
@@ -58,8 +59,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
+				double amount = rs.getDouble("amount");
 				
-				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date, amount);
 				
 				reimbursements.add(r);
 			}
@@ -87,8 +89,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
+				double amount = rs.getDouble("amount");
 				
-				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				Reimbursement r = new Reimbursement(id, employee_email, manager_email, status, description, date, amount);
 				
 				reimbursements.add(r);
 			}
@@ -115,8 +118,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				String date = rs.getString("date");
 				String status = rs.getString("status");
 				String description = rs.getString("description");
+				double amount = rs.getDouble("amount");
 				
-				r = new Reimbursement(id, employee_email, manager_email, status, description, date);
+				r = new Reimbursement(id, employee_email, manager_email, status, description, date, amount);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -126,12 +130,15 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 
 	@Override
 	public int createReimbursement(Reimbursement r) {
-		String sql = "insert into reimbursement (employee_email, manager_email, status) values(?,?,'pending')";
+		String sql = "insert into reimbursement (employee_email, manager_email, description, \"date\", amount, status) values(?,?,?,?,?,'pending')";
 		int numRowsAffected = 0;
 		try (Connection c = ConnectionUtil.getConnection();
 			PreparedStatement ps = c.prepareStatement(sql)){
 			ps.setString(1, r.getEmployee_email());
 			ps.setString(2, r.getManager_email());
+			ps.setString(3, r.getDescription());
+			ps.setString(4, r.getDate());
+			ps.setDouble(5, r.getAmount());
 			numRowsAffected = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

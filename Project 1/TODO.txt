@@ -1,7 +1,4 @@
--Update page with current reimbursement status after edit
--Add create reimbursement functionality
 -Add update profile functionality
--Add logout functionality
 -Style app
 -Add logger
 -Test app

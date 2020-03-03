@@ -68,25 +68,57 @@ public class RequestHelper {
 			String record = path.substring(5);
 			switch(record) {
 			case "employee":{
-				//update employee
-				ed.updateEmployee(request, response);
+				if(request.getParameterMap().containsKey("bio") &&
+						request.getParameterMap().containsKey("birthday") &&
+						request.getParameterMap().containsKey("email")) {
+					//update employee
+					ed.updateEmployee(request, response);
+				} else {
+					response.sendError(400, "Data must be included in order to update profile.");
+				}
+				break;
 			}
 			case "reimbursement":{
 				//update reimbursement
-				if(request.getParameterMap().containsKey("id")) {
+				if(request.getParameterMap().containsKey("id") && request.getParameterMap().containsKey("status")) {
 					rd.updateReimbursement(request, response);
 				} else {
 					response.sendError(400, "Reimbursement Id is required for this update.");
 				}
+				break;
 			}
 			default:{
 				//send error if the api endpoint doesn't exist
 				response.sendError(404, "The endpoint your provided does not exist.");
+				break;
 			}
 			}
 		} else {
 			//send invalid request error if request was sent to non api directory
 			response.sendError(400, "You cannot update data in this directory.");
+		}
+	}
+
+	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String path = request.getRequestURI().substring(request.getContextPath().length());
+		if(path.startsWith("/api/")) {
+			String record = path.substring(5);
+			switch(record) {
+			case "reimbursement":{
+				if(request.getParameterMap().containsKey("email") &&
+						request.getParameterMap().containsKey("details") && 
+						request.getParameterMap().containsKey("amount")) {
+					rd.createReimbursement(request, response);
+				} else {
+					response.sendError(400, "Data must be included in order to create reimbursement.");
+				}
+				break;
+			}
+			default:{
+				response.sendError(404, "The endpoint you have provided doesn't exist.");
+				break;
+			}
+			}
 		}
 	}
 }
