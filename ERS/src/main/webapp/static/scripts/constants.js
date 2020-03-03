@@ -17,3 +17,9 @@ const EMAIL_HEADER = "email";
 const PASSWORD_HEADER = "password";
 // URI for logging out a user
 const LOGOUT_API = "/ERS/api/logout";
+
+const MAX_LENGTH_DESC = 140;
+const SUBMIT_REIMBURSEMENT_API = "/ERS/api/submit";
+const SUBMIT_REIMBURSEMENT_PAGE = "/ERS/submit";
+const DESCRIPTION_ID = "description";
+const AMOUNT_ID = "amount";

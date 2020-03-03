@@ -10,6 +10,7 @@ import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.LoginDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.LogoutDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.StaticDelegate;
+import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
 import com.revature.jfbennatt.ers.daos.postgres.EmployeeDaoPostgres;
 import com.revature.jfbennatt.ers.services.EmployeeService;
@@ -41,9 +42,13 @@ public class RequestDispatcher {
 	 */
 	public static final String LOGIN = "/login";
 	/**
-	 * Suffic for logging out.
+	 * Suffix for logging out.
 	 */
 	public static final String LOGOUT = "/logout";
+	/**
+	 * Suffix for submitting a reimbursement request.
+	 */
+	public static final String SUBMIT_REIMBURSEMENT = "/submit";
 
 	/**
 	 * delegate for fetching static resources (from an api call)
@@ -65,6 +70,10 @@ public class RequestDispatcher {
 	 * Delegate for logging out.
 	 */
 	private final LogoutDelegate logoutDelegate;
+	/**
+	 * Delegate for submitting a reimbursement request.
+	 */
+	private final Delegate submitDelegate;
 
 	/**
 	 * Default constructor (sets up all internals).
@@ -76,12 +85,14 @@ public class RequestDispatcher {
 		this.loginDelegate = new LoginDelegate();
 		this.staticDelegate = new StaticDelegate();
 		this.logoutDelegate = new LogoutDelegate();
+		this.submitDelegate = new SubmitReimbursementDelegate();
 
 		this.empService.setEmployeeDao(new EmployeeDaoPostgres());
 		this.viewDelegate.setEmployeeService(empService);
 		this.loginDelegate.setEmployeeService(empService);
 		this.staticDelegate.setEmployeeService(empService);
 		this.logoutDelegate.setEmployeeService(empService);
+		this.submitDelegate.setEmployeeService(empService);
 	}
 
 	/**
@@ -108,6 +119,9 @@ public class RequestDispatcher {
 				break;
 			case LOGOUT:
 				logoutDelegate.processRequest(request, response);
+				break;
+			case SUBMIT_REIMBURSEMENT:
+				submitDelegate.processRequest(path, request, response);
 				break;
 			default:
 				response.sendError(404);

@@ -9,6 +9,8 @@ import org.apache.log4j.Logger;
 
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
+import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
+import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
 
 /**
  * This is a helper class which generates the constants.js file to be used by
@@ -50,6 +52,18 @@ public class Constants {
 			printVariable(ps, "LOGOUT_API",
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.LOGOUT,
 					"URI for logging out a user");
+			printVariable(ps, "SUBMIT_REIMBURSEMENT_PAGE",
+					RequestDispatcher.CONTEXT_ROOT + ViewDelegate.SUBMIT_REIMBURSEMENT,
+					"resource for displaying the submit reimbursement page");
+			printVariable(ps, "SUBMIT_REIMBURSEMENT_API",
+					RequestDispatcher.API + RequestDispatcher.SUBMIT_REIMBURSEMENT,
+					"URI to actually submit a reimbursement request");
+			printVariable(ps, "MAX_LENGTH_DESC", "" + SubmitReimbursementDelegate.MAX_DESCRIPTION_LENGTH,
+					"the maximum length accepted for the description field when submitting a reimbursement request");
+			printVariable(ps, "DESCRIPTION_ID", SubmitReimbursementDelegate.DESCRIPTION_ID,
+					"name used for form submission for the description when requesting a reimbursement");
+			printVariable(ps, "AMOUNT_ID", SubmitReimbursementDelegate.AMOUNT_ID,
+					"name for the amount field when submitting a reimbursement request");
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
 		}

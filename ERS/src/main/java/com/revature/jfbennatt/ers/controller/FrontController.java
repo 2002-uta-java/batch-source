@@ -49,8 +49,7 @@ public class FrontController extends DefaultServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		dispatcher.dispatch(request, response);
 	}
 
 	/**

@@ -25,6 +25,16 @@ public class ViewDelegate extends Delegate {
 	public static final String MANAGER_HOME_PAGE = "/static/Manager/Home.html";
 
 	/**
+	 * URI of the static submit reimbursement page.
+	 */
+	public static final String SUBMIT_REIMBURSEMENT_PAGE = "/static/Employee/Submit-Reimbursement.html";
+
+	/**
+	 * URI of the submit reimbursement resource
+	 */
+	public static final String SUBMIT_REIMBURSEMENT = "/submit";
+
+	/**
 	 * Default constructor.
 	 */
 	public ViewDelegate() {
@@ -64,6 +74,9 @@ public class ViewDelegate extends Delegate {
 		switch (path) {
 		case HOME:
 			request.getRequestDispatcher(EMPLOYEE_HOME_PAGE).forward(request, response);
+			break;
+		case SUBMIT_REIMBURSEMENT:
+			request.getRequestDispatcher(SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);
