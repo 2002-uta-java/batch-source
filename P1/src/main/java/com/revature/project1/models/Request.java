@@ -13,21 +13,19 @@ public class Request implements Serializable {
 	private int userId;
 	private String amount;
 	private String reason;
-	private boolean pending;
-	private boolean approval;
+	private int status;
 
 	public Request() {
 		super();
 	}
 
-	public Request(int id, int user_id, String amount, String reason, boolean pending, boolean approval) {
+	public Request(int id, int userId, String amount, String reason, int status) {
 		super();
 		this.id = id;
-		this.userId = user_id;
+		this.userId = userId;
 		this.amount = amount;
 		this.reason = reason;
-		this.pending = pending;
-		this.approval = approval;
+		this.status = status;
 	}
 
 	// getters and setters
@@ -44,8 +42,8 @@ public class Request implements Serializable {
 		return userId;
 	}
 
-	public void setUserId(int user_id) {
-		this.userId = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getAmount() {
@@ -64,33 +62,22 @@ public class Request implements Serializable {
 		this.reason = reason;
 	}
 
-	public boolean isPending() {
-		return pending;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setPending(boolean pending) {
-		this.pending = pending;
+	public void setStatus(int status) {
+		this.status = status;
 	}
-
-	public boolean isApproval() {
-		return approval;
-	}
-
-	public void setApproval(boolean approval) {
-		this.approval = approval;
-	}
-
-	// hashcode and equals
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
-		result = prime * result + (approval ? 1231 : 1237);
 		result = prime * result + id;
-		result = prime * result + (pending ? 1231 : 1237);
 		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
+		result = prime * result + status;
 		result = prime * result + userId;
 		return result;
 	}
@@ -109,16 +96,14 @@ public class Request implements Serializable {
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
-		if (approval != other.approval)
-			return false;
 		if (id != other.id)
-			return false;
-		if (pending != other.pending)
 			return false;
 		if (reason == null) {
 			if (other.reason != null)
 				return false;
 		} else if (!reason.equals(other.reason))
+			return false;
+		if (status != other.status)
 			return false;
 		if (userId != other.userId)
 			return false;

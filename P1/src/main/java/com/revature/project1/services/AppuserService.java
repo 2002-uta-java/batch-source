@@ -25,5 +25,15 @@ public class AppuserService {
 		}
 		return false;
 	}
+	
+	public Appuser checkPassword(String email, String password) {
+		Appuser au = appuserDao.getAppuserByEmail(email);
+		if(email != null) {
+			if(password.equals(au.getPass())) {
+				return au;
+			}
+		}
+		return null;
+	}
 
 }

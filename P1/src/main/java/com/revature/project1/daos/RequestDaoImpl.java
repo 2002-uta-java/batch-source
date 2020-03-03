@@ -29,8 +29,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setUserId(rs.getInt("user_id"));
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
-				r.setPending(rs.getBoolean("req_pending"));
-				r.setApproval(rs.getBoolean("req_approved"));
+				r.setStatus(rs.getInt("req_status"));
 			}
 
 		} catch (SQLException e) {
@@ -40,14 +39,14 @@ public class RequestDaoImpl implements RequestDao {
 	}
 
 	@Override
-	public Request getRequestByPending(boolean pending) {
-		String sql = "select * from request where req_pending = ?;";
+	public Request getRequestByStatus(int status) {
+		String sql = "select * from request where req_status = ?;";
 		ResultSet rs = null;
 		Request r = null;
 
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
 
-			ps.setBoolean(1, pending);
+			ps.setInt(1, status);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -56,8 +55,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setUserId(rs.getInt("user_id"));
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
-				r.setPending(rs.getBoolean("req_pending"));
-				r.setApproval(rs.getBoolean("req_approved"));
+				r.setStatus(rs.getInt("req_status"));
 			}
 
 		} catch (SQLException e) {
@@ -93,8 +91,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setUserId(rs.getInt("user_id"));
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
-				r.setPending(rs.getBoolean("req_pending"));
-				r.setApproval(rs.getBoolean("req_approved"));
+				r.setStatus(rs.getInt("req_status"));
 			}
 
 		} catch (SQLException e) {
@@ -115,7 +112,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int updateRequest(Request r) {
 
-		String sql = "update request; set req_id = ?, user_id = ?, req_amount = ?, req_reason = ? req_pending = ?, req_approved = ? where req_id = ?;";
+		String sql = "update request; set req_id = ?, user_id = ?, req_amount = ?, req_reason = ? req_status = ? where req_id = ?;";
 		int check = 0;
 
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -124,9 +121,8 @@ public class RequestDaoImpl implements RequestDao {
 			ps.setInt(2, r.getUserId());
 			ps.setString(3, r.getAmount());
 			ps.setString(4, r.getReason());
-			ps.setBoolean(5, r.isPending());
-			ps.setBoolean(6, r.isApproval());
-			ps.setInt(7, r.getId());
+			ps.setInt(5, r.getStatus());
+			ps.setInt(6, r.getId());
 
 			check = ps.executeUpdate();
 			System.out.println("updated request");

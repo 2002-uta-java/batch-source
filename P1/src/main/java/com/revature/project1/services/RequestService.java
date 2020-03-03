@@ -14,8 +14,8 @@ public class RequestService {
 		return getRequests();
 	}
 	
-	public Request getRequestByPending(boolean pending) {
-		return rd.getRequestByPending(pending);
+	public Request getRequestByStatus(int status) {
+		return rd.getRequestByStatus(status);
 	}
 	
 	public List<Request> getRequestByUserId(int userId) {

@@ -4,12 +4,14 @@
 
 document.getElementById("index-login").addEventListener("click", login)
 
-let login = function(){
-    let uname = document.getElementById("uname").value
+function login(){
+    let email = document.getElementById("email").value
     let pass = document.getElementById("pass").value
 
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8080/ExpenseReimbursement/login";
+    
+    console.log("Called login");
 
     xhr.open("POST", url);
 
@@ -19,15 +21,21 @@ let login = function(){
             let auth = xhr.getResponseHeader("Authorization");
             sessionStorage.setItem("token", auth);
             console.log(auth);
-            window.location.href="http://localhost:8080/ExpenseReimbursement/home";
+
+            // insert function to determine manager vs employee
+
+
+
+           // window.location.href="http://localhost:8080/ExpenseReimbursement/home";
         } else if (xhr.readyState == 4) {
             alert("Invalid Credentials, please try again.");
         }
     }
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	let requestBody = `uname=${uname}&pass=${pass}`;
+	let requestBody = `email=${email}&user_pass=${pass}`;
     xhr.send(requestBody);
+    console.log(`email:${email}$user_pass=${pass}`)
     
 }
 

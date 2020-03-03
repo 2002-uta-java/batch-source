@@ -4,12 +4,12 @@
   
   <servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>com.revature.servlets.LoginServlet</servlet-class>
+		<servlet-class>com.revature.project1.controller.FrontController</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

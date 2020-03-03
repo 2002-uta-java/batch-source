@@ -16,11 +16,26 @@ public class RequestHelper {
 	
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// determine if this is a record based request
+		String path = request.getServletPath();
 		
-		viewDelegate.resolveView(request, response);
+		switch(path) {
+		case "/login":
+			login(request, response);
+			break;
+		default:
+			response.sendError(404);
+		}
+		
+		//viewDelegate.resolveView(request, response);
 	}
 	
 	
+	private void login(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		System.out.println("attempted to login");
+	}
+
+
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
 		switch(path) {
