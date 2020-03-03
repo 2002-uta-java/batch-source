@@ -3,6 +3,7 @@ package com.revature.delegates;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -108,7 +109,7 @@ public class ReimbDelegate {
 			// Send updated reimb information to database. (probably need try200/catch500s if Dao goes wrong)
 			r.setStatus(dataPack.get(1));
 			int managerId = Integer.parseInt(dataPack.get(0));
-			Employee e = eDao.getEmployeeById(managerId);
+//			Employee e = eDao.getEmployeeById(managerId);
 			
 //			rDao.updateReimbursement(r, e);
 			response.setStatus(200);
@@ -124,9 +125,19 @@ public class ReimbDelegate {
 		while ((line = reader.readLine()) != null) {
 		    buffer.append(line);
 		}
-		String dataPack = buffer.toString();
+		String data = buffer.toString();
 		
+		// If the String is not empty, parses the payload into a map
+		Reimbursement r = null;
+		if (!data.isEmpty()) {
+		    ObjectMapper mapper = new ObjectMapper();
+		    r = mapper.readValue(data, Reimbursement.class);
+		}
 		
-		return ;
+		List<String> dataPack = new ArrayList<>();
+		dataPack.add(Integer.toString(r.getIdManager()));
+		dataPack.add(r.getStatus());
+		
+		return dataPack;
 	}
 }

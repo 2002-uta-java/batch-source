@@ -203,10 +203,10 @@ function rejectReimbursement() {
 
 function resolveReimbursement(newStatus) {
     let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
-    let reimbId = document.getElementById("single-reimb-id");
+    let reimbId = document.getElementById("single-reimb-id").innerHTML;
     let token = sessionStorage.getItem("token");
     let tokenArr = token.split(":");
-    let dataPack = {id: tokenArr[0], status: newStatus}; // id is for manager, reimbId sent in url.
+    let dataPack = {id: null, purpose: null, amount: null, idEmployee: null, idManager: tokenArr[0], status: newStatus};
 
     let myJSON = JSON.stringify(dataPack);
 
@@ -216,7 +216,8 @@ function resolveReimbursement(newStatus) {
 // resolveReimbursement AJAX helper. 
 function sendAjaxPostResolveReimbursement(url, callback, data){
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url);
+    xhr.open("POST", url);
+    console.log(url);
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
             callback(this);

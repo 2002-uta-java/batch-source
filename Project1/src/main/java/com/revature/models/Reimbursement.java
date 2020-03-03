@@ -1,5 +1,8 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Reimbursement {
 
 	private int id;
@@ -9,7 +12,10 @@ public class Reimbursement {
 	private int idManager;
 	private String status;
 	
-	public Reimbursement(int id, String purpose, float amount, int idEmployee, int idManager, String status){
+	@JsonCreator 
+	public Reimbursement(@JsonProperty("id") int id, @JsonProperty("purpose") String purpose,
+			@JsonProperty("amount") float amount, @JsonProperty("idEmployee") int idEmployee,
+			@JsonProperty("idManager") int idManager, @JsonProperty("status") String status){
 		this.id = id;
 		this.purpose = purpose;
 		this.amount = amount;
