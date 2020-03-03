@@ -94,13 +94,13 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 	}
 	
 	@Override
-	public void updateReimbursement(Reimbursement r, Employee e) {
+	public void updateReimbursement(Reimbursement r) {
 		String sql = "update reimbursement set status = ?, id_manager = ? where id = ?";
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql)) {
 			ps.setString(1, r.getStatus());
-			ps.setInt(2, e.getId()); // the manager who resolved the reimbursement.
+			ps.setInt(2, r.getIdManager()); // the manager who resolved the reimbursement.
 			ps.setInt(3, r.getId());
 			
 			ps.executeUpdate();

@@ -99,7 +99,6 @@ public class ReimbDelegate {
 		System.out.println("Posting to Reimb. ID: " + idStr);
 		
 		List<String> dataPack = readReimbJson(request); // contains [manager id, reimb status]
-		// ???????? TODO: get reimb id and manager id
 		
 		Reimbursement r = rDao.getReimbursementById(Integer.parseInt(idStr));
 		
@@ -107,11 +106,11 @@ public class ReimbDelegate {
 			response.sendError(404, "No reimb. with given ID");
 		} else {
 			// Send updated reimb information to database. (probably need try200/catch500s if Dao goes wrong)
-			r.setStatus(dataPack.get(1));
 			int managerId = Integer.parseInt(dataPack.get(0));
-//			Employee e = eDao.getEmployeeById(managerId);
+			r.setIdManager(managerId);
+			r.setStatus(dataPack.get(1));
 			
-//			rDao.updateReimbursement(r, e);
+			rDao.updateReimbursement(r);
 			response.setStatus(200);
 			System.out.println("Reimbursement successfully updated!");
 		}
