@@ -48,7 +48,7 @@ public class UserDelegate {
 	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
 		String idStr = requestPath.substring(12); // shaves off /updateuser/
-		System.out.println("Posting to ID: " + idStr);
+		System.out.println("Posting to user ID: " + idStr);
 		
 		Employee eUpdate = readUserJson(request);
 		

@@ -68,6 +68,9 @@ public class RequestHelper {
 		else if (path.startsWith("/updateuser/")) {
 			userDelegate.updateUser(request, response);
 		}
+		else if (path.startsWith("/resolvereimbursement/")) {
+			reimbDelegate.updateReimbursement(request, response);
+		}
 		else {
 			response.sendError(405);
 		}

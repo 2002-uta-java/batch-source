@@ -37,6 +37,8 @@ function sendAjaxGet(url, callback, token){
 function loadPage(xhr){
     let user = JSON.parse(xhr.response);
 
+    // TODO: CLEAR REIMBURSEMENT INFORMATION
+
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
 
@@ -177,19 +179,56 @@ function loadSingleReimbursement(reimbHtmlId){
     let firstName = r.getAttribute("data-eFirstName");
     let lastName = r.getAttribute("data-eLastName");
     let amount = r.getAttribute("data-amount");
+    let id = r.getAttribute("data-id");
 
     let htmlAmount = document.getElementById("single-reimb-amount");
     let htmlName = document.getElementById("single-reimb-name");
     let htmlPurpose = document.getElementById("single-reimb-purpose");
+    let htmlId = document.getElementById("single-reimb-id");
 
     htmlAmount.innerHTML = amount;
     htmlName.innerHTML = firstName + " " + lastName;
     htmlPurpose.innerHTML = purpose;
+    htmlId.innerHTML = id; // can make this hidden if needed.
 }
 
-// TODO: resolveReimbursementTool (click event)
-// will update database...
-// then must CLEAR OUT all reimbursements and reload them appropriately.
+function approveReimbursement() {
+    resolveReimbursement("approve");
+}
+
+function rejectReimbursement() {
+    resolveReimbursement("reject");
+}
+
+
+function resolveReimbursement(newStatus) {
+    let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
+    let reimbId = document.getElementById("single-reimb-id");
+    let token = sessionStorage.getItem("token");
+    let tokenArr = token.split(":");
+    let dataPack = {id: tokenArr[0], status: newStatus}; // id is for manager, reimbId sent in url.
+
+    let myJSON = JSON.stringify(dataPack);
+
+    sendAjaxPostResolveReimbursement(baseUrl+reimbId, checkTokenAndLoadPage, myJSON);
+}
+
+// resolveReimbursement AJAX helper. 
+function sendAjaxPostResolveReimbursement(url, callback, data){
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+	} // probably should authenticate to post; for later.
+	xhr.send(data);
+}
+
+
+
 
 // TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
 // TODO: viewONLYManagers (click event)
@@ -202,6 +241,8 @@ function loadSingleReimbursement(reimbHtmlId){
 // ALL EVENT LISTENERS
 document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
+document.getElementById("approve-btn").addEventListener("click", approveReimbursement);
+document.getElementById("reject-btn").addEventListener("click", rejectReimbursement);
 
 // LOAD PAGE + Authentication
 let token = checkTokenAndLoadPage();
