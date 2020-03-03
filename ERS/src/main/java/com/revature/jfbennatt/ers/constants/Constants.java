@@ -64,6 +64,8 @@ public class Constants {
 					"name used for form submission for the description when requesting a reimbursement");
 			printVariable(ps, "AMOUNT_ID", SubmitReimbursementDelegate.AMOUNT_ID,
 					"name for the amount field when submitting a reimbursement request");
+			printVariable(ps, "DATE_ID", SubmitReimbursementDelegate.DATE_ID,
+					"name for the date field when submitting a reimbursement request");
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
 		}

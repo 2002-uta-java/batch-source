@@ -23,3 +23,4 @@ const SUBMIT_REIMBURSEMENT_API = "/ERS/api/submit";
 const SUBMIT_REIMBURSEMENT_PAGE = "/ERS/submit";
 const DESCRIPTION_ID = "description";
 const AMOUNT_ID = "amount";
+const DATE_ID = "date";
