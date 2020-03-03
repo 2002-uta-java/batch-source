@@ -51,7 +51,7 @@ function loadPage(xhr){
     document.getElementById("modal-position").innerHTML = `${user.position}`;
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
-    // TODO: picture depending on gender (id=)
+    // TODO: picture depending on gender (id=) (is also in viewemployees.js)
 
     // Load reimbursement information
     requestReimbursements();
@@ -110,7 +110,8 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}
-	} // probably should authenticate to post; for later.
+    } // probably should authenticate to post; for later.
+    xhr.setRequestHeader("Authorization", token);
 	xhr.send(data);
 }
 
@@ -124,7 +125,7 @@ function requestReimbursements(){
 }
 
 // requestReimbursements AJAX helper.
-function sendAjaxGetReimbursements(url, callback) {
+async function sendAjaxGetReimbursements(url, callback) {
     let token = sessionStorage.getItem("token");
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -188,8 +189,6 @@ function loadReimbursements(baseUrl, xhr) {
 }
 
 function loadSingleReimbursement(reimbHtmlId){
-    // let baseUrl = "http://localhost:8080/Project1/api/reimb/"; // Certain reimbursements with reimbId.
-
     let r = document.getElementById(reimbHtmlId);
     let purpose = r.getAttribute("data-purpose");
     let firstName = r.getAttribute("data-eFirstName");
@@ -240,7 +239,8 @@ function sendAjaxPostResolveReimbursement(url, callback, data){
 		} else if (this.readyState===4){
             console.log("Ajax failure.");
 		}
-	} // probably should authenticate to post; for later.
+    } // probably should authenticate to post; for later.
+    xhr.setRequestHeader("Authorization", token);
 	xhr.send(data);
 }
 

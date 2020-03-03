@@ -9,20 +9,20 @@ function loadPage() {
         return;
     }
 
-    let baseUrl1 = "http://localhost:8080/Project1/api/users"; // all users
-    let baseUrl2 = "http://localhost:8080/Project1/api/users/" + tokenArr[0]; // current user
-    sendAjaxGet(baseUrl1, loadEmployees, token);
-    sendAjaxGet(baseUrl2, loadUser, token);
-    
+    let baseUrl1 = "http://localhost:8080/Project1/api/users/" + tokenArr[0]; // current user
+    let baseUrl2 = "http://localhost:8080/Project1/api/users"; // all users
+    sendAjaxGet(baseUrl1, loadUser, token);
+    sendAjaxGet(baseUrl2, loadEmployees, token);
 
+    // TODO: show reimb (shouldnt have to clear, can handle that in separate thing)
 }
 
-function sendAjaxGet(url, callback, token){
+async function sendAjaxGet(url, callback, token){
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
-			return callback(this);
+			callback(this);
 		} else if (this.readyState===4){
             console.log("Ajax failure.")
 		}
@@ -44,7 +44,7 @@ function loadUser(xhr) {
     document.getElementById("modal-position").innerHTML = `${user.position}`;
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
-    // TODO: picture depending on gender (id=)
+    // TODO: picture depending on gender (id=) (is also in homemanager.js)
 }
 
 function loadEmployees(xhr) {

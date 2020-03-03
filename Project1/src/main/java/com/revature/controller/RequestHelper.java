@@ -35,11 +35,11 @@ public class RequestHelper {
 		
 		if(path.startsWith("/api/")) {
 			// Authenticate token here.
-			if(!authDelegate.isAuthorized(request)) {
-				System.out.println("Failed authentication.");
-				response.sendError(401);
-				return;
-			}
+//			if(!authDelegate.isAuthorized(request)) {
+//				System.out.println("Failed authentication.");
+//				response.sendError(401);
+//				return;
+//			}
 			
 			String record = path.substring(5); // i think this shaves off the /api/ part.
 			
