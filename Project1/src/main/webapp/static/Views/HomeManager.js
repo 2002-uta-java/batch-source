@@ -19,7 +19,7 @@ function checkTokenAndLoadPage() {
 }
 
 // checkToken AJAX helper. 
-function sendAjaxGet(url, callback, token){
+async function sendAjaxGet(url, callback, token){
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function(){
@@ -98,7 +98,7 @@ function updateProfile() {
 }
 
 // updateProfile AJAX helper. 
-function sendAjaxPostUpdateProfile(url, callback, data){
+async function sendAjaxPostUpdateProfile(url, callback, data){
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url);
 	xhr.onreadystatechange = function(){
@@ -145,11 +145,10 @@ function loadReimbursements(baseUrl, xhr) {
     let reimbs = JSON.parse(xhr.response);
     let emplUrl = "http://localhost:8080/Project1/api/users";
     sendAjaxGetEmployeeNames(emplUrl, continueLoadReimbursements, baseUrl, reimbs); // this is stupid.
-
 }
 
 // ajax helper for finding employeeNames
-function sendAjaxGetEmployeeNames(url, callback, baseUrl, reimbs) {
+async function sendAjaxGetEmployeeNames(url, callback, baseUrl, reimbs) {
     let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function(){
@@ -198,13 +197,13 @@ function continueLoadReimbursements(xhr, baseUrl, reimbs) {
             reimElement.setAttribute("data-target", "#view-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
+            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}`;
         }
         else { // Resolved reimbursements need the manager who resolved it.
             let mFullName = findEmployeeName(idManager, employeeNames);
             reimElement.setAttribute("data-mFullName", mFullName);
+            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}  managerResolve: ${mFullName}`;
         }
-
-        reimElement.innerHTML = `${amount}  ${purpose}  ${eFullName}  ${status}`;
 
         if (baseUrl == baseUrl1) {document.getElementById("all-reim").appendChild(reimElement);}
         if (baseUrl == baseUrl2) {document.getElementById("pending-reim").appendChild(reimElement);}
@@ -277,7 +276,7 @@ function resolveReimbursement(newStatus) {
 }
 
 // resolveReimbursement AJAX helper. 
-function sendAjaxPostResolveReimbursement(url, callback, data){ // also in viewemployees.js
+async function sendAjaxPostResolveReimbursement(url, callback, data){ // also in viewemployees.js
 	let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
 

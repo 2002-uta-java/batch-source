@@ -9,10 +9,13 @@ function loadPage() {
         return;
     }
 
-    // Clear everything and reload.
+    // Clear everything.
+    clearText("reim-heading");
     clearList("employees");
     clearList("managers");
-    clearList("all-reim")
+    clearList("all-reim");
+
+    // Reload.
     let baseUrl1 = "http://localhost:8080/Project1/api/users/" + tokenArr[0]; // current user
     let baseUrl2 = "http://localhost:8080/Project1/api/users"; // all users
     sendAjaxGet(baseUrl1, loadUser, token);
@@ -113,15 +116,39 @@ async function sendAjaxGetEmployeeReimbursements(url, callback) {
 }
 
 function loadEmployeeReimbursements(xhr) {
-    let reimbursements = JSON.parse(xhr.response);
+    let reimbs = JSON.parse(xhr.response);
+    let emplUrl = "http://localhost:8080/Project1/api/users";
+    sendAjaxGetEmployeeNames(emplUrl, continueLoadReimbursements, reimbs); // this is stupid.
+}
 
-    for (let r of reimbursements) {
+// ajax helper for finding employeeNames
+async function sendAjaxGetEmployeeNames(url, callback, reimbs) {
+    let token = sessionStorage.getItem("token");
+    let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this, reimbs);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.")
+		}
+	}
+	xhr.setRequestHeader("Authorization", token);
+    xhr.send();
+}
+
+function continueLoadReimbursements(xhr, reimbs) {
+    let employees = JSON.parse(xhr.response);
+    let employeeNames = createEmployeeNameList(employees);
+    
+    for (let r of reimbs) {
         let id = r.id;
         let purpose = r.purpose;
         let amount = r.amount;
         let idEmployee = r.idEmployee;
         let idManager = r.idManager;
         let status = r.status;
+        let eFullName = findEmployeeName(idEmployee, employeeNames);
 
         let reimElement = document.createElement("a");
 
@@ -133,7 +160,7 @@ function loadEmployeeReimbursements(xhr) {
         reimElement.setAttribute("data-idEmployee", idEmployee);
         reimElement.setAttribute("data-idManager", idManager);
         reimElement.setAttribute("data-status", status);
-        reimElement.setAttribute("data-eFullName", "TODO"); // TODO: ? probably dont need this
+        reimElement.setAttribute("data-eFullName", eFullName);
         reimElement.setAttribute("href", "#");
         reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
@@ -141,16 +168,42 @@ function loadEmployeeReimbursements(xhr) {
             reimElement.setAttribute("data-target", "#empl-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
+            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}`;
         }
         else { // Resolved reimbursements need the manager who resolved it.
-            // TODO: REQUEST FOR THE NAME OF MANAGER and RECORD IT
-            reimElement.setAttribute("data-mFullName", "TODO");
+            let mFullName = findEmployeeName(idManager, employeeNames);
+            reimElement.setAttribute("data-mFullName", mFullName);
+            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}  managerResolve: ${mFullName}`;
         }
 
-        reimElement.innerHTML = `${amount}  ${purpose}  ${idEmployee}  ${status}`;
-
+        document.getElementById("reim-heading").innerHTML = eFullName; // Redundant but whatever.
         document.getElementById("all-reim").appendChild(reimElement);
     }
+}
+
+function createEmployeeNameList(employees) {
+    let employeeNames = []; // format: [ [id, fullName], [id, fullName], ...]
+
+    for (let e of employees) {
+        let id = e.id;
+        let fullName = e.firstName + " " + e.lastName;
+        employeeNames.push([id, fullName]);
+    }
+
+    return employeeNames;
+}
+
+function findEmployeeName(id, employeeNames) {
+    let arrayLength = employeeNames.length;
+
+    for (let i = 0; i < arrayLength; i++) {
+        eId = employeeNames[i][0];
+        eName = employeeNames[i][1];
+        if (id == eId) {
+            return eName;
+        }
+    }
+    return "Name missing (id error)."
 }
 
 function loadSingleReimbursement(reimbHtmlId){
@@ -179,6 +232,12 @@ function clearList(id) {
     while (parent.firstChild) {
         parent.firstChild.remove();
     }
+}
+
+// Helper function to clear innerHTML text.
+function clearText(id) {
+    let parent = document.getElementById(id);
+    parent.innerHTML = "";
 }
 
 // Remove user token and return to the login menu.
@@ -214,7 +273,7 @@ function updateProfile() {
 }
 
 // updateProfile AJAX helper. 
-function sendAjaxPostUpdateProfile(url, callback, data){
+async function sendAjaxPostUpdateProfile(url, callback, data){
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url);
 	xhr.onreadystatechange = function(){
