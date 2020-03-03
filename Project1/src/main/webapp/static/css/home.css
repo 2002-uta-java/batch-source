@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+.hidden-row {
+	padding: 1.5rem;
+}
+
+.container {
+	background-color: #fff;
+	padding: 2em;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #aaa;
+	margin-top: 2em;
+}
+
+.filters-section {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 1em;
+}
+
+.navbar-collapse {
+	flex-direction: row-reverse;
+}
+
+.req-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.active-req, .active-req:hover {
+	background-color: goldenrod !important;
+}
+
+div.collapse, div.collapse:hover {
+	background-color: #fff !important;
+}

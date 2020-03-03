@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+
+.container::before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	z-index: -1;
+	background-image: url("https://blog.123rf.com/wp-content/uploads/2015/08/20174782-business-team-with-thumbs-up-people.jpg");
+	filter: grayscale(100%);
+
+	-webkit-filter: blur(20px) !important;
+	-moz-filter: blur(20px);
+	-o-filter: blur(20px);
+	-ms-filter: blur(20px);
+	filter: blur(20px) !important;
+
+	filter: opacity(.5);
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2em;
+	height: 100%;
+}
+
+form {
+	background-color: #fff;
+	width: 400px;
+	padding: 2em;
+	border-radius: 5px;
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	box-shadow: 0 0 5px #aaa;
+}

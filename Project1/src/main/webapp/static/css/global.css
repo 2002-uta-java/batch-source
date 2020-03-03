@@ -1,0 +1,9 @@
+body {
+    background-color: #eee;
+	font-family: "Roboto", sansserif !important;
+	height: 100%;
+}
+
+.clickable {
+	cursor: pointer;
+}
