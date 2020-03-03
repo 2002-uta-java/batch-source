@@ -104,13 +104,23 @@ public class UserDaoImplementation implements UserDao{
 	
 	@Override
 	public List<User> getUsers() {
-		String sql = "select * from bank_user";
+		String sql = "select * from employee";
 		List<User> users = new ArrayList<>();
-	
+		User user;
+		System.out.println(sql);
 	try (Connection c = ConnectionUtil.getConnection();Statement s = c.createStatement();ResultSet rs = s.executeQuery(sql)){
 		while(rs.next()) {
-			//TODO
+			user = new User();
+			user.setUsername(rs.getString("username"));
+			user.setFirstName(rs.getString("first_name"));
+			user.setLastName(rs.getString("last_name"));
+			user.setPassword(rs.getString("pwd"));
+			user.setManager((rs.getInt("isManager") == 1));
+			System.out.println(user);
+			users.add(user);
+			System.out.println(users);
 		}
+		
 		
 	} 
 	catch (SQLException e) {

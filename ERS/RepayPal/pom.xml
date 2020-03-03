@@ -22,7 +22,7 @@
   		<groupId>org.postgresql</groupId>
   		<artifactId>postgresql</artifactId>
   		<version>42.2.10</version>
-  	</dependency>
+	</dependency>
   	
   	<dependency>
 		<groupId>org.mockito</groupId>

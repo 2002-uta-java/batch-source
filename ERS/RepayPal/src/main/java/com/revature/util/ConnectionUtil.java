@@ -13,9 +13,8 @@ public class ConnectionUtil {
 		String username = System.getenv("JDBC_DB_USER");
 		String password = System.getenv("JDBC_DB_PASS");
 		
-		Class.forName("org.postgresql.Driver");
-		
 		if(connection == null || connection.isClosed()) {
+			Class.forName("org.postgresql.Driver");
 			connection = DriverManager.getConnection(url, username, password);
 		}
 		

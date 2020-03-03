@@ -15,13 +15,14 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 
 	@Override
 	public List<Reimbursement> getReimbursements() {
-		String sql = "select * reimbursement";
-		List<Reimbursement> reimbursements = new ArrayList<>();
-			
+		String sql = "select * from reimbursement";
+		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+		Reimbursement r;
 		try (Connection c = ConnectionUtil.getConnection();Statement s = c.createStatement();ResultSet rs = s.executeQuery(sql)){
 			while(rs.next()) {
-				reimbursements.add(new Reimbursement(rs.getInt("id"), rs.getString("username"), rs.getString("status"), 
-						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved")));
+				r = new Reimbursement(rs.getInt("id"), rs.getString("username"), rs.getString("status"), 
+						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved"));
+				reimbursements.add(r);
 			}
 			
 		} 

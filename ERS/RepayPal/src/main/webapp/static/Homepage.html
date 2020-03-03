@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>Home Page</h2>
+	<span id="user"></span><br>
+	<span id="manager"></span>
+	<a href="http://localhost:8080/RepayPal/login" >Back</a>
+	<a href="http://localhost:8080/RepayPal/logout" >Logout</a>
+	<button id="view-reims">View Reimbursements</button>
+	<button>Add Reimbursements</button>
+	<table id="reims" hidden=true>
+		<tr>
+			<th>id</th>
+			<th>username</th>
+			<th>status</th>
+			<th>amount</th>
+			<th>description</th>
+			<th>resolution</th>
+		</tr>
+	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+	let token = sessionStorage.getItem("token");
+	console.log(token);
+	
+	//user not logged in
+	if(!token){
+		window.location.href="http://localhost:8080/RepayPal/login";	
+	}
+	let ta = token.split(":");
+	document.getElementById("user").innerHTML = `Welcome ${ta[0]}`;
+	document.getElementById("view-reims").addEventListener("click",displayTable);
+	
+	
+	function displayTable(){
+		let baseUrl = "http://localhost:8080/RepayPal/api/";
+		if(ta[1] == true){
+			document.getElementById("manager").innerHTML = "Am I a manager?";
+			let newUrl = baseUrl+"reimbursements";
+			sendAjaxGet(newUrl, displayReimbursements);
+		}else{
+			document.getElementById("manager").innerHTML = "Am I an employee?";
+			let newUrl = baseUrl+"reimbursements/"+ta[0];
+			sendAjaxGet(newUrl, displayReimbursements);
+		}
+	}
+
+	function sendAjaxGet(url, callback){
+		let xhr = new XMLHttpRequest();
+		xhr.open("GET", url);
+		xhr.onreadystatechange = function(){
+			if(this.readyState===4 && this.status===200){
+				callback(this);
+			} else if (this.readyState===4){
+				window.location.href="http://localhost:8080/RepayPal/home";
+			}
+		}
+		xhr.setRequestHeader("Authorization",token);
+		xhr.send();
+	}
+	
+	function displayReimbursements(xhr){
+		let reimbursements = JSON.parse(xhr.response);
+		let table = document.getElementById("reims");
+		table.style.display = "block";
+		console.log(reimbursements);
+		for(let reimbursement of reimbursements){
+			let id = reimbursement.id;
+			let username = reimbursement.username;
+			let status = reimbursement.status;
+			let amount = reimbursement.amount;
+			let description = reimbursement.description;
+			let resolution = reimbursement.resolved;
+			let newRow = document.createElement("tr");
+			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td></tr>`;
+			table.appendChild(newRow);
+		}
+	}
+	</script>
+</body>
+</html>

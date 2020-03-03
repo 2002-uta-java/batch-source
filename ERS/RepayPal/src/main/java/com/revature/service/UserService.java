@@ -53,6 +53,12 @@ private  UserDao userDao = new UserDaoImplementation();
 		}
 		return false;
 	}
+	
+	public List<User> getUsers(){
+		List<User> users = userDao.getUsers();
+		System.out.println(users);
+		return users;
+	}
 
 	public boolean deleteUser(User u) {
 		return false;
