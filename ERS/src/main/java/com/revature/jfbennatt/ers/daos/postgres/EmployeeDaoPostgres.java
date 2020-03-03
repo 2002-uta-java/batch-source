@@ -13,8 +13,8 @@ import com.revature.jfbennatt.ers.daos.EmployeeDao;
 import com.revature.jfbennatt.ers.models.Employee;
 
 /**
- * Implementation of {@ EmployeeDao} used to access the Postgresql database on
- * AWS.
+ * Implementation of {@link EmployeeDao} used to access the Postgresql database
+ * on AWS.
  * 
  * @author Jared F Bennatt
  *

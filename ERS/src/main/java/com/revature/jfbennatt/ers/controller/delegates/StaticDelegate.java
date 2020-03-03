@@ -16,12 +16,12 @@ import com.revature.jfbennatt.ers.models.Employee;
 /**
  * This class is necessary to retrieve static resources while also preventing
  * the client from accessing unauthorized pages (e.g. the user isn't logged in)
- * if the user attempts to go directly to a static resource's URI (except
- * scripts are allowed, so the user can look at all the javascript they want).
- * The default behavior of {@link Delegate} is to redirect the client to the
- * login page if they aren't logged in (which is what I normally want to
- * do)&#8212;unless I'm trying to access the actual login page). Therefore this
- * class essentially re-writes the behavior of {@link Delegate} to avoid an
+ * if the user attempts to go directly to a static resource's URI (scripts
+ * aren't blocked, so the user can look at all the javascript they want). The
+ * default behavior of {@link Delegate} is to redirect the client to the login
+ * page if they aren't logged in which is what normally should
+ * happen&#8212;unless I'm trying to access the actual login page. Therefore
+ * this class essentially re-writes the behavior of {@link Delegate} to avoid an
  * infinite loop of redirecting a non-logged-in user to the login page.
  * 
  * @author Jared F Bennatt
@@ -41,10 +41,29 @@ public class StaticDelegate extends Delegate {
 	private FrontController frontController = null;
 
 	/**
-	 * Overrides
-	 * {@link Delegate#processRequest(String, HttpServletRequest, HttpServletResponse)}
-	 * to allow an "out" when the client attempts to access the login page (and also
-	 * for loading scripts).
+	 * Default constructor.
+	 */
+	public StaticDelegate() {
+		super();
+	}
+
+	/**
+	 * This method uses {@link FrontController} to get static resources.
+	 * 
+	 * @param employee not used.
+	 * @param path     not used
+	 * @param request  HTTP request
+	 * @param response HTTP response.
+	 */
+	@Override
+	protected void processRequest(final Employee employee, final String path, final HttpServletRequest request,
+			final HttpServletResponse response) throws IOException, ServletException {
+		frontController.staticGet(request, response);
+	}
+
+	/**
+	 * Overrides {@link Delegate#processRequest} to allow an "out" when the client
+	 * attempts to access the login page (and also for loading scripts).
 	 * 
 	 * @param path     path of this request.
 	 * @param request  HTTP request.
@@ -84,20 +103,6 @@ public class StaticDelegate extends Delegate {
 			processRequest(employee, path, request, response);
 		}
 
-	}
-
-	/**
-	 * This method uses {@link FrontController} to get static resources.
-	 * 
-	 * @param employee not used.
-	 * @param path     not used
-	 * @param request  HTTP request
-	 * @param response HTTP response.
-	 */
-	@Override
-	protected void processRequest(final Employee employee, final String path, final HttpServletRequest request,
-			final HttpServletResponse response) throws IOException, ServletException {
-		frontController.staticGet(request, response);
 	}
 
 	/**

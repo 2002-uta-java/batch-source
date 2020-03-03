@@ -33,6 +33,27 @@ public class FrontController extends DefaultServlet {
 	}
 
 	/**
+	 * Routes calls for HTTP GET requests.
+	 * 
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		dispatcher.dispatch(request, response);
+	}
+
+	/**
+	 * Routes calls for HTTP POST requests.
+	 * 
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+	/**
 	 * Sets up any resources needed for this servlet
 	 */
 	@Override
@@ -52,31 +73,6 @@ public class FrontController extends DefaultServlet {
 	public void staticGet(final HttpServletRequest request, final HttpServletResponse response)
 			throws IOException, ServletException {
 		super.doGet(request, response);
-	}
-
-	/**
-	 * Routes calls for HTTP GET requests.
-	 * 
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		dispatcher.dispatch(request, response);
-	}
-
-	/**
-	 * Routes calls for HTTP POST requests.
-	 * 
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

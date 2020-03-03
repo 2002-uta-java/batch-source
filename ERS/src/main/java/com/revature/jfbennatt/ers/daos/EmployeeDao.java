@@ -11,15 +11,13 @@ import com.revature.jfbennatt.ers.models.Employee;
 public interface EmployeeDao {
 
 	/**
-	 * Finds an employee based on their session token. This method should set every
-	 * field in the returned {@link Employee} object except the password.
+	 * Attempts to delete the plain text token from the database.
 	 * 
-	 * @param token Session token of the employee (theoretically the employee would
-	 *              have already logged in and received a session token).
-	 * @return {@link Employee} object representing the employee or null if the
-	 *         session token is invalid.
+	 * @param token Session token of the user that will be deleted (the token, not
+	 *              the user).
+	 * @return Whether or not the token was actually deleted
 	 */
-	public Employee getEmployeeByToken(String token);
+	public boolean deleteSessionToken(String token);
 
 	/**
 	 * Gets an employee from their email. This is intended to be used to log in an
@@ -27,10 +25,21 @@ public interface EmployeeDao {
 	 * first and last name of the {@link Employee} object being returned.
 	 * 
 	 * @param email Email of the employee.
-	 * @return An {@link Employee} object representing the employee or null if the
-	 *         employee doesn't exist.
+	 * @return An {@link Employee} object representing the employee or
+	 *         <code>null</code> if the employee doesn't exist.
 	 */
 	public Employee getEmployeeByEmail(String email);
+
+	/**
+	 * Finds an employee based on their session token. This method should set every
+	 * field in the returned {@link Employee} object except the password.
+	 * 
+	 * @param token Session token of the employee (theoretically the employee would
+	 *              have already logged in and received a session token).
+	 * @return {@link Employee} object representing the employee or
+	 *         <code>null</code> if the session token is invalid.
+	 */
+	public Employee getEmployeeByToken(String token);
 
 	/**
 	 * Returns the length (in chars) that this implementation uses for the session
@@ -48,14 +57,5 @@ public interface EmployeeDao {
 	 * @return Whether or not this was successful.
 	 */
 	public boolean setTokenById(int empId, String token);
-
-	/**
-	 * Attempts to delete the plain text token from the database.
-	 * 
-	 * @param token Session token of the user that will be deleted (the token, not
-	 *              the user).
-	 * @return Whether or not the token was actually deleted
-	 */
-	public boolean deleteSessionToken(String token);
 
 }

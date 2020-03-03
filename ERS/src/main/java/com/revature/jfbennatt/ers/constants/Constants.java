@@ -23,6 +23,10 @@ import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 public class Constants {
 	public static final String CONSTANTS_FILE = "src/main/webapp/static/scripts/constants.js";
 
+	private Constants() {
+		super();
+	}
+
 	/**
 	 * This method creates the {@link #CONSTANTS_FILE} javascript file.
 	 * 

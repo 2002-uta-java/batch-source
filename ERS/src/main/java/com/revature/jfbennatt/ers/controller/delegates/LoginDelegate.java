@@ -17,6 +17,13 @@ import com.revature.jfbennatt.ers.models.Employee;
 public class LoginDelegate extends Delegate {
 
 	/**
+	 * Default constructor.
+	 */
+	public LoginDelegate() {
+		super();
+	}
+
+	/**
 	 * Sets the cookies necessary for authentication and session management.
 	 * 
 	 * @see Delegate#processRequest(Employee, String, HttpServletRequest,

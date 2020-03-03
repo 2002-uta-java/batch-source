@@ -16,9 +16,12 @@ import com.revature.jfbennatt.ers.models.Employee;
  * database. The main functionality provided is encryption of the password and
  * session token.
  * 
- * {@link PasswordEncryptor} and {@link StrongTextEncryptor} are used for
- * encryption. This class will not be functional without the environment
- * variable DB_KEY.
+ * <a href=
+ * "http://www.jasypt.org/api/jasypt/1.9.3/org/jasypt/util/password/PasswordEncryptor.html">PasswordEncryptor</a>
+ * and <a href=
+ * "http://www.jasypt.org/api/jasypt/1.9.3/org/jasypt/util/text/StrongTextEncryptor.html">StrongTextEncryptor</a>
+ * are used for encryption. This class will not be functional without the
+ * environment variable DB_KEY.
  * 
  * @author Jared F Bennatt
  *
@@ -51,26 +54,52 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Sets the {@link EmployeeDao} to be used by this service.
+	 * Removes the session token for the user (specified by their current session
+	 * token).
 	 * 
-	 * @param empDao {@link EmployeeDao} to be used by this service.
+	 * @param encryptedToken The encrypted token given by the client.
+	 * @return Whether or not a session token was actually deleted.
 	 */
-	public void setEmployeeDao(final EmployeeDao empDao) {
-		this.empDao = empDao;
+	public boolean deleteSessionTokenByToken(String encryptedToken) {
+		if (encryptedToken != null) {
+			final String token = textEnc.decrypt(encryptedToken);
+			return empDao.deleteSessionToken(token);
+		}
+
+		// there was no token to delete
+		return false;
+	}
+
+	/**
+	 * Generates a random session token based on the length expected by
+	 * {@link EmployeeDao#getTokenLength()}. The token is an alphanumeric string.
+	 * 
+	 * @return An alphanumeric token of the length specified by the internal
+	 *         {@link EmployeeDao}.
+	 */
+	private String generateToken() {
+		final char[] token = new char[empDao.getTokenLength()];
+
+		for (int i = 0; i < token.length; ++i) {
+			token[i] = randomChar();
+		}
+
+		return new String(token);
 	}
 
 	/**
 	 * Get/authenticate an employee from their (encrypted) session token. Although
 	 * technically unnecessary, this method re-encrypts the unencrypted token from
 	 * the database, so the the client should update their session token (because it
-	 * will change&#8212;although the old encrypted token would still work unless I
-	 * actually change the token in the database).
+	 * will change&#8212;although the old encrypted token would still work unless
+	 * the token is actually changed in the database).
 	 * 
 	 * @param encryptedToken This is the encrypted session token that the user
 	 *                       provides (the token is not encrypted in the database).
-	 * @return The authenticated Employee object (all fields will be set except for
-	 *         the password). The token in the Employee object will be encrypted so
-	 *         that the client cannot know the actual value of the token.
+	 * @return The authenticated {@link Employee} object (all fields will be set
+	 *         except for the password) or <code>null</code> if the employee isn't
+	 *         found. The token in the Employee object will be encrypted so that the
+	 *         client cannot know the actual value of the token.
 	 * @see EmployeeDao#getEmployeeByToken(String)
 	 */
 	public Employee getEmployeeByToken(final String encryptedToken) {
@@ -102,7 +131,8 @@ public class EmployeeService {
 	 * @param email    Email of the employee trying to log in.
 	 * @param password Password of the Employee trying to log in.
 	 * @return An {@link Employee} object representing the logged in employee or
-	 *         null if the employee doesn't exist or isn't authenticated.
+	 *         <code>null</code> if the employee doesn't exist or isn't
+	 *         authenticated.
 	 */
 	public Employee loginEmployee(final String email, final String password) {
 		final Employee emp = empDao.getEmployeeByEmail(email);
@@ -134,23 +164,6 @@ public class EmployeeService {
 	}
 
 	/**
-	 * Generates a random session token based on the length expected by
-	 * {@link EmployeeDao#getTokenLength()}. The token is an alphanumeric string.
-	 * 
-	 * @return An alphanumeric token of the length specified by the internal
-	 *         {@link EmployeeDao}.
-	 */
-	private String generateToken() {
-		final char[] token = new char[empDao.getTokenLength()];
-
-		for (int i = 0; i < token.length; ++i) {
-			token[i] = randomChar();
-		}
-
-		return new String(token);
-	}
-
-	/**
 	 * Gets a random alphanumeric character.
 	 * 
 	 * @return A random alphanumeric character.
@@ -172,13 +185,12 @@ public class EmployeeService {
 		}
 	}
 
-	public boolean deleteSessionToken(String encryptedToken) {
-		if (encryptedToken != null) {
-			final String token = textEnc.decrypt(encryptedToken);
-			return empDao.deleteSessionToken(token);
-		}
-
-		// there was no token to delete
-		return false;
+	/**
+	 * Sets the {@link EmployeeDao} to be used by this service.
+	 * 
+	 * @param empDao {@link EmployeeDao} to be used by this service.
+	 */
+	public void setEmployeeDao(final EmployeeDao empDao) {
+		this.empDao = empDao;
 	}
 }

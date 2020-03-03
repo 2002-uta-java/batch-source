@@ -32,8 +32,8 @@ public class ViewDelegate extends Delegate {
 	}
 
 	/**
-	 * Routes the client to the employee page or manager page (depending on the {@
-	 * Employee} object.
+	 * Routes the client to the employee page or manager page (depending on the
+	 * {@link Employee} object).
 	 * 
 	 * @param employee {@link Employee} object that represents the user.
 	 * @param path     Path of the request.
