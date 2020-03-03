@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(240, 243, 245);
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(23, 23, 94);
+}
+
+#main{
+    background-color: rgb(252, 252, 252);
+    padding: 40px 50px 10px 50px;
+    margin: 50px;
+}
+
+h1{
+    margin-bottom: 0px;
+}
+
+#downarrow{
+    text-align: center;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: slategray;
+}
+
+#subtitle{
+    margin: 0px;
+    letter-spacing: 3px;
+    color: slategray;
+    font-weight: 500;
+}
+
+#lie{
+    color: deeppink;
+    font-weight: 700;
+}
+
+#log-in-form{
+    background-color: white;
+    align-items: center;
+}
+
+#log-in-title{
+    text-align: center;
+}

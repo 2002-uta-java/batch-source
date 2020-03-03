@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>WELCOME HOME :)</h1>
+
+<h2>My Information</h2>
+<div id="my-info-form">
+    <label id="dept-label">department: </label>
+    <br>
+    <label id="f-name-label">name: </label>
+    <br>
+    <label>phone: </label>
+    <input type="text" id="phone-field" name="phone">
+    <br>
+    <label>e-mail: </label>
+    <input type="text" id="email-field" name="email">
+    <br>
+    <button id="update-emp-button">Update</button>
+</div>
+<br>
+<h2>Pending</h2>
+<table id="my-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+<h2>Processed</h2>
+<table id="processed-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+<br>
+<h2>All Employees Reimbursement History</h2>
+<table id="all-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Employee</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Approved By</th>
+    </tr>
+</table>
+<br>
+<h2>All Employees' Information</h2>
+<table id="all-info-table">
+    <tr>
+        <th>Department</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>e-mail</th>
+    </tr>
+</table>
+<br>
+<h2>Create a New Reimbursement</h2>
+<div id="new-reim-form">
+    <label id="cat-label">category: </label>
+    <select id="select-cat">
+    </select>
+    <br>
+    <label id="amount-label">amount: </label>
+    <input type="text" id="amount-field">
+    <br>
+    <label>Description: </label>
+    <textarea id="desc-field" name="description" rows="10"></textarea>
+    <br>
+    <button id="submit-reim-button">Submit</button>
+</div>
+
+<h2>Update Reimbursement</h2>
+<div id="update-reim-form">
+    <label>set status: </label>
+    <select id="select-status">
+    </select>
+    <br>
+    <label>Comment: </label>
+    <textarea id="comment-field" name="comment" rows="10"></textarea>
+    <br>
+    <button id="update-reim-button">Update</button>
+</div>
+
+<hr>
+<h2>My Information</h2>
+<table id="my-info-table">
+    <tr>
+        <th>Department</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>e-mail</th>
+    </tr>
+</table>
+<br>
+
+<script src="static/Scripts/Home.js"></script>
+<script src="static/Scripts/EmployeeInfoE.js"></script>
+<script src="static/Scripts/EmployeeInfoM.js"></script>
+<script src="static/Scripts/ReimbursementE.js"></script>
+<script src="static/Scripts/ReimbursementM.js"></script>
+
+
+
+
+
+
+</body>
+</html>
