@@ -10,17 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.daos.EmployeeDao;
-import com.revature.daos.EmployeeDaoImpl;
 import com.revature.daos.ReimbursementDao;
 import com.revature.daos.ReimbursementDaoImpl;
-import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 
 public class ReimbDelegate {
 	
 	private ReimbursementDao rDao = new ReimbursementDaoImpl();
-	private EmployeeDao eDao = new EmployeeDaoImpl();
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();

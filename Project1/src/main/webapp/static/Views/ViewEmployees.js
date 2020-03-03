@@ -9,12 +9,14 @@ function loadPage() {
         return;
     }
 
+    // Clear everything and reload.
+    clearList("employees");
+    clearList("managers");
+    clearList("all-reim")
     let baseUrl1 = "http://localhost:8080/Project1/api/users/" + tokenArr[0]; // current user
     let baseUrl2 = "http://localhost:8080/Project1/api/users"; // all users
     sendAjaxGet(baseUrl1, loadUser, token);
     sendAjaxGet(baseUrl2, loadEmployees, token);
-
-    // TODO: show reimb (shouldnt have to clear, can handle that in separate thing)
 }
 
 async function sendAjaxGet(url, callback, token){
@@ -136,7 +138,7 @@ function loadEmployeeReimbursements(xhr) {
         reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
         if (status == "pending") { // Pending reimbursements can be resolved in modals.
-            reimElement.setAttribute("data-target", "#view-reimbursement");
+            reimElement.setAttribute("data-target", "#empl-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
         }
@@ -157,16 +159,18 @@ function loadSingleReimbursement(reimbHtmlId){
     let fullName = r.getAttribute("data-eFullName");
     let amount = r.getAttribute("data-amount");
     let id = r.getAttribute("data-id");
+    let idEmployee = r.getAttribute("data-idEmployee");
 
     let htmlAmount = document.getElementById("single-reimb-amount");
     let htmlName = document.getElementById("single-reimb-name");
     let htmlPurpose = document.getElementById("single-reimb-purpose");
     let htmlId = document.getElementById("single-reimb-id");
+    document.getElementById("resolve-reimbursement-info").setAttribute("data-id", id);
+    document.getElementById("resolve-reimbursement-info").setAttribute("data-idEmployee", idEmployee);
 
     htmlAmount.innerHTML = amount;
     htmlName.innerHTML = fullName;
     htmlPurpose.innerHTML = purpose;
-    htmlId.innerHTML = id; // DO NOT CHANGE. can make this hidden if needed.
 }
 
 // Helper function to clear the reimbursements lists.
@@ -226,7 +230,44 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 	xhr.send(data);
 }
 
+function approveReimbursement() {
+    resolveReimbursement("approved");
+}
 
+function rejectReimbursement() {
+    resolveReimbursement("rejected");
+}
+
+
+function resolveReimbursement(newStatus) {
+    let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
+    let reimbId = document.getElementById("resolve-reimbursement-info").getAttribute("data-id");
+    let emplId = "e" + document.getElementById("resolve-reimbursement-info").getAttribute("data-idEmployee");
+    let token = sessionStorage.getItem("token");
+    let tokenArr = token.split(":");
+    let dataPack = {id: null, purpose: null, amount: null, idEmployee: null, idManager: tokenArr[0], status: newStatus};
+
+    let myJSON = JSON.stringify(dataPack);
+
+    sendAjaxPostResolveReimbursement(baseUrl+reimbId, requestEmployeeReimbursements, myJSON, emplId);
+}
+
+// resolveReimbursement AJAX helper. 
+async function sendAjaxPostResolveReimbursement(url, callback, data, emplId){ // also in homemanager.js
+    let token = sessionStorage.getItem("token");
+	let xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(emplId);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+    } // probably should authenticate to post; for later.
+    xhr.setRequestHeader("Authorization", token);
+	xhr.send(data);
+}
 
 
 
@@ -237,6 +278,8 @@ function sendAjaxPostUpdateProfile(url, callback, data){
 document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
 document.getElementById("manager-home-btn").addEventListener("click", viewManagerHome);
+document.getElementById("approve-btn").addEventListener("click", approveReimbursement);
+document.getElementById("reject-btn").addEventListener("click", rejectReimbursement);
 
 // LOAD PAGE
 loadPage();

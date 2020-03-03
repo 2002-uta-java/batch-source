@@ -55,12 +55,13 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				int rId = rs.getInt("id");
 				String purpose = rs.getString("purpose");
 				Float amount = rs.getFloat("amount");
 				int idEmployee = rs.getInt("id_employee");
 				int idManager = rs.getInt("id_manager");
 				String status = rs.getString("status");
-				Reimbursement r = new Reimbursement(id, purpose, amount, idEmployee, idManager, status);
+				Reimbursement r = new Reimbursement(rId, purpose, amount, idEmployee, idManager, status);
 				reimbursements.add(r);
 			}
 			

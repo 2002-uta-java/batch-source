@@ -228,7 +228,7 @@ function resolveReimbursement(newStatus) {
 }
 
 // resolveReimbursement AJAX helper. 
-function sendAjaxPostResolveReimbursement(url, callback, data){
+function sendAjaxPostResolveReimbursement(url, callback, data){ // also in viewemployees.js
 	let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
 
@@ -243,8 +243,6 @@ function sendAjaxPostResolveReimbursement(url, callback, data){
 	xhr.send(data);
 }
 
-
-// TODO: Redirect to view employees tab.
 
 
 // Commands to execute on load.
