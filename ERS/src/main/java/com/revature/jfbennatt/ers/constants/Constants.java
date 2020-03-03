@@ -1,12 +1,12 @@
 package com.revature.jfbennatt.ers.constants;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 import org.apache.log4j.Logger;
 
-import com.revature.jfbennatt.ers.controller.FrontController;
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 
@@ -23,6 +23,11 @@ import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 public class Constants {
 	public static final String CONSTANTS_FILE = "src/main/webapp/static/scripts/constants.js";
 
+	/**
+	 * This method creates the {@link #CONSTANTS_FILE} javascript file.
+	 * 
+	 * @param args no arguments are used.
+	 */
 	public static void main(String[] args) {
 		try (final PrintStream ps = new PrintStream(new File(CONSTANTS_FILE))) {
 			printOpeningComment(ps);
@@ -46,6 +51,11 @@ public class Constants {
 		}
 	}
 
+	/**
+	 * Prints the comment at the top of the javascript file.
+	 * 
+	 * @param ps {@link PrintStream} used to write to the file.
+	 */
 	private static void printOpeningComment(final PrintStream ps) {
 		ps.println("/**");
 		ps.println(" * This file holds constants that help keep things centralized between my java");
@@ -53,6 +63,14 @@ public class Constants {
 		ps.println(" */");
 	}
 
+	/**
+	 * Writes a variable declaration in the javascript file.
+	 * 
+	 * @param ps       {@link PrintStream} that writes to the file.
+	 * @param varName  Name of the variable to declare.
+	 * @param varValue The value to give the variable.
+	 * @param comment  A comment to explain what this variable is to be used for.
+	 */
 	private static void printVariable(final PrintStream ps, final String varName, final String varValue,
 			final String comment) {
 		ps.println();

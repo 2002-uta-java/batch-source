@@ -2,11 +2,17 @@ package com.revature.jfbennatt.ers.daos;
 
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * DAO interface for interacting with the database.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public interface EmployeeDao {
 
 	/**
-	 * Finds an employee based on their session token. At a minimum, the employee id
-	 * should be set by this method.
+	 * Finds an employee based on their session token. This method should set every
+	 * field in the returned {@link Employee} object except the password.
 	 * 
 	 * @param token Session token of the employee (theoretically the employee would
 	 *              have already logged in and received a session token).
@@ -17,8 +23,8 @@ public interface EmployeeDao {
 
 	/**
 	 * Gets an employee from their email. This is intended to be used to log in an
-	 * employee and thus this method should set the password of the {@link Employee}
-	 * object being returned.
+	 * employee and thus this method should set (at a minimum) the password, id, and
+	 * first and last name of the {@link Employee} object being returned.
 	 * 
 	 * @param email Email of the employee.
 	 * @return An {@link Employee} object representing the employee or null if the
@@ -27,7 +33,7 @@ public interface EmployeeDao {
 	public Employee getEmployeeByEmail(String email);
 
 	/**
-	 * Returns the length (of chars) that this implementation uses for the session
+	 * Returns the length (in chars) that this implementation uses for the session
 	 * token.
 	 * 
 	 * @return length (in chars) of the session token.

@@ -12,6 +12,13 @@ import com.revature.jfbennatt.connections.ConnectionUtil;
 import com.revature.jfbennatt.ers.daos.EmployeeDao;
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * Implementation of {@ EmployeeDao} used to access the Postgresql database on
+ * AWS.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class EmployeeDaoPostgres implements EmployeeDao {
 	/**
 	 * Column name for employee id in Postgresql database.
@@ -54,9 +61,6 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		super();
 	}
 
-	/**
-	 * @see {@link EmployeeDao#getEmployeeByToken(String)}
-	 */
 	@Override
 	public Employee getEmployeeByToken(String token) {
 		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_SESSION_TOKEN + " = ?";
@@ -92,9 +96,6 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		return emp;
 	}
 
-	/**
-	 * @see {@link EmployeeDao#getEmployeeByEmail(String)}
-	 */
 	@Override
 	public Employee getEmployeeByEmail(String email) {
 		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_EMAIL + " = ?";
@@ -131,17 +132,11 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		return emp;
 	}
 
-	/**
-	 * @see {@link EmployeeDao#getTokenLength()}
-	 */
 	@Override
 	public int getTokenLength() {
 		return SESSION_TOKEN_LENGTH;
 	}
 
-	/**
-	 * @see {@link EmployeeDao#setTokenById(int, String)}
-	 */
 	@Override
 	public boolean setTokenById(int empId, String token) {
 		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_SESSION_TOKEN + " = ? where " + EMP_ID + " = ?";
@@ -165,9 +160,6 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		return true;
 	}
 
-	/**
-	 * @see {@link EmployeeDao#deleteSessionToken(String)}
-	 */
 	@Override
 	public boolean deleteSessionToken(String token) {
 		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_SESSION_TOKEN + " = ? where " + EMP_SESSION_TOKEN
@@ -182,12 +174,10 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 
 			if (updated == 0) {
 				Logger.getRootLogger().error("Failed delete a token: " + token);
-				System.out.println("Failed delete a token: " + token);
 				return false;
 			}
 		} catch (SQLException e) {
 			Logger.getRootLogger().error(e.getMessage());
-			System.out.println("deleteSessionToken failed: " + e.getMessage());
 		}
 		// if we get here, the delete was successful
 		return true;

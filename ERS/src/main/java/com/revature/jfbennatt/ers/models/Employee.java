@@ -1,5 +1,11 @@
 package com.revature.jfbennatt.ers.models;
 
+/**
+ * Model for that mirrors the data held in the database for employees.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class Employee {
 	private String email;
 	private int empId;
@@ -9,20 +15,11 @@ public class Employee {
 	private String password;
 	private String token;
 
+	/**
+	 * Returns an empty object with no fields set.
+	 */
 	public Employee() {
 		super();
-	}
-
-	public Employee(int empId, String firstName, boolean isManager, String lastName, String password, String token,
-			String email) {
-		super();
-		this.empId = empId;
-		this.firstName = firstName;
-		this.isManager = isManager;
-		this.lastName = lastName;
-		this.password = password;
-		this.token = token;
-		this.email = email;
 	}
 
 	@Override

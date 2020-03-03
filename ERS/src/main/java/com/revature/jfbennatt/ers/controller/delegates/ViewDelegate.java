@@ -8,16 +8,37 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * This routes requests for pages (e.g. /) to the appropriate static page.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class ViewDelegate extends Delegate {
+	/**
+	 * URI of the static employee home page
+	 */
 	public static final String EMPLOYEE_HOME_PAGE = "/static/Employee/Home.html";
+	/**
+	 * URI of the static manager home page
+	 */
 	public static final String MANAGER_HOME_PAGE = "/static/Manager/Home.html";
 
+	/**
+	 * Default constructor.
+	 */
 	public ViewDelegate() {
 		super();
 	}
 
 	/**
-	 * Processes the given request by fetching the static page for the request.
+	 * Routes the client to the employee page or manager page (depending on the {@
+	 * Employee} object.
+	 * 
+	 * @param employee {@link Employee} object that represents the user.
+	 * @param path     Path of the request.
+	 * @param request  HTTP request.
+	 * @param response HTTP response.
 	 */
 	@Override
 	protected void processRequest(final Employee employee, final String path, final HttpServletRequest request,
@@ -29,6 +50,15 @@ public class ViewDelegate extends Delegate {
 		}
 	}
 
+	/**
+	 * Handles employee view requests.
+	 * 
+	 * @param path     Servlet path of the resource being requested.
+	 * @param request  HTTP request.
+	 * @param response HTTP response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void resolveEmployeeView(String path, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		switch (path) {
@@ -40,6 +70,15 @@ public class ViewDelegate extends Delegate {
 		}
 	}
 
+	/**
+	 * Handles manager view requests.
+	 * 
+	 * @param path     Servlet path of the resource being requested.
+	 * @param request  HTTP request.
+	 * @param response HTTP response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void resolveManagerView(String path, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		switch (path) {

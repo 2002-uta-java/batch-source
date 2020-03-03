@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 import org.postgresql.Driver;
 
+/**
+ * Utility class for getting a connection to my database.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class ConnectionUtil {
 	private static Connection con = null;
 	private static final String AWS_URL = System.getenv("AWS_POSTGRESQL_URL");
@@ -36,6 +42,11 @@ public class ConnectionUtil {
 		}
 	}
 
+	/**
+	 * Returns a {@link Connection} object that can be used to access the database.
+	 * 
+	 * @return {@link Connection} object to access the database.
+	 */
 	public static Connection getConnection() {
 		if (IS_TEST) {
 			return getH2Connection();
@@ -51,6 +62,12 @@ public class ConnectionUtil {
 		return con;
 	}
 
+	/**
+	 * Returns a connection to the local H2 database (as opposed to the AWS
+	 * Postgresql one)
+	 * 
+	 * @return {@link Connection} object to access the database.
+	 */
 	public static Connection getH2Connection() {
 		try {
 			if (con == null || con.isClosed()) {

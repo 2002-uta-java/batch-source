@@ -18,6 +18,12 @@ import com.revature.jfbennatt.connections.ConnectionUtil;
 import com.revature.jfbennatt.ers.daos.EmployeeDao;
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * JUnit tests for {@link EmployeeDaoPostgres}.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class EmployeeDaoPostgresTest {
 	private EmployeeDao empDao = new EmployeeDaoPostgres();
 
@@ -91,7 +97,7 @@ public class EmployeeDaoPostgresTest {
 	public void testSetTokenByIdFromNull() {
 		final int emplId = 2;
 		final String newToken = "0972856109728561097285610972856109728561097285610972856109728561";
-		final boolean succeeded = empDao.setTokenById(emplId, newToken);
+		empDao.setTokenById(emplId, newToken);
 		// (2, 'jdeath1@gravatar.com', 'Julius', 'De''Ath', null, false, 'SF6ytDkUhs');
 		final String email = "jdeath1@gravatar.com";
 		final Employee actual = empDao.getEmployeeByEmail(email);

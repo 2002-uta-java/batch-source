@@ -9,11 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.revature.jfbennatt.ers.controller.FrontController;
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.models.Employee;
 import com.revature.jfbennatt.ers.services.EmployeeService;
 
+/**
+ * Root class for (most) of the delegates. The only method that should be called
+ * is {@link #processRequest(String, HttpServletRequest, HttpServletResponse)}
+ * which authenticates the user and then (if authenticated) forwards to the
+ * abstract method
+ * {@link #processRequest(Employee, String, HttpServletRequest, HttpServletResponse)}
+ * otherwise redirects to the login page.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public abstract class Delegate {
 	/**
 	 * path for the home page (forwards to login upon unauthorized access)
@@ -49,10 +59,13 @@ public abstract class Delegate {
 	 * Value used to set the max age of a cookie.
 	 */
 	private static final int COOKIE_TIME = -1;
+	/**
+	 * Value used to set the path of the cookie.
+	 */
 	private static final String COOKIE_PATH = RequestDispatcher.CONTEXT_ROOT;
 
 	/**
-	 * {@link EmployeeService} object used to perform operations for the employee
+	 * {@link EmployeeService} object used to perform operations for the employee.
 	 */
 	protected EmployeeService empService;
 
@@ -78,18 +91,16 @@ public abstract class Delegate {
 	 * an {@link Employee} object that has its fields set (particularly the token
 	 * needed to subsequent accesses).
 	 * 
-	 * @param request the http request being made.
+	 * @param request the HTTP request being made.
 	 * @return The employee making the request or <code>null</code> if the request
 	 *         is unauthorized.
 	 */
-	protected final Employee authenticateEmployee(final HttpServletRequest request,
-			final HttpServletResponse response) {
+	protected final Employee authenticateEmployee(final HttpServletRequest request) {
 		final Cookie[] cookies = request.getCookies();
 		final String encryptedToken = getAuthToken(cookies);
 		final Employee employee = empService.getEmployeeByToken(encryptedToken);
 
 		Logger.getRootLogger().debug("Employee from authToken: " + employee);
-		System.out.println("Employee from authToken: " + employee);
 
 		if (employee != null) {
 			return employee;
@@ -99,11 +110,9 @@ public abstract class Delegate {
 			final String password = request.getHeader(PASSWORD_HEADER);
 
 			Logger.getRootLogger().debug("Trying to login: " + email + " " + password);
-			System.out.println("Trying to login: " + email + " " + password);
 			if (email != null && password != null) {
 				final Employee emp = empService.loginEmployee(email, password);
 				Logger.getRootLogger().debug("Trying to login in: " + emp);
-				System.out.println("Trying to login in: " + emp);
 				return emp;
 			}
 
@@ -135,13 +144,12 @@ public abstract class Delegate {
 
 		Logger.getRootLogger()
 				.debug("Setting first and last name cookies: " + firstName.getValue() + " " + lastName.getValue());
-		System.out.println("Setting first and last name cookies: " + firstName.getValue() + " " + lastName.getValue());
 	}
 
 	/**
-	 * Sets the cookie value for this employee so that the client can continue to
-	 * access the server resources. The cookie is set to expire when the browser is
-	 * closed.
+	 * Sets the cookie value (encrypted) for this employee so that the client can
+	 * continue to access the server resources. The cookie is set to expire when the
+	 * browser is closed.
 	 * 
 	 * @param employee {@link Employee} object which holds a token to be set.
 	 * @param response The HTTP response to add the cookie to.
@@ -158,20 +166,23 @@ public abstract class Delegate {
 		response.addCookie(authToken);
 
 		Logger.getLogger("Setting Authorization cookie: " + employee.getToken());
-		System.out.println("Setting Authorization cookie: " + employee.getToken());
 	}
 
+	/**
+	 * Extracts the (encrypted) cookie that holds the session token (if it exists).
+	 * 
+	 * @param cookies The cookies sent from the client.
+	 * @return The (encrypted) session token or null if the cookie doesn't exist.
+	 */
 	private static String getAuthToken(Cookie[] cookies) {
 		if (cookies != null) {
 			for (final Cookie cookie : cookies) {
 				Logger.getRootLogger().debug("Found cookie: " + cookie.getName() + ", " + cookie.getValue());
-				System.out.println("Found cookie: " + cookie.getName() + ", " + cookie.getValue());
 				if (cookie.getName().equals(AUTH_TOKEN_HEADER))
 					return cookie.getValue();
 			}
 		} else {
 			Logger.getRootLogger().debug("cookies was null");
-			System.out.println("cookies was null");
 		}
 		// either there were no cookies or the auth-token wasn't set
 		return null;
@@ -183,7 +194,7 @@ public abstract class Delegate {
 	 * by an outside entity.
 	 * 
 	 * @param path     URI for this request.
-	 * @param request  http request being made.
+	 * @param request  HTTP request being made.
 	 * @param response response to be given for this request.
 	 * @throws IOException
 	 * @throws ServletException
@@ -192,9 +203,9 @@ public abstract class Delegate {
 			throws IOException, ServletException {
 
 		Logger.getRootLogger().debug("Requesting: " + path);
-		System.out.println("Requesting: " + path);
 
-		final Employee employee = authenticateEmployee(request, response);
+		// get the employee from the cookies sent with the request
+		final Employee employee = authenticateEmployee(request);
 		if (employee == null) {
 			// forward to the login page
 			request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
@@ -205,22 +216,19 @@ public abstract class Delegate {
 	}
 
 	/**
-	 * This method should be implemented to add functionality to the processRequest
+	 * This method should be implemented to add functionality to the
+	 * {@link #processRequest(String, HttpServletRequest, HttpServletResponse)}
 	 * method. Sub-classes can assume that the Employee is non-null and is an
 	 * authenticated employee (or manager).
 	 * 
 	 * @param employee {@link Employee} object used to perform data retrievals (if
 	 *                 necessary).
 	 * @param path     URI for this request.
-	 * @param request  http request being made
-	 * @param response http response to be returned. The Employee's session token
-	 *                 and first and last names have already been added to the
-	 *                 headers for the response (assuming that
-	 *                 {@link #processRequest(HttpServletRequest, HttpServletResponse)}
-	 *                 has been called prior).
+	 * @param request  HTTP request being made
+	 * @param response HTTP response to be returned.
 	 * @throws ServletException
 	 * @throws IOException
-	 * @see #processRequest(HttpServletRequest, HttpServletResponse)
+	 * @see #processRequest(String, HttpServletRequest, HttpServletResponse)
 	 */
 	protected abstract void processRequest(Employee employee, String path, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException;
