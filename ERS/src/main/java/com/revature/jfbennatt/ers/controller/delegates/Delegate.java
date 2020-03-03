@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.revature.jfbennatt.ers.controller.FrontController;
+import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.models.Employee;
 import com.revature.jfbennatt.ers.services.EmployeeService;
 
@@ -47,6 +49,7 @@ public abstract class Delegate {
 	 * Value used to set the max age of a cookie.
 	 */
 	private static final int COOKIE_TIME = -1;
+	private static final String COOKIE_PATH = RequestDispatcher.CONTEXT_ROOT;
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee
@@ -124,8 +127,8 @@ public abstract class Delegate {
 		lastName.setMaxAge(COOKIE_TIME);
 
 		// need to set path so client always includes the cookie
-		firstName.setPath("/");
-		lastName.setPath("/");
+		firstName.setPath(COOKIE_PATH);
+		lastName.setPath(COOKIE_PATH);
 
 		response.addCookie(firstName);
 		response.addCookie(lastName);
@@ -150,7 +153,7 @@ public abstract class Delegate {
 		authToken.setMaxAge(COOKIE_TIME);
 		authToken.setDomain("localhost");
 		// need to set the path so that the cookie is always sent
-		authToken.setPath("/");
+		authToken.setPath(COOKIE_PATH);
 
 		response.addCookie(authToken);
 
