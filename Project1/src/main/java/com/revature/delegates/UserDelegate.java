@@ -24,12 +24,13 @@ public class UserDelegate {
 			System.out.println("Getting all users...");
 			List<Employee> employees = eDao.getEmployees();
 			
-			try (PrintWriter pw = response.getWriter();) { // what the hell is printwriter and objectmapper?
+			try (PrintWriter pw = response.getWriter();) {
 				pw.write(new ObjectMapper().writeValueAsString(employees)); // returns list of employees
+				response.setStatus(200);
 			}
 			
 		} else {
-			String idStr = request.getServletPath().substring(11); // shaves off /api/users/ i think.
+			String idStr = request.getServletPath().substring(11); // shaves off /api/users/
 			System.out.println("Getting user ID: " + idStr);
 			
 			Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
@@ -39,6 +40,7 @@ public class UserDelegate {
 			} else {
 				try (PrintWriter pw = response.getWriter()) {
 					pw.write(new ObjectMapper().writeValueAsString(e)); // returns specific employee
+					response.setStatus(200);
 				}
 			}
 		}

@@ -25,6 +25,9 @@ public class ViewDelegate {
 		case "/homeemployee":
 			request.getRequestDispatcher("/static/Views/HomeEmployee.html").forward(request, response);
 			break;
+		case "/viewemployees":
+			request.getRequestDispatcher("static/Views/ViewEmployees.html").forward(request, response);
+			break;
 		default:
 			response.sendError(404, "Static Resource Not Found");
 		}

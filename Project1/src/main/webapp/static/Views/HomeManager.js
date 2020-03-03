@@ -71,6 +71,11 @@ function logout() {
     window.location.href="http://localhost:8080/Project1/login";
 }
 
+// Load viewEmployees page.
+function viewEmployees() {
+    window.location.href="http://localhost:8080/Project1/viewemployees";
+}
+
 // Update profile information based on form input AND re-build page.
 function updateProfile() {
     let formInfo = document.getElementById("edit-profile-form");
@@ -200,7 +205,7 @@ function loadSingleReimbursement(reimbHtmlId){
     htmlAmount.innerHTML = amount;
     htmlName.innerHTML = firstName + " " + lastName;
     htmlPurpose.innerHTML = purpose;
-    htmlId.innerHTML = id; // can make this hidden if needed.
+    htmlId.innerHTML = id; // DO NOT CHANGE. can make this hidden if needed.
 }
 
 function approveReimbursement() {
@@ -228,7 +233,7 @@ function resolveReimbursement(newStatus) {
 function sendAjaxPostResolveReimbursement(url, callback, data){
 	let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
-    console.log(url);
+
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
             callback(this);
@@ -240,21 +245,16 @@ function sendAjaxPostResolveReimbursement(url, callback, data){
 }
 
 
-
-
-// TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
-// TODO: viewONLYManagers (click event)
-
-
+// TODO: Redirect to view employees tab.
 
 
 // Commands to execute on load.
-
 // ALL EVENT LISTENERS
 document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
 document.getElementById("approve-btn").addEventListener("click", approveReimbursement);
 document.getElementById("reject-btn").addEventListener("click", rejectReimbursement);
+document.getElementById("view-employees-btn").addEventListener("click", viewEmployees);
 
 // LOAD PAGE + Authentication
 let token = checkTokenAndLoadPage();
