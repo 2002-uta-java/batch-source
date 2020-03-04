@@ -19,8 +19,8 @@ public class RequestHelper {
 		String path = request.getServletPath();
 		
 		switch(path) {
-		case "/login":
-			login(request, response);
+		case "/employee":
+			viewDelegate.getEmployeeView(request, response);
 			break;
 		default:
 			response.sendError(404);
@@ -30,10 +30,10 @@ public class RequestHelper {
 	}
 	
 	
-	private void login(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		System.out.println("attempted to login");
-	}
+//	private void login(HttpServletRequest request, HttpServletResponse response) {
+//		// TODO Auto-generated method stub
+//		System.out.println("attempted to login");
+//	}
 
 
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -1,7 +1,7 @@
 
 
 
-
+// login function
 document.getElementById("index-login").addEventListener("click", login)
 
 function login(){
@@ -21,12 +21,16 @@ function login(){
             let auth = xhr.getResponseHeader("Authorization");
             sessionStorage.setItem("token", auth);
             console.log(auth);
+            let check = auth;
 
-            // insert function to determine manager vs employee
+            // function to determine manager vs employee
 
+            if (isManager(check) === true){
+                window.location.href ="http://localhost:8080/ExpenseReimbursement/static/manager.html";
+            } else {
+                window.location.href = "http://localhost:8080/ExpenseReimbursement/static/employee.html";
+            }
 
-
-           // window.location.href="http://localhost:8080/ExpenseReimbursement/home";
         } else if (xhr.readyState == 4) {
             alert("Invalid Credentials, please try again.");
         }
@@ -39,17 +43,15 @@ function login(){
     
 }
 
-// function sendAjaxGet(url, callback){
-//     let xhr = new XMLHttpRequest();
-//     xhr.open("GET", url);
-//     xhr.onreadystatechange = function(){
-//         if(xhr.readyState==4 && xhr.status==200){
-//             callback(xhr.response);
-//         }
-//     }
-//     xhr.send();
-// }
-
+// checks if logged in user is manager or not
+function isManager(check){
+    let splitToken = check.split(":");
+    if(splitToken[1] === "true"){
+        return true;
+    } else{
+        return false;
+    }
+}
 
 
 

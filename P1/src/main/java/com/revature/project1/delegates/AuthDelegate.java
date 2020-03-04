@@ -12,7 +12,7 @@ import com.revature.project1.services.AppuserService;
 
 public class AuthDelegate {
 	
-private AppuserService au = new AppuserService();
+	private AppuserService au = new AppuserService();
 	
 	public void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
@@ -24,6 +24,7 @@ private AppuserService au = new AppuserService();
 		
 		if(a!=null) {
 			String token = a.getId()+":"+a.isManager();
+			System.out.println(a.isManager());
 			response.setStatus(200);
 			response.setHeader("Authorization", token);
 		} else {
