@@ -8,6 +8,7 @@ public interface ReimbursementDao {
 
 	public List<Reimbursement> getReimbursements();
 	public List<Reimbursement> getReimbursementsByUsername(String username);
+	public Reimbursement getReimbursementById(int id);
 	public int createReimbursement(Reimbursement r);
 	public int updateReimbursement(Reimbursement r, String managerUsername);
 	public int deleteReimbursement(Reimbursement r);

@@ -48,5 +48,9 @@ public class ReimbursementService {
 	public List<Reimbursement> getReimbursements() {
 		return reimbursementDao.getReimbursements();
 	}
+	
+	public Reimbursement getReimbursementById(int id) {
+		return reimbursementDao.getReimbursementById(id);
+	}
 
 }

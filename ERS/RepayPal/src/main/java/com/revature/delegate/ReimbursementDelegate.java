@@ -56,4 +56,20 @@ public class ReimbursementDelegate {
 		}	
 	}
 
+	public void updateReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String status = request.getParameter("status");
+		String username = request.getParameter("username");
+		System.out.println(username + " " + status + " " + id);
+		Reimbursement r = rs.getReimbursementById(id);
+		System.out.println(r);
+		r.setResolved(status);
+		r.setStatus(status);
+		if(rs.updateReimbursement(r, username)) {
+			response.setStatus(200);
+		} else {
+			response.sendError(401);
+		}	
+	}
+
 }

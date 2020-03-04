@@ -68,6 +68,39 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 		
 		return reimbursements;
 	}
+	
+	@Override
+	public Reimbursement getReimbursementById(int id) {
+		String sql = "select * from reimbursement where id = ?";
+		Reimbursement reimbursement = null;
+		ResultSet rs = null;
+		
+		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql);){
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				reimbursement = new Reimbursement(rs.getInt("id"), rs.getString("username"), rs.getString("status"), 
+						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved"));
+			}
+			
+		} catch (SQLException e) {
+			//e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				//e.printStackTrace();
+			}
+		}
+		
+		return reimbursement;
+	}
 
 	@Override
 	public int createReimbursement(Reimbursement r) {

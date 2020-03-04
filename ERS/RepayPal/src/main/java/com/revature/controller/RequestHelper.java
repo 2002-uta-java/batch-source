@@ -74,6 +74,10 @@ public class RequestHelper {
 			System.out.println("Adding reimbursement");
 			reimbursementDelegate.addReimbursement(request, response);
 			break;
+		case "/update-reimbursement":
+			System.out.println("Updating reimbursement");
+			reimbursementDelegate.updateReimbursement(request, response);
+			break;
 		default:
 			response.sendError(405);
 		}

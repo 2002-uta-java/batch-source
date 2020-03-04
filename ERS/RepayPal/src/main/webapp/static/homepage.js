@@ -63,7 +63,12 @@
 	function displayReimbursementsAsManager(xhr){
 		let reimbursements = JSON.parse(xhr.response);
 		let table = document.getElementById("reims");
+		let headerRow = document.getElementById("table-header");
+		let hrw = document.createElement("th");
+		hrw.innerText = "Submit";
+		headerRow.appendChild(hrw);
 		console.log(reimbursements);
+		//Populate the list
 		for(let reimbursement of reimbursements){
 			let id = reimbursement.id;
 			let username = reimbursement.username;
@@ -72,8 +77,17 @@
 			let description = reimbursement.description;
 			let resolution = reimbursement.resolved;
 			let newRow = document.createElement("tr");
-			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td></tr>`;
+			let resolveBtn = `<div class="btn-group"><button class="btn btn-info" id="accept-btn-${id}" onclick="acceptReims(${id})">Accept</button><button class="btn btn-warning" id="deny-btn-${id}" onclick="denyReims(${id})">Deny</button></div>`;
+			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td><td>${resolveBtn}</td></tr>`;
 			table.appendChild(newRow);
+		}
+		//Check for Approved or Denied Reimbursements
+		for(let reimbursement of reimbursements){
+			let statusCheck = reimbursement.status;
+			if(statusCheck === "Approved" || statusCheck === "Denied"){
+				document.getElementById(`accept-btn-${reimbursement.id}`).disabled = "true";
+				document.getElementById(`deny-btn-${reimbursement.id}`).disabled = "true";
+			}
 		}
 	}
 	
@@ -175,6 +189,37 @@
 		
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		let requestBody = `username=${username}&firstName=${firstName}&lastName=${lastName}&password=${password}`;
+		xhr.send(requestBody);
+	}
+	
+	function acceptReims(id){
+		console.log(id);
+		postUpdateReims(id,"Approved");
+	}
+	
+	function denyReims(id){
+		console.log(id);
+		postUpdateReims(id,"Denied");
+	}
+	
+	function postUpdateReims(id, status){
+		console.log("Request Started");
+		let xhr = new XMLHttpRequest();
+		let url = "http://localhost:8080/RepayPal/update-reimbursement";
+		xhr.open("POST", url);
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				console.log("success!!!");
+				window.location.href="http://localhost:8080/RepayPal/home"
+			} 
+			else if (xhr.readyState == 4){
+				console.log("Invalid Data");
+			}
+		}
+		
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		let requestBody = `id=${id}&status=${status}&username=${ta[0]}`;
 		xhr.send(requestBody);
 	}
 	
