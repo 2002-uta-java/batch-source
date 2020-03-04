@@ -46,7 +46,7 @@ public class ViewDelegate extends Delegate {
 	/**
 	 * URI of the view reimbursement resource
 	 */
-	public static final String VIEW_REIMBURSEMENT = "view";
+	public static final String VIEW_REIMBURSEMENT = "/view";
 
 	/**
 	 * Cookie message (value) representing a failure

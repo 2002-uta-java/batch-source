@@ -36,4 +36,4 @@ const FAIL_VALUE = "fail";
 // value signaling a success (value of SUCCESS_COKIR)
 const SUCCESS_VALUE = "success";
 // URI of view reimbursement resource
-const VIEW_REIMBURSEMENT_PAGE = "/ERSview";
+const VIEW_REIMBURSEMENT_PAGE = "/ERS/view";
