@@ -26,6 +26,7 @@ function requestLogin(){
 		} 
 		else if (xhr.readyState == 4){
 			console.log("incorrect credentials");
+			document.getElementById("error-messg").innerText = "Invalid username or password!"
 		}
 	}
 	

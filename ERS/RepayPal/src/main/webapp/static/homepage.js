@@ -77,7 +77,7 @@
 			let description = reimbursement.description;
 			let resolution = reimbursement.resolved;
 			let newRow = document.createElement("tr");
-			let resolveBtn = `<div class="btn-group"><button class="btn btn-info" id="accept-btn-${id}" onclick="acceptReims(${id})">Accept</button><button class="btn btn-warning" id="deny-btn-${id}" onclick="denyReims(${id})">Deny</button></div>`;
+			let resolveBtn = `<div class="btn-group"><button class="btn" id="accept-btn-${id}" onclick="acceptReims(${id})" style="background-color:#FFFCF2;border:solid #403D39">Aprove</button><button class="btn" id="deny-btn-${id}" onclick="denyReims(${id})" style="background-color:#EB5E28;border:solid #403D39">Deny</button></div>`;
 			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td><td>${resolveBtn}</td></tr>`;
 			table.appendChild(newRow);
 		}
