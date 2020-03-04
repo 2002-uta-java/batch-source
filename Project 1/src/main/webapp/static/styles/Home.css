@@ -18,17 +18,224 @@ body {
 /*------------------------------------------------------MEDIA QUERIES------------------------------------------------------*/
 
 /*Mobile styles*/
-@media only screen and (max-width=400px) {
+@media only screen and (max-width:400px) {
+	/* ########## MOBILE NAV ##########*/
+	div#nav {
+		font-size: 30px;
+		padding: 25px;
+	}
 	
+	div#nav div.left{
+		margin-right: 10px;
+		width: 70%;
+	}
+	
+	div#nav div.left label{
+		display: none;
+	}
+	
+	div#nav div.left:after{
+		content: "NAVI";
+	}
+	
+	div#nav div.right{
+		font-size: 22px;
+		width: 30%;
+		text-align: right;
+	}
+	
+	div#nav div.fancy-button{
+		text-align: center;
+		margin-left: 0;
+	}
+	
+	div#nav div.small{
+		width: 110px;
+		height: 40px;
+	}
+	
+	div#nav div.right label{
+		display: none;
+	}
+	
+	/* ########## MOBILE PROFILE ##########*/
+	
+	div#profile{
+		width: 100%;
+		height: 420px;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+	
+	div#profile .content{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 50%;
+	}
+	
+	div#profile img{
+		width: 150px;
+		height: auto;
+		margin: 15px 0;
+	}
+	
+	div#profile div.fancy-button{
+		font-size: 13px;
+	}
+	
+	div#profile div.small{
+		width: 100%;
+		height: 30px;
+	}
+	
+	div#profile div.item.bday,
+	div#profile div.item.role,
+	div#profile div.item.email,
+	div#profile div.item.edit{
+		display: flex;
+		flex-direction: column;
+		height: 45px;
+	}
+	
+	div#profile div.item.email,
+	div#profile div.item.edit,
+	div#profile div.item.bio{
+		width: 100%;
+	}
+	
+	div#profile div.item.edit{
+		order: 4;
+		margin-top: 10px;
+		text-align: center;
+	}
+	
+	div#profile h3{
+		font-size: 20px;
+	}
+	
+	div#profile h4{
+		font-size: 18px;
+	}
+	
+	/* ########## MOBILE REIMBURSEMENTS ##########*/
+	
+	div.employee, div.reimbursement{
+		padding: 25px;
+		margin: 0 50px;
+		margin-bottom: 65px;
+		min-width: 275px;
+		max-width: 275px;
+		font-size: 18px;
+	}
+	
+	/* ########## MOBILE SEPARATOR ##########*/
+	
+	div#menu .button{
+		margin: 5px 0;
+	}
 }
 
 /*Tablet styles*/
-@media only screen and (min-width=401px) and (max-width=960px) {
+@media only screen and (min-width:401px) and (max-width:960px) {
+	/* ########## TABLET NAV ##########*/
+	div#nav {
+		font-size: 30px;
+		padding: 25px;
+	}
 	
+	div#nav div.left{
+		margin-right: 10px;
+		width: 70%;
+	}
+	
+	div#nav div.right{
+		font-size: 22px;
+		width: 30%;
+		text-align: right;
+	}
+	
+	div#nav div.fancy-button{
+		margin-left: 10px;
+		text-align: center;
+	}
+	
+	div#nav div.small{
+		width: 110px;
+		height: 40px;
+	}
+	
+	div#nav div.right label{
+		display: none;
+	}
+	
+	/* ########## TABLET PROFILE ##########*/
+	
+	div#profile{
+		width: 90%;
+	}
+	
+	div#profile img{
+		width: 215px;
+		height: auto;
+	}
+	
+	div#profile div.fancy-button{
+		font-size: 13px;
+	}
+	
+	div#profile div.small{
+		width: 100%;
+		height: 30px;
+	}
+	
+	div#profile div.item.bday,
+	div#profile div.item.role,
+	div#profile div.item.email,
+	div#profile div.item.edit{
+		display: flex;
+		flex-direction: column;
+		height: 45px;
+		white-space: nowrap;
+	}
+	
+	div#profile div.item.email,
+	div#profile div.item.edit{
+		width: 100%;
+	}
+	
+	div#profile div.item.edit{
+		order: 4;
+		margin-top: 10px;
+		text-align: center;
+	}
+	
+	div#profile h3{
+		font-size: 24px;
+	}
+	
+	div#profile h4{
+		font-size: 18px;
+	}
+	
+	div#profile pre{
+	}
+	
+	/* ########## TABLET REIMBURSEMENTS ##########*/
+	
+	div.employee, div.reimbursement{
+		padding: 25px;
+		margin: 0 50px;
+		margin-bottom: 65px;
+		min-width: 275px;
+		max-width: 275px;
+		font-size: 18px;
+	}
 }
 
 /*Desktop styles*/
-@media only screen and (min-width=961px) {
+@media only screen and (min-width:961px) {
 	
 }
 
@@ -60,12 +267,6 @@ img {
 	border-radius: 50%;
 }
 
-#profile td{
-	text-align: left;
-	width: 250px;
-	height: 50px;
-}
-
 #profile .fancy-button{
 	font-size: 13px;
 	color: #04151F;
@@ -81,7 +282,22 @@ img {
 }
 
 #profile .fancy-button:hover a {
-  color: #e6ebe0;
+	color: #e6ebe0;
+}
+
+#profile .content.main{
+	display: flex;
+	align-items: center;
+	text-align: left;
+	flex-wrap: wrap;
+}
+
+#profile .item.role, 
+#profile .item.bday,
+#profile .item.email,
+#profile .item.edit{
+	width: 50%;
+	height: 60px;
 }
 
 /*################################################# NAV styles #################################################*/
@@ -148,7 +364,7 @@ pre {
 
 #menu {
 	padding-top: 10px;
-	margin-bottom: 10px;
+	padding-bottom: 10px;
 	font-family: 'Libre Baskerville';
 	font-size: 15px;
 }
@@ -184,7 +400,6 @@ pre {
 #reimbursements{
 	display: flex;
 	padding-top: 65px;
-	background-color: #C44900;
 	height: 100%;
 	max-width: 100%;
 	overflow: auto;

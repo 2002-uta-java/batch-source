@@ -1,0 +1,8 @@
+MVP
+---
+-Add logger
+
+VALIDATION IN FRONT END
+-----------------------
+-validate update functions
+-validate create reimbursement

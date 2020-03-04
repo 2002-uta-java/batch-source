@@ -92,7 +92,7 @@ body {
 }
 
 /*------------------------------------------------------CONTENT------------------------------------------------------*/
-.sub input[type=text], .sub input[type=password] {
+.sub input[type=email], .sub input[type=password] {
 	margin-bottom: 35px;
 	margin-top: 15px;
 	height: 55px;

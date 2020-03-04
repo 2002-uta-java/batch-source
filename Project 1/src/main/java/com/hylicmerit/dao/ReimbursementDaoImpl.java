@@ -38,7 +38,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return reimbursements;
+		System.out.println(reimbursements);
+		if(reimbursements.size() > 0) {
+			return reimbursements;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -68,7 +73,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return reimbursements;
+		if(reimbursements.size() > 0) {
+			return reimbursements;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override
@@ -98,7 +107,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return reimbursements;
+		if(reimbursements.size() > 0) {
+			return reimbursements;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override

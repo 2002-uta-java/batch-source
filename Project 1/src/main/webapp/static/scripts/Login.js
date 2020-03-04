@@ -1,6 +1,3 @@
-//validation delegate url
-let url = "http://localhost:8080/project1/api/validate";
-
 //redirect to home page if validation was successful
 let callback = (userJson) =>{
 	//set the token in session storage
@@ -26,6 +23,8 @@ let login = () =>{
 			}
 		}
 	}
+	//validation delegate url
+	let url = "http://localhost:8080/project1/api/validate";
 	//add (username) and (password) parameters to url
 	url += `?user=${user}&pass=${pass}`;
 	//use GET request with validation delegate url

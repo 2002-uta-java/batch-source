@@ -6,6 +6,7 @@ name varchar 40
 bio varchar 160
 birthday varchar 10
 role varchar 10
+image-url varchar 250
 reports_to varchar 30
 
 
