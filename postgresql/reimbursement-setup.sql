@@ -6,7 +6,17 @@ empl_last_name varchar(20) not null,
 session_token char(64) unique,
 is_manager boolean not null);
 
+create table reimbursements (reimb_id serial constraint p_reimb_id primary key,
+empl_id int4 references employees (empl_id) not null,
+description varchar(140) not null,
+amount money not null,
+reimb_date date not null,
+submit_date date not null,
+reply_date date,
+reimb_status int4 check(reimb_status > 0 and reimb_status < 4) not null);
+
 drop table employees;
+drop table reimbursements;
 
 insert
 	into
