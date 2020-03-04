@@ -214,7 +214,7 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
             reimElement.setAttribute("data-mFullName", mFullName);
             d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
             d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Approved by: " + `${mFullName}`;
-            d3.innerHTML = `${status}`;
+            d3.innerHTML = addStatusImage(status);
             reimElement.appendChild(d1);
             reimElement.appendChild(d2);
             reimElement.appendChild(d3);
@@ -227,15 +227,17 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
 }
 
 function addStatusImage(status) {
+    let width = 80;
     if (status == "pending") {
-        return "<img src='static/Images/pending.jpg' alt='pending'></img>";
+        return `<img src='static/Images/pending.png' alt='Pending' width='${width}'></img>`;
     }
     else if (status == "approved") {
-        return "<img src='static/Images/approved.jpg' alt='approved'></img>";
+        return `<img src='static/Images/approved.png' alt='Approved' width='${width}'></img>`;
     }
     else if (status == "rejected") {
-        return "<img src='static/Images/rejected.jpg' alt='rejected'></img>";
+        return `<img src='static/Images/rejected.png' alt='Rejected' width='${width}'></img>`;
     }
+    return "invalid status";
 }
 
 
