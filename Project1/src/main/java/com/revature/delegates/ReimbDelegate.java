@@ -145,16 +145,17 @@ public class ReimbDelegate {
 		if (!rServ.validAmount(r.getAmount())) {
 			response.sendError(400, "Invalid amount.");
 		}
-		
-		// Make sure cents renders correctly via rounding.
-		r.setAmount(rServ.roundTwoDecimal(r.getAmount()));
-		
-		int newId = rServ.getNewId();
-		r.setId(newId);
-		
-		// Update database.
-		rDao.createReimbursement(r);
-		response.setStatus(200);
+		else {
+			// Make sure cents renders correctly via rounding.
+			r.setAmount(rServ.roundTwoDecimal(r.getAmount()));
+			
+			int newId = rServ.getNewId();
+			r.setId(newId);
+			
+			// Update database.
+			rDao.createReimbursement(r);
+			response.setStatus(200);
+		}
 	}
 	
 	public Reimbursement readNewReimbJson(HttpServletRequest request) throws IOException {

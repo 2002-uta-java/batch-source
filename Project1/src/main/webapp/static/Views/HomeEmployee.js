@@ -215,7 +215,7 @@ async function sendAjaxPostUpdateProfile(url, callback, data){
 }
 
 function newReimbursement() {
-    let token = sessionStore.getItem("token");
+    let token = sessionStorage.getItem("token");
     let tokenArr = token.split(":");
     let formInfo = document.getElementById("new-reim-form");
     let new_amount = formInfo.elements[0].value;
