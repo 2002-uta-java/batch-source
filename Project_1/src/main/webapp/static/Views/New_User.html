@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Bootstrap Core CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet"  type= "text/css" href="static/Style/site.css">
+    </head>
+      <body>
+        
+      <!-- NAVIGATION BAR-->
+      <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-toggle"style="color: white;" href="#" 
+                    id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn" type="submit" >Search</button>
+            </form>
+        </div>
+    </nav>
+
+        <!-- TITLE JUMBO-->   
+        <div style = "height :12rem;" >
+
+      </div>
+
+
+
+      <!-- GRID CONTAINER-->
+      <div class="container" ">
+
+        <!-- LOGIN FORMS-->
+        <div class="form-group" >
+          <br>
+          <div class="display-4"> New User</div>
+          <br style="height: 5rem;">
+          <label for="emailInput"> Email</label>
+          <input type="email" class="form-control" name="emailField" id="em01" aria-describedby="emailHelpId" placeholder="">
+        </div>
+        
+                <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
+        </div>
+        
+        <div class="form-group">
+          <label for="passwordInput">Confirm Password</label>
+          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
+        </div>
+        
+        
+        <button type="submit" class="submit_btn" >Login</button>
+
+      </div>
+
+      <div style="height: 80rem;"></div>
+    </body>
+
+    <footer>
+        <!--JQuery 3.4.1-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+        <!--Bootstrap Core JS-->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    </footer>
+</html>

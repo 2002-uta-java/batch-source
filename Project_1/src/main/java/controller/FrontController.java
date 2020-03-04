@@ -11,25 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/")
+
 public class FrontController extends DefaultServlet {
-	private static final long serialID = 1l; //Necessary?
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	RequestHelper helper = new RequestHelper();
 	
 	public FrontController() {
 		super();
 	}
 	
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws IOException, ServletException {
-		String path = req.getRequestURI().substring(req.getContextPath().length());
+		String path = req.getServletPath();
 		if(path.startsWith("/static/")) {
 			super.doGet(req, resp);
 		} else {
@@ -44,9 +42,4 @@ public class FrontController extends DefaultServlet {
 		super.doPost(request, response);
 	}
 	
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		super.destroy();
-	}
 }

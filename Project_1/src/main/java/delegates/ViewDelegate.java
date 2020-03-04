@@ -14,7 +14,7 @@ public class ViewDelegate {
 		
 		switch(uri) {
 			case "/login":
-				req.getRequestDispatcher("/static/Views/Login.html").forward(req,resp);
+				req.getRequestDispatcher("/static/Views/login.html").forward(req,resp);
 				break;
 			case "/index":
 				req.getRequestDispatcher("/static/Views/index.html").forward(req,resp);
@@ -22,7 +22,7 @@ public class ViewDelegate {
 			case "/new_user":
 				req.getRequestDispatcher("/static/Views/New_User.html").forward(req,resp);
 				break;
-			case"/profile":
+			case "/profile":
 				req.getRequestDispatcher("/static/Views/Profile.html").forward(req,resp);
 				break;
 			case "/static/Views/reimbursements.html":

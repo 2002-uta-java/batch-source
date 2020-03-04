@@ -1,0 +1,42 @@
+
+.jumbotron.jumbotron-fluid{
+    background-color:rgb(112, 235, 194); 
+    margin: 0px;
+    color: white;
+}
+.navbar.navbar-expand-sm.navbar-dark{
+    background-color: #305168;
+}
+
+.navbar.navbar-expand-sm.navbar-dark a li{
+    color: white;
+}
+
+.submit_btn{
+    background-color:#305168 ;
+    color:white;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:visited {
+    color: rgb(80, 235, 235);
+
+}
+
+.form-inline.my-2.my-lg-0 button
+{
+    color: aquamarine;
+    border-style: solid;
+    border-color: aquamarine;
+}
+
+.dropdown-menu,.dropdown-item{
+    background-color:#46789e; 
+    color: white;
+}

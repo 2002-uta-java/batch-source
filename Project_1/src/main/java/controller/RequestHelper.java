@@ -16,19 +16,20 @@ public class RequestHelper {
 	private ViewDelegate viewDelegate = new ViewDelegate();
 	
 	public void delegateTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		String path = req.getRequestURI().substring(req.getContextPath().length());
-		
+		String path = req.getServletPath();
+		System.out.println("IT'S ALLLLLiiIVE "+path);
 		if(path.startsWith("/api/")) {
 			String record = path.substring(5);
 			switch (record) {
-			case "/user":
+			case "index":
+				req.getRequestDispatcher("/static/Views/index.html").forward(req,resp);
 				break;
-			case "/profile":
+			case "profile":
 				break;
-			case "/reimbursements":
+			case "reimbursements":
 				break;
-			case "/login":
-				loginDelegate.authenticate(req,resp);
+			case "login":
+				req.getRequestDispatcher("/static/Views/Login.html").forward(req,resp);
 				break;
 			default:
 				resp.sendError(404,"Path not supported");
