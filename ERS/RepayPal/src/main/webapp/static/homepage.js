@@ -44,6 +44,11 @@
 	
 	function displayReimbursements(xhr){
 		let reimbursements = JSON.parse(xhr.response);
+		reimbursements.sort(function(a, b){
+		    if(a.resolved < b.resolved) { return 1; }
+		    if(a.resolved > b.resolved) { return -1; }
+		    return 0;
+		})
 		let table = document.getElementById("reims");
 		console.log(reimbursements);
 		for(let reimbursement of reimbursements){
@@ -62,6 +67,11 @@
 	
 	function displayReimbursementsAsManager(xhr){
 		let reimbursements = JSON.parse(xhr.response);
+		reimbursements.sort(function(a, b){
+		    if(a.resolved < b.resolved) { return 1; }
+		    if(a.resolved > b.resolved) { return -1; }
+		    return 0;
+		})
 		let table = document.getElementById("reims");
 		let headerRow = document.getElementById("table-header");
 		let hrw = document.createElement("th");
@@ -77,7 +87,11 @@
 			let description = reimbursement.description;
 			let resolution = reimbursement.resolved;
 			let newRow = document.createElement("tr");
-			let resolveBtn = `<div class="btn-group"><button class="btn" id="accept-btn-${id}" onclick="acceptReims(${id})" style="background-color:#FFFCF2;border:solid #403D39">Aprove</button><button class="btn" id="deny-btn-${id}" onclick="denyReims(${id})" style="background-color:#EB5E28;border:solid #403D39">Deny</button></div>`;
+			let resolveBtn = `
+			<div class="btn-group">
+				<button class="btn" id="accept-btn-${id}" onclick="acceptReims(${id})" style="background-color:#FFFCF2;border:solid #403D39">Approve</button>
+				<button class="btn" id="deny-btn-${id}" onclick="denyReims(${id})" style="background-color:#EB5E28;border:solid #403D39">Deny</button>
+			</div>`;
 			newRow.innerHTML = `<tr><td>${id}</td><td>${username}</td><td>${status}</td><td>${amount}</td><td>${description}</td><td>${resolution}</td><td>${resolveBtn}</td></tr>`;
 			table.appendChild(newRow);
 		}
@@ -113,27 +127,6 @@
 		document.getElementById("modalLastname").value = profile.lastName;
 		document.getElementById("modalPassword").value = profile.password;
 		document.getElementById("modalIsManager").value = profile.manager;
-	}
-	
-	
-	function displayUsers(xhr){
-		let users = JSON.parse(xhr.response);
-		let tableDiv = document.getElementById("users");
-		if (tableDiv.hasChildNodes()) {
-		    tableDiv.removeChild(tableDiv.childNodes[0]);
-		  }
-		let table = document.createElement("table");
-		table.className = "table table-stripped";
-		tableDiv.appendChild(table);
-		console.log(users);
-		let headerRow = document.createElement("tr");
-		headerRow.innerHTML = `<tr><th>Username:</th><th>First Name:</th><th>Last Name:</th><th>Manager:</th></tr>`;
-		table.appendChild(headerRow);
-		for(let user of users){
-			let newRow = document.createElement("tr");
-			newRow.innerHTML = `<tr><td>${user.username}</td><td>${user.firstName}</td><td>${user.lastName}</td><td>${user.manager}</td></tr>`;
-			table.appendChild(newRow);
-		}
 	}
 	
 	function postReimbursement(){
@@ -222,6 +215,68 @@
 		let requestBody = `id=${id}&status=${status}&username=${ta[0]}`;
 		xhr.send(requestBody);
 	}
+	
+	function displayUsers(xhr){
+		let users = JSON.parse(xhr.response);
+		let tableDiv = document.getElementById("users");
+		if (tableDiv.hasChildNodes()) {
+		    tableDiv.removeChild(tableDiv.childNodes[0]);
+		  }
+		let table = document.createElement("table");
+		table.className = "table table-striped";
+		table.id = "reims-by-user-table";
+		table.innerHTML =`<thead><tr><th>Username</th><th>First Name</th><th>Last Name</th></tr></thead>`;
+		tableDiv.appendChild(table);
+		
+		console.log(users);
+		for(let user of users){
+			if(user.manager === false){
+				let newRow = document.createElement("tbody");
+				newRow.innerHTML = `
+				   <tr data-toggle="collapse" data-target="#tbody-${user.username}" class="accordion-toggle">
+			        <td>${user.username}</td>
+			        <td>${user.firstName}</td>
+			        <td>${user.lastName}</td>
+			    </tr>`;
+				let dataRow = document.createElement("tr");
+				dataRow.innerHTML =`
+				<tr>
+					<td colspan="3" class="hiddenRow">
+						<div class="accordion-body collapse" id="tbody-${user.username}">
+							<table id="tr-table-${user.username}" class="table table-borderless">
+							</table>
+						</div>
+					</td>
+				</tr>`;
+				table.appendChild(newRow);
+				table.appendChild(dataRow);
+				sendAjaxGet(`http://localhost:8080/RepayPal/api/reimbursements/${user.username}`, displayReimbursementsByUsername)
+			}
+		}
+	}
+	
+	function displayReimbursementsByUsername(xhr){
+		let reimbursements = JSON.parse(xhr.response);
+		console.log(reimbursements);
+		let nestedTable = document.getElementById(`tr-table-${reimbursements[0].username}`);
+		nestedTable.innerHTML = `<td>ID</td><td>Amount</td><td>Description</td><td>Resolution</td><td>Submit</td>`;
+		for(let reims of reimbursements){
+			let resolveBtn = `<div class="btn-group"><button class="btn" id="accept-btn-modal-${reims.id}" onclick="acceptReims(${reims.id})" style="background-color:#FFFCF2;border:solid #403D39">Approve</button><button class="btn" id="deny-btn-modal-${reims.id}" onclick="denyReims(${reims.id})" style="background-color:#EB5E28;border:solid #403D39">Deny</button></div>`;
+			let lItem = document.createElement("tr");
+			lItem.innerHTML = `<td>${reims.id}</td><td>${reims.amount}</td><td>${reims.description}</td><td>${reims.resolved}</td><td>${resolveBtn}</td>`;
+			nestedTable.appendChild(lItem);
+		}
+		//Check for Approved or Denied Reimbursements
+		for(let reimbursement of reimbursements){
+			let statusCheck = reimbursement.status;
+			if(statusCheck === "Approved" || statusCheck === "Denied"){
+				document.getElementById(`accept-btn-modal-${reimbursement.id}`).disabled = "true";
+				document.getElementById(`deny-btn-modal-${reimbursement.id}`).disabled = "true";
+			}
+		}
+		
+	}
+	
 	
 	
 	/*

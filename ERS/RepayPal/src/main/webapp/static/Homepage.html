@@ -3,11 +3,13 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Home</title>
+	
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
 	<!-- Check if user is logged in -->
 	<script type="text/javascript">
 	let token = sessionStorage.getItem("token");
@@ -16,6 +18,8 @@
 		window.location.href="http://localhost:8080/RepayPal/login";	
 	}
 	</script>
+	
+	<!-- Style for Scrollable table -->
 	<style>
 		.my-custom-scrollbar {
 			position: relative;
@@ -34,7 +38,7 @@
 			<h3 class="text-center"><span id="manager"></span></h3><br>
 			<div class="btn-group" style="width:100%">
 				<button id="profile-btn" class="btn" style="background-color:#FFFCF2;border:solid #403D39" data-toggle="modal" data-target="#profileModal">Profile</button>
-				<button id="empls-btn" class="btn" style="background-color:#EB5E28;border:solid #403D39" data-toggle="modal" data-target="#empsModal">View Employees</button>
+				<button id="empls-btn" class="btn" style="background-color:#EB5E28;border:solid #403D39" data-toggle="modal" data-target="#empsModal">Filter by Employee</button>
 				<button id="reims-btn" class="btn" style="background-color:#EB5E28;border:solid #403D39" data-toggle="modal" data-target="#reimsModal">Add Reimbursement</button>
 				<button id="logout-btn" class="btn" style="background-color:#FFFCF2;border:solid #403D39">Log out</button>
 			</div>
@@ -105,7 +109,7 @@
 	
 	<!-- Modal for Employees -->
 	<div class="modal fade" id="empsModal" tabindex="-1" role="dialog" aria-labelledby="empsModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-xl" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="empsModalLabel">Employees</h5>
@@ -114,6 +118,7 @@
 	        </button>
 	      </div>
 	      <div class="modal-body" id="users">
+	      	
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

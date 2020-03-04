@@ -106,22 +106,22 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 	public int createReimbursement(Reimbursement r) {
 		String sql = "insert into reimbursement (username, amount, description) values (?, ?, ?)";
 		int reimbursementCreated = 0;
-		
-		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
-			ps.setString(1, r.getUsername());
-			ps.setDouble(2, r.getAmount());
-			ps.setString(3, r.getDescription());
-			reimbursementCreated = ps.executeUpdate();
-			return reimbursementCreated;
-			
-		} 
-		catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if(r.getAmount() >= 0) {
+			try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
+				ps.setString(1, r.getUsername());
+				ps.setDouble(2, r.getAmount());
+				ps.setString(3, r.getDescription());
+				reimbursementCreated = ps.executeUpdate();
+				return reimbursementCreated;
+				
+			} 
+			catch (SQLException e) {
+				//e.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-		
 		return reimbursementCreated;
 	}
 
