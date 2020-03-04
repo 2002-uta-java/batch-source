@@ -16,7 +16,7 @@
      <nav class="navbar navbar-inverse navbar-static-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">WebSiteName</a>
+	      <a class="navbar-brand" href="#">ERS</a>
 	    </div>
 	    <ul class="nav navbar-nav">
 		  <li><a href="#">Home</a></li>
@@ -43,7 +43,7 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-			<h4 class="modal-title" id="exampleModalCenterTitle">Your Profile</h4>
+			<h3 class="modal-title" id="exampleModalCenterTitle" style="text-align: center; font-weight: bold">Your Profile</h3>
 			</div>
 
 			<div class="modal-body">
@@ -79,18 +79,12 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalCenterTitle2">Edit Profile</h5>
+			<h3 class="modal-title" id="exampleModalCenterTitle2" style="text-align: center; font-weight: bold">Edit Profile</h3>
 			</div>
 
 			<div class="modal-body">
-				<div class="row">
-				  <div class="col-md-3">
-					<p></p>
-					<p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
-				  </div>
 				  
 				  <!-- EDIT PROFILE FORM BODY -->
-				  <div class="col-md-9">
 					<form id="edit-profile-form">
 						<div class="form-group row">
 							<label for="inputFirstName" class="col-sm-2 col-form-label col-form-label-sm">First Name</label>
@@ -128,8 +122,7 @@
 						</div>
 
 					  </form>
-				  </div>
-				</div>
+
 			</div>
 			
 
@@ -137,16 +130,16 @@
 		</div>
 	</div>
 
-
-    <h1>MANAGER HOMEPAGE</h1>
-
+	<div id="page-title" style="text-align: center">
+    	<p>MANAGER HOME</p>
+	</div>
 
 	<!-- REIMBURSEMENT TABLE ELEMENTS -->
 	<div class="panel panel-default container" style="width: 40%; margin: auto; padding: 0px">
 	<div class="list-group">
 
 		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-tabs nav-justified" role="tablist">
 			<li class="active"><a href="#all-reim1" role="tab" data-toggle="tab">All</a></li>
 			<li><a href="#pending-reim1" role="tab" data-toggle="tab">Pending</a></li>
 			<li><a href="#resolved-reim1" role="tab" data-toggle="tab">Resolved</a></li>
@@ -226,14 +219,12 @@
 			</div>
 
 			<!-- ACCEPT OR REJECT BUTTONS -->
-			<!-- TODO: functionality of buttons (update db, reload page) -->
-			<!-- TODO: ADD IMAGES TO BUTTONS, ADD COLOR-->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" id="approve-btn" data-dismiss="modal">
-					[CHECKMARK IMG]
+				<button type="button" class="btn btn-success" id="approve-btn" data-dismiss="modal">
+					Approve
 				</button>
-				<button type="button" class="btn btn-secondary" id="reject-btn" data-dismiss="modal">
-					[DECLINE IMG]
+				<button type="button" class="btn btn-danger" id="reject-btn" data-dismiss="modal">
+					Reject
 				</button>
 			</div>
 
@@ -245,6 +236,6 @@
 	
 
 	<!-- JS import -->
-    <script type="text/javascript" src="static/Views/HomeManager.js"></script>
+	<script type="text/javascript" src="static/Views/HomeManager.js"></script>
 </body>
 </html>
