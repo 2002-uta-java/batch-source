@@ -20,7 +20,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "SELECT * FROM Employee";
+			String sql = "SELECT * FROM Employee ORDER BY id";
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
@@ -204,7 +204,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Employee firstname=?, lastname=?, email=?, phone=?, password=?, isManager=? WHERE id = ?";
+			String sql = "Update Employee set firstname=?, lastname=?, email=?, phone=?, password=?, isManager=? WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());
@@ -230,7 +230,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		}
 		
 		if (success == 0) {
-			throw new Exception("Insert Employee failed: " + employee);
+			throw new Exception("Update Employee failed: " + employee);
 		}
 	}
 }

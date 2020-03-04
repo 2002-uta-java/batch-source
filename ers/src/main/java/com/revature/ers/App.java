@@ -14,8 +14,8 @@ from the front end. The following user stories are required of the application:
 -An Employee can submit a reimbursement request x
 -An Employee can view their pending reimbursement requests x
 -An Employee can view their resolved reimbursement requests x
--An Employee can view their information (profile)
--An Employee can update their information 
+-An Employee can view their information (profile) x
+-An Employee can update their information x
 
 -A Manager can login x
 -A Manager can view the Manager Homepage x
@@ -41,7 +41,8 @@ Optional User Stories:
 -A Manager can view images of the receipts from reimbursement requests
 -An Employee receives an email when one of their reimbursement requests is resolved 
 -A Manager can register an Employee, which sends the Employee an email with their username  and temp password 
--An Employee can reset their password
+-An Employee can reset their password x
+-A Manager can update any Employee x
 -Password encryption
 -Including visual aids, such as charts showing spending categories or spending over time 
 

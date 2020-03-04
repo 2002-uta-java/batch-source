@@ -39,6 +39,7 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String path = req.getServletPath();
+		System.out.println(path);
 		switch (path) {
 		case "/login":
 			login.authenticate(req, res);
@@ -51,6 +52,9 @@ public class RequestHelper {
 			break;
 		case "/denyRequest":
 			reimbursement.denyReimbursement(req, res);
+			break;
+		case "/updateEmployee":
+			employee.updateEmployee(req, res);
 			break;
 		default:
 			res.sendError(405);

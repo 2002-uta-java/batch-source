@@ -13,9 +13,9 @@ import com.revature.dao.EmployeeDaoImpl;
 import com.revature.model.Employee;
 
 public class EmployeeDelegate {
-	
+
 	private EmployeeDAO edao = new EmployeeDaoImpl();
-	
+
 	public void getEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestPath = req.getServletPath();
 		if (requestPath.length() == "/api/employees".length()) {
@@ -45,5 +45,49 @@ public class EmployeeDelegate {
 			} else
 				res.sendError(400, "Invalid ID");
 		}
+	}
+
+	public void updateEmployee(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// TODO Auto-generated method stub
+		String id = req.getParameter("id");
+		Employee em = edao.getEmployee(Integer.parseInt(id));
+		String firstname = req.getParameter("firstname");
+		String lastname  = req.getParameter("lastname");
+		String email     = req.getParameter("email");
+		String phone     = req.getParameter("phone");
+		String password  = req.getParameter("password");
+		String isManager = req.getParameter("isManger");
+		
+		//System.out.println("Email " + email == null + " Phone " + phone + " Password " + password);
+		
+		Employee tempem = new Employee();
+		
+		tempem.setId(em.getId());
+		if (firstname != "")
+			tempem.setfName(firstname);
+		else
+			tempem.setfName(em.getfName());
+		if (lastname != "")
+			tempem.setlName(lastname);
+		else
+			tempem.setlName(em.getlName());
+		if (email != "")
+			tempem.setEmail(email);
+		else
+			tempem.setEmail(em.getEmail());
+		if (phone != "")
+			tempem.setPhone(phone);
+		else
+			tempem.setPhone(em.getPhone());
+		if (password != "")
+			tempem.setPass(password);
+		else
+			tempem.setPass(em.getPass());
+		if (isManager != null)
+			tempem.setIsManager(Boolean.getBoolean(isManager));
+		else
+			tempem.setIsManager(em.getIsManager());
+		
+		edao.updateEmployee(tempem);
 	}
 }

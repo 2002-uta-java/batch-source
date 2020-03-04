@@ -22,7 +22,7 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				connection = DAOUtilities.getConnection();
 				stmt = connection.createStatement();
-				String sql = "SELECT * FROM Reimbursment";
+				String sql = "SELECT * FROM Reimbursment ORDER BY id";
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				while (rs.next()) {

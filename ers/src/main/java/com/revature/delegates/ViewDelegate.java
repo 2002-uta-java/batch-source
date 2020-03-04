@@ -19,6 +19,7 @@ public class ViewDelegate {
 			break;
 		case "/profile":
 			req.getRequestDispatcher("/static/Views/profile.html").forward(req, res);
+			break;
 		default:
 			res.sendError(404, "Resource not found");
 		}
