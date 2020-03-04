@@ -22,17 +22,74 @@ function displayAllReimHist(reimJason) {
     let reimbursements = JSON.parse(reimJason);
     console.table(reimbursements);
 
-    let table = document.getElementById("all-reim-hist-table");
+    let accordionAllPending = document.getElementById("accordionAllPendingReimbursements");
+    let accordionAllProcessed = document.getElementById("accordionAllProcessedReimbursements");
+
+    //let table = document.getElementById("all-reim-hist-table");
 
     for (let reim of reimbursements) {
-        let newRow = document.createElement("tr");
 
-        newRow.innerHTML = `<td>${reim.dateCreated}</td><td>${reim.employeeName}</td><td>${reim.category}</td><td>${reim.amount}</td><td>${reim.status}</td><td>${reim.approvedByName}</td>`;
+        let newDiv = document.createElement("div");
 
-        table.appendChild(newRow);
+        newDiv.className = "card";
 
+        if (reim.statusId < 4) {
+            newDiv.innerHTML = `
+            <div class="card-header" id="heading${reim.id}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${reim.id}" aria-expanded="false" aria-controls="collapse${reim.id}">
+                        <table class="table table-borderless" id="no-space">
+                            <tbody>
+                                <tr>
+                                    <td id="no-space"><strong>${reim.dateCreated}</strong></td>
+                                    <td id="no-space">${reim.employeeName}</td>
+                                    <td id="no-space"><strong>category:</strong> ${reim.category}</td>
+                                    <td id="no-space"><strong>amount:</strong> $${reim.amount}.00</td>
+                                    <td id="no-space"><strong>status:</strong> ${reim.status}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapse${reim.id}" class="collapse" aria-labelledby="heading${reim.id}" data-parent="#accordionAllPendingReimbursements">
+                <div class="card-body">
+                    Description Here
+                </div>
+            </div>`;
+        
+            accordionAllPending.appendChild(newDiv);
+        } else {
+            newDiv.innerHTML = `
+            <div class="card-header" id="heading${reim.id}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${reim.id}" aria-expanded="false" aria-controls="collapse${reim.id}">
+                        <table class="table table-borderless" id="no-space">
+                            <tbody>
+                                <tr>
+                                    <td id="no-space"><strong>${reim.dateCreated}</strong></td>
+                                    <td id="no-space">${reim.employeeName}</td>
+                                    <td id="no-space"><strong>category:</strong> ${reim.category}</td>
+                                    <td id="no-space"><strong>amount:</strong> $${reim.amount}.00</td>
+                                    <td id="no-space"><strong>status:</strong> ${reim.status}</td>
+                                    <td id="no-space"><strong>by:</strong> ${reim.approvedByName}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapse${reim.id}" class="collapse" aria-labelledby="heading${reim.id}" data-parent="#accordionAllProcessedReimbursements">
+                <div class="card-body">
+                    Description Here
+                </div>
+            </div>`;
+
+            accordionAllProcessed.appendChild(newDiv);
+        }
     }
 }
+
 
 // retrieve and populate the options for the select input of the reimbursement category selector
 function populateReimStatusOptions(staJson) {
@@ -79,3 +136,23 @@ function updateReim() {
 	}
 	xhr.send();
 }
+
+// // populate retrieved employees' reimbursements
+// function displayAllReimHist(reimJason) {
+//     let reimbursements = JSON.parse(reimJason);
+//     console.table(reimbursements);
+
+//     let accordionAllPending = document.getElementById("accordionPendingReimbursements");
+//     let accordionAllProcessed = document.getElementById("accordionProcessedReimbursements");
+
+//     //let table = document.getElementById("all-reim-hist-table");
+
+//     for (let reim of reimbursements) {
+//         let newRow = document.createElement("tr");
+
+//         newRow.innerHTML = `<td>${reim.dateCreated}</td><td>${reim.employeeName}</td><td>${reim.category}</td><td>${reim.amount}</td><td>${reim.status}</td><td>${reim.approvedByName}</td>`;
+
+//         table.appendChild(newRow);
+
+//     }
+// }

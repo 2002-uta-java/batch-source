@@ -60,7 +60,7 @@ public class Employee implements Serializable{
 	
 	public int getDepartmentId() {
 		switch (department) {
-		case "Human Resources":
+		case "HR":
 			return 1;
 		case "Accounting":
 			return 2;
@@ -76,9 +76,9 @@ public class Employee implements Serializable{
 			return 7;
 		case "Design":
 			return 8;
-		case "Quality Assurance":
+		case "QA":
 			return 9;
-		case "Information Technology":
+		case "IT":
 			return 10;
 		case "Facilities":
 			return 11;
@@ -90,7 +90,7 @@ public class Employee implements Serializable{
 	public void setDepartmentById(int department) {
 		switch (department) {
 		case 1:
-			this.department = "Human Resources";
+			this.department = "HR";
 			break;
 		case 2:
 			this.department = "Accounting";
@@ -114,10 +114,10 @@ public class Employee implements Serializable{
 			this.department = "Design";
 			break;
 		case 9:
-			this.department = "Quality Assurance";
+			this.department = "QA";
 			break;
 		case 10:
-			this.department = "Information Technology";
+			this.department = "IT";
 			break;
 		case 11:
 			this.department = "Facilities";

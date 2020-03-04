@@ -1,0 +1,192 @@
+<h1>WELCOME HOME :)</h1>
+
+<h2>My Information</h2>
+<div id="my-info-form">
+    <label id="dept-label">department: </label>
+    <br>
+    <label id="f-name-label">name: </label>
+    <br>
+    <label>phone: </label>
+    <input type="text" id="phone-field" name="phone">
+    <br>
+    <label>e-mail: </label>
+    <input type="text" id="email-field" name="email">
+    <br>
+    <button id="update-emp-button">Update</button>
+</div>
+<br>
+
+
+
+
+<hr>
+<h2>My Information</h2>
+<table id="my-info-table">
+    <tr>
+        <th>Department</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>e-mail</th>
+    </tr>
+</table>
+<br>
+
+
+<h2>Create a New Reimbursement</h2>
+<div id="new-reim-form">
+    <label id="cat-label">category: </label>
+    <select id="select-cat">
+    </select>
+    <br>
+    <label id="amount-label">amount: </label>
+    <input type="text" id="amount-field">
+    <br>
+    <label>Description: </label>
+    <textarea id="desc-field" name="description" rows="10"></textarea>
+    <br>
+    <button id="submit-reim-button">Submit</button>
+</div>
+
+
+<h2>Pending</h2>
+<table id="my-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+<h2>Processed</h2>
+<table id="processed-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+<br>
+
+
+<h2>Pending</h2>
+<table id="my-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+
+<h2>Processed</h2>
+<table id="processed-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+    </tr>
+</table>
+
+
+
+
+<div class="col-8">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="processed-tab" data-toggle="tab" href="#processed" role="tab" aria-controls="processed" aria-selected="false">Processed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">+ new</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                <div class="container">
+                    <br>
+                    <h5 class="card-title">Your pending reimbursements:</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">click on one to see more details...</h5>
+                    <div class="accordion" id="accordionPendingReimbursements">
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-tab">
+                <div class="container">
+                    <br>
+                    <h5 class="card-title">Your processed reimbursements:</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">click on one to see more details...</h5>
+                    <div class="accordion" id="accordionProcessedReimbursements">
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+                <div class="container">
+                    <br>
+                    <h5 class="card-title">Create a new reimbursement.</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">please fill out the following information:</h5>
+                    <br>
+                    <div id="new-reim-form">
+                        <div class="form-group">
+                            <label for="cat-label">category:</label>
+                            <select class="form-control" id="select-cat" aria-describedby="catHelp">
+                            </select>
+                            <small id="catHelp" class="form-text text-muted">select a category for the type of expense reported</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount-field">amount:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" id="amount-field" aria-label="Amount (round up to nearest dollar)" aria-describedby="amountHelp">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                            <small id="amountHelp" class="form-text text-muted">round up to the nearest dollar</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-field">description: </label>
+                            <textarea class="form-control" id="desc-field" name="description" rows="10"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit-reim-button">Submit</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+<h2>All Employees Reimbursement History</h2>
+<table id="all-reim-hist-table">
+    <tr>
+        <th>Date</th>
+        <th>Employee</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Approved By</th>
+    </tr>
+</table>
+
+
+<h2>All Employees' Information</h2>
+<table id="all-info-table">
+    <tr>
+        <th>Department</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>e-mail</th>
+    </tr>
+</table>

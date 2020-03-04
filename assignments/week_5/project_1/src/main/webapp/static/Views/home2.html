@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="static/Scripts/jocss.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
 </head>
 <body>
 
@@ -13,74 +16,52 @@
             <div class="col-2" id="nav-container">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="ture">Dashboard</a>
+                    <a class="nav-link" id="v-pills-new-reimbursement-tab" data-toggle="pill" href="#v-pills-new-reimbursement" role="tab" aria-controls="v-pills-new-reimbursement" aria-selected="false">Create Reimbursement</a>
                     <a class="nav-link" id="v-pills-my-reimbursement-tab" data-toggle="pill" href="#v-pills-my-reimbursement" role="tab" aria-controls="v-pills-my-reimbursement" aria-selected="flase">My Reimbursements</a>
                 </div>
             </div>
             <div class="col-10">
                 <div id="header-container">
-                    <br>
-                    <div class="row">
-                        <div class="col-7">
-                            <h1>Reimmbursements Portal</h1>
-                        </div>
-                        <div class="col-4">
-                            who is logged in here - and logout
-                        </div>
-                    </div>
-                    <br>
+                    title and who is logged in here
                 </div>
                 <div class="tab-content" id="v-pill-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="w-pills-dashboard-tab">
                         <div class="row">
-                        <div class="col-7">
+                        <div class="col-8">
                             <div class="card">
                                 <div class="card-header">
                                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">+ new</a>
+                                            <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="processed-tab" data-toggle="tab" href="#processed" role="tab" aria-controls="processed" aria-selected="false">Processed</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">+ new</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                                    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
                                         <div class="container">
-                                            <br>
-                                            <h5 class="card-title">Create a new reimbursement.</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">please fill out the following information:</h6>
-                                            <br>
-                                            <div id="new-reim-form">
-                                                <div class="form-group">
-                                                    <label for="cat-label">category:</label>
-                                                    <select class="form-control" id="select-cat" aria-describedby="catHelp">
-                                                    </select>
-                                                    <small id="catHelp" class="form-text text-muted">select a category for the type of expense reported</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="amount-field">amount:</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">$</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" id="amount-field" aria-label="Amount (round up to nearest dollar)" aria-describedby="amountHelp">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">.00</span>
-                                                        </div>
-                                                    </div>
-                                                    <small id="amountHelp" class="form-text text-muted">round up to the nearest dollar</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="desc-field">description: </label>
-                                                    <textarea class="form-control" id="desc-field" name="description" rows="10"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary" id="submit-reim-button">Submit</button>
-                                            </div>
-                                            <br>
+                                            <h5 class="card-title">Pending Reimbursement Card</h5>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-tab">
+                                        <div class="container">
+                                            <h5 class="card-title">Processed Reimbursement Card</h5>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+                                        <div class="container">
+                                            <h5 class="card-title">Create New Reimbursement Card</h5>
                                         </div>
                                     </div>
                                 </div>
                             </div>    
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">My Information</h5>
@@ -102,6 +83,26 @@
                         </div>
                         </div>
                     </div>
+                    <div class="row tab-pane fade" id="v-pills-new-reimbursement" role="tabpanel" aria-labelledby="w-pills-new-reimbursement-tab">
+                        <div class="col-10">
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">+ new</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                                        <div class="container">
+                                            <h5 class="card-title">Create New Reimbursement Card</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
                     <div class="row tab-pane fade" id="v-pills-my-reimbursement" role="tabpanel" aria-labelledby="w-pills-my-reimbursement-tab">
                         <div class="col-10">
                             <div class="card">
@@ -118,22 +119,12 @@
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
                                         <div class="container">
-                                            <br>
-                                            <h5 class="card-title">Your pending reimbursements:</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">click on one to see more details...</h6>
-                                            <div class="accordion" id="accordionPendingReimbursements">
-                                            </div>
-                                            <br>
+                                            <h5 class="card-title">Pending Reimbursement Card</h5>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="processed" role="tabpanel" aria-labelledby="processed-tab">
                                         <div class="container">
-                                            <br>
-                                            <h5 class="card-title">Your processed reimbursements:</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">click on one to see more details...</h5>
-                                            <div class="accordion" id="accordionProcessedReimbursements">
-                                            </div>
-                                            <br>
+                                            <h5 class="card-title">Processed Reimbursement Card</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -148,38 +139,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-
-
-
-<hr>
-
-
-
-<h2>Update Reimbursement</h2>
-<div id="update-reim-form">
-    <label>set status: </label>
-    <select id="select-status">
-    </select>
-    <br>
-    <label>Comment: </label>
-    <textarea id="comment-field" name="comment" rows="10"></textarea>
-    <br>
-    <button id="update-reim-button">Update</button>
-</div>
-
-
-
-<script src="static/Scripts/Home.js"></script>
-<script src="static/Scripts/EmployeeInfoE.js"></script>
-<script src="static/Scripts/EmployeeInfoM.js"></script>
-<script src="static/Scripts/ReimbursementE.js"></script>
-<script src="static/Scripts/ReimbursementM.js"></script>
-
-
-
-
-
+    <script src="../Scripts/homer.js"></script>
+    <script src="../Scripts/Home.js"></script>
+    <script src="../Scripts/EmployeeInfoE.js"></script>
+    <script src="../Scripts/EmployeeInfoM.js"></script>
+    <script src="../Scripts/ReimbursementE.js"></script>
+    <script src="../Scripts/ReimbursementM.js"></script>
 
 </body>
 </html>

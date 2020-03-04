@@ -83,17 +83,17 @@ public class Reimbursement implements Serializable{
 				return 2;
 			case "Meal":
 				return 3;
-			case "Gasoline/Milage":
+			case "Gas/Milage":
 				return 4;
 			case "Transportation":
 				return 5;
 			case "Lodging":
 				return 6;
-			case "Proffesional Development":
+			case "Training":
 				return 7;
 			case "Relocation":
 				return 8;
-			case "Miscellaneous":
+			case "Misc.":
 				return 9;
 			default:
 				return 0;
@@ -112,7 +112,7 @@ public class Reimbursement implements Serializable{
 				this.category = "Meal";
 				break;
 			case 4:
-				this.category = "Gasoline/Milage";
+				this.category = "Gas/Milage";
 				break;
 			case 5:
 				this.category = "Transportation";
@@ -121,13 +121,13 @@ public class Reimbursement implements Serializable{
 				this.category = "Lodging";
 				break;
 			case 7:
-				this.category = "Proffesional Development";
+				this.category = "Training";
 				break;
 			case 8:
 				this.category = "Relocation";
 				break;
 			case 9:
-				this.category = "Miscellaneous";
+				this.category = "Misc.";
 				break;
 			default:
 				this.category = "Mistakes were made...";
