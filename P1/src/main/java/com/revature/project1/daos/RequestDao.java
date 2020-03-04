@@ -10,5 +10,6 @@ public interface RequestDao {
 	public Request getRequestByStatus(int status);
 	public List<Request> getRequestByUserId(int userId);
 	public int updateRequest(Request r);
+	public int createRequest(Request r);
 
 }

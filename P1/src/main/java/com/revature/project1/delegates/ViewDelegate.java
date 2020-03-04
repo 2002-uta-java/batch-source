@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 public class ViewDelegate {
 
 	public void getEmployeeView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setStatus(200);
-		request.getRequestDispatcher("Views/NewBird.html").forward(request, response);
+		request.getRequestDispatcher("/static/views/employee.html").forward(request, response);
 		
+	}
+
+	public void getManagerView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setStatus(200);
+		request.getRequestDispatcher("/static/views/manager.html").forward(request, response);
 	}
 
 }

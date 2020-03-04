@@ -14,18 +14,20 @@ public class Request implements Serializable {
 	private String amount;
 	private String reason;
 	private int status;
+	private String manager;
 
 	public Request() {
 		super();
 	}
 
-	public Request(int id, int userId, String amount, String reason, int status) {
+	public Request(int id, int userId, String amount, String reason, int status, String manager) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.amount = amount;
 		this.reason = reason;
 		this.status = status;
+		this.manager = manager;
 	}
 
 	// getters and setters
@@ -69,6 +71,14 @@ public class Request implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public String getManager() {
+		return manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
+	}
 
 	@Override
 	public int hashCode() {
@@ -76,6 +86,7 @@ public class Request implements Serializable {
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
 		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
 		result = prime * result + status;
 		result = prime * result + userId;
@@ -97,6 +108,11 @@ public class Request implements Serializable {
 		} else if (!amount.equals(other.amount))
 			return false;
 		if (id != other.id)
+			return false;
+		if (manager == null) {
+			if (other.manager != null)
+				return false;
+		} else if (!manager.equals(other.manager))
 			return false;
 		if (reason == null) {
 			if (other.reason != null)

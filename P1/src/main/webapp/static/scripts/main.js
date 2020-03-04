@@ -1,5 +1,6 @@
-
-
+function invalidAlert(){
+    document.getElementById("email-label").innerText="Invalid credentials. Please try again.";
+}
 
 // login function
 document.getElementById("index-login").addEventListener("click", login)
@@ -16,23 +17,24 @@ function login(){
     xhr.open("POST", url);
 
     xhr.onreadystatechange = function(){
-        if(xhr.readyState==4 && xhr.status==200){
-            console.log("success!!!!!!!!!!");
+        if(xhr.readyState===4 && xhr.status===200){
+            console.log("SUCCESS");
             let auth = xhr.getResponseHeader("Authorization");
             sessionStorage.setItem("token", auth);
             console.log(auth);
             let check = auth;
+            //localStorage.setItem("loggedin", auth);
 
-            // function to determine manager vs employee
-
+            // check if manager or employee
+            // http://localhost:8080/ExpenseReimbursement/home
             if (isManager(check) === true){
-                window.location.href ="http://localhost:8080/ExpenseReimbursement/static/manager.html";
+                window.location.href ="http://localhost:8080/ExpenseReimbursement/static/views/manager.html";
             } else {
-                window.location.href = "http://localhost:8080/ExpenseReimbursement/static/employee.html";
+                window.location.href = "http://localhost:8080/ExpenseReimbursement/static/views/employee.html";
             }
 
         } else if (xhr.readyState == 4) {
-            alert("Invalid Credentials, please try again.");
+            invalidAlert();
         }
     }
 
@@ -52,6 +54,20 @@ function isManager(check){
         return false;
     }
 }
+
+
+
+// function sendAjaxGet(url, callback){
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("GET", url);
+//     xhr.onreadystatechange = function(){
+//         if(xhr.readyState==4 && xhr.status==200){
+//             callback(xhr.response);
+//         }
+//     }
+//     xhr.send();
+// }
+
 
 
 

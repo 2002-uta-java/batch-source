@@ -30,6 +30,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
 				r.setStatus(rs.getInt("req_status"));
+				r.setManager(rs.getString("req_manager"));
 			}
 
 		} catch (SQLException e) {
@@ -56,6 +57,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
 				r.setStatus(rs.getInt("req_status"));
+				r.setManager(rs.getString("req_manager"));
 			}
 
 		} catch (SQLException e) {
@@ -92,6 +94,7 @@ public class RequestDaoImpl implements RequestDao {
 				r.setAmount(rs.getString("req_amount"));
 				r.setReason(rs.getString("req_reason"));
 				r.setStatus(rs.getInt("req_status"));
+				r.setManager(rs.getString("req_manager"));
 			}
 
 		} catch (SQLException e) {
@@ -112,7 +115,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int updateRequest(Request r) {
 
-		String sql = "update request; set req_id = ?, user_id = ?, req_amount = ?, req_reason = ? req_status = ? where req_id = ?;";
+		String sql = "update request; set req_id = ?, user_id = ?, req_amount = ?, req_reason = ?, req_status = ?, req_manager = ? where req_id = ?;";
 		int check = 0;
 
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -122,7 +125,8 @@ public class RequestDaoImpl implements RequestDao {
 			ps.setString(3, r.getAmount());
 			ps.setString(4, r.getReason());
 			ps.setInt(5, r.getStatus());
-			ps.setInt(6, r.getId());
+			ps.setString(6, r.getManager());
+			ps.setInt(7, r.getId());
 
 			check = ps.executeUpdate();
 			System.out.println("updated request");
@@ -130,8 +134,33 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("check is" + check);
+		System.out.println("success if check is " + check + " > 0");
 		return check;
+	}
+
+	@Override
+	public int createRequest(Request r) {
+		
+		String sql = "insert into request (user_id, req_amount, req_reason, req_status, req_manager) values (?, ?, ?, ?, ?);";
+		int check = 0;
+		
+		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);){
+			ps.setInt(1, r.getId());
+			ps.setString(2, r.getAmount());
+			ps.setString(3,  r.getReason());
+			ps.setInt(4, r.getStatus());
+			ps.setString(5, r.getManager());
+			
+			check = ps.executeUpdate();
+			System.out.println("request created");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("check is " + check + ", if > 0, success");
+		
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
