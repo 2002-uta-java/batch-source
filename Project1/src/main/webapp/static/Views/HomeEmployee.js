@@ -3,6 +3,7 @@ function loadPage() {
     // Quick authentication check.
     let token = sessionStorage.getItem("token");
     let tokenArr = token.split(":");
+    let id = tokenArr[0];
 
     if(!token){
         window.location.href="http://localhost:8080/Project1/login";
@@ -10,15 +11,15 @@ function loadPage() {
     }
 
     // Clear everything.
-    // clearList("all-reim");
-    // clearList("pending-reim");
-    // clearList("resolved-reim");
+    clearList("all-reim");
+    clearList("pending-reim");
+    clearList("resolved-reim");
 
     // Reload.
-    let baseUrl1 = "http://localhost:8080/Project1/api/users/" + tokenArr[0]; // current user
-    let baseUrl2 = "http://localhost:8080/Project1/api/reimb/e/" + tokenArr[0]; // current users reimbursements
+    let baseUrl1 = "http://localhost:8080/Project1/api/users/" + id; // current user
+    let baseUrl2 = "http://localhost:8080/Project1/api/reimb/e/" + id; // current users reimbursements
     sendAjaxGet(baseUrl1, loadUser, token);
-    // sendAjaxGet(baseUrl, loadUserReimbursements, token);
+    sendAjaxGetEmployeeReimbursements(baseUrl2, loadEmployeeReimbursements);
 }
 
 async function sendAjaxGet(url, callback, token){
@@ -49,6 +50,116 @@ async function loadUser(xhr) {
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
     // TODO: picture depending on gender (id=) (is also in homemanager.js) // also in all other htmls
+}
+
+// requestEmployeeReimbursements AJAX helper.
+async function sendAjaxGetEmployeeReimbursements(url, callback) {
+    let token = sessionStorage.getItem("token");
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+		}
+    }
+    xhr.setRequestHeader("Authorization", token);
+	xhr.send();
+}
+
+function loadEmployeeReimbursements(xhr) {
+    let reimbs = JSON.parse(xhr.response);
+    let emplUrl = "http://localhost:8080/Project1/api/users";
+    sendAjaxGetEmployeeNames(emplUrl, continueLoadReimbursements, reimbs); // this is stupid.
+}
+
+// ajax helper for finding employeeNames
+async function sendAjaxGetEmployeeNames(url, callback, reimbs) {
+    let token = sessionStorage.getItem("token");
+    let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this, reimbs);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.")
+		}
+	}
+	xhr.setRequestHeader("Authorization", token);
+    xhr.send();
+}
+
+function continueLoadReimbursements(xhr, reimbs) {
+    let employees = JSON.parse(xhr.response);
+    let employeeNames = createEmployeeNameList(employees);
+    
+    for (let r of reimbs) {
+        let id = r.id;
+        let purpose = r.purpose;
+        let amount = r.amount;
+        let idEmployee = r.idEmployee;
+        let idManager = r.idManager;
+        let status = r.status;
+        let eFullName = findEmployeeName(idEmployee, employeeNames);
+
+        // Bug fix: Apparently need two separate elements to attach to ALL and PENDING/RESOLVED tabs.
+        for (let i = 0; i < 2; i++) {
+            let reimElement = document.createElement("a");
+
+            // record data for future potential purposes.
+            reimElement.setAttribute("id", "r" + id);
+            reimElement.setAttribute("data-id", id);
+            reimElement.setAttribute("data-purpose", purpose);
+            reimElement.setAttribute("data-amount", amount);
+            reimElement.setAttribute("data-idEmployee", idEmployee);
+            reimElement.setAttribute("data-idManager", idManager);
+            reimElement.setAttribute("data-status", status);
+            reimElement.setAttribute("data-eFullName", eFullName);
+            reimElement.setAttribute("href", "#");
+            reimElement.setAttribute("class", "list-group-item list-group-item-action");
+
+            if (status == "pending") { // Pending reimbursements must be added to ALL and PENDING
+                reimElement.innerHTML = `$${amount}  ${purpose}  ${status}`;
+                if (i == 0) {document.getElementById("all-reim").appendChild(reimElement);}
+                if (i == 1) {document.getElementById("pending-reim").appendChild(reimElement);}
+            }
+            else { // Resolved reimbursements need the manager who resolved it + added to ALL and RESOLVED
+                let mFullName = findEmployeeName(idManager, employeeNames);
+                reimElement.setAttribute("data-mFullName", mFullName);
+                reimElement.innerHTML = `$${amount}  ${purpose}  ${status}  managerResolve: ${mFullName}`;
+                if (i == 0) {document.getElementById("all-reim").appendChild(reimElement);}
+                if (i == 1) {document.getElementById("resolved-reim").appendChild(reimElement);}
+            }
+        }
+
+    }
+
+}
+
+function createEmployeeNameList(employees) {
+    let employeeNames = []; // format: [ [id, fullName], [id, fullName], ...]
+
+    for (let e of employees) {
+        let id = e.id;
+        let fullName = e.firstName + " " + e.lastName;
+        employeeNames.push([id, fullName]);
+    }
+
+    return employeeNames;
+}
+
+function findEmployeeName(id, employeeNames) {
+    let arrayLength = employeeNames.length;
+
+    for (let i = 0; i < arrayLength; i++) {
+        eId = employeeNames[i][0];
+        eName = employeeNames[i][1];
+        if (id == eId) {
+            return eName;
+        }
+    }
+    return "Name missing (id error)."
 }
 
 // Helper function to clear the reimbursements lists.
