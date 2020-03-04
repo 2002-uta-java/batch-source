@@ -28,7 +28,7 @@ public class RequestHelper {
 			authDelegate.authenticate(request, response);
 			break;
 		default:
-			response.sendError(405);
+			response.sendError(405,"test");
 		}
 	}
 }
