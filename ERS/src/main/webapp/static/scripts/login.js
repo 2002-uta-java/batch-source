@@ -40,4 +40,5 @@ function redirectToHomePage(xhr) {
 function invalidLogin() {
 	// TODO need to display that login failed
 	console.log("invalid login");
+	document.getElementById("invalid-login").innerText = "Invalid email/password";
 }
