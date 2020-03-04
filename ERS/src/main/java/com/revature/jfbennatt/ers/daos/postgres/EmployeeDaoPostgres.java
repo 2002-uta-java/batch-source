@@ -1,6 +1,7 @@
 package com.revature.jfbennatt.ers.daos.postgres;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.revature.jfbennatt.connections.ConnectionUtil;
 import com.revature.jfbennatt.ers.daos.EmployeeDao;
 import com.revature.jfbennatt.ers.models.Employee;
+import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
  * Implementation of {@link EmployeeDao} used to access the Postgresql database
@@ -20,6 +22,7 @@ import com.revature.jfbennatt.ers.models.Employee;
  *
  */
 public class EmployeeDaoPostgres implements EmployeeDao {
+	public static final String DATE_PATTERN = "mm/dd/yyyy";
 	/**
 	 * Column name for employee id in Postgresql database.
 	 */
@@ -56,6 +59,67 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	 * Name of the table for employees in this database.
 	 */
 	public static final String EMPLOYEE_TABLE = "employees";
+	/**
+	 * Name of reimbursements table
+	 */
+	public static final String REIMBURSEMENTS_TABLE = "reimbursements";
+	/**
+	 * name of reimb_id column for the reimbursements table.
+	 */
+	public static final String REIMB_ID = "reimb_id";
+	/**
+	 * name of empl_id column for the reimbursements table.
+	 */
+	public static final String REIMB_EMPL_ID = "empl_id";
+	/**
+	 * name of description column for the reimbursements table.
+	 */
+	public static final String REIMB_DESCRIPT = "description";
+	/**
+	 * name of amount column for the reimbursements table.
+	 */
+	public static final String REIMB_AMOUNT = "amount";
+	/**
+	 * name of reimb_date (date of expense) column for the reimbursements table.
+	 */
+	public static final String REIMB_DATE = "reimb_date";
+	/**
+	 * name of submit date column for the reimbursements table.
+	 */
+	public static final String REIMB_SUBMIT_DATE = "submit_date";
+	/**
+	 * name of reply date (date request was approved or denied) column for the
+	 * reimbursements table.
+	 */
+	public static final String REIMB_REPLY_DATE = "reply_date";
+	/**
+	 * name of status column for the reimbursements table.
+	 */
+	public static final String REIMB_STATUS = "reimb_status";
+	/**
+	 * String representing a reimbursement is pending.
+	 */
+	public static final String PENDING = "pending";
+	/**
+	 * String representing a reimbursement is approved.
+	 */
+	public static final String APPROVED = "approved";
+	/**
+	 * String representing a reimbursement is denied.
+	 */
+	public static final String DENIED = "denied";
+	/**
+	 * Status code for a reimbursement that is pending.
+	 */
+	public static final int PENDING_INT = 1;
+	/**
+	 * Status code for a reimbursement that is approved.
+	 */
+	public static final int APPROVED_INT = 2;
+	/**
+	 * Status code for a reimbursement that is denied.
+	 */
+	public static final int DENIED_INT = 3;
 
 	public EmployeeDaoPostgres() {
 		super();
@@ -181,6 +245,69 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		}
 		// if we get here, the delete was successful
 		return true;
+	}
+
+	@Override
+	public String datePattern() {
+		return DATE_PATTERN;
+	}
+
+	@Override
+	public boolean submitRequest(final Reimbursement newReimb) {
+		final String sql = "insert into " + REIMBURSEMENTS_TABLE + " (" + REIMB_EMPL_ID + ", " + REIMB_DESCRIPT + ", "
+				+ REIMB_AMOUNT + ", " + REIMB_DATE + ", " + REIMB_SUBMIT_DATE + ", " + REIMB_STATUS
+				+ ") values(? , ? , ? , ? , ? , ?)";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, newReimb.getEmplId());
+			ps.setString(2, newReimb.getDescription());
+			ps.setObject(3, newReimb.getAmount());
+			ps.setDate(4, new Date(newReimb.getReimbDate().getTime()));
+			ps.setDate(5, new Date(newReimb.getSubmitDate().getTime()));
+			ps.setInt(6, newReimb.getStatus());
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				// nothing was updated, this failed
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+		// if we made it this far, the insert was a success
+		return true;
+	}
+
+	@Override
+	public String getStatus(Reimbursement reimb) {
+		switch (reimb.getStatus()) {
+		case PENDING_INT:
+			return PENDING;
+		case APPROVED_INT:
+			return APPROVED;
+		case DENIED_INT:
+			return DENIED;
+		default:
+			throw new RuntimeException(reimb.getStatus() + " is not a recognized status code");
+		}
+	}
+
+	@Override
+	public void setPending(Reimbursement reimb) {
+		reimb.setStatus(PENDING_INT);
+	}
+
+	@Override
+	public void setApproved(Reimbursement reimb) {
+		reimb.setStatus(APPROVED_INT);
+	}
+
+	@Override
+	public void setDenied(Reimbursement reimb) {
+		reimb.setStatus(DENIED_INT);
 	}
 
 }

@@ -17,10 +17,23 @@ const EMAIL_HEADER = "email";
 const PASSWORD_HEADER = "password";
 // URI for logging out a user
 const LOGOUT_API = "/ERS/api/logout";
-
-const MAX_LENGTH_DESC = 140;
-const SUBMIT_REIMBURSEMENT_API = "/ERS/api/submit";
+// resource for displaying the submit reimbursement page
 const SUBMIT_REIMBURSEMENT_PAGE = "/ERS/submit";
+// URI to actually submit a reimbursement request
+const SUBMIT_REIMBURSEMENT_API = "/ERS/api/submit";
+// the maximum length accepted for the description field when submitting a reimbursement request
+const MAX_LENGTH_DESC = "140";
+// name used for form submission for the description when requesting a reimbursement
 const DESCRIPTION_ID = "description";
+// name for the amount field when submitting a reimbursement request
 const AMOUNT_ID = "amount";
+// name for the date field when submitting a reimbursement request
 const DATE_ID = "date";
+// name of cookie that holds the message (for home page alert displays)
+const SUCCESS_COOKIE = "success";
+// value signaling a failure (value of SUCCESS_COOKIE)
+const FAIL_VALUE = "fail";
+// value signaling a success (value of SUCCESS_COKIR)
+const SUCCESS_VALUE = "success";
+// URI of view reimbursement resource
+const VIEW_REIMBURSEMENT_PAGE = "/ERSview";

@@ -3,13 +3,19 @@ package com.revature.jfbennatt.ers.controller.delegates;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
+import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.models.Employee;
 
 /**
- * This routes requests for pages (e.g. /) to the appropriate static page.
+ * This routes requests for pages (e.g. /) to the appropriate static page. This
+ * needs to communicate with the {@link RequestDispatcher} so should be
+ * explicitly declared (i.e. not as a {@link Delegate}).
  * 
  * @author Jared F Bennatt
  *
@@ -28,17 +34,40 @@ public class ViewDelegate extends Delegate {
 	 * URI of the static submit reimbursement page.
 	 */
 	public static final String SUBMIT_REIMBURSEMENT_PAGE = "/static/Employee/Submit-Reimbursement.html";
+	/**
+	 * URI of the static view reimbursement page
+	 */
+	public static final String VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursement.html";
 
 	/**
 	 * URI of the submit reimbursement resource
 	 */
 	public static final String SUBMIT_REIMBURSEMENT = "/submit";
+	/**
+	 * URI of the view reimbursement resource
+	 */
+	public static final String VIEW_REIMBURSEMENT = "view";
+
+	/**
+	 * Cookie message (value) representing a failure
+	 */
+	public static final String FAIL = "fail";
+	/**
+	 * Cookie message (value) representing a successful action
+	 */
+	public static final String SUCCESS = "success";
+
+	private RequestDispatcher dispatcher = null;
 
 	/**
 	 * Default constructor.
 	 */
 	public ViewDelegate() {
 		super();
+	}
+
+	public void setRequestDispatcher(final RequestDispatcher dispatcher) {
+		this.dispatcher = dispatcher;
 	}
 
 	/**
@@ -73,6 +102,7 @@ public class ViewDelegate extends Delegate {
 			throws ServletException, IOException {
 		switch (path) {
 		case HOME:
+			setMessageCookie(response);
 			request.getRequestDispatcher(EMPLOYEE_HOME_PAGE).forward(request, response);
 			break;
 		case SUBMIT_REIMBURSEMENT:
@@ -80,6 +110,19 @@ public class ViewDelegate extends Delegate {
 			break;
 		default:
 			response.sendError(404);
+		}
+	}
+
+	private void setMessageCookie(final HttpServletResponse response) {
+		final String message = dispatcher.consumeMessage();
+		Logger.getRootLogger().debug("getting message from dispatcher");
+		if (message != null) {
+			Logger.getRootLogger().debug("Setting cookie to :" + message + " and max age = 5");
+			Logger.getRootLogger().debug("Request dispatcher's message: " + dispatcher.consumeMessage());
+			final Cookie messageCookie = new Cookie(Delegate.SUCCESS_COOKIE, message);
+			// don't store this cookie, it's a one and done thing
+			messageCookie.setMaxAge(5);
+			response.addCookie(messageCookie);
 		}
 	}
 

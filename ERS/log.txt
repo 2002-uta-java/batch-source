@@ -1047,3 +1047,924 @@
 2020-03-03 17:51:22 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, 8vkqA3OdzTk1s6yGyrqJoqqZrahwMraBug0vY4KmEO4SjNuktrNIyJL7fDQDWhDsQHV5qinLQVfESfvaf+IldZ6ULq4SUfkmY0Hqu2DwZ5Q=
 2020-03-03 17:51:23 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=KihOHMdlraRKWR5n1rTeSaRvvO1GP4ja/LWDfWzY+oTcUdE9Ajk+qcQUmIIAIo5eGTmEaf4pZrM9AL6l/49AFagssfMB5ZnD3CnpzxVSc/4=, email=ecisneros0@guardian.co.uk]
 2020-03-03 17:51:23 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 08:57:06 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 08:57:06 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:06 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:06 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:57:06 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:06 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:06 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 08:57:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 08:57:08 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 08:57:08 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:08 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:08 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:57:08 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:08 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:08 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 08:57:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 08:57:32 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 08:57:32 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:32 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:32 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:57:32 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:32 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:32 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 08:57:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 08:57:59 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 08:57:59 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:59 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:59 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:59 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:57:59 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:57:59 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:57:59 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:57:59 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 08:57:59 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 08:58:59 DEBUG Delegate:205 method: processRequest - Requesting: /api/login
+2020-03-04 08:58:59 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:58:59 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:58:59 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: sdjfsadf slkjglsjf
+2020-03-04 08:58:59 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 08:59:00 DEBUG EmployeeService:140 method: loginEmployee - Looking for employee by email: sdjfsadf
+2020-03-04 08:59:00 DEBUG EmployeeService:159 method: loginEmployee - emp was null
+2020-03-04 08:59:00 DEBUG Delegate:112 method: authenticateEmployee - Trying to login in: null
+2020-03-04 08:59:00 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:59:00 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:59:00 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:59:00 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: sdjfsadf slkjglsjf
+2020-03-04 08:59:01 DEBUG EmployeeService:140 method: loginEmployee - Looking for employee by email: sdjfsadf
+2020-03-04 08:59:01 DEBUG EmployeeService:159 method: loginEmployee - emp was null
+2020-03-04 08:59:01 DEBUG Delegate:112 method: authenticateEmployee - Trying to login in: null
+2020-03-04 08:59:01 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 08:59:01 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:59:01 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:59:01 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:59:01 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:59:01 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:59:01 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:59:01 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 08:59:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 08:59:47 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 08:59:47 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 08:59:47 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:00:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 09:00:07 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 09:00:07 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:00:07 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:00:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 09:00:07 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 09:00:07 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:00:07 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:00:31 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/Home.js
+2020-03-04 09:00:40 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 09:01:12 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 09:01:32 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:01:32 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 09:01:32 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:01:32 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:01:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 09:01:32 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 09:01:32 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:01:32 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:01:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 09:01:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 09:01:58 DEBUG Delegate:205 method: processRequest - Requesting: /api/login
+2020-03-04 09:01:58 DEBUG Delegate:182 method: getAuthToken - cookies was null
+2020-03-04 09:01:58 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:01:58 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 09:01:58 DEBUG EmployeeService:140 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 09:01:58 DEBUG EmployeeService:142 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=AkNwbhP6qYsGpaoddMxHs3cxVEhHbryWONc9SCdyE5mcgX6Uq63sblchV5xVqVAw, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:01:59 DEBUG EmployeeService:151 method: loginEmployee - Setting employee's token: PhKJqElvwO0o2uL1w2ennmTjmKqSK98bI03uWbWyYGLAn9xXrur311Gz1jkACs12, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:01:59 DEBUG Delegate:112 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:01:59 DEBUG Delegate:143 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 09:01:59 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:01:59 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:01:59 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=IoHf49PwJctC+2EZVp0/FPbCRDDcZlPzRzBvhx1gNXXZYfROTkX6w8vRk1gwCFh9HOpN+a8ubUP+82bf6ja/pon3ssthM2eE63k4eQGJmoc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:01:59 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 09:01:59 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:01:59 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=kDwx7CJcEQC8FPsSTPiMCo1HmHwlDUEDlv0ZpzlowA2pHarmZQXGuJTY72AGsooJmAPbkCzRpLuplnsQTHGV1TbC80oKMyTYjTjytKwNv64=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:02:00 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 09:02:00 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 09:02:00 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 09:02:03 DEBUG Delegate:205 method: processRequest - Requesting: /submit
+2020-03-04 09:02:03 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:02:03 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=XRwdpH+ULXz4wjtSwvcbhrbhtWvfUH/3WlsOdhjPtXKOmFtahgk73mdJkCkBc+Kz6kjGEeCSNZtfepgDwB1eJyp9EJQkD5YyVeQZ6C1TfbI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:02:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 09:02:03 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:02:03 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=uCUjFVftURC+rDw5mYprXOUNRsjS78htSrt4AhCwL6SLWJTd4kUPwcaVnqsFNOZDdC5yeRCq6xGKxCxw75FwHflE+TZsOiw99SbzC8s5rIg=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:02:04 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 09:03:14 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:03:14 DEBUG LogoutDelegate:30 method: deleteCookies - Deleting cookies
+2020-03-04 09:03:15 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:03:15 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:03:15 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:03:15 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:03:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 09:03:15 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:03:15 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:03:15 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:03:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 09:31:16 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:31:16 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:31:16 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:31:16 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:31:16 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 09:31:16 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:31:16 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:31:16 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: null null
+2020-03-04 09:31:17 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 09:31:17 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 09:31:31 DEBUG Delegate:205 method: processRequest - Requesting: /api/login
+2020-03-04 09:31:31 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, xMs/T2dgkix+7dLFsAcdX3MwKdFD+wnUxauI0tUOVCbID6DvYuRHjshRdCt9Gw5c+kFSTyfrtuoaBAr9oGnLWqzlSU1+mWhyEU66AndAANQ=
+2020-03-04 09:31:31 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 09:31:31 DEBUG Delegate:109 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 09:31:31 DEBUG EmployeeService:140 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 09:31:31 DEBUG EmployeeService:142 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=null, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:32 DEBUG EmployeeService:151 method: loginEmployee - Setting employee's token: g7fFSPr80VT8ByEqzemRW4hRC4lTrDEfCydruTkZ13eA8vDH7wdT6HN4RxtgB19E, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:31:32 DEBUG Delegate:112 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:32 DEBUG Delegate:143 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 09:31:32 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:31:32 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=1MsLa+Owii3NvEHSsiKQ1CYt5qhLAnptukWOnOZS26X6Z3XwrpxPpudCRL01Iin1xJfBjY1Ag9LWpa5YPJIH6hrzc3meKUTB6nFMzP2OCc4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:31:32 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:31:33 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=BZ04/jiR7EIAkOZX5FB13Qv+fjeILYP5mKIa34yLzP3tKTe55lncw6IcdGpVlBUeTvueCqmH1Klc0PO1gYExgmuoKhVYcaJymFutXvRV+Xc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 09:31:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 09:31:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 09:31:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 09:31:34 DEBUG Delegate:205 method: processRequest - Requesting: /submit
+2020-03-04 09:31:34 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:31:34 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:31:34 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:31:35 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=xk8WB3EVLzrMZS5jnRHSdounmzNkhS0pApny0VqnzQpVqs/hHHIPK5jLtPbFJara4Md6icA0ySU2/KJFPUaQtqtboC0woD3s3njEJmFRMIw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:35 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 09:31:35 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:31:35 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:31:35 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:31:35 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=9TeMBtnsQqZxwMAim80K25QurnDRjUwVMaBZlOAfGYkZVrvtnJFmK9G6dqNhXl0OC3bhwoIRx1FCzjWCHPkYoXjI7k+ec17CwgTwlDA11rY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:31:35 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 09:32:52 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:32:52 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:32:52 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:32:52 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:32:52 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 09:32:53 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=nOsuJXXR/VcjNazxVV/u4aDgGKIjWKc4rZv67ZNUXmzGstUQ7ETa+5APBE2gHXIc9LVQdwTyCFtSDJ09N18zqRDHhunlZnUJTUMK4uoFzuU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:32:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 09:32:53 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:32:53 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:32:53 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:32:53 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=hSNxrPyjSwB2mFQO8ABj11dVd69R6D1VRMk7cRzKKtBxoqoaGP3pj3SIOUqUMVJBDLY8hhXmbDHVKsLTicz/lxc08M0R1YjTvwt63pTfaoY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:32:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 09:32:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 09:32:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 09:32:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 09:32:55 DEBUG Delegate:205 method: processRequest - Requesting: /submit
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:32:55 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=a+uKJgPCjx/cKqGCM6EqLgiF/aylcM4brU3vWzjMkgDhPBqOwlfLO0qSAkslwsaOEPY+ZNgxWtrbheDooukdlteKhYEtIfzFGp5EI/d9oto=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:32:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:32:55 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:32:55 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=uETH5PHVzR32Yh/zW1q3BduAQFQ8hq90WqojtwOOxZwIF3yyv9oI/nDBPyLR45XKJVkvhK5Tiy7YR7U0ZXK+nHc774aovjMK9YW5c+lF9hU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:32:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 09:32:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 09:33:05 DEBUG Delegate:205 method: processRequest - Requesting: /api/submit
+2020-03-04 09:33:05 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:33:05 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:33:05 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:33:06 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Z1R3iNvXBgb/UeCkUaWTXY1aNb+4IKehSwBguzIZLuaPTDexkaQ90k2q+Pwt0ZNAMJw5fiZF+seW31rYyIPRw4laXIOhIqfgnldZLl+0MlI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:33:06 DEBUG SubmitReimbursementDelegate:31 method: processRequest - date: 02/04/2020
+2020-03-04 09:33:06 DEBUG SubmitReimbursementDelegate:37 method: processRequest - Attempting to submit reimbursement request: asdfasdf, asdfjasdf, 2020-01-04
+2020-03-04 09:33:06 DEBUG Delegate:205 method: processRequest - Requesting: /
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:33:06 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=+2Eel5ds1UyJafS3fNxs1T3wvu5VG7J4H/SyzAHrFPVx+MI5UsFPsR1XbtMbIHdkfY/MFCWE5VRLwVQs8TMwGylrpShWKMXeR7XSxL7lyH8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:33:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 09:33:06 DEBUG Delegate:177 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 09:33:07 DEBUG Delegate:100 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=U24q3zbg4vwJ9q/ZHMbonFUeAIbcowO3ZKlPnt3CpcS9W82/XYu6hvKMIJAs7eyDY38UCLetIJ469PAm1TduMaL2IH25yPYra3lKNOk+C30=, email=ecisneros0@guardian.co.uk]
+2020-03-04 09:33:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 13:37:35 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 13:37:35 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:35 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:35 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:35 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 13:37:36 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=5ESh/UxfP6hAosMRwiFycKuTQe0dd3WkPj0cyEVzbCnq73KcaHbFHQn2SUfrdi3fyK8En2KrTYxRKoYJ6Yv4K2MSuNG77TBeanr0Z7LbLkc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:36 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=z3QgE2Kx3INb8DFMnRkXeVLR5KUS8IpO51LI5Ck34MXtoRhdwMWSmUoSbIkJ9xbUvBYqOx0Zw8uc+85oahD9XSu4kX+lopDDJTnVpC7MweI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:36 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:36 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 13:37:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 13:37:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 13:37:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 13:37:37 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=ybf0kDpj8J1DOGAeeoVEYA1CCOVCYaVipReHM/rXUUHU/ktQt7FpI5GrElx5K8XnkcT69bQ/ERaJKkGL5yN1VRFnKp/vVN6AhhkHWkz+Rzk=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 13:37:37 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:37 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:37 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:37 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Y6mIYIPHKcFa7vVPCyKN4a2I3BNYwpOgT0FTMzT3dnwB7m2J2vWeRj2HfGwp6jx65a69zAOo1OUmDAWsUKLkZW8cu/QNuKol/sexMu7ez5E=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 13:37:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 13:37:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 13:37:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 13:37:39 DEBUG Delegate:221 method: processRequest - Requesting: /submit
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:39 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=mW9PPNAuEm/cVBuA6APDhd4ieAFL6BZvCimmWKfxitMge2EY+TKPZ5BzLjRi0CT7usVF51LrPgY6d8yKkeoqQtxn5EWjrIpCfSkjCz5vlFI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:39 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:37:39 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:37:40 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Yrg1lavzh3h6YAomRogR3OOF0FM6q1ooblShPyoQU7/KxmpIEIvVABuaqVzTvnuVKJB5LQ5AxdJToowWyzNpRS5wb8CakmZWfDPaF+z3aCo=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:37:40 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 13:38:05 DEBUG Delegate:221 method: processRequest - Requesting: /api/submit
+2020-03-04 13:38:05 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:38:05 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:38:05 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:38:05 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=12NEyT+i8GyS4TsFEWhGT/Y8Ip/kaZR/hizUG3pp186F+Kr8xAoKeeP5qrvmuFNYQesi4GMeiLUgq/3QVbIM8SeACFLe4uAzQY67DtfEPRI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:38:05 DEBUG SubmitReimbursementDelegate:63 method: processRequest - Attempting to submit reimbursement request: 4500, I'm underpaid., 02/27/2020
+2020-03-04 13:38:06 ERROR EmployeeDaoPostgres:277 method: submitRequest - ERROR: column "amount" is of type money but expression is of type character varying
+  Hint: You will need to rewrite or cast the expression.
+  Position: 115
+2020-03-04 13:38:06 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 13:38:06 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:38:06 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:38:06 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:38:06 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=M4pXs32vocSCWQPDR0qts/kYNzyEoWqOAU1cuBXJFuWO6gYZXEevLVqXBvxG3bbccUdZBzKSABYErt2EQswDriiZOj+GyWm4yOjmayyrL6Q=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:43:53 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 13:43:53 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:43:53 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:43:53 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:43:53 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 13:43:54 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=MZN0bIhlA8qKetldXfleROBYlClwoo2/z21De+6Y27Hy93s0YldLjDcMexXCsHuvzjfrNlohJs+vGVE50pRBMkXWhjyAzkaQzA6iwwOx6nw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:43:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 13:43:54 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:43:54 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:43:54 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:43:54 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=a8BvShEI4cYLZ8w8lJQcC/28uQfVnVomwtxrCt8UqBKLjTAKyVhxCqVFT2gIP7oBfCpAgrPQT/vRLxH08k8sRPesJ4n3x5hQDPtxhJ4/6Ds=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:43:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 13:43:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 13:43:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 13:43:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 13:43:57 DEBUG Delegate:221 method: processRequest - Requesting: /submit
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:43:57 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=CpNJDVWUW2SfwLq8fhywYbDII/k6ZIBDW63ZOucxU3uCddcmKnwJGkwtzTiqt8t6f6Xsu029FMPpPaT2jWyC2kJeiULXz6jZAXTa4oYC22w=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:43:57 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:43:57 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:43:58 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=fs8za5zZvOVNog2SOrPYBjGnYyKo8E81X1xNC4OUzV8BXEczHHauBBTfMUt6yeHBezzXwQFDQNjdVEMgvVXZ1GDQfDixRU8Hvmfb4PCP/+I=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:43:58 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 13:44:09 DEBUG Delegate:221 method: processRequest - Requesting: /api/submit
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:44:09 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=bnghir56feCf9KHed9jeeJRAP9EN2S7z2VlMv6XYxLGx0y7XGXJvFNPmjIaQE7+BbVuGBwoCnyppXye+5XrAvQzo10/FLUAq48zqUJVUGPw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:44:09 DEBUG SubmitReimbursementDelegate:63 method: processRequest - Attempting to submit reimbursement request: 100, Need more money!, 03/02/2020
+2020-03-04 13:44:09 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:44:09 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:44:10 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=si4H6WHPiEB6I+O62Ehick9u9MA7u1VagKBjYylzt/+q9u9ANhM4dwHe636vB1RP2/il1NaHAGEctn31qfSZZrTtvWD1y9eua4kCvuWuPBk=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:44:10 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 13:44:10 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 13:44:10 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 13:44:10 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 13:44:10 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=sNjBoV+O8k80LwIRMQ3WtF3ZDu2sSFZbkC53sUa77FbzMpJPdAyy4ibHPRoVh810/ijccuWke2kNevlrVnQsTvlz3aW4ZwMgEyqVyVtBo2A=, email=ecisneros0@guardian.co.uk]
+2020-03-04 13:44:10 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:08:12 DEBUG Delegate:221 method: processRequest - Requesting: /submit
+2020-03-04 14:08:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:08:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:08:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:08:12 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:08:13 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=LmmR4MODBxZxZWpJNRVZPAHIwUbBMnAcXWrX1Eo131kmGsHHAlb14wOPU06ZtUvhakk8Lwjd8IPsIVVseMTvrsmsfs9U/ujcTKkMFBeBqlU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:08:13 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:08:13 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:08:13 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:08:13 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:08:13 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=trF6sRRwbwV3ykWDn+zo1gRdfJuWOzoevjGlyN4AdasQEUmh8OEuDjTwwhtGoU2uB8GtDibVjO23CmaZoeTisxlIC0UXp8aD2zPT4QmvdIA=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:08:13 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:08:13 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:09:12 DEBUG Delegate:221 method: processRequest - Requesting: /api/submit
+2020-03-04 14:09:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:09:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:09:12 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:09:12 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=FnGmdz07auuVo8V1EbxYNpjpbP083R+nsmSWG1wP2xCjR22QiFo6bwQ7XQZ7AxyYqiEetTk1WxCiMYSbTCj8N2u43HJhZEp2jZLsj95PfpI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:09:12 DEBUG SubmitReimbursementDelegate:65 method: processRequest - Attempting to submit reimbursement request: lkajsdfa, I fixed the problem, when there is a problem, but now I can't generate a problem to test it on the front end., 02/01/2020
+2020-03-04 14:12:42 DEBUG Delegate:221 method: processRequest - Requesting: /
+2020-03-04 14:12:42 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:12:42 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:12:42 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:12:42 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:12:43 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=q2m92xjt45DdaSPz0KeRbBDZu0qmm+Pix5Kvo4dvO+X2UY9g8yh01OmPuXiq3oVduiqtdi+bXUHKeydT+FitztVY2xlBgGHJ/BRNckiCMQg=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:12:43 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:12:43 DEBUG Delegate:193 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:12:43 DEBUG Delegate:193 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:12:43 DEBUG Delegate:193 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:12:43 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=KJFgj0ErvzBFEtE527QUz7SBYdfmThKFyPpCa0ykJ2R6cdp+Ik+kQJ351o7A7cR9rlAVCp1awTflpJaY/gamjbFcmxAUlUqdFe74fmqXYDU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:12:44 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:12:44 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:12:44 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:12:44 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:13:41 DEBUG Delegate:223 method: processRequest - Requesting: /
+2020-03-04 14:13:41 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:13:41 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:13:41 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:13:41 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:13:42 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=KaG0jnbcmZl0870LFQjywwySBgylgv6rLb2Xt/rbhYzAoCGRakGenLj6DmDmGO6RaUWybshDLhNRUT5tfl0YSMEmGlDG1zAI2tzJ/jVyOtM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:13:42 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:13:42 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:13:42 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:13:42 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:13:43 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=/wj/boRy6VpoW00Prl57E9EElkSrw9eXjaygzVbboEKXg0cSLJqnLegI6HsCxpv2Z6yWe0oToYsP3cY7YlHaJMhxE8+UAj7s7qUTe+aLqLg=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:13:43 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:13:43 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:14:06 DEBUG Delegate:223 method: processRequest - Requesting: /submit
+2020-03-04 14:14:06 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:06 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:06 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:07 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=2Q7SjzNEYHO2jb1VzQRQ2oMTzN7XkVscDosSYstKQPooxy0vY3Wo9ULse1hddtTX9Txo9p1wxZgSHZKGvycShzanl9pnKAYYRSDMSSepURU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:14:07 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:07 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:07 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:07 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=o2vtipE3bVUaVqFPWox6IyK6PTWRiAOxfQEI1T2kLRS/WHOnFOZcBZ5SZqZHrBVKFloglszMnRLMb/Izu/pt6UNnBJL0RLW49DxB4T/RL0c=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:14:23 DEBUG Delegate:223 method: processRequest - Requesting: /api/submit
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:23 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=y858sXRAn+I7a51xoXhF8TXJidsri6cQIL1GyDXSUygw0gEHqtVodlFFmBrZLIU+eNwQ56h7fSFIQaUzd2BCpDRB2aOKMa+XW298fK7mSXQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:23 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: oiwa2, Bad Request., 03/03/2020
+2020-03-04 14:14:23 DEBUG Delegate:223 method: processRequest - Requesting: /
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:23 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:24 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=K34fX9dssS1YfGmu9ZS1TxD1jDfVglB1fSmuJh7mXRZN6SlisaexedKi9WGTs54U+EysQqcQeg/z2kIIukpSFH6dVj90eOrNlBd0OX8iRFw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:24 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:14:24 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:24 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:24 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:24 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=5Rnj4mFv4WC5wGdgpfYEuj7WUiAVZTQDVf4sywuE3tioT7/yi3dMHIjRLsin7uDjHoOtZuoxPy5OnIys/FK2qKBSvfFKJAhj2RzB5R56iY4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:24 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:14:50 DEBUG Delegate:223 method: processRequest - Requesting: /
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:50 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=jUHQhCzDLLg99OrJA/ULbPXN6Pt83ipqQiNACmCHO7vwo0yh5PvzwdLcupQe5gUY5oscrB8IR27PPwAqWtJC3H+WxOXKJpYcVSyKSeQH0iM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:50 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:14:50 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:14:50 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=FjPWzXNxYE6scSnJsywFqbnn7p+jq2hVF1mNy97wfOXnrC/tAl/C95GyR1/3KwVzl0qaVXTuAY0iqNLSQJmxXskTw1y6Twc5kT3ywGYpK/M=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:14:51 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:15:04 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:04 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:04 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:15:04 DEBUG LogoutDelegate:30 method: deleteCookies - Deleting cookies
+2020-03-04 14:15:04 DEBUG Delegate:223 method: processRequest - Requesting: /
+2020-03-04 14:15:04 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:04 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:04 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:15:05 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:15:05 DEBUG Delegate:116 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:15:05 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:15:05 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:05 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:05 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:15:05 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:15:05 DEBUG Delegate:116 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:15:05 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:15:37 DEBUG Delegate:223 method: processRequest - Requesting: /api/login
+2020-03-04 14:15:37 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:37 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:37 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, RK3ODMhCuLuYFYVG33jfY+ZBegRKqJxXjk0EpT3nP8IDEckWxvBf8qrfG9z6GBXIb8pej9NM0m9VyntDE+KA6qI/xR5oTH4Ruil5bybv/lM=
+2020-03-04 14:15:37 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:15:37 DEBUG Delegate:116 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 14:15:37 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 14:15:37 DEBUG EmployeeService:149 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=null, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:15:38 DEBUG EmployeeService:158 method: loginEmployee - Setting employee's token: chZp7mUpu3uO124p8y9VZb50HQZ2DvwN2IrnUkucKL50voflo3CYA7jw5R67DcSy, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:15:38 DEBUG Delegate:119 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:15:38 DEBUG Delegate:161 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 14:15:38 DEBUG Delegate:223 method: processRequest - Requesting: /
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:15:38 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Y1viL7hyNl8osaT5YU5pTzm55cJUiBBdKnHBErKphvV9xA5G5p42pI5PwcV1HbudvuLK2mAgoCeHpqx9eV2mpA4OsrPOiPyyrJ/7DP2QFQ0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:15:38 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: success, 
+2020-03-04 14:15:38 DEBUG Delegate:195 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:15:39 DEBUG Delegate:107 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=9gOS6MOx0i0a/5yOAG9H3hD250LhfemxCIF/BiImgYGSQHMVDw4TH5U2i3EKDHhcC5MjeUEe8ma4y5dHQbIQ7pz9guVL7WmZjB16CEjSkUM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:15:39 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:15:39 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:15:39 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:19:32 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:32 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:19:32 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=F4R46lWSXr06jyOBCC8bwZ6Fj0CgtMaCrMZFq8d9ybMTca6MiDRN67xEz9v4GdOX6K4Dv+LG0FEFZQpWL7AbE+uM9BvtKHPNg8BnnGPUhec=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:33 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Io8Q+XJXIEuURzmddvTtKUhnecmuY4ZOyjCLLWnlgURE0FIDJhZwt2egvcSBnhfD9chd79h+Jaq+KXxhZotpi+qi5HqtLPpbYJvWSFiagZs=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:19:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:19:37 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:37 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Mn7Q2bpPPT18OLgwmwXv3nWvaIol1ZuOkoODoV7Au+s4YeYdq0LI4Ak4tH3gDvla9hvD1Y/fc4Vz5ET6Nf4T6+h8KbOhXeUZiWVsSA9NsdU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:38 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Rpb3LTCPYIaf2uSpc8ttp8Qv6CcCylTRXx06UqQ+3i/gJgGmSWQ1iiSKZP443FQnI7XvgC1YE4GD4gnAAGbvYvTLd0sQp5ZWDXbWmMP9UG8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:38 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:19:46 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:19:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:47 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=FvHJL0/FFU0X/6utbXDkaHkpVyIcBXWBuAJqXHwHAhmT1jAKDEpaJ9ThUPYCHIHmJ3WzlX3TTAV/10qu7byMRkvAKq0ozwfjlzy9l6AP8UQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:47 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: klasdfjlkasdfjasdflkj, bad request, 03/04/2020
+2020-03-04 14:19:47 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:47 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=jA64QfrcPnHSylyZqqPhs7VHZY0qf9b1U7rCKkh4knGmPBg6xh07cEM2yHu0q9Y6rq2f/xRnk7+loW+kuATvCK+wsM6kFBIdYW4HhA6RQ9s=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=PVAy4fCJK49vgWxT5C8gFbg5QTqHsV4mNYAPDaE1bnQXjLw8U6uYeZk60QLpx11jwoLNSWXjCNEyLtkzjiUY3apJVfTKLzOmJHvigOQ/nA4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:19:52 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:19:52 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:52 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:52 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:52 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:52 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:53 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=pFz7PxFRWqzKFc8xVb8PiRFNHuwbPJsJlyJav+XIogb2Xc+xI0EOyXctEQtq4Wab9ML9pYSrAhfwgZoiooZFcGOkDSEegmXWfERMZSluGi0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:19:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:19:53 DEBUG Delegate:181 method: getAuthToken - Found cookie: first-name, Erika
+2020-03-04 14:19:53 DEBUG Delegate:181 method: getAuthToken - Found cookie: last-name, Cisneros
+2020-03-04 14:19:53 DEBUG Delegate:181 method: getAuthToken - Found cookie: message, Success
+2020-03-04 14:19:53 DEBUG Delegate:181 method: getAuthToken - Found cookie: success, fail
+2020-03-04 14:19:53 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 8FAxSSVLfRqJ88mtujiXMLoGSN+7oo5aZwEIONa4ICoITmjLXpKy23uzYQA1eGl5M9SW6rgmWJ2k1r1y1jXcfYf8oqhtJqsKPhhsPH2lz7U=
+2020-03-04 14:19:53 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=s5fytkE9EYyHsW3mCB/ggr+Ie7kdTv1jCl7/wCPiUPzlxWagHCuZ7M5sV9XNVI7bWC7oPwCtgSSQvn1s9JBkCotAHsTsmohhpTUzKrUAgSk=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:20:15 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:20:15 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:20:15 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:20:15 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:20:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:20:15 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:20:15 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:20:15 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:20:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:20:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:23:55 DEBUG Delegate:209 method: processRequest - Requesting: /api/login
+2020-03-04 14:23:55 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:23:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:23:55 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk', 'Erika xStNIt
+2020-03-04 14:23:55 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk', 'Erika
+2020-03-04 14:23:55 DEBUG EmployeeService:166 method: loginEmployee - emp was null
+2020-03-04 14:23:55 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: null
+2020-03-04 14:23:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:23:55 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:23:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:23:55 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk', 'Erika xStNIt
+2020-03-04 14:23:55 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk', 'Erika
+2020-03-04 14:23:55 DEBUG EmployeeService:166 method: loginEmployee - emp was null
+2020-03-04 14:23:55 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: null
+2020-03-04 14:23:55 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:23:55 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:23:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:23:55 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:23:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:23:55 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:23:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:23:55 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:23:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:24:13 DEBUG Delegate:209 method: processRequest - Requesting: /api/login
+2020-03-04 14:24:13 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:24:13 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:24:13 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 14:24:13 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 14:24:13 DEBUG EmployeeService:149 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=chZp7mUpu3uO124p8y9VZb50HQZ2DvwN2IrnUkucKL50voflo3CYA7jw5R67DcSy, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:24:14 DEBUG EmployeeService:158 method: loginEmployee - Setting employee's token: uLgSKNAWGdwtydo5QzZFgMhZ8TTQ5k0BwYHm3iOCFeSkAQZTmgiy0TS5XGHItcev, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:24:14 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:24:14 DEBUG Delegate:147 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 14:24:14 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:24:14 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:24:14 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=fkAWlK5VjkE0Xb5lq4irO3BI1bUIcmRTznVjAnaMnzM7y65dQ362U3/M/5gEi3wqe5N2QxuRSPptDZ4wXrlPEJ0z7XqatkvpOMn7QvUfv2Y=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:24:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:24:14 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:24:14 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=snExLQOn/+Shbpi4U0WTJMy6oS+VkoG7y3uMY6Tb2Gu9EKnbN1r90BnyDlMsfb/298kjG3aAcuIE9dZCfnMbc1JatCh3SRVKksDMfWGEW5Y=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:24:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:24:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:24:15 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:25:17 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:25:17 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:17 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:25:18 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Kz8x0WcxlXLOdbEKOieY62wHonfYBPut6i5Xr3OcY7sgMRlPiLHCjI0n/vNzD9X7wdjAezqyJRetwUQxDiVoqARjSN5Fn20EaumubEvG1g0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:18 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:25:18 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:18 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=L7RZZluGKFQZEAmxuLlqp/qkdBHwolYV+1TtgVRPZqc4pC8J2yIjDoDwUlhkJoe/p/yfH+2VI92XLJpCG2jCemPtr+i1eHAoBiItCflUHl0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:18 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:25:20 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:25:20 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:20 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=aC1Oz2BocHytOt/PEo5AHg5rp3RH91OBillGirS/+S4u5AyDHuFBXk8uAjDNu7+KvRKnWCct1rZhW62a9i2T2ctxrY/YEVhmz8Kf4s0TTvQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:20 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: , , 
+2020-03-04 14:25:20 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:25:20 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:21 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=ELcmjFBUUkDH0B/8BNY+bkaOPzzRri9svQv10vcdq2a4LfFOUWxRUhIyyfpwg/6HpS10yNcskZHa4Op5rHIhZsB/EQeik5tSlOQaPM9HgxM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:21 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:25:21 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:21 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=8FiF/kHBLPutwf1VK1/U6fQUIoIv1+E+Ez1EHNANjXUDyXUzvayq9S458ZSDU0YIZeQ0mPdZP4XQyopYZwq9/zZ5JZyb6YsatH+yEwirZTc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:21 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:25:25 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:25:25 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:26 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=dgS1pI9xuLz8TNsxCn6YwZ1HMlrqaj3r220LcTlQhgq2/14kPJxpsbTQO0nasYw6dMSr220Pf71WSjz5ZBxFIWY6si2lX/WG1qntgyiEUY4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:25:26 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:26 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=NeZA/apGdHzNnbGbX27BACA6adnoN6L/yHTgNM5NPjpiuIXo9AmAjwOROqvNYccw4aur7xn4HO5MNdYGMxm/n3shkyo31VUVwryE1MPUORc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:36 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:25:36 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:37 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=YCJdpHEVEA9xmmw+j/RBnlRK8k8LRXYcStIbsfLTpXPMNYsU+1Xm2eQMYGuUDDIhjZ7NtlaoowcNn/vzFaIvJ7ipEEOKu/tj7d/fvyXeRSM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:25:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:25:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, us1Tnci8D2PS85Zwpvi+BFGGyFjR9kZueXCvBMIefdBKaKYaX08RO7sFHgB7v/LumW4coIKzAvE6Mea6uY0AmIXxouR2Vf6ExD/Rd5zKaXw=
+2020-03-04 14:25:37 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=kqqWarxXOsEwUSIjT2TuElWEwJSqzLdafuWIIMeoUZWl9u7YjiLE1u9L5SNpuC6vv7Ka5lLRvbIgHKsgk8zfBEvlBxi0HVN12P7pZ3iGoC4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:27:48 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:27:48 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:27:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:27:48 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:27:48 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:27:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:27:48 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:27:48 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:27:48 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:27:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:27:48 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:27:48 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:27:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:27:48 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:27:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:28:19 DEBUG Delegate:209 method: processRequest - Requesting: /api/login
+2020-03-04 14:28:19 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:28:19 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:28:19 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 14:28:19 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:28:20 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 14:28:20 DEBUG EmployeeService:149 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=uLgSKNAWGdwtydo5QzZFgMhZ8TTQ5k0BwYHm3iOCFeSkAQZTmgiy0TS5XGHItcev, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:28:20 DEBUG EmployeeService:158 method: loginEmployee - Setting employee's token: wq8gSYUfLv9E59YZFfkl4TJLdImXD3X1WPDZI2LdrqvmdXjOPTD0Q6rcErKkOlLR, rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=
+2020-03-04 14:28:20 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:28:20 DEBUG Delegate:147 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 14:28:20 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:28:20 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=
+2020-03-04 14:28:21 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=+Z48jataZEG7CF+d6V7q5QiNdTbB3BFRTVD8xVqy6kInTxwyNDBwIAgXgfk5ZVobaSinVmwoINgPCBxyy6tm0+I79LStCwpUTE8829iEH7c=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:28:21 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:28:21 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=
+2020-03-04 14:28:22 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=oPcM62l6vZKFT3PRC+BmW0DdF+43rk51VqWgSpyv9iooDiKZ5wPENJRMNdgDXph4wCjvarBnHpgsrAMrOhAuLoAwVU7ow6H7Q75WrN58Kd8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:28:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:28:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:28:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:29:17 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:29:17 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=
+2020-03-04 14:29:18 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=z53hbFZHeoNzWYSrfkggkJzojHd/80eWka0lWLGkC2QksvQijRs6L8GgxVwZTOLOD+1yYMbR9xWkBjqAu+snhqCGDi4QkrZvB4YmUKdqI6Q=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:29:18 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:29:18 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, rgBUFluUMWqcV/uEa0Z0pzk2wMXwpsptoy63DYEZojIarCAwQeQwICC5LcuWo5b2lpeLB82/ITXOngjteUINN3dsmYazvZUzDOBMuf0gL+8=
+2020-03-04 14:29:18 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=3+P0s0/9caVihJUF4yyUqXQHncfD/tuBLHguWCo5AKdzffOy6cUPqBN15TIIDED+v/yMbgLcQJecc6OlS3I+3gjnwzDtoB/lnzvlPLLdshY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:33:16 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:33:16 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:33:16 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:33:16 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:33:16 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:33:16 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:33:16 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:33:16 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:33:16 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:33:16 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:33:16 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:33:16 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:33:16 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:33:16 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:33:16 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:33:16 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:33:16 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:33:16 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:33:17 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:33:17 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:34:01 DEBUG Delegate:209 method: processRequest - Requesting: /api/login
+2020-03-04 14:34:01 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:34:01 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:34:01 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 14:34:01 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:34:02 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 14:34:02 DEBUG EmployeeService:149 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=wq8gSYUfLv9E59YZFfkl4TJLdImXD3X1WPDZI2LdrqvmdXjOPTD0Q6rcErKkOlLR, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:02 DEBUG EmployeeService:158 method: loginEmployee - Setting employee's token: 9J1u2Ju4utgKV9nDReAbIIjUOtYWEFnHoXyv5abIFw6633m9sRMFwa1uovj2xhYW, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:02 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:02 DEBUG Delegate:147 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 14:34:02 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:34:02 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:03 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=XuDG64Yrsoe7Dmyp3Nindg9LqpXXMRbKcy8yQAu/hnKNO7TYflzBOC1PO/Dh5A5CU9D3QReVUAa/rWtOrWCE8IRmbQbWP0I5Owr62rE77AM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:03 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:34:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:34:03 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:03 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=1ZOGGmSmxyRybwfSfTMl37lpgbtwXUU8FGPhH9IB679PY2Kn+aUuyE+wOyMkIJuZJqqqidTEVsXsJ7QUOu6XLwPTQ3kG6W8b8siHHclAuQ4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:34:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:34:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:34:05 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:34:05 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:06 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=X6RCT5gLJYVoE7jtNDWw/z+Eas63IZLSt0uagnFCMsqoWO2uPLsUSAkzfizbVtPbT6ui8J3DPHs8ex1A7vfWcEC2VgjERaGUwocbIGLiQFQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:34:06 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:06 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=upF33HXggdE4TSsUB4fIVBtRmOgAaIRJxV6OR4eZJZb5fdkpXCRQRpG9sNBL93pw94ajAdrZk4/ZjW4Cty3cxDjJ7GvQ9feTK2L19CFLZ7c=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:34:46 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:34:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:46 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=9dL93nfmdkcR6q4cksn0/XsDb8n6/+rcX8hb5kcmmAP2jd32+D6D6laLzI/FnNPAZAgIcQYlKEOuhZNtezPpn/+lYfjAmHXL+182sw94Os0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:46 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: , adsfasdf, 
+2020-03-04 14:34:46 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:34:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:47 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=c9UVM118yxQT+W5CVPOSg8+CIuDF/SF3gpJwCTQ9tuZvGpS6dPHbEVOYnesxf9kIPkq9qKuU0hgHwfZLSyZCYJRqhE4myCwNqJQ/zUWpSC8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:47 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:34:47 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :fail and max age = -1
+2020-03-04 14:34:47 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:34:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:34:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:34:47 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=GC+Ra5Z3CITxuQQ61Cxq/FJSbh3RxFjT7yFtQ4zYp6daM4zziI8k8Kpcxe7LkRSJAY76w4xTvdVBIzULN/vAFXa64jhF/r6/3J+Srpjjgvg=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:34:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:35:02 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:35:02 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:35:02 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=3diGobXGCL+VHxDQWxx+rPkfTbMRlZX/4c2l2DERyY4snXiM/VJCU+lDFR4v6oKEpNFW3w9UP2VBIZVdB9SeqALJxwBwrO6FCg5SsdXbZaw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:35:02 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:35:02 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:35:03 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=67iXpZPYjr5wEttc/982fBnnl/hC/oI0xUwktRkOIZYCw3yC5rG+pIJG5OQZ2CE9NZNWUQbo5BRM0a74BtYlpfh0ofWKDJoeyi853U6WApk=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:35:03 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:35:07 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:35:07 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:35:08 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=byUgVRopTqKyk8HX+yY6a4x1Epj5aJrgBcE/CtXw5sVjdhmZqI6kyf6eRA2RtZQLNPKMn1rp0oth/cSrU/AkH0y8UUEWTWLNsppcF6h+i4M=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:35:08 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:35:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:35:08 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, 6IVkLPu6DfWlnWhz+L6/qbUVCCruxy3NrIQoQKN2VbHzeYsFu+h3Jw34se07YFozhOPeurlZvAKbb15A+Y2GVXq9M6oZ3V1OD6b6qipq1OA=
+2020-03-04 14:35:08 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=tZ8JBTJ2ndeHCollCZhWB92H9hhzVIwzUawZzQlw7jf5+cTgChuro4q+b/ZO6GFFtZxKOepb5ErQXwGgqXl1SPwE5hQL/vWpgJBdg3rSDXc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:40:27 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:40:42 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:41:09 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:41:09 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:41:09 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:41:09 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:41:09 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-04 14:41:09 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:41:09 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:41:09 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: null null
+2020-03-04 14:41:09 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:41:09 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-04 14:41:25 DEBUG Delegate:209 method: processRequest - Requesting: /api/login
+2020-03-04 14:41:25 DEBUG Delegate:186 method: getAuthToken - cookies was null
+2020-03-04 14:41:25 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: null
+2020-03-04 14:41:25 DEBUG Delegate:113 method: authenticateEmployee - Trying to login: ecisneros0@guardian.co.uk xStNIt
+2020-03-04 14:41:25 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:41:26 DEBUG EmployeeService:147 method: loginEmployee - Looking for employee by email: ecisneros0@guardian.co.uk
+2020-03-04 14:41:26 DEBUG EmployeeService:149 method: loginEmployee - Found employee: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=9J1u2Ju4utgKV9nDReAbIIjUOtYWEFnHoXyv5abIFw6633m9sRMFwa1uovj2xhYW, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:26 DEBUG EmployeeService:158 method: loginEmployee - Setting employee's token: L8mFVkceLbQw8oJerz2ju7XQHvOhwC0OgMhAIBHwZswpKbcSty6uPZrjRSX0tvPm, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:26 DEBUG Delegate:116 method: authenticateEmployee - Trying to login in: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=sM2ORYlC92eF34I5MctTYaYGghDzNajSz5xAMx19dpZDeFplHysAgIsMpJrNbcty, token=y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:26 DEBUG Delegate:147 method: setNameCookies - Setting first and last name cookies: Erika Cisneros
+2020-03-04 14:41:26 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:41:26 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:27 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=wZyUTrhkjYEYWXFw2aBEk0RtznMaioYTxHm9LoxJ99uLKi0oYg0nE+3FfR6H23YK5Bx6cSrvjxtCBT4iC/hXs8zuxVLUD2RanbyZnJNylYM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:27 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:41:27 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:41:27 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:27 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=vsVsHyAD+DPWVwREREmvE5CPqSrv3lnNg9QKJ7KRNiq5ClE3EAOzj6QaGje/Z5BF+GzQ4FgWzYuZAtHISzqjnGAz2onotHSKQ0AByWr98yY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:27 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:41:27 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:41:27 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:41:32 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:41:32 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:33 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=yxNdUA6xJxqGW5+ZDKM/OiEwWyejKBROZPxq9GPqp4r9IiPADXbgcxDBnyBbPD+n3Z1uAXNZO6OUgVW4q/rKiOoZdbfPYQ/2yZgpOUK37Yw=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:41:33 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:33 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=VfmSQtp1qfGbUBuyxK+PHiQXVnADUi2rY9b7fkDsVlULCKxqG9jpmNSlupVdD8x+SN71LFifjXZYfmiiPpsXHv8Px2f/iqZvsHV+YxIQFz0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:41:37 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:41:37 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:38 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=pv4xBtrYW4VEVfL/123QjTdIs7fbsr43WKs8ib8z0TQfoOEj0mhyiaO4mmOLiza1s9KFpAjH83JnWOwo/9+T9U2kFkeZUXLyvmVd+xYmqvA=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:38 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: adfasdf, asdfasdf, 
+2020-03-04 14:41:38 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:41:38 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:38 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=/rZ6nOaX8DR6/UIdu9vMecMyDexTOZ4knqaL2bQ56HfvifoQ+gNH5Tr32gdCxlISDA30E6qKWX7WeR3lrXmhQPhQBXDEXCB7IgNhyh4NZ7E=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:38 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:41:38 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :fail and max age = -1
+2020-03-04 14:41:38 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:41:38 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:41:38 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:38 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=S+3RNgmRwUfkfnUkSFNXW5t56eX++756Pklh/nUS/xIVssNb5Sk06AE90Z9vJC8yOUWq4pTQ0XXJeJzfQd2tIj2cgLrQgF9Cv+AbODahML8=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:46 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:41:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:46 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=4HUPUJZrXEZ58xBB8ePpXN1GN1INjf3XJ3wF3eb/iKWNUukb2wbp+3iL6hm4wRe9KHFu/FNMH9FVs4UWCY6ebzBo/YxcSa2sAyzdpl+EQ+g=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:46 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:41:46 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:46 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=A+6h7Gp5NsCJNdnJJXmP62i0W8c5zPmqmjiA4pYRG/ymQ5RdR2Psly71u9TxuXiteh8m2FdFXPBHA7RviQjeW5+YeJMPUPa+9NTLniTIYik=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:51 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:41:51 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:51 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=vIV34GnT2f0MZZ1hjOvwSXxGiFE0dOXtFLHBdpRG1OPNjeB9e4V1sViAjfTMnI3gPztOAzEz3R5O70uI5KnPoBRj2WKGDqJn3FV3IG9qYM4=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:51 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: asdfasdf, adfasd, 
+2020-03-04 14:41:51 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:41:51 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:51 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=cMbMZcOJ7V0ypPHUEXRK6R3zpMUTtYkFjxjwILiJsk09N4JnwWm72NjUXv293unbLq0SdQe4VVnTYobid7tk++PbIZjtUVGWBc1wVFqlP8Q=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:41:51 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:41:51 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :fail and max age = -1
+2020-03-04 14:41:51 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:41:51 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:41:51 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:41:52 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=nhMnwyVJBKt3vCznYj34trSHhHJstd3OAwYCKCwm6EFFt28T8xLXK7hxhWO5PCi22SDCb8QxyLFHvUyy8gSXUm2hBonRe7/7tkCvfs9avkU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:42:55 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:42:55 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:42:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Xr7D6BYc7jHELoG0Evo6nLjMZoO83fN/kCdMKG3qU5KIO4fEzdCL8uKwgd8fN+8hBn3mBhZalap76vtigttcyDpntFOhyLIxZ+/N2Hg6nyo=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:42:55 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:42:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:42:55 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:42:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=iZZxVoL2NhJeyYc2PC1PmUkY6vaG1p7JiSB2rF1odIoeTlbWidURkc0wF02opF1x1v3zMDMdPGRWy1odyBPA9BOnrOAEIomkrch6B3Fv5XY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:43:13 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:43:13 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:43:13 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=IUZ2qKMRHB/COA0Wd1+SzmrjiSfhYGHqGkOv6UCj45aBKlADzA1M40EKRVkHWfF9lupv5Rsa/u5bSQkEgmcsyWW78iTEsO0xPEqS8tlW5Qo=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:43:13 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:43:13 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:43:13 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:43:14 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=/Htqwjlkh3f3QT4hhesT2wJnQYf/cMNNHrVol8ieZZQtWoFmCHTycM4mokan0f3KePlb0YwiMVKinyMX239pCVXSHrefVldsuix8d4quCdo=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:43:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:43:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:43:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:43:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:43:19 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:43:19 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:43:20 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=qkuSO0mqUZQusesINZ/ZB1i3bkxPTHzkTol3mdetfXiqv6AyLMV/SAYLyVduYJHRFQXR6DOp5x5zweI+oVhqoYR6nE8yxGA3KqL19t/bppc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:43:20 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:43:20 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:43:20 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:43:20 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=X5Iqf1lUzaouV+bcOyeRFhOL4r9tOrhdIgjCIndhsxqPp+p0mQragtKzq8yNDMR85RuVJzDNavWxwe2s+RBEw6yBD9Vd6nYN5mvwvzx75iU=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:43:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:44:54 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:44:54 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:44:54 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-04 14:44:54 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=NsPAMTsFTmNxbrgfoMiRLzz4yFo9onSS6QaNHRI3BiAQus3HsOxdx/XXovPC4EzI/A/kdPgEAIAm7NLXn+AdNOt6WClw+JQjUNJNBByMc/o=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:44:54 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:44:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:44:54 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:44:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=WPd+rM6Td+15XYIfC7baRWNLyicjWUNK/dQuqqDe5TUzvw5lP70z37IZu7vzqoNf8skXSJWJUCjgh57NVrcKwfQEGwZQq8x0IZhjeSldjsI=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:44:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-04 14:44:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-04 14:44:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-04 14:44:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:44:58 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:44:58 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:44:58 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Amy8hmTK+w7BEBt/orHw8dkbXpzLdBTSDADH0BVgZxRCAMCu45vduQRky2b01yyUk75gZRz0ZqProAkOPvAZj0+fO0ViDGXVpnyTX0Kezpc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:44:58 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:44:58 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:44:59 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=KbMzA/vT+yIFO7Dlmi+0p1n/c4l/RwK6pXzBBUv/M0j13Hbx6ppadWlFgngm28c9ViYLFg1jLOuTYMeYRG5OSUl1vwRNAYJt1t9IMRxNe5Y=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:44:59 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:45:03 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:45:03 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:03 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=byX1vMrPLzb5LZGycx+RFkDskxh9ESmQAQ8mSCu+tlulx1JQkWwHSSEp0xOLXB6ySI2miGrA7erJ5qTuL/CESpYTIALknEk0Qa/BlbKdwyE=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:03 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: asdfasdfdsa, adfdas, 
+2020-03-04 14:45:03 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:03 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:04 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=jnU1f4bXAK+nUqHYAHO9Z2jt3WAUsmxypIx8bKPomaI15NpHUsYzmSkH8ak63hn8dRAihab5sYfn3dGa+UMPTZA4y437jeTZK/15RQUohNA=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:04 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:04 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :fail and max age = 5
+2020-03-04 14:45:04 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:45:04 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:04 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:04 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=bAyahdjSX7xkxHUBYi0+xoNfD3ZcNrfr5nqLLj7fasJ4WRf/czSkokZYIe8bpRP/Jaf/K0OCJD8b+qoTUC0mEaQBam5cBQf/1H7lEEulZ8E=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:04 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:45:13 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:13 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:13 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=SI9nktAa4GMYZDJ2RztL3NAC2brc319Wy3Q7LPHxl987AnxtPDIqbMUjycDtYI1eZGyleIbZkp+hK1eVM+nJPS33DpA/rqIKTPuzuLfeyWk=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:13 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:13 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:13 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:13 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=WS9mZXssBkfWbk+AwSxxD1Qrg8lb9675Nn02hFVf1VxEw8R+WCtZRvksMGqy2MoPhsYhc2/Gn0f5msgqaCcl4XgWQI75qamx81wPr/QOd3Y=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:14 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:45:34 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:45:34 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:35 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=82XkmyqQ5JTCTGEcdcUNevzHZRVm/bfvC0Q9UAH0eMixxtax7LQX4wn6VtKAKNCP37NzRqg+4U9igsw3MTqz4Ci06UDxFc9+8KDO8p4gsb0=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:35 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:45:35 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:35 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=s6PO71Zd1qWSnWuCbboCZP73mnpCIQvyPdsZDnGARS2hlaljZYId1BrzWTThWSmPOSE5dAL3DEBwZr2uAdSxPh8ZmPgBk7fUZDal4cpeaIY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:35 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:45:40 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:45:40 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:40 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=RVCVEbAn5Ta3m8jxq5tHxsUHqttcw7P0f/OIOkn5r+ic1qtvz5+siTqVk73l0uWAUp8WLYdM490hPqFMzlATjqE+cDw9Fh0avAdihr8fTIQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:40 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: asdfasdfdsa, asdfasdf, 
+2020-03-04 14:45:40 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:40 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:41 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=EAaZ6Sp8lqB9S/zv6n0nIRXowGatPNsIigbK4qZ1SW1s2sp1rAA0Z/inn+UFOXp9ZOmtP1aoHDEe+KrAMtI2Pnh0Ny2UzaWLTpbKubp7UfA=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:41 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:41 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :fail and max age = 5
+2020-03-04 14:45:41 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:45:41 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:41 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:41 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=QtYMXmIQfRIf7qXgmfGyu5QzKMqJQaXpiu+rg0PtTndnI2iNlKwehNUry6VAqRCIZHFxsI407uZOHyvW7KI55ya5KAqqd032QlfGmliYBJY=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:41 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:45:42 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:42 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:42 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=x0jP8LftK1fP7K+yyAp0LJ+fuP6nShUi7g9LAfQMaWZFHJTa3ATxiTMq4FggiWe+a6k5Tco/ZLHkysRhnyxOqNDlTPUnA8aqC8Gj3PdYXvg=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:42 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:42 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:42 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:43 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=86wPhzaMluJFbj99DPg7Gb2mPjaLx2VQimN2YC6o5bShMGskT3aVCx+D+FpauEHdOJiInViw0OmykrM7dWZl2regRP72tEN8xPnZ+B3bjzM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:44 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:44 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:45 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=PD85w8skaubYOWeupchpa8RlVg8DClfc6VmoFFFXg9jGZTKBsMdRNL19ENm0KODcOhMnHGSl6Uo7MiJ1jNwzeWLQ7jVS9YAwoh/i/KambkM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:45 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:45 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:45 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:45 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=76VwDAwUhhfrDpOwPCROlWeH24H9KnHgD+eY/e1Ba5rq1EO22QHKMtuHnCWo/4/oMmTV6OGHtF2CDNh3w9KNKX2tBfHE2Vp3TFuJdjg4G+s=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:47 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:45:47 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=FpEx1U0odgWVCwWOfHG+L/s65VgpWeyCeCWvIFD1hxihrNue4xCCsy4BEWRW6hMW3MKzHWvutNehGBu794k4gVt1EOd34Rqph9rkBxVrt+Q=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:48 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:45:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:45:48 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:45:48 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=zRZrlcPJU7qNodWX+0Rjw8VwoOXWs0GWHW3Bo3v3KHaKVTj25FxIEX4prEjmyKp1W4XeIrETb7eEI8KeG0591b1kA57BonLcq1MglQeOZMc=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:45:48 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:46:31 DEBUG Delegate:209 method: processRequest - Requesting: /submit
+2020-03-04 14:46:31 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:46:31 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Uf3YCoPXzyRTK8VVwZlIFB1pZ0j5HHL926CLbqzck7JfuoeKiiaqRu0D6bwyxDgjA9tnn/E0DomNJ8bIAbS+bNMfMkSNNmymZ6OFtg8wpII=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:46:31 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-04 14:46:31 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:46:32 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=ZHwWz8U4wTfJRhZIOBTQLUv2YJE+yHU98mo2kRqQQT91F7UP2QoOYlnN2r+oDxCTU0q3bEJmB6N32DiNSp4roMJXRteQP62AdW/4dCWdBDs=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:46:32 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/submit-reimbursement.js
+2020-03-04 14:46:54 DEBUG Delegate:209 method: processRequest - Requesting: /api/submit
+2020-03-04 14:46:54 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:46:54 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=lda8oyTHUDphD7VmkVSgWmoPveXIL55GyERoyrOiQH6lXi2kEDFB6CLSFCTySNR0l/665aTmPkon3ERJ0nwJTno5YKFS8ZAsC9V6NDrp3QE=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:46:54 DEBUG SubmitReimbursementDelegate:73 method: processRequest - Attempting to submit reimbursement request: 20, Figured out how to get the success to disappear., 03/04/2020
+2020-03-04 14:46:54 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:46:54 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:46:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=N+E7e9pUuuqbPCBlMGFQSjGQbuD7+VujCknTjeEnmmOQew2RBqkgnyOtIBjyAHGUpaJW07G5XjbpUmGCaz2UX0GYRtw5FhVPiUAagtMFkvQ=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:46:55 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:46:55 DEBUG ViewDelegate:112 method: setMessageCookie - Setting cookie to :success and max age = 5
+2020-03-04 14:46:55 DEBUG ViewDelegate:113 method: setMessageCookie - Request dispatcher's message: null
+2020-03-04 14:46:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:46:55 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:46:55 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=Zv3XvKcO8TATtJwwyd/RA0awJQvCFj8fhdz2ly5waC0U1Y62FN+GyO5goUn0+eho5/2+vcncDwJHYCjvxuEZ4kbnJSAU4FZO8zOiBJAPeTs=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:46:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/home.js
+2020-03-04 14:47:00 DEBUG Delegate:209 method: processRequest - Requesting: /
+2020-03-04 14:47:00 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:47:01 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=zskSTC/ccCRStkU4iRJeJi71+jXlvdQ1UvJgh/zmHTCkZHv4N4POyP7DYgO6gCulNzjHIWsj3FnrnbTwO57RMenm8eX+pYZG6ozUZ+zeqEM=, email=ecisneros0@guardian.co.uk]
+2020-03-04 14:47:01 DEBUG ViewDelegate:110 method: setMessageCookie - getting message from dispatcher
+2020-03-04 14:47:01 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-04 14:47:01 DEBUG Delegate:181 method: getAuthToken - Found cookie: session-token, y+eNgSf8NATs0E89Utq5+KIu0bBZ/MCIVAuJ5oV/k4gJdEdPHXXDcpPz8C1S5y/veqlipl8OoHhQGwKn0uBHVIfBFQCrooJBgPUUqArURBo=
+2020-03-04 14:47:01 DEBUG Delegate:104 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Erika, isManager=false, lastName=Cisneros, password=null, token=JW78lfz8C7jK/neU33Kbwf9s6mZ62WFyHeX+WX8T9slJ4E6dOapLovBPMTlFY8GhmI2RkeeIvL0LlbHMgQZPnkfRa/tGTbffO4ItR7FvX+U=, email=ecisneros0@guardian.co.uk]

@@ -9,4 +9,13 @@ window.onload = function() {
 	const lastName = getCookie(LAST_NAME_HEADER);
 
 	jumbo.innerText = "Welcome " + firstName + " " + lastName;
+
+	// see if there's a message, if so display it
+	const message = getCookie(SUCCESS_COOKIE);
+	if (message == FAIL_VALUE) {
+		document.getElementById("message").innerText = "There was an error. Please try again later.";
+	} else if(message == SUCCESS_VALUE){
+		document.getElementById("message").innerText = "Success!!!";
+	}
+
 }

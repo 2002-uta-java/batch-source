@@ -1,5 +1,10 @@
 package com.revature.jfbennatt.ers.services;
 
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -10,6 +15,7 @@ import org.jasypt.util.text.StrongTextEncryptor;
 
 import com.revature.jfbennatt.ers.daos.EmployeeDao;
 import com.revature.jfbennatt.ers.models.Employee;
+import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
  * Service layer that acts as an intermediary between the front end and the
@@ -44,6 +50,7 @@ public class EmployeeService {
 	 * Text encryptor used for encrypting and decrypting the session token.
 	 */
 	private final StrongTextEncryptor textEnc = new StrongTextEncryptor();
+	private DateFormat dateFormatter;
 
 	/**
 	 * Sets up text encryptor.
@@ -192,5 +199,39 @@ public class EmployeeService {
 	 */
 	public void setEmployeeDao(final EmployeeDao empDao) {
 		this.empDao = empDao;
+		this.dateFormatter = new SimpleDateFormat(empDao.datePattern());
+	}
+
+	/**
+	 * Submits a reimbursement request.
+	 * 
+	 * @param emp             Employee requesting reimbursement
+	 * @param description     Description of the reimbursement.
+	 * @param amount          Amount (as a String) to be reimbursed.
+	 * @param reimbDateString Date the expense was incurred.
+	 * @param submitDate      Date the request was submitted.
+	 * @return Whether or not this request was successfully submitted.
+	 */
+	public boolean submitRequest(final Employee emp, final String description, final String amount,
+			final String reimbDateString, final Date submitDate) {
+		Date reimbDate = null;
+
+		try {
+			reimbDate = dateFormatter.parse(reimbDateString);
+		} catch (ParseException e) {
+			Logger.getRootLogger().error("Couldn't parse date, " + reimbDateString + ": " + e.getMessage());
+			return false;
+		}
+
+		final Reimbursement newReimb = new Reimbursement();
+		newReimb.setEmplId(emp.getEmpId());
+		newReimb.setDescription(description);
+		newReimb.setAmount(new BigDecimal(amount));
+		newReimb.setReimbDate(reimbDate);
+		newReimb.setSubmitDate(submitDate);
+
+		empDao.setPending(newReimb);
+
+		return empDao.submitRequest(newReimb);
 	}
 }

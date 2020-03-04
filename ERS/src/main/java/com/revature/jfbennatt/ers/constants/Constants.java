@@ -56,7 +56,7 @@ public class Constants {
 					RequestDispatcher.CONTEXT_ROOT + ViewDelegate.SUBMIT_REIMBURSEMENT,
 					"resource for displaying the submit reimbursement page");
 			printVariable(ps, "SUBMIT_REIMBURSEMENT_API",
-					RequestDispatcher.API + RequestDispatcher.SUBMIT_REIMBURSEMENT,
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.SUBMIT_REIMBURSEMENT,
 					"URI to actually submit a reimbursement request");
 			printVariable(ps, "MAX_LENGTH_DESC", "" + SubmitReimbursementDelegate.MAX_DESCRIPTION_LENGTH,
 					"the maximum length accepted for the description field when submitting a reimbursement request");
@@ -66,6 +66,14 @@ public class Constants {
 					"name for the amount field when submitting a reimbursement request");
 			printVariable(ps, "DATE_ID", SubmitReimbursementDelegate.DATE_ID,
 					"name for the date field when submitting a reimbursement request");
+			printVariable(ps, "SUCCESS_COOKIE", Delegate.SUCCESS_COOKIE,
+					"name of cookie that holds the message (for home page alert displays)");
+			printVariable(ps, "FAIL_VALUE", ViewDelegate.FAIL, "value signaling a failure (value of SUCCESS_COOKIE)");
+			printVariable(ps, "SUCCESS_VALUE", ViewDelegate.SUCCESS,
+					"value signaling a success (value of SUCCESS_COKIR)");
+			printVariable(ps, "VIEW_REIMBURSEMENT_PAGE",
+					RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_REIMBURSEMENT,
+					"URI of view reimbursement resource");
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
 		}

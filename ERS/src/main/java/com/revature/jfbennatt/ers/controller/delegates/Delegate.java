@@ -61,6 +61,10 @@ public abstract class Delegate {
 	 * Value used to set the path of the cookie.
 	 */
 	private static final String COOKIE_PATH = RequestDispatcher.CONTEXT_ROOT;
+	/**
+	 * Name of cookie that holds the message for the home page
+	 */
+	public static final String SUCCESS_COOKIE = "success";
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee.
@@ -204,6 +208,9 @@ public abstract class Delegate {
 
 		Logger.getRootLogger().debug("Requesting: " + path);
 
+		// attempt to delete success cookie
+		deleteSuccessCookie(request, response);
+
 		// get the employee from the cookies sent with the request
 		final Employee employee = authenticateEmployee(request);
 		if (employee == null) {
@@ -213,6 +220,18 @@ public abstract class Delegate {
 			// the employee was authenticated, send this along to actually do something
 			processRequest(employee, path, request, response);
 		}
+	}
+
+	private void deleteSuccessCookie(HttpServletRequest request, HttpServletResponse response) {
+//		final Cookie[] cookies = request.getCookies();
+//		if(cookies != null) {
+//		for(final Cookie cookie:cookies) {
+//			if(cookie.getName().equals(ViewDelegate.SUCCESS_COOKIE)) {
+//				// set cookie to expire when they recieve it
+//				
+//			}
+//		}
+//		}
 	}
 
 	/**

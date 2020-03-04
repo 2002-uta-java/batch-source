@@ -1,6 +1,7 @@
 package com.revature.jfbennatt.ers.daos;
 
 import com.revature.jfbennatt.ers.models.Employee;
+import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
  * DAO interface for interacting with the database.
@@ -57,5 +58,54 @@ public interface EmployeeDao {
 	 * @return Whether or not this was successful.
 	 */
 	public boolean setTokenById(int empId, String token);
+
+	/**
+	 * Returns the date pattern expected for the database (e.g. mm/dd/yyyy)
+	 * 
+	 * @return String representation of the date pattern held in this database.
+	 */
+	public String datePattern();
+
+	/**
+	 * Attempts to submit (add) a reimbursement to the database.
+	 * 
+	 * @param newReimb {@link Reimbursement} object representing this request. At a
+	 *                 minimum, the employee id, description, amount, date of
+	 *                 expense (reimbDate), and the submit date must be present in
+	 *                 this object.
+	 * @return Whether or not the submission was successfully added to the database.
+	 */
+	public boolean submitRequest(Reimbursement newReimb);
+
+	/**
+	 * Gets the status from the {@link Reimbursement} object (since the status is
+	 * stored as an integer).
+	 * 
+	 * @param reimb {@link Reimbursement} object to find the status of.
+	 * @return String representation of the status of this reimbursement (e.g.
+	 *         pending, approved, or denied).
+	 */
+	public String getStatus(Reimbursement reimb);
+
+	/**
+	 * Sets the status of this reimbursement to pending.
+	 * 
+	 * @param reimb {@link Reimbursement} object to set to pending.
+	 */
+	public void setPending(Reimbursement reimb);
+
+	/**
+	 * Sets the status of this reimbursement to approved.
+	 * 
+	 * @param reimb {@link Reimbursement} object to set to approved.
+	 */
+	public void setApproved(Reimbursement reimb);
+
+	/**
+	 * Sets the status of this reimbursement to denied.
+	 * 
+	 * @param reimb {@link Reimbursement} object to set to denied.
+	 */
+	public void setDenied(Reimbursement reimb);
 
 }

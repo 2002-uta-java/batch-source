@@ -53,7 +53,7 @@ public class RequestDispatcher {
 	/**
 	 * delegate for fetching static resources (from an api call)
 	 */
-	private final Delegate viewDelegate;
+	private final ViewDelegate viewDelegate;
 	/**
 	 * Employee service needed for the delegates (initialized in constructor)
 	 */
@@ -73,7 +73,12 @@ public class RequestDispatcher {
 	/**
 	 * Delegate for submitting a reimbursement request.
 	 */
-	private final Delegate submitDelegate;
+	private final SubmitReimbursementDelegate submitDelegate;
+	/**
+	 * This is used to send a message from internal delegates to the view delegate
+	 * (to display on the home page).
+	 */
+	private String message = null;
 
 	/**
 	 * Default constructor (sets up all internals).
@@ -93,6 +98,9 @@ public class RequestDispatcher {
 		this.staticDelegate.setEmployeeService(empService);
 		this.logoutDelegate.setEmployeeService(empService);
 		this.submitDelegate.setEmployeeService(empService);
+
+		this.viewDelegate.setRequestDispatcher(this);
+		this.submitDelegate.setRequestDispatcher(this);
 	}
 
 	/**
@@ -141,6 +149,16 @@ public class RequestDispatcher {
 	 */
 	public void setFrontController(final FrontController frontController) {
 		this.staticDelegate.setFrontController(frontController);
+	}
+
+	public String consumeMessage() {
+		final String tmp = this.message;
+		this.message = null;
+		return tmp;
+	}
+
+	public void setMessage(final String message) {
+		this.message = message;
 	}
 
 }
