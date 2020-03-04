@@ -215,6 +215,8 @@ async function sendAjaxPostUpdateProfile(url, callback, data){
 }
 
 function newReimbursement() {
+    let token = sessionStore.getItem("token");
+    let tokenArr = token.split(":");
     let formInfo = document.getElementById("new-reim-form");
     let new_amount = formInfo.elements[0].value;
     let new_purpose = formInfo.elements[1].value;
@@ -222,23 +224,18 @@ function newReimbursement() {
     console.log(new_amount);
     console.log(new_purpose);
 
-    if (!new_amount) { // invalid amount entry.
+    if (!new_amount) { // Invalid amount entry. Other validation handled in backend (negatives, etc.)
         badInput();
         return;
     }
-    // let status = document.getElementById("edit-profile-form-status");
 
-    // // TODO: Gather all data (null arguments ignored in backend).
-    // let newInfo = {id: null, email: new_email, position: null, firstName: new_fName, lastName: new_lName, gender: new_gender, password: null};
-    // let myJSON = JSON.stringify(newInfo);
+    // Nulls handled in backend.
+    let newInfo = {id: null, purpose: new_purpose, amount: null, idEmployee: tokenArr[0], idManager: null, status: null};
+    let myJSON = JSON.stringify(newInfo);
 
-    // // Send a POST request to update the database, immediately re-build page (checkToken).
-    // let baseUrl = "http://localhost:8080/Project1/newreimb";
-    // let token = sessionStorage.getItem("token");
-    // let tokenArr = token.split(":");
-	// if(tokenArr.length===2) {
-    //     sendAjaxPostNewReimbursement(baseUrl, loadPage, myJSON);
-    // }
+    // Send a POST request to update the database, immediately re-build page.
+    let baseUrl = "http://localhost:8080/Project1/newreimb";
+    sendAjaxPostNewReimbursement(baseUrl, loadPage, myJSON);
 }
 
 // newReimbursement AJAX helper. 
@@ -259,7 +256,11 @@ async function sendAjaxPostNewReimbursement(url, callback, data){
 function badInput() {
     // get id and display bad input
     // hide after 5 seconds.
+    let status = document.getElementById("new-reim-form-status");
+    status.style.visibility = "visible"; // Display error message for short time.
+    setTimeout(function(){status.style.visibility = "hidden"; }, 4000);
 }
+
 
 // Commands to execute on load.
 // ALL EVENT LISTENERS

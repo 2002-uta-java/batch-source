@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="static/Views/HomeManager.css">
+	<link rel="stylesheet" type="text/css" href="static/Views/HomeEmployee.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -143,6 +143,8 @@
 	<button type="button" class="btn btn-primary" id="new-reim-btn" data-toggle="modal" data-target="#new-reim">
 		+ New Reimbursement
 	</button>
+	<!-- Error message for bad amount input -->
+	<span id="new-reim-form-status">Invalid amount input.</span>
 
 	<!-- MODAL (Reimbursement Button) -->
 	<div class="modal fade" id="new-reim" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">

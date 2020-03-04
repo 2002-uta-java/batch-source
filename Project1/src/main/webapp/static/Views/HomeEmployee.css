@@ -5,3 +5,7 @@
     visibility: hidden;
 }
 
+#new-reim-form-status{
+    color: red;
+    visibility: hidden;
+}
