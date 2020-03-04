@@ -1,0 +1,30 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('checkout'){
+          steps {
+            script {
+                properties([pipelineTriggers([githubPush()])])
+            }
+            git branch: 'master', url: 'https://github.com/carolynrehm/maven-test.git'
+
+          }
+      }
+      stage('clean') {
+         steps {
+            sh 'mvn clean'
+         }
+      }
+      stage('package') {
+         steps {
+            sh 'mvn package'
+         }
+      }
+      stage('move war to tomcat') {
+         steps {
+            sh 'cp target/*.war /usr/apache/apache-tomcat-9.0.31/webapps'
+         }
+      }
+   }
+}
