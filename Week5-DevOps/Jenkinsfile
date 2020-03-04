@@ -7,7 +7,7 @@ pipeline {
             script {
                 properties([pipelineTriggers([githubPush()])])
             }
-            git branch: 'master', url: 'https://github.com/carolynrehm/maven-test.git'
+            git branch: 'master', url: 'https://github.com/[your-repo].git'
 
           }
       }
