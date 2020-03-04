@@ -13,10 +13,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.daos.ReimbursementDao;
 import com.revature.daos.ReimbursementDaoImpl;
 import com.revature.models.Reimbursement;
+import com.revature.services.ReimbursementService;
 
 public class ReimbDelegate {
 	
 	private ReimbursementDao rDao = new ReimbursementDaoImpl();
+	private ReimbursementService rServ = new ReimbursementService();
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
@@ -137,7 +139,41 @@ public class ReimbDelegate {
 	}
 	
 	public void newReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Reimbursement r = readNewReimbJson(request);
 		
-		// can try to parse amount to int, if doesnt work return bad input errors (400)
+		// Validate amount (no negatives, zeros, etc.)
+		if (!rServ.validAmount(r.getAmount())) {
+			response.sendError(400, "Invalid amount.");
+		}
+		
+		// Make sure cents renders correctly via rounding.
+		r.setAmount(rServ.roundTwoDecimal(r.getAmount()));
+		
+		int newId = rServ.getNewId();
+		r.setId(newId);
+		
+		// Update database.
+		rDao.createReimbursement(r);
+		response.setStatus(200);
+	}
+	
+	public Reimbursement readNewReimbJson(HttpServletRequest request) throws IOException {
+		// Read the request payload into a String
+		StringBuilder buffer = new StringBuilder();
+		BufferedReader reader = request.getReader();
+		String line;
+		while ((line = reader.readLine()) != null) {
+		    buffer.append(line);
+		}
+		String data = buffer.toString();
+		
+		// If the String is not empty, parses the payload into a map
+		Reimbursement r = null;
+		if (!data.isEmpty()) {
+		    ObjectMapper mapper = new ObjectMapper();
+		    r = mapper.readValue(data, Reimbursement.class);
+		}
+		
+		return r;
 	}
 }

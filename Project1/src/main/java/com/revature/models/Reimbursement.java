@@ -44,7 +44,7 @@ public class Reimbursement {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 

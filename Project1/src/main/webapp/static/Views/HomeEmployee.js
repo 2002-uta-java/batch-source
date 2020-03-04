@@ -229,8 +229,11 @@ function newReimbursement() {
         return;
     }
 
+    // Convert new_amount string to float.
+    new_amount = parseFloat(new_amount);
+
     // Nulls handled in backend.
-    let newInfo = {id: null, purpose: new_purpose, amount: null, idEmployee: tokenArr[0], idManager: null, status: null};
+    let newInfo = {id: null, purpose: new_purpose, amount: new_amount, idEmployee: tokenArr[0], idManager: 1, status: "pending"};
     let myJSON = JSON.stringify(newInfo);
 
     // Send a POST request to update the database, immediately re-build page.
