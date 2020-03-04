@@ -184,6 +184,10 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
         let d2 = document.createElement("td");
         let d3 = document.createElement("td");
 
+        d1.style.verticalAlign = "middle";
+        d2.style.verticalAlign = "middle";
+        d3.style.verticalAlign = "middle";
+
         // record data for future potential purposes.
         reimElement.setAttribute("id", "r" + id);
         reimElement.setAttribute("data-id", id);
@@ -200,7 +204,7 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
             d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
             d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
-            d3.innerHTML = `${status}`;
+            d3.innerHTML = addStatusImage(status);
             reimElement.appendChild(d1);
             reimElement.appendChild(d2);
             reimElement.appendChild(d3);
@@ -222,13 +226,17 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
     }
 }
 
-/*
-<tr data-target="view-reimbursement" data-toggle="modal">
-    <td>Something6</td>
-    <td>something</td>
-    <td>credit account</td>
-</tr>
-*/
+function addStatusImage(status) {
+    if (status == "pending") {
+        return "<img src='static/Images/pending.jpg' alt='pending'></img>";
+    }
+    else if (status == "approved") {
+        return "<img src='static/Images/approved.jpg' alt='approved'></img>";
+    }
+    else if (status == "rejected") {
+        return "<img src='static/Images/rejected.jpg' alt='rejected'></img>";
+    }
+}
 
 
 
