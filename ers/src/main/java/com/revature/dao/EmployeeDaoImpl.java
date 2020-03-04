@@ -43,8 +43,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -81,8 +81,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -92,7 +92,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	}
 	
 	@Override
-	public Employee getEmployee(String uName) {
+	public Employee getEmployeeByUsername(String uName) {
 		Employee em = new Employee();
 		Connection connection = null;
 		PreparedStatement stmt = null;
@@ -119,8 +119,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -154,8 +154,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -184,8 +184,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -222,8 +222,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

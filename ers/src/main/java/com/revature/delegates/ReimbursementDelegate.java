@@ -2,6 +2,7 @@ package com.revature.delegates;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ public class ReimbursementDelegate {
 			String authToken = req.getHeader("Authorization");
 			String[] tokenArr = authToken.split(":");
 			String idStr = tokenArr[0];
+			String isManager = tokenArr[2];
 			List<Reimbursement> rbs = rdao.getAllReimbursements();
 			
 			List<Reimbursement> srbs = new ArrayList<>();
@@ -31,7 +33,10 @@ public class ReimbursementDelegate {
 			}
 			
 			try (PrintWriter pw = res.getWriter()) {
-				pw.write(new ObjectMapper().writeValueAsString(srbs));
+				if (isManager.equals("true")) {
+					pw.write(new ObjectMapper().writeValueAsString(rbs));
+				} else
+					pw.write(new ObjectMapper().writeValueAsString(srbs));
 			}
 		} else {
 			String idStr = req.getServletPath().substring(11);
@@ -47,5 +52,14 @@ public class ReimbursementDelegate {
 			} else
 				res.sendError(400, "Invalid ID");
 		}
+	}
+	
+	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		int eid = Integer.parseInt(req.getParameter("eid"));
+		
+		Reimbursement re = new Reimbursement(amount, "Processing", time, eid);
+		rdao.addReimbursement(re);
 	}
 }

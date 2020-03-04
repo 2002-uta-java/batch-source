@@ -10,7 +10,6 @@ public class ViewDelegate {
 
 	public void resolveView(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String path = req.getServletPath();
-		System.out.println(path);
 		switch (path) {
 		case "/":
 			req.getRequestDispatcher("/static/Views/loginPage.html").forward(req, res);

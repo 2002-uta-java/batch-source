@@ -44,7 +44,7 @@
                 <h3>Reimbursements</h3>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-primary" id="create">+ Create New Reimbursement</button>
+                <a class="btn btn-primary" href="./static/Views/createReimbursement.html">+ Create New Reimbursement</a>
             </div>
         </div>
     </div>
@@ -57,6 +57,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Time Submitted</th>
+                    <th scope="col">Employee Id</th>
                 </tr>
             </thead>
         </table>
@@ -78,8 +79,8 @@
     
     <div class="container-fluid" id="searchDiv" style="margin-top: 30px" hidden=true>
     	<Input type="text" id="employeeSearchEmail" placeholder="Enter Employee Email">
-    	<button type="button" class="btn btn-primary" id="search">Search</button>
-    	<table class="table" id="semTable">
+    	<button type="button" class="btn btn-primary" id="search-btn">Search</button>
+    	<table class="table" id="semTable" hidden=true>
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -87,6 +88,16 @@
                     <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table" id="erTable" hidden=true>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Time Submitted</th>
                 </tr>
             </thead>
         </table>

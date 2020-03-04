@@ -66,7 +66,6 @@ Environment:
 -PostgreSQL Database
 -Eclipse/Spring Tools Suite
 -DBeaver
- alkjalkjlakjalkjalkjalkaj
 
 It is possible to do a variation of the ERS system if you’d like. 
 If you have a similar idea that you would like to implement, it can be discussed 

@@ -1,21 +1,29 @@
 package com.revature.model;
 
-import java.sql.Time;
+import java.util.Date;
+import java.sql.Timestamp;
 
 public class Reimbursement {
 	private int id = 0;
 	private int amount = 0;
 	private String stage = "";
-	private Time time = null;
+	private Date time = null;
 	private int employeeId = 0;
 	
 	public Reimbursement() {}
-	public Reimbursement(int id, int amount, String stage, Time time, int employeeId) {
+	public Reimbursement(int id, int amount, String stage, Timestamp time, int employeeId) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.stage = stage;
 		this.time = time;
+		this.employeeId = employeeId;
+	}
+	public Reimbursement(int amount, String stage, Timestamp time2, int employeeId) {
+		super();
+		this.amount = amount;
+		this.stage = stage;
+		this.time = time2;
 		this.employeeId = employeeId;
 	}
 
@@ -43,11 +51,11 @@ public class Reimbursement {
 		this.stage = stage;
 	}
 
-	public Time getTime() {
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 					re.setId(rs.getInt("id"));
 					re.setAmount(rs.getInt("amount"));
 					re.setStage(rs.getString("stage"));
-					re.setTime(rs.getTime("timestamp"));
+					re.setTime(rs.getTimestamp("timestamp"));
 					re.setEmployeeId(rs.getInt("employee_id"));
 					
 					reimbursements.add(re);
@@ -41,8 +42,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 				try {
 					if (stmt != null)
 						stmt.close();
-					if (connection != null)
-						connection.close();
+//					if (connection != null)
+//						connection.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -68,7 +69,7 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 				re.setId(rs.getInt("id"));
 				re.setAmount(rs.getInt("amount"));
 				re.setStage(rs.getString("stage"));
-				re.setTime(rs.getTime("timestamp"));
+				re.setTime(rs.getTimestamp("timestamp"));
 				re.setEmployeeId(rs.getInt("employee_id"));
 			}
 		} catch (SQLException e) {
@@ -77,8 +78,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -98,9 +99,11 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			String sql = "INSERT INTO Reimbursment (amount, stage, timestamp, employee_id) VALUES (?, ?, ?, ?)";
 			stmt = connection.prepareStatement(sql);
 			
+			Timestamp ts = (Timestamp) reimbursement.getTime();
+			
 			stmt.setInt(1, reimbursement.getAmount());
 			stmt.setString(2, reimbursement.getStage());
-			stmt.setTime(3, reimbursement.getTime());
+			stmt.setTimestamp(3, ts);
 			stmt.setInt(4, reimbursement.getEmployeeId());
 			
 			success = stmt.executeUpdate();
@@ -110,8 +113,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -140,8 +143,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -163,9 +166,11 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			String sql = "Update Reimbursment (amount, stage, timestamp, employee_id) VALUES (?, ?, ?, ?) WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
+			Timestamp ts = (Timestamp) reimbursement.getTime();
+			
 			stmt.setInt(1, reimbursement.getAmount());
 			stmt.setString(2, reimbursement.getStage());
-			stmt.setTime(3, reimbursement.getTime());
+			stmt.setTimestamp(3, ts);
 			stmt.setInt(4, reimbursement.getEmployeeId());
 			stmt.setInt(5, reimbursement.getId());
 			
@@ -176,8 +181,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-				if (connection != null)
-					connection.close();
+//				if (connection != null)
+//					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

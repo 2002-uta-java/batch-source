@@ -15,7 +15,7 @@ public class LoginDelegate {
 		String uName     = req.getParameter("username");
 		String password  = req.getParameter("password");
 
-		Employee em = edao.getEmployee(uName);
+		Employee em = edao.getEmployeeByUsername(uName);
 		
 		if (em != null && em.getPass().equals(password)) {
 			String token = em.getId() + ":" + em.getEmail() + ":" + em.getIsManager();
@@ -33,7 +33,6 @@ public class LoginDelegate {
 				String idStr = tokenArr[0];
 				String email = tokenArr[1];
 				if(idStr.matches("^\\d+$")) {
-					System.out.println(idStr);
 					Employee em = edao.getEmployee(Integer.parseInt(idStr));
 					if(em !=null && em.getEmail().equals(email)) {
 						return true;
@@ -42,9 +41,5 @@ public class LoginDelegate {
 			}
 		}
 		return false;
-	}
-
-	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) {
-		
 	}
 }

@@ -18,15 +18,15 @@ public class EmployeeDelegate {
 	
 	public void getEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestPath = req.getServletPath();
-		if (requestPath.length() =="/api/employees".length()) {
+		if (requestPath.length() == "/api/employees".length()) {
 			List<Employee> ems = edao.getAllEmployees();
 			try (PrintWriter pw = res.getWriter()) {
 				pw.write(new ObjectMapper().writeValueAsString(ems));
 			}
 		} else {
-			String idStr = req.getServletPath().substring(11);
+			String idStr = req.getServletPath().substring(15);
 			if (idStr.matches("^\\d+$")) {
-				Employee em = edao.getEmployee(idStr);
+				Employee em = edao.getEmployee(Integer.parseInt(idStr));
 				if (em == null)
 					res.sendError(404, "No Employee with given id");
 				else {
@@ -34,6 +34,14 @@ public class EmployeeDelegate {
 						pw.write(new ObjectMapper().writeValueAsString(em));
 					}
 				}
+			} else if (idStr.contains("@")) {
+				Employee em = edao.getEmployeeByUsername(idStr);
+				if (em == null)
+					res.sendError(404, "No Employee with given email");
+				else
+					try (PrintWriter pw = res.getWriter()) {
+						pw.write(new ObjectMapper().writeValueAsString(em));
+					}
 			} else
 				res.sendError(400, "Invalid ID");
 		}

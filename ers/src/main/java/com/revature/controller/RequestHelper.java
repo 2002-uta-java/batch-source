@@ -37,14 +37,14 @@ public class RequestHelper {
 			view.resolveView(req, res);
 	}
 	
-	public void processPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void processPost(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String path = req.getServletPath();
 		switch (path) {
 		case "/login":
 			login.authenticate(req, res);
 			break;
 		case "/addReimbursement":
-			login.addReimbursement(req, res);
+			reimbursement.addReimbursement(req, res);
 			break;
 		default:
 			res.sendError(405);
