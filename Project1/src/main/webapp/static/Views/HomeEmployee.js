@@ -214,25 +214,30 @@ async function sendAjaxPostUpdateProfile(url, callback, data){
 	xhr.send(data);
 }
 
+function newReimbursement() {
+    let formInfo = document.getElementById("edit-profile-form");
+    let new_amount = formInfo.elements[0].value;
+    let new_purpose = formInfo.elements[1].value;
 
+    // TODO: Gather all data (null arguments ignored in backend).
+    let newInfo = {id: null, email: new_email, position: null, firstName: new_fName, lastName: new_lName, gender: new_gender, password: null};
+    let myJSON = JSON.stringify(newInfo);
 
-
-
-
-
-
-// EMPLOYEE-EXCLUSIVE FUNCTIONS
-// TODO: BUTTON TO MAKE NEW REIMBURSEMENT
-
-
-
-
+    // Send a POST request to update the database, immediately re-build page (checkToken).
+    let baseUrl = "http://localhost:8080/Project1/newreimb/";
+    let token = sessionStorage.getItem("token");
+    let tokenArr = token.split(":");
+	if(tokenArr.length===2) {
+        sendAjaxPostUpdateProfile(baseUrl, loadPage, myJSON);
+    }
+}
 
 
 // Commands to execute on load.
 // ALL EVENT LISTENERS
 document.getElementById("logout-btn").addEventListener("click", logout);
 document.getElementById("update-profile-btn").addEventListener("click", updateProfile);
+document.getElementById("create-reim-btn").addEventListener("click", newReimbursement);
 
 // LOAD PAGE + Authentication
 let token = loadPage();
