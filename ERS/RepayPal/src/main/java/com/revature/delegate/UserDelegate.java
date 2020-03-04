@@ -41,4 +41,25 @@ public class UserDelegate {
 			}
 		}
 	}
+
+	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String username = request.getParameter("username");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String password = request.getParameter("password");
+		System.out.println(username + " " + " " + firstName + " " + lastName + " " + password);
+		
+		User u = us.getUserByUsername(username);
+		u.setFirstName(firstName);
+		u.setLastName(lastName);
+		u.setPassword(password);
+		System.out.println(u);
+		if(us.updateUser(u)) {
+			response.setStatus(200);
+		} else {
+			response.sendError(401);
+		}
+	}
+
+	
 }

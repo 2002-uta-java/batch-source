@@ -41,4 +41,19 @@ public class ReimbursementDelegate {
 		}
 	}
 
+	public void addReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String username = request.getParameter("username");
+		double amount = Double.valueOf(request.getParameter("amount"));
+		String description = request.getParameter("description");
+		System.out.println(username + " " + amount + " " + description);
+		
+		Reimbursement r = new Reimbursement(username, amount, description);
+		System.out.println(r);
+		if(rs.createReimbursement(r)) {
+			response.setStatus(200);
+		} else {
+			response.sendError(401);
+		}	
+	}
+
 }

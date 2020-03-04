@@ -65,7 +65,14 @@ public class RequestHelper {
 		case "/login":
 			System.out.println("In log in part");
 			authDelegate.authenticate(request, response);
-			
+			break;
+		case "/update-user":
+			System.out.println("Updating user");
+			userDelegate.updateUser(request, response);
+			break;
+		case "/add-reimbursement":
+			System.out.println("Adding reimbursement");
+			reimbursementDelegate.addReimbursement(request, response);
 			break;
 		default:
 			response.sendError(405);

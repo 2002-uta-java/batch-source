@@ -6,6 +6,9 @@
 	document.getElementById("logout-btn").addEventListener("click", requestLogout);
 	document.getElementById("profile-btn").addEventListener("click", showProfile);
 	document.getElementById("empls-btn").addEventListener("click", showEmployees);
+	document.getElementById("addReims").addEventListener("click", postReimbursement);
+	document.getElementById("modalUsernameR").value = ta[0];
+	document.getElementById("updateProfile").addEventListener("click", postUpdateUser);
 	showReims();
 	console.log(ta);
 	function showReims(){
@@ -91,11 +94,11 @@
 	function displayProfile(xhr){
 		let profile = JSON.parse(xhr.response);
 		console.log(profile);
-		document.getElementById("modalUsername").innerText = profile.username;
+		document.getElementById("modalUsername").value = profile.username;
 		document.getElementById("modalFirstname").value = profile.firstName;
 		document.getElementById("modalLastname").value = profile.lastName;
 		document.getElementById("modalPassword").value = profile.password;
-		document.getElementById("modalIsManager").innerText = profile.manager;
+		document.getElementById("modalIsManager").value = profile.manager;
 	}
 	
 	
@@ -117,6 +120,62 @@
 			newRow.innerHTML = `<tr><td>${user.username}</td><td>${user.firstName}</td><td>${user.lastName}</td><td>${user.manager}</td></tr>`;
 			table.appendChild(newRow);
 		}
+	}
+	
+	function postReimbursement(){
+		console.log("Request Started");
+		let user = document.getElementById("modalUsernameR").value;
+		let amount = document.getElementById("modalAmount").value;
+		let desc = document.getElementById("modalDescription").value;
+		console.log(user);
+		console.log(amount);
+		console.log(desc);
+		let xhr = new XMLHttpRequest();
+		let url = "http://localhost:8080/RepayPal/add-reimbursement";
+		xhr.open("POST", url);
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				console.log("success!!!");
+				window.location.href="http://localhost:8080/RepayPal/home"
+			} 
+			else if (xhr.readyState == 4){
+				console.log("Invalid Data");
+			}
+		}
+		
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		let requestBody = `username=${user}&amount=${amount}&description=${desc}`;
+		xhr.send(requestBody);
+	}
+	
+	function postUpdateUser(){
+		console.log("Request Started");
+		let username = document.getElementById("modalUsername").value;
+		let firstName = document.getElementById("modalFirstname").value;
+		let lastName = document.getElementById("modalLastname").value;
+		let password = document.getElementById("modalPassword").value;
+		console.log(username);
+		console.log(firstName);
+		console.log(lastName);
+		console.log(password);
+		let xhr = new XMLHttpRequest();
+		let url = "http://localhost:8080/RepayPal/update-user";
+		xhr.open("POST", url);
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				console.log("success!!!");
+				window.location.href="http://localhost:8080/RepayPal/home"
+			} 
+			else if (xhr.readyState == 4){
+				console.log("Invalid Data");
+			}
+		}
+		
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		let requestBody = `username=${username}&firstName=${firstName}&lastName=${lastName}&password=${password}`;
+		xhr.send(requestBody);
 	}
 	
 	

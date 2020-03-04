@@ -15,46 +15,23 @@
 			window.location.href="http://localhost:8080/RepayPal/home";	
 		}
 	</script>
+	<style>
+	.center {
+	  margin: auto;
+	  width: 50%;
+	  border: 3px solid green;
+	  padding: 10%;
+	}
+	</style>
 </head>
 <body>
-	
 	<div class="container">
-		<input type="text" id="username" class="form-control">
-		<input type="password" id="password" class="form-control">
-		<button id="login-btn" class="btn btn-success">Login</button>
+		<div class="center">
+			<label for="username">Username <input type="text" id="username" class="form-control"></label><br>
+			<label for="password">Password <input type="password" id="password" class="form-control"></label><br>
+			<label><button id="login-btn" class="btn btn-success">Login</button></label><br><br><br><br>
+		</div>
 	</div>
-	
-	<script type="text/javascript">
-	document.getElementById("login-btn").addEventListener("click", requestLogin);
-
-	function requestLogin(){
-		console.log("Request Started");
-		let user = document.getElementById("username").value;
-		let pass = document.getElementById("password").value;
-		console.log(user);
-		console.log(pass);
-		let xhr = new XMLHttpRequest();
-		let url = "http://localhost:8080/RepayPal/login";
-		xhr.open("POST", url);
-		
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState == 4 && xhr.status == 200){
-				console.log("success!!!");
-				let auth = xhr.getResponseHeader("Authorization");
-				sessionStorage.setItem("token", auth);
-				console.log(auth);
-				window.location.href="http://localhost:8080/RepayPal/home"
-			} 
-			else if (xhr.readyState == 4){
-				console.log("incorrect credentials");
-			}
-		}
-		
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		let requestBody = `username=${user}&password=${pass}`;
-		xhr.send(requestBody);
-	}
-		
-	</script>
+	<script type="text/javascript" src="http://localhost:8080/RepayPal/static/login.js" ></script>
 </body>
 </html>
