@@ -1,12 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>My App</title>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="static/Views/HomeManager.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Employee Home Page</title>
 </head>
 <body>
-	<h2>Home Page</h2>
-	<span id="user"></span>
+
+	<!-- NAVBAR ELEMENTS -->
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#">WebSiteName</a>
+		  </div>
+		  <ul class="nav navbar-nav">
+			<li><a href="#">Home</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  
+			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				  <span class="glyphicon glyphicon-user"></span><span id="profile-name"></span><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				  <li><a href="#" data-toggle="modal" data-target="#view-profile">View Profile</a></li>
+				  <li><a href="#" id="logout-btn">Logout</a></li>
+				</ul>
+			  </li>
+			  
+		  </ul>
+		</div>
+	  </nav> 
+	  
+  
+	  <!-- Modal (for viewing profile) -->
+	  <div class="modal fade" id="view-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+  
+			  <div class="modal-header">
+			  <h4 class="modal-title" id="exampleModalCenterTitle">Your Profile</h4>
+			  </div>
+  
+			  <div class="modal-body">
+				  <div class="row">
+					<div class="col-md-3">
+					  <p></p> <!-- TODO: PROFILE PICTURE/GENDER LOGIC -->
+					  <p class="text-center"><img id="profile-picture" src="#" alt="[IMG HERE]"></p>
+					</div>
+		  
+					<div class="col-md-9">
+					  <p>Name: <span id="modal-name"></span></p>
+					  <p>Email: <span id="modal-email"></span></p>
+					  <p>Position: <span id="modal-position"></span></p>
+					  <p>Gender: <span id="modal-gender"></span></p>
+					  <p>Id: <span id="modal-id"></span></p>
+					</div>
+				  </div>
+			  </div>	
+  
+			  <div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#edit-profile">
+				  Edit Profile</button> <!-- TODO: NEED NEW MODAL FUNCTIONALITY -->
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+  
+		  </div>
+		  </div>
+	  </div>
+  
+	  <!-- Modal (for editing profile) -->
+	  <div class="modal fade" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+  
+			  <div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalCenterTitle2">Edit Profile</h5>
+			  </div>
+  
+			  <div class="modal-body">
+				  <div class="row">
+					<div class="col-md-3">
+					  <p></p>
+					  <p class="text-center"><i>[IMGHERE]</i></p> <!-- TODO: NEED PROFILE IMAGE LOGIC HERE -->
+					</div>
+					
+					<!-- EDIT PROFILE FORM BODY -->
+					<div class="col-md-9">
+					  <form id="edit-profile-form">
+						  <div class="form-group row">
+							  <label for="inputFirstName" class="col-sm-2 col-form-label col-form-label-sm">First Name</label>
+							  <div class="col-sm-10">
+								<input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+							  </div>
+						  </div>
+						  <div class="form-group row">
+							  <label for="inputLastName" class="col-sm-2 col-form-label col-form-label-sm">Last Name</label>
+							  <div class="col-sm-10">
+								<input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+							  </div>
+						  </div>
+						  <div class="form-group row">
+							  <label for="inputEmail" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+							  <div class="col-sm-10">
+								<input type="email" class="form-control" id="inputEmail" placeholder="Email">
+							  </div>
+						  </div>
+						  <div class="form-group row">
+							  <label for="inputState" class="col-sm-2 col-form-label col-form-label-sm">Gender</label>
+							  <div class="col-sm-4">
+							  <select id="inputState" class="form-control">
+								<option selected>Male</option>
+								<option>Female</option>
+							  </select>
+							  </div>
+						  </div>
+						  
+						  <!-- SUBMISSION BUTTON (and close button) -->
+						  <div class="modal-footer"> <!-- TODO: needs to be GREEN -->
+							  <span id="edit-profile-form-status">Profile successfully updated!</span>
+							  <button type="button" class="btn btn-primary" id="update-profile-btn">Update Profile</button>
+							  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						  </div>
+  
+						</form>
+					</div>
+				  </div>
+			  </div>
+			  
+  
+		  </div>
+		  </div>
+	  </div>
+
+
+	<h2>Employee Home Page</h2>
+	
+
+
+	
 	<script type="text/javascript" src="static/Views/HomeEmployee.js"></script>
 </body>
 </html>

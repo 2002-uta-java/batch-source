@@ -1,5 +1,5 @@
 // Check token to remain on page and load.
-function checkTokenAndLoadPage() {
+async function checkTokenAndLoadPage() {
 	let token = sessionStorage.getItem("token");
 
 	if(!token){
@@ -34,7 +34,7 @@ async function sendAjaxGet(url, callback, token){
 }
 
 // Load all page information.
-function loadPage(xhr){
+async function loadPage(xhr){
     let user = JSON.parse(xhr.response);
 
     // Clear reimbursement lists.
@@ -77,7 +77,7 @@ function viewEmployees() {
 }
 
 // Update profile information based on form input AND re-build page.
-function updateProfile() {
+async function updateProfile() {
     let formInfo = document.getElementById("edit-profile-form");
     let new_fName = formInfo.elements[0].value;
     let new_lName = formInfo.elements[1].value;
@@ -115,7 +115,7 @@ async function sendAjaxPostUpdateProfile(url, callback, data){
 	xhr.send(data);
 }
 
-function requestReimbursements(){
+async function requestReimbursements(){
     let baseUrl1 = "http://localhost:8080/Project1/api/reimb";   // ALL reimbursements.
     let baseUrl2 = "http://localhost:8080/Project1/api/reimb/p"; // PENDING
     let baseUrl3 = "http://localhost:8080/Project1/api/reimb/r"; // RESOLVED
@@ -141,7 +141,7 @@ async function sendAjaxGetReimbursements(url, callback) {
 }
 
 // Recieve data and load ALL reimbursements.
-function loadReimbursements(baseUrl, xhr) {
+async function loadReimbursements(baseUrl, xhr) {
     let reimbs = JSON.parse(xhr.response);
     let emplUrl = "http://localhost:8080/Project1/api/users";
     sendAjaxGetEmployeeNames(emplUrl, continueLoadReimbursements, baseUrl, reimbs); // this is stupid.
@@ -162,7 +162,7 @@ async function sendAjaxGetEmployeeNames(url, callback, baseUrl, reimbs) {
     xhr.send();
 }
 
-function continueLoadReimbursements(xhr, baseUrl, reimbs) {
+async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
     let employees = JSON.parse(xhr.response);
     let employeeNames = createEmployeeNameList(employees);
 
@@ -236,7 +236,7 @@ function findEmployeeName(id, employeeNames) {
     return "Name missing (id error)."
 }
 
-function loadSingleReimbursement(reimbHtmlId){
+async function loadSingleReimbursement(reimbHtmlId){
     let r = document.getElementById(reimbHtmlId);
     let purpose = r.getAttribute("data-purpose");
     let fullName = r.getAttribute("data-eFullName");
@@ -254,16 +254,15 @@ function loadSingleReimbursement(reimbHtmlId){
     htmlId.innerHTML = id; // TODO: need to update [DO NOT CHANGE. can make this hidden if needed.
 } // also in viewemployee.js
 
-function approveReimbursement() {
+async function approveReimbursement() {
     resolveReimbursement("approved");
 }
 
-function rejectReimbursement() {
+async function rejectReimbursement() {
     resolveReimbursement("rejected");
 }
 
-
-function resolveReimbursement(newStatus) {
+async function resolveReimbursement(newStatus) {
     let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
     let reimbId = document.getElementById("single-reimb-id").innerHTML;
     let token = sessionStorage.getItem("token");

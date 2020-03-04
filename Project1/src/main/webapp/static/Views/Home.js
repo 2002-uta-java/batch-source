@@ -48,29 +48,6 @@ function displayHomepage(xhr){
 	
 }
 
-// TODO: function that handles click events for LOGGING OUT.
-
-// TODO: function that handles viewing/editing your profile.
-
-// MANAGER-EXCLUSIVE FUNCTIONS
-// TODO: viewALLReimbursements (active by default)
-
-// TODO: viewPENDINGReimbursements (click event)
-
-// TODO: viewRESOLVEDReimbursements (click event)
-
-// TODO: resolveReimbursementTool (click event)
-
-// TODO: viewONLYEmployees.html + viewAllEmployees function + others (new page, active by default)
-// TODO: viewONLYManagers (click event)
-
-// EMPLOYEE-EXCLUSIVE FUNCTIONS
-// TODO: viewALLMYReimbursements (active by default) + managerlink function
-
-// TODO: viewALLMYPendingReimbursements (click event)
-
-// TODO: viewALLMYResolvedReimbursements (click event)
-
 
 // Commands to execute on load.
 checkToken();

@@ -297,7 +297,6 @@ function rejectReimbursement() {
     resolveReimbursement("rejected");
 }
 
-
 function resolveReimbursement(newStatus) {
     let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
     let reimbId = document.getElementById("resolve-reimbursement-info").getAttribute("data-id");
