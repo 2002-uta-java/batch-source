@@ -1,4 +1,0 @@
--Add update profile functionality
--Style app
--Add logger
--Test app

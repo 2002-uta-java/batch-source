@@ -1,0 +1,342 @@
+/*------------------------------------------------------CONTAINERS------------------------------------------------------*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Libre Baskerville';
+	background-color: #fcfbfa;
+}
+
+.page {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*------------------------------------------------------MEDIA QUERIES------------------------------------------------------*/
+
+/*Mobile styles*/
+@media only screen and (max-width=400px) {
+	
+}
+
+/*Tablet styles*/
+@media only screen and (min-width=401px) and (max-width=960px) {
+	
+}
+
+/*Desktop styles*/
+@media only screen and (min-width=961px) {
+	
+}
+
+/*------------------------------------------------------SECTIONS------------------------------------------------------*/
+.section {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	align-items: center;
+}
+
+#profile{
+	width: 75%;
+	margin: auto;
+}
+
+.content {
+	width: 50%;
+	text-align: center;
+}
+
+/*------------------------------------------------------CONTENT------------------------------------------------------*/
+
+/*################################################# Profile styles #################################################*/
+
+img {
+	width: 235px;
+	height: auto;
+	border-radius: 50%;
+}
+
+#profile td{
+	text-align: left;
+	width: 250px;
+	height: 50px;
+}
+
+#profile .fancy-button{
+	font-size: 13px;
+	color: #04151F;
+}
+
+#profile .slide{
+	background: #04151F;
+	color: #e6ebe0;
+}
+
+#profile .button{
+	border-color: #04151F;
+}
+
+#profile .fancy-button:hover a {
+  color: #e6ebe0;
+}
+
+/*################################################# NAV styles #################################################*/
+
+#nav {
+	padding: 10px 65px;
+	font-size: 30px;
+	height: 75px;
+	background-color: #04151F;
+	color: #e6ebe0;
+}
+
+.left{
+	/*aligns next item right and this item left*/
+	flex-grow: 1;
+}
+
+#nav .right{
+	font-size: 24px;
+}
+
+#nav .fancy-button{
+	margin-left: 10px;
+}
+
+#nav .slide{
+	background: #e6ebe0;
+	color: #04151F;
+}
+
+#nav .button{
+  	border-color: #e6ebe0;
+}
+
+#nav .fancy-button:hover a {
+  color: #04151F;
+}
+
+/*################################################# Separator styles #################################################*/
+
+hr{
+	width: 100%;
+}
+
+#separator {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+	height: 120px;
+	width: 100%;
+	font-size: 16px;
+}
+
+#separator li{
+	display: inline;
+}
+
+pre {
+	font-size: 16px;
+	font-family: 'Libre Baskerville';
+}
+
+#menu {
+	padding-top: 10px;
+	margin-bottom: 10px;
+	font-family: 'Libre Baskerville';
+	font-size: 15px;
+}
+
+#separator hr{
+	margin-top: 18px;
+}
+
+#separator .fancy-button{
+  	font-size: 12px;
+	background: #e6ebe0;
+}
+
+#menu a {
+  	font-size: 14px;
+}
+
+#separator .slide{
+	background: #e6ebe0;
+	color: #04151F;
+}
+
+#separator .button{
+  	border-color: #e6ebe0;
+}
+
+#separator .fancy-button:hover a {
+  color: #04151F;
+}
+
+/*################################################# Reimbursement styles #################################################*/
+
+#reimbursements{
+	display: flex;
+	padding-top: 65px;
+	background-color: #C44900;
+	height: 100%;
+	max-width: 100%;
+	overflow: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.employee, .reimbursement{
+	flex-grow: 1;
+	padding: 25px;
+	margin: 0 50px;
+	margin-bottom: 65px;
+	background-color: #04151F;
+	color: #e6ebe0;
+	min-width: 350px;
+	max-width: 350px;
+	font-size: 18px;
+	text-align: left;
+	border-radius: 10px;
+}
+
+#new-rmb{
+	display: flex;
+	flex-direction: column;
+	min-height: 370px;
+	margin-right: 75px;
+}
+
+.employee h4, .reimbursement h4, #new-rmb h4{
+	text-align: center;
+}
+
+.reimbursement em, #new-rmb em{
+	font-size: 16px;
+}
+
+.reimbursement p, #new-rmb input[type=text]{
+	font-size: 12px;
+	margin: 20px 0;
+}
+
+.reimbursement hr, .employee hr{
+	margin: 25px 0;
+	width: 100%;
+	height: 5px;
+}
+
+#new-rmb .fancy-button{
+  	font-size: 24px;
+}
+
+#new-rmb .slide, .reimbursement .slide{
+	background: #e6ebe0;
+	color: #04151F;
+}
+
+#new-rmb .fancy-button:hover a, .reimbursement .fancy-button:hover a {
+  color: #04151F;
+}
+
+#submit-rmb{
+	margin-top: 10px;
+}
+
+.reimbursement .fancy-button{
+	margin-top: 15px;
+	font-size: 14px;
+}
+
+/*################################################# Button styles #################################################*/
+
+.button {
+  display: inline-flex;
+  height: 35px;
+  border: 2px solid;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+  border-radius: 5px;
+}
+
+.xs{
+	width: 90px;
+	height: 25px;
+}
+
+.small{
+	width: 115px;
+}
+
+.medium{
+	width: 270px;
+}
+
+.fit{
+	width: 100%;
+}
+
+a {
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.fancy-button{
+	position: relative;
+  	overflow: hidden;
+  	cursor: pointer;
+  	
+}	
+.fancy-button a{
+	position: relative;
+	transition: all .5s ease;
+}
+
+.slide {
+	width: 0%;
+	height: 0%;
+	opacity: 0;
+	line-height: 40px;
+	border-radius: 50%;
+	position: absolute;
+	transition: all .5s ease;
+	top: 20px;
+	left: 70px;
+}
+
+.fancy-button:hover .slide {
+	display: flex;
+	width: 220%;
+	height: 550%;
+	opacity: 1;
+	top: -70px;
+	left: -70px;
+	align-items: center;
+	justify-content: center;
+}
+
+/*################################################# Util styles #################################################*/
+
+.center-flex{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.right-flex{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+}

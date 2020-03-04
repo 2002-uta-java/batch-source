@@ -25,7 +25,7 @@ let handleChange = (event, id) =>{
 // onclick function for editing reimbursement
 let editReimbursement = (event, id) =>{
 	// reimbursement div id
-	let rmbId = event.target.parentElement.id;
+	let rmbId = event.target.parentElement.parentElement.parentElement.id;
 	// get select element
 	let options = document.querySelector(`#${rmbId} select`);
 	// enable updates
@@ -59,7 +59,10 @@ let createReimbursement = (email) =>{
 	xhr.send();
 }
 
-let changeReimbursementLayout = (email) =>{
+let changeReimbursementLayout = () =>{
+	//get user from user storage
+	let user = JSON.parse(sessionStorage.getItem("token"));
+	console.log(user);
 	// get new reimbursement div
 	let newRmb = document.querySelector("#new-rmb");
 	// set new layout for input
@@ -73,11 +76,18 @@ let changeReimbursementLayout = (email) =>{
 		<input type="text" id="new-details">
 	`;
 	// create update button
-	let updateBtn = document.createElement("button");
+	let updateBtn = document.createElement("div");
+	updateBtn.className = "center-flex";
 	// add button text
-	updateBtn.innerHTML = "Update";
+	updateBtn.innerHTML = 
+	`
+		<div id="submit-rmb" class="button fancy-button small">
+			<div class="slide"></div>
+			<a style="font-size:14px;">Update</a>
+		</div>
+	`;
 	// add click event listener
-	updateBtn.addEventListener("click", ()=>{createReimbursement(email)});
+	updateBtn.addEventListener("click", ()=>{createReimbursement(user.employee_email)});
 	// add button to div
 	newRmb.appendChild(updateBtn);
 	

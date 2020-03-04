@@ -37,20 +37,31 @@ let handleProfileEdit = (user) =>{
 	//render appropriate layout to edit content
 	profile.innerHTML = 
 	`
-		<div class="image">
+		<div class="content image">
 			<img rel="Identifies the user." src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
 		</div>
 		<div class="content">
-			<div>
-				<h3><strong>${user.employee_email}</strong></h3><button id="save-profile">Save</button>
-			</div>
-			<div>
-				<h4><strong>Position: </strong></h4><pre>${user.role}</pre>
-				<h4><strong>Birthday: </strong></h4><input type="text" id="profile-bday" value="${user.birthday}"/>
-			</div>
-			<div>
-				<h4><strong>${user.name}'s Bio:</strong></h4><input type="text" id="profile-bio" value="${user.bio}"/>
-			</div>
+			<table>
+				<tr>
+					<td><h3><strong>${user.employee_email}</strong></h3></td>
+					<td>
+						<div class="button fancy-button small" id="save-profile">
+							<div class="slide"></div>
+							<a>Save Profile</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><h4><strong>Position: </strong></h4><pre>${user.role}</pre></td>
+					<td><h4><strong>Birthday: </strong></h4><input type="text" id="profile-bday" value="${user.birthday}"/></td>
+				</tr>
+				<tr>
+					<td><h4><strong>${user.name}'s Bio:</strong></h4></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="profile-bio" value="${user.bio}"/></td>
+				</tr>
+			</table>
 		</div>
 	`;
 	//get save button
@@ -66,24 +77,35 @@ let renderProfile = (user) =>{
 	// render user info
 	profile.innerHTML = 
 	`
-		<div class="image">
+		<div class="content image">
 			<img rel="Identifies the user." src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
 		</div>
 		<div class="content">
-			<div>
-				<h3><strong>${user.employee_email}</strong></h3><button>Edit Profile</button>
-			</div>
-			<div>
-				<h4><strong>Position: </strong></h4><pre>${user.role}</pre>
-				<h4><strong>Birthday: </strong></h4><pre>${user.birthday}</pre>
-			</div>
-			<div>
-				<h4><strong>${user.name}'s Bio:</strong></h4><pre>${user.bio}</pre>
-			</div>
+			<table>
+				<tr>
+					<td><h3><strong>${user.employee_email}</strong></h3></td>
+					<td>
+						<div class="button fancy-button small">
+							<div class="slide"></div>
+							<a>Edit Profile</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><h4><strong>Position: </strong></h4><pre>${user.role}</pre></td>
+					<td><h4><strong>Birthday: </strong></h4><pre>${user.birthday}</pre></td>
+				</tr>
+				<tr>
+					<td><h4><strong>${user.name}'s Bio:</strong></h4></td>
+				</tr>
+				<tr>
+					<td><pre>${user.bio}</pre></td>
+				</tr>
+			</table>
 		</div>
 	`;
 	//get edit profile button
-	let editProfile = document.querySelector("#profile button");
+	let editProfile = document.querySelector("#profile .fancy-button");
 	//add click event listener
 	editProfile.addEventListener("click", ()=>{handleProfileEdit(user)});
 }

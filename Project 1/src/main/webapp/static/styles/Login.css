@@ -1,14 +1,19 @@
 @charset "ISO-8859-1";
 
 /*------------------------------------------------------CONTAINERS------------------------------------------------------*/
-
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-.page{
+body {
+	background-image: url("../Resources/bg.svg");
+	background-size: cover;
+	font-family: 'Libre Baskerville';
+}
+
+.page {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -16,50 +21,115 @@
 /*------------------------------------------------------MEDIA QUERIES------------------------------------------------------*/
 
 /*Mobile styles*/
-@media only screen and (max-width:400px){
-	
+@media only screen and (max-width:400px) {
+	div.register {
+		height: 150px;
+	}
+	div.sub {
+		width: 100%;
+		margin: 0;
+		border-radius: 0;
+	}
+	div.section {
+		margin: 0;
+	}
+	div.sub ul {
+		padding-left: 10px;
+	}
+	div.sub li {
+		padding-right: 5px;
+		font-size: 16px;
+		font-family: 'Libre Baskerville';
+	}
+	div.sub li:after {
+		padding-left: 10px;
+	}
 }
 
 /*Tablet styles*/
-@media only screen and (min-width:401px) and (max-width:960px){
-	
+@media only screen and (min-width:401px) and (max-width:960px) {
+	div.register {
+		height: 350px;
+	}
+	div.sub {
+		width: 65%;
+	}
+	div.sub ul {
+		padding-left: 10px;
+	}
+	div.sub li {
+		padding-right: 5px;
+		font-size: 16px;
+		font-family: 'Libre Baskerville';
+	}
+	div.sub li:after {
+		padding-left: 10px;
+	}
 }
 
 /*Desktop styles*/
-@media only screen and (min-width:961px){
-	
+@media only screen and (min-width:961px) {
 }
 
 /*------------------------------------------------------SECTIONS------------------------------------------------------*/
-
-.section{
+.section {
 	width: 100%;
-	height: 300px;
+	height: 450px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin-top: 30px;
+}
+
+.sub {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	background-color: #fcfbfa;
+	padding: 20px 40px 50px 40px;
+	border-radius: 10px;
+	margin-top: 35px;
 }
 
 /*------------------------------------------------------CONTENT------------------------------------------------------*/
+.sub input[type=text], .sub input[type=password] {
+	margin-bottom: 35px;
+	margin-top: 15px;
+	height: 55px;
+	font-size: 16px;
+	font-family: 'Libre Baskerville';
+}
 
-ul{
+.sub h1 {
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+
+.sub input[type=button] {
+	height: 50px;
+	font-size: 16px;
+	font-family: 'Libre Baskerville';
+}
+
+ul {
+	text-align: center;
 	list-style: none;
-	margin-left:0;
-	padding-left:0;
+	margin-left: 0;
+	padding-left: 31px;
+	margin-top: 25px;
 }
 
-li{
+li {
 	display: inline;
-	padding-right: 1em;
+	padding-right: 15px;
 }
 
-li:after{
+li:after {
 	content: "|";
-	padding-left: 1em;
+	padding-left: 15px;
 }
 
-li:last-child:after{
+li:last-child:after {
 	content: " " !important;
 }
-
