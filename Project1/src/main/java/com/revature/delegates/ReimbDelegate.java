@@ -135,4 +135,9 @@ public class ReimbDelegate {
 		
 		return dataPack;
 	}
+	
+	public void newReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		// can try to parse amount to int, if doesnt work return bad input errors (400)
+	}
 }

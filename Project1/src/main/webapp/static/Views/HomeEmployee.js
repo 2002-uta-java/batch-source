@@ -215,23 +215,51 @@ async function sendAjaxPostUpdateProfile(url, callback, data){
 }
 
 function newReimbursement() {
-    let formInfo = document.getElementById("edit-profile-form");
+    let formInfo = document.getElementById("new-reim-form");
     let new_amount = formInfo.elements[0].value;
     let new_purpose = formInfo.elements[1].value;
 
-    // TODO: Gather all data (null arguments ignored in backend).
-    let newInfo = {id: null, email: new_email, position: null, firstName: new_fName, lastName: new_lName, gender: new_gender, password: null};
-    let myJSON = JSON.stringify(newInfo);
+    console.log(new_amount);
+    console.log(new_purpose);
 
-    // Send a POST request to update the database, immediately re-build page (checkToken).
-    let baseUrl = "http://localhost:8080/Project1/newreimb/";
-    let token = sessionStorage.getItem("token");
-    let tokenArr = token.split(":");
-	if(tokenArr.length===2) {
-        sendAjaxPostUpdateProfile(baseUrl, loadPage, myJSON);
+    if (!new_amount) { // invalid amount entry.
+        badInput();
+        return;
     }
+    // let status = document.getElementById("edit-profile-form-status");
+
+    // // TODO: Gather all data (null arguments ignored in backend).
+    // let newInfo = {id: null, email: new_email, position: null, firstName: new_fName, lastName: new_lName, gender: new_gender, password: null};
+    // let myJSON = JSON.stringify(newInfo);
+
+    // // Send a POST request to update the database, immediately re-build page (checkToken).
+    // let baseUrl = "http://localhost:8080/Project1/newreimb";
+    // let token = sessionStorage.getItem("token");
+    // let tokenArr = token.split(":");
+	// if(tokenArr.length===2) {
+    //     sendAjaxPostNewReimbursement(baseUrl, loadPage, myJSON);
+    // }
 }
 
+// newReimbursement AJAX helper. 
+async function sendAjaxPostNewReimbursement(url, callback, data){
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+            callback(this);
+		} else if (this.readyState===4){
+            console.log("Ajax failure.");
+            badInput();
+		}
+	} // probably should authenticate to post; for later.
+	xhr.send(data);
+}
+
+function badInput() {
+    // get id and display bad input
+    // hide after 5 seconds.
+}
 
 // Commands to execute on load.
 // ALL EVENT LISTENERS

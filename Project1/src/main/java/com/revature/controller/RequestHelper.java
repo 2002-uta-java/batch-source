@@ -71,6 +71,9 @@ public class RequestHelper {
 		else if (path.startsWith("/resolvereimbursement/")) {
 			reimbDelegate.updateReimbursement(request, response);
 		}
+		else if (path.startsWith("/newreimb")) {
+			reimbDelegate.newReimbursement(request, response);
+		}
 		else {
 			response.sendError(405);
 		}
