@@ -5,3 +5,23 @@
     visibility: hidden;
 }
 
+#amount-text {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+tr {
+    text-align: center; 
+    vertical-align: middle;
+}
+
+/*
+.my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}
+*/

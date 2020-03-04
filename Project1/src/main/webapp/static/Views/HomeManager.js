@@ -38,9 +38,9 @@ async function loadPage(xhr){
     let user = JSON.parse(xhr.response);
 
     // Clear reimbursement lists.
-    clearList("all-reim");
-    clearList("pending-reim");
-    clearList("resolved-reim");
+    clearList("all-reim-table");
+    clearList("pending-reim-table");
+    clearList("resolved-reim-table");
 
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
@@ -198,7 +198,7 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
             reimElement.setAttribute("data-target", "#view-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
-            d1.innerHTML = "$" + `${amount}`;
+            d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
             d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
             d3.innerHTML = `${status}`;
             reimElement.appendChild(d1);
@@ -208,7 +208,7 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
         else { // Resolved reimbursements need the manager who resolved it.
             let mFullName = findEmployeeName(idManager, employeeNames);
             reimElement.setAttribute("data-mFullName", mFullName);
-            d1.innerHTML = "$" + `${amount}`;
+            d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
             d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Approved by: " + `${mFullName}`;
             d3.innerHTML = `${status}`;
             reimElement.appendChild(d1);
