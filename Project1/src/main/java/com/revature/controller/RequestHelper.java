@@ -48,6 +48,9 @@ public class RequestHelper {
 			case "reimbursementstatus":
 				reimbursementDelegate.getStatus(request, response);
 				break;
+			case "messageupdate":
+				reimbursementDelegate.getMessage(request, response);
+				break;
 			case "reimbursementreciept":
 				reimbursementDelegate.getReciept(request, response);
 				break;
@@ -69,7 +72,7 @@ public class RequestHelper {
 			employeeDelegate.createEmployee(request, response);
 			break;
 		case "/reimbursementnew":
-			reimbursementDelegate.createReimbursemetn(request, response);
+			reimbursementDelegate.createReimbursement(request, response);
 			break;
 		case "/logon":
 			userDelegate.clientAuth(request, response);

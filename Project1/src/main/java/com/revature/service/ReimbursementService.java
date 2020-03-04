@@ -7,7 +7,7 @@ import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.model.Reimbursement;
 
 public class ReimbursementService {
-
+	
 	private ReimbursementDao reimbursementDao = new ReimbursementDaoImpl();
 	
 	public ReimbursementService() {
@@ -18,7 +18,7 @@ public class ReimbursementService {
 		return reimbursementDao.getReimbursement();
 	}
 	
-	public int getReimbursementId(int id) {
+	public List<Reimbursement> getReimbursementId(int id) {
 		return reimbursementDao.getReimbursementId(id);
 	}
 	
@@ -50,5 +50,14 @@ public class ReimbursementService {
 	public String updateReciept(String url, int id) {
 		return reimbursementDao.updateReciept(url, id);	
 	}
+
+	public List<Reimbursement> managerStatus(int id) {
+		return reimbursementDao.managerStatus(id);
+	}
+	
+	public List<Reimbursement> employeeStatus(int id) {
+		return reimbursementDao.employeeStatus(id);
+	}
+
 
 }

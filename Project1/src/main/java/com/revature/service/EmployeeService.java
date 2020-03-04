@@ -6,6 +6,7 @@ import com.revature.dao.EmployeeDao;
 import com.revature.dao.EmployeeDaoImpl;
 import com.revature.model.Employee;
 
+
 public class EmployeeService {
 	
 	private EmployeeDao employeeDao = new EmployeeDaoImpl();
@@ -57,4 +58,13 @@ public class EmployeeService {
     public int deleteEmployee(int id) {
     	return employeeDao.deleteEmployee(id);
     }
+    
+	public Employee information(int id) {
+		List<Employee> newList = employeeDao.getEmployee();
+		for(Employee e : newList) {
+			if(e.getEmployeeId() !=0 && e.getEmployeeId() == (id)) {
+				return e;
+				} 
+			} return null;
+	}
 }

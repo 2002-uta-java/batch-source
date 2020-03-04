@@ -8,8 +8,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Reimbursement;
@@ -19,6 +21,7 @@ public class ReimbursementDelegate {
 
 	private ReimbursementService remService = new ReimbursementService();
 	private ObjectMapper om = new ObjectMapper();
+	StringBuilder sb = new StringBuilder();
 	
 	private int id;
 	private String type;
@@ -32,6 +35,8 @@ public class ReimbursementDelegate {
 	private double amount;
 	private String comment;
 	private String status;
+	private List<Reimbursement> newList;
+
 	
 	public ReimbursementDelegate() {
 		super();
@@ -46,16 +51,13 @@ public class ReimbursementDelegate {
 	}
 	
 	public void getReimbursementId(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		try (BufferedReader requestReader = request.getReader();) {
-			String newEmpIdJson = requestReader.readLine();	
-			String b = om.readValue(newEmpIdJson, String.class);
+			String b = request.getParameter("remId");
 			int id = Integer.parseInt(b);
-			int remId = remService.getReimbursementId(id);
-			this.id = remId;
-		}
+			List<Reimbursement> remId = remService.getReimbursementId(id);
+			this.newList = remId;
 		
 		try(PrintWriter pw = response.getWriter()){
-			pw.write(om.writeValueAsString(id));
+			pw.write(om.writeValueAsString(newList));
 		}
 		
 	}
@@ -70,6 +72,29 @@ public class ReimbursementDelegate {
 	
 	try(PrintWriter pw = response.getWriter()){
 		pw.write(om.writeValueAsString(status));
+		}
+	}
+	
+	public void getMessage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String authToken = request.getHeader("Authorization");
+		if(authToken != null) {
+			String[] tokenArr = authToken.split(":");
+			String permission = tokenArr[1];
+			String managerId = tokenArr[3];
+			String emplId = tokenArr[2];
+			int pId = Integer.parseInt(permission);
+			int mId = Integer.parseInt(managerId);
+			int eId = Integer.parseInt(emplId);
+			if(pId == 1) {
+			List<Reimbursement> list = remService.managerStatus(mId);
+			this.newList = list;
+			} else {
+			List<Reimbursement> eList = remService.employeeStatus(eId);
+			this.newList = eList;
+				}		
+		}
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString(newList));
 		}
 	}
 	
@@ -106,10 +131,11 @@ public class ReimbursementDelegate {
 		}
 	}
 
-	public void createReimbursemetn(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		try (BufferedReader requestReader = request.getReader();) {
-			String newEmpIdJson = requestReader.readLine();	
-			JSONArray jsonArr = new JSONArray(newEmpIdJson);
+	public void createReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+			try (BufferedReader requestReader = request.getReader();) {
+			String jsonData = requestReader.readLine();
+			JSONObject data = new JSONObject(jsonData);
+			JSONArray jsonArr = data.getJSONArray("Rem");
 		    for (int i = 0; i < jsonArr.length(); i++) {
 		        JSONObject jsonObj = jsonArr.getJSONObject(i);
 		        Reimbursement newRem = new Reimbursement(type, rdate, ramount, reciept, notes, emplId, managerId, adate, amount, comment, status);
@@ -124,9 +150,10 @@ public class ReimbursementDelegate {
 		        amount = newRem.setRemApprovedAmount(jsonObj.getDouble("amount"));
 		        comment = newRem.setRemComment(jsonObj.getString("comment"));
 		        status = newRem.setRemStatus(jsonObj.getString("status"));
-		        
+
 		       remService.createReimbursementByFunction(newRem);
-		    		}
+		    }
+		
 				try(PrintWriter pw = response.getWriter()) {
 					pw.write(om.writeValueAsString("New Reimbursement Created")); 
 					}

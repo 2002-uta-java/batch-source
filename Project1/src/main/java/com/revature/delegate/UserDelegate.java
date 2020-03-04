@@ -36,21 +36,17 @@ public class UserDelegate {
 		
 		boolean result = clientService.clientAuth(clientLoginName, clientLoginPassword);
 		if(result == true) {
-			this.clientEmail = clientLoginName;
-			int clientId = clientService.getClientId(clientLoginName);
-			int clientPermission = clientService.getClientPermission(clientId);
-			this.clientId = clientId;
-			this.clientPermission = clientPermission;		
+			int id = employeeService.getEmployeeId(clientLoginName);
+			this.emplId = id;
+			String token = clientService.getClientId(clientLoginName) + ":"+ clientService.getClientPermission(emplId) + ":" + emplId + ":" + employeeService.getManagerId(emplId);
+			response.setStatus(200);
+			response.setHeader("Authorization", token);
 			} else {
 			response.sendError(401, "Unauthorized Access");
 				}
-			int id = employeeService.getEmployeeId(clientEmail);
-			this.emplId = id;
-			String token = clientId + ":"+ clientPermission;
-			response.setStatus(200);
-			response.setHeader("Authorization", token);
+
 			try(PrintWriter pw = response.getWriter()){
-				pw.write(om.writeValueAsString(emplId + clientEmail));
+				pw.write(om.writeValueAsString(""));
 			}
 			
 	}
@@ -58,7 +54,7 @@ public class UserDelegate {
 		String authToken = request.getHeader("Authorization");
 		if(authToken!=null) {
 			String[] tokenArr = authToken.split(":");
-			if(tokenArr.length == 2) {
+			if(tokenArr.length == 4) {
 				String id = tokenArr[0];
 				String permission = tokenArr[1];
 				if(id.matches("^\\d+$")) {

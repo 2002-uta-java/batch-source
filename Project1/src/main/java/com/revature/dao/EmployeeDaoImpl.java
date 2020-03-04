@@ -51,7 +51,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public int getEmployeeId(String email) {
-		String sql = "select empl_id from employee where empl_email = ?)";
+		String sql = "select empl_id from employee where empl_email = ?";
 		ResultSet rs = null;
 		int e2 = 0;
 		
@@ -137,7 +137,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	@Override
 	public int getManagerId(int id) {
-		String sql = "select manager_id from employee where empl_id = ?)";
+		String sql = "select manager_id from employee where empl_id = ?";
 		ResultSet rs = null;
 		int e2 = 0;
 		

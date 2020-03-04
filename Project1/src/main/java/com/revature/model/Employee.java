@@ -127,11 +127,7 @@ public class Employee implements Serializable{
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", title=" + title + ", managerId=" + managerId + ", reportsToId=" + reportsToId
-				+ ", getEmployeeId()=" + getEmployeeId() + ", getFirstName()=" + getFirstName() + ", getLastName()="
-				+ getLastName() + ", getEmail()=" + getEmail() + ", getTitle()=" + getTitle() + ", getManagerId()="
-				+ getManagerId() + ", getReportsToId()=" + getReportsToId() + ", hashCode()=" + hashCode()
-				+ ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
+				+ email + ", title=" + title + ", managerId=" + managerId + ", reportsToId=" + reportsToId + "]";
 	}
 
 }

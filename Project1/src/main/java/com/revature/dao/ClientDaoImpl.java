@@ -35,8 +35,8 @@ public class ClientDaoImpl implements ClientDao {
 		
 		   while(rs.next()) {
 			   int clientId = rs.getInt("client_id");
-			   String clientEmail = rs.getNString("client_email");
-			   String clientPassword = rs.getNString("client_password");
+			   String clientEmail = rs.getString("client_email");
+			   String clientPassword = rs.getString("client_password");
 			   int clientPermission = rs.getInt("client_permission");
 			   Client cl1 = new Client(clientId, clientEmail, clientPassword, clientPermission);
 			   clients.add(cl1);	   
@@ -58,14 +58,14 @@ public class ClientDaoImpl implements ClientDao {
 		
 		try (Connection c = ConnectionUtil.getConnection();
 			PreparedStatement ps = c.prepareStatement(sql);) {
-			ps.setNString(1, email);
-			rs = ps.executeQuery(sql); 
+			ps.setString(1, email);
+			rs = ps.executeQuery(); 
 				
-				while (rs.next());
+				while (rs.next()) {
 				int id = rs.getInt("client_id");
 				Client cl1 = new Client();
 				cId = cl1.setClientId(id);				
-					
+				}	
 			} catch (SQLException e) {
 				log.error("Unable to retrieve client id" + e);
 			}
@@ -91,7 +91,7 @@ public class ClientDaoImpl implements ClientDao {
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);){
 				ps.setInt(1, id);
-				rs = ps.executeQuery(sql);
+				rs = ps.executeQuery();
 				
 				while(rs.next()) {
 					String userEmail = rs.getString("client_email");
@@ -123,7 +123,7 @@ public class ClientDaoImpl implements ClientDao {
 		try(Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);){
 				ps.setInt(1, id);
-				rs = ps.executeQuery(sql);
+				rs = ps.executeQuery();
 				
 				while(rs.next()) {
 					String uPass = rs.getString("client_password");
@@ -227,7 +227,7 @@ public class ClientDaoImpl implements ClientDao {
 				}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			log.error(" Unable to get permission" + e);
 		} finally {
 			try { if (rs!=null) {

@@ -1,0 +1,30 @@
+2020-03-02 18:34:42 ERROR EmployeeDaoImpl:69 method: getEmployeeId - Unable to get employee idorg.postgresql.util.PSQLException: ERROR: syntax error at or near ")"
+  Position: 51
+2020-03-02 20:08:50 ERROR ClientDaoImpl:70 method: getClientId - Unable to retrieve client idjava.sql.SQLFeatureNotSupportedException: Method org.postgresql.jdbc.PgPreparedStatement.setNString(int, String) is not yet implemented.
+2020-03-02 20:09:48 ERROR ClientDaoImpl:70 method: getClientId - Unable to retrieve client idorg.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2020-03-02 20:16:07 ERROR ClientDaoImpl:70 method: getClientId - Unable to retrieve client idorg.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2020-03-02 20:21:33 ERROR ClientDaoImpl:70 method: getClientId - Unable to retrieve client idorg.postgresql.util.PSQLException: Can't use query methods that take a query string on a PreparedStatement.
+2020-03-02 20:22:46 ERROR ClientDaoImpl:70 method: getClientId - Unable to retrieve client idorg.postgresql.util.PSQLException: ResultSet not positioned properly, perhaps you need to call next.
+2020-03-02 23:35:25 ERROR ReimbursementDaoImpl:77 method: getReimbursementId - Unable to get rem idorg.postgresql.util.PSQLException: ERROR: syntax error at or near ")"
+  Position: 52
+2020-03-03 08:58:23 ERROR ReimbursementDaoImpl:54 method: getReimbursement - Unable to pull client list
+org.postgresql.util.PSQLException: The column name rem_date_requested_date was not found in this ResultSet.
+	at org.postgresql.jdbc.PgResultSet.findColumn(PgResultSet.java:2593)
+	at org.postgresql.jdbc.PgResultSet.getString(PgResultSet.java:2467)
+	at com.revature.dao.ReimbursementDaoImpl.getReimbursement(ReimbursementDaoImpl.java:39)
+	at com.revature.service.ReimbursementService.getReimbursement(ReimbursementService.java:18)
+	at com.revature.utli.Project1Driver.main(Project1Driver.java:49)
+2020-03-03 08:59:28 ERROR ReimbursementDaoImpl:54 method: getReimbursement - Unable to pull client list
+org.postgresql.util.PSQLException: The column name rem_requested_date was not found in this ResultSet.
+	at org.postgresql.jdbc.PgResultSet.findColumn(PgResultSet.java:2593)
+	at org.postgresql.jdbc.PgResultSet.getString(PgResultSet.java:2467)
+	at com.revature.dao.ReimbursementDaoImpl.getReimbursement(ReimbursementDaoImpl.java:39)
+	at com.revature.service.ReimbursementService.getReimbursement(ReimbursementService.java:18)
+	at com.revature.utli.Project1Driver.main(Project1Driver.java:49)
+2020-03-03 09:00:39 ERROR ReimbursementDaoImpl:54 method: getReimbursement - Unable to pull client list
+org.postgresql.util.PSQLException: The column name assigned_manger was not found in this ResultSet.
+	at org.postgresql.jdbc.PgResultSet.findColumn(PgResultSet.java:2593)
+	at org.postgresql.jdbc.PgResultSet.getInt(PgResultSet.java:2485)
+	at com.revature.dao.ReimbursementDaoImpl.getReimbursement(ReimbursementDaoImpl.java:43)
+	at com.revature.service.ReimbursementService.getReimbursement(ReimbursementService.java:18)
+	at com.revature.utli.Project1Driver.main(Project1Driver.java:49)

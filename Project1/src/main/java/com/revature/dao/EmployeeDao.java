@@ -17,5 +17,6 @@ public interface EmployeeDao {
 	public Employee createEmployeeByFunction(Employee e1);
 	public Employee updateEmployeeManagerByFunction(Employee e1);
     public int deleteEmployee(int id);
+    
 	
 }

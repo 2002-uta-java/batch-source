@@ -33,7 +33,12 @@ h2 {
 #l2 {
     font-size: 18px;
     font-weight: 300;
+}
 
+#message-table {
+  text-align: center;
+  -ms-grid-column-align: center;
+  
 
 
 }

@@ -9,7 +9,7 @@ import com.revature.model.Client;
 public class ClientService {
 	
 	private ClientDao clientDao = new ClientDaoImpl();
-	private boolean result;
+	
 
 	public ClientService() {
 		super();
@@ -56,11 +56,11 @@ public class ClientService {
 		for (Client c : newList) {
 			if(c.getClientEmail() != null && c.getClientEmail().equals(email)) {
 				if(c.getClientPassword() != null && c.getClientPassword().equals(password)) {
-					return result;
+					return true;
 				} 
 			}
 		}
-		return result;
+		return false;
 	}
 	
 	public int verfiyClientId(int id) {
