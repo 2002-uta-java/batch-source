@@ -107,7 +107,7 @@
 						<div class="form-group row">
 							<label for="inputEmail" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
 							<div class="col-sm-10">
-							  <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+							  <input type="email" class="form-control" id="inputEmail" placeholder="Email" readonly>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -138,27 +138,73 @@
 	</div>
 
 
-	<!-- REIMBURSEMENT LIST ELEMENTS-->
     <h1>MANAGER HOMEPAGE</h1>
+
+	
+	<!-- REIMBURSEMENT TABLE ELEMENTS -->
 	<div class="panel panel-default" style="width: 50rem">
 	<div class="list-group">
+
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href="#all-reim" role="tab" data-toggle="tab">All</a></li>
-			<li><a href="#pending-reim" role="tab" data-toggle="tab">Pending</a></li>
-			<li><a href="#resolved-reim" role="tab" data-toggle="tab">Resolved</a></li>
+			<li class="active"><a href="#all-reim1" role="tab" data-toggle="tab">All</a></li>
+			<li><a href="#pending-reim1" role="tab" data-toggle="tab">Pending</a></li>
+			<li><a href="#resolved-reim1" role="tab" data-toggle="tab">Resolved</a></li>
 		</ul>
-		
+
 		<!-- LIST OF REIMBURSEMENTS FOR EACH TAB -->
 		<div class="tab-content">
-			<div class="tab-pane active" id="all-reim"></div>
-			<div class="tab-pane" id="pending-reim"></div>
-			<div class="tab-pane" id="resolved-reim"></div>
+
+			<div class="tab-pane active" id="all-reim1"> <!-- ALL TAB -->
+				<table class="table table-hover" id="reim-table">
+					<thead>
+						<tr>
+							<th>Amount</th>
+							<th>Information</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+
+					<tbody id="all-reim-table">
+						
+					</tbody> <!-- Data Here -->
+					
+				</table>
+			</div>
+			<div class="tab-pane" id="pending-reim1"> <!-- PENDING TAB -->
+				<table class="table table-hover" id="reim-table">
+					<thead>
+						<tr>
+							<th>Amount</th>
+							<th>Information</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+
+					<tbody id="pending-reim-table"></tbody> <!-- Data Here -->
+
+				</table>
+			</div>
+			<div class="tab-pane" id="resolved-reim1"> <!-- RESOLVED TAB -->
+				<table class="table table-hover" id="reim-table">
+					<thead>
+						<tr>
+							<th>Amount</th>
+							<th>Information</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+
+					<tbody id="resolved-reim-table"> </tbody> <!-- Data Here -->
+				</table>
+			</div>
+
 		</div>
 
-	</div>
-	</div>
-	
+		
+	  </div>
+	  </div>
+
 	<!-- MODAL REIMBURSEMENT TOOL --> <!-- also in viewemployees.js -->
 	<div class="modal fade" id="view-reimbursement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">

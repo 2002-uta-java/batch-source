@@ -221,9 +221,6 @@ function newReimbursement() {
     let new_amount = formInfo.elements[0].value;
     let new_purpose = formInfo.elements[1].value;
 
-    console.log(new_amount);
-    console.log(new_purpose);
-
     if (!new_amount) { // Invalid amount entry. Other validation handled in backend (negatives, etc.)
         badInput();
         return;

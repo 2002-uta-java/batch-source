@@ -179,7 +179,10 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
         let status = r.status;
         let eFullName = findEmployeeName(idEmployee, employeeNames);
 
-        let reimElement = document.createElement("a");
+        let reimElement = document.createElement("tr");
+        let d1 = document.createElement("td");
+        let d2 = document.createElement("td");
+        let d3 = document.createElement("td");
 
         // record data for future potential purposes.
         reimElement.setAttribute("id", "r" + id);
@@ -190,26 +193,44 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
         reimElement.setAttribute("data-idManager", idManager);
         reimElement.setAttribute("data-status", status);
         reimElement.setAttribute("data-eFullName", eFullName);
-        reimElement.setAttribute("href", "#");
-        reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
         if (status == "pending") { // Pending reimbursements can be resolved in modals.
             reimElement.setAttribute("data-target", "#view-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
-            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}`;
+            d1.innerHTML = "$" + `${amount}`;
+            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
+            d3.innerHTML = `${status}`;
+            reimElement.appendChild(d1);
+            reimElement.appendChild(d2);
+            reimElement.appendChild(d3);
         }
         else { // Resolved reimbursements need the manager who resolved it.
             let mFullName = findEmployeeName(idManager, employeeNames);
             reimElement.setAttribute("data-mFullName", mFullName);
-            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}  managerResolve: ${mFullName}`;
+            d1.innerHTML = "$" + `${amount}`;
+            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Approved by: " + `${mFullName}`;
+            d3.innerHTML = `${status}`;
+            reimElement.appendChild(d1);
+            reimElement.appendChild(d2);
+            reimElement.appendChild(d3);
         }
 
-        if (baseUrl == baseUrl1) {document.getElementById("all-reim").appendChild(reimElement);}
-        if (baseUrl == baseUrl2) {document.getElementById("pending-reim").appendChild(reimElement);}
-        if (baseUrl == baseUrl3) {document.getElementById("resolved-reim").appendChild(reimElement);}
+        if (baseUrl == baseUrl1) {document.getElementById("all-reim-table").appendChild(reimElement);}
+        if (baseUrl == baseUrl2) {document.getElementById("pending-reim-table").appendChild(reimElement);}
+        if (baseUrl == baseUrl3) {document.getElementById("resolved-reim-table").appendChild(reimElement);}
     }
 }
+
+/*
+<tr data-target="view-reimbursement" data-toggle="modal">
+    <td>Something6</td>
+    <td>something</td>
+    <td>credit account</td>
+</tr>
+*/
+
+
 
 function createEmployeeNameList(employees) {
     let employeeNames = []; // format: [ [id, fullName], [id, fullName], ...]

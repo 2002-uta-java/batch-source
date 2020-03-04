@@ -12,17 +12,6 @@ import com.revature.delegates.UserDelegate;
 import com.revature.delegates.ViewDelegate;
 
 public class RequestHelper {
-
-	/*
-	 *  /login -> returns Login.html view
-	 *  
-	 *  examples:
-	 *  /new -> returns NewBird.html view
-	 *  /directory -> returns Birdirectory.html
-	 *  /api/birds -> returns bird data
-	 *  /api/habitats -> returns habitat data
-	 *  is there a point to api stuff?
-	 */
 	
 	// All delegates here.
 	private ViewDelegate viewDelegate = new ViewDelegate();
