@@ -28,10 +28,7 @@ public class DAOUtilities {
 				e.printStackTrace();
 			}
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
-		}
-		
-		//If connection was closed then retrieve a new connection
-		if (connection.isClosed()){
+		} else {
 			System.out.println("getting new connection...");
 			connection = DriverManager.getConnection(URL, CONNECTION_USERNAME, CONNECTION_PASSWORD);
 		}

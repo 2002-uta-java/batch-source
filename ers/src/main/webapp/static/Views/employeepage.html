@@ -64,6 +64,9 @@
     </div>
     
     <div class="container-fluid" id="emTableDiv" style="margin-top: 30px" hidden=true>
+    	<div class="container-fluid">
+    		<h3>Employee Table</h3>
+    	</div>
         <table class="table" id="emTable">
             <thead>
                 <tr>
@@ -77,9 +80,12 @@
         </table>
     </div>
     
-    <div class="container-fluid" id="searchDiv" style="margin-top: 30px" hidden=true>
+    <div class="container-fluid" id="searchDiv" style="margin-top: 30px; margin-bottom: 30px" hidden=true>
     	<Input type="text" id="employeeSearchEmail" placeholder="Enter Employee Email">
     	<button type="button" class="btn btn-primary" id="search-btn">Search</button>
+    	<div class="container-fluid" id="semTableIntro" style="margin-top: 30px" hidden=true>
+    			<h3>Employee Information</h3>
+    	</div>
     	<table class="table" id="semTable" hidden=true>
             <thead>
                 <tr>
@@ -91,13 +97,17 @@
                 </tr>
             </thead>
         </table>
-        <table class="table" id="erTable" hidden=true>
+        <div class="container-fluid" id="erTableIntro" style="margin-top: 30px" hidden=true>
+    			<h3>Reimbursements Information</h3>
+    	</div>
+        <table class="table" id="erTable" style="margin-bottom: 30px" hidden=true>
             <thead>
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Status</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Time Submitted</th>
+                    <th scope="col">Employee Id</th>
                 </tr>
             </thead>
         </table>

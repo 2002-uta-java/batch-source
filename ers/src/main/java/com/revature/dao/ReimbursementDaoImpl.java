@@ -42,8 +42,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 				try {
 					if (stmt != null)
 						stmt.close();
-//					if (connection != null)
-//						connection.close();
+					if (connection != null)
+						connection.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -63,7 +63,7 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			String sql = "SELECT * FROM Reimbursment WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
 				re.setId(rs.getInt("id"));
@@ -78,8 +78,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -113,8 +113,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -143,8 +143,8 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -163,7 +163,7 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Reimbursment (amount, stage, timestamp, employee_id) VALUES (?, ?, ?, ?) WHERE id = ?";
+			String sql = "Update Reimbursment set amount=?, stage=?, timestamp=?, employee_id=? WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
 			Timestamp ts = (Timestamp) reimbursement.getTime();
@@ -181,15 +181,15 @@ public class ReimbursementDaoImpl implements ReimbursementDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		if (success == 0) {
-			throw new Exception("Insert Reimbursement failed: " + reimbursement);
+			throw new Exception("Update Reimbursement failed: " + reimbursement);
 		}
 	}
 

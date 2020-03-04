@@ -47,8 +47,26 @@ function employeeAjaxGet(url, callback) {
 	xhr.send();
 }
 
-function processReimbursement() {
-	
+function approvalAjaxGet(url, id) {
+	let xhr = new XMLHttpRequest;
+	xhr.open("Post", url);
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState == 4 && xhr.status == 200)
+			alert("Request Finished");
+	}
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    let requestBody = `id=${id}`;
+    xhr.send(requestBody);
+}
+
+function processReimbursement(id) {
+	const url = "http://localhost:8080/ers/processRequest";
+	approvalAjaxGet(url, id);
+}
+
+function denyReimbursement(id) {
+	const url = "http://localhost:8080/ers/denyRequest";
+	approvalAjaxGet(url, id);
 }
 
 
@@ -59,18 +77,13 @@ function displayReimbursements (xhr) {
 
 	for (let r of reimbursements) {
 		let newRow = document.createElement("tr");
-		
 		let time = new Date(r.time).toString();
+		newRow.innerHTML = `<td>${r.id}</td><td>${r.stage}</td><td>${r.amount}</td><td>${time}</td><td>${r.employeeId}</td>`;
 
-	    newRow.innerHTML = `<td>${r.id}</td><td>${r.stage}</td><td>${r.amount}</td><td>${time}</td><td>${r.employeeId}</td>`;
-
-	    table.appendChild(newRow);
 	    if (tokenArr[2] == "true") {
-	    	let newBtn = document.createElement("button");
-	    	newBtn.addEventListener("click", processReimbursment());
-	    	newBtn.class = "btn btn-secondary";
-	    	table.appendChild(newBtn);
+	    	newRow.innerHTML += "<button class='btn btn-secondary' id=" + r.id + " onclick='processReimbursement(this.id)'>Process Request</button> <button class='btn btn-secondary' id=" + r.id + " onclick='denyReimbursement(this.id)'>Deny Request</button>";
 	    }
+	    table.appendChild(newRow);
 	}
 }
 
@@ -107,12 +120,14 @@ function searchForEmployee(xhr) {
 	
 	let semTable = document.getElementById("semTable")
 	semTable.hidden = false;
+	document.getElementById("semTableIntro").hidden = false;
 	let newRow = document.createElement("tr");
     newRow.innerHTML = `<td>${employee.id}</td><td>${employee.fName}</td><td>${employee.lName}</td><td>${employee.email}</td><td>${employee.phone}`;
     semTable.appendChild(newRow);
 
     let erTable = document.getElementById("erTable");
     erTable.hidden = false;
+    document.getElementById("erTableIntro").hidden = false;
 	
 	for (let r of reimbursements) {
 		if (r.employeeId == employee.id) {

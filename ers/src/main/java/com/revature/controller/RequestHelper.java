@@ -46,6 +46,12 @@ public class RequestHelper {
 		case "/addReimbursement":
 			reimbursement.addReimbursement(req, res);
 			break;
+		case "/processRequest":
+			reimbursement.processReimbursement(req, res);
+			break;
+		case "/denyRequest":
+			reimbursement.denyReimbursement(req, res);
+			break;
 		default:
 			res.sendError(405);
 		}

@@ -62,4 +62,20 @@ public class ReimbursementDelegate {
 		Reimbursement re = new Reimbursement(amount, "Processing", time, eid);
 		rdao.addReimbursement(re);
 	}
+
+	public void processReimbursement(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(req.getParameter("id"));
+		Reimbursement re = rdao.getReimbursement(id);
+		re.setStage("Complete");
+		rdao.updateReimbursement(re);
+	}
+
+	public void denyReimbursement(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// TODO Auto-generated method stub
+		int id = Integer.parseInt(req.getParameter("id"));
+		Reimbursement re = rdao.getReimbursement(id);
+		re.setStage("Denied");
+		rdao.updateReimbursement(re);
+	}
 }

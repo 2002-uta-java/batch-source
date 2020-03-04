@@ -43,8 +43,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -81,8 +81,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -119,8 +119,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -154,8 +154,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -184,15 +184,15 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		if (success == 0) {
-			throw new Exception("Delete Employee faile: " + id);
+			throw new Exception("Delete Employee failed: " + id);
 		}
 	}
 
@@ -204,7 +204,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "Update Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?";
+			String sql = "Update Employee firstname=?, lastname=?, email=?, phone=?, password=?, isManager=? WHERE id = ?";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());
@@ -222,8 +222,8 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 			try {
 				if (stmt != null)
 					stmt.close();
-//				if (connection != null)
-//					connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
