@@ -27,7 +27,7 @@ public class UserServiceTest {
 		when(ud.getUserByUsername("ingarcia")).thenReturn(new User("ingarcia", "Israel", "Garcia", "MyNewPassword", false));
 		User u = new User("ingarcia", "Israel", "Garcia", "MyNewPassword", false);
 		
-		assertEquals(u, us.getUserByUsername("israel"));
+		assertEquals(u, us.getUserByUsername("ingarcia"));
 	}
 	
 	@Test
