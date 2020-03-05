@@ -11,9 +11,9 @@ function loadPage() {
     }
 
     // Clear everything.
-    clearList("all-reim");
-    clearList("pending-reim");
-    clearList("resolved-reim");
+    clearList("all-reim-table");
+    clearList("pending-reim-table");
+    clearList("resolved-reim-table");
 
     // Reload.
     let baseUrl1 = "http://localhost:8080/Project1/api/users/" + id; // current user
@@ -163,6 +163,20 @@ function continueLoadReimbursements(xhr, reimbs) {
 
     }
 
+}
+
+function addStatusImage(status) {
+    let width = 80;
+    if (status == "pending") {
+        return `<img src='static/Images/pending.png' alt='Pending' width='${width}'></img>`;
+    }
+    else if (status == "approved") {
+        return `<img src='static/Images/approved.png' alt='Approved' width='${width}'></img>`;
+    }
+    else if (status == "rejected") {
+        return `<img src='static/Images/rejected.png' alt='Rejected' width='${width}'></img>`;
+    }
+    return "invalid status";
 }
 
 function createEmployeeNameList(employees) {

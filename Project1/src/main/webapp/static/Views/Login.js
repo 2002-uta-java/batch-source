@@ -30,6 +30,3 @@ function requestLogin(){
 
 // If submit button is pressed. send an ajax get request for password authentication i guess.
 document.getElementById("login-btn").addEventListener("click", requestLogin);
-
-
-// If new user button is pressed, send a GET to load a new "Create User" page.

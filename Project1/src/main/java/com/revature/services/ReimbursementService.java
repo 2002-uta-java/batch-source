@@ -17,7 +17,7 @@ public class ReimbursementService {
 		if (amount < 0) {
 			return false;
 		}
-		if (amount > 1000000) { // no greater than a million for float edge case purposes
+		if (amount > 9999.99) { // no greater than a SQL max (numeric 6, 2)
 			return false;
 		}
 		return true;
