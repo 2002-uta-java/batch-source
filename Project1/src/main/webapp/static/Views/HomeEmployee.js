@@ -43,13 +43,27 @@ async function loadUser(xhr) {
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
 
+    // Load profile picture.
+    renderProfilePicture(user.gender);
+
     // Load profile information (view profile button).
     document.getElementById("modal-name").innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("modal-email").innerHTML = `${user.email}`;
     document.getElementById("modal-position").innerHTML = `${user.position}`;
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
-    // TODO: picture depending on gender (id=) (is also in homemanager.js) // also in all other htmls
+}
+
+function renderProfilePicture(gender) {
+    let pp = document.getElementById("profile-picture");
+    let width = 150;
+
+    if (gender == "male") {
+        pp.innerHTML = `<img src='static/Images/male.png' alt='Picture not found' width='${width}'>`;
+    }
+    else if (gender == "female") {
+        pp.innerHTML = `<img src='static/Images/female.png' alt='Picture not found' width='${width}'>`;
+    }
 }
 
 // requestEmployeeReimbursements AJAX helper.
@@ -105,7 +119,14 @@ function continueLoadReimbursements(xhr, reimbs) {
 
         // Bug fix: Apparently need two separate elements to attach to ALL and PENDING/RESOLVED tabs.
         for (let i = 0; i < 2; i++) {
-            let reimElement = document.createElement("a");
+            let reimElement = document.createElement("tr");
+            let d1 = document.createElement("td");
+            let d2 = document.createElement("td");
+            let d3 = document.createElement("td");
+
+            d1.style.verticalAlign = "middle";
+            d2.style.verticalAlign = "middle";
+            d3.style.verticalAlign = "middle";
 
             // record data for future potential purposes.
             reimElement.setAttribute("id", "r" + id);
@@ -116,20 +137,27 @@ function continueLoadReimbursements(xhr, reimbs) {
             reimElement.setAttribute("data-idManager", idManager);
             reimElement.setAttribute("data-status", status);
             reimElement.setAttribute("data-eFullName", eFullName);
-            reimElement.setAttribute("href", "#");
-            reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
             if (status == "pending") { // Pending reimbursements must be added to ALL and PENDING
-                reimElement.innerHTML = `$${amount}  ${purpose}  ${status}`;
-                if (i == 0) {document.getElementById("all-reim").appendChild(reimElement);}
-                if (i == 1) {document.getElementById("pending-reim").appendChild(reimElement);}
+                d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
+                d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
+                d3.innerHTML = addStatusImage(status);
+                reimElement.appendChild(d1);
+                reimElement.appendChild(d2);
+                reimElement.appendChild(d3);
+                if (i == 0) {document.getElementById("all-reim-table").appendChild(reimElement);}
+                if (i == 1) {document.getElementById("pending-reim-table").appendChild(reimElement);}
             }
             else { // Resolved reimbursements need the manager who resolved it + added to ALL and RESOLVED
                 let mFullName = findEmployeeName(idManager, employeeNames);
-                reimElement.setAttribute("data-mFullName", mFullName);
-                reimElement.innerHTML = `$${amount}  ${purpose}  ${status}  managerResolve: ${mFullName}`;
-                if (i == 0) {document.getElementById("all-reim").appendChild(reimElement);}
-                if (i == 1) {document.getElementById("resolved-reim").appendChild(reimElement);}
+                d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
+                d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Resolved by: " + `${mFullName}`;
+                d3.innerHTML = addStatusImage(status);
+                reimElement.appendChild(d1);
+                reimElement.appendChild(d2);
+                reimElement.appendChild(d3);
+                if (i == 0) {document.getElementById("all-reim-table").appendChild(reimElement);}
+                if (i == 1) {document.getElementById("resolved-reim-table").appendChild(reimElement);}
             }
         }
 

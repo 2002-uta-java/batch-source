@@ -117,7 +117,7 @@ function renderProfilePictureList(gender) {
         return `<img src='static/Images/female.png' alt='Picture not found' width='${width}'>`;
     }
 
-    return "invalid gender"
+    return "<span>invalid gender</span>"
 }
 
 function requestEmployeeReimbursements(eId) {
