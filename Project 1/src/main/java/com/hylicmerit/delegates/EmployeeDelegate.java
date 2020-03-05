@@ -3,6 +3,8 @@ package com.hylicmerit.delegates;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import com.hylicmerit.service.EmployeeService;
 
 public class EmployeeDelegate {
 	private EmployeeService es = new EmployeeService();
+	private static final Logger logger = LogManager.getLogger(EmployeeDelegate.class.getName());
 	
 	public void getAllEmployees(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		List<Employee> employees = es.getAllEmployees();
@@ -37,14 +40,19 @@ public class EmployeeDelegate {
 		String birthday = request.getParameter("birthday");
 		//get bio from request parameter
 		String bio = request.getParameter("bio");
+		//get image from request parameter
+		String image = request.getParameter("image");
 		//get employee based on given email
 		Employee e = es.getEmployeeById(email);
 		//set new bio
 		e.setBio(bio);
 		//set new birthday
 		e.setBirthday(birthday);
+		//set new image
+		e.setImage(image);
 		//update employee
 		if(es.updateEmployee(e)) {
+			logger.info("Employee successfully updated.");
 			response.setStatus(200);
 			response.setHeader("Data", new ObjectMapper().writeValueAsString(e));
 		} else {

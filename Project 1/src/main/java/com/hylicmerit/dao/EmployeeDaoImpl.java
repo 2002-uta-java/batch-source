@@ -28,8 +28,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String bday = rs.getString("birthday");
 				String role = rs.getString("role");
 				String manager = rs.getString("reports_to");
+				String image = rs.getString("image");
 
-				Employee e = new Employee(email, password, name, bio, bday, role, manager);
+				Employee e = new Employee(email, password, name, bio, bday, role, manager, image);
 				employees.add(e);
 			}
 
@@ -54,8 +55,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String bday = rs.getString("birthday");
 				String role = rs.getString("role");
 				String manager = rs.getString("reports_to");
+				String image = rs.getString("image");
 
-				e = new Employee(email, password, name, bio, bday, role, manager);
+				e = new Employee(email, password, name, bio, bday, role, manager, image);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();

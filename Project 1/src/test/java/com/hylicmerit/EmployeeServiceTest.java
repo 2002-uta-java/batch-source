@@ -27,7 +27,8 @@ public class EmployeeServiceTest {
 	public void getEmployeeByIdValid() {
 		Employee expected = new Employee(
 				"saul@gmail.com", "1234", "Saul Quintero", 
-				null, "11/05/1998", "employee", "mila@gmail.com");
+				null, "11/05/1998", "employee", "mila@gmail.com", 
+				"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
 		String email = "saul@gmail.com";
 		assertEquals(expected, es.getEmployeeById(email));
 	}

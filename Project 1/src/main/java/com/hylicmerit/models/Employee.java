@@ -11,6 +11,7 @@ public class Employee implements Serializable{
 	private String birthday;
 	private String role;
 	private String manager;
+	private String image;
 
 	public Employee() {
 		super();
@@ -18,7 +19,7 @@ public class Employee implements Serializable{
 
 	public Employee (
 			String employee_email, String password, String name, 
-			String bio, String birthday, String role, String manager) {
+			String bio, String birthday, String role, String manager, String image) {
 		super();
 		this.employee_email = employee_email;
 		this.password = password;
@@ -27,6 +28,7 @@ public class Employee implements Serializable{
 		this.birthday = birthday;
 		this.role = role;
 		this.manager = manager;
+		this.image = image;
 	}
 
 	public String getEmployee_email() {
@@ -76,6 +78,14 @@ public class Employee implements Serializable{
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override

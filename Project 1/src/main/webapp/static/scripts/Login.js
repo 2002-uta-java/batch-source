@@ -1,3 +1,8 @@
+let register = () =>{
+	let url = "http://localhost:8080/project1/register";
+	window.location = url;
+}
+
 //redirect to home page if validation was successful
 let callback = (userJson) =>{
 	//set the token in session storage
@@ -13,13 +18,15 @@ let login = () =>{
 	let xhr = new XMLHttpRequest();
 	//callback function to check if validation was successful
 	xhr.onreadystatechange = () =>{
-		if(xhr.readyState == 4 && xhr.status == 200){
-			//gets Authorization header from response (from the Authorization delegate)
-			let auth = xhr.getResponseHeader("Authorization");
-			//checks if Authorization header is not empty (i.e. success)
-			if(auth.length !== 0){
-				//Login was successful, use callback
+		if(xhr.readyState == 4){
+			//Login was successful, use callback
+			if(xhr.status == 200){
+				//gets Authorization header from response (from the Authorization delegate)
+				let auth = xhr.getResponseHeader("Authorization");
 				callback(auth);
+			} else{
+				//login was not successful
+				alert("User details are incorrect.");
 			}
 		}
 	}

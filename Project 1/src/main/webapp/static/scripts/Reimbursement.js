@@ -43,26 +43,30 @@ let createReimbursement = (email) =>{
 	let amount = document.querySelector("#new-amount").value;
 	// get new reimbursment details
 	let details = document.querySelector("#new-details").value;
-	// ajax query to create reimbursement
-	let xhr = new XMLHttpRequest();
-	// refresh home page if successful
-	xhr.onreadystatechange = () =>{
-		if(xhr.readyState === 4 && xhr.status === 200){
-			window.location = home;
+	//validate input
+	if(!isNaN(Math.floor(amount))){
+		// ajax query to create reimbursement
+		let xhr = new XMLHttpRequest();
+		// refresh home page if successful
+		xhr.onreadystatechange = () =>{
+			if(xhr.readyState === 4 && xhr.status === 200){
+				window.location = home;
+			}
 		}
+		// set data in parameters
+		url += `?amount=${amount}&details=${details}&email=${email}`;
+		// set post request and url
+		xhr.open("POST", url);
+		// send request
+		xhr.send();
+	} else{
+		alert("Please enter a valid amount.");
 	}
-	// set data in parameters
-	url += `?amount=${amount}&details=${details}&email=${email}`;
-	// set post request and url
-	xhr.open("POST", url);
-	// send request
-	xhr.send();
 }
 
 let changeReimbursementLayout = () =>{
 	//get user from user storage
 	let user = JSON.parse(sessionStorage.getItem("token"));
-	console.log(user);
 	// get new reimbursement div
 	let newRmb = document.querySelector("#new-rmb");
 	// set new layout for input
@@ -71,9 +75,9 @@ let changeReimbursementLayout = () =>{
 		<h4>New Reimbursement</h4>
 		<hr>
 		<em>Amount:</em>
-		<input type="text" id="new-amount">
+		<input type="text" id="new-amount" maxlength="17">
 		<em>Details:</em>
-		<input type="text" id="new-details">
+		<input type="text" id="new-details" maxlength="60">
 	`;
 	// create update button
 	let updateBtn = document.createElement("div");
@@ -83,7 +87,7 @@ let changeReimbursementLayout = () =>{
 	`
 		<div id="submit-rmb" class="button fancy-button small">
 			<div class="slide"></div>
-			<a style="font-size:14px;">Update</a>
+			<a style="font-size:14px;">Submit</a>
 		</div>
 	`;
 	// add click event listener

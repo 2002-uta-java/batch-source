@@ -9,6 +9,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hylicmerit.models.Employee;
 import com.hylicmerit.models.Reimbursement;
@@ -18,6 +21,7 @@ import com.hylicmerit.service.ReimbursementService;
 public class ReimbursementDelegate {
 	private ReimbursementService rs = new ReimbursementService();
 	private EmployeeService es = new EmployeeService();
+	private static final Logger logger = LogManager.getLogger(ReimbursementDelegate.class.getName());
 	public ReimbursementDelegate() {
 		super();
 	}
@@ -53,6 +57,7 @@ public class ReimbursementDelegate {
 		r.setStatus(status);
 		//update reimbursement in database
 		rs.updateReimbursement(r);
+		logger.info("Reimbursement successfully updated.");
 		//set success status
 		response.setStatus(200);
 	}
@@ -73,6 +78,7 @@ public class ReimbursementDelegate {
 		Reimbursement r = new Reimbursement(email, e.getManager(), "Pending", details, formatter.format(date), amount);
 		//create reimbursement in database
 		rs.createReimbursement(r);
+		logger.info("Reimbursement successfully created.");
 		//set success status
 		response.setStatus(200);
 	}

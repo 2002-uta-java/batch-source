@@ -70,7 +70,8 @@ public class RequestHelper {
 			case "employee":{
 				if(request.getParameterMap().containsKey("bio") &&
 						request.getParameterMap().containsKey("birthday") &&
-						request.getParameterMap().containsKey("email")) {
+						request.getParameterMap().containsKey("email") &&
+						request.getParameterMap().containsKey("image")) {
 					//update employee
 					ed.updateEmployee(request, response);
 				} else {
