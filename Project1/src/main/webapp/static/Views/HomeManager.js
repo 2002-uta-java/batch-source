@@ -54,7 +54,6 @@ async function loadPage(xhr){
     document.getElementById("modal-position").innerHTML = `${user.position}`;
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
-    // TODO: picture depending on gender (id=) (is also in viewemployees.js)
 
     // Load reimbursement information
     requestReimbursements();

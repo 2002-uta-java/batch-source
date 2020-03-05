@@ -11,8 +11,8 @@ function loadPage() {
 
     // Clear everything.
     clearText("reim-heading");
-    clearList("employees");
-    clearList("managers");
+    clearList("employees-table");
+    clearList("managers-table");
     clearList("all-reim");
 
     // Reload.
@@ -43,13 +43,27 @@ function loadUser(xhr) {
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
 
+    // Load profile picture.
+    renderProfilePicture(user.gender);
+
     // Load profile information (view profile button).
     document.getElementById("modal-name").innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("modal-email").innerHTML = `${user.email}`;
     document.getElementById("modal-position").innerHTML = `${user.position}`;
     document.getElementById("modal-gender").innerHTML = `${user.gender}`;
     document.getElementById("modal-id").innerHTML = `${user.id}`;
-    // TODO: picture depending on gender (id=) (is also in homemanager.js)
+}
+
+function renderProfilePicture(gender) {
+    let pp = document.getElementById("profile-picture");
+    let width = 150;
+
+    if (gender == "male") {
+        pp.innerHTML = `<img src='static/Images/male.png' alt='Picture not found' width='${width}'>`;
+    }
+    else if (gender == "female") {
+        pp.innerHTML = `<img src='static/Images/female.png' alt='Picture not found' width='${width}'>`;
+    }
 }
 
 function loadEmployees(xhr) {
@@ -63,7 +77,10 @@ function loadEmployees(xhr) {
         let position = e.position;
         let fullName = e.firstName + " " + e.lastName;
         let gender = e.gender;
-        let emplElement = document.createElement("a");
+
+        let emplElement = document.createElement("tr");
+        let d1 = document.createElement("td");
+        let d2 = document.createElement("td");
 
         // record data for future potential purposes.
         emplElement.setAttribute("id", "e" + id);
@@ -72,20 +89,34 @@ function loadEmployees(xhr) {
         emplElement.setAttribute("data-position", position);
         emplElement.setAttribute("data-fullName", fullName);
         emplElement.setAttribute("data-gender", gender);
-        emplElement.setAttribute("href", "#");
-        emplElement.setAttribute("class", "list-group-item list-group-item-action");
 
-        emplElement.innerHTML = "[PICTURE] " + `${fullName}  ${email}  ${position}  ${id}`;
+        d1.innerHTML = renderProfilePicture(gender);
+        d2.innerHTML = `<b>${fullName}</b><br>Email: ${email}<br>Employee Id: ${id}`;
+        emplElement.appendChild(d1);
+        emplElement.appendChild(d2);
 
         if (position == "employee") { // Employees can have their reimbursements shown.
             emplElement.setAttribute("onclick", "requestEmployeeReimbursements('e" + id + "')");
-            document.getElementById("employees").appendChild(emplElement);
+            document.getElementById("employees-table").appendChild(emplElement);
         }
         else if (position == "manager" && id != 1) { // Ignores dummy manager.
-            document.getElementById("managers").appendChild(emplElement);
+            document.getElementById("managers-table").appendChild(emplElement);
         }
 
     }    
+}
+
+function renderProfilePicture(gender) {
+    let width = 40;
+
+    if (gender == "male") {
+        return `<img src='static/Images/male.png' alt='Picture not found' width='${width}'>`;
+    }
+    else if (gender == "female") {
+        return `<img src='static/Images/female.png' alt='Picture not found' width='${width}'>`;
+    }
+
+    return "invalid gender"
 }
 
 function requestEmployeeReimbursements(eId) {
@@ -150,7 +181,14 @@ function continueLoadReimbursements(xhr, reimbs) {
         let status = r.status;
         let eFullName = findEmployeeName(idEmployee, employeeNames);
 
-        let reimElement = document.createElement("a");
+        let reimElement = document.createElement("tr");
+        let d1 = document.createElement("td");
+        let d2 = document.createElement("td");
+        let d3 = document.createElement("td");
+
+        d1.style.verticalAlign = "middle";
+        d2.style.verticalAlign = "middle";
+        d3.style.verticalAlign = "middle";
 
         // record data for future potential purposes.
         reimElement.setAttribute("id", "r" + id);
@@ -161,24 +199,46 @@ function continueLoadReimbursements(xhr, reimbs) {
         reimElement.setAttribute("data-idManager", idManager);
         reimElement.setAttribute("data-status", status);
         reimElement.setAttribute("data-eFullName", eFullName);
-        reimElement.setAttribute("href", "#");
-        reimElement.setAttribute("class", "list-group-item list-group-item-action");
 
         if (status == "pending") { // Pending reimbursements can be resolved in modals.
             reimElement.setAttribute("data-target", "#empl-reimbursement");
             reimElement.setAttribute("data-toggle", "modal");
             reimElement.setAttribute("onclick", "loadSingleReimbursement('r" + id + "')");
-            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}`;
+            d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
+            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
+            d3.innerHTML = addStatusImage(status);
+            reimElement.appendChild(d1);
+            reimElement.appendChild(d2);
+            reimElement.appendChild(d3);
         }
         else { // Resolved reimbursements need the manager who resolved it.
             let mFullName = findEmployeeName(idManager, employeeNames);
             reimElement.setAttribute("data-mFullName", mFullName);
-            reimElement.innerHTML = `$${amount}  ${purpose}  employee: ${eFullName}  ${status}  managerResolve: ${mFullName}`;
+            d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
+            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Resolved by: " + `${mFullName}`;
+            d3.innerHTML = addStatusImage(status);
+            reimElement.appendChild(d1);
+            reimElement.appendChild(d2);
+            reimElement.appendChild(d3);
         }
 
-        document.getElementById("reim-heading").innerHTML = eFullName; // Redundant but whatever.
+        document.getElementById("reim-heading").innerHTML = `${eFullName}'s Reimbursements`; // Redundant but whatever.
         document.getElementById("all-reim").appendChild(reimElement);
     }
+}
+
+function addStatusImage(status) {
+    let width = 80;
+    if (status == "pending") {
+        return `<img src='static/Images/pending.png' alt='Pending' width='${width}'></img>`;
+    }
+    else if (status == "approved") {
+        return `<img src='static/Images/approved.png' alt='Approved' width='${width}'></img>`;
+    }
+    else if (status == "rejected") {
+        return `<img src='static/Images/rejected.png' alt='Rejected' width='${width}'></img>`;
+    }
+    return "invalid status";
 }
 
 function createEmployeeNameList(employees) {
@@ -221,9 +281,10 @@ function loadSingleReimbursement(reimbHtmlId){
     document.getElementById("resolve-reimbursement-info").setAttribute("data-id", id);
     document.getElementById("resolve-reimbursement-info").setAttribute("data-idEmployee", idEmployee);
 
-    htmlAmount.innerHTML = amount;
+    htmlAmount.innerHTML = `$${amount}`;
     htmlName.innerHTML = fullName;
-    htmlPurpose.innerHTML = purpose;
+    htmlPurpose.innerHTML = `Purpose: ${purpose}`;
+    htmlId.innerHTML = `Reimbursement Id: ${id}`;
 }
 
 // Helper function to clear the reimbursements lists.
