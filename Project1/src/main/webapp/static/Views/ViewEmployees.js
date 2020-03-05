@@ -91,7 +91,7 @@ function loadEmployees(xhr) {
         emplElement.setAttribute("data-fullName", fullName);
         emplElement.setAttribute("data-gender", gender);
 
-        d1.innerHTML = renderProfilePicture(gender);
+        d1.innerHTML = renderProfilePictureList(gender);
         d2.innerHTML = `<b>${fullName}</b><br>Email: ${email}<br>Employee Id: ${id}`;
         emplElement.appendChild(d1);
         emplElement.appendChild(d2);
@@ -107,7 +107,7 @@ function loadEmployees(xhr) {
     }    
 }
 
-function renderProfilePicture(gender) {
+function renderProfilePictureList(gender) {
     let width = 70;
 
     if (gender == "male") {
