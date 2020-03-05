@@ -7,7 +7,9 @@ import java.sql.SQLException;
 public class ConnectionUtil {
 	
 	private static Connection connection;
-	
+	private ConnectionUtil() {
+		super();
+	}
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		String url = System.getenv("JDBC_DB_HOST");
 		String username = System.getenv("JDBC_DB_USER");

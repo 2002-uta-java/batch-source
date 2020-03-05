@@ -2,12 +2,17 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImplementation;
 import com.revature.model.Reimbursement;
 
 public class ReimbursementService {
 
+	private static Logger log = Logger.getRootLogger();
+	
+	
 	ReimbursementDao reimbursementDao = new ReimbursementDaoImplementation();
 
 	public List<Reimbursement> getReimbursement(String username) {
@@ -17,31 +22,21 @@ public class ReimbursementService {
 	public boolean createReimbursement(Reimbursement r) {
 		int reimbursementCreated = reimbursementDao.createReimbursement(r);
 		if(reimbursementCreated != 0) {
-			System.out.println("Reimbursement creation successful");
+			log.info("Reimbursement creation successful");
 			return true;
 		}
-		System.out.println("Unable to create, please try again\n");
+		log.error("Unable to create, please try again\n");
 		return false;
 	}
 
 	public boolean updateReimbursement(Reimbursement r, String managerUsername) {
 		int reimbursementUpdated = reimbursementDao.updateReimbursement(r, managerUsername);
-		System.out.println(managerUsername);
+		log.debug(managerUsername);
 		if(reimbursementUpdated != 0) {
-			System.out.println("Reimbursement updated successful");
+			log.info("Reimbursement updated successful");
 			return true;
 		}
-		System.out.println("Unable to update, please try again\n");
-		return false;
-	}
-
-	public boolean deleteReimbursement(Reimbursement r) {
-		int reimbursementDeleted = reimbursementDao.deleteReimbursement(r);
-		if(reimbursementDeleted != 0) {
-			System.out.println("Reimbursement deletion successful");
-			return true;
-		}
-		System.out.println("Unable to delete, please try again\n");
+		log.error("Unable to update, please try again\n");
 		return false;
 	}
 

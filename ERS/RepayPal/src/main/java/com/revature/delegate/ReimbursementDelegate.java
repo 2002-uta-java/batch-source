@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Reimbursement;
 import com.revature.service.ReimbursementService;
@@ -14,10 +16,12 @@ import com.revature.service.ReimbursementService;
 public class ReimbursementDelegate {
 
 	private ReimbursementService rs = new ReimbursementService();
-
+	
+	private static Logger log = Logger.getRootLogger();
+	
 	public void getReimbursemets(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
-		System.out.println(requestPath);
+		log.debug(requestPath);
 		if (requestPath.length() == "/api/reimbursements".length()) {
 			List<Reimbursement> reimbursements = rs.getReimbursements();
 			try (PrintWriter pw = response.getWriter();) {
@@ -25,7 +29,7 @@ public class ReimbursementDelegate {
 			}
 		} else {
 			String username = request.getServletPath().substring(20);
-			System.out.println(username);
+			log.debug(username);
 			if (username.matches("\\w+")) {
 				List<Reimbursement> r = rs.getReimbursement(username);
 				if (r == null) {
@@ -43,12 +47,12 @@ public class ReimbursementDelegate {
 
 	public void addReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String username = request.getParameter("username");
-		double amount = Double.valueOf(request.getParameter("amount"));
+		double amount = Double.parseDouble(request.getParameter("amount"));
 		String description = request.getParameter("description");
-		System.out.println(username + " " + amount + " " + description);
+		log.debug(username + " " + amount + " " + description);
 		
 		Reimbursement r = new Reimbursement(username, amount, description);
-		System.out.println(r);
+		log.debug(r);
 		if(rs.createReimbursement(r)) {
 			response.setStatus(200);
 		} else {
@@ -60,9 +64,9 @@ public class ReimbursementDelegate {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String status = request.getParameter("status");
 		String username = request.getParameter("username");
-		System.out.println(username + " " + status + " " + id);
+		log.debug(username + " " + status + " " + id);
 		Reimbursement r = rs.getReimbursementById(id);
-		System.out.println(r);
+		log.debug(r);
 		r.setResolved(status);
 		r.setStatus(status);
 		if(rs.updateReimbursement(r, username)) {

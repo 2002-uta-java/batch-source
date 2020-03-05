@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.revature.delegate.AuthDelegate;
 import com.revature.delegate.ReimbursementDelegate;
 import com.revature.delegate.UserDelegate;
@@ -13,6 +15,8 @@ import com.revature.delegate.ViewDelegate;
 
 public class RequestHelper {
 
+	private static Logger log = Logger.getRootLogger();
+	
 	public RequestHelper() {
 		super();
 	}
@@ -41,7 +45,7 @@ public class RequestHelper {
 			}
 			
 			String record = path.substring(5);
-			System.out.println(record);
+			log.info(record);
 			if(record.startsWith("users")) {
 				userDelegate.getUsers(request, response);
 			} 
@@ -60,22 +64,22 @@ public class RequestHelper {
 
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
-		System.out.println(path);
+		log.info(path);
 		switch(path) {
 		case "/login":
-			System.out.println("In log in part");
+			log.info("In log in part");
 			authDelegate.authenticate(request, response);
 			break;
 		case "/update-user":
-			System.out.println("Updating user");
+			log.info("Updating user");
 			userDelegate.updateUser(request, response);
 			break;
 		case "/add-reimbursement":
-			System.out.println("Adding reimbursement");
+			log.info("Adding reimbursement");
 			reimbursementDelegate.addReimbursement(request, response);
 			break;
 		case "/update-reimbursement":
-			System.out.println("Updating reimbursement");
+			log.info("Updating reimbursement");
 			reimbursementDelegate.updateReimbursement(request, response);
 			break;
 		default:

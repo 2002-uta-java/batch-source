@@ -15,7 +15,7 @@ import org.apache.catalina.servlets.DefaultServlet;
 public class FrontController extends DefaultServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private RequestHelper requestHelper = new RequestHelper();
+	private static RequestHelper requestHelper = new RequestHelper();
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -29,20 +29,38 @@ public class FrontController extends DefaultServlet {
 	 * @throws IOException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
-		if(path.startsWith("/static/"))
-			super.doGet(request, response);
-		else
-			requestHelper.processGet(request, response);  //route GET request to appropriate delegate
+		if(path.startsWith("/static/")) {
+			try{
+				super.doGet(request, response);
+			}
+			catch(IOException | ServletException e) {
+				e.getStackTrace();
+			}
+		}
+		else {
+			try {
+				requestHelper.processGet(request, response);  //route GET request to appropriate delegate
+			}
+			catch(IOException | ServletException e) {
+				e.getStackTrace();
+			}
+		}
 	}
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		requestHelper.processPost(request, response);
+		try {
+			requestHelper.processPost(request, response);
+		}
+		catch(IOException e) {
+			e.getStackTrace();
+		}
 	}
-	
 	
 }

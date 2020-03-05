@@ -8,10 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.model.User;
 import com.revature.util.ConnectionUtil;
 
 public class UserDaoImplementation implements UserDao{
+	
+	private static Logger log = Logger.getRootLogger();
 	
 	@Override
 	public User getUserByUsername(String username) {
@@ -32,18 +36,15 @@ public class UserDaoImplementation implements UserDao{
 				user.setManager((rs.getInt("isManager") == 1));
 			}
 		} 
-		catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		} 
 		finally {
 			if(rs!=null) {
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					//e.printStackTrace();
+					log.error(e.getStackTrace());
 				}
 			}
 		}
@@ -66,11 +67,8 @@ public class UserDaoImplementation implements UserDao{
 			ps.setInt(5, x);
 			userCreated = ps.executeUpdate();
 		} 
-		catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		}
 		
 		return userCreated;
@@ -92,11 +90,8 @@ public class UserDaoImplementation implements UserDao{
 			
 			userUpdated = ps.executeUpdate();
 		} 
-		catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		}
 		
 		return userUpdated;
@@ -107,29 +102,23 @@ public class UserDaoImplementation implements UserDao{
 		String sql = "select * from employee";
 		List<User> users = new ArrayList<>();
 		User user;
-		System.out.println(sql);
-	try (Connection c = ConnectionUtil.getConnection();Statement s = c.createStatement();ResultSet rs = s.executeQuery(sql)){
-		while(rs.next()) {
-			user = new User();
-			user.setUsername(rs.getString("username"));
-			user.setFirstName(rs.getString("first_name"));
-			user.setLastName(rs.getString("last_name"));
-			user.setPassword(rs.getString("pwd"));
-			user.setManager((rs.getInt("isManager") == 1));
-			System.out.println(user);
-			users.add(user);
-			System.out.println(users);
-		}
-		
-		
-	} 
-	catch (SQLException e) {
-		//e.printStackTrace();
-	} catch (ClassNotFoundException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-	
-	return users;
+		log.debug(sql);
+		try (Connection c = ConnectionUtil.getConnection();Statement s = c.createStatement();ResultSet rs = s.executeQuery(sql)){
+			while(rs.next()) {
+				user = new User();
+				user.setUsername(rs.getString("username"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("last_name"));
+				user.setPassword(rs.getString("pwd"));
+				user.setManager((rs.getInt("isManager") == 1));
+				log.debug(user);
+				users.add(user);
+				log.debug(users);
+			}	
+		} 
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
+		} 
+		return users;
 	}
 }

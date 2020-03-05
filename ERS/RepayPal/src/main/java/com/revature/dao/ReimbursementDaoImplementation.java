@@ -8,11 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.model.Reimbursement;
 import com.revature.util.ConnectionUtil;
 
 public class ReimbursementDaoImplementation implements ReimbursementDao{
 
+	private static Logger log = Logger.getRootLogger();
+	
 	@Override
 	public List<Reimbursement> getReimbursements() {
 		String sql = "select * from reimbursement";
@@ -26,11 +30,8 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 			}
 			
 		} 
-		catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		}
 
 		return reimbursements;
@@ -51,18 +52,16 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved")));
 			}
 			
-		} catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} finally {
+		} catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
+		} 
+		finally {
 			try {
 				if(rs!=null) {
 					rs.close();
 				}
 			} catch (SQLException e) {
-				//e.printStackTrace();
+				log.error(e.getStackTrace());
 			}
 		}
 		
@@ -84,18 +83,15 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 						rs.getDouble("amount"), rs.getString("description"), rs.getString("resolved"));
 			}
 			
-		} catch (SQLException e) {
-			//e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		} finally {
 			try {
 				if(rs!=null) {
 					rs.close();
 				}
 			} catch (SQLException e) {
-				//e.printStackTrace();
+				log.error(e.getStackTrace());
 			}
 		}
 		
@@ -115,11 +111,8 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 				return reimbursementCreated;
 				
 			} 
-			catch (SQLException e) {
-				//e.printStackTrace();
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			catch (SQLException | ClassNotFoundException e) {
+				log.error(e.getStackTrace());
 			}
 		}
 		return reimbursementCreated;
@@ -130,30 +123,18 @@ public class ReimbursementDaoImplementation implements ReimbursementDao{
 		String sql = "update reimbursement set status = ?, resolved = ? where id = ?";
 		int reimbursementUpdated = 0;
 		String string = r.getResolved()+" by: "+ managerUsername;
-		System.out.println(string);
+		log.debug(string);
 		try(Connection c = ConnectionUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
 			ps.setString(1, r.getStatus());
 			ps.setString(2, string);
 			ps.setInt(3, r.getId());
 			reimbursementUpdated = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} 
+		catch (SQLException | ClassNotFoundException e) {
+			log.error(e.getStackTrace());
 		}
 		
 		return reimbursementUpdated;
-	}
-
-	@Override
-	public int deleteReimbursement(Reimbursement r) {
-		return 0;
-	}
-
-	@Override
-	public Reimbursement createReimbursementWithDefaultManager(Reimbursement r) {
-		return null;
 	}
 }

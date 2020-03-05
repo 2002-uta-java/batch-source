@@ -2,13 +2,17 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImplementation;
 import com.revature.model.User;
 
 public class UserService {
 
-private  UserDao userDao = new UserDaoImplementation();
+	private  UserDao userDao = new UserDaoImplementation();
+	
+	private static Logger log = Logger.getRootLogger();
 	
 	public User getUserByUsername(String username) {
 		return userDao.getUserByUsername(username);
@@ -20,11 +24,11 @@ private  UserDao userDao = new UserDaoImplementation();
 			if(password.equals(user.getPassword()))
 				return user;
 			else {
-				System.out.println("\nInvalid username or password.\n");
+				log.error("\nInvalid username or password.\n");
 				return null;
 			}
 		}
-		System.out.println("Username not found\n");
+		log.error("Username not found\n");
 		return null;
 	}
 	
@@ -35,32 +39,22 @@ private  UserDao userDao = new UserDaoImplementation();
 		List<User> users = userDao.getUsers();
 		for(User user: users) {
 			if(u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())) {
-				System.out.println("User already exists, please sign in...");
+				log.error("User already exists, please sign in...");
 				return false;
 			}	
 		}
 		int userCreated = userDao.createUser(u);
-		if(userCreated != 0) {
-			return true;
-		}
-		return false;
+		return (userCreated != 0);
 	}
 	
 	public boolean updateUser(User u) {
 		int userUpdated = userDao.updateUser(u);
-		if(userUpdated != 0) {
-			return true;
-		}
-		return false;
+		return (userUpdated != 0);
 	}
 	
 	public List<User> getUsers(){
 		List<User> users = userDao.getUsers();
-		System.out.println(users);
+		log.debug(users);
 		return users;
-	}
-
-	public boolean deleteUser(User u) {
-		return false;
 	}
 }

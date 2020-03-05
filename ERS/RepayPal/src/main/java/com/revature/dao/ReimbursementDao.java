@@ -11,6 +11,4 @@ public interface ReimbursementDao {
 	public Reimbursement getReimbursementById(int id);
 	public int createReimbursement(Reimbursement r);
 	public int updateReimbursement(Reimbursement r, String managerUsername);
-	public int deleteReimbursement(Reimbursement r);
-	public Reimbursement createReimbursementWithDefaultManager(Reimbursement r);
 }
