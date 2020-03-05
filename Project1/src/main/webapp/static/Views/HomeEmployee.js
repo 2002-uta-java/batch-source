@@ -151,7 +151,7 @@ function continueLoadReimbursements(xhr, reimbs) {
             else { // Resolved reimbursements need the manager who resolved it + added to ALL and RESOLVED
                 let mFullName = findEmployeeName(idManager, employeeNames);
                 d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
-                d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Resolved by: " + `${mFullName}`;
+                d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}`;
                 d3.innerHTML = addStatusImage(status);
                 reimElement.appendChild(d1);
                 reimElement.appendChild(d2);
