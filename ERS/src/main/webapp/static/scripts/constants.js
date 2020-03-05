@@ -73,6 +73,10 @@ const GET_ALL_PENDING_EXCEPT_ME = "/ERS/api/view/pending/all";
 const APPROVE_REQUEST = "/ERS/api/approvals/approve";
 // api request for rejecting requests (needs an /id of the reimbursement being rejected after)
 const REJECT_REQUEST = "/ERS/api/approvals/reject";
+// URI for page for manager to get all processed requests
+const ALL_PROCESSED_PAGE = "/ERS/all-processed";
+// URI for api to get all processed requests (for managers)
+const ALL_PROCESSED = "/ERS/api/view/processed/all";
 
 // field name for Reimbursement.amount
 const REIMB_AMOUNT = 'amount';
@@ -96,6 +100,8 @@ const REIMB_SUBMITDATE = 'submitDate';
 const REIMB_MANID = 'manId';
 // field name for Reimbursement.managerName
 const REIMB_MANAGERNAME = 'managerName';
+// field name for Reimbursement.empName
+const REIMB_EMPNAME = 'empName';
 
 // field name for Reimbursement.email
 const EMPL_EMAIL = 'email';

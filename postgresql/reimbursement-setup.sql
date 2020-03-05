@@ -32,20 +32,49 @@ language plpgsql
 as $$
 begin
 	return query select reimbs.reimb_id, reimbs.reimb_status, reimbs.submit_date, reimbs.amount, reimbs.description, reimbs.reimb_date, reimbs.reply_date, emp.empl_first_name, emp.empl_last_name 
-	from (select * from reimbursements r2 where r2.empl_id = fn_empl_id) as reimbs
+	from (select * from reimbursements r2 where r2.empl_id = fn_empl_id and r2.reimb_status != 1) as reimbs
 	inner join 
 	employees as emp 
 	on reimbs.reimb_man_id = emp.empl_id;
 end
 $$;
 
+create or replace function get_all_processed()
+returns table (	empl_first_name varchar(20), 
+	empl_last_name varchar(20), 
+	reimb_status int4,
+	submit_date date,
+	amount money,
+	description varchar(140),
+	reimb_date date,
+	reply_date date,
+	man_first_name varchar(20),
+	man_last_name varchar(20)
+)
+language plpgsql
+as $$
+begin
+	return query select emp.empl_first_name, emp.empl_last_name, processed.reimb_status, processed.submit_date, processed.amount, processed.description, processed.reimb_date, processed.reply_date, processed.man_first as man_first_name, processed.man_last as man_last_name
+	from (select reimbs.empl_id as r_empl_id, reimbs.reimb_status, reimbs.submit_date, reimbs.amount, reimbs.description, reimbs.reimb_date, reimbs.reply_date, man.empl_first_name as man_first, man.empl_last_name as man_last
+	from (select * from reimbursements r2 where r2.reimb_status != 1) as reimbs
+	inner join 
+	employees as man 
+	on reimbs.reimb_man_id = man.empl_id) as processed
+	inner join
+	employees as emp
+	on processed.r_empl_id = emp.empl_id;
+end
+$$;
+
 select * from get_reimbs_by_empl_id(1);
+select * from get_all_processed()
 
 drop table employees;
 
 drop table reimbursements;
 
 drop function get_reimbs_by_empl_id;
+drop function get_all_processed;
 
 insert
 	into

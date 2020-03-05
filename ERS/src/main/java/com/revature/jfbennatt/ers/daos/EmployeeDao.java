@@ -186,4 +186,12 @@ public interface EmployeeDao {
 	 */
 	public boolean rejectRequest(int manId, int reimbId, Date date);
 
+	/**
+	 * Returns all processed requests.
+	 * 
+	 * @return {@link List} of {@link Reimbursement} objects or null if there's an
+	 *         error (an empty list is not an error).
+	 */
+	public List<Reimbursement> getAllProcessedRequests();
+
 }

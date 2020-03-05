@@ -127,6 +127,12 @@ public class Constants {
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.APPROVALS
 							+ ApprovalDelegate.REJECT,
 					"api request for rejecting requests (needs an /id of the reimbursement being rejected after)");
+			printVariable(ps, "ALL_PROCESSED_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.ALL_PROCESSED,
+					"URI for page for manager to get all processed requests");
+			printVariable(ps, "ALL_PROCESSED",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.VIEW_REIMBURSEMENT_ROOT
+							+ ViewReimbursementsDelegate.ALL_PROCESSED,
+					"URI for api to get all processed requests (for managers)");
 
 			ps.println();
 			ps.println();

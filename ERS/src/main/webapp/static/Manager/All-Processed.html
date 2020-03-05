@@ -22,7 +22,8 @@
 <script type="text/javascript" src="/ERS/static/scripts/cookies.js"></script>
 <script type="text/javascript"
 	src="/ERS/static/scripts/Manager/nav-bar.js"></script>
-<script type="text/javascript" src="/ERS/static/scripts/home.js"></script>
+<script type="text/javascript"
+	src="/ERS/static/scripts/Manager/all-processed.js"></script>
 </head>
 <body>
 	<!-- the href's are set in javascript -->
@@ -35,7 +36,7 @@
 			class="flex-sm-fill text-sm-center nav-link active"
 			id="approve-requests">Approve Requests</a><a
 			class="flex-sm-fill text-sm-center nav-link active"
-			id="approve-requests">All Processed Requests</a> <a
+			id="all-processed">All Processed Requests</a> <a
 			class="flex-sm-fill text-sm-center nav-link active"
 			id="view-pending-link">Your Pending Requests</a><a
 			class="flex-sm-fill text-sm-center nav-link active"
@@ -44,6 +45,23 @@
 			id="submit-reimb-link">Submit Reimbursement Request</a> <a
 			class="flex-sm-fill text-sm-center nav-link active" id="logout-link">Logout</a>
 	</nav>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Employee</th>
+				<th scope="col">Status</th>
+				<th scope="col">Date Submitted</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Description</th>
+				<th scope="col">Date of Expense</th>
+				<th scope="col">Date Approved/Denied</th>
+				<th scope="col">Manager</th>
+			</tr>
+		</thead>
+		<tbody id="reimbursement-table-body">
+		</tbody>
+	</table>
 
 </body>
 </html>

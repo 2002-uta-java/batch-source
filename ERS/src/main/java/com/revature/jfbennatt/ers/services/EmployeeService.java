@@ -324,4 +324,14 @@ public class EmployeeService {
 	public boolean rejectRequest(int manId, int reimbId) {
 		return empDao.rejectRequest(manId, reimbId, new Date());
 	}
+
+	/**
+	 * Returns all processed requests.
+	 * 
+	 * @return {@link List} of {@link Reimbursement} objects or null if there's an
+	 *         error (an empty list is not an error).
+	 */
+	public List<Reimbursement> getAllProcessedRequests() {
+		return empDao.getAllProcessedRequests();
+	}
 }

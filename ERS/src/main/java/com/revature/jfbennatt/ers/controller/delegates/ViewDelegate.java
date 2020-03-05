@@ -72,6 +72,11 @@ public class ViewDelegate extends Delegate {
 	 */
 	public static final String MANAGER_APPROVE_REQUESTS_PAGE = "/static/Manager/Approve-Requests.html";
 	/**
+	 * URI of static souce to manager's page to view all processed requests.
+	 */
+	public static final String MANAGER_ALL_PROCESSED_PAGE = "/static/Manager/All-Processed.html";
+	public static final String ALL_PROCESSED = "/all-processed";
+	/**
 	 * URI of resource for the manaer to approve requests
 	 */
 	public static final String APPROVE_REQUESTS = "/approve";
@@ -216,6 +221,9 @@ public class ViewDelegate extends Delegate {
 			break;
 		case APPROVE_REQUESTS:
 			request.getRequestDispatcher(MANAGER_APPROVE_REQUESTS_PAGE).forward(request, response);
+			break;
+		case ALL_PROCESSED:
+			request.getRequestDispatcher(MANAGER_ALL_PROCESSED_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

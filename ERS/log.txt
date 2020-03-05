@@ -1155,3 +1155,365 @@
 2020-03-05 04:04:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
 2020-03-05 04:04:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/nav-bar.js
 2020-03-05 04:04:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-05 04:12:25 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:12:25 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:25 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:25 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:25 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, magMxa/h9fXNrZvTW0GZwcbBXhBRTKrCt3IHwCLrsErSNdpkNwYY0veaIcTckjjNlM8nerK7r2YqtO+ZEWllIYugrUz1OjvUudxRgQ22bbU=
+2020-03-05 04:12:25 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-05 04:12:26 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=YC6yum9bzRrhFnikAiVpiwkjOKTXxPZ7ug34BZQ6mpt/u6oToymAzj3k5mnCle+I2flgZP5gO1WLBF/pbDGJ6D0CKwdM9rxp4E7v5RygIHE=, email=bennattj@gmail.com]
+2020-03-05 04:12:26 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:12:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/Home.html
+2020-03-05 04:12:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, magMxa/h9fXNrZvTW0GZwcbBXhBRTKrCt3IHwCLrsErSNdpkNwYY0veaIcTckjjNlM8nerK7r2YqtO+ZEWllIYugrUz1OjvUudxRgQ22bbU=
+2020-03-05 04:12:26 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=zu2OC+kag1tvi1qfT02NVD534W4n/YPFTlEIEBNPYxZRir4YsgsAZhB1Qs5RGDGLBCHuTwVO7tQ9W8AJj+DjLgLpODFNhaV+5q5mBBgrpls=, email=bennattj@gmail.com]
+2020-03-05 04:12:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:12:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-05 04:12:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/nav-bar.js
+2020-03-05 04:12:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-05 04:12:29 DEBUG Delegate:197 method: processRequest - Requesting: /all-processed
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, YC6yum9bzRrhFnikAiVpiwkjOKTXxPZ7ug34BZQ6mpt/u6oToymAzj3k5mnCle+I2flgZP5gO1WLBF/pbDGJ6D0CKwdM9rxp4E7v5RygIHE=
+2020-03-05 04:12:29 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=l/7I/PSb8x4eMRjbs8HgbuauIpRBqA/8Zr3F5x13rWa+6ofMalTVvSIpU+r+wQp4l7QI9xPqbfIebia30Hbf9c63SFD5+Lsfg8u4SkGIIVI=, email=bennattj@gmail.com]
+2020-03-05 04:12:29 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:12:29 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/All-Processed.html
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:29 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, YC6yum9bzRrhFnikAiVpiwkjOKTXxPZ7ug34BZQ6mpt/u6oToymAzj3k5mnCle+I2flgZP5gO1WLBF/pbDGJ6D0CKwdM9rxp4E7v5RygIHE=
+2020-03-05 04:12:30 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=0UJUJCMfQXBSVx4Baupi8rjZ0X2tS3qn61Y/nWKFsbUSgpDlFN1PW4/rIwuECTRJe7VU5dhxvajS320zqvPDZRklk3ndnUp0UE27yTtERyY=, email=bennattj@gmail.com]
+2020-03-05 04:12:30 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:12:51 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, l/7I/PSb8x4eMRjbs8HgbuauIpRBqA/8Zr3F5x13rWa+6ofMalTVvSIpU+r+wQp4l7QI9xPqbfIebia30Hbf9c63SFD5+Lsfg8u4SkGIIVI=
+2020-03-05 04:12:51 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=x4lrjoxsIUjQJQXvW2JGT2J5uDibp0g6ip/sC7L79R14j4dU2NEhE6D5mERu6A7cUadI/Ex+BrtXyOeqlzY/Eu7NqiciRU/5xMaV9ybmAsU=, email=bennattj@gmail.com]
+2020-03-05 04:12:51 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:12:51 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/Home.html
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:51 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, l/7I/PSb8x4eMRjbs8HgbuauIpRBqA/8Zr3F5x13rWa+6ofMalTVvSIpU+r+wQp4l7QI9xPqbfIebia30Hbf9c63SFD5+Lsfg8u4SkGIIVI=
+2020-03-05 04:12:51 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=FOWY5S9Kk9ewH9dYvHcGdMzwYfLuvekFfnRI1pD60oZW4ndbYxipAhWDHDUbh55u4j3J6mC6U2D/6sOgPESYMgjtLuN8VjRfnEObR0iqPps=, email=bennattj@gmail.com]
+2020-03-05 04:12:51 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:12:54 DEBUG Delegate:197 method: processRequest - Requesting: /all-processed
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, x4lrjoxsIUjQJQXvW2JGT2J5uDibp0g6ip/sC7L79R14j4dU2NEhE6D5mERu6A7cUadI/Ex+BrtXyOeqlzY/Eu7NqiciRU/5xMaV9ybmAsU=
+2020-03-05 04:12:54 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=QQ/S6QGRzUgoMDjOEuz5Fv4t6PAh7eBtAjlJDyo8+6ZJMspA025uifEVyOQ//5/5Q2Lb3l206MRZGSG74ILqX8YEHInIRwPRUZdyZ/KQ3lg=, email=bennattj@gmail.com]
+2020-03-05 04:12:54 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:12:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/All-Processed.html
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:12:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, x4lrjoxsIUjQJQXvW2JGT2J5uDibp0g6ip/sC7L79R14j4dU2NEhE6D5mERu6A7cUadI/Ex+BrtXyOeqlzY/Eu7NqiciRU/5xMaV9ybmAsU=
+2020-03-05 04:12:55 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=zV+e1gtLBfhhZtupBnuEwk8CPzVt8/aJVT07TUFqniXUFbBquqT7pLISorkU0md8/ECe2Zw0FUtHatkrnVkYyHNLMU9UqQWe8oVIEBklEVA=, email=bennattj@gmail.com]
+2020-03-05 04:13:52 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:13:52 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:13:52 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:13:52 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:13:52 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, QQ/S6QGRzUgoMDjOEuz5Fv4t6PAh7eBtAjlJDyo8+6ZJMspA025uifEVyOQ//5/5Q2Lb3l206MRZGSG74ILqX8YEHInIRwPRUZdyZ/KQ3lg=
+2020-03-05 04:13:53 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=D3VZydjR/14PCN57Dc6LmnKLM/RhJLcR3vFadC4sMSiACKHYzr29ErKUWRejHEbNBht9+Ei9/SN6l+/10kL5OiDndTU3M4aw7Rx6JXli7mc=, email=bennattj@gmail.com]
+2020-03-05 04:13:53 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:13:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/Home.html
+2020-03-05 04:13:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:13:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:13:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:13:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, QQ/S6QGRzUgoMDjOEuz5Fv4t6PAh7eBtAjlJDyo8+6ZJMspA025uifEVyOQ//5/5Q2Lb3l206MRZGSG74ILqX8YEHInIRwPRUZdyZ/KQ3lg=
+2020-03-05 04:13:53 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=ItB6sjbYpan6R2hEGuudAdRutp6FtkXG85SNnMa/Vq6OZfxQQEf5b2YeWqBjxN6tgQvMUbKRbcly0vD+ywMVKUlZGC0oNTJH9WRZbbojnIs=, email=bennattj@gmail.com]
+2020-03-05 04:13:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:13:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-05 04:13:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-05 04:13:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/nav-bar.js
+2020-03-05 04:13:56 DEBUG Delegate:197 method: processRequest - Requesting: /all-processed
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, D3VZydjR/14PCN57Dc6LmnKLM/RhJLcR3vFadC4sMSiACKHYzr29ErKUWRejHEbNBht9+Ei9/SN6l+/10kL5OiDndTU3M4aw7Rx6JXli7mc=
+2020-03-05 04:13:56 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=Nc7f1dM1faIIX7mwiBJmx0c8OgJa3Qe5ZS++RfegFw6j9KQF5fZk9++Eglb1vvasqx4uZ+ynrTbe0olusL+wQ3vNIIe90K4GdxiSsOcxCvs=, email=bennattj@gmail.com]
+2020-03-05 04:13:56 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:13:56 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/All-Processed.html
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:13:56 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, D3VZydjR/14PCN57Dc6LmnKLM/RhJLcR3vFadC4sMSiACKHYzr29ErKUWRejHEbNBht9+Ei9/SN6l+/10kL5OiDndTU3M4aw7Rx6JXli7mc=
+2020-03-05 04:13:57 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=++bq6WrqKpnHl11jQEcyEXtkVybETIgj/1iYn0u1RXqifjJGRAtpoikb5YLGL3G1hTqu1yDYaTCZI5jJgpxfDD2NAWbgfdWeAHd6kW0iZfw=, email=bennattj@gmail.com]
+2020-03-05 04:13:57 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/all-processed.js
+2020-03-05 04:46:22 DEBUG Delegate:197 method: processRequest - Requesting: /all-processed
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, Nc7f1dM1faIIX7mwiBJmx0c8OgJa3Qe5ZS++RfegFw6j9KQF5fZk9++Eglb1vvasqx4uZ+ynrTbe0olusL+wQ3vNIIe90K4GdxiSsOcxCvs=
+2020-03-05 04:46:22 FATAL ConnectionUtil:40 method: <clinit> - Failed to load Postgresql JDBC driver: org.h2.Driver
+2020-03-05 04:46:22 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=Y1n1HlwhsdwWH2yY99mb9tIo3/jt5mAfrqLWtVwvSsGOhfQqEgKIV7m/W3j0Xu53sVxGCv60nKyjRnKQ6nEANo9RKSJuKLYPFGSxGaG/+mg=, email=bennattj@gmail.com]
+2020-03-05 04:46:22 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:46:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/All-Processed.html
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:46:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, Nc7f1dM1faIIX7mwiBJmx0c8OgJa3Qe5ZS++RfegFw6j9KQF5fZk9++Eglb1vvasqx4uZ+ynrTbe0olusL+wQ3vNIIe90K4GdxiSsOcxCvs=
+2020-03-05 04:46:23 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=+A5tuglaOwEQKcj4eafrYI1yosTbTeGCzEH3B7dVwWm9dOExTQ8gf1n3nDPgJhKKjVnL5pWW+RRrgrPaHE/wl2hYv9rhH7c4L0w6BPanYQE=, email=bennattj@gmail.com]
+2020-03-05 04:46:23 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:46:23 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-05 04:46:23 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/nav-bar.js
+2020-03-05 04:46:23 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/all-processed.js
+2020-03-05 04:46:23 DEBUG Delegate:197 method: processRequest - Requesting: /view/processed/all
+2020-03-05 04:46:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:46:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:46:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:46:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, Y1n1HlwhsdwWH2yY99mb9tIo3/jt5mAfrqLWtVwvSsGOhfQqEgKIV7m/W3j0Xu53sVxGCv60nKyjRnKQ6nEANo9RKSJuKLYPFGSxGaG/+mg=
+2020-03-05 04:46:24 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=JtUcfbM7SkZRo5f/WRJ8HuZ+1xn4ShtVjl8Li79Ml8RiKP2SaS41SVAxrpHTnK1odZykPagQzp5wnvTX9ieCorD9M4WOBKjKHN9nQwo27Dg=, email=bennattj@gmail.com]
+2020-03-05 04:46:24 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:46:24 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /processed/all
+2020-03-05 04:46:24 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:46:24 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:46:24 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:46:24 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:46:24 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":6.39,"description":"Got Subway.","emplId":0,"reimbDate":1578031200000,"reimbId":0,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":120.00,"description":"Bought a textbook for instruction.","emplId":0,"reimbDate":1580104800000,"reimbId":0,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":99.00,"description":"Stayed overnight at a Holiday Inn.","emplId":0,"reimbDate":1580277600000,"reimbId":0,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":62.00,"description":"Went to a club.","emplId":0,"reimbDate":1577858400000,"reimbId":0,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"}]
+2020-03-05 04:50:53 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:50:53 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:50:53 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:50:53 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: session-token, JtUcfbM7SkZRo5f/WRJ8HuZ+1xn4ShtVjl8Li79Ml8RiKP2SaS41SVAxrpHTnK1odZykPagQzp5wnvTX9ieCorD9M4WOBKjKHN9nQwo27Dg=
+2020-03-05 04:50:54 DEBUG LogoutDelegate:30 method: deleteCookies - Deleting cookies
+2020-03-05 04:50:54 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, JtUcfbM7SkZRo5f/WRJ8HuZ+1xn4ShtVjl8Li79Ml8RiKP2SaS41SVAxrpHTnK1odZykPagQzp5wnvTX9ieCorD9M4WOBKjKHN9nQwo27Dg=
+2020-03-05 04:50:54 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:50:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:50:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, JtUcfbM7SkZRo5f/WRJ8HuZ+1xn4ShtVjl8Li79Ml8RiKP2SaS41SVAxrpHTnK1odZykPagQzp5wnvTX9ieCorD9M4WOBKjKHN9nQwo27Dg=
+2020-03-05 04:50:54 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:50:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:50:55 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-05 04:51:07 DEBUG LoginDelegate:52 method: processRequest - Trying to login: carrehm@gmail.com password
+2020-03-05 04:51:07 DEBUG EmployeeService:148 method: loginEmployee - Looking for employee by email: carrehm@gmail.com
+2020-03-05 04:51:07 DEBUG EmployeeService:150 method: loginEmployee - Found employee: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=znvfv35sbv3tZXSZDCjI/TqqcrktnS/obRTLLk83YZaYqOJuJCKVpHAjY0nNLgz/, token=null, email=carrehm@gmail.com]
+2020-03-05 04:51:08 DEBUG EmployeeService:159 method: loginEmployee - Setting employee's token: 7pUmV9bgpZpkNmiTvKwTsPZKe4Xq59781lyZgZM290OCzHeMVcKKRskqhELHLmee, BJ5bkSl75OX0m+ssLiMYX+JsOFCRu+jZqMQyzJV2rqjMG/WtuisuzaBhiiI5hFMSD5x0wDhGt9ippegMNBHKMTzLlntAPWy/IOvgctqI9V0=
+2020-03-05 04:51:08 DEBUG LoginDelegate:56 method: processRequest - Trying to login in: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=znvfv35sbv3tZXSZDCjI/TqqcrktnS/obRTLLk83YZaYqOJuJCKVpHAjY0nNLgz/, token=BJ5bkSl75OX0m+ssLiMYX+JsOFCRu+jZqMQyzJV2rqjMG/WtuisuzaBhiiI5hFMSD5x0wDhGt9ippegMNBHKMTzLlntAPWy/IOvgctqI9V0=, email=carrehm@gmail.com]
+2020-03-05 04:51:08 DEBUG LoginDelegate:73 method: processRequest - logging in: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=znvfv35sbv3tZXSZDCjI/TqqcrktnS/obRTLLk83YZaYqOJuJCKVpHAjY0nNLgz/, token=BJ5bkSl75OX0m+ssLiMYX+JsOFCRu+jZqMQyzJV2rqjMG/WtuisuzaBhiiI5hFMSD5x0wDhGt9ippegMNBHKMTzLlntAPWy/IOvgctqI9V0=, email=carrehm@gmail.com]
+2020-03-05 04:51:08 DEBUG LoginDelegate:75 method: processRequest - success
+2020-03-05 04:51:08 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:51:08 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:51:08 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, BJ5bkSl75OX0m+ssLiMYX+JsOFCRu+jZqMQyzJV2rqjMG/WtuisuzaBhiiI5hFMSD5x0wDhGt9ippegMNBHKMTzLlntAPWy/IOvgctqI9V0=
+2020-03-05 04:51:08 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=4J7nNVGOMHD5fDtgG1ALaF+Noz5XS8if9/bGJsD7iRHyHgB2yWiVoO+K835aLiE3+ubI1F2S0PD7mIaROxMBqQeUIKN9Ihj/i3Nx7mdUhts=, email=carrehm@gmail.com]
+2020-03-05 04:51:08 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:51:08 DEBUG ViewDelegate:181 method: setMessageCookie - getting message from dispatcher
+2020-03-05 04:51:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Home.html
+2020-03-05 04:51:08 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, BJ5bkSl75OX0m+ssLiMYX+JsOFCRu+jZqMQyzJV2rqjMG/WtuisuzaBhiiI5hFMSD5x0wDhGt9ippegMNBHKMTzLlntAPWy/IOvgctqI9V0=
+2020-03-05 04:51:08 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=IGRPxhyxZxXsx/U92QPONu0D6REQPYKbaWkytiSsQ92rIqVOV1R+PCu5BbECQqLe7wAnoj0ynkohzqXDPkrTXQPpvTrstReVgFzqUp40dBY=, email=carrehm@gmail.com]
+2020-03-05 04:51:08 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-05 04:51:09 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Employee/nav-bar.js
+2020-03-05 04:51:09 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-05 04:51:11 DEBUG Delegate:197 method: processRequest - Requesting: /submit
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, 4J7nNVGOMHD5fDtgG1ALaF+Noz5XS8if9/bGJsD7iRHyHgB2yWiVoO+K835aLiE3+ubI1F2S0PD7mIaROxMBqQeUIKN9Ihj/i3Nx7mdUhts=
+2020-03-05 04:51:11 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=rBLuWWvnzmTUV36cP3Y0NOUk5bJIR6aVCGhFPFgA9ZVlng5SkWfIK5hF4/K2NyaQZbRhY0L1kq/FiQKV5mQP36iU5rRimP2gKQlA7yinijY=, email=carrehm@gmail.com]
+2020-03-05 04:51:11 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:51:11 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/Submit-Reimbursement.html
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:51:11 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, 4J7nNVGOMHD5fDtgG1ALaF+Noz5XS8if9/bGJsD7iRHyHgB2yWiVoO+K835aLiE3+ubI1F2S0PD7mIaROxMBqQeUIKN9Ihj/i3Nx7mdUhts=
+2020-03-05 04:51:11 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=yK4jfXkmge+Hpzn77m2a1m284hTD7eZUeTjH5Fas6T1OuMkpMqNGJL8O4UNDweILzOaJaZdxAX5/vVWTXsgOJtvQC8TDaVePOKbxFDgmDB4=, email=carrehm@gmail.com]
+2020-03-05 04:51:11 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/submit-reimbursement.js
+2020-03-05 04:52:20 DEBUG Delegate:197 method: processRequest - Requesting: /api/submit
+2020-03-05 04:52:20 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:20 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:20 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:20 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, rBLuWWvnzmTUV36cP3Y0NOUk5bJIR6aVCGhFPFgA9ZVlng5SkWfIK5hF4/K2NyaQZbRhY0L1kq/FiQKV5mQP36iU5rRimP2gKQlA7yinijY=
+2020-03-05 04:52:21 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=U7s6V6F7CXg8/Gg56MaIakwMOFiY3I9RG4mNfLegJUPjMUGbuVDMku7wVrRufn/6FxhMzI4OIAfOqxf5mLaMPgKP5+bEVwCTo0oEnEP5rII=, email=carrehm@gmail.com]
+2020-03-05 04:52:21 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:21 DEBUG SubmitReimbursementDelegate:60 method: processRequest - Attempting to submit reimbursement request: 250, Took a certification test., 08/06/2019
+2020-03-05 04:52:21 DEBUG Delegate:197 method: processRequest - Requesting: /pending
+2020-03-05 04:52:21 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:21 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:21 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:21 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, U7s6V6F7CXg8/Gg56MaIakwMOFiY3I9RG4mNfLegJUPjMUGbuVDMku7wVrRufn/6FxhMzI4OIAfOqxf5mLaMPgKP5+bEVwCTo0oEnEP5rII=
+2020-03-05 04:52:22 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=gYGxYYrG8RXqQ4UkxYSzesuPt65YmZm5LGot31MiSLitaiqV36qX0qKAtVvBNM+yD/GLKzsuftjz+PR1FXW4tKpkYY5PnpNAkjlYuD31RsA=, email=carrehm@gmail.com]
+2020-03-05 04:52:22 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/View-Pending.html
+2020-03-05 04:52:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:22 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, U7s6V6F7CXg8/Gg56MaIakwMOFiY3I9RG4mNfLegJUPjMUGbuVDMku7wVrRufn/6FxhMzI4OIAfOqxf5mLaMPgKP5+bEVwCTo0oEnEP5rII=
+2020-03-05 04:52:22 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=BDGebwW23HGfHeJbtTHWNmro+YvKzeHq0QJjuJt4wdy8eKafOr5ebls+nwnzgEetglCvfFvvTCEgNOd+Ga//Hhy/n+Z3GUIvQDHGky0leEw=, email=carrehm@gmail.com]
+2020-03-05 04:52:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:52:22 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/view-pending.js
+2020-03-05 04:52:23 DEBUG Delegate:197 method: processRequest - Requesting: /view/pending
+2020-03-05 04:52:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:23 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, gYGxYYrG8RXqQ4UkxYSzesuPt65YmZm5LGot31MiSLitaiqV36qX0qKAtVvBNM+yD/GLKzsuftjz+PR1FXW4tKpkYY5PnpNAkjlYuD31RsA=
+2020-03-05 04:52:23 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=gm+NLkgHeG4HEPNgtE8ETA9XZg84SSD6RCPMeE9F1H7fgjdR0sZWqiwojxbVjMwVvl3AEluOPOp1HhvlsyTVV3aCB2ybLbSzxiJUUjxssqM=, email=carrehm@gmail.com]
+2020-03-05 04:52:23 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:23 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /pending
+2020-03-05 04:52:23 DEBUG EmployeeDaoPostgres:530 method: getPendingReimbursementsByEmployeeId - Submit Date: null and rs.wasNull? true
+2020-03-05 04:52:23 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":250.00,"description":"Took a certification test.","emplId":1,"reimbDate":1546754400000,"reimbId":5,"replyDate":null,"status":1,"statusString":"pending","submitDate":1583388000000,"manId":0,"managerName":null,"empName":null}]
+2020-03-05 04:52:26 DEBUG Delegate:197 method: processRequest - Requesting: /processed
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, gm+NLkgHeG4HEPNgtE8ETA9XZg84SSD6RCPMeE9F1H7fgjdR0sZWqiwojxbVjMwVvl3AEluOPOp1HhvlsyTVV3aCB2ybLbSzxiJUUjxssqM=
+2020-03-05 04:52:26 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=PWdWp7mkWuCAyyDBbByYQfO0YitboSEjNviuFK44SgFG1TG44jsUH5VefnLkbiDERva+ren3bSu8wjBBI2eyt7+MqLxmohlGOjgqyM2uZvg=, email=carrehm@gmail.com]
+2020-03-05 04:52:26 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:26 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/View-Processed.html
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:26 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, gm+NLkgHeG4HEPNgtE8ETA9XZg84SSD6RCPMeE9F1H7fgjdR0sZWqiwojxbVjMwVvl3AEluOPOp1HhvlsyTVV3aCB2ybLbSzxiJUUjxssqM=
+2020-03-05 04:52:26 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=TxHOXGtHua0sGVi/TFCRotyrbS+yj7F41VVPq1zmkLfJsrU0H5+hKcK6gSJZyWJFliRaD5Gp/0DaAjFPdQwnPHXk7sewduyyP6I0r53y0+M=, email=carrehm@gmail.com]
+2020-03-05 04:52:27 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/view-processed.js
+2020-03-05 04:52:27 DEBUG Delegate:197 method: processRequest - Requesting: /view/processed
+2020-03-05 04:52:27 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:27 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:27 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:27 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, PWdWp7mkWuCAyyDBbByYQfO0YitboSEjNviuFK44SgFG1TG44jsUH5VefnLkbiDERva+ren3bSu8wjBBI2eyt7+MqLxmohlGOjgqyM2uZvg=
+2020-03-05 04:52:27 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=v5rkAUt5U9ihoBQ0PZbxwTb2utIgk/B+yKe8rF0Dlb5938hfNrji3dPgZEpWIZxATYGD45B1UwsFpdcmbQVt6TrviFOARVJSuc0pG2vtCdM=, email=carrehm@gmail.com]
+2020-03-05 04:52:27 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:27 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /processed
+2020-03-05 04:52:28 DEBUG EmployeeDaoPostgres:575 method: getProcessedReimbursementsByEmployeeId - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:28 DEBUG EmployeeDaoPostgres:575 method: getProcessedReimbursementsByEmployeeId - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:28 DEBUG EmployeeDaoPostgres:575 method: getProcessedReimbursementsByEmployeeId - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:28 DEBUG EmployeeDaoPostgres:575 method: getProcessedReimbursementsByEmployeeId - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:28 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":6.39,"description":"Got Subway.","emplId":0,"reimbDate":1578031200000,"reimbId":1,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":null},{"amount":120.00,"description":"Bought a textbook for instruction.","emplId":0,"reimbDate":1580104800000,"reimbId":2,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":null},{"amount":99.00,"description":"Stayed overnight at a Holiday Inn.","emplId":0,"reimbDate":1580277600000,"reimbId":3,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":null},{"amount":62.00,"description":"Went to a club.","emplId":0,"reimbDate":1577858400000,"reimbId":4,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":null}]
+2020-03-05 04:52:32 DEBUG Delegate:197 method: processRequest - Requesting: /pending
+2020-03-05 04:52:32 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:32 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:32 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:32 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, v5rkAUt5U9ihoBQ0PZbxwTb2utIgk/B+yKe8rF0Dlb5938hfNrji3dPgZEpWIZxATYGD45B1UwsFpdcmbQVt6TrviFOARVJSuc0pG2vtCdM=
+2020-03-05 04:52:33 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=m3J+cyz16YU+HUlqLEiUSAUt+X7KLpXLvkBrHDWeTB4L/7rb4E/u6MjYo+0CqPAFCrgBSlOJe8BoOhmlOkuTgVSnVhywsAWF37hrb0X8YGw=, email=carrehm@gmail.com]
+2020-03-05 04:52:33 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:33 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Employee/View-Pending.html
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, v5rkAUt5U9ihoBQ0PZbxwTb2utIgk/B+yKe8rF0Dlb5938hfNrji3dPgZEpWIZxATYGD45B1UwsFpdcmbQVt6TrviFOARVJSuc0pG2vtCdM=
+2020-03-05 04:52:33 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=bmb8BF/gT0ctWyTNN+ihbSGOx++KsqaREpsVz/yTPxocQQO8vuIxtXcNEAz5mg0NVuJny6Esl7vG0W5I019EUK/GuL9SWVV37WCkcDz1fN4=, email=carrehm@gmail.com]
+2020-03-05 04:52:33 DEBUG Delegate:197 method: processRequest - Requesting: /view/pending
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:33 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, m3J+cyz16YU+HUlqLEiUSAUt+X7KLpXLvkBrHDWeTB4L/7rb4E/u6MjYo+0CqPAFCrgBSlOJe8BoOhmlOkuTgVSnVhywsAWF37hrb0X8YGw=
+2020-03-05 04:52:34 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=1, firstName=Caroline, isManager=false, lastName=Rehm, password=null, token=cSSekdQPR8UdRu1/EWyxeMi9PdmRszYE8w16Q6jVNsdtyidqLiiK3i46kMRRwxPPlQrHNfop+iUjaDQmNsUcijfzhArcIkhuwgVGtqfG9J0=, email=carrehm@gmail.com]
+2020-03-05 04:52:34 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Caroline Rehm
+2020-03-05 04:52:34 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /pending
+2020-03-05 04:52:34 DEBUG EmployeeDaoPostgres:530 method: getPendingReimbursementsByEmployeeId - Submit Date: null and rs.wasNull? true
+2020-03-05 04:52:34 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":250.00,"description":"Took a certification test.","emplId":1,"reimbDate":1546754400000,"reimbId":5,"replyDate":null,"status":1,"statusString":"pending","submitDate":1583388000000,"manId":0,"managerName":null,"empName":null}]
+2020-03-05 04:52:36 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:36 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:36 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:36 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: session-token, cSSekdQPR8UdRu1/EWyxeMi9PdmRszYE8w16Q6jVNsdtyidqLiiK3i46kMRRwxPPlQrHNfop+iUjaDQmNsUcijfzhArcIkhuwgVGtqfG9J0=
+2020-03-05 04:52:36 DEBUG LogoutDelegate:30 method: deleteCookies - Deleting cookies
+2020-03-05 04:52:36 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, cSSekdQPR8UdRu1/EWyxeMi9PdmRszYE8w16Q6jVNsdtyidqLiiK3i46kMRRwxPPlQrHNfop+iUjaDQmNsUcijfzhArcIkhuwgVGtqfG9J0=
+2020-03-05 04:52:36 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:52:36 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Caroline
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Rehm
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, carrehm@gmail.com
+2020-03-05 04:52:36 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, cSSekdQPR8UdRu1/EWyxeMi9PdmRszYE8w16Q6jVNsdtyidqLiiK3i46kMRRwxPPlQrHNfop+iUjaDQmNsUcijfzhArcIkhuwgVGtqfG9J0=
+2020-03-05 04:52:37 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:52:37 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js
+2020-03-05 04:52:45 DEBUG LoginDelegate:52 method: processRequest - Trying to login: bennattj@gmail.com password
+2020-03-05 04:52:46 DEBUG EmployeeService:148 method: loginEmployee - Looking for employee by email: bennattj@gmail.com
+2020-03-05 04:52:46 DEBUG EmployeeService:150 method: loginEmployee - Found employee: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=kzZjncDua3KDwgHqWecFeoJYstvGB3tLvGx8vZYs002R+oqrSMiK54i33xJxnFsS, token=null, email=bennattj@gmail.com]
+2020-03-05 04:52:46 DEBUG EmployeeService:159 method: loginEmployee - Setting employee's token: JcYjCfdaUyuzq3JYrulvPrxyg5PybtBKeMzPvAYRtIjxWvkj8dK9RIRtyB9oqpxM, KRL/CjnePSMM7KDrlZWQChmeLP9dDLm6nVxQsCjcWSq4EjCFXngNlu0T25TVGjxmlRfSEBHnV3/42k0/4Ijl9CSax+EL1YQTIY++1tm+rI0=
+2020-03-05 04:52:46 DEBUG LoginDelegate:56 method: processRequest - Trying to login in: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=kzZjncDua3KDwgHqWecFeoJYstvGB3tLvGx8vZYs002R+oqrSMiK54i33xJxnFsS, token=KRL/CjnePSMM7KDrlZWQChmeLP9dDLm6nVxQsCjcWSq4EjCFXngNlu0T25TVGjxmlRfSEBHnV3/42k0/4Ijl9CSax+EL1YQTIY++1tm+rI0=, email=bennattj@gmail.com]
+2020-03-05 04:52:46 DEBUG LoginDelegate:73 method: processRequest - logging in: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=kzZjncDua3KDwgHqWecFeoJYstvGB3tLvGx8vZYs002R+oqrSMiK54i33xJxnFsS, token=KRL/CjnePSMM7KDrlZWQChmeLP9dDLm6nVxQsCjcWSq4EjCFXngNlu0T25TVGjxmlRfSEBHnV3/42k0/4Ijl9CSax+EL1YQTIY++1tm+rI0=, email=bennattj@gmail.com]
+2020-03-05 04:52:46 DEBUG LoginDelegate:75 method: processRequest - success
+2020-03-05 04:52:46 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:46 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:52:46 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, KRL/CjnePSMM7KDrlZWQChmeLP9dDLm6nVxQsCjcWSq4EjCFXngNlu0T25TVGjxmlRfSEBHnV3/42k0/4Ijl9CSax+EL1YQTIY++1tm+rI0=
+2020-03-05 04:52:47 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=B0yy+1+ygPYc/U9V2Ji8qR/BPhPBrSJclnYonJhmR1UldR5LF+PyRnTFcFqwRalzut0A8bh8nJ0n+SeQIf877Iozl98E1foNtWU2MRQtSTw=, email=bennattj@gmail.com]
+2020-03-05 04:52:47 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/Home.html
+2020-03-05 04:52:47 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, KRL/CjnePSMM7KDrlZWQChmeLP9dDLm6nVxQsCjcWSq4EjCFXngNlu0T25TVGjxmlRfSEBHnV3/42k0/4Ijl9CSax+EL1YQTIY++1tm+rI0=
+2020-03-05 04:52:47 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=UNNuWkvhLp64pOw1oblkOhK2tUuT2YK+R1MEm28Snz9y00rtdrblwqoh05qOkgdnT6m86FfnZWKk/4k7N3TLQhrNhgC7kKUswrC95veQs7w=, email=bennattj@gmail.com]
+2020-03-05 04:52:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/cookies.js
+2020-03-05 04:52:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/nav-bar.js
+2020-03-05 04:52:47 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/home.js
+2020-03-05 04:52:48 DEBUG Delegate:197 method: processRequest - Requesting: /all-processed
+2020-03-05 04:52:48 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:48 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:48 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:48 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, B0yy+1+ygPYc/U9V2Ji8qR/BPhPBrSJclnYonJhmR1UldR5LF+PyRnTFcFqwRalzut0A8bh8nJ0n+SeQIf877Iozl98E1foNtWU2MRQtSTw=
+2020-03-05 04:52:49 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=MuoG6Eu7NRPfjfcTaJfo79vCfc7UeX8FxY1OVsud2VmNaIWbqYnDOhLDQm5rLoicVYbwXJkQ9e3Uf3jjakg+DVCtvgJDfoZdaJnbjFhDTdw=, email=bennattj@gmail.com]
+2020-03-05 04:52:49 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:49 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/All-Processed.html
+2020-03-05 04:52:49 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:49 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:49 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:49 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, B0yy+1+ygPYc/U9V2Ji8qR/BPhPBrSJclnYonJhmR1UldR5LF+PyRnTFcFqwRalzut0A8bh8nJ0n+SeQIf877Iozl98E1foNtWU2MRQtSTw=
+2020-03-05 04:52:49 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=icDpeNGGDXP4pAqzg12tWFgsvXKpTwTSrWHtEbdqNJa3oUbT8QQlYoBTaSS6F7XH8G2h9YmG6hnfp3TM9XCWkaVB0hIIf4fUb+lhYwPRGDQ=, email=bennattj@gmail.com]
+2020-03-05 04:52:49 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/all-processed.js
+2020-03-05 04:52:50 DEBUG Delegate:197 method: processRequest - Requesting: /view/processed/all
+2020-03-05 04:52:50 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:50 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:50 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:50 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, MuoG6Eu7NRPfjfcTaJfo79vCfc7UeX8FxY1OVsud2VmNaIWbqYnDOhLDQm5rLoicVYbwXJkQ9e3Uf3jjakg+DVCtvgJDfoZdaJnbjFhDTdw=
+2020-03-05 04:52:50 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=p0rWdKqlyFW/Rt7zIgnhX9oYwmTxvzHutYuFv0GbP7RlxIV78D9yzlaStvur7xkgPId9RDm43QpE642Kb0Ntd5TWUSGN+lsf/ncYGmUqVa4=, email=bennattj@gmail.com]
+2020-03-05 04:52:50 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:50 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /processed/all
+2020-03-05 04:52:50 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:50 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:50 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:50 DEBUG EmployeeDaoPostgres:362 method: getAllProcessedRequests - Submit Date: 2020-03-05 and rs.wasNull? false
+2020-03-05 04:52:50 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":6.39,"description":"Got Subway.","emplId":0,"reimbDate":1578031200000,"reimbId":0,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":120.00,"description":"Bought a textbook for instruction.","emplId":0,"reimbDate":1580104800000,"reimbId":0,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":99.00,"description":"Stayed overnight at a Holiday Inn.","emplId":0,"reimbDate":1580277600000,"reimbId":0,"replyDate":1583388000000,"status":2,"statusString":"approved","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"},{"amount":62.00,"description":"Went to a club.","emplId":0,"reimbDate":1577858400000,"reimbId":0,"replyDate":1583388000000,"status":3,"statusString":"rejected","submitDate":1583388000000,"manId":0,"managerName":"Johnathon Willmont","empName":"Caroline Rehm"}]
+2020-03-05 04:52:53 DEBUG Delegate:197 method: processRequest - Requesting: /approve
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, p0rWdKqlyFW/Rt7zIgnhX9oYwmTxvzHutYuFv0GbP7RlxIV78D9yzlaStvur7xkgPId9RDm43QpE642Kb0Ntd5TWUSGN+lsf/ncYGmUqVa4=
+2020-03-05 04:52:53 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=b4QvMWHu1Ea0iVj8zLusyKLCTxC2rlsPRP3BNVcvcXf7fUgOEwBKoXLXWFjIg5mqeCZS4OkE3L2Ncy9sDmZzd2o6nEK/JlX30wdeG8RBKFc=, email=bennattj@gmail.com]
+2020-03-05 04:52:53 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:53 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Manager/Approve-Requests.html
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:53 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, p0rWdKqlyFW/Rt7zIgnhX9oYwmTxvzHutYuFv0GbP7RlxIV78D9yzlaStvur7xkgPId9RDm43QpE642Kb0Ntd5TWUSGN+lsf/ncYGmUqVa4=
+2020-03-05 04:52:54 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=eRMaqS0p0UOywQu4PgIZpIDA11bLUX0Jfu1MMiuovKpRoSJLEHwolx1GOtheIXYXPCMv7/phlRPItWHLRXiHgfe3yqctdIZEgcfHklgXHog=, email=bennattj@gmail.com]
+2020-03-05 04:52:54 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/Manager/approve-requests.js
+2020-03-05 04:52:54 DEBUG Delegate:197 method: processRequest - Requesting: /view/pending/all
+2020-03-05 04:52:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:52:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:52:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:52:54 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, b4QvMWHu1Ea0iVj8zLusyKLCTxC2rlsPRP3BNVcvcXf7fUgOEwBKoXLXWFjIg5mqeCZS4OkE3L2Ncy9sDmZzd2o6nEK/JlX30wdeG8RBKFc=
+2020-03-05 04:52:55 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: Employee [empId=5, firstName=Johnathon, isManager=true, lastName=Willmont, password=null, token=qdJwpcYJO97AyAKHqtP+163L8tmTj1FNeIXs2LYWtDF7qN2BGbQUMIgfdPXX2i71WrMGh2stH3KfSg50xvP8r3LfD4n0zkq2lLN/IjNtd70=, email=bennattj@gmail.com]
+2020-03-05 04:52:55 DEBUG Delegate:135 method: setNameCookies - Setting first and last name cookies: Johnathon Willmont
+2020-03-05 04:52:55 DEBUG ViewReimbursementsDelegate:57 method: processRequest - view request: /pending/all
+2020-03-05 04:52:55 DEBUG EmployeeDaoPostgres:320 method: getAllPendingRequestsExceptManager - Submit Date: null and rs.wasNull? true
+2020-03-05 04:52:55 DEBUG ViewReimbursementsDelegate:82 method: returnRecords - Json: [{"amount":250.00,"description":"Took a certification test.","emplId":1,"reimbDate":1546754400000,"reimbId":5,"replyDate":null,"status":1,"statusString":"pending","submitDate":1583388000000,"manId":0,"managerName":null,"empName":null}]
+2020-03-05 04:53:06 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:53:06 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:53:06 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:53:06 DEBUG LogoutDelegate:46 method: getAuthToken - Found cookie: session-token, qdJwpcYJO97AyAKHqtP+163L8tmTj1FNeIXs2LYWtDF7qN2BGbQUMIgfdPXX2i71WrMGh2stH3KfSg50xvP8r3LfD4n0zkq2lLN/IjNtd70=
+2020-03-05 04:53:06 DEBUG LogoutDelegate:30 method: deleteCookies - Deleting cookies
+2020-03-05 04:53:06 DEBUG Delegate:197 method: processRequest - Requesting: /
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, qdJwpcYJO97AyAKHqtP+163L8tmTj1FNeIXs2LYWtDF7qN2BGbQUMIgfdPXX2i71WrMGh2stH3KfSg50xvP8r3LfD4n0zkq2lLN/IjNtd70=
+2020-03-05 04:53:06 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:53:06 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/Login.html
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: first-name, Johnathon
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: last-name, Willmont
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: email, bennattj@gmail.com
+2020-03-05 04:53:06 DEBUG Delegate:169 method: getAuthToken - Found cookie: session-token, qdJwpcYJO97AyAKHqtP+163L8tmTj1FNeIXs2LYWtDF7qN2BGbQUMIgfdPXX2i71WrMGh2stH3KfSg50xvP8r3LfD4n0zkq2lLN/IjNtd70=
+2020-03-05 04:53:07 DEBUG Delegate:108 method: authenticateEmployee - Employee from authToken: null
+2020-03-05 04:53:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/constants.js
+2020-03-05 04:53:07 DEBUG StaticDelegate:76 method: processRequest - Requesting: /static/scripts/login.js

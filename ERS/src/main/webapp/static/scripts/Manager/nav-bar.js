@@ -4,6 +4,8 @@
 
 function setupNav() {
 	// setup links for navigation
+	document.getElementById("all-processed").setAttribute("href",
+			ALL_PROCESSED_PAGE);
 	document.getElementById("approve-requests").setAttribute("href",
 			APPROVE_REQUESTS_PAGE);
 	document.getElementById("all-employees").setAttribute("href",

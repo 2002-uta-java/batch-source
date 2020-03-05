@@ -15,6 +15,7 @@ public class Reimbursement {
 	private Date submitDate;
 	private int manId;
 	private String managerName;
+	private String empName;
 
 	public Reimbursement() {
 		super();
@@ -164,5 +165,13 @@ public class Reimbursement {
 
 	public String getManagerName() {
 		return managerName;
+	}
+
+	public void setEmpName(final String empName) {
+		this.empName = empName;
+	}
+
+	public String getEmpName() {
+		return this.empName;
 	}
 }

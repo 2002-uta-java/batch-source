@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,59 +25,59 @@ import com.revature.jfbennatt.ers.models.Reimbursement;
  *
  */
 public class EmployeeDaoPostgres implements EmployeeDao {
+	/**
+	 * String representing a reimbursement is approved.
+	 */
+	public static final String APPROVED = "approved";
+	/**
+	 * Status code for a reimbursement that is approved.
+	 */
+	public static final int APPROVED_INT = 2;
 	public static final String DATE_PATTERN = "mm/dd/yyyy";
 	/**
-	 * Column name for employee id in Postgresql database.
+	 * Status code for a reimbursement that is denied.
 	 */
-	public static final String EMP_ID = "empl_id";
+	public static final int DENIED_INT = 3;
 	/**
 	 * Column name for employee email in Postgresql database.
 	 */
 	public static final String EMP_EMAIL = "empl_email";
 	/**
-	 * Column name for employee password in Postgresql database.
-	 */
-	public static final String EMP_PASSWORD = "password";
-	/**
 	 * Column name for employee first name in Postgresql database.
 	 */
 	public static final String EMP_FIRST_NAME = "empl_first_name";
 	/**
-	 * Column name for employee last name in Postgresql database.
+	 * Column name for employee id in Postgresql database.
 	 */
-	public static final String EMP_LAST_NAME = "empl_last_name";
-	/**
-	 * Column name for the session token in Postgresql database.
-	 */
-	public static final String EMP_SESSION_TOKEN = "session_token";
+	public static final String EMP_ID = "empl_id";
 	/**
 	 * Column name for whether or not employee is a manager in Postgresql database.
 	 */
 	public static final String EMP_IS_MANAGER = "is_manager";
 	/**
-	 * Length of the session token used by this postgresql database.
+	 * Column name for employee last name in Postgresql database.
 	 */
-	public static final int SESSION_TOKEN_LENGTH = 64;
+	public static final String EMP_LAST_NAME = "empl_last_name";
+	/**
+	 * Column name for employee password in Postgresql database.
+	 */
+	public static final String EMP_PASSWORD = "password";
+	/**
+	 * Column name for the session token in Postgresql database.
+	 */
+	public static final String EMP_SESSION_TOKEN = "session_token";
 	/**
 	 * Name of the table for employees in this database.
 	 */
 	public static final String EMPLOYEE_TABLE = "employees";
 	/**
-	 * Name of reimbursements table
+	 * String representing a reimbursement is pending.
 	 */
-	public static final String REIMBURSEMENTS_TABLE = "reimbursements";
+	public static final String PENDING = "pending";
 	/**
-	 * name of reimb_id column for the reimbursements table.
+	 * Status code for a reimbursement that is pending.
 	 */
-	public static final String REIMB_ID = "reimb_id";
-	/**
-	 * name of empl_id column for the reimbursements table.
-	 */
-	public static final String REIMB_EMPL_ID = "empl_id";
-	/**
-	 * name of description column for the reimbursements table.
-	 */
-	public static final String REIMB_DESCRIPT = "description";
+	public static final int PENDING_INT = 1;
 	/**
 	 * name of amount column for the reimbursements table.
 	 */
@@ -86,9 +87,22 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	 */
 	public static final String REIMB_DATE = "reimb_date";
 	/**
-	 * name of submit date column for the reimbursements table.
+	 * name of description column for the reimbursements table.
 	 */
-	public static final String REIMB_SUBMIT_DATE = "submit_date";
+	public static final String REIMB_DESCRIPT = "description";
+	/**
+	 * name of empl_id column for the reimbursements table.
+	 */
+	public static final String REIMB_EMPL_ID = "empl_id";
+	/**
+	 * name of reimb_id column for the reimbursements table.
+	 */
+	public static final String REIMB_ID = "reimb_id";
+	/**
+	 * name of column in reimbursement's table for the manager that approved or
+	 * rejected the request
+	 */
+	public static final String REIMB_MAN_ID = "reimb_man_id";
 	/**
 	 * name of reply date (date request was approved or denied) column for the
 	 * reimbursements table.
@@ -99,126 +113,43 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	 */
 	public static final String REIMB_STATUS = "reimb_status";
 	/**
-	 * String representing a reimbursement is pending.
+	 * name of submit date column for the reimbursements table.
 	 */
-	public static final String PENDING = "pending";
+	public static final String REIMB_SUBMIT_DATE = "submit_date";
 	/**
-	 * String representing a reimbursement is approved.
+	 * Name of reimbursements table
 	 */
-	public static final String APPROVED = "approved";
+	public static final String REIMBURSEMENTS_TABLE = "reimbursements";
 	/**
 	 * String representing a reimbursement is denied.
 	 */
 	public static final String REJECTED = "rejected";
 	/**
-	 * Status code for a reimbursement that is pending.
+	 * Length of the session token used by this postgresql database.
 	 */
-	public static final int PENDING_INT = 1;
-	/**
-	 * Status code for a reimbursement that is approved.
-	 */
-	public static final int APPROVED_INT = 2;
-	/**
-	 * Status code for a reimbursement that is denied.
-	 */
-	public static final int DENIED_INT = 3;
-	/**
-	 * name of column in reimbursement's table for the manager that approved or
-	 * rejected the request
-	 */
-	public static final String REIMB_MAN_ID = "reimb_man_id";
+	public static final int SESSION_TOKEN_LENGTH = 64;
 
 	public EmployeeDaoPostgres() {
 		super();
 	}
 
 	@Override
-	public Employee getEmployeeByToken(String token) {
-		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_SESSION_TOKEN + " = ?";
-		Employee emp = null;
-		ResultSet rs = null;
-
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql);) {
-			ps.setString(1, token);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				emp = new Employee();
-				emp.setEmpId(rs.getInt(EMP_ID));
-				emp.setEmail(rs.getString(EMP_EMAIL));
-				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
-				emp.setLastName(rs.getString(EMP_LAST_NAME));
-				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
-				emp.setToken(rs.getString(EMP_SESSION_TOKEN));
-			}
-		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getMessage());
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
-				}
-			}
-		}
-
-		return emp;
-	}
-
-	@Override
-	public Employee getEmployeeByEmail(String email) {
-		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_EMAIL + " = ?";
-		Employee emp = null;
-		ResultSet rs = null;
+	public boolean approveRequest(final int manId, final int reimbId, final java.util.Date date) {
+		final String sql = "update " + REIMBURSEMENTS_TABLE + " set " + REIMB_STATUS + " = " + APPROVED_INT + ", "
+				+ REIMB_MAN_ID + " = ?, " + REIMB_REPLY_DATE + " = ? where " + REIMB_ID + " = ?";
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, email);
-			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				emp = new Employee();
-				emp.setEmpId(rs.getInt(EMP_ID));
-				emp.setEmail(rs.getString(EMP_EMAIL));
-				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
-				emp.setLastName(rs.getString(EMP_LAST_NAME));
-				emp.setPassword(rs.getString(EMP_PASSWORD));
-				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
-				emp.setToken(rs.getString(EMP_SESSION_TOKEN));
-			}
-		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getMessage());
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
-				}
-			}
-		}
+			ps.setInt(1, manId);
+			ps.setDate(2, new Date(date.getTime()));
+			ps.setInt(3, reimbId);
+			Logger.getRootLogger().debug(ps);
 
-		return emp;
-	}
+			final int updated = ps.executeUpdate();
 
-	@Override
-	public int getTokenLength() {
-		return SESSION_TOKEN_LENGTH;
-	}
-
-	@Override
-	public boolean setTokenById(int empId, String token) {
-		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_SESSION_TOKEN + " = ? where " + EMP_ID + " = ?";
-
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, token);
-			ps.setInt(2, empId);
-
-			if (ps.executeUpdate() == 0) {
-				Logger.getRootLogger().error("Failed to update employee " + empId);
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update with manId " + manId + " and reimbId " + reimbId);
 				return false;
 			}
 		} catch (SQLException e) {
@@ -226,9 +157,83 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 			return false;
 		}
 
-		// if we made it this far, we successfully updated the session token for this
-		// employee
+		// if we got here, it was successful
 		return true;
+	}
+
+	@Override
+	public boolean changeProfile(Employee employee) {
+		// need to check whether or not the password is null, if so, don't attempt to
+		// update it
+		if (employee.getPassword() == null) {
+			return changeProfileWithoutPassword(employee);
+		} else {
+			return changeProfileWithPassword(employee);
+		}
+	}
+
+	private boolean changeProfileWithoutPassword(Employee employee) {
+		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_EMAIL + " = ?, " + EMP_FIRST_NAME + " = ?, "
+				+ EMP_LAST_NAME + " = ? where " + EMP_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, employee.getEmail());
+			ps.setString(2, employee.getFirstName());
+			ps.setString(3, employee.getLastName());
+			ps.setInt(4, employee.getEmpId());
+
+			Logger.getRootLogger().debug(ps);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update employee: " + employee);
+				return false;
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we made here, it was successful
+		return true;
+	}
+
+	private boolean changeProfileWithPassword(Employee employee) {
+		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_EMAIL + " = ?, " + EMP_PASSWORD + " = ?, "
+				+ EMP_FIRST_NAME + " = ?, " + EMP_LAST_NAME + " = ? where " + EMP_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, employee.getEmail());
+			ps.setString(2, employee.getPassword());
+			ps.setString(3, employee.getFirstName());
+			ps.setString(4, employee.getLastName());
+			ps.setInt(5, employee.getEmpId());
+
+			Logger.getRootLogger().debug(ps);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update employee: " + employee);
+				return false;
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we made here, it was successful
+		return true;
+	}
+
+	@Override
+	public String datePattern() {
+		return DATE_PATTERN;
 	}
 
 	@Override
@@ -255,71 +260,129 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	}
 
 	@Override
-	public String datePattern() {
-		return DATE_PATTERN;
-	}
-
-	@Override
-	public boolean submitRequest(final Reimbursement newReimb) {
-		final String sql = "insert into " + REIMBURSEMENTS_TABLE + " (" + REIMB_EMPL_ID + ", " + REIMB_DESCRIPT + ", "
-				+ REIMB_AMOUNT + ", " + REIMB_DATE + ", " + REIMB_SUBMIT_DATE + ", " + REIMB_STATUS
-				+ ") values(? , ? , ? , ? , ? , ?)";
-
+	public List<Employee> getAllEmployeesExceptManager(int manId) {
+		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_ID + " != ?";
+		final List<Employee> employees = new ArrayList<>();
+		ResultSet rs = null;
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, newReimb.getEmplId());
-			ps.setString(2, newReimb.getDescription());
-			ps.setObject(3, newReimb.getAmount());
-			ps.setDate(4, new Date(newReimb.getReimbDate().getTime()));
-			ps.setDate(5, new Date(newReimb.getSubmitDate().getTime()));
-			ps.setInt(6, newReimb.getStatus());
+			ps.setInt(1, manId);
+			rs = ps.executeQuery();
 
-			final int updated = ps.executeUpdate();
+			while (rs.next()) {
+				final Employee emp = new Employee();
+				emp.setEmail(rs.getString(EMP_EMAIL));
+				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
+				emp.setLastName(rs.getString(EMP_LAST_NAME));
+				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
 
-			if (updated == 0) {
-				// nothing was updated, this failed
-				return false;
+				employees.add(emp);
 			}
 		} catch (SQLException e) {
 			Logger.getRootLogger().error(e.getMessage());
-			return false;
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
 		}
-		// if we made it this far, the insert was a success
-		return true;
+
+		return employees;
 	}
 
 	@Override
-	public String getStatus(Reimbursement reimb) {
-		switch (reimb.getStatus()) {
-		case PENDING_INT:
-			return PENDING;
-		case APPROVED_INT:
-			return APPROVED;
-		case DENIED_INT:
-			return REJECTED;
-		default:
-			throw new RuntimeException(reimb.getStatus() + " is not a recognized status code");
+	public List<Reimbursement> getAllPendingRequestsExceptManager(int manId) {
+		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " != ? and "
+				+ REIMB_STATUS + " = 1";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, manId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setReimbId(rs.getInt(REIMB_ID));
+				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
 		}
+
+		return reimbs;
 	}
 
 	@Override
-	public void setPending(Reimbursement reimb) {
-		reimb.setStatus(PENDING_INT);
-	}
+	public List<Reimbursement> getAllProcessedRequests() {
+		final String sql = "select * from get_all_processed()";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		try (final Connection con = ConnectionUtil.getConnection();
+				final Statement s = con.createStatement();
+				final ResultSet rs = s.executeQuery(sql)) {
 
-	@Override
-	public void setApproved(Reimbursement reimb) {
-		reimb.setStatus(APPROVED_INT);
-	}
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
 
-	@Override
-	public void setDenied(Reimbursement reimb) {
-		reimb.setStatus(DENIED_INT);
-	}
+				// get manager's name
+				final String managerName = rs.getString("man_first_name") + " " + rs.getString("man_last_name");
+				reimb.setManagerName(managerName);
 
-//	@Override
-//	public List<Reimbursement> getAllReimbursementsByEmployeeId(final int empId) {
-//	}
+				// get employee's name
+				final String empName = rs.getString("empl_first_name") + " " + rs.getString("empl_last_name");
+				reimb.setEmpName(empName);
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		}
+
+		return reimbs;
+
+	}
 
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(final int empId) {
 		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ?";
@@ -367,73 +430,78 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	}
 
 	@Override
-	public boolean changeProfile(Employee employee) {
-		// need to check whether or not the password is null, if so, don't attempt to
-		// update it
-		if (employee.getPassword() == null) {
-			return changeProfileWithoutPassword(employee);
-		} else {
-			return changeProfileWithPassword(employee);
-		}
-	}
-
-	private boolean changeProfileWithPassword(Employee employee) {
-		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_EMAIL + " = ?, " + EMP_PASSWORD + " = ?, "
-				+ EMP_FIRST_NAME + " = ?, " + EMP_LAST_NAME + " = ? where " + EMP_ID + " = ?";
+	public Employee getEmployeeByEmail(String email) {
+		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_EMAIL + " = ?";
+		Employee emp = null;
+		ResultSet rs = null;
 
 		try (final Connection con = ConnectionUtil.getConnection();
 				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, employee.getEmail());
-			ps.setString(2, employee.getPassword());
-			ps.setString(3, employee.getFirstName());
-			ps.setString(4, employee.getLastName());
-			ps.setInt(5, employee.getEmpId());
+			ps.setString(1, email);
+			rs = ps.executeQuery();
 
-			Logger.getRootLogger().debug(ps);
-
-			final int updated = ps.executeUpdate();
-
-			if (updated == 0) {
-				Logger.getRootLogger().error("Failed to update employee: " + employee);
-				return false;
+			while (rs.next()) {
+				emp = new Employee();
+				emp.setEmpId(rs.getInt(EMP_ID));
+				emp.setEmail(rs.getString(EMP_EMAIL));
+				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
+				emp.setLastName(rs.getString(EMP_LAST_NAME));
+				emp.setPassword(rs.getString(EMP_PASSWORD));
+				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
+				emp.setToken(rs.getString(EMP_SESSION_TOKEN));
 			}
-
 		} catch (SQLException e) {
 			Logger.getRootLogger().error(e.getMessage());
-			return false;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
 		}
 
-		// if we made here, it was successful
-		return true;
+		return emp;
 	}
 
-	private boolean changeProfileWithoutPassword(Employee employee) {
-		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_EMAIL + " = ?, " + EMP_FIRST_NAME + " = ?, "
-				+ EMP_LAST_NAME + " = ? where " + EMP_ID + " = ?";
+//	@Override
+//	public List<Reimbursement> getAllReimbursementsByEmployeeId(final int empId) {
+//	}
+
+	@Override
+	public Employee getEmployeeByToken(String token) {
+		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_SESSION_TOKEN + " = ?";
+		Employee emp = null;
+		ResultSet rs = null;
 
 		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setString(1, employee.getEmail());
-			ps.setString(2, employee.getFirstName());
-			ps.setString(3, employee.getLastName());
-			ps.setInt(4, employee.getEmpId());
+				final PreparedStatement ps = con.prepareStatement(sql);) {
+			ps.setString(1, token);
+			rs = ps.executeQuery();
 
-			Logger.getRootLogger().debug(ps);
-
-			final int updated = ps.executeUpdate();
-
-			if (updated == 0) {
-				Logger.getRootLogger().error("Failed to update employee: " + employee);
-				return false;
+			while (rs.next()) {
+				emp = new Employee();
+				emp.setEmpId(rs.getInt(EMP_ID));
+				emp.setEmail(rs.getString(EMP_EMAIL));
+				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
+				emp.setLastName(rs.getString(EMP_LAST_NAME));
+				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
+				emp.setToken(rs.getString(EMP_SESSION_TOKEN));
 			}
-
 		} catch (SQLException e) {
 			Logger.getRootLogger().error(e.getMessage());
-			return false;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
 		}
 
-		// if we made here, it was successful
-		return true;
+		return emp;
 	}
 
 	@Override
@@ -534,113 +602,22 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	}
 
 	@Override
-	public List<Employee> getAllEmployeesExceptManager(int manId) {
-		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_ID + " != ?";
-		final List<Employee> employees = new ArrayList<>();
-		ResultSet rs = null;
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, manId);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				final Employee emp = new Employee();
-				emp.setEmail(rs.getString(EMP_EMAIL));
-				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
-				emp.setLastName(rs.getString(EMP_LAST_NAME));
-				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
-
-				employees.add(emp);
-			}
-		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getMessage());
-			return null;
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
-				}
-			}
+	public String getStatus(Reimbursement reimb) {
+		switch (reimb.getStatus()) {
+		case PENDING_INT:
+			return PENDING;
+		case APPROVED_INT:
+			return APPROVED;
+		case DENIED_INT:
+			return REJECTED;
+		default:
+			throw new RuntimeException(reimb.getStatus() + " is not a recognized status code");
 		}
-
-		return employees;
 	}
 
 	@Override
-	public List<Reimbursement> getAllPendingRequestsExceptManager(int manId) {
-		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " != ? and "
-				+ REIMB_STATUS + " = 1";
-		final List<Reimbursement> reimbs = new ArrayList<>();
-		ResultSet rs = null;
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql)) {
-			ps.setInt(1, manId);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-				final Reimbursement reimb = new Reimbursement();
-				reimb.setReimbId(rs.getInt(REIMB_ID));
-				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
-				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
-				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
-				reimb.setReimbDate(rs.getDate(REIMB_DATE));
-				reimb.setStatus(rs.getInt(REIMB_STATUS));
-				reimb.setStatusString(getStatus(reimb));
-				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
-				// need to check whether or not the reply date date is null (it can be)
-				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
-				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
-				if (!rs.wasNull()) {
-					// if it's not null set it, if it is, don't
-					reimb.setReplyDate(replyDate);
-				}
-
-				reimbs.add(reimb);
-			}
-		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getMessage());
-			return null;
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
-				}
-			}
-		}
-
-		return reimbs;
-	}
-
-	@Override
-	public boolean approveRequest(final int manId, final int reimbId, final java.util.Date date) {
-		final String sql = "update " + REIMBURSEMENTS_TABLE + " set " + REIMB_STATUS + " = " + APPROVED_INT + ", "
-				+ REIMB_MAN_ID + " = ?, " + REIMB_REPLY_DATE + " = ? where " + REIMB_ID + " = ?";
-
-		try (final Connection con = ConnectionUtil.getConnection();
-				final PreparedStatement ps = con.prepareStatement(sql)) {
-
-			ps.setInt(1, manId);
-			ps.setDate(2, new Date(date.getTime()));
-			ps.setInt(3, reimbId);
-			Logger.getRootLogger().debug(ps);
-
-			final int updated = ps.executeUpdate();
-
-			if (updated == 0) {
-				Logger.getRootLogger().error("Failed to update with manId " + manId + " and reimbId " + reimbId);
-				return false;
-			}
-		} catch (SQLException e) {
-			Logger.getRootLogger().error(e.getMessage());
-			return false;
-		}
-
-		// if we got here, it was successful
-		return true;
+	public int getTokenLength() {
+		return SESSION_TOKEN_LENGTH;
 	}
 
 	@Override
@@ -668,6 +645,73 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		}
 
 		// if we got here, it was successful
+		return true;
+	}
+
+	@Override
+	public void setApproved(Reimbursement reimb) {
+		reimb.setStatus(APPROVED_INT);
+	}
+
+	@Override
+	public void setDenied(Reimbursement reimb) {
+		reimb.setStatus(DENIED_INT);
+	}
+
+	@Override
+	public void setPending(Reimbursement reimb) {
+		reimb.setStatus(PENDING_INT);
+	}
+
+	@Override
+	public boolean setTokenById(int empId, String token) {
+		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_SESSION_TOKEN + " = ? where " + EMP_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, token);
+			ps.setInt(2, empId);
+
+			if (ps.executeUpdate() == 0) {
+				Logger.getRootLogger().error("Failed to update employee " + empId);
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we made it this far, we successfully updated the session token for this
+		// employee
+		return true;
+	}
+
+	@Override
+	public boolean submitRequest(final Reimbursement newReimb) {
+		final String sql = "insert into " + REIMBURSEMENTS_TABLE + " (" + REIMB_EMPL_ID + ", " + REIMB_DESCRIPT + ", "
+				+ REIMB_AMOUNT + ", " + REIMB_DATE + ", " + REIMB_SUBMIT_DATE + ", " + REIMB_STATUS
+				+ ") values(? , ? , ? , ? , ? , ?)";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, newReimb.getEmplId());
+			ps.setString(2, newReimb.getDescription());
+			ps.setObject(3, newReimb.getAmount());
+			ps.setDate(4, new Date(newReimb.getReimbDate().getTime()));
+			ps.setDate(5, new Date(newReimb.getSubmitDate().getTime()));
+			ps.setInt(6, newReimb.getStatus());
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				// nothing was updated, this failed
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+		// if we made it this far, the insert was a success
 		return true;
 	}
 

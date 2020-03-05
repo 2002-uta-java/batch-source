@@ -30,7 +30,14 @@ public class ViewReimbursementsDelegate extends Delegate {
 	 * Resource for viewing all processed requests
 	 */
 	public static final String PROCESSED = "/processed";
+	/**
+	 * Resource for viewing all pending requests (only for managers)
+	 */
 	public static final String ALL_PENDING = "/pending/all";
+	/**
+	 * Resource for viewing all processed requests (only for managers)
+	 */
+	public static final String ALL_PROCESSED = "/processed/all";
 
 	private final ObjectMapper objMapper = new ObjectMapper();
 
@@ -53,10 +60,18 @@ public class ViewReimbursementsDelegate extends Delegate {
 		} else if (method.equals(PROCESSED)) {
 			getAllProcessedRecordsByEmployee(employee, response);
 		} else if (employee.isManager()) {
-			if (method.contentEquals(ALL_PENDING)) {
+			if (method.equals(ALL_PENDING)) {
 				getAllPendingRecordsExceptManager(employee, response);
+			} else if (method.equals(ALL_PROCESSED)) {
+				getAllProcessedRecords(employee, response);
 			}
 		}
+	}
+
+	private void getAllProcessedRecords(Employee employee, HttpServletResponse response) throws IOException {
+		final List<Reimbursement> reimbs = empService.getAllProcessedRequests();
+
+		returnRecords(reimbs, response);
 	}
 
 	private void returnRecords(final List<Reimbursement> reimbs, final HttpServletResponse response)
