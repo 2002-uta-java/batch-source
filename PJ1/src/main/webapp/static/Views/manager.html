@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/Views/home.css">
+    <title>Manager Page</title>
+</head>
+
+<body>
+
+    <div class="container work-home">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header" id="man_card_header">
+                employee Name
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="man_id">Employee Id</li>
+                <li class="list-group-item" id="man_email">email</li>
+
+            </ul>
+        </div>
+        <!--        end card for employee info now lets adds some thing so that they can update thier info-->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="row" id="pending_head" class="text-primary">Pending Requests</th>
+                </tr>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Aproved By</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody id="pending_table">
+
+            </tbody>
+        </table>
+        <!--        end table for our requests information-->
+        <br>
+
+        <br>
+        <h3>Your Aproved Requests</h3>
+        <table class="table">
+            <thead>
+                <tr class="table-info">
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Aproved By</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody id="reim_tableA">
+
+            </tbody>
+        </table>
+        <!--  end table for our aproved requests information-->
+        <br>
+        <h3>Your Employees</h3>
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Employee ID</th>
+                </tr>
+            </thead>
+            <tbody id="emp_table">
+
+            </tbody>
+        </table>
+        <br>
+        <p>
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="ap_req_name  ap_req_status">Aprove Or Deny A Request</button>
+            <button class="btn btn-warning" type="button" id="logout">Logout</button>
+
+        </p>
+        <div class="row">
+            <form>
+                <div class="form-group collapse multi-collapse">
+                    <label for="exampleInputName">RequestName</label>
+                    <input type="text" class="form-control" id="ap_req_name" aria-describedby="nameHelp" placeholder="Enter request Name">
+
+                </div>
+                <!--                end collapse1-->
+
+                <div class="form-group collapse multi-collapse">
+                    <label for="exampleInputPassword1">Status</label>
+                    <input type="text" class="form-control" id="ap_req_status" placeholder="Reqeust status">
+                    <small id="requestHelp" class="form-text text-muted">Please enter true or false</small>
+                </div>
+                <!--                end collapse3-->
+                <div class="form-group collapse multi-collapse">
+                    <button type="submit" class="btn btn-primary" id="req_submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <!--    end container for adding new request-->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="static/Views/manager.js"></script>
+</body>
+
+</html>
