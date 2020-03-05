@@ -59,14 +59,18 @@ function getTr(reimb){
 	console.log("replyDate: " + reimb[REIMB_REPLYDATE]);
 	if(replyDate != null){
 		td = document.createElement("td");
-		td.innerText = new Date(replyDate).toLocaleString("en-US");
+		td.innerText = new Date(replyDate).toLocaleDateString("en-US");
 		tr.appendChild(td);
 	} else{
 		td = document.createElement("td");
 		td.innerText = "";
 		tr.appendChild(td);
-		
 	}
+	
+	// add manager
+	td = document.createElement("td");
+	td.innerText = reimb[REIMB_MANAGERNAME];
+	tr.appendChild(td);
 	
 	return tr;
 }

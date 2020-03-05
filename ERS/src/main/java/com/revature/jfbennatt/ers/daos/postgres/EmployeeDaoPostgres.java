@@ -317,8 +317,11 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		reimb.setStatus(DENIED_INT);
 	}
 
-	@Override
-	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId) {
+//	@Override
+//	public List<Reimbursement> getAllReimbursementsByEmployeeId(final int empId) {
+//	}
+
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(final int empId) {
 		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ?";
 		final List<Reimbursement> reimbs = new ArrayList<>();
 		ResultSet rs = null;
@@ -482,8 +485,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 
 	@Override
 	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId) {
-		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ? and "
-				+ REIMB_STATUS + " != " + PENDING_INT;
+		final String sql = "select * from get_reimbs_by_empl_id(?)";
 		final List<Reimbursement> reimbs = new ArrayList<>();
 		ResultSet rs = null;
 		try (final Connection con = ConnectionUtil.getConnection();
@@ -494,7 +496,6 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 			while (rs.next()) {
 				final Reimbursement reimb = new Reimbursement();
 				reimb.setReimbId(rs.getInt(REIMB_ID));
-				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
 				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
 				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
 				reimb.setReimbDate(rs.getDate(REIMB_DATE));
@@ -508,6 +509,10 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 					// if it's not null set it, if it is, don't
 					reimb.setReplyDate(replyDate);
 				}
+
+				// get manager's name
+				final String managerName = rs.getString("man_first_name") + " " + rs.getString("man_last_name");
+				reimb.setManagerName(managerName);
 
 				reimbs.add(reimb);
 			}
@@ -525,6 +530,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		}
 
 		return reimbs;
+
 	}
 
 	@Override

@@ -94,6 +94,8 @@ const REIMB_STATUSSTRING = 'statusString';
 const REIMB_SUBMITDATE = 'submitDate';
 // field name for Reimbursement.manId
 const REIMB_MANID = 'manId';
+// field name for Reimbursement.managerName
+const REIMB_MANAGERNAME = 'managerName';
 
 // field name for Reimbursement.email
 const EMPL_EMAIL = 'email';

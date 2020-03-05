@@ -17,9 +17,35 @@ reimb_status int4 check(reimb_status > 0
 and reimb_status < 4) not null,
 reimb_man_id int4 references employees (empl_id));
 
+
+create or replace function get_reimbs_by_empl_id(fn_empl_id employees.empl_id%type)
+returns table (reimb_id int4, reimb_status int4,
+	submit_date date,
+	amount money,
+	description varchar(140),
+	reimb_date date,
+	reply_date date,
+	man_first_name varchar(20),
+	man_last_name varchar(20)
+)
+language plpgsql
+as $$
+begin
+	return query select reimbs.reimb_id, reimbs.reimb_status, reimbs.submit_date, reimbs.amount, reimbs.description, reimbs.reimb_date, reimbs.reply_date, emp.empl_first_name, emp.empl_last_name 
+	from (select * from reimbursements r2 where r2.empl_id = fn_empl_id) as reimbs
+	inner join 
+	employees as emp 
+	on reimbs.reimb_man_id = emp.empl_id;
+end
+$$;
+
+select * from get_reimbs_by_empl_id(1);
+
 drop table employees;
 
 drop table reimbursements;
+
+drop function get_reimbs_by_empl_id;
 
 insert
 	into

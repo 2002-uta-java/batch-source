@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Manager - All Employees</title>
+<title>All Processed Requests</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -22,8 +22,7 @@
 <script type="text/javascript" src="/ERS/static/scripts/cookies.js"></script>
 <script type="text/javascript"
 	src="/ERS/static/scripts/Manager/nav-bar.js"></script>
-<script type="text/javascript"
-	src="/ERS/static/scripts/Manager/view-employees.js"></script>
+<script type="text/javascript" src="/ERS/static/scripts/home.js"></script>
 </head>
 <body>
 	<!-- the href's are set in javascript -->
@@ -32,7 +31,7 @@
 			id="profile-home">Home</a> <a
 			class="flex-sm-fill text-sm-center nav-link active" id="profile-link">Profile</a><a
 			class="flex-sm-fill text-sm-center nav-link active"
-			id="all-employees">All Employees</a><a
+			id="all-employees">All Employees</a> <a
 			class="flex-sm-fill text-sm-center nav-link active"
 			id="approve-requests">Approve Requests</a><a
 			class="flex-sm-fill text-sm-center nav-link active"
@@ -46,16 +45,5 @@
 			class="flex-sm-fill text-sm-center nav-link active" id="logout-link">Logout</a>
 	</nav>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col">Employee</th>
-				<th scope="col">Email</th>
-				<th scope="col">Manager</th>
-			</tr>
-		</thead>
-		<tbody id="employee-table-body">
-		</tbody>
-	</table>
 </body>
 </html>
