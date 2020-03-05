@@ -1,0 +1,39 @@
+2020-03-04 20:24:06 INFO  Driver:12 method: main - hello you are in the logger
+2020-03-04 20:24:06 INFO  Driver:13 method: main - info
+2020-03-04 20:24:06 ERROR Driver:14 method: main - error
+2020-03-04 20:24:06 INFO  Driver:15 method: main - admin pass
+2020-03-04 20:24:06 INFO  Driver:16 method: main - Reimbursement [RId=4, empId=1, manId=2, status=RESOLVED, action=APPROVED, description=$50 for travel]
+2020-03-04 20:24:06 INFO  Driver:17 method: main -  Mar 04, 2020 8:09:27 PM org.apache.catalina.core.StandardContext reload
+2020-03-04 20:24:06 INFO  Driver:18 method: main - INFO: Reloading Context with name [/Reimbursement] has started
+2020-03-04 20:24:06 INFO  Driver:19 method: main - Mar 04, 2020 8:09:27 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+2020-03-04 20:24:06 INFO  Driver:20 method: main - WARNING: The web application [Reimbursement] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+2020-03-04 20:24:06 INFO  Driver:21 method: main - Mar 04, 2020 8:09:28 PM org.apache.jasper.servlet.TldScanner scanJars
+2020-03-04 20:24:06 INFO  Driver:22 method: main - INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-03-04 20:24:06 INFO  Driver:23 method: main - Mar 04, 2020 8:09:28 PM org.apache.catalina.core.StandardContext reload
+2020-03-04 20:24:06 INFO  Driver:24 method: main - INFO: Reloading Context with name [/Reimbursement] is completed
+2020-03-04 20:25:10 INFO  Driver:20 method: main - WARNING: The web application [Reimbursement] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+2020-03-04 20:25:10 INFO  Driver:21 method: main - Mar 04, 2020 8:09:28 PM org.apache.jasper.servlet.TldScanner scanJars
+2020-03-04 20:25:10 INFO  Driver:22 method: main - INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-03-04 20:25:10 INFO  Driver:23 method: main - Mar 04, 2020 8:09:28 PM org.apache.catalina.core.StandardContext reload
+2020-03-04 20:25:10 INFO  Driver:24 method: main - Mar 04, 2020 8:24:22 PM org.apache.catalina.core.StandardContext reload
+2020-03-04 20:27:41 INFO  ReimbursementDaoImpl:181 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:38:43 INFO  ReimbursementDaoImpl:181 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:40:11 INFO  ReimbursementDaoImpl:181 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:48:50 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:48:51 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:49:42 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 20:49:45 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:01:04 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:01:09 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:12:39 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:12:45 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:13:40 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:13:46 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=2, status=RESOLVED, action=DENIED, description=Travel reimbursement $250]
+2020-03-04 21:19:31 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=0, empId=2, manId=0, status=null, action=null, description=null]
+2020-03-04 21:19:37 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=0, empId=0, manId=0, status=null, action=null, description=Travel reimbursement $250]
+2020-03-04 21:21:38 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=0, status=PENDING, action=null, description=Travel $50]
+2020-03-04 21:21:44 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=0, status=PENDING, action=null, description=Travel reimbursement $250]
+2020-03-04 22:09:59 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=3, status=RESOLVED, action=APPROVED, description=Travel $50]
+2020-03-04 22:10:04 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=3, status=RESOLVED, action=APPROVED, description=Food Reimbursement for $150]
+2020-03-04 22:19:42 INFO  ReimbursementDaoImpl:158 method: createReimbursement - Reimbursement [RId=1, empId=2, manId=3, status=RESOLVED, action=APPROVED, description=Food Reimbursement for $150]
+2020-03-04 22:19:50 INFO  ReimbursementDaoImpl:182 method: updateReimbursement - Reimbursement [RId=1, empId=1, manId=3, status=RESOLVED, action=APPROVED, description=Travel Reimbursement for $196]

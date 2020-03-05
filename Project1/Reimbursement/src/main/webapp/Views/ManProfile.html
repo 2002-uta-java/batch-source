@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager Dashboard</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<body>
+	<div class="container">
+		<h3>Manager Dashboard</h3><br>
+		<button class="btn btn-info" onClick="viewPending()">View Pending</button>
+		<button class="btn btn-info" onClick="viewResolved()">View Resolved</button>
+		<br>
+			<label>Search Employee ID</label>
+			<input type="number" class="form-control" name="empId" id="empId">
+			<button class="btn btn-success" onClick="searchEmployee()">Search</button>
+		
+		<br>
+		<table id = "reimbTable" class="table">
+			<tr>
+				<th>ID</th>
+				<th>Employee ID</th>
+				<th>Manager ID</th>
+				<th>Status</th>
+				<th>Description</th>
+				<th>Action</th>
+			</tr>
+		</table>
+		<br>
+		<hr>
+		<br>
+		<h4>Employees</h4>
+		<button class="btn btn-info" onClick="viewEmployees()">View Employees</button>
+		<table id = "profTable" class="table">
+			<tr id="headerRow">
+				<th>ID</th>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Phone</th>
+				<th>Email</th>
+				</tr>
+		</table>
+		<br>
+		<hr>
+		<br>
+		<h4>Handle Reimbursements</h4>
+		<form action="manprofile" method="post">
+			<label>Reimbursement ID</label><br>
+			<input type="number" class="form-control" name="RId"><br>
+			<select name="action" class="form-control">
+				<option value="APPROVED">Approve</option>
+				<option value="DENIED">Deny</option>
+			</select><br>
+			<input type="submit" value="Handle" class="btn btn-info" name="Submit">
+		</form>
+		<br>
+		<hr>
+		<br>
+		<form action="empprofile" method="post">
+			<input type="submit" value="Logout" class="btn btn-danger" name="Submit">
+		</form>
+	</div>
+	<script type="text/javascript" src="Scripts/ManProfile.js"></script>
+</body>
+</html>
+</body>
+</html>
