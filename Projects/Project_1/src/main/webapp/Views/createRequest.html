@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+</head>
+<body>
+	<div id="empNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#" id="username">username</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link  active" href="create">Create Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="employeehome">ERB Requests</a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="profile"> Edit Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div id="createReqSection">
+    <div class="container text-center">
+      <h2>Create a new reimbursement request</h2>
+    </div>
+    <br>
+    <div class="container text-left">
+      <form action="create" method="POST">
+        <div class="form-group">
+          <label>Reimbursement description</label>
+          <input type="text" class="form-control"  name="reimbursementDescription">
+        </div>
+        <div class="form-group">
+          <label>Amount requested for reimbursement</label>
+          <input type="text" class="form-control" name="reimbursementAmount">
+        </div>
+        <div class="form-group">
+          <label>Reimbursement Status</label>
+          <input type="text" class="form-control" name="reimbursementStatus" value="PENDING" disabled>
+        </div>
+        <input type="submit" value="Create Request" class="btn btn-primary">
+      </form>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="Scripts/getEmplInSession.js"></script>
+</body>
+</html>

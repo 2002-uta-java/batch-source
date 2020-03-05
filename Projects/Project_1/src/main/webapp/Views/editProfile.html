@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+ <section id="empEditNav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" id="username"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="create">Create Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employeehome">ERB Requests</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link active" href="profile"> Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <br>
+    <br>
+    <section id="createReqSection">
+        <div class="container text-center">
+            <h2>Edit profile</h2>
+        </div>
+        <br>
+        <div class="container text-left">
+            <form action="profile" method="POST">
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Employee Name</label>
+                    <input type="text" class="form-control" id="empName" name="empName">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Job Title</label>
+                    <input type="text" class="form-control" id="empPosition" name="empPosition">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" id="empUsername" name="empUsername">
+                </div>
+                <div class="form-group">
+                    <label>Manager/Employee</label>
+                    <input type="text" class="form-control" placeholder="Employee" name="empIsManager"
+                        disabled>
+                </div>
+                <br>
+                <input type="submit" value="Save" class="btn btn-primary">
+            </form>
+        </div>
+
+    </section>
+
+    <script type="text/javascript" src="Scripts/getEmplInSession.js"></script>
+    <script type="text/javascript" src="Scripts/editProfile.js"></script>
+</body>
+</html>

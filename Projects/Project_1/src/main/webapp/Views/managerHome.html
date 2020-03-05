@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="Scripts/managerHome.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	 crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	 crossorigin="anonymous"></script>
+	 
+	 <style>
+	h2 {
+		margin: 30px 0;
+	}
+	</style>
+</head>
+<body>
+	<section id="mgmtNav">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#" id="username">username</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+			 aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" href="managerhome">ERB Management</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="allemployees">View Employees</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout">Logout</a>
+					</li>
+
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<br>
+	<div class="container text-center">
+		<h2>Manager Dashboard</h2>
+		<h3>All Employee Reimbursement Requests</h3>
+		<div class="container text-center">
+			<input class="form-control align-middle text-center" type="text" id="myInput" onkeyup="filterName()" placeholder="Search reimbursements by Employee Id">
+		</div>
+		<br>
+		<table id="table" class="table">
+			<tr id="headerRow">
+				<th>Reimbursement ID</th>
+				<th>Manager ID</th>
+				<th>Employee ID</th>
+				<th>Request Description</th>
+				<th>Amount Requested</th>
+				<th>Status</th>
+			</tr>
+		</table>
+	</div>
+
+	<section id="approveOrDenySection">
+		<div class="container text-center">
+			<h3>Resolve request by ID</h3>
+		</div>
+		<br>
+		<div class="container text-left">
+			<form action="managerhome" method="POST">
+				<div class="form-group">
+					<label for="formGroupExampleInput">Reimbursement ID #</label>
+					<input type="number" class="form-control" id="formGroupExampleInput" placeholder="" name="reimbursementId">
+					<small id="emailHelp" class="form-text text-muted">Input the # of the request you want to approve.</small>
+					<br>
+					<input type="submit" value="Approve Request" class="btn btn-primary">
+				</div>
+				<br>
+
+				<br>
+			</form>
+
+
+			<form action="deny" method="POST">
+				<div class="form-group">
+					<label for="formGroupExampleInput2">Reimbursement ID #</label>
+					<input type="number" class="form-control" id="aaa" placeholder="" name="reimbursementId">
+					<small id="emailHelp2" class="form-text text-muted">Input the # of the request you want to deny.</small>
+					<br>
+					<input type="submit" value="Deny Request" class="btn btn-danger">
+				</div>
+				<br>
+
+				<br>
+			</form>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="Scripts/allERBs.js"></script>
+	<script>
+		function filterName() {
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("table");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[2];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
