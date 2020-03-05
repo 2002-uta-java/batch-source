@@ -83,11 +83,4 @@ public class LoginDelegate extends Delegate {
 		}
 	}
 
-	private void addEmailCookie(Employee employee, HttpServletResponse response) {
-		final Cookie emailCookie = new Cookie(EMAIL_COOKIE_NAME, employee.getEmail());
-		emailCookie.setMaxAge(COOKIE_TIME);
-		emailCookie.setPath(COOKIE_PATH);
-		response.addCookie(emailCookie);
-	}
-
 }

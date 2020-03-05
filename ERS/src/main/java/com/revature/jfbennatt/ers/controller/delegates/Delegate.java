@@ -196,30 +196,26 @@ public abstract class Delegate {
 
 		Logger.getRootLogger().debug("Requesting: " + path);
 
-		// attempt to delete success cookie
-		deleteSuccessCookie(request, response);
-
 		// get the employee from the cookies sent with the request
 		final Employee employee = authenticateEmployee(request);
 		if (employee == null) {
 			// forward to the login page
 			request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
 		} else {
+			// update cookies
+			setAuthorizationCookie(employee, response);
+			setNameCookies(employee, response);
+			addEmailCookie(employee, response);
 			// the employee was authenticated, send this along to actually do something
 			processRequest(employee, path, request, response);
 		}
 	}
 
-	private void deleteSuccessCookie(HttpServletRequest request, HttpServletResponse response) {
-//		final Cookie[] cookies = request.getCookies();
-//		if(cookies != null) {
-//		for(final Cookie cookie:cookies) {
-//			if(cookie.getName().equals(ViewDelegate.SUCCESS_COOKIE)) {
-//				// set cookie to expire when they recieve it
-//				
-//			}
-//		}
-//		}
+	protected void addEmailCookie(Employee employee, HttpServletResponse response) {
+		final Cookie emailCookie = new Cookie(EMAIL_COOKIE_NAME, employee.getEmail());
+		emailCookie.setMaxAge(COOKIE_TIME);
+		emailCookie.setPath(COOKIE_PATH);
+		response.addCookie(emailCookie);
 	}
 
 	/**

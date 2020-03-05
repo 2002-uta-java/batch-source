@@ -43,7 +43,7 @@ function getTr(reimb){
 	tr.appendChild(td);
 
 	td = document.createElement("td");
-	td.innerText = reimb[REIMB_AMOUNT];
+	td.innerText = "$" + reimb[REIMB_AMOUNT];
 	tr.appendChild(td);
 
 	td = document.createElement("td");
