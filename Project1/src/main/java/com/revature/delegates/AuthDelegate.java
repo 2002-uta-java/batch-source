@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.revature.daos.EmployeeDao;
 import com.revature.daos.EmployeeDaoImpl;
 import com.revature.models.Employee;
@@ -12,11 +14,12 @@ import com.revature.models.Employee;
 public class AuthDelegate {
 
 	private EmployeeDao eDao = new EmployeeDaoImpl();
+	private static Logger log = Logger.getRootLogger();
 	
 	public void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(email + "/" + password);
+		log.info(email + "/" + password);
 		
 		Employee e = eDao.getEmployeeByEmailAndPassword(email, password);
 		

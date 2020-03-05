@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.daos.ReimbursementDao;
 import com.revature.daos.ReimbursementDaoImpl;
@@ -19,13 +21,14 @@ public class ReimbDelegate {
 	
 	private ReimbursementDao rDao = new ReimbursementDaoImpl();
 	private ReimbursementService rServ = new ReimbursementService();
+	private static Logger log = Logger.getRootLogger();
 	
 	public void getReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
-		System.out.println(requestPath);
+		log.info(requestPath);
 		
 		if (requestPath.length() == "/api/reimb".length()) {
-			System.out.println("Getting all reimbursements...");
+			log.info("Getting all reimbursements...");
 			List<Reimbursement> reimbursements = rDao.getReimbursementsAll();
 			
 			try (PrintWriter pw = response.getWriter();) {
@@ -35,7 +38,7 @@ public class ReimbDelegate {
 			String reimbPath = request.getServletPath().substring(11); // shaves off /api/reimb/
 			
 			if (reimbPath.startsWith("p")) {
-				System.out.println("Getting pending reimbs: " + reimbPath);
+				log.info("Getting pending reimbs: " + reimbPath);
 	
 				List<Reimbursement> r = rDao.getPendingReimbursements();
 				
@@ -44,7 +47,7 @@ public class ReimbDelegate {
 				}
 			}
 			else if (reimbPath.startsWith("r")) {
-				System.out.println("Getting resolved reimbs: " + reimbPath);
+				log.info("Getting resolved reimbs: " + reimbPath);
 				
 				List<Reimbursement> r = rDao.getResolvedReimbursements();
 				
@@ -56,7 +59,7 @@ public class ReimbDelegate {
 				String idStr = reimbPath.substring(2);
 				List<Reimbursement> r = rDao.getReimbursementsByEmployeeId(Integer.parseInt(idStr));
 				
-				System.out.println("Getting employee ID: " + idStr);
+				log.info("Getting employee ID: " + idStr);
 				
 				if (r == null) {
 					response.sendError(404, "No empl. with given ID");
@@ -69,7 +72,7 @@ public class ReimbDelegate {
 			else {
 				try {
 			      int idStr = Integer.parseInt(reimbPath.trim());
-			      System.out.println("Getting ReimbId: " + idStr);
+			      log.info("Getting ReimbId: " + idStr);
 			      
 			      Reimbursement r = rDao.getReimbursementById(idStr);
 			      
@@ -83,7 +86,7 @@ public class ReimbDelegate {
 			    }
 			    catch (NumberFormatException nfe)
 			    {
-			      System.out.println("NumberFormatException: " + nfe.getMessage());
+			    	log.warn("NumberFormatException: " + nfe.getMessage());
 			      response.sendError(404, "Bad request");
 			    }
 			}

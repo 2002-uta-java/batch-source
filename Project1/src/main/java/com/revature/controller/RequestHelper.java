@@ -27,8 +27,13 @@ public class RequestHelper {
 		
 		if(path.startsWith("/api/")) {
 			// Authenticate token here.
+			// NOTE: I've decided to remove repeatedly checking authentication.
+			// This was for the sake of development speed. As long as I keep passing the token header
+			// throughout all my AJAX requests, this should work fine. But for now, I will leave this
+			// off. 
+			
 //			if(!authDelegate.isAuthorized(request)) {
-//				System.out.println("Failed authentication.");
+//				log.warn("Failed authentication.");
 //				response.sendError(401);
 //				return;
 //			}

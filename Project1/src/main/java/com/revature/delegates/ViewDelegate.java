@@ -6,11 +6,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class ViewDelegate {
+	
+	private static Logger log = Logger.getRootLogger();
 	
 	public void resolveView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getServletPath();
-		System.out.println("in our view delegate: " + uri);
+		log.info("in our view delegate: " + uri);
 		
 		switch(uri) {
 		case "/login":

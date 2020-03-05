@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.daos.EmployeeDao;
 import com.revature.daos.EmployeeDaoImpl;
@@ -16,12 +18,13 @@ import com.revature.models.Employee;
 public class UserDelegate {
 
 	private EmployeeDao eDao = new EmployeeDaoImpl();
+	private static Logger log = Logger.getRootLogger();
 
 	public void getUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
 		
 		if (requestPath.length() == "/api/users".length()) {
-			System.out.println("Getting all users...");
+			log.info("Getting all users...");
 			List<Employee> employees = eDao.getEmployees();
 			
 			try (PrintWriter pw = response.getWriter();) {
@@ -31,7 +34,7 @@ public class UserDelegate {
 			
 		} else {
 			String idStr = request.getServletPath().substring(11); // shaves off /api/users/
-			System.out.println("Getting user ID: " + idStr);
+			log.info("Getting user ID: " + idStr);
 			
 			Employee e = eDao.getEmployeeById(Integer.parseInt(idStr));
 			
@@ -50,7 +53,7 @@ public class UserDelegate {
 	public void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();
 		String idStr = requestPath.substring(12); // shaves off /updateuser/
-		System.out.println("Posting to user ID: " + idStr);
+		log.info("Posting to user ID: " + idStr);
 		
 		Employee eUpdate = readUserJson(request);
 		
@@ -92,7 +95,7 @@ public class UserDelegate {
 			// Send updated user information to database. (probably need try200/catch500s if Dao goes wrong)
 			eDao.updateEmployee(e);
 			response.setStatus(200);
-			System.out.println("User successfully updated!");
+			log.info("User successfully updated!");
 		}
 	}
 	
