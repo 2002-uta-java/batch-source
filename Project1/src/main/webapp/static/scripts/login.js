@@ -16,6 +16,8 @@ function submitForm(e) {
 			const auth = xhr.getResponseHeader("Authorization");
 			sessionStorage.setItem("token", auth);
 			window.location.href="http://localhost:8080/home";
+		} else if(xhr.readyState == 4) {
+			document.getElementById("invalid-notice").hidden = false;
 		}
 	}
 	

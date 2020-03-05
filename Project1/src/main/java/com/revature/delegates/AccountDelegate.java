@@ -39,7 +39,7 @@ public class AccountDelegate {
 				String idStr = tokenArr[0];
 				if(idStr.matches("^\\d+$")) {
 					a = accountService.getAccountById(Integer.parseInt(idStr));
-//					a.setPassword(""); // Clear Password
+					a.setPassword(""); // Clear Password
 				}
 			}
 			
@@ -71,7 +71,9 @@ public class AccountDelegate {
 
 			List<Request> requests;
 			
-			if ("EMPLOYEE".equals(tokenArr[1])) {
+			Account a = accountService.getAccountById(id);
+			
+			if ("EMPLOYEE".equals(a.getAcctType())) {
 				requests = new RequestService().getEmployeeRequests(id);
 			} else {
 				requests = new RequestService().getManagerRequests(id);
@@ -110,7 +112,6 @@ public class AccountDelegate {
 			String email = pArr[1].split("=")[1];
 			String password = pArr[2].split("=")[1];
 			
-			log.info(name+" "+email+" "+password);
 			
 			if (accountService.updateUser(id, name, email, password)) {
 				response.setStatus(200);

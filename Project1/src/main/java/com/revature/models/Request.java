@@ -8,8 +8,8 @@ public class Request implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private enum Status {PENDING, APPROVED, DENIED};
-	private enum Category {TRAVEL, EDUCATION, SUPPLIES};
+	private enum Status {PENDING, APPROVED, DENIED}
+	private enum Category {TRAVEL, EDUCATION, SUPPLIES}
 	
 	private int id;
 	private LocalDateTime submitted;

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#">ReimbursePro</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +46,7 @@
 
 	<div class="grid-container container">
 		<div class="container content">
+			<h2 style="text-align: center;">Reimbursement Requests</h2>
 			<div class="filters-section">
 				<div class="filter">
 					<label>Filter By Status: </label>
@@ -65,10 +66,10 @@
 			<table id="request-table" class="table table-hover">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Date Submitted</th>
-						<th>Amount</th>
-						<th>Status</th>
+						<th scope="col">ID</th>
+						<th scope="col">Date Submitted</th>
+						<th scope="col">Amount</th>
+						<th scope="col">Status</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -81,10 +82,10 @@
 			<table id="user-table" class="table">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Manager</th>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Manager</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -103,6 +104,7 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
+			<div id="invalid-notice" class="invalid-amount" hidden>Please enter a non-negative amount less than $1,000,000</div>
 	        <form id="create-request-form" onsubmit="preventDefault(); return false;">
 	        	<label>Amount:</label>
 	        	<input type="number" name="amount" class="form-control" required><br>

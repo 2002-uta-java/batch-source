@@ -33,7 +33,7 @@ public class RequestHelper {
 		
 	}
 	
-	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
 		
 		if(path.startsWith("/login")) {
@@ -43,7 +43,7 @@ public class RequestHelper {
 		}
 	}
 	
-	public void processPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void processPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
 		
 		if(path.startsWith("/api/")) {
@@ -51,7 +51,7 @@ public class RequestHelper {
 		}
 	}
 	
-	private void handleApiRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	private void handleApiRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String resource = request.getServletPath().substring(5);
 		String method = request.getMethod();
 		

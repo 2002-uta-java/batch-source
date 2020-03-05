@@ -16,18 +16,16 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#">ReimbursePro</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
 		</div>
 	</nav>
 
 	<div class="container content">
 		<form id="login-form">
 			<h1 class="text-center">Login</h1>
+			<div id="invalid-notice" class="invalid-login" hidden>Invalid email or password. Please try again.</div>
 			<div class="form-group">
 				<label for="email">Email:</label>
 				<input type="email" name="email" class="form-control">

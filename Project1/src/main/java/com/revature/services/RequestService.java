@@ -20,31 +20,28 @@ public class RequestService {
 		return rd.getRequestById(id);
 	}
 	
-	public List<Request> getEmployeeRequests(int empl_id) {
-		return rd.getEmployeeRequests(empl_id);
+	public List<Request> getEmployeeRequests(int emplId) {
+		return rd.getEmployeeRequests(emplId);
 	}
 	
-	public List<Request> getManagerRequests(int mng_id) {
-		return rd.getManagerRequests(mng_id);
+	public List<Request> getManagerRequests(int mngId) {
+		return rd.getManagerRequests(mngId);
 	}
 	
 	public boolean createNewRequest(int emplId, LocalDate reimburseDate, double amount, String description, String imgUrl, String category) {
 		Request r = new Request(LocalDateTime.now(), "PENDING", emplId, reimburseDate, amount, description, imgUrl, category);
 		
-		if (rd.createRequest(r) != null) {
-			return true;
+		if (amount <= 0 || amount > 1000000) {
+			return false;
 		}
 		
-		return false;
+		return rd.createRequest(r) != null;
 		
 	}
 
 	public boolean reviewRequest(Request req) {
 		
-		if(rd.updateRequest(req) > 0) {
-			return true;
-		}
-		
-		return false;
+		return rd.updateRequest(req) > 0;
+
 	}
 }

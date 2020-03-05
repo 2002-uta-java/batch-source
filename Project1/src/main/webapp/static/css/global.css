@@ -7,3 +7,7 @@ body {
 .clickable {
 	cursor: pointer;
 }
+
+.navbar {
+	background-color: #05386B;
+}

@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import javax.net.ssl.SSLEngineResult.Status;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -64,7 +62,7 @@ public class RequestDelegate {
 		
 	}
 	
-	public void putRequests(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void putRequests(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String reviewType = request.getHeader("Review");
 		int rb = Integer.parseInt(request.getHeader("Authorization").split("%")[0]);
 		

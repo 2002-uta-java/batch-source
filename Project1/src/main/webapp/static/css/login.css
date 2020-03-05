@@ -37,3 +37,8 @@ form {
 	transform: translateY(-50%);
 	box-shadow: 0 0 5px #aaa;
 }
+
+.invalid-login {
+	color: red;
+	text-align: center;
+}

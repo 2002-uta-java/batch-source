@@ -35,10 +35,12 @@ public class FrontController extends DefaultServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestHelper.processPost(request, response);
 	}
 	
+	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestHelper.processPut(request, response);
 	}

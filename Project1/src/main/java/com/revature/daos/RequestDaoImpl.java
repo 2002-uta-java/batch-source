@@ -2,7 +2,6 @@ package com.revature.daos;
 
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -26,7 +25,7 @@ public class RequestDaoImpl implements RequestDao {
 	public List<Request> getAllRequests() {
 		
 		String sql = "select * from " + reqTable + " r join reimburse.account a on r.empl_id = a.id order by r.date_submitted desc";
-		List<Request> requests = new ArrayList<Request>();
+		List<Request> requests = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				Statement s = c.createStatement();
@@ -77,7 +76,7 @@ public class RequestDaoImpl implements RequestDao {
 		
 		String sql = "select * from " + reqTable + " order by id offset ? limit ?";
 		ResultSet rs = null;
-		List<Request> requests = new ArrayList<Request>();
+		List<Request> requests = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {
@@ -114,7 +113,7 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) {
 			log.error(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.error(e); }
 		}
 		
 		return requests;
@@ -124,7 +123,7 @@ public class RequestDaoImpl implements RequestDao {
 	public List<Request> getManagerRequests(int mngId) {
 		String sql = "select * from " + reqTable + " r join reimburse.account a on r.empl_id = a.id where manager_id=? order by r.date_submitted desc";
 		ResultSet rs = null;
-		List<Request> requests = new ArrayList<Request>();
+		List<Request> requests = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {
@@ -168,22 +167,22 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) {
 			log.error(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.error(e); }
 		}
 		
 		return requests;
 	}
 	
 	@Override
-	public List<Request> getEmployeeRequests(int empl_id) {
-		String sql = "select * from " + reqTable + " where empl_id=? order by id";
+	public List<Request> getEmployeeRequests(int emplId) {
+		String sql = "select * from " + reqTable + " where empl_id=? order by date_submitted desc";
 		ResultSet rs = null;
-		List<Request> requests = new ArrayList<Request>();
+		List<Request> requests = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {
 			
-			ps.setInt(1, empl_id);
+			ps.setInt(1, emplId);
 			
 			rs = ps.executeQuery();
 			
@@ -214,7 +213,7 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) {
 			log.error(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.error(e); }
 		}
 		
 		return requests;
@@ -258,7 +257,7 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) {
 			log.error(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.error(e); }
 		}
 		
 		return r;
@@ -293,7 +292,7 @@ public class RequestDaoImpl implements RequestDao {
 		} catch (SQLException e) { 
 			log.error(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.error(e); }
 		}
 		
 		return null;

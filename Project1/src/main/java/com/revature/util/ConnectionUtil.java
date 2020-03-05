@@ -4,19 +4,23 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 public class ConnectionUtil {
 
 	private static Connection connection;
+	private static final Logger log = Logger.getRootLogger();
+	private ConnectionUtil() {}
 	
 	public static Connection getConnection() throws SQLException {
 		
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 		
-		boolean isTest = Boolean.valueOf(System.getenv("DB_TEST"));
+		boolean isTest = Boolean.parseBoolean(System.getenv("DB_TEST"));
 		if(isTest) 
 			return getH2Connection();
 		
@@ -35,10 +39,10 @@ public class ConnectionUtil {
 
 		try {
 			if (connection == null || connection.isClosed()) {
-				connection = DriverManager.getConnection("jdbc:h2:~/test");
+				connection = DriverManager.getConnection(System.getenv("PRJ1_H2_HOST"));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 
 		return connection;

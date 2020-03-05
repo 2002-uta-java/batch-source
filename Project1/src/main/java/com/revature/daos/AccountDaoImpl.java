@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +17,13 @@ import com.revature.util.ConnectionUtil;
 public class AccountDaoImpl implements AccountDao {
 
 	private String accountTable = "reimburse.account";
-	private final Logger log = Logger.getRootLogger();
+	private static final Logger log = Logger.getRootLogger();
 	
 	@Override
 	public List<Account> getAllAccounts() {
 		
 		String sql = "select * from " + accountTable;
-		List<Account> accounts = new ArrayList<Account>();
+		List<Account> accounts = new ArrayList<>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				Statement s = c.createStatement();
@@ -81,7 +80,7 @@ public class AccountDaoImpl implements AccountDao {
 		} catch (SQLException e) {
 			log.warn(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.warn(e); }
 		}
 		
 		return a;
@@ -117,7 +116,7 @@ public class AccountDaoImpl implements AccountDao {
 		} catch (SQLException e) {
 			log.warn(e);
 		} finally {
-			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); } catch (SQLException e) { log.warn(e); }
 		}
 		
 		return a;

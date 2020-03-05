@@ -10,8 +10,8 @@ window.onload = function() {
 		window.location.href="http://localhost:8080/login";
 	} else {
 		let baseUrl = "http://localhost:8080/api/user";
-		document.getElementById("submit-new-request").addEventListener("click", createRequest);
 		sendAjaxGet(baseUrl, loadPageBase);
+		document.getElementById("submit-new-request").addEventListener("click", createRequest);
 		
 	}
 }
@@ -86,7 +86,6 @@ function sendAjaxPut(url, params, callback){
 function loadPageBase(xhr) {
 	user = JSON.parse(xhr.response);
 
-	document.getElementById("nav-name").innerText = user.name;
 	loadProfile();
 	
 	if (user.acctType == "EMPLOYEE") {
@@ -103,16 +102,23 @@ function loadPageBase(xhr) {
 function createRequest(e) {
 
 	const formData = new FormData(document.getElementById("create-request-form"));
+
+	const amount = formData.get("amount");
+
+	if (amount <= 0 || amount > 1000000) {
+		document.getElementById("invalid-notice").hidden = false;
+	} else {
+		sendAjaxPost("http://localhost:8080/api/requests", {
+			amount: formData.get("amount"),
+			date: formData.get("date"),
+			description: formData.get("description"),
+			category: formData.get("category")
+		}, ()=>{
+			$('#create-request').modal('hide');
+			sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
+		});
+	}
 	
-	sendAjaxPost("http://localhost:8080/api/requests", {
-		amount: formData.get("amount"),
-		date: formData.get("date"),
-		description: formData.get("description"),
-		category: formData.get("category")
-	}, ()=>{
-		$('#create-request').modal('hide');
-		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
-	});
 
 }
 
@@ -168,6 +174,7 @@ function loadRequests(xhr) {
 					<h4>${dateFull}</h4>
 					<h5>Category: ${req.category}</h5>
 				</div>
+				${user.acctType == "MANAGER" ? `<p>Requested by: ${req.emplAccount.name}</p>` : ""}
 				<p>Description: ${req.description}</p>
 
 				${reviewSection}
@@ -227,12 +234,12 @@ function loadUsers(xhr) {
 	const tableBody = document.getElementById("user-table").children[1];
 	tableBody.innerHTML = '';
 
-	for (let user of users) {
+	for (let u of users) {
 
-		const manager = users.filter((e)=>e.id == user.managerId)[0];
+		const manager = users.filter((e)=>e.id == u.managerId)[0];
 
 		const tr = document.createElement("tr");
-		tr.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.email}</td><td>${manager ? manager.name : "-"}</td>`;
+		tr.innerHTML = `<td>${u.id}</td><td>${u.name}</td><td>${u.email}</td><td>${manager ? manager.name : "-"}</td>`;
 		tableBody.appendChild(tr);
 	}
 
@@ -242,6 +249,7 @@ function loadUsers(xhr) {
 
 function loadProfile() {
 	const profile = document.getElementById("profile-body");
+	document.getElementById("nav-name").innerText = user.name;
 
 	profile.innerHTML = `
 		<h3>Profile <i class="fa fa-pencil"></i></h3>
@@ -256,7 +264,7 @@ function loadProfile() {
 			<h3>Profile <i class="fa fa-check"></i></h3>
 			<h5>Name: <input id="edit-name" type="text" value="${user.name}"></h5>
 			<h5>Email: <input id="edit-email" type="text" value="${user.email}"></h5>
-			<h5>Password: <input id="edit-pass" type="password" value="${user.password}"></h5>
+			<h5>Password: <input id="edit-pass" type="password" value="********"></h5>
 		`;
 
 		$(".fa-check").click(()=>{
@@ -271,7 +279,12 @@ function loadProfile() {
 					name: newName,
 					email: newEmail,
 					password: newPass
-				}, loadProfile);
+				}, () => {
+					sendAjaxGet("http://localhost:8080/api/user", (xhr)=>{
+						user = JSON.parse(xhr.response);
+						loadProfile();
+					});
+				});
 			}
 		});
 	});

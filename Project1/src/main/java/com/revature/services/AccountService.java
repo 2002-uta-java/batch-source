@@ -38,7 +38,10 @@ public class AccountService {
 		
 		a.setName(name);
 		a.setEmail(email);
-		a.setPassword(password);
+		
+		if (!"".equals(password) && !"********".equals(password) && !a.getPassword().equals(password)) {
+			a.setPassword(password);			
+		}
 		
 		log.info(a);
 		
