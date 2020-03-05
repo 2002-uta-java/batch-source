@@ -1,0 +1,113 @@
+
+* {
+	box-sizing: border-box;
+	font-family: Helvetica, sans-serif;
+	color: rgb(11,11,11);
+}
+
+body {
+	background: rgb(190, 190, 190);
+	margin: auto;
+}
+
+.column {
+	float: left;
+
+}
+
+.left {
+	width: 33%;
+	height: auto;
+	padding: 20 px;
+}
+
+.right {
+	width: 66%;
+	height: auto;
+	background: rgb(190, 190, 190);
+	margin: auto;
+	padding: 20 px;
+}
+
+img.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+h2.title {
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+table {
+	border: 0; 
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align: left
+}
+
+img.right-image {
+	width: 100%;
+	margin-left: auto; 
+	margin-right: auto; 
+	height: auto;
+}
+
+
+.top-left {
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.registration {
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.sign-in {
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+
+input[type=text] {
+	padding: 10px 10px;
+	margin: 8px 0;
+	border: none;
+	background-color: rgb(180, 180, 180);
+}
+
+input[type=password] {
+	padding: 10px 10px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: none;
+	background-color: rgb(180, 180, 180);
+}
+
+input[type=text]:focus {
+	background-color: rgb(179, 179, 255);
+	color: rgb(15, 15, 15);
+}
+
+input[type=password]:focus {
+	background-color: rgb(179, 179, 255);
+	color: rgb(15, 15, 15);
+}
+
+input[type=submit] {
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+	padding: 10px 10px;
+	margin: 0px 0;
+	background-color: rgb(180, 180, 180); 
+	border: none;
+	cursor:pointer;
+}
