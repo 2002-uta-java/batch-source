@@ -16,27 +16,16 @@ public class RequestHelper {
 	
 	public void delegateGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		String path = req.getServletPath();
-		System.out.println("IT'S ALLLLIIIIIVVVVVEEEE "+path);
+		System.out.println("IT'S ALLLLIIIIIVVVVVEEEE uuu "+path);
 		if(path.startsWith("/api/")) {
 			
-			if(!loginDelegate.authorized(req)) {
-				resp.sendError(401);
-				return;
-			}
+			
 			
 			String record = path.substring(5);
+			System.out.println("	substring "+record);
 			switch (record) {
-			case "index":
-				req.getRequestDispatcher("/static/Views/index.html").forward(req,resp);
-				break;
-			case "profile":
-				req.getRequestDispatcher("/static/Views/profile.html").forward(req,resp);
-				break;
-			case "reimbursements":
-				break;
-			case "login":
-				//req.getRequestDispatcher("/static/Views/Login.html").forward(req,resp);
-				loginDelegate.authenticate(req, resp);
+			case "userProfile":
+				userDelegate.getUserProfile(req, resp);
 				break;
 			default:
 				resp.sendError(404,"Path not supported");
@@ -52,9 +41,6 @@ public class RequestHelper {
 		switch(path) {
 		case "/ulogin":
 			loginDelegate.authenticate(req, resp);
-			break;
-		case "/userProfile":
-			userDelegate.getUser(req, resp);
 			break;
 		default:
 			resp.sendError(405);

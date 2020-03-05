@@ -15,7 +15,7 @@ function userLogin(){
 			let auth = this.getResponseHeader("Authorization");
 			sessionStorage.setItem("token",auth);
 			console.log(auth);
-			//window.location.href="http://localhost:8080/project_one/index"/*TODO: change to user page*/
+			window.location.href="http://localhost:8080/project_one/profile";
 		} else if (this.readyState==4){
 			console.log();
 			console.log("Credentials invalid: "+user+" : "+pw);
