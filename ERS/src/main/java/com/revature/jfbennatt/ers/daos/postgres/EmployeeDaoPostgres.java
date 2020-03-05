@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -308,6 +310,45 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	@Override
 	public void setDenied(Reimbursement reimb) {
 		reimb.setStatus(DENIED_INT);
+	}
+
+	@Override
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId) {
+		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ?";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setReimbId(rs.getInt(REIMB_ID));
+				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return reimbs;
 	}
 
 }

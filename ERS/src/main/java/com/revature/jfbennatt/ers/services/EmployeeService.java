@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -233,5 +234,9 @@ public class EmployeeService {
 		empDao.setPending(newReimb);
 
 		return empDao.submitRequest(newReimb);
+	}
+
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId) {
+		return empDao.getAllReimbursementsByEmployeeId(empId);
 	}
 }

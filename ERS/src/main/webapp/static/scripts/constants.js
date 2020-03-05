@@ -37,3 +37,22 @@ const FAIL_VALUE = "fail";
 const SUCCESS_VALUE = "success";
 // URI of view reimbursement resource
 const VIEW_REIMBURSEMENT_PAGE = "/ERS/view";
+// URI for returning all reimbursements for an employee
+const VIEW_ALL_REIMBURSEMENTS_BY_EMP = "/ERS/api/view";// field name for Reimbursement.amount
+const REIMB_AMOUNT = 'amount';
+// field name for Reimbursement.description
+const REIMB_DESCRIPTION = 'description';
+// field name for Reimbursement.emplId
+const REIMB_EMPLID = 'emplId';
+// field name for Reimbursement.reimbDate
+const REIMB_REIMBDATE = 'reimbDate';
+// field name for Reimbursement.reimbId
+const REIMB_REIMBID = 'reimbId';
+// field name for Reimbursement.replyDate
+const REIMB_REPLYDATE = 'replyDate';
+// field name for Reimbursement.status
+const REIMB_STATUS = 'status';
+// field name for Reimbursement.statusString
+const REIMB_STATUSSTRING = 'statusString';
+// field name for Reimbursement.submitDate
+const REIMB_SUBMITDATE = 'submitDate';

@@ -12,6 +12,7 @@ import com.revature.jfbennatt.ers.controller.delegates.LogoutDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.StaticDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
+import com.revature.jfbennatt.ers.controller.delegates.ViewReimbursementsDelegate;
 import com.revature.jfbennatt.ers.daos.postgres.EmployeeDaoPostgres;
 import com.revature.jfbennatt.ers.services.EmployeeService;
 
@@ -49,6 +50,12 @@ public class RequestDispatcher {
 	 * Suffix for submitting a reimbursement request.
 	 */
 	public static final String SUBMIT_REIMBURSEMENT = "/submit";
+	/**
+	 * Root URI (after {@link #API} prefix for viewing reimbursements. The default
+	 * behavior is to send "all" reimbursements (managers will get more than
+	 * employees)
+	 */
+	public static final String VIEW_REIMBURSEMENT_ROOT = "/view";
 
 	/**
 	 * delegate for fetching static resources (from an api call)
@@ -75,6 +82,10 @@ public class RequestDispatcher {
 	 */
 	private final SubmitReimbursementDelegate submitDelegate;
 	/**
+	 * Delegate for viewing reimbursements
+	 */
+	private final Delegate viewReimbDelegate;
+	/**
 	 * This is used to send a message from internal delegates to the view delegate
 	 * (to display on the home page).
 	 */
@@ -85,12 +96,15 @@ public class RequestDispatcher {
 	 */
 	public RequestDispatcher() {
 		super();
+
 		this.empService = new EmployeeService();
+
 		this.viewDelegate = new ViewDelegate();
 		this.loginDelegate = new LoginDelegate();
 		this.staticDelegate = new StaticDelegate();
 		this.logoutDelegate = new LogoutDelegate();
 		this.submitDelegate = new SubmitReimbursementDelegate();
+		this.viewReimbDelegate = new ViewReimbursementsDelegate();
 
 		this.empService.setEmployeeDao(new EmployeeDaoPostgres());
 		this.viewDelegate.setEmployeeService(empService);
@@ -98,6 +112,7 @@ public class RequestDispatcher {
 		this.staticDelegate.setEmployeeService(empService);
 		this.logoutDelegate.setEmployeeService(empService);
 		this.submitDelegate.setEmployeeService(empService);
+		this.viewReimbDelegate.setEmployeeService(empService);
 
 		this.viewDelegate.setRequestDispatcher(this);
 		this.submitDelegate.setRequestDispatcher(this);
@@ -120,8 +135,9 @@ public class RequestDispatcher {
 		if (path.startsWith(STATIC_PREFIX)) {
 			staticDelegate.processRequest(path, request, response);
 		} else if (path.startsWith(API)) {
+			final String apiPath = path.substring(API.length());
 			// route api calls
-			switch (path.substring(API.length())) {
+			switch (apiPath) {
 			case LOGIN:
 				loginDelegate.processRequest(path, request, response);
 				break;
@@ -131,8 +147,10 @@ public class RequestDispatcher {
 			case SUBMIT_REIMBURSEMENT:
 				submitDelegate.processRequest(path, request, response);
 				break;
-			default:
-				response.sendError(404);
+			}
+
+			if (apiPath.startsWith(VIEW_REIMBURSEMENT_ROOT)) {
+				viewReimbDelegate.processRequest(apiPath, request, response);
 			}
 		} else {
 			// route page requests

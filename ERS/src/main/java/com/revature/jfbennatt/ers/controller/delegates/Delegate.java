@@ -103,23 +103,6 @@ public abstract class Delegate {
 
 		Logger.getRootLogger().debug("Employee from authToken: " + employee);
 		return employee;
-
-//		if (employee != null) {
-//			return employee;
-//		} else {
-//			// try to see if the request is attempting to login
-//			final String email = request.getHeader(EMAIL_HEADER);
-//			final String password = request.getHeader(PASSWORD_HEADER);
-//
-//			Logger.getRootLogger().debug("Trying to login: " + email + " " + password);
-//			if (email != null && password != null) {
-//				final Employee emp = empService.loginEmployee(email, password);
-//				Logger.getRootLogger().debug("Trying to login in: " + emp);
-//				return emp;
-//			}
-//
-//			return null;
-//		}
 	}
 
 	/**

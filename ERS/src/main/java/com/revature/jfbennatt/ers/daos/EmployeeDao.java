@@ -1,5 +1,7 @@
 package com.revature.jfbennatt.ers.daos;
 
+import java.util.List;
+
 import com.revature.jfbennatt.ers.models.Employee;
 import com.revature.jfbennatt.ers.models.Reimbursement;
 
@@ -107,5 +109,16 @@ public interface EmployeeDao {
 	 * @param reimb {@link Reimbursement} object to set to denied.
 	 */
 	public void setDenied(Reimbursement reimb);
+
+	/**
+	 * Returns all of the reimbursements for this employee. If none exist, this will
+	 * return an empty list.
+	 * 
+	 * @param empId Id of employee to fetch reimbursements for.
+	 * @return A {@link List} of {@link Reimbursement} objects (or null if there is
+	 *         an error). Note: having no records is <em>not</em> an error and,
+	 *         instead, an empty list will be returned.
+	 */
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId);
 
 }

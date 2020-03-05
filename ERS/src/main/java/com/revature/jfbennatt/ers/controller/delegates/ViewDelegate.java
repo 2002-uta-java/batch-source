@@ -37,7 +37,7 @@ public class ViewDelegate extends Delegate {
 	/**
 	 * URI of the static view reimbursement page
 	 */
-	public static final String VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursement.html";
+	public static final String VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursements.html";
 
 	/**
 	 * URI of the submit reimbursement resource
@@ -107,6 +107,9 @@ public class ViewDelegate extends Delegate {
 			break;
 		case SUBMIT_REIMBURSEMENT:
 			request.getRequestDispatcher(SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
+			break;
+		case VIEW_REIMBURSEMENT:
+			request.getRequestDispatcher(VIEW_REIMBURSEMENT_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

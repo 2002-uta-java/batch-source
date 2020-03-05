@@ -11,6 +11,7 @@ public class Reimbursement {
 	private int reimbId;
 	private Date replyDate;
 	private int status;
+	private String statusString;
 	private Date submitDate;
 
 	public Reimbursement() {
@@ -137,5 +138,13 @@ public class Reimbursement {
 
 	public void setSubmitDate(Date submitDate) {
 		this.submitDate = submitDate;
+	}
+
+	public void setStatusString(final String statusString) {
+		this.statusString = statusString;
+	}
+
+	public String getStatusString() {
+		return statusString;
 	}
 }

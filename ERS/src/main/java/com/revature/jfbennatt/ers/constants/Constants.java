@@ -4,6 +4,7 @@ import java.io.File;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 
 import org.apache.log4j.Logger;
 
@@ -11,6 +12,7 @@ import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
+import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
  * This is a helper class which generates the constants.js file to be used by
@@ -74,8 +76,21 @@ public class Constants {
 			printVariable(ps, "VIEW_REIMBURSEMENT_PAGE",
 					RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_REIMBURSEMENT,
 					"URI of view reimbursement resource");
+			printVariable(ps, "VIEW_ALL_REIMBURSEMENTS_BY_EMP",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.VIEW_REIMBURSEMENT_ROOT,
+					"URI for returning all reimbursements for an employee");
+
+			printReimbursementFields(ps);
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
+		}
+	}
+
+	private static void printReimbursementFields(PrintStream ps) {
+		final Class<Reimbursement> reimbClass = Reimbursement.class;
+		for (final Field field : reimbClass.getDeclaredFields()) {
+			ps.println("// field name for Reimbursement." + field.getName());
+			ps.println("const REIMB_" + field.getName().toUpperCase() + " = '" + field.getName() + "';");
 		}
 	}
 
