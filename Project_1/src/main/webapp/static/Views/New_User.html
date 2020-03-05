@@ -9,23 +9,20 @@
         
       <!-- NAVIGATION BAR-->
       <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/project_one/index">CoinPurse</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/project_one/index">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown" >
                     <a class="nav-link dropdown-toggle"style="color: white;" href="#" 
-                    id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Started</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
+                        <a class="dropdown-item" href="/project_one/login">Login</a>
+                        <a class="dropdown-item" href="/project_one/new_user">Registration</a>
                     </div>
                 </li>
             </ul>
@@ -36,11 +33,13 @@
         </div>
     </nav>
 
+
         <!-- TITLE JUMBO-->   
-        <div style = "height :12rem;" >
-
+        <div class="jumbotron jumbotron-fluid text-center " >
+          <div class="container">
+            <h1 class="display-3" style="margin: 8rem 3rem 4rem 3rem;" h1>User Registration</h1>
+          </div>
       </div>
-
 
 
       <!-- GRID CONTAINER-->
@@ -51,11 +50,17 @@
           <br>
           <div class="display-4"> New User</div>
           <br style="height: 5rem;">
+          
           <label for="emailInput"> Email</label>
           <input type="email" class="form-control" name="emailField" id="em01" aria-describedby="emailHelpId" placeholder="">
         </div>
         
-                <div class="form-group">
+         <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
+        </div>
+        
+        <div class="form-group">
           <label for="passwordInput">Password</label>
           <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
         </div>

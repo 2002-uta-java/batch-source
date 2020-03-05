@@ -89,14 +89,13 @@ where u.username !='beebee';
 --select * from users;
 
 
---update users u
---	SET 
---		firstName = 'test',
---		lastName = 'case', 
---		userName = 'surrrrrre', 
---		email = 'test@tn.edu', 
---		"role" = 'Manager', 
---		"password"= 'yuppers', 
---		supervisor = 0
---where (u.username = 'beebee' and u."password" = 'yuppers');
---	select * from users order by userid ;
+update users u
+	SET 
+		firstName = 'test',
+		lastName = 'case',
+		email = 'test@tn.edu', 
+		"role" = 'Manager', 
+		"password"= 'yuppers', 
+		supervisor = 0
+where (u.username = 'beebee' and u."password" = 'yuppers');
+	select * from users order by userid ;

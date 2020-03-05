@@ -117,6 +117,38 @@ public class UserDaoImp implements UserDao {
 			return null;
 		}
 	}
+	
+	@Override
+	public List<User> getUsers() {
+		String query = "select * from users";
+		List<User> users = new ArrayList<>();
+		ResultSet result  = null;
+		
+		try(Connection userConn = ConnectionUtil.getConnection()){
+			PreparedStatement pstatement =  userConn.prepareStatement(query);
+			result = pstatement.executeQuery();
+			
+			while(result.next()) {
+				User u = new User();
+				u.setFirstname(result.getString("firstName"));
+				u.setLastname(result.getString("lastName"));
+				u.setUsername(result.getString("userName"));
+				u.setEmail(result.getString("email"));
+				u.setPassword(result.getString("password"));
+				u.setUid(result.getLong("UserID"));
+				u.setRole(result.getString("role"));
+				u.setSupervisor(result.getLong("Supervisor"));
+				users.add(u);
+			}
+				return users;
+		
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 
 	@Override
 	public List<User> getUsersBySuper(long uid) {
@@ -167,9 +199,11 @@ public class UserDaoImp implements UserDao {
 				String fname = result.getString("firstname");
 				String lname = result.getString("lastname");
 				String password = result.getString("password");
-				String email = result.getString("UserEmail");
+				String email = result.getString("email");
 				User u = new User(fname, lname, username,password, email);
 				u.setUid(userid);
+				u.setRole(result.getString("role"));
+				u.setSupervisor(result.getLong("supervisor"));
 				return u;
 			} else return null;
 		} catch (SQLException e) {

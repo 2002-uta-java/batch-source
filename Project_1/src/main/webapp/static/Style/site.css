@@ -20,6 +20,14 @@
     border: none;
 }
 
+.navbar-brand{
+	
+    font-style:italic;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
 .navbar-dark .navbar-nav .nav-link {
     color: white;
 }

@@ -4,28 +4,27 @@
         <!-- Bootstrap Core CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet"  type= "text/css" href="static/Style/site.css">
+    	<meta charset="utf-8">
+    	
     </head>
       <body>
         
       <!-- NAVIGATION BAR-->
       <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/project_one/index">CoinPurse</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/project_one/index">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown" >
                     <a class="nav-link dropdown-toggle"style="color: white;" href="#" 
-                    id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Started</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
+                        <a class="dropdown-item" href="/project_one/login">Login</a>
+                        <a class="dropdown-item" href="/project_one/new_user">Registration</a>
                     </div>
                 </li>
             </ul>
@@ -39,7 +38,7 @@
         <!-- TITLE JUMBO-->   
         <div class="jumbotron jumbotron-fluid text-center " >
           <div class="container">
-            <h1 class="display-3" style="margin: 8rem 3rem 4rem 3rem;" h1>Gilbert's</h1>
+            <h1 class="display-3" style="margin: 8rem 3rem 4rem 3rem;" >Login</h1>
           </div>
       </div>
 
@@ -52,23 +51,25 @@
         <div class="form-group">
           <br>
           <div class="display-4"> User Login</div>
-          <label for="emailInput"> Email</label>
-          <input type="email" class="form-control" name="emailField" id="em01" aria-describedby="emailHelpId" placeholder="">
+          <label for="emailInput"> User Name</label>
+          <input type="text" class="form-control" name="userfield" id="un01"  placeholder="">
         </div>
         <div class="form-group">
           <label for="passwordInput">Password</label>
           <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
         </div>
-        <button type="submit" class="submit_btn" >Login</button>
+        <button type="submit" class="submit_btn" id="login_submit">Login</button>
 
       </div>
 
       <div style="height: 80rem;"></div>
+       <script src="static/login.js"></script>
     </body>
 
     <footer>
         <!--JQuery 3.4.1-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+       
         <!--Bootstrap Core JS-->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    </footer>
 </html>

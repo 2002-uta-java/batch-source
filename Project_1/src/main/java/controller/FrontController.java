@@ -24,22 +24,21 @@ public class FrontController extends DefaultServlet {
 	}
 	
 
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws IOException, ServletException {
 		String path = req.getServletPath();
 		if(path.startsWith("/static/")) {
 			super.doGet(req, resp);
 		} else {
-			helper.delegateTask(req, resp);
+			helper.delegateGet(req, resp);
 		}
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		super.doPost(request, response);
+		helper.delegatePost(req, resp);
 	}
 	
 }

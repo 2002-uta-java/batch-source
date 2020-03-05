@@ -11,5 +11,6 @@ public interface UserDao {
 	public User getUserByID(long uid);
 	public List<User> getUsersBySuper(long uid);
 	public User getUserbyCred(String uname, String pw);
+	public List<User> getUsers();
 	
 }

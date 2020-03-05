@@ -1,11 +1,22 @@
 package delegates;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import services.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import daos.UserDaoImp;
+import daos.UserDao;
+import models.User;
 
 public class UserDelegate {
-	private UserService uService = new UserService();
-	
-	
+	private UserDao uDao = new UserDaoImp();
+
+
+}
+
 }
