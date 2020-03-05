@@ -20,6 +20,7 @@ function loadPage() {
     let baseUrl2 = "http://localhost:8080/Project1/api/users"; // all users
     sendAjaxGet(baseUrl1, loadUser, token);
     sendAjaxGet(baseUrl2, loadEmployees, token);
+    document.getElementById("reim-heading").innerHTML = "Choose an employee to view their reimbursements."
 }
 
 async function sendAjaxGet(url, callback, token){
