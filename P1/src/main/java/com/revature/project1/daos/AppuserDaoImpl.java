@@ -80,7 +80,7 @@ public class AppuserDaoImpl implements AppuserDao {
 	@Override
 	public int updateAppuser(Appuser a) {
 		
-		String sql = "update app_user; set user_email = ?, user_pass = ?, user_firstname = ?, user_lastname = ? where user_id = ?;";
+		String sql = "update app_user set user_email = ?, user_pass = ?, user_firstname = ?, user_lastname = ? where user_id = ?";
 		int check = 0;
 		
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
@@ -92,7 +92,7 @@ public class AppuserDaoImpl implements AppuserDao {
 			ps.setInt(5, a.getId());
 			
 			check = ps.executeUpdate();
-			 System.out.println("updated user");
+			System.out.println("updated user");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

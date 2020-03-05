@@ -6,7 +6,7 @@
 
     <title>Employee Menu</title>
 
-    <link rel="tab icon" href="moneybag.ico" />
+    <link rel="tab icon" href="../moneybag.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
@@ -112,17 +112,22 @@
             </div>
 
             <div class="modal-body">
-                <label for="email1">Email:</label>
-                <input class="form-control" id="email1" type="text" value="email">
+                
+                <form method="post" action="/ExpenseReimbursement/update" id="update-profile">
+                
+                <label for="email">Email:</label>
+                <input class="form-control" id="email" type="text" name="email" value="email">
                 <br>
-                <label for="pass1">Password:</label>
-                <input class="form-control" id="pass1" type="password" value="password">
+                <label for="pass">Password:</label>
+                <input class="form-control" id="pass" type="password" name="pass" value="password">
                 <br>
                 <label for="fname">First Name:</label>
-                <input class="form-control" id="fname" type="text" value="firstname">
+                <input class="form-control" id="fname" type="text" name="firstname" value="firstname">
                 <br>
                 <label for="lname">Last Name:</label>
-                <input class="form-control" id="lname" type="text" value="lastname">
+                <input class="form-control" id="lname" type="text" name="lastname" value="lastname">
+                <button class="btn btn-success" type="submit" id="submit-profile">update</button>
+                </form>
             </div>
             
             <div class="modal-footer">
@@ -144,15 +149,15 @@
             <button type="button" id="view-profile" data-toggle="modal" data-target="#view-profile-modal">view profile</button> <!--add drop down of information for updating-->
                 <div id="edit-profile" hidden="true">
                     
-                    <form id="update-profile">
+                    <form method="post" action="/update" id="update-profile">
                         <h3>Profile</h3>
-                        <input type="text" id="prof-email" placeholder="email">
-                        <input type="password" id="prof-pass" placeholder="password">
-                        <input type="text" id="prof-fn" placeholder="firstname">
-                        <input type="text" id="prof-ln" placeholder="lastname">
-                        <button type="submit">update</button>
+                        <input type="text" id="prof-email" name="email" placeholder="email">
+                        <input type="password" id="prof-pass" name="pass" placeholder="password">
+                        <input type="text" id="prof-fn" name="firstname" placeholder="firstname">
+                        <input type="text" id="prof-ln" name="lastname" placeholder="lastname">
+                        <button type="submit" id="submit-profile">update</button>
                     </form>
-                    
+
                 </div>
             <button id="logout1">logout</button>
           </form>

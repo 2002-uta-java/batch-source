@@ -52,6 +52,10 @@ public class RequestHelper {
 		case "/login":
 			authDelegate.authenticate(request, response);
 			break;
+		case "/update":
+			System.out.println("updating user");
+			employeeDelegate.updateProfile(request, response);
+			break;
 		default:
 			response.sendError(405);
 		}
