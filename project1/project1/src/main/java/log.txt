@@ -1,0 +1,396 @@
+2020-03-04 13:54:50 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+
+2020-03-04 13:56:02 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+
+2020-03-04 14:26:19 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+
+2020-03-04 14:28:20 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:28:20 ERROR ReimbursementDaoImpl:215 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:28:21 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:28:21 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:28:21 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:28:22 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:28:22 ERROR ReimbursementDaoImpl:215 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:41:08 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:41:08 ERROR ReimbursementDaoImpl:221 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:41:09 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:41:09 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:41:09 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:41:10 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:43:52 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:43:52 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:43:53 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:43:53 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:43:53 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:43:54 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:47:01 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:47:01 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:47:01 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:47:02 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:47:02 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:47:03 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:50:25 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:50:25 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:50:25 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:50:25 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:50:26 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:50:26 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:54:36 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:54:37 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:54:37 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:54:37 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:54:38 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:54:38 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:58:50 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:58:50 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:58:50 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:58:51 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:58:51 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:58:52 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:59:17 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:59:17 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 14:59:18 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 14:59:18 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:59:18 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 14:59:19 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:02:20 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:02:21 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:02:21 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:02:21 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:02:21 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:02:22 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:05:44 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:05:45 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:05:45 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:05:45 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:05:45 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:05:46 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:06:22 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:06:22 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:06:22 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:06:23 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:06:23 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:06:24 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:17:47 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:17:48 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:17:48 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:17:48 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:17:49 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:17:49 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:18:39 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:18:40 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:18:40 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:18:40 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:18:41 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:18:41 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:21:28 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:21:28 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:21:28 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:21:29 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:21:29 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:21:30 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:22:38 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:22:39 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:22:39 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:22:39 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:22:40 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:22:40 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:24:00 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:24:00 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:24:00 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:24:01 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:24:01 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:24:02 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:25:54 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+
+2020-03-04 15:26:29 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:26:30 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:26:30 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:26:30 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:26:31 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:26:31 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:28:54 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:28:55 ERROR ReimbursementDaoImpl:229 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:28:55 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:28:55 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:28:56 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:28:56 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:32:32 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:32:33 ERROR ReimbursementDaoImpl:230 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:32:33 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:32:33 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:32:34 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:32:34 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:34:07 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:34:07 ERROR ReimbursementDaoImpl:230 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:34:08 ERROR ReimbursementDaoImpl:178 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 15:34:08 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:34:08 ERROR ReimbursementDaoImpl:63 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:34:09 ERROR ReimbursementDaoImpl:150 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 15:34:43 ERROR ReimbursementDaoImpl:230 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:36:48 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:38:26 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:39:07 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:39:37 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:39:56 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:40:25 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:40:49 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:41:31 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:42:30 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:44:26 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:45:13 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:45:38 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:45:45 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:45:56 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 15:46:11 ERROR ReimbursementDaoImpl:231 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 17:28:27 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:28:28 ERROR ReimbursementDaoImpl:179 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:28:28 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:30:57 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:30:57 ERROR ReimbursementDaoImpl:179 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:30:58 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:35:18 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:35:18 ERROR ReimbursementDaoImpl:179 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:35:19 ERROR ReimbursementDaoImpl:102 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 17:37:37 ERROR ReimbursementDaoImpl:179 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:40:11 ERROR ReimbursementDaoImpl:180 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:42:21 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:42:56 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:48:18 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:57:33 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 17:58:38 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:00:08 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:05:45 ERROR ReimbursementDaoImpl:182 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:12:58 ERROR ReimbursementDaoImpl:61 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:14:14 ERROR ReimbursementDaoImpl:62 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:17:26 ERROR ReimbursementDaoImpl:62 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:33:23 ERROR ReimbursementDaoImpl:221 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 18:33:23 ERROR ReimbursementDaoImpl:183 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:33:23 ERROR ReimbursementDaoImpl:106 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:33:24 ERROR ReimbursementDaoImpl:66 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:33:24 ERROR ReimbursementDaoImpl:155 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:35:53 ERROR ReimbursementDaoImpl:107 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:35:53 ERROR ReimbursementDaoImpl:222 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 18:35:53 ERROR ReimbursementDaoImpl:184 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:35:53 ERROR ReimbursementDaoImpl:107 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:35:54 ERROR ReimbursementDaoImpl:65 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:35:54 ERROR ReimbursementDaoImpl:156 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:37:39 ERROR ReimbursementDaoImpl:219 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 18:37:39 ERROR ReimbursementDaoImpl:181 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:37:39 ERROR ReimbursementDaoImpl:104 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:37:40 ERROR ReimbursementDaoImpl:65 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:37:40 ERROR ReimbursementDaoImpl:153 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:39:34 ERROR ReimbursementDaoImpl:220 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 18:39:34 ERROR ReimbursementDaoImpl:182 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:39:34 ERROR ReimbursementDaoImpl:105 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:39:34 ERROR ReimbursementDaoImpl:65 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:39:35 ERROR ReimbursementDaoImpl:154 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:40:12 ERROR ReimbursementDaoImpl:65 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 18:52:25 ERROR ReimbursementDaoImpl:180 method: createReimbursement - SQLException when creating a Reimbursement
+
+2020-03-04 18:53:18 ERROR ReimbursementDaoImpl:218 method: getReimbursementById - SQLException when getting a Reimbursement
+
+2020-03-04 19:30:26 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:30:26 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:32:10 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:32:10 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:33:39 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:33:40 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:35:16 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:35:16 ERROR ReimbursementDaoImpl:101 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 19:56:45 ERROR ReimbursementDaoImpl:106 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-04 20:00:35 ERROR ReimbursementDaoImpl:107 method: getAllReimbursements - SQLException when getting all Reimbursements
+
+2020-03-05 01:28:41 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+
+2020-03-05 01:29:23 ERROR EmployeeDaoImpl:61 method: createEmployee - SQLException when creating an Employee
+

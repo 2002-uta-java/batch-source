@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0">
+        <link rel="shortcut icon" href="static/Images/icon.png">
+        <title>Employee Reimbursement System</title> 
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/Styles/stylesheet.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="main-backdrop">
+            <div class="grid-container">
+                <div class="header">
+                    <div class="home_icon">
+                        <img src="static/Images/icon.png">
+                    </div>
+                    <div class="title">
+                        <h1>Submit Reimbursement Request</h1>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="sidebar">
+                        <div id="home" class="menu-option">
+                            <h3>Home</h3>
+                        </div>
+                        <div id="submit-reimbursement" class="menu-option">
+                            <h3>Submit Reimbursement</h3>
+                        </div>
+                        <div id="pending-reimbursements" class="menu-option">
+                            <h3>Pending Reimbursements</h3>
+                        </div>
+                        <div id="resolved-reimbursements" class="menu-option">
+                            <h3>Resolved Reimbursements</h3>
+                        </div>
+                        <div id="profile" class="menu-option">
+                            <h3>Profile</h3>
+                        </div>
+                        <div id="logout" class="menu-option">
+                            <h3>Logout</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="request-container">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Reimbursement Request</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <input id="expense" class="request-input form-control" type="number" min="0.01" step="0.01" placeholder="Expense">
+                            </div>
+                            <div class="form-group">
+                                <select id="rtype" class="request-input">
+                                    <option>General</option>
+                                    <option>Travel</option>
+                                    <option>Pizza</option>
+                                    <option>Medical</option>
+                                </select>
+                            </div>
+                            <div class="btn-container">
+                                <button id="submit-btn" class="btn btn-sm">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="static/Scripts/EmployeeSubmitReimbursement.js"></script>
+    </body>
+</html>
