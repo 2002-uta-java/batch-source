@@ -18,6 +18,9 @@ function sendAjaxGet(url, callback){
     xhr.send();
 }
 
+let logoutLink = document.getElementById("logout-link");
+logoutLink.addEventListener("click", () => {sessionStorage.clear; window.location.href="http://localhost:8080/project_1/index";})
+
 window.onload = callMe();
 
 function callMe() {

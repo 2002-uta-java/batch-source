@@ -27,6 +27,8 @@ public class ReimbursementService {
 		
 		if (r.getStatusId() == 4) {
 			return rd.approveReimbursement(r);
+		} else if (r.getStatusId() == 5) {
+			return rd.denyReimbursement(r);
 		} else {
 			return rd.updateReimbursement(r);
 		}
@@ -39,6 +41,10 @@ public class ReimbursementService {
 		} else {
 			return rd.getAllReimbursements();
 		}
+	}
+	
+	public List<Reimbursement> getAllReimbursementsWithId(Employee e) {
+		return rd.getAllReimbursementsWithId(e);
 	}
 
 }

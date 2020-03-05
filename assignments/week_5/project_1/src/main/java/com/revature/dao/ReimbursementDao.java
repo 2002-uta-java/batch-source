@@ -20,8 +20,12 @@ public interface ReimbursementDao {
 	// approve a reimbursement (status) in the database and set approved by id. Returns int for checking for success
 	public int approveReimbursement(Reimbursement r);
 	
+	public int denyReimbursement(Reimbursement r);
+	
 	// get a list of all reimbursement objects from the database
 	public List<Reimbursement> getAllReimbursements();
+	
+	public List<Reimbursement> getAllReimbursementsWithId(Employee e);
 	
 	// get a list of all reimbursement objects for a specified employee from the database
 	public List<Reimbursement> getAllReimbursementsForEmployee(Employee e);

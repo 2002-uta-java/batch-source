@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Reimbursement Portal</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="static/Scripts/jocss.css">
 </head>
@@ -24,7 +24,10 @@
                             <h1>Reimmbursements Portal</h1>
                         </div>
                         <div class="col-4">
-                            who is logged in here - and logout
+                        	<div class="row">
+	                            <div class="col-9" id="logged-user">logged in as:</div>  
+    	                        <div class="col-3"><a id="logout-link" href="#">logout</a></div>
+    	                    </div>
                         </div>
                     </div>
                     <br>
@@ -45,7 +48,7 @@
                                     <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                                         <div class="container">
                                             <br>
-                                            <h5 class="card-title">Create a new reimbursement.</h5>
+                                            <h5 class="card-title">Create a new reimbursement</h5>
                                             <h6 class="card-subtitle mb-2 text-muted">please fill out the following information:</h6>
                                             <br>
                                             <div id="new-reim-form">
@@ -84,17 +87,20 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">My Information</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">maintain information updated</h6>
                                     <div id="my-info-form">
-                                        <label id="dept-label">department: </label>
-                                        <br>
-                                        <label id="f-name-label">name: </label>
-                                        <br>
-                                        <label>phone: </label>
-                                        <input type="text" id="phone-field" name="phone">
-                                        <br>
-                                        <label>e-mail: </label>
-                                        <input type="text" id="email-field" name="email">
-                                        <br>
+                                            <label id="dept-label">department: </label>
+                                        <div class="form-group">
+                                            <label id="f-name-label">name: </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone-field">phone: </label>
+                                            <input type="text" class="form-control" id="phone-field" name="phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email-field">e-mail: </label>
+                                            <input type="text" class="form-control" id="email-field" name="email">
+                                        </div>
                                         <button id="update-emp-button">Update</button>
                                     </div>
                                 </div>
@@ -154,32 +160,11 @@
 
 <hr>
 
-
-
-<h2>Update Reimbursement</h2>
-<div id="update-reim-form">
-    <label>set status: </label>
-    <select id="select-status">
-    </select>
-    <br>
-    <label>Comment: </label>
-    <textarea id="comment-field" name="comment" rows="10"></textarea>
-    <br>
-    <button id="update-reim-button">Update</button>
-</div>
-
-
-
 <script src="static/Scripts/Home.js"></script>
 <script src="static/Scripts/EmployeeInfoE.js"></script>
 <script src="static/Scripts/EmployeeInfoM.js"></script>
 <script src="static/Scripts/ReimbursementE.js"></script>
 <script src="static/Scripts/ReimbursementM.js"></script>
-
-
-
-
-
 
 </body>
 </html>

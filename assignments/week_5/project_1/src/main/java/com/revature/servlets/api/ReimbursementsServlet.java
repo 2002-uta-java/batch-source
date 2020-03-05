@@ -36,6 +36,7 @@ public class ReimbursementsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String employeeIdString = request.getParameter("reimFor");
+		String isManagerString = request.getParameter("manager");
 		
 		List<Reimbursement> reimList = new ArrayList<>();
 		
@@ -43,7 +44,8 @@ public class ReimbursementsServlet extends HttpServlet {
 			
 			reimList = rs.getAllReimbursements(null);
 			
-		} else if (employeeIdString.matches("^\\d+$")) {
+			
+		} else if (employeeIdString.matches("^\\d+$") && isManagerString == null) {
 			
 			int employeeId = Integer.parseInt(employeeIdString);
 			
@@ -52,7 +54,15 @@ public class ReimbursementsServlet extends HttpServlet {
 			
 			reimList = (rs.getAllReimbursements(e));
 			
-		} else {
+		} else if (employeeIdString.matches("^\\d+$") && isManagerString.contentEquals("duncan")) {
+			
+			int employee0Id = Integer.parseInt(employeeIdString);
+			Employee e0 = new Employee();
+			e0.setId(employee0Id);
+			
+			reimList = rs.getAllReimbursementsWithId(e0);
+			
+		}  else {
 			response.sendError(400, "Mistakes were made...");
 		}
 		
@@ -72,12 +82,16 @@ public class ReimbursementsServlet extends HttpServlet {
 		String empIdStr = request.getParameter("employee"); 
 		String category = request.getParameter("category");
 		String amountStr = request.getParameter("amount");
+		String description = request.getParameter("desc");
+		
+		System.out.println(description);
 		
 		Reimbursement reim = new Reimbursement();
 		
 		reim.setEmployee(Integer.parseInt(empIdStr));
 		reim.setCategoryById(Integer.parseInt(category));
 		reim.setAmount(Double.parseDouble(amountStr));
+		reim.setDiscussion(description);
 		
 		rs.createReimbursement(reim);
 		
@@ -86,6 +100,34 @@ public class ReimbursementsServlet extends HttpServlet {
 		} else {
 			response.sendError(400, "Mistakes were made...");
 		}
+	}
+	
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		
+		String status = request.getParameter("status");
+		String reimIdStr = request.getParameter("reim");
+		String managerIdStr = request.getParameter("manager");
+		
+		int statusId = Integer.parseInt(status);
+		int reimId = Integer.parseInt(reimIdStr);
+		int managerId = Integer.parseInt(managerIdStr);
+				
+		Reimbursement reim = new Reimbursement();
+		reim.setId(reimId);
+		reim.setStatusById(statusId);
+		reim.setApprovedBy(managerId);
+		
+		int didItRun = rs.updateReimbursement(reim);
+		
+		if(didItRun == 1) {
+			response.setStatus(200);
+		} else {
+			response.sendError(400, "Mistakes were made...");
+		}	
 	}
 
 }

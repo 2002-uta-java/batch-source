@@ -19,8 +19,9 @@ public class Reimbursement implements Serializable{
 	private int approvedBy;
 	private String employeeName;
 	private String approvedByName;
-	
-	
+	private String discussion;
+
+
 	public Reimbursement() {
 		super();
 	}
@@ -222,6 +223,16 @@ public class Reimbursement implements Serializable{
 	public void setApprovedByName(String approvedByName) {
 		this.approvedByName = approvedByName;
 	}
+	
+	public String getDiscussion() {
+		return discussion;
+	}
+
+
+	public void setDiscussion(String discussion) {
+		this.discussion = discussion;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -230,17 +241,19 @@ public class Reimbursement implements Serializable{
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((approvedByName == null) ? 0 : approvedByName.hashCode());
 		result = prime * result + approvedBy;
+		result = prime * result + ((approvedByName == null) ? 0 : approvedByName.hashCode());
 		result = prime * result + batch;
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((dateCreated == null) ? 0 : dateCreated.hashCode());
+		result = prime * result + ((discussion == null) ? 0 : discussion.hashCode());
 		result = prime * result + employee;
 		result = prime * result + ((employeeName == null) ? 0 : employeeName.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -253,12 +266,12 @@ public class Reimbursement implements Serializable{
 		Reimbursement other = (Reimbursement) obj;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
+		if (approvedBy != other.approvedBy)
+			return false;
 		if (approvedByName == null) {
 			if (other.approvedByName != null)
 				return false;
 		} else if (!approvedByName.equals(other.approvedByName))
-			return false;
-		if (approvedBy != other.approvedBy)
 			return false;
 		if (batch != other.batch)
 			return false;
@@ -271,6 +284,11 @@ public class Reimbursement implements Serializable{
 			if (other.dateCreated != null)
 				return false;
 		} else if (!dateCreated.equals(other.dateCreated))
+			return false;
+		if (discussion == null) {
+			if (other.discussion != null)
+				return false;
+		} else if (!discussion.equals(other.discussion))
 			return false;
 		if (employee != other.employee)
 			return false;
@@ -289,11 +307,13 @@ public class Reimbursement implements Serializable{
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Reimbursement [id=" + id + ", batch=" + batch + ", dateCreated=" + dateCreated + ", employee="
 				+ employee + ", category=" + category + ", amount=" + amount + ", status=" + status + ", approvedBy="
-				+ approvedBy + ", employeeName=" + employeeName + ", approveByName=" + approvedByName + "]";
+				+ approvedBy + ", employeeName=" + employeeName + ", approvedByName=" + approvedByName + ", discussion="
+				+ discussion + "]";
 	}
 
 }

@@ -18,7 +18,10 @@ function populateEmpInfo(empJason) {
     let emailField = document.getElementById("email-field");
     let phoneField = document.getElementById("phone-field");
 
+    let loggedInAs = document.getElementById("logged-user");
+
     for (let emp of employee) {
+        loggedInAs.innerText = `logged in as: ${emp.firstName} ${emp.lastName}`
         deptLabel.innerText = `Department: ${emp.department}`;
         fNameLabel.innerText = `Name: ${emp.firstName} ${emp.lastName}`;
         emailField.value = emp.email;
@@ -44,7 +47,7 @@ function updateEmpInfo() {
     xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
             console.log("we got inside the 4 && 200 !!!");
-            // probably should reload page here
+            window.location.href="http://localhost:8080/project_1/home";
 		}
 		
 		else if (xhr.readyState == 4) {
