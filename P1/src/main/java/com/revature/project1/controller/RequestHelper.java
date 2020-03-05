@@ -37,15 +37,8 @@ public class RequestHelper {
 			default:
 				response.sendError(404);
 			}
-		
 
-		// viewDelegate.resolveView(request, response);
 	}
-
-//	private void login(HttpServletRequest request, HttpServletResponse response) {
-//		// TODO Auto-generated method stub
-//		System.out.println("attempted to login");
-//	}
 
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getServletPath();
