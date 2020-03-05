@@ -107,7 +107,7 @@ function loadEmployees(xhr) {
 }
 
 function renderProfilePicture(gender) {
-    let width = 40;
+    let width = 70;
 
     if (gender == "male") {
         return `<img src='static/Images/male.png' alt='Picture not found' width='${width}'>`;

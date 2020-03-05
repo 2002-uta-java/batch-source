@@ -27,13 +27,13 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/*
-.my-custom-scrollbar {
-    position: relative;
-    height: 300px;
-    overflow: auto;
+
+
+#left {
+    margin-left: 10%;
+    float: left;
 }
-.table-wrapper-scroll-y {
-    display: block;
+  
+#right {
+    margin-left: 55%;
 }
-*/

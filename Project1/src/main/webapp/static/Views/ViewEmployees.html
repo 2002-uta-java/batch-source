@@ -133,8 +133,9 @@
     	<p>VIEW EMPLOYEES</p>
     </div>
     
+
     <!-- Viewing Employees Box -->
-        <div class="panel panel-default container" style="width: 35%; margin-left: 10%; padding: 0px">
+        <div id="left" class="panel panel-default container" style="width: 35%; padding: 0px">
         <div class="list-group">
 
           <!-- Nav tabs -->
@@ -183,8 +184,10 @@
         </div>
     
     <!-- Viewing specific employee's reimbursements -->
-	<div class="panel panel-default container" style="width: 35%; margin-left: 55%; padding: 0px">
+  <div id="right" class="panel panel-default container" style="width: 35%; padding: 0px">
+    
     <div class="panel-heading" id="reim-heading" style="text-align: center; font-weight: bold;">
+      Choose an employee to view their reimbursements.
     </div> <!-- Employee dependent heading here -->
     
         <table class="table table-hover"> <!-- all-reim -->
@@ -199,8 +202,9 @@
 
         </table>
     
-    </div>
-	</div>
+  </div>
+
+
 
     <!-- MODAL REIMBURSEMENT TOOL --> <!-- also in homemanager.js-->
 	<div class="modal fade" id="empl-reimbursement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
