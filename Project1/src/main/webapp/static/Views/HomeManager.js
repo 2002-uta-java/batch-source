@@ -293,12 +293,13 @@ async function loadSingleReimbursement(reimbHtmlId){
     let htmlName = document.getElementById("single-reimb-name");
     let htmlPurpose = document.getElementById("single-reimb-purpose");
     let htmlId = document.getElementById("single-reimb-id");
+    document.getElementById("resolve-reimbursement-info").setAttribute("data-id", id);
 
-    htmlAmount.innerHTML = amount;
+    htmlAmount.innerHTML = `$${amount}`;
     htmlName.innerHTML = fullName;
-    htmlPurpose.innerHTML = purpose;
-    htmlId.innerHTML = id; // TODO: need to update [DO NOT CHANGE. can make this hidden if needed.
-} // also in viewemployee.js
+    htmlPurpose.innerHTML = `Purpose: ${purpose}`;
+    htmlId.innerHTML = `Reimbursement Id: ${id}`;
+} 
 
 async function approveReimbursement() {
     resolveReimbursement("approved");
@@ -310,7 +311,7 @@ async function rejectReimbursement() {
 
 async function resolveReimbursement(newStatus) {
     let baseUrl = "http://localhost:8080/Project1/resolvereimbursement/";
-    let reimbId = document.getElementById("single-reimb-id").innerHTML;
+    let reimbId = document.getElementById("resolve-reimbursement-info").getAttribute("data-id");
     let token = sessionStorage.getItem("token");
     let tokenArr = token.split(":");
     let dataPack = {id: null, purpose: null, amount: null, idEmployee: null, idManager: tokenArr[0], status: newStatus};

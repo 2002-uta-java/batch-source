@@ -114,7 +114,7 @@
 						</div>
 						
 						<!-- SUBMISSION BUTTON (and close button) -->
-						<div class="modal-footer"> <!-- TODO: needs to be GREEN -->
+						<div class="modal-footer">
 							<span id="edit-profile-form-status">Profile successfully updated!</span>
 							<button type="button" class="btn btn-primary" id="update-profile-btn">Update Profile</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -213,14 +213,16 @@
 
 			<!-- REIMBURSEMENT FORM INFO -->
 			<div class="modal-body" id="resolve-reimbursement-info" style="text-align: center">
-				<h1 id="single-reimb-amount">[AMOUNT]</h1>
-				<p id="single-reimb-name">[INFO]</p>
-				<p id="single-reimb-purpose">[more info...]</p>
-				<p id="single-reimb-id">[id]</p>
+				<h1 id="single-reimb-amount" style="font-weight: bold;">[AMOUNT]</h1>
+				<p>
+				<span id="single-reimb-name" style="font-weight: bold;">[INFO]</span><br>
+				<span id="single-reimb-purpose">[more info...]</span><br>
+				<span id="single-reimb-id">[id]</span>
+				</p>
 			</div>
 
 			<!-- ACCEPT OR REJECT BUTTONS -->
-			<div class="modal-footer" style="text-align: center; font-weight: bold;">
+			<div class="modal-footer" style="text-align: center">
 				<button type="button" class="btn btn-success" id="approve-btn" data-dismiss="modal">
 					Approve
 				</button>
