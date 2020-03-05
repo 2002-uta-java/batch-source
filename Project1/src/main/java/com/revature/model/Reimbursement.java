@@ -83,6 +83,15 @@ public class Reimbursement extends Employee implements Serializable {
 	}
 
 
+	public Reimbursement(int id, String adate, double amount, String comment, String status) {
+		this.remId = id;
+	
+		this.remApprovedDate = adate;
+		this.remApprovedAmount = amount;
+		this.remComment = comment;
+		this.remStatus = status;
+	}
+
 	public int getEmpId() {
 		return empId;
 	}

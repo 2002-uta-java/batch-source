@@ -51,11 +51,12 @@ public class ReimbursementDelegate {
 	}
 	
 	public void getReimbursementId(HttpServletRequest request, HttpServletResponse response) throws IOException {
-			String b = request.getParameter("remId");
+			String b = request.getParameter("rem");
+			System.out.println(b);
 			int id = Integer.parseInt(b);
 			List<Reimbursement> remId = remService.getReimbursementId(id);
 			this.newList = remId;
-		
+			
 		try(PrintWriter pw = response.getWriter()){
 			pw.write(om.writeValueAsString(newList));
 		}
@@ -162,12 +163,13 @@ public class ReimbursementDelegate {
 	
 	public void updateReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		try (BufferedReader requestReader = request.getReader();) {
-			String newEmpIdJson = requestReader.readLine();	
-			JSONArray jsonArr = new JSONArray(newEmpIdJson);
+			String jsonData = requestReader.readLine();
+			JSONObject data = new JSONObject(jsonData);
+			JSONArray jsonArr = data.getJSONArray("Rem");
 		    for (int i = 0; i < jsonArr.length(); i++) {
 		        JSONObject jsonObj = jsonArr.getJSONObject(i);
-		        Reimbursement updateRem = new Reimbursement(type, adate, amount, comment, status);
-		        type = updateRem.setRemType(jsonObj.getString("type"));
+		        Reimbursement updateRem = new Reimbursement(id, adate, amount, comment, status);
+		        id = updateRem.setRemId(jsonObj.getInt("id"));
 		        adate = updateRem.setRemApprovedDate(jsonObj.getString("adate"));
 		        amount = updateRem.setRemApprovedAmount(jsonObj.getDouble("amount"));
 		        comment = updateRem.setRemComment(jsonObj.getString("comment"));

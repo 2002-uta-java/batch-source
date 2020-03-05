@@ -28,3 +28,71 @@ org.postgresql.util.PSQLException: The column name assigned_manger was not found
 	at com.revature.dao.ReimbursementDaoImpl.getReimbursement(ReimbursementDaoImpl.java:43)
 	at com.revature.service.ReimbursementService.getReimbursement(ReimbursementService.java:18)
 	at com.revature.utli.Project1Driver.main(Project1Driver.java:49)
+2020-03-04 19:51:55 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 19:54:28 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:00:24 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:19:54 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:22:15 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:24:35 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:26:32 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:27:08 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:28:16 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:36:01 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:40:33 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:42:56 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:45:52 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:47:42 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:48:19 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:49:19 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement
+2020-03-04 20:51:04 ERROR ClientDaoImpl:169 method: createClientByFunction - Unable to create a new clientorg.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "pk_client_email"
+  Detail: Key (client_email)=(james@gmail.com) already exists.
+  Where: SQL statement "insert into client (client_id, client_email, client_password, client_permission) values (id, logon, credential, auth)"
+PL/pgSQL function new_client(integer,character varying,character varying,integer) line 3 at SQL statement

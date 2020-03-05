@@ -31,7 +31,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Status</th>
                             <th scope="col">Message</th>
-                            <th scope="col">Date Posted</th>
+                            <th scope="col">Date Requested</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,7 +99,15 @@
                                             Required if type is Other.
                                         </small>
                                     </div>
-                                    <br />
+                                      <br />
+                                      <div class="form-group">
+                                          <label for="rdate-input">Enter Date</label>
+                                          <input class="form-control" type="date" name="rdate" id="rdate-input4">
+                                          <small id="rdateHelpBlock" class="form-text text-muted">
+                                              Enter date format mm/dd/yyyy.
+                                          </small>
+                                      </div>
+                                      <br />
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -122,7 +130,7 @@
                             <div class="modal-body">
                                 <form id="f5">
                                     <div class="form-group">
-                                        <label for="type-input">Reimbursement Number</label>
+                                        <label for="Ftype-input">Reimbursement Number</label>
                                         <input class="form-control" type="text" name="rid" id="rid-input">
             
                                         <small id="typeHelpBlock" class="form-text text-muted">
@@ -161,7 +169,7 @@
                             <form id="f6">
                                 <div class="form-group">
                                     <label for="type-input">Reimbursement Id#</label>
-                                        <input class="form-control" type="number" name="type" id="type-input">
+                                        <input class="form-control" type="number" name="type" id="id-input">
                                         <small id="typeHelpBlock" class="form-text text-muted">
                                             Enter Reimbursement Id# of desired record.
                                         </small>
@@ -169,7 +177,7 @@
                                 <br />
                                 <div class="form-group">
                                     <label for="type-input">Approved Amount</label>
-                                        <input class="form-control" type="number" name="type" set="0.01" min="0" id="type-input">
+                                        <input class="form-control" type="number" name="type" set="0.01" min="0" id="amount-input">
                                         <small id="typeHelpBlock" class="form-text text-muted">
                                             Enter approved amount.
                                         </small>
@@ -177,7 +185,7 @@
                                 <br/>
                                 <div class="form-group">
                                     <label for="type-input">Update Status</label>
-                                    <select class="form-control" name="type" id="type-input">
+                                    <select class="form-control" name="type" id="status-input">
                                         <option>Approved</option>
                                         <option>Denied</option>
                                         <option>Resubmit</option>
@@ -190,7 +198,7 @@
                                 <br/>
                                 <div class="form-group">
                                     <label for="rdate-input">Enter Date</label>
-                                    <input class="form-control" type="date" name="rdate" id="rdate-input">
+                                    <input class="form-control" type="date" name="rdate" id="date-input">
                                     <small id="rdateHelpBlock" class="form-text text-muted">
                                         Enter date format mm/dd/yyyy.
                                     </small>
@@ -198,7 +206,7 @@
                                 <br />
                                 <div class="form-group">
                                     <label for="notes-input">Notes</label>
-                                    <input class="form-control" type="text" name="notes" id="notes-input" maxlength="200">
+                                    <input class="form-control" type="text" name="notes" id="comment-input" maxlength="200">
                                     <small id="notestHelpBlock" class="form-text text-muted">
                                         Enter notes if required.
                                     </small>
@@ -206,7 +214,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button id="submit-btn6" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                            <button id="update-btn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -258,63 +266,20 @@
         <div class="booyah-box col 10 offset-0.5" id="box3">
             <h2>Result of Action</h2>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table class="table table-striped" id="master-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Requested Amount</th>
-                            <th scope="col">Date Requested</th>
-                            <th scope="col">Submitted Documents</th>
-                            <th scope="col">Requestor Notes</th>
-                            <th scope="col">Requestor Id</th>
-                            <th scope="col">Assigned Id</th>
-                            <th scope="col">Date Completed</th>
-                            <th scope="col">Approved Amount</th>
-                            <th scope="col">Manager Notes</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
+                <table id="master" class="table table-bordered table-sm text-center">
+             
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                    
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            
                         </tr>
                         <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                           >
                         </tr>
                         <tr>
-                            <th scope="row">5</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                      
                         </tr>
                     </tbody>
                 </table>
@@ -327,8 +292,9 @@
     </footer>
 
 
-
+  
     <script src="/Project1/static/Scripts/manager.js"></script>
+    <script src = "/Project1/static/Scripts/sortTable.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

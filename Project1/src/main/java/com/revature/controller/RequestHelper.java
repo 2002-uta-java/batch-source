@@ -42,9 +42,6 @@ public class RequestHelper {
 			case "reimbursementall":
 				reimbursementDelegate.getAllReimbursement(request, response);
 				break;
-			case "reimbursementid":
-				reimbursementDelegate.getReimbursementId(request, response);
-				break;
 			case "reimbursementstatus":
 				reimbursementDelegate.getStatus(request, response);
 				break;
@@ -80,14 +77,9 @@ public class RequestHelper {
 		case "/clientnew":
 			userDelegate.clientCreate(request, response);
 			break;
-		default:
-			response.sendError(405);
-		}
-	}
-	
-	public void processPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String path = request.getServletPath();
-		switch(path) {
+		case "/reimbursementid":
+			reimbursementDelegate.getReimbursementId(request, response);
+			break;
 		case "/employeeupdate":
 			employeeDelegate.updateEmployee(request, response);
 			break;

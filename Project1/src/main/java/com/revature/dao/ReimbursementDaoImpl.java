@@ -148,11 +148,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		
 			try(Connection c = ConnectionUtil.getConnection(); 
 				CallableStatement cs = c.prepareCall(sql);) {
-				cs.setString(1, r1.getRemType());
-				cs.setString(8, r1.getRemApprovedDate());
-				cs.setDouble(9, r1.getRemApprovedAmount());
-				cs.setString(10, r1.getRemComment());
-				cs.setString(11, r1.getRemStatus());
+				cs.setInt(1, r1.getRemId());
+				cs.setString(2, r1.getRemApprovedDate());
+				cs.setDouble(3, r1.getRemApprovedAmount());
+				cs.setString(4, r1.getRemComment());
+				cs.setString(5, r1.getRemStatus());
 				
 				cs.execute();
 				rs = cs.getResultSet();
