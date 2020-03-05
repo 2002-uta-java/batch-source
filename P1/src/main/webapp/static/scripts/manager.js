@@ -1,8 +1,8 @@
-// window.onload = function(){
-//     if (!(sessionStorage.getItem("token"))){
-//         logout2();
-//     }
-// }
+window.onload = function(){
+    if (!(sessionStorage.getItem("token"))){
+        logout2();
+    }
+}
 
 document.getElementById("logout2").addEventListener("click", logout2)
 

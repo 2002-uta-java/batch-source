@@ -19,4 +19,9 @@ public class ViewDelegate {
 		request.getRequestDispatcher("/static/views/manager.html").forward(request, response);
 	}
 
+	public void getLoginView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setStatus(200);
+		request.getRequestDispatcher("/static/views/index.html").forward(request, response);
+	}
+
 }

@@ -25,16 +25,18 @@
             </div>
 
             <div class="modal-body">
-                <form>
-                    <input type="number" class="form-control" placeholder="amount"/>
+                <form method="post" action="/ExpenseReimbursement/submit-request" id="submit-request">
+                    <input type="string" class="form-control" name="email" placeholder="email"/>
                     <br>
-                    <textarea name="reason" class="form-control" rows="3" placeholder="reason"></textarea>
+                    <input type="number" class="form-control" name="amount" placeholder="amount"/>
+                    <br>
+                    <textarea name="reason" class="form-control" rows="3" name="reason" placeholder="reason"></textarea>
                 </form>
             </div>
 
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="submit-r2" class="btn btn-primary">submit</button>
+            <button type="submit" id="submit-r2" class="btn btn-primary" form="submit-request">submit</button>
             </div>
         </div>
         </div>
@@ -92,16 +94,16 @@
                 
                 <form method="post" action="/ExpenseReimbursement/update" id="update-profile">
                     <label for="email">Email:</label>
-                    <input class="form-control" id="email" type="text" name="email" value="email">
+                    <input class="form-control" id="email" type="text" name="email" placeholder="email">
                     <br>
                     <label for="pass">Password:</label>
-                    <input class="form-control" id="pass" type="password" name="pass" value="password">
+                    <input class="form-control" id="pass" type="password" name="pass" placeholder="password">
                     <br>
                     <label for="fname">First Name:</label>
-                    <input class="form-control" id="fname" type="text" name="firstname" value="firstname">
+                    <input class="form-control" id="fname" type="text" name="firstname" placeholder="firstname">
                     <br>
                     <label for="lname">Last Name:</label>
-                    <input class="form-control" id="lname" type="text" name="lastname" value="lastname">
+                    <input class="form-control" id="lname" type="text" name="lastname" placeholder="lastname">
                     <!-- <button class="btn btn-success" type="submit" id="submit-profile">update</button> -->
                 </form>
 
@@ -122,9 +124,9 @@
             <button type="button" id="submit-r" data-toggle="modal" data-target="#submit-req-modal">submit reimbursement request</button>
 
             <button type="button" id="view-r" data-toggle="modal" data-target="#view-pending-modal">view reimbursement requests</button>
-            <button type="button" id="view-profile" data-toggle="modal" data-target="#view-profile-modal">view profile</button> <!--add drop down of information for updating-->
+            <button type="button" id="view-profile" data-toggle="modal" data-target="#view-profile-modal">view profile</button>
                 
-            <button id="logout1">logout</button>
+            <button type="button" id="logout1">logout</button>
           </form>
         </div>
     </div>

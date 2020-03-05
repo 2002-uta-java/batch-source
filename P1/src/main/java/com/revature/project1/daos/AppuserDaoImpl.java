@@ -17,7 +17,7 @@ public class AppuserDaoImpl implements AppuserDao {
 	@Override
 	public List<Appuser> getAppuser() {
 
-		String sql = "select * from app_user;";
+		String sql = "select * from app_user";
 		List<Appuser> appusers = new ArrayList<>();
 
 		try (Connection c = ConnectionUtil.getConnection();
@@ -42,7 +42,7 @@ public class AppuserDaoImpl implements AppuserDao {
 	
 	@Override
 	public Appuser getAppuserByEmail(String email) {
-		String sql = "select * from app_user where user_email = ?;";
+		String sql = "select * from app_user where user_email = ?";
 		ResultSet rs = null;
 		Appuser a = null;
 

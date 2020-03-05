@@ -24,17 +24,20 @@ public class RequestHelper {
 		String path = request.getServletPath();
 		System.out.println(path + "processget, reqhelper");
 		
-		if (path.startsWith("/home")) {
 			switch (path) {
-			case "/employee":
+			case "/static/views/employee.html":
 				viewDelegate.getEmployeeView(request, response);
 				break;
-			case "/manager":
+			case "/static/views/manager.html":
 				viewDelegate.getManagerView(request, response);
+				break;
+			case "/static/views/index.html":
+				viewDelegate.getLoginView(request, response);
+				break;
 			default:
 				response.sendError(404);
 			}
-		}
+		
 
 		// viewDelegate.resolveView(request, response);
 	}
@@ -55,6 +58,9 @@ public class RequestHelper {
 		case "/update":
 			System.out.println("updating user");
 			employeeDelegate.updateProfile(request, response);
+			break;
+		case "/submit-request":
+			employeeDelegate.submitRequest(request, response);
 			break;
 		default:
 			response.sendError(405);

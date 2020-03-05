@@ -10,7 +10,7 @@ public class Request implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private int userId;
+	private String email;
 	private String amount;
 	private String reason;
 	private int status;
@@ -20,14 +20,21 @@ public class Request implements Serializable {
 		super();
 	}
 
-	public Request(int id, int userId, String amount, String reason, int status, String manager) {
+	public Request(int id, String email, String amount, String reason, int status, String manager) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.email = email;
 		this.amount = amount;
 		this.reason = reason;
 		this.status = status;
 		this.manager = manager;
+	}
+	
+	
+	public Request(String email, String amount, String reason) {
+		this.email = email;
+		this.amount = amount;
+		this.reason = reason;
 	}
 
 	// getters and setters
@@ -40,12 +47,12 @@ public class Request implements Serializable {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAmount() {
@@ -85,11 +92,11 @@ public class Request implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
 		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
 		result = prime * result + status;
-		result = prime * result + userId;
 		return result;
 	}
 
@@ -107,6 +114,11 @@ public class Request implements Serializable {
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		if (id != other.id)
 			return false;
 		if (manager == null) {
@@ -121,9 +133,14 @@ public class Request implements Serializable {
 			return false;
 		if (status != other.status)
 			return false;
-		if (userId != other.userId)
-			return false;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Request [id=" + id + ", email=" + email + ", amount=" + amount + ", reason=" + reason + ", status="
+				+ status + ", manager=" + manager + "]";
+	}
+
+	
 }

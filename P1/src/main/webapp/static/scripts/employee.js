@@ -1,8 +1,8 @@
-// window.onload = function(){
-//     if (!(sessionStorage.getItem("token"))){
-//         logout1();
-//     }
-// }
+window.onload = function(){
+    if (!(sessionStorage.getItem("token"))){
+        logout1();
+    }
+}
 
 let currentToken = sessionStorage.getItem("token");
 

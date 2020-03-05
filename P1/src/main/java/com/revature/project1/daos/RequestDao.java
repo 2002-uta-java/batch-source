@@ -8,7 +8,7 @@ public interface RequestDao {
 	
 	public List<Request> getRequests();
 	public Request getRequestByStatus(int status);
-	public List<Request> getRequestByUserId(int userId);
+	public List<Request> getRequestByUserEmail(String userEmail);
 	public int updateRequest(Request r);
 	public int createRequest(Request r);
 
