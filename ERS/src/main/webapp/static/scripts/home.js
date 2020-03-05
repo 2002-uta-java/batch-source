@@ -3,6 +3,7 @@
  */
 
 window.onload = function() {
+	setupNav();
 	const jumbo = document.getElementById("welcome-display");
 	const firstName = getCookie(FIRST_NAME_HEADER);
 	const lastName = getCookie(LAST_NAME_HEADER);

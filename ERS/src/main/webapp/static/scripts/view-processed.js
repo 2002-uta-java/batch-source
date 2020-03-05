@@ -15,7 +15,7 @@ window.onload = function() {
 			}
 		}
 	};
-	xhr.open("GET", VIEW_ALL_REIMBURSEMENTS_BY_EMP);
+	xhr.open("GET", VIEW_PROCESSED_BY_EMP);
 	xhr.send();
 }
 
@@ -56,10 +56,16 @@ function getTr(reimb){
 
 	// the reply date may not be set (if not, don't)
 	const replyDate = reimb[REIMB_REPLYDATE];
-	if(!replyDate){
+	console.log("replyDate: " + reimb[REIMB_REPLYDATE]);
+	if(replyDate != null){
 		td = document.createElement("td");
 		td.innerText = new Date(replyDate).toLocaleString("en-US");
 		tr.appendChild(td);
+	} else{
+		td = document.createElement("td");
+		td.innerText = "";
+		tr.appendChild(td);
+		
 	}
 	
 	return tr;

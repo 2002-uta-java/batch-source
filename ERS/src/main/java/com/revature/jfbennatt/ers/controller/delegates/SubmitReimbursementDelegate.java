@@ -37,7 +37,7 @@ public class SubmitReimbursementDelegate extends Delegate {
 	 */
 	public static final Pattern AMOUNT_PATTERN = Pattern.compile(AMOUNT_REGEX);
 
-	private RequestDispatcher dispatcher;
+//	private RequestDispatcher dispatcher;
 
 	/**
 	 * Default constructor (does nothing).
@@ -53,9 +53,9 @@ public class SubmitReimbursementDelegate extends Delegate {
 	 * @param dispatcher {@link RequestDispatcher} for this
 	 *                   SubmitReimbursementDelegate.
 	 */
-	public void setRequestDispatcher(final RequestDispatcher dispatcher) {
-		this.dispatcher = dispatcher;
-	}
+//	public void setRequestDispatcher(final RequestDispatcher dispatcher) {
+//		this.dispatcher = dispatcher;
+//	}
 
 	/**
 	 * Reads the form submitted from the client for the description, amount, and
@@ -72,18 +72,24 @@ public class SubmitReimbursementDelegate extends Delegate {
 		Logger.getRootLogger()
 				.debug("Attempting to submit reimbursement request: " + amount + ", " + description + ", " + date);
 
-		if (!AMOUNT_PATTERN.matcher(amount).matches()) {
-			dispatcher.setMessage(ViewDelegate.FAIL);
-		} else {
-			// subimt request, give it the current time
-			if (empService.submitRequest(employee, description, amount, date, new Date())) {
-				dispatcher.setMessage(ViewDelegate.SUCCESS);
-			} else {
-				dispatcher.setMessage(ViewDelegate.FAIL);
-			}
+//		if (!AMOUNT_PATTERN.matcher(amount).matches()) {
+//			dispatcher.setMessage(ViewDelegate.FAIL);
+//		} else {
+//			// subimt request, give it the current time
+//			if (empService.submitRequest(employee, description, amount, date, new Date())) {
+//				dispatcher.setMessage(ViewDelegate.SUCCESS);
+//			} else {
+//				dispatcher.setMessage(ViewDelegate.FAIL);
+//			}
+//		}
+//
+//		response.sendRedirect(RequestDispatcher.CONTEXT_ROOT + HOME);
+
+		if (AMOUNT_PATTERN.matcher(amount).matches()) {
+			empService.submitRequest(employee, description, amount, date, new Date());
 		}
 
-		response.sendRedirect(RequestDispatcher.CONTEXT_ROOT + HOME);
+		response.sendRedirect(RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_PENDING);
 	}
 
 }

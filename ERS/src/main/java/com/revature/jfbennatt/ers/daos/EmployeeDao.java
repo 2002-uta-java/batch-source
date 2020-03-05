@@ -129,4 +129,20 @@ public interface EmployeeDao {
 	 */
 	public boolean changeProfile(Employee employee);
 
+	/**
+	 * Gets all of the pending requests from this employee id.
+	 * 
+	 * @param empId Employee id of the employee to fetch requests from.
+	 * @return {@link List} of {@link Reimbursement} objects for this employee.
+	 */
+	public List<Reimbursement> getPendingReimbursementsByEmployeeId(int empId);
+
+	/**
+	 * Gets all of the processed requests from this employee id.
+	 * 
+	 * @param empId Employee id of the employee to fetch requests from.
+	 * @return {@link List} of {@link Reimbursement} objects for this employee.
+	 */
+	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId);
+
 }

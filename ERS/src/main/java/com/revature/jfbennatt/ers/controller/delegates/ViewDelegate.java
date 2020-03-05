@@ -35,22 +35,47 @@ public class ViewDelegate extends Delegate {
 	 */
 	public static final String EMPLOYEE_SUBMIT_REIMBURSEMENT_PAGE = "/static/Employee/Submit-Reimbursement.html";
 	/**
-	 * URI of the static view reimbursement page for the employee
+	 * URI of the static view for pending reimbursements page for the employee
 	 */
-	public static final String EMPLOYEE_VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursements.html";
+	public static final String EMPLOYEE_VIEW_PENDING_PAGE = "/static/Employee/View-Pending.html";
+	/**
+	 * URI of the static view for processed reimbursement page for the employee
+	 */
+	public static final String EMPLOYEE_VIEW_PROCESSED_PAGE = "/static/Employee/View-Processed.html";
 	/**
 	 * URI of the static profile page for the employee
 	 */
 	public static final String EMPLOYEE_PROFILE_PAGE = "/static/Employee/Profile.html";
 
 	/**
+	 * URI of the static submit reimbursement page for the manager
+	 */
+	public static final String MANAGER_SUBMIT_REIMBURSEMENT_PAGE = "/static/Manager/Submit-Reimbursement.html";
+	/**
+	 * URI of the static view pending reimbursements page for the employee
+	 */
+	public static final String MANAGER_VIEW_PENDING_PAGE = "/static/Manager/View-Pending.html";
+	/**
+	 * URI of the static view processed reimbursements page for the employee
+	 */
+	public static final String MANAGER_VIEW_PROCESSED_PAGE = "/static/Manager/View-Pending.html";
+	/**
+	 * URI of the static profile page for the employee
+	 */
+	public static final String MANAGER_PROFILE_PAGE = "/static/Manager/Profile.html";
+
+	/**
 	 * URI of the submit reimbursement resource
 	 */
 	public static final String SUBMIT_REIMBURSEMENT = "/submit";
 	/**
-	 * URI of the view reimbursement resource
+	 * URI for viewing pending reimbursements resource
 	 */
-	public static final String VIEW_REIMBURSEMENT = "/view";
+	public static final String VIEW_PENDING = "/pending";
+	/**
+	 * URI for viewing processed reimbursement requests.
+	 */
+	public static final String VIEW_PROCESSED = "/processed";
 	/**
 	 * URI to view profile
 	 */
@@ -116,8 +141,11 @@ public class ViewDelegate extends Delegate {
 		case SUBMIT_REIMBURSEMENT:
 			request.getRequestDispatcher(EMPLOYEE_SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
 			break;
-		case VIEW_REIMBURSEMENT:
-			request.getRequestDispatcher(EMPLOYEE_VIEW_REIMBURSEMENT_PAGE).forward(request, response);
+		case VIEW_PENDING:
+			request.getRequestDispatcher(EMPLOYEE_VIEW_PENDING_PAGE).forward(request, response);
+			break;
+		case VIEW_PROCESSED:
+			request.getRequestDispatcher(EMPLOYEE_VIEW_PROCESSED_PAGE).forward(request, response);
 			break;
 		case PROFILE:
 			request.getRequestDispatcher(EMPLOYEE_PROFILE_PAGE).forward(request, response);
@@ -154,6 +182,18 @@ public class ViewDelegate extends Delegate {
 		switch (path) {
 		case HOME:
 			request.getRequestDispatcher(MANAGER_HOME_PAGE).forward(request, response);
+			break;
+		case SUBMIT_REIMBURSEMENT:
+			request.getRequestDispatcher(MANAGER_SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
+			break;
+		case VIEW_PENDING:
+			request.getRequestDispatcher(MANAGER_VIEW_PENDING_PAGE).forward(request, response);
+			break;
+		case VIEW_PROCESSED:
+			request.getRequestDispatcher(MANAGER_VIEW_PROCESSED_PAGE).forward(request, response);
+			break;
+		case PROFILE:
+			request.getRequestDispatcher(MANAGER_PROFILE_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

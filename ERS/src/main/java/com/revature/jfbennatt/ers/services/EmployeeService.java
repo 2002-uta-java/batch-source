@@ -236,13 +236,46 @@ public class EmployeeService {
 		return empDao.submitRequest(newReimb);
 	}
 
+	/**
+	 * Returns all reimbursement requests for a given employee
+	 * 
+	 * @param empId Employee id to get requests from
+	 * @return A {@link List} of {@link Reimbursement} objects for this employee.
+	 */
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId) {
 		return empDao.getAllReimbursementsByEmployeeId(empId);
 	}
 
+	/**
+	 * Changes the profile for this employee by accepting the updated values. If the
+	 * password is null, it is not updated.
+	 * 
+	 * @param employee Values to update (the employee id won't change).
+	 * @return Whether or not this was successful.
+	 */
 	public boolean changeProfile(final Employee employee) {
 		// hash password
 		employee.setPassword(passEnc.encryptPassword(employee.getPassword()));
 		return empDao.changeProfile(employee);
+	}
+
+	/**
+	 * Gets all of the pending requests from this employee id.
+	 * 
+	 * @param empId Employee id of the employee to fetch requests from.
+	 * @return {@link List} of {@link Reimbursement} objects for this employee.
+	 */
+	public List<Reimbursement> getPendingReimbursementsByEmployeeId(int empId) {
+		return empDao.getPendingReimbursementsByEmployeeId(empId);
+	}
+
+	/**
+	 * Gets all of the processed requests from this employee id.
+	 * 
+	 * @param empId Employee id of the employee to fetch requests from.
+	 * @return {@link List} of {@link Reimbursement} objects for this employee.
+	 */
+	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId) {
+		return empDao.getProcessedReimbursementsByEmployeeId(empId);
 	}
 }

@@ -329,9 +329,16 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
 				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
 				reimb.setReimbDate(rs.getDate(REIMB_DATE));
-				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
 				reimb.setStatus(rs.getInt(REIMB_STATUS));
 				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
 
 				reimbs.add(reimb);
 			}
@@ -419,6 +426,100 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 
 		// if we made here, it was successful
 		return true;
+	}
+
+	@Override
+	public List<Reimbursement> getPendingReimbursementsByEmployeeId(int empId) {
+		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ? and "
+				+ REIMB_STATUS + " = 1";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setReimbId(rs.getInt(REIMB_ID));
+				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return reimbs;
+	}
+
+	@Override
+	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId) {
+		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ? and "
+				+ REIMB_STATUS + " != 1";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, empId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setReimbId(rs.getInt(REIMB_ID));
+				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return reimbs;
 	}
 
 }

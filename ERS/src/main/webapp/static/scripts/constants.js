@@ -33,10 +33,16 @@ const DATE_ID = "date";
 const SUCCESS_COOKIE = "success";
 // value signaling a failure (value of SUCCESS_COOKIE)
 const FAIL_VALUE = "fail";
-// value signaling a success (value of SUCCESS_COKIR)
+// value signaling a success (value of SUCCESS_COKKIE)
 const SUCCESS_VALUE = "success";
 // URI of view reimbursement resource
-const VIEW_REIMBURSEMENT_PAGE = "/ERS/view";
+const VIEW_PENDING_PAGE = "/ERS/pending";
+// URI of view reimbursement resource
+const VIEW_PROCESSED_PAGE = "/ERS/processed";
+// API call to view pending requests by employee
+const VIEW_PENDING_BY_EMP = "/ERS/api/view/pending";
+// API call to view processed requests by employee
+const VIEW_PROCESSED_BY_EMP = "/ERS/api/view/processed";
 // URI for returning all reimbursements for an employee
 const VIEW_ALL_REIMBURSEMENTS_BY_EMP = "/ERS/api/view";
 // URI of resource for getting the profile page

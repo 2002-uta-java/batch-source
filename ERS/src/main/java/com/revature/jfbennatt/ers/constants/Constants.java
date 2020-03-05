@@ -13,6 +13,7 @@ import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
+import com.revature.jfbennatt.ers.controller.delegates.ViewReimbursementsDelegate;
 import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
@@ -73,10 +74,19 @@ public class Constants {
 					"name of cookie that holds the message (for home page alert displays)");
 			printVariable(ps, "FAIL_VALUE", ViewDelegate.FAIL, "value signaling a failure (value of SUCCESS_COOKIE)");
 			printVariable(ps, "SUCCESS_VALUE", ViewDelegate.SUCCESS,
-					"value signaling a success (value of SUCCESS_COKIR)");
-			printVariable(ps, "VIEW_REIMBURSEMENT_PAGE",
-					RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_REIMBURSEMENT,
+					"value signaling a success (value of SUCCESS_COKKIE)");
+			printVariable(ps, "VIEW_PENDING_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_PENDING,
 					"URI of view reimbursement resource");
+			printVariable(ps, "VIEW_PROCESSED_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_PROCESSED,
+					"URI of view reimbursement resource");
+			printVariable(
+					ps, "VIEW_PENDING_BY_EMP", RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API
+							+ RequestDispatcher.VIEW_REIMBURSEMENT_ROOT + ViewReimbursementsDelegate.PENDING,
+					"API call to view pending requests by employee");
+			printVariable(
+					ps, "VIEW_PROCESSED_BY_EMP", RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API
+							+ RequestDispatcher.VIEW_REIMBURSEMENT_ROOT + ViewReimbursementsDelegate.PROCESSED,
+					"API call to view processed requests by employee");
 			printVariable(ps, "VIEW_ALL_REIMBURSEMENTS_BY_EMP",
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.VIEW_REIMBURSEMENT_ROOT,
 					"URI for returning all reimbursements for an employee");

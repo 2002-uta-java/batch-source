@@ -85,7 +85,8 @@ public class RequestDispatcher {
 	/**
 	 * Delegate for submitting a reimbursement request.
 	 */
-	private final SubmitReimbursementDelegate submitDelegate;
+//	private final SubmitReimbursementDelegate submitDelegate;
+	private final Delegate submitDelegate;
 	/**
 	 * Delegate for viewing reimbursements
 	 */
@@ -126,7 +127,7 @@ public class RequestDispatcher {
 		this.changeDelegate.setEmployeeService(empService);
 
 		this.viewDelegate.setRequestDispatcher(this);
-		this.submitDelegate.setRequestDispatcher(this);
+//		this.submitDelegate.setRequestDispatcher(this);
 	}
 
 	/**

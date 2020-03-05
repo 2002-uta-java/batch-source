@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ERS - Manager Home</title>
+<title>View Reimbursements</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -21,8 +21,8 @@
 <script type="text/javascript" src="/ERS/static/scripts/constants.js"></script>
 <script type="text/javascript" src="/ERS/static/scripts/cookies.js"></script>
 <script type="text/javascript"
-	src="/ERS/static/scripts/Manager/nav-bar.js"></script>
-<script type="text/javascript" src="/ERS/static/scripts/home.js"></script>
+	src="/ERS/static/scripts/Employee/nav-bar.js"></script>
+<script type="text/javascript" src="/ERS/static/scripts/view-pending.js"></script>
 </head>
 <body>
 	<!-- the href's are set in javascript -->
@@ -30,13 +30,27 @@
 		<a class="flex-sm-fill text-sm-center nav-link active"
 			id="profile-link">Profile</a> <a
 			class="flex-sm-fill text-sm-center nav-link active"
-			id="view-reimb-link">View Reimbursement Requests</a> <a
+			id="view-pending-link">Pending Requests</a><a
+			class="flex-sm-fill text-sm-center nav-link active"
+			id="view-processed-link">Processed Requests</a> <a
 			class="flex-sm-fill text-sm-center nav-link active"
 			id="submit-reimb-link">Submit Reimbursement Request</a> <a
 			class="flex-sm-fill text-sm-center nav-link active" id="logout-link">Logout</a>
 	</nav>
-	<div class="jumbotron">
-		<h1 class="display-4" id="welcome-display"></h1>
-	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Status</th>
+				<th scope="col">Date Submitted</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Description</th>
+				<th scope="col">Date of Expense</th>
+			</tr>
+		</thead>
+		<tbody id="reimbursement-table-body">
+		</tbody>
+	</table>
+
 </body>
 </html>
