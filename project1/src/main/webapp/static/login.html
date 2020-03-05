@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<Script>
+function saveUsername() {
+	let u = document.getElementById("username").value;
+	sessionStorage.setItem("username", u);
+	//console.log("username = " + u);
+	return true;
+}
+</Script>
+</head>
+<body>
+<form action="login" method="post" onsubmit="return saveUsername()">
+<label>Username:</label><input type="text" name="username" id="username">
+<label>Password:</label><input type="password" name="password">
+<button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
