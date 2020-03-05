@@ -46,27 +46,17 @@ public class ViewReimbursementsDelegate extends Delegate {
 		// get the method by cutting off the (likely) /view
 		final String method = path.substring(RequestDispatcher.VIEW_REIMBURSEMENT_ROOT.length());
 
-		if (employee.isManager()) {
-			getManagerReimbursements(employee, method, request, response);
-		} else {
-			getEmployeeReimursements(employee, method, request, response);
+		Logger.getRootLogger().debug("view request: " + method);
+		if (method.equals(PENDING)) {
+			getAllPendingRecordsByEmployee(employee, response);
+		} else if (method.equals(PROCESSED)) {
+			getAllProcessedRecordsByEmployee(employee, response);
+		} else if (employee.isManager()) {
+
 		}
 	}
 
-	private void getEmployeeReimursements(Employee employee, String method, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		switch (method) {
-		case PENDING:
-			getAllPendingRecordsByEmployee(employee, request, response);
-			break;
-		case PROCESSED:
-			getAllProcessedRecordsByEmployee(employee, request, response);
-			break;
-		}
-	}
-
-	private void getAllProcessedRecordsByEmployee(Employee employee, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	private void getAllProcessedRecordsByEmployee(Employee employee, HttpServletResponse response) throws IOException {
 		final List<Reimbursement> reimbs = empService.getProcessedReimbursementsByEmployeeId(employee.getEmpId());
 
 		if (reimbs != null) {
@@ -82,8 +72,7 @@ public class ViewReimbursementsDelegate extends Delegate {
 		}
 	}
 
-	private void getAllPendingRecordsByEmployee(Employee employee, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	private void getAllPendingRecordsByEmployee(Employee employee, HttpServletResponse response) throws IOException {
 		final List<Reimbursement> reimbs = empService.getPendingReimbursementsByEmployeeId(employee.getEmpId());
 
 		if (reimbs != null) {
@@ -97,12 +86,6 @@ public class ViewReimbursementsDelegate extends Delegate {
 		} else {
 			response.setStatus(503);
 		}
-	}
-
-	private void getManagerReimbursements(Employee employee, String method, HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

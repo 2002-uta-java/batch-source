@@ -3,6 +3,8 @@
  * code and my javascript code.
  */
 
+// URI to home page
+const HOME = "/ERS";
 // header for the authorization token
 const AUTH_TOKEN_HEADER = "session-token";
 // header for getting the first name of an employee
@@ -59,6 +61,10 @@ const CHANGE_EMAIL_ID = "change-email";
 const CHANGE_PASSWORD_ID = "change-password";
 // URI for the api that changes the profile
 const CHANGE_PROFILE_API = "/ERS/api/change";
+// URI resource for viewing all employees page
+const VIEW_EMPLOYEES_PAGE = "/ERS/employees";
+// api call for getting all employees except manager making the request
+const ALL_EMP_EXCEPT_ME = "/ERS/api/employees";
 
 // field name for Reimbursement.amount
 const REIMB_AMOUNT = 'amount';
@@ -78,3 +84,18 @@ const REIMB_STATUS = 'status';
 const REIMB_STATUSSTRING = 'statusString';
 // field name for Reimbursement.submitDate
 const REIMB_SUBMITDATE = 'submitDate';
+
+// field name for Reimbursement.email
+const EMPL_EMAIL = 'email';
+// field name for Reimbursement.empId
+const EMPL_EMPID = 'empId';
+// field name for Reimbursement.firstName
+const EMPL_FIRSTNAME = 'firstName';
+// field name for Reimbursement.isManager
+const EMPL_ISMANAGER = 'isManager';
+// field name for Reimbursement.lastName
+const EMPL_LASTNAME = 'lastName';
+// field name for Reimbursement.password
+const EMPL_PASSWORD = 'password';
+// field name for Reimbursement.token
+const EMPL_TOKEN = 'token';

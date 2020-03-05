@@ -14,6 +14,7 @@ import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewReimbursementsDelegate;
+import com.revature.jfbennatt.ers.models.Employee;
 import com.revature.jfbennatt.ers.models.Reimbursement;
 
 /**
@@ -42,6 +43,7 @@ public class Constants {
 		try (final PrintStream ps = new PrintStream(new File(CONSTANTS_FILE))) {
 			printOpeningComment(ps);
 
+			printVariable(ps, "HOME", RequestDispatcher.CONTEXT_ROOT, "URI to home page");
 			printVariable(ps, "AUTH_TOKEN_HEADER", Delegate.AUTH_TOKEN_HEADER, "header for the authorization token");
 			printVariable(ps, "FIRST_NAME_HEADER", Delegate.FIRST_NAME_HEADER,
 					"header for getting the first name of an employee");
@@ -105,12 +107,27 @@ public class Constants {
 			printVariable(ps, "CHANGE_PROFILE_API",
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.CHANGE_PROFILE,
 					"URI for the api that changes the profile");
+			printVariable(ps, "VIEW_EMPLOYEES_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.VIEW_EMPLOYEES,
+					"URI resource for viewing all employees page");
+			printVariable(ps, "ALL_EMP_EXCEPT_ME",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.GET_ALL_EMPLOYEES,
+					"api call for getting all employees except manager making the request");
 
 			ps.println();
 			ps.println();
 			printReimbursementFields(ps);
+			ps.println();
+			printEmployeeFields(ps);
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
+		}
+	}
+
+	private static void printEmployeeFields(PrintStream ps) {
+		final Class<Employee> reimbClass = Employee.class;
+		for (final Field field : reimbClass.getDeclaredFields()) {
+			ps.println("// field name for Reimbursement." + field.getName());
+			ps.println("const EMPL_" + field.getName().toUpperCase() + " = '" + field.getName() + "';");
 		}
 	}
 

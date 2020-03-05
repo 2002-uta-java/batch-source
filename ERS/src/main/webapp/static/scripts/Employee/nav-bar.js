@@ -4,6 +4,7 @@
 
 function setupNav() {
 	// setup links for navigation
+	document.getElementById("profile-home").setAttribute("href", HOME);
 	document.getElementById("logout-link").setAttribute("href", LOGOUT_API);
 	document.getElementById("submit-reimb-link").setAttribute("href",
 			SUBMIT_REIMBURSEMENT_PAGE);

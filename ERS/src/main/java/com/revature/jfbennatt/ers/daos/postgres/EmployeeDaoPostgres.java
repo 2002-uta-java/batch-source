@@ -522,4 +522,40 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		return reimbs;
 	}
 
+	@Override
+	public List<Employee> getAllEmployeesExceptManager(int manId) {
+		final String sql = "select * from " + EMPLOYEE_TABLE + " where " + EMP_ID + " != ?";
+		final List<Employee> employees = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, manId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Employee emp = new Employee();
+				emp.setEmail(rs.getString(EMP_EMAIL));
+				emp.setFirstName(rs.getString(EMP_FIRST_NAME));
+				emp.setLastName(rs.getString(EMP_LAST_NAME));
+				emp.setManager(rs.getBoolean(EMP_IS_MANAGER));
+
+				employees.add(emp);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return employees;
+
+	}
+
 }

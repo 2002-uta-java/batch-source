@@ -58,11 +58,19 @@ public class ViewDelegate extends Delegate {
 	/**
 	 * URI of the static view processed reimbursements page for the employee
 	 */
-	public static final String MANAGER_VIEW_PROCESSED_PAGE = "/static/Manager/View-Pending.html";
+	public static final String MANAGER_VIEW_PROCESSED_PAGE = "/static/Manager/View-Processed.html";
 	/**
 	 * URI of the static profile page for the employee
 	 */
 	public static final String MANAGER_PROFILE_PAGE = "/static/Manager/Profile.html";
+	/**
+	 * URI of static source to manager's view all eployees page
+	 */
+	public static final String MANAGER_ALL_EMPLOYEES_PAGE = "/static/Manager/View-Employees.html";
+	/**
+	 * URI for manager to view employees
+	 */
+	public static final String VIEW_EMPLOYEES = "/employees";
 
 	/**
 	 * URI of the submit reimbursement resource
@@ -194,6 +202,9 @@ public class ViewDelegate extends Delegate {
 			break;
 		case PROFILE:
 			request.getRequestDispatcher(MANAGER_PROFILE_PAGE).forward(request, response);
+			break;
+		case VIEW_EMPLOYEES:
+			request.getRequestDispatcher(MANAGER_ALL_EMPLOYEES_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

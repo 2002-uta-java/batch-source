@@ -145,4 +145,14 @@ public interface EmployeeDao {
 	 */
 	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId);
 
+	/**
+	 * Returns a list of all employees excluding the manager passed as an argument.
+	 * 
+	 * @param manId Employee of the id of the manager (to be excluded from the
+	 *              list).
+	 * @return {@link List} of {@link Employee} objects (or null if there is an
+	 *         error). An empty list is not an error.
+	 */
+	public List<Employee> getAllEmployeesExceptManager(int manId);
+
 }

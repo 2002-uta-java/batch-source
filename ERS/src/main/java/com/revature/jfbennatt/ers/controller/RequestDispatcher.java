@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
+import com.revature.jfbennatt.ers.controller.delegates.GetAllEmployeesDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.LoginDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.LogoutDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.StaticDelegate;
@@ -63,6 +64,11 @@ public class RequestDispatcher {
 	public static final String CHANGE_PROFILE = "/change";
 
 	/**
+	 * api call for getting all employees (except manager calling method)
+	 */
+	public static final String GET_ALL_EMPLOYEES = "/employees";
+
+	/**
 	 * delegate for fetching static resources (from an api call)
 	 */
 	private final ViewDelegate viewDelegate;
@@ -85,7 +91,6 @@ public class RequestDispatcher {
 	/**
 	 * Delegate for submitting a reimbursement request.
 	 */
-//	private final SubmitReimbursementDelegate submitDelegate;
 	private final Delegate submitDelegate;
 	/**
 	 * Delegate for viewing reimbursements
@@ -95,6 +100,10 @@ public class RequestDispatcher {
 	 * Delegate for changing the profile
 	 */
 	private final Delegate changeDelegate;
+	/**
+	 * Delegate for getting all employees (for manager)
+	 */
+	private final Delegate getEmployeesDelegate;
 	/**
 	 * This is used to send a message from internal delegates to the view delegate
 	 * (to display on the home page).
@@ -116,6 +125,7 @@ public class RequestDispatcher {
 		this.submitDelegate = new SubmitReimbursementDelegate();
 		this.viewReimbDelegate = new ViewReimbursementsDelegate();
 		this.changeDelegate = new ChangeProfileDelegate();
+		this.getEmployeesDelegate = new GetAllEmployeesDelegate();
 
 		this.empService.setEmployeeDao(new EmployeeDaoPostgres());
 		this.viewDelegate.setEmployeeService(empService);
@@ -125,9 +135,9 @@ public class RequestDispatcher {
 		this.submitDelegate.setEmployeeService(empService);
 		this.viewReimbDelegate.setEmployeeService(empService);
 		this.changeDelegate.setEmployeeService(empService);
+		this.getEmployeesDelegate.setEmployeeService(empService);
 
 		this.viewDelegate.setRequestDispatcher(this);
-//		this.submitDelegate.setRequestDispatcher(this);
 	}
 
 	/**
@@ -161,6 +171,9 @@ public class RequestDispatcher {
 				break;
 			case CHANGE_PROFILE:
 				changeDelegate.processRequest(path, request, response);
+				break;
+			case GET_ALL_EMPLOYEES:
+				getEmployeesDelegate.processRequest(path, request, response);
 				break;
 			}
 

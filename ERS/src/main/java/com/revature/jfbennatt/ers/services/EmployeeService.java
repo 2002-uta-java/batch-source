@@ -278,4 +278,16 @@ public class EmployeeService {
 	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId) {
 		return empDao.getProcessedReimbursementsByEmployeeId(empId);
 	}
+
+	/**
+	 * Returns a list of all employees excluding the manager passed as an argument.
+	 * 
+	 * @param manId Employee of the id of the manager (to be excluded from the
+	 *              list).
+	 * @return {@link List} of {@link Employee} objects (or null if there is an
+	 *         error). An empty list is not an error.
+	 */
+	public List<Employee> getallEmployeesExceptManager(int manId) {
+		return empDao.getAllEmployeesExceptManager(manId);
+	}
 }
