@@ -15,7 +15,7 @@ import com.revature.delegate.ViewDelegate;
 
 public class RequestHelper {
 
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(RequestHelper.class);
 	
 	public RequestHelper() {
 		super();

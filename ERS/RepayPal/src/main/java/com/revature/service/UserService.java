@@ -12,7 +12,7 @@ public class UserService {
 
 	private  UserDao userDao = new UserDaoImplementation();
 	
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(UserService.class);
 	
 	public User getUserByUsername(String username) {
 		return userDao.getUserByUsername(username);

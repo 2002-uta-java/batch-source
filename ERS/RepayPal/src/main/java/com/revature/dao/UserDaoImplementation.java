@@ -15,7 +15,7 @@ import com.revature.util.ConnectionUtil;
 
 public class UserDaoImplementation implements UserDao{
 	
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(UserDaoImplementation.class);
 	
 	@Override
 	public User getUserByUsername(String username) {

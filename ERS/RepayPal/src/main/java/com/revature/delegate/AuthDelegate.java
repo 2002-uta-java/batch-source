@@ -14,7 +14,7 @@ public class AuthDelegate {
 	
 	private UserService us = new UserService();
 	
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(AuthDelegate.class);
 	
 	public void authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String username = request.getParameter("username");

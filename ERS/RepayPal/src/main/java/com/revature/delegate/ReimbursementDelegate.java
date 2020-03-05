@@ -17,7 +17,7 @@ public class ReimbursementDelegate {
 
 	private ReimbursementService rs = new ReimbursementService();
 	
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(ReimbursementDelegate.class);
 	
 	public void getReimbursemets(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();

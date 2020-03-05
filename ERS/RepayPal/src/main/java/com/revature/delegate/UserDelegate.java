@@ -17,7 +17,7 @@ public class UserDelegate {
 	
 	private UserService us = new UserService();
 
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(UserDelegate.class);
 	
 	public void getUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String requestPath = request.getServletPath();

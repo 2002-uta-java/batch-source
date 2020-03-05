@@ -15,7 +15,7 @@ import com.revature.util.ConnectionUtil;
 
 public class ReimbursementDaoImplementation implements ReimbursementDao{
 
-	private static Logger log = Logger.getRootLogger();
+	private static Logger log = Logger.getLogger(ReimbursementDaoImplementation.class);
 	
 	@Override
 	public List<Reimbursement> getReimbursements() {
