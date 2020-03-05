@@ -45,6 +45,9 @@ async function loadPage(xhr){
     // Load profile name (top right).
     document.getElementById("profile-name").innerHTML = ` ${user.firstName} ${user.lastName} `;
 
+    // Load profile picture.
+    renderProfilePicture(user.gender);
+
     // Load profile information (view profile button).
     document.getElementById("modal-name").innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("modal-email").innerHTML = `${user.email}`;
@@ -55,6 +58,18 @@ async function loadPage(xhr){
 
     // Load reimbursement information
     requestReimbursements();
+}
+
+function renderProfilePicture(gender) {
+    let pp = document.getElementById("profile-picture");
+    let width = 150;
+
+    if (gender == "male") {
+        pp.innerHTML = `<img src='static/Images/male.png' alt='Picture not found' width='${width}'>`;
+    }
+    else if (gender == "female") {
+        pp.innerHTML = `<img src='static/Images/female.png' alt='Picture not found' width='${width}'>`;
+    }
 }
 
 // Helper function to clear the reimbursements lists.
@@ -213,7 +228,7 @@ async function continueLoadReimbursements(xhr, baseUrl, reimbs) {
             let mFullName = findEmployeeName(idManager, employeeNames);
             reimElement.setAttribute("data-mFullName", mFullName);
             d1.innerHTML = `<div id='amount-text'>$${amount}</div>`;
-            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Approved by: " + `${mFullName}`;
+            d2.innerHTML = `<b>${eFullName}</b>` + "<br>Reimbursement Id: " + `${id}` + "<br>Purpose: " + `${purpose}` + "<br>Resolved by: " + `${mFullName}`;
             d3.innerHTML = addStatusImage(status);
             reimElement.appendChild(d1);
             reimElement.appendChild(d2);

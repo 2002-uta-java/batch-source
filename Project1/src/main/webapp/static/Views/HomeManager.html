@@ -48,17 +48,16 @@
 
 			<div class="modal-body">
 				<div class="row">
-				  <div class="col-md-3">
-					<p></p> <!-- TODO: PROFILE PICTURE/GENDER LOGIC -->
-					<p class="text-center"><img id="profile-picture" src="#" alt="[IMG HERE]"></p>
+				  <div class="col-md-6" id="profile-picture" style="padding-left: 110px;">
+					  <!-- PROFILE IMAGE HERE -->
 				  </div>
 		
-				  <div class="col-md-9">
-					<p>Name: <span id="modal-name"></span></p>
-					<p>Email: <span id="modal-email"></span></p>
-					<p>Position: <span id="modal-position"></span></p>
-					<p>Gender: <span id="modal-gender"></span></p>
-					<p>Id: <span id="modal-id"></span></p>
+				  <div class="col-md-5">
+					<p><b>Name: </b><span id="modal-name"></span></p>
+					<p><b>Email: </b><span id="modal-email"></span></p>
+					<p><b>Position: </b><span id="modal-position"></span></p>
+					<p><b>Gender: </b><span id="modal-gender"></span></p>
+					<p><b>Employee Id: </b><span id="modal-id"></span></p>
 				  </div>
 				</div>
 			</div>	
@@ -204,14 +203,16 @@
 		<div class="modal-content">
 
 			<div class="modal-header"> <!-- (x) close button) -->
-				<h5 class="modal-title" id="exampleModalCenterTitle3">Resolve Reimbursement</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
+				<h3 class="modal-title" id="exampleModalCenterTitle3" style="text-align: center; font-weight: bold;">
+					Resolve Reimbursement
+				</h3>
 			</div>
 
 			<!-- REIMBURSEMENT FORM INFO -->
-			<div class="modal-body" id="resolve-reimbursement-info">
+			<div class="modal-body" id="resolve-reimbursement-info" style="text-align: center">
 				<h1 id="single-reimb-amount">[AMOUNT]</h1>
 				<p id="single-reimb-name">[INFO]</p>
 				<p id="single-reimb-purpose">[more info...]</p>
@@ -219,7 +220,7 @@
 			</div>
 
 			<!-- ACCEPT OR REJECT BUTTONS -->
-			<div class="modal-footer">
+			<div class="modal-footer" style="text-align: center; font-weight: bold;">
 				<button type="button" class="btn btn-success" id="approve-btn" data-dismiss="modal">
 					Approve
 				</button>
