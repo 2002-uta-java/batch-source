@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="ISO-8859-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <link rel="stylesheet" type="text/css" href="static/Views/Login.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
 
 <body>
+    
+  <div class="sidenav">
+    <div class="login-main-text">
+      <div id="m2">
+       <h2><b>Employee Expense<br>Reimbursement System</b></h2>
+      </div>
+       <p>Login to your account to<br>access your reimbursements.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+                <label>Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Email">
+                <div id="second">
+                <label>Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password">
+                </div>
+                <button id="login-btn" class="btn btn-black">Login</button>
+       </div>
+    </div>
+ </div>
+
+</body>
+
+<script src="static/Views/Login.js"></script>
+
+</html>
+
+<!--
+<body>
     <div class="wrapper fadeInDown">
         <div id="formContent">
-          <!-- Login Form --> <!-- need to transfer to javascript somehow here-->
           <div class="container">
             <input type="text" id="email" class="form-control">
             <input type="password" id="password" class="form-control">
@@ -20,7 +55,4 @@
         </div>
       </div>
 </body>
-
-<script src="static/Views/Login.js"></script>
-
-</html>
+-->

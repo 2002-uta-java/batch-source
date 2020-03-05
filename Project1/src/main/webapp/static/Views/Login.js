@@ -1,7 +1,8 @@
 function requestLogin(){
-    
 	let email = document.getElementById("email").value;
 	let pass = document.getElementById("password").value;
+
+	console.log(email + " "+ pass);
 	
 	let xhr = new XMLHttpRequest();
     let url = "http://localhost:8080/Project1/login";
