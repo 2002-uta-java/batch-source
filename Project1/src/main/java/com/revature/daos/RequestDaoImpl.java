@@ -2,6 +2,7 @@ package com.revature.daos;
 
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,12 +11,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.models.Request;
+import com.revature.models.Account;
 import com.revature.util.ConnectionUtil;
 
 public class RequestDaoImpl implements RequestDao {
 
 	private String reqTable = "reimburse.request";
+	private Logger log = Logger.getRootLogger();
 	
 	@Override
 	public List<Request> getAllRequests() {
@@ -49,7 +54,7 @@ public class RequestDaoImpl implements RequestDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		return requests;
@@ -92,7 +97,7 @@ public class RequestDaoImpl implements RequestDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -130,11 +135,20 @@ public class RequestDaoImpl implements RequestDao {
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
 				
+				Account a = new Account();
+				a.setId(rs.getInt("empl_id"));
+				a.setName(rs.getString("name"));
+				a.setEmail(rs.getString("email"));
+				a.setAcctType(rs.getString("account_type"));
+				a.setManagerId(rs.getInt("manager_id"));
+				
+				r.setEmplAccount(a);
+				
 				requests.add(r);
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -177,7 +191,7 @@ public class RequestDaoImpl implements RequestDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -218,7 +232,7 @@ public class RequestDaoImpl implements RequestDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -253,7 +267,7 @@ public class RequestDaoImpl implements RequestDao {
 			return newR;
 			
 		} catch (SQLException e) { 
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -283,7 +297,7 @@ public class RequestDaoImpl implements RequestDao {
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) { 
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		return 0;
@@ -301,7 +315,7 @@ public class RequestDaoImpl implements RequestDao {
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 		return 0;

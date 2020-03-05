@@ -6,12 +6,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.revature.delegates.AccountDelegate;
 import com.revature.delegates.AuthDelegate;
 import com.revature.delegates.RequestDelegate;
 import com.revature.delegates.ViewDelegate;
 
 public class RequestHelper {
+	
+	private static final Logger log = Logger.getRootLogger();
 	
 	private final ViewDelegate viewDelegate = new ViewDelegate();
 	private final AccountDelegate accountDelegate = new AccountDelegate();
@@ -56,12 +60,17 @@ public class RequestHelper {
 			return;
 		}
 		
+		log.info("User Authorized");
+		
 		if(resource.matches("^users(/?|/?.*)$") || resource.matches("^user(/?|/?.*)$")) {
 			switch(method) {
 			case "GET":
 				accountDelegate.getUsers(request, response);
 				break;
 			case "POST":
+				break;
+			case "PUT":
+				accountDelegate.putUsers(request, response);
 				break;
 			default:
 				response.sendError(401);

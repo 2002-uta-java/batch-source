@@ -37,7 +37,6 @@ public class AccountDaoImpl implements AccountDao {
 				a.setEmail(rs.getString("email"));
 				a.setManagerId(rs.getInt("manager_id"));
 				a.setName(rs.getString("name"));
-				a.setPassword(rs.getString("password"));
 				
 				accounts.add(a);
 			}
@@ -145,7 +144,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public int updateAccount(Account a) {
-		String sql = "update " + accountTable + " set name=?, email=? password=?, manager_id=?, account_type=?, date_created=? where id=?";
+		String sql = "update " + accountTable + " set name=?, email=?, password=?, manager_id=?, account_type=?, date_created=? where id=?";
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {

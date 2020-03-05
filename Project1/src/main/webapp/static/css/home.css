@@ -4,11 +4,20 @@
 	padding: 1.5rem;
 }
 
-.container {
+.grid-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	max-width: 1200px;
+}
+
+.content {
 	background-color: #fff;
 	padding: 2em;
 	border-radius: 5px;
 	box-shadow: 0 0 5px #aaa;
+	margin: 1em;
 	margin-top: 2em;
 }
 
@@ -28,9 +37,23 @@
 }
 
 .active-req, .active-req:hover {
-	background-color: goldenrod !important;
+	background-color: #aaa !important;
 }
 
-div.collapse, div.collapse:hover {
+.content div.collapse, .content div.collapse:hover {
 	background-color: #fff !important;
+}
+
+.review-section {
+	display: inline;
+	float: inline-end;
+}
+
+#name-filter {
+	display: inline;
+	width: auto;
+}
+
+.fa {
+	cursor: pointer;
 }

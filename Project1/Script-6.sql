@@ -30,3 +30,5 @@ insert into reimburse.account
 	values ('test_emp', 'employee@working.com', 'password', 1, 'EMPLOYEE', now());
 	
 GRANT USAGE ON SCHEMA reimburse TO app_user;
+
+select * from reimburse.account a join reimburse.request r on a.id = r.empl_id;

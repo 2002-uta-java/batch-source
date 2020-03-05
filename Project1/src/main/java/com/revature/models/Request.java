@@ -16,6 +16,7 @@ public class Request implements Serializable {
 	private LocalDateTime reviewed;
 	private Status status;
 	private int emplId;
+	private Account emplAccount;
 	private LocalDate reimburseDate;
 	private double amount;
 	private String description;
@@ -86,6 +87,14 @@ public class Request implements Serializable {
 
 	public int getEmplId() {
 		return emplId;
+	}
+
+	public void setEmplAccount(Account a) {
+		this.emplAccount = a;
+	}
+	
+	public Account getEmplAccount() {
+		return emplAccount;
 	}
 
 	public void setEmplId(int emplId) {

@@ -1,12 +1,16 @@
 package com.revature.delegates;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Account;
@@ -17,6 +21,7 @@ import com.revature.services.RequestService;
 public class AccountDelegate {
 	
 	private final AccountService accountService = new AccountService();
+	private final Logger log = Logger.getRootLogger();
 	
 	public void getUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
@@ -34,7 +39,7 @@ public class AccountDelegate {
 				String idStr = tokenArr[0];
 				if(idStr.matches("^\\d+$")) {
 					a = accountService.getAccountById(Integer.parseInt(idStr));
-					a.setPassword(""); // Clear Password
+//					a.setPassword(""); // Clear Password
 				}
 			}
 			
@@ -76,6 +81,46 @@ public class AccountDelegate {
 				pw.append(new ObjectMapper().writeValueAsString(requests));
 			}
 			
+		}
+		
+	}
+	
+	public void putUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		String path = request.getServletPath().substring(5);
+		int id = Integer.parseInt(request.getHeader("Authorization").split("%")[0]);
+		
+		if (path.matches("^user/?$")) {
+			
+			InputStream in = request.getInputStream();
+			StringBuilder result = null;
+			try(BufferedReader reader = new BufferedReader(new InputStreamReader(in));) {
+				result = new StringBuilder();
+				String line;
+				while((line = reader.readLine()) != null) {
+					result.append(line);
+				}
+			}
+			
+			String parameters = result.toString();
+			
+			String[] pArr = parameters.split("&");
+			
+			String name = pArr[0].split("=")[1];
+			String email = pArr[1].split("=")[1];
+			String password = pArr[2].split("=")[1];
+			
+			log.info(name+" "+email+" "+password);
+			
+			if (accountService.updateUser(id, name, email, password)) {
+				response.setStatus(200);
+			}
+			else {
+				response.sendError(401);
+			}
+			
+		} else {
+			response.sendError(401);
 		}
 		
 	}

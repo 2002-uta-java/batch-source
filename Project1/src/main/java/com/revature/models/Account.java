@@ -7,7 +7,7 @@ public class Account implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private enum AccountType {EMPLOYEE, MANAGER};
+	private enum AccountType {EMPLOYEE, MANAGER}
 	
 	private int id;
 	private LocalDateTime accountCreated;
@@ -29,6 +29,17 @@ public class Account implements Serializable {
 		this.email = email;
 		this.password = password;
 		this.acctType = acctType;
+		this.managerId = managerId;
+	}
+	
+	public Account(LocalDateTime accountCreated, String name, String email, String password, String acctType,
+			int managerId) {
+		super();
+		this.accountCreated = accountCreated;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.acctType = AccountType.valueOf(acctType);
 		this.managerId = managerId;
 	}
 

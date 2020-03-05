@@ -1,15 +1,17 @@
-/**
- * 
- */
-
-let token = sessionStorage.getItem("token");
+let token;
 let user;
 
-if(!token){
-	window.location.href="http://localhost:8080/login";
-} else {
-	let baseUrl = "http://localhost:8080/api/user";
-	sendAjaxGet(baseUrl, loadPage);
+window.onload = function() {
+	token = sessionStorage.getItem("token");
+	
+	if(!token){
+		window.location.href="http://localhost:8080/login";
+	} else {
+		let baseUrl = "http://localhost:8080/api/user";
+		document.getElementById("submit-new-request").addEventListener("click", createRequest);
+		sendAjaxGet(baseUrl, loadPageBase);
+		
+	}
 }
 
 function sendAjaxGet(url, callback){
@@ -24,48 +26,93 @@ function sendAjaxGet(url, callback){
 			console.error("Server error");
 		}
 	}
+	
 	xhr.setRequestHeader("Authorization",token);
 	xhr.send();
 }
 
-function loadPage(xhr) {
-	user = JSON.parse(xhr.response);
-	
-	if (user.acctType == "EMPLOYEE") {
-		document.getElementById("create-request-btn").hidden = false;
-	}
-	
-	sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
-}
-
-document.getElementById("submit-new-request").addEventListener("click", createRequest);
-
-function createRequest(e) {
-
-	const formData = new FormData(document.getElementById("create-request-form"));
-	
-	let params = "";
-	
-	for (let entry of formData.entries()) {
-		params += entry[0] + "=" + entry[1] + "&";
-	}
-	
+function sendAjaxPost(url, params, callback){
 	const xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://localhost:8080/api/requests");
+	xhr.open("POST", url);
+
+	let paramStr = "";
+
+	for (let [p, v] of Object.entries(params)) {
+		paramStr += p + "=" + v + "&";
+	}
 	
 	xhr.onreadystatechange = function(){
 		if(this.readyState===4 && this.status===200){
-			$('#create-request').modal('hide');
-			sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
+			callback(this);
 		} else if (this.readyState===4){
 //			window.location.href="http://localhost:8080/login";
 			console.error("Server error");
 		}
 	}
-	xhr.setRequestHeader("Authorization",token);
+
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Authorization",token);
+	xhr.send(paramStr);
+}
+
+function sendAjaxPut(url, params, callback){
+	const xhr = new XMLHttpRequest();
+	xhr.open("PUT", url);
+
+	let paramStr = "";
+
+	for (let [p, v] of Object.entries(params)) {
+		paramStr += p + "=" + v + "&";
+	}
 	
-	xhr.send(params);
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+			callback(this);
+		} else if (this.readyState===4){
+//			window.location.href="http://localhost:8080/login";
+			console.error("Server error");
+		}
+	}
+
+	console.log(paramStr);
+
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Authorization",token);
+	xhr.send(paramStr);
+}
+
+function loadPageBase(xhr) {
+	user = JSON.parse(xhr.response);
+
+	document.getElementById("nav-name").innerText = user.name;
+	loadProfile();
+	
+	if (user.acctType == "EMPLOYEE") {
+		document.getElementById("create-request-btn").hidden = false;
+		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests)
+	} else if (user.acctType == "MANAGER") {
+		document.getElementById("user-section").hidden = false;
+		document.getElementById("name-filter-section").hidden = false;
+		sendAjaxGet("http://localhost:8080/api/users/", loadUsers);
+		setTimeout(()=>{sendAjaxGet("http://localhost:8080/api/requests/", loadRequests);}, 100)
+	}
+	
+}
+
+function createRequest(e) {
+
+	const formData = new FormData(document.getElementById("create-request-form"));
+	
+	sendAjaxPost("http://localhost:8080/api/requests", {
+		amount: formData.get("amount"),
+		date: formData.get("date"),
+		description: formData.get("description"),
+		category: formData.get("category")
+	}, ()=>{
+		$('#create-request').modal('hide');
+		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
+	});
+
 }
 
 function loadRequests(xhr) {
@@ -76,10 +123,11 @@ function loadRequests(xhr) {
 	tableBody.innerHTML = '';
 
 	const statusFilter = $("#status-filter").val();
+	const nameFilter = $("#name-filter").val();
 	
 	for(let req of res) {
 
-		if (statusFilter == "ALL" || req.status == statusFilter) {
+		if ((statusFilter == "ALL" || req.status == statusFilter) && (!nameFilter || req.emplAccount.name == nameFilter)) {
 		
 		const dateStr = req.submitted.monthValue + "/" + req.submitted.dayOfMonth + "/" + req.submitted.year;
 		const dateFull = req.reimburseDate.month + " " + req.reimburseDate.dayOfMonth + ", " + req.reimburseDate.year;
@@ -88,13 +136,17 @@ function loadRequests(xhr) {
 		tr.dataset.toggle="collapse";
 		tr.dataset.target="#request-"+req.id;
 		tr.className = "accordion-toggle clickable";
-		tr.innerHTML = `<td>${req.id}</td><td>${dateStr}</td><td>${req.amount}</td><td>${req.status}</td>`;
+		tr.innerHTML = `<td>${req.id}</td><td>${dateStr}</td><td>$${req.amount.toFixed(2)}</td><td>${req.status}</td>`;
 		tableBody.appendChild(tr);
 
-		const reviewSection = `
+		const reviewSection = user.acctType == "MANAGER" ? `
 			<div class="review-section">
-				<button id="approve-btn" class="btn btn-success" data-reqid="${req.id}">Approve</button>
-				<button id="deny-btn" class="btn btn-danger" data-reqid="${req.id}">Deny</button>
+				<button class="btn btn-success approve-btn" data-reqid="${req.id}" data-type="approve-btn">Approve</button>
+				<button class="btn btn-danger deny-btn" data-reqid="${req.id}" data-type="deny-btn">Deny</button>
+			</div>
+		` : `
+			<div class="review-section">
+				<h5>${req.status == "PENDING" ? "Awaiting Review" : req.status}</h5>
 			</div>
 		`;
 		
@@ -105,8 +157,8 @@ function loadRequests(xhr) {
 					<h4>${dateFull}</h4>
 					<h5>Category: ${req.category}</h5>
 				</div>
-				<h5>Description: ${req.description}</h5>
-				${user.acctType == "MANAGER" ? reviewSection : ""}
+				<p>Description: ${req.description}</p>
+				${reviewSection}
 			</div>
 		</div></td>`;
 		tableBody.appendChild(trHidden);
@@ -125,14 +177,14 @@ function loadRequests(xhr) {
 		$(e.currentTarget.dataset.target).collapse('toggle')
 	});
 
-	$('#approve-btn').on("click", reviewRequest);
-	$('#deny-btn').on("click", reviewRequest);
+	$('.approve-btn').each((ind, elm)=>{elm.onclick = reviewRequest});
+	$('.deny-btn').each((ind, elm)=>{elm.onclick = reviewRequest});
 	
 }
 
 function reviewRequest(e) {
 
-	const reviewType = e.target.id;
+	const reviewType = e.target.dataset.type;
 
 	console.log(e.target);
 
@@ -155,11 +207,72 @@ function reviewRequest(e) {
 
 }
 
+function loadUsers(xhr) {
+	const users = JSON.parse(xhr.response);
+	
+	const tableBody = document.getElementById("user-table").children[1];
+	tableBody.innerHTML = '';
+
+	for (let user of users) {
+
+		const tr = document.createElement("tr");
+		tr.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.email}</td><td>${user.name}</td>`;
+		tableBody.appendChild(tr);
+	}
+
+}
+
+function loadProfile() {
+	const profile = document.getElementById("profile-body");
+
+	profile.innerHTML = `
+		<h3>Profile <i class="fa fa-pencil"></i></h3>
+		<h5>Name: ${user.name}</h5>
+		<h5>Email: ${user.email}</h5>
+		<h5>Password: ********</h5>
+	`;
+
+	$(".fa-pencil").click(()=>{
+
+		profile.innerHTML = `
+			<h3>Profile <i class="fa fa-check"></i></h3>
+			<h5>Name: <input id="edit-name" type="text" value="${user.name}"></h5>
+			<h5>Email: <input id="edit-email" type="text" value="${user.email}"></h5>
+			<h5>Password: <input id="edit-pass" type="password" value="${user.password}"></h5>
+		`;
+
+		$(".fa-check").click(()=>{
+			const newName = $("#edit-name").val();
+			const newEmail = $("#edit-email").val();
+			const newPass = $("#edit-pass").val();
+
+			sendAjaxPut("http://localhost:8080/api/user/", {
+				name: newName,
+				email: newEmail,
+				password: newPass
+			}, loadProfile);
+		});
+
+	});
+}
+
 $("#logout-button").on("click", (e)=>{
 	sessionStorage.removeItem('token');
 	window.location.href="http://localhost:8080/login";
 });
 
 $("#status-filter").on("change", (e)=>{
-	sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests);
+	if (user.acctType == "EMPLOYEE") {
+		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests)
+	} else if (user.acctType == "MANAGER") {
+		sendAjaxGet("http://localhost:8080/api/requests/", loadRequests);
+	}
+})
+
+$("#name-filter").on("change", (e)=>{
+	if (user.acctType == "EMPLOYEE") {
+		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests)
+	} else if (user.acctType == "MANAGER") {
+		sendAjaxGet("http://localhost:8080/api/requests/", loadRequests);
+	}
 })
