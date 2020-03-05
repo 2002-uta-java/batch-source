@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Profile</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/ERS/static/scripts/constants.js"></script>
+<script type="text/javascript" src="/ERS/static/scripts/cookies.js"></script>
+<script type="text/javascript"
+	src="/ERS/static/scripts/Employee/nav-bar.js"></script>
+<script type="text/javascript"
+	src="/ERS/static/scripts/Employee/profile.js"></script>
+</head>
+<body>
+	<!-- the href's are set in javascript -->
+	<nav class="nav nav-pills flex-column flex-sm-row">
+		<a class="flex-sm-fill text-sm-center nav-link active"
+			id="profile-link">Profile</a> <a
+			class="flex-sm-fill text-sm-center nav-link active"
+			id="view-reimb-link">View Reimbursement Requests</a> <a
+			class="flex-sm-fill text-sm-center nav-link active"
+			id="submit-reimb-link">Submit Reimbursement Request</a> <a
+			class="flex-sm-fill text-sm-center nav-link active" id="logout-link">Logout</a>
+	</nav>
+
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">Profile</h5>
+			<p class="card-text" id="profile-name"></p>
+			<p class="card-text" id="profile-email"></p>
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#edit-profile-modal">Edit Info</button>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="edit-profile-modal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<form id="change-form">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="change-first-name">First Name</label> <input
+								id="change-first-name" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="change-last-name">Last Name</label> <input
+								id="change-last-name" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="change-email">Email Address</label> <input
+								type="email" id="change-email" class="form-control"
+								aria-describedby="emailHelp" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="change-password">Password</label> <input
+								type="password" class="form-control" id="change-password"
+								placeholder="Password" autocomplete="off">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

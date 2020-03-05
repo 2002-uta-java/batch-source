@@ -121,4 +121,12 @@ public interface EmployeeDao {
 	 */
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId);
 
+	/**
+	 * Changes the profile of the employee (using the given employee id)
+	 * 
+	 * @param employee {@link Employee} object to be updated (holding the updated
+	 *                 values).
+	 */
+	public boolean changeProfile(Employee employee);
+
 }

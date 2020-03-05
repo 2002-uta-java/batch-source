@@ -18,3 +18,15 @@ function getCookie(cname) {
 	}
 	return "";
 }
+
+function getFirstName() {
+	return getCookie(FIRST_NAME_HEADER);
+}
+
+function getLastName() {
+	return getCookie(LAST_NAME_HEADER)
+}
+
+function getEmail() {
+	return getCookie(EMAIL_COOKIE);
+}

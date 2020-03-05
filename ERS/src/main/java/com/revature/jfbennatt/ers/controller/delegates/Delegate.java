@@ -56,15 +56,19 @@ public abstract class Delegate {
 	/**
 	 * Value used to set the max age of a cookie.
 	 */
-	private static final int COOKIE_TIME = -1;
+	protected static final int COOKIE_TIME = -1;
 	/**
 	 * Value used to set the path of the cookie.
 	 */
-	private static final String COOKIE_PATH = RequestDispatcher.CONTEXT_ROOT;
+	protected static final String COOKIE_PATH = RequestDispatcher.CONTEXT_ROOT;
 	/**
 	 * Name of cookie that holds the message for the home page
 	 */
 	public static final String SUCCESS_COOKIE = "success";
+	/**
+	 * Name given to the cookie which stores the employee's email
+	 */
+	public static final String EMAIL_COOKIE_NAME = "email";
 
 	/**
 	 * {@link EmployeeService} object used to perform operations for the employee.

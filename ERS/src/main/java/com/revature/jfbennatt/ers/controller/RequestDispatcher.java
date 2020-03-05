@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.LoginDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.LogoutDelegate;
@@ -56,6 +57,10 @@ public class RequestDispatcher {
 	 * employees)
 	 */
 	public static final String VIEW_REIMBURSEMENT_ROOT = "/view";
+	/**
+	 * URI for changing the profile.
+	 */
+	public static final String CHANGE_PROFILE = "/change";
 
 	/**
 	 * delegate for fetching static resources (from an api call)
@@ -86,6 +91,10 @@ public class RequestDispatcher {
 	 */
 	private final Delegate viewReimbDelegate;
 	/**
+	 * Delegate for changing the profile
+	 */
+	private final Delegate changeDelegate;
+	/**
 	 * This is used to send a message from internal delegates to the view delegate
 	 * (to display on the home page).
 	 */
@@ -105,6 +114,7 @@ public class RequestDispatcher {
 		this.logoutDelegate = new LogoutDelegate();
 		this.submitDelegate = new SubmitReimbursementDelegate();
 		this.viewReimbDelegate = new ViewReimbursementsDelegate();
+		this.changeDelegate = new ChangeProfileDelegate();
 
 		this.empService.setEmployeeDao(new EmployeeDaoPostgres());
 		this.viewDelegate.setEmployeeService(empService);
@@ -113,6 +123,7 @@ public class RequestDispatcher {
 		this.logoutDelegate.setEmployeeService(empService);
 		this.submitDelegate.setEmployeeService(empService);
 		this.viewReimbDelegate.setEmployeeService(empService);
+		this.changeDelegate.setEmployeeService(empService);
 
 		this.viewDelegate.setRequestDispatcher(this);
 		this.submitDelegate.setRequestDispatcher(this);
@@ -146,6 +157,9 @@ public class RequestDispatcher {
 				break;
 			case SUBMIT_REIMBURSEMENT:
 				submitDelegate.processRequest(path, request, response);
+				break;
+			case CHANGE_PROFILE:
+				changeDelegate.processRequest(path, request, response);
 				break;
 			}
 

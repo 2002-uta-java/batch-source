@@ -351,4 +351,35 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		return reimbs;
 	}
 
+	@Override
+	public boolean changeProfile(Employee employee) {
+		final String sql = "update " + EMPLOYEE_TABLE + " set " + EMP_EMAIL + " = ?, " + EMP_PASSWORD + " = ?, "
+				+ EMP_FIRST_NAME + " = ?, " + EMP_LAST_NAME + " = ? where " + EMP_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, employee.getEmail());
+			ps.setString(2, employee.getPassword());
+			ps.setString(3, employee.getFirstName());
+			ps.setString(4, employee.getLastName());
+			ps.setInt(5, employee.getEmpId());
+
+			Logger.getRootLogger().debug(ps);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update employee: " + employee);
+				return false;
+			}
+
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we made here, it was successful
+		return true;
+	}
+
 }

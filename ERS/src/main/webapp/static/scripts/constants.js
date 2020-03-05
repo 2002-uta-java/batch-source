@@ -38,7 +38,23 @@ const SUCCESS_VALUE = "success";
 // URI of view reimbursement resource
 const VIEW_REIMBURSEMENT_PAGE = "/ERS/view";
 // URI for returning all reimbursements for an employee
-const VIEW_ALL_REIMBURSEMENTS_BY_EMP = "/ERS/api/view";// field name for Reimbursement.amount
+const VIEW_ALL_REIMBURSEMENTS_BY_EMP = "/ERS/api/view";
+// URI of resource for getting the profile page
+const PROFILE_PAGE = "/ERS/profile";
+// name of the cookie which holds the email information
+const EMAIL_COOKIE = "email";
+// value (name attribute) for changing the first name
+const CHANGE_FIRST_NAME_ID = "change-first";
+// value (name attribute) for changing the last name
+const CHANGE_LAST_NAME_ID = "change-last";
+// value (name attribute) for changing the email
+const CHANGE_EMAIL_ID = "change-email";
+// value (name attribute) for changing the password
+const CHANGE_PASSWORD_ID = "change-password";
+// URI for the api that changes the profile
+const CHANGE_PROFILE_API = "/ERS/api/change";
+
+// field name for Reimbursement.amount
 const REIMB_AMOUNT = 'amount';
 // field name for Reimbursement.description
 const REIMB_DESCRIPTION = 'description';

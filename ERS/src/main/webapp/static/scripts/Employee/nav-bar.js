@@ -9,6 +9,7 @@ function setupNav() {
 			SUBMIT_REIMBURSEMENT_PAGE);
 	document.getElementById("view-reimb-link").setAttribute("href",
 			VIEW_REIMBURSEMENT_PAGE);
+	document.getElementById("profile-link").setAttribute("href", PROFILE_PAGE);
 	console.log("Setting the hrefs: " + LOGOUT_API + " and "
 			+ SUBMIT_REIMBURSEMENT_PAGE);
 }

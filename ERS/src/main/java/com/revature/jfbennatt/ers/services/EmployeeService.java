@@ -239,4 +239,10 @@ public class EmployeeService {
 	public List<Reimbursement> getAllReimbursementsByEmployeeId(int empId) {
 		return empDao.getAllReimbursementsByEmployeeId(empId);
 	}
+
+	public boolean changeProfile(final Employee employee) {
+		// hash password
+		employee.setPassword(passEnc.encryptPassword(employee.getPassword()));
+		return empDao.changeProfile(employee);
+	}
 }

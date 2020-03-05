@@ -3,6 +3,7 @@ package com.revature.jfbennatt.ers.controller.delegates;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -74,11 +75,19 @@ public class LoginDelegate extends Delegate {
 			Logger.getRootLogger().debug("success");
 			setAuthorizationCookie(employee, response);
 			setNameCookies(employee, response);
+			addEmailCookie(employee, response);
 			response.setStatus(200);
 		} else {
 			Logger.getRootLogger().debug("sending back 403");
 			response.sendError(403);
 		}
+	}
+
+	private void addEmailCookie(Employee employee, HttpServletResponse response) {
+		final Cookie emailCookie = new Cookie(EMAIL_COOKIE_NAME, employee.getEmail());
+		emailCookie.setMaxAge(COOKIE_TIME);
+		emailCookie.setPath(COOKIE_PATH);
+		response.addCookie(emailCookie);
 	}
 
 }

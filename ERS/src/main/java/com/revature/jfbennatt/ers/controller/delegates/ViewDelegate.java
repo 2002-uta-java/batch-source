@@ -31,13 +31,17 @@ public class ViewDelegate extends Delegate {
 	public static final String MANAGER_HOME_PAGE = "/static/Manager/Home.html";
 
 	/**
-	 * URI of the static submit reimbursement page.
+	 * URI of the static submit reimbursement page for the employee
 	 */
-	public static final String SUBMIT_REIMBURSEMENT_PAGE = "/static/Employee/Submit-Reimbursement.html";
+	public static final String EMPLOYEE_SUBMIT_REIMBURSEMENT_PAGE = "/static/Employee/Submit-Reimbursement.html";
 	/**
-	 * URI of the static view reimbursement page
+	 * URI of the static view reimbursement page for the employee
 	 */
-	public static final String VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursements.html";
+	public static final String EMPLOYEE_VIEW_REIMBURSEMENT_PAGE = "/static/Employee/View-Reimbursements.html";
+	/**
+	 * URI of the static profile page for the employee
+	 */
+	public static final String EMPLOYEE_PROFILE_PAGE = "/static/Employee/Profile.html";
 
 	/**
 	 * URI of the submit reimbursement resource
@@ -47,6 +51,10 @@ public class ViewDelegate extends Delegate {
 	 * URI of the view reimbursement resource
 	 */
 	public static final String VIEW_REIMBURSEMENT = "/view";
+	/**
+	 * URI to view profile
+	 */
+	public static final String PROFILE = "/profile";
 
 	/**
 	 * Cookie message (value) representing a failure
@@ -106,10 +114,13 @@ public class ViewDelegate extends Delegate {
 			request.getRequestDispatcher(EMPLOYEE_HOME_PAGE).forward(request, response);
 			break;
 		case SUBMIT_REIMBURSEMENT:
-			request.getRequestDispatcher(SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
+			request.getRequestDispatcher(EMPLOYEE_SUBMIT_REIMBURSEMENT_PAGE).forward(request, response);
 			break;
 		case VIEW_REIMBURSEMENT:
-			request.getRequestDispatcher(VIEW_REIMBURSEMENT_PAGE).forward(request, response);
+			request.getRequestDispatcher(EMPLOYEE_VIEW_REIMBURSEMENT_PAGE).forward(request, response);
+			break;
+		case PROFILE:
+			request.getRequestDispatcher(EMPLOYEE_PROFILE_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

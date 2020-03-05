@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import org.apache.log4j.Logger;
 
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
+import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ViewDelegate;
@@ -79,7 +80,24 @@ public class Constants {
 			printVariable(ps, "VIEW_ALL_REIMBURSEMENTS_BY_EMP",
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.VIEW_REIMBURSEMENT_ROOT,
 					"URI for returning all reimbursements for an employee");
+			printVariable(ps, "PROFILE_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.PROFILE,
+					"URI of resource for getting the profile page");
+			printVariable(ps, "EMAIL_COOKIE", Delegate.EMAIL_COOKIE_NAME,
+					"name of the cookie which holds the email information");
+			printVariable(ps, "CHANGE_FIRST_NAME_ID", ChangeProfileDelegate.CHANGE_FIRST_NAME_ID,
+					"value (name attribute) for changing the first name");
+			printVariable(ps, "CHANGE_LAST_NAME_ID", ChangeProfileDelegate.CHANGE_LAST_NAME_ID,
+					"value (name attribute) for changing the last name");
+			printVariable(ps, "CHANGE_EMAIL_ID", ChangeProfileDelegate.CHANGE_EMAIL_ID,
+					"value (name attribute) for changing the email");
+			printVariable(ps, "CHANGE_PASSWORD_ID", ChangeProfileDelegate.CHANGE_PASSWORD,
+					"value (name attribute) for changing the password");
+			printVariable(ps, "CHANGE_PROFILE_API",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.CHANGE_PROFILE,
+					"URI for the api that changes the profile");
 
+			ps.println();
+			ps.println();
 			printReimbursementFields(ps);
 		} catch (FileNotFoundException e) {
 			Logger.getRootLogger().error(e.getMessage());
