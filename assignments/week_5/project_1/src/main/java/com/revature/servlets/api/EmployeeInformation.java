@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.LoggerClass;
 import com.revature.models.Employee;
 import com.revature.models.Profile;
 import com.revature.services.EmployeeService;
@@ -21,6 +22,8 @@ import com.revature.services.EmployeeService;
  */
 public class EmployeeInformation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static LoggerClass lc = new LoggerClass();
 	
 	private EmployeeService es = new EmployeeService();
        
@@ -54,7 +57,8 @@ public class EmployeeInformation extends HttpServlet {
 			empList.add(es.getEmployee(e));
 			
 		} else {			
-			response.sendError(400, "Mistakes were made...");	
+			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("invalid get employee info request");
 		}
 		
 		ObjectMapper om = new ObjectMapper();
@@ -63,6 +67,7 @@ public class EmployeeInformation extends HttpServlet {
 		try (PrintWriter pw = response.getWriter();) {
 			pw.write(employeeJson);
 			response.setStatus(200);
+			lc.postInfoLog("success. employee info retrieved");
 		}
 	}
 
@@ -88,8 +93,10 @@ public class EmployeeInformation extends HttpServlet {
 		
 		if(didItRun == 1) {
 			response.setStatus(200);
+			lc.postInfoLog("success. elpoyee updated");
 		} else {
 			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("error in updating employee");
 		}	
 	}
 	
@@ -115,8 +122,10 @@ public class EmployeeInformation extends HttpServlet {
 		
 		if(didItRun == 1) {
 			response.setStatus(200);
+			lc.postInfoLog("success. employee updated");
 		} else {
 			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("error in updating employee");
 		}	
 	}
 }

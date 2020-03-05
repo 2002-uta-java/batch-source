@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.LoggerClass;
 import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
@@ -22,6 +23,8 @@ public class ReimbursementsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ReimbursementService rs = new ReimbursementService();
+	
+	private static LoggerClass lc = new LoggerClass();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,6 +67,7 @@ public class ReimbursementsServlet extends HttpServlet {
 			
 		}  else {
 			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("error in retrieving reimbursment data");
 		}
 		
 		ObjectMapper om = new ObjectMapper();
@@ -72,6 +76,7 @@ public class ReimbursementsServlet extends HttpServlet {
 		try (PrintWriter pw = response.getWriter();) {
 			pw.write(reimbursementJson);
 			response.setStatus(200);
+			lc.postInfoLog("success. reimbursement data retrieved");
 		}
 	}
 
@@ -97,8 +102,10 @@ public class ReimbursementsServlet extends HttpServlet {
 		
 		if (reim.getId() > 0) {
 			response.setStatus(200);
+			lc.postInfoLog("success. reimbursement created");
 		} else {
 			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("error in creating reimbursement");
 		}
 	}
 	
@@ -125,8 +132,10 @@ public class ReimbursementsServlet extends HttpServlet {
 		
 		if(didItRun == 1) {
 			response.setStatus(200);
+			lc.postInfoLog("success. reimbursement updated");
 		} else {
 			response.sendError(400, "Mistakes were made...");
+			lc.postErrorLog("error in updating reimbursement");
 		}	
 	}
 

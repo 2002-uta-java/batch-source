@@ -3,20 +3,54 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Log In</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="static/Scripts/jocss.css">
 </head>
 <body>
 
-<h1>THIS WILL BE THE LOGIN PAGE</h1>
+<div class="container">
+    <br> 
+	<div class="row">
+        <div class="col-3">
+        </div>
+    	<div class="col-6">
+    		<h1>Reimbursement Portal</h1>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <br>
 
-<label>username: </label>
-<input id="username_input" name="username_input" type="text"></input>
-<br>
-<label>password: </label>
-<input id="password_input" name="password_input" type="text"></input>
-<br>
-<button id="login-button">Login</button>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6 card">
+            <div id="form-div">
+                <br>
+                <div class="form-group">
+                    <label for=username_input>username: </label>
+                    <input id="username_input" class="form-control" name="username_input" type="text" aria-describedby="usernameHelp">
+                    <small id="usernameHelp" class="form-text text-muted">please enter your username</small>
+                </div>
+                <div class="form-group">
+                    <label for="password_input">password: </label>
+                    <input id="password_input" class="form-control" name="password_input" type="password"></input>
+                </div>
+                <button type="submit" class="btn btn-primary" id="login-button">Login</button>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
 
 <script src="static/Scripts/Login.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

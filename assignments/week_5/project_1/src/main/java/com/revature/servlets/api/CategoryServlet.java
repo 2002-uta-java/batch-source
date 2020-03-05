@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.LoggerClass;
 import com.revature.models.Category;
 import com.revature.services.CategoryService;
 
@@ -21,6 +22,7 @@ public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private CategoryService cs = new CategoryService();
+	private static LoggerClass lc = new LoggerClass();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,6 +47,7 @@ public class CategoryServlet extends HttpServlet {
 		try (PrintWriter pw = response.getWriter();) {
 			pw.write(catJson);
 			response.setStatus(200);
+			lc.postInfoLog("categories retrieved for create reimbursement form");
 		}
 	}
 

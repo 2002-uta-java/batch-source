@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.revature.LoggerClass;
 import com.revature.models.Profile;
 import com.revature.services.ProfileService;
 
@@ -14,6 +18,9 @@ import com.revature.services.ProfileService;
  */
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static LoggerClass lc = new LoggerClass();
+	
        
 	ProfileService ps = new ProfileService();
 	
@@ -43,8 +50,10 @@ public class Login extends HttpServlet {
 			String token = pro.getEmployeeId() + ":" + pro.getIsManager();
 			response.setStatus(200);
 			response.setHeader("AuthToken", token);
+			lc.postInfoLog("user succesfully authenticated");
 		} else {
 			response.sendError(401);
+			lc.postErrorLog("user failed authentication");
 		}
 	}
 }
