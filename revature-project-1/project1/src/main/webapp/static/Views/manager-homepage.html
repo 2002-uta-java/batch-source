@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager Homepage</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="static\Styles\style.css">
+
+</head>
+<body>
+	<div class = "container">
+		<div class = "row company-name">
+			<h1>Company Page</h1>
+		</div>
+		<div class = "row">
+			<div class="col-md-2 side-menu">
+				<h6 id="welcome-emp-name"></h6>
+				<button type="button" class="btn btn-danger menu-btn" id="logout-btn">Logout</button>
+				<button type="button" class="btn btn-info menu-btn" id="profile-btn">Employee Profile</button>
+				<button type="button" class="btn btn-info menu-btn" id="employees-btn">View Employees</button>
+				<button type="button" class="btn btn-info menu-btn" id="Pending-btn">View Pending Reimbursement</button>
+				<button type="button" class="btn btn-info menu-btn" id="Resolve-btn">View Resolve Reimbursement</button>
+				<button type="button" class="btn btn-info menu-btn" id="edit-reimb-btn">Approve/Deny Reimbursement</button>
+				<button type="button" class="btn btn-info menu-btn" id="reimb-emp-id-btn">Reimbursement by Employee ID</button>
+			</div>
+  			<div class="col-md-10">
+				<table id="employee-table" class="table table-hover" hidden=true>
+					<tr>
+						<th>ID</th>
+						<th>Position</th>
+						<th>Manager ID</th>
+						<th>Name</th>
+						<th>Age</th>
+						<th>email</th>
+					</tr>
+				</table>
+				<!-- edit reimbursement div -->
+	            <div id="reimb-edit" hidden=true>
+	            	<h4>Approve/Deny Reimbursement</h4>
+	            	<table id="reimb-edit-table" class="table table-hover">
+						<tr>
+							<th>ID</th>
+							<th>Employee ID</th>
+							<th>Amount</th>
+							<th>Purpose</th>
+							<th>Status</th>
+							<th>Submit</th>
+						</tr>
+						<tr hidden=true>
+							<td>1</td>
+							<td>150</td>
+							<td>Food</td>
+							<td id="reimb-select-status">
+								
+							</td>
+							<td>
+								<select class="form-control" id="reimb-select-input" name="Reimbursement Type">
+									<option value="Approve">Approve</option>
+									<option value="Deny">Deny</option>
+								</select>
+							</td>
+							<td class="reimb-row-btn">
+								<button id="reimb-btn" class="btn btn-success reimb-submit-btn">Submit</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- reimbursement pending div -->
+	            <div id="reimb-pending" hidden=true>
+	            	<h4>Reimbursement</h4>
+	            	<table id="pending-table" class="table table-hover">
+						<tr>
+							<th>ID</th>
+							<th>Employee ID</th>
+							<th>Amount</th>
+							<th>Purpose</th>
+							<th>Approve By</th>
+							<th>Status</th>
+						</tr>
+					</table>
+				</div>
+				<!-- reimbursement resolve div-->
+				<div id="reimb-resolve" hidden=true>
+	            	<h4>Reimbursement</h4>
+	            	<table id="resolve-table" class="table table-hover">
+						<tr>
+							<th>ID</th>
+							<th>Employee ID</th>
+							<th>Amount</th>
+							<th>Purpose</th>
+							<th>Approve By</th>
+							<th>Status</th>
+						</tr>
+					</table>
+				</div>
+
+				<!-- search button reimbursement by emp id div-->
+				<div class="row" id="reimb-emp-search-div" hidden=true>
+	            	<div class="col-sm-12" id="section-name">
+						<h4>Reimbursement by Employee ID</h4>
+					</div>
+					<div class="col-sm-12">
+						<label>Employee ID: </label>
+						<input type="number" id="reimb-emp-id-input">
+						<button type="button" class="btn btn-info" id="reimb-emp-btn">Search</button>
+					</div>
+				</div>
+				<!-- reimbursement by emp id table-->
+				<div id="reimb-emp-table-div" hidden=true>
+	            	<table id="reimb-emp-table" class="table table-hover">
+						<tr>
+							<th>ID</th>
+							<th>Employee ID</th>
+							<th>Amount</th>
+							<th>Purpose</th>
+							<th>Approve By</th>
+							<th>Status</th>
+						</tr>
+					</table>
+	            </div>
+
+				<!-- profile div-->
+				<div class="row" id="profile-div" hidden=true>
+					<div class="col-sm-2" id="section-name">
+						<h4>Profile</h4>
+					</div>
+					<div class="col-sm-10">
+						<button type="button" class="btn btn-info" id="edit-btn">Edit</button>
+					</div>
+					<div class= "col-sm-2" id="profile-div-category">
+						<p>Name: </p>
+						<p>Age: </p>
+						<p>Email: </p>
+					</div>
+					<div class="col-sm-10" id="profile-div-content">
+					<!-- display profile div -->
+					</div>
+				</div>
+				<!-- edit profile div -->
+				<div class="row" id="edit-profile-form" hidden=true>
+					<div class="col-sm-12">
+						<label>Namo: </label>
+			            <input type="text" id="emp-name" class="form-control">
+			            <br>
+			            <label>Age:</label>
+						<input type="number" id="emp-age" class="form-control">
+						<label class="error" id="emp-age-invalid"></label>
+						<br>
+						<label>Email:</label>
+						<input type="email" id="emp-email" class="form-control">
+						<label class="error" id="emp-email-invalid"></label>
+						<br>
+			            <button type="button" id="update-btn" class="btn btn-success">Update Profile</button>	
+					</div>
+				</div>
+  			</div>
+		</div>
+	</div>
+	<footer class="page-footer">
+		<p>About Us</p>
+		<p>Contacts</p>
+		<p></p>
+	</footer>
+	
+<script type="text/javascript" src="static/Scripts/manager.js"></script>
+</body>
+</html>
