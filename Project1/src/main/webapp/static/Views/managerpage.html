@@ -14,7 +14,7 @@
     <div class="flex-content-container">
 
         <nav class="navbar navbar-dark bg-primary justify-content-between">
-            <a class="navbar-brand">REV ERD INTERFACE</a>
+            <a class="navbar-brand" href="http://localhost:8080/Project1/profile">REV ERD INTERFACE</a>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="log-out">Log-out</button>
         </nav>
         <br />
@@ -233,7 +233,7 @@
                         <form id="f7">
                         <div class="form-group">
                             <label for="type-input">Type of Report</label>
-                                <select class="form-control" name="type" id="type-input">
+                                <select class="form-control" name="type" id="report-input">
                                     <option>Employee By Id</option>
                                     <option>Reimbursement By Type</option>
                                     <option>All Assigned Employees</option>
@@ -246,7 +246,7 @@
                         <br />
                         <div class="form-group">
                             <label for="type-input">Search Criteria</label>
-                                <input class="form-control" type="text" name="rdate" id="type-input">
+                                <input class="form-control" type="text" name="rdate" id="c-input">
                                 <small id="typeHelpBlock" class="form-text text-muted">
                                     Enter in employee id or reimbursement type. If an all report leave blank.
                                 </small>
@@ -255,7 +255,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="submit-btn7" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                    <button id="report-btn" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                 </div>
             </div>
         </div>
@@ -294,7 +294,6 @@
 
   
     <script src="/Project1/static/Scripts/manager.js"></script>
-    <script src = "/Project1/static/Scripts/sortTable.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

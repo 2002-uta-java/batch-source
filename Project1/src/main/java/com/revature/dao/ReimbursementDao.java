@@ -11,12 +11,11 @@ public interface ReimbursementDao {
 	public Reimbursement createReimbursementByFunction(Reimbursement r1);
 	public Reimbursement updateReimbursementByFunction(Reimbursement r1);
 	public int deleteReimbursement(int id);
-	public Reimbursement generateReportReimbursementByEmployee(Reimbursement r1);
-	public Reimbursement generateReportReimbursementByManager(Reimbursement r1);
 	public String getStatus(int id);
 	public String getReciept(int id);
 	public String updateReciept(String url, int id);
 	public List<Reimbursement> managerStatus(int id);
 	public List<Reimbursement> employeeStatus(int id);
+	public List<Reimbursement> reimbursementByType(String type1);
 	
 }

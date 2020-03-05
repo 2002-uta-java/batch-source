@@ -43,8 +43,8 @@ public class ClientServiceTest {
 	
 	@Test
 		public void createClient() {
-		Client newClient = new Client(3,"james@gmail.com","password", 1);
-		Client expected = new Client(3,"james@gmail.com","password", 1);
+		Client newClient = new Client(7,"james@gmail.com","password", 1);
+		Client expected = new Client(7,"james@gmail.com","password", 1);
 		assertEquals(expected, cs.createClientByFunction(newClient));
 	}
 	

@@ -89,17 +89,13 @@ public class UserDelegate {
 	}
 	
 	public void updateClient(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		try (BufferedReader requestReader = request.getReader();) {
-			String newClientJson = requestReader.readLine();	
-			JSONArray jsonArr = new JSONArray(newClientJson);
-		    for (int i = 0; i < jsonArr.length(); i++) {
-		        JSONObject jsonObj = jsonArr.getJSONObject(i);
+				String b = request.getParameter("clientId");
+				String a = request.getParameter("clientPassword");
+				int b1 = Integer.parseInt(b);
 		        Client updateClient = new Client(clientId, clientPassword);
-		        clientId = updateClient.setClientId(jsonObj.getInt("clientId"));
-		        clientPassword = updateClient.setClientPassword(jsonObj.getString("clientPassword"));
-		        clientService.updateClientPasswordByFunction(updateClient);
-		    	}
-		    }
+		        clientId = updateClient.setClientId(b1);
+		        clientPassword = updateClient.setClientPassword(a);
+		        clientService.updateClientPasswordByFunction(updateClient);   
 	}
 }
 		

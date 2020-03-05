@@ -89,6 +89,21 @@ public class RequestHelper {
 		case "/clientupdate":
 			userDelegate.updateClient(request, response);
 			break;
+		case "/employeeById":
+			employeeDelegate.employeeById(request, response);
+			break;
+		case "/reimbursementByType":
+			reimbursementDelegate.remByType(request, response);
+			break;
+		case "/employeeUpdateFname":
+			employeeDelegate.updateFName(request, response);
+			break;
+		case "/employeeUpdateLname":
+			employeeDelegate.updateLName(request, response);
+			break;
+		case "/employeeUpdateTitle":
+			employeeDelegate.updateTitle(request, response);
+			break;
 		default:
 			response.sendError(405);
 		}

@@ -20,6 +20,9 @@ public class ViewDelegate {
 		case "/managerpage":
 			request.getRequestDispatcher("/static/Views/managerpage.html").forward(request, response);
 			break;
+		case "/profile":
+			request.getRequestDispatcher("/static/Views/profile.html").forward(request, response);
+			break;
 		default:
 			response.sendError(404, "Static Resource Not Found");
 		}

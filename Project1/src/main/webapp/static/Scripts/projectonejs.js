@@ -10,9 +10,9 @@ function showPassword() {
 
 // This post the email and password to server to verify with database
 
-let el = document.getElementById("submit-btn1");
-if (el) {
-    el.addEventListener('click', logonAjax, false);
+let ela = document.getElementById("submit-btn1");
+if (e1a) {
+    ela.addEventListener('click', logonAjax, false);
 }
  
 
@@ -37,13 +37,15 @@ if (el) {
             let permission = arr[1]; 
             console.log(permission);
             if(permission === 0) {
-                window.location.href = "http://localhost:8080/Project1/employeepage"
+              window.location.href = "http://localhost:8080/Project1/employeepage"
+              
             } else {
-                window.location.href = "http://localhost:8080/Project1/managerpage"
+             window.location.href = "http://localhost:8080/Project1/managerpage"
+              
             }
 	    } else if (xhr.readyState == 4) {
             console.log("incorrect credentials");
-            window.location.href = "http://localhost:8080/Project1/logon"
+            window.location.href = "http://localhost:8080/Project1/index"
 	    }
 	}
 

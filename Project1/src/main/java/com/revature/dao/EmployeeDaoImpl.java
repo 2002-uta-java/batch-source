@@ -339,4 +339,131 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return e2;
 	}
 
+	@Override
+	public List<Employee> employeeById(int id) {
+		String sql = "select * from employee where empl_id = ?";
+		ResultSet rs = null;
+		List<Employee> employees = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+		        ps.setInt(1, id);
+				rs = ps.executeQuery();
+			
+				   while(rs.next()) {
+					   int emplId = rs.getInt("empl_id");
+					   String fname = rs.getString("empl_firstname");
+					   String lname = rs.getString("empl_lastname");
+					   String emplEmail = rs.getString("empl_email");
+					   String title = rs.getString("empl_title");
+					   int mid = rs.getInt("manager_id");
+					   int report = rs.getInt("reports_to");
+					   Employee el1 = new Employee(emplId, fname, lname, emplEmail, title, mid, report);
+					   employees.add(el1);	   
+				   }
+					
+		} catch (SQLException e) {
+			log.error("Unable to get employee id" + e);
+		} finally {
+			try { if (rs!=null) {
+				rs.close();
+			}
+			} catch (SQLException e) {
+				log.error("Unable to close resource employee id search" + e);
+			}
+		}
+		return employees;
+	}
+
+	
+	@Override
+	public String updateFirstName(String a, int id) {
+		String sql = "update employee set empl_firstname = ? where empl_id = ?";
+		ResultSet rs = null;	
+		String name = null;
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+			 	ps.setString(1, a);
+				ps.setInt(2, id);	        
+				rs = ps.executeQuery();
+			
+				while(rs.next()) {
+					String fname = rs.getString("empl_firstname");
+					Employee e = new Employee();
+					name = e.setFirstName(fname);
+					
+				}
+		} catch (SQLException e) {
+			log.error("Unable to get employee title name" + e);
+		} finally {
+			try { if (rs!=null) {
+				rs.close();
+			}
+			} catch (SQLException e) {
+				log.error("Unable to close resource employee title search" + e);
+			}
+		}
+		return name;
+	}
+
+
+	@Override
+	public String updateLastName(String a, int id) {
+		String sql = "update employee set empl_lastname = ? where empl_id = ?";
+		ResultSet rs = null;	
+		String name = null;
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+			 	ps.setString(1, a);
+				ps.setInt(2, id);	        
+				rs = ps.executeQuery();
+			
+				while(rs.next()) {
+					String fname = rs.getString("empl_lastname");
+					Employee e = new Employee();
+					name = e.setLastName(fname);
+					
+				}
+		} catch (SQLException e) {
+			log.error("Unable to get employee title name" + e);
+		} finally {
+			try { if (rs!=null) {
+				rs.close();
+			}
+			} catch (SQLException e) {
+				log.error("Unable to close resource employee title search" + e);
+			}
+		}
+		return name;
+	}
+	@Override
+	public String updateTitle(String a, int id) {
+			String sql = "update employee set empl_title = ? where empl_id = ?";
+			ResultSet rs = null;	
+			String name = null;
+			try(Connection c = ConnectionUtil.getConnection();
+					PreparedStatement ps = c.prepareStatement(sql);){
+			        ps.setString(1, a);
+					ps.setInt(2, id);	        
+					rs = ps.executeQuery();
+				
+					while(rs.next()) {
+						String fname = rs.getString("empl_title");
+						Employee e = new Employee();
+						name = e.setTitle(fname);
+						
+					}
+			} catch (SQLException e) {
+				log.error("Unable to get employee title name" + e);
+			} finally {
+				try { if (rs!=null) {
+					rs.close();
+				}
+				} catch (SQLException e) {
+					log.error("Unable to close resource employee title search" + e);
+				}
+			}
+			return name;
+		}
+
 }

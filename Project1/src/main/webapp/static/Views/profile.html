@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang en>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/Project1/static/Views/profile.css">
+    <title>EmployeePage</title>
+</head>
+
+<body>
+    <div class="flex-content-container">
+
+        <nav class="navbar navbar-dark bg-primary justify-content-between">
+            <a class="navbar-brand" href="http://localhost:8080/Project1/index">REV ERD INTERFACE</a>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="log-out">Log-out</button>
+        </nav>
+        <br />
+        <div class="main1 text-center">
+            <h1>REV ERD PROFILE PAGE </h1>
+        </div>
+        <br />
+        <div class="row">
+            <div class="booyah-box col-4 offset-1" id="box1">
+                <h2>Employee Information</h2>
+                <hr/>
+                <br>
+                <div style="text-align: center;">
+                <span id="name"></span>
+                </div>               
+                <br/><br/>
+                <div style="text-align: center;">
+                <span id="title"></span>
+                </div>
+                <br /><br />
+                <div style="text-align: center;">
+                <span id="emailAddress"></span>
+                </div>
+            </div>
+            <div class="booyah-box col-4 offset-1" id="box1">
+                <h2>Main Menu</h2>
+                <hr/>
+                <br/> <br/>
+                <button type="button" id="create-button" class="btn btn-outline-primary btn-lg btn-block"
+                    data-toggle="modal"
+                    data-target="#myModal4">Update Demographics</button>
+                <br />
+                <button type="button" id="create-button" class="btn btn-outline-primary btn-lg btn-block"
+                    data-toggle="modal"
+                    data-target="#myModal5">Change Password</button>
+
+                <div class="modal" id="myModal4">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update Demographics</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form name="createReimbursement" id="f4">
+                                    <div class="form-group">
+                                        <label for="type-input">Updated Field</label>
+                                        <select class="form-control" name="type6" id="demo-input">
+                                            <option>First Name</option>
+                                            <option>Last Name</option>
+                                            <option>Title</option>
+                                        </select>
+                                        <small id="typeHelpBlock" class="form-text text-muted">
+                                            Select Field to Update
+                                        </small>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="notes-input">Updated Information</label>
+                                        <input class="form-control" type="text" name="notes4" id="info-input"
+                                            maxlength="200">
+                                        <small id="notestHelpBlock" class="form-text text-muted">
+                                            Enter new updated information
+                                        </small>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="demo-btn" type="button" class="btn btn-primary"
+                                    data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="myModal5">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Change Password</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form id="f5">
+                                 <div class="form-group">
+                                     <label for="notes-input">New Password</label>
+                                     <input class="form-control" type="text" name="newPassword" id="newPassword-input"
+                                         maxlength="200">
+                                     <small id="notestHelpBlock" class="form-text text-muted">
+                                         Required if type is Other.
+                                     </small>
+                                 </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="newPassword-btn" type="button" class="btn btn-primary"
+                                    data-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            <hr />
+           
+
+
+        <footer class="footer">
+
+        </footer>
+
+
+
+
+               <script src="/Project1/static/Scripts/profile.js"></script>
+               <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                   integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                   crossorigin="anonymous"></script>
+               <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                   crossorigin="anonymous"></script>
+               <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                   integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                   crossorigin="anonymous"></script>
+
+               </body>
+
+               </html>

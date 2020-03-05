@@ -33,12 +33,6 @@ public class ReimbursementService {
 	public int deleteReimbursement(int id) {
 		return reimbursementDao.deleteReimbursement(id);
 	}
-	public Reimbursement generateReportReimbursementByEmployee(Reimbursement r1) {
-		return reimbursementDao.generateReportReimbursementByEmployee(r1);
-	}
-	public Reimbursement generateReportReimbursementByManager(Reimbursement r1) {
-		return reimbursementDao.generateReportReimbursementByManager(r1);
-	}
 	public String getStatus(int id) {
 		return reimbursementDao.getStatus(id);
 	}
@@ -59,5 +53,7 @@ public class ReimbursementService {
 		return reimbursementDao.employeeStatus(id);
 	}
 
-
+	public List<Reimbursement> remByType(String type1) {
+		return reimbursementDao.reimbursementByType(type1);
+	}
 }

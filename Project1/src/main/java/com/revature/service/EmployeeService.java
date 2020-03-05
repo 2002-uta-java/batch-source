@@ -59,6 +59,10 @@ public class EmployeeService {
     	return employeeDao.deleteEmployee(id);
     }
     
+    public List<Employee> employeeById(int id) {
+    	return employeeDao.employeeById(id);
+    }
+    
 	public Employee information(int id) {
 		List<Employee> newList = employeeDao.getEmployee();
 		for(Employee e : newList) {
@@ -66,5 +70,16 @@ public class EmployeeService {
 				return e;
 				} 
 			} return null;
+	}
+	public String updateEfirstName(String a, int id) {
+		return employeeDao.updateFirstName(a,id);
+	}
+		
+	public String updateElastName(String a, int id) {
+		return employeeDao.updateLastName(a, id);
+	}
+		
+	public String updateTitle(String a, int id) {
+		return employeeDao.updateTitle(a, id);
 	}
 }

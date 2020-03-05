@@ -25,7 +25,7 @@ public class EmployeeDelegate {
 	private int reportsToId;
 	private String email;
 	private int id;
-	
+	private List<Employee> newList;
 	public EmployeeDelegate() {
 		super();
 	}
@@ -194,6 +194,53 @@ public class EmployeeDelegate {
 			try(PrintWriter pw = response.getWriter()) {
 				pw.write(om.writeValueAsString("Employee Deleted")); }
 		}
+	}
+	
+	public void employeeById(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String b = request.getParameter("id");
+		int id = Integer.parseInt(b);
+		List<Employee> emId = employeeService.employeeById(id);
+		this.newList = emId;
+		
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString(newList));
+	}
+	
+}
+	
+	public void updateFName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String b = request.getParameter("id");
+		String c = request.getParameter("info");
+		int id = Integer.parseInt(b);
+		employeeService.updateEfirstName(c,id);
+		
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString("Updated"));
+		}
+	}
+	
+	public void updateLName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String b = request.getParameter("id");
+		String c = request.getParameter("info");
+		int id = Integer.parseInt(b);
+		employeeService.updateElastName(c,id);
+		
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString("Updated"));
+		}
+	
+	}
+	
+	public void updateTitle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String b = request.getParameter("id");
+		String c = request.getParameter("info");
+		int id = Integer.parseInt(b);
+		employeeService.updateTitle(c,id);
+		
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString("Updated"));
+		}
+	
 	}
 
 }

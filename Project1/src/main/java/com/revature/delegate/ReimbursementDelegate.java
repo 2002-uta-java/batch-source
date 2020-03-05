@@ -184,4 +184,15 @@ public class ReimbursementDelegate {
 		
 			}
 	}
+	
+	public void remByType(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String b = request.getParameter("id");
+		List<Reimbursement> remId = remService.remByType(b);
+		this.newList = remId;
+		
+	try(PrintWriter pw = response.getWriter()){
+		pw.write(om.writeValueAsString(newList));
+	}
+	
+}
 }

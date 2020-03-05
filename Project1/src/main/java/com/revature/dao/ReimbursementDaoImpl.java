@@ -202,18 +202,6 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		}
 
 	@Override
-	public Reimbursement generateReportReimbursementByEmployee(Reimbursement r1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Reimbursement generateReportReimbursementByManager(Reimbursement r1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getStatus(int id) {
 			String sql = "select rem_status from reimbursement where rem_id = ?";
 			ResultSet rs = null;
@@ -343,6 +331,48 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		try(Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);){
 		        ps.setInt(1, id);
+				rs = ps.executeQuery();
+			
+				   while(rs.next()) {
+					   
+					   int rid = rs.getInt("rem_id");
+					   String type = rs.getString("rem_type");
+					   double ramount = rs.getDouble("rem_requested_amount");
+					   String rdate = rs.getString("rem_date_requested");
+					   String reciept = rs.getString("rem_reciept_url");
+					   String notes = rs.getString("rem_notes");
+					   int eId = rs.getInt("empl_id");
+					   int mId = rs.getInt("assigned_manager");
+					   String adate = rs.getString("rem_date_approved");
+					   double amount = rs.getDouble("rem_amount_approved");
+					   String comment = rs.getString("rem_comment");
+					   String status = rs.getString("rem_status");
+					   
+					   Reimbursement rl1 = new Reimbursement(rid, type, ramount, rdate, reciept, notes, eId, mId, adate,amount, comment, status);
+					   reimbursements.add(rl1);	
+				}
+		} catch (SQLException e) {
+			log.error("Unable to get rem id" + e);
+		} finally {
+			try { if (rs!=null) {
+				rs.close();
+			}
+			} catch (SQLException e) {
+				log.error("Unable to close resource rem id search" + e);
+			}
+		}
+		return reimbursements;
+	}
+
+	@Override
+	public List<Reimbursement> reimbursementByType(String type1) {
+		String sql = "select * from reimbursement where rem_type = ?";
+		ResultSet rs = null;
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnection();
+				PreparedStatement ps = c.prepareStatement(sql);){
+		        ps.setString(1, type1);;
 				rs = ps.executeQuery();
 			
 				   while(rs.next()) {

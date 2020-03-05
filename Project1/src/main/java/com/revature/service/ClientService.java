@@ -66,5 +66,7 @@ public class ClientService {
 	public int verfiyClientId(int id) {
 		return clientDao.verfiyClientId(id);
 	}
+	
+
 
 }
