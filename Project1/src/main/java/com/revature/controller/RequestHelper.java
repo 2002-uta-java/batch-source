@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.revature.delegates.AuthDelegate;
 import com.revature.delegates.ReimbDelegate;
 import com.revature.delegates.UserDelegate;
@@ -18,6 +20,7 @@ public class RequestHelper {
 	private AuthDelegate authDelegate = new AuthDelegate();
 	private UserDelegate userDelegate = new UserDelegate();
 	private ReimbDelegate reimbDelegate = new ReimbDelegate();
+	private static Logger log = Logger.getRootLogger();
 	
 	public void processGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
@@ -49,7 +52,7 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String path = request.getServletPath();
-		System.out.println("POST Path requested:" + path);
+		log.info("POST Path requested:" + path);
 		
 		if (path.startsWith("/login")) {
 			authDelegate.authenticate(request, response);

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.servlets.DefaultServlet;
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class FrontController
@@ -18,6 +19,7 @@ public class FrontController extends DefaultServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private RequestHelper requestHelper = new RequestHelper();
+	private static Logger log = Logger.getRootLogger();
 	
 	/**
      * @see HttpServlet#HttpServlet()
@@ -31,7 +33,7 @@ public class FrontController extends DefaultServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println("GET" + path);
+		log.info("GET" + path);
 		
 		if(path.startsWith("/static")) {
 			super.doGet(request, response);
@@ -44,7 +46,7 @@ public class FrontController extends DefaultServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("POST");
+		log.info("POST");
 		requestHelper.processPost(request, response);
 	}
 	
