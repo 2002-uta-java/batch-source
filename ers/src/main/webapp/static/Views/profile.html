@@ -33,6 +33,8 @@
 					href="http://localhost:8080/ers/employeehome">Employee</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="http://localhost:8080/ers/profile">Profile</a></li>
+				<li class="nav-item" id="createaccountnav" hidden=true><a class="nav-link" href="./static/Views/register.html">Create Account</a></li>
+					
 			</ul>
 		</div>
 	</div>
@@ -60,7 +62,7 @@
 	<div id="updateInfo" class="col-sm-5 offset-3">
 		<div class="form-group">
 			<input type="number" class="form-control" placeholder="Employee Id"
-				id="id" hidden=true>
+				id="id" hidden=true required>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="First Name"
@@ -88,12 +90,9 @@
 		</div>
 
 		<div id="managerCheck" hidden=true>
-			<p>Are you a Manager?</p>
+			<p>Is a Manager?</p>
 			<div class="form-check">
-				<label class="form-check-label" for="isManager"> <input
-					type="checkbox" class="form-check-input" id="isManager" name="isManager"
-					value="isManagerTrue">True
-				</label>
+				<input type="checkbox" class="form-check-input" id="isManager" name="isManager"value="isManagerTrue">
 			</div>
 			<br>
 		</div>

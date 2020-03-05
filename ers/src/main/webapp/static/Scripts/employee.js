@@ -16,13 +16,36 @@ if (!token) {
 	if (tokenArr[1] != null) {
 		sendAjaxGet(reimbursementRequestUrl, displayReimbursements);
 		if (tokenArr[2] == "true") {
-			let searchDiv = document.getElementById("searchDiv");
-			searchDiv.hidden = false;
+			let searchDiv = document.getElementById("searchDiv").hidden = false;
+			document.getElementById("createaccountnav").hidden = false;
 			employeeAjaxGet(employeeRequestUrl, employeeTable);
 		}
 	}
 	else
 		window.location.href = "http://localhost:8080/ers/";
+}
+
+document.getElementById("add-btn").addEventListener("click", createReimbursement);
+
+function createReimbursement() {
+	let amount = document.getElementById("amount").value;
+    let email    = document.getElementById("employee-email").value;
+
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8080/ers/addReimbursement";
+    xhr.open("POST", url);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert("Successfully added Reimbursement");
+        } else if (xhr.readyState == 4) {
+            alert("Please enter all criteria");
+        }
+    }
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    let requestBody = `amount=${amount}&email=${email}`;
+    xhr.send(requestBody);
 }
 
 function sendAjaxGet(url, callback) {
@@ -80,7 +103,7 @@ function displayReimbursements (xhr) {
 		let time = new Date(r.time).toString();
 		newRow.innerHTML = `<td>${r.id}</td><td>${r.stage}</td><td>${r.amount}</td><td>${time}</td><td>${r.employeeId}</td>`;
 
-	    if (tokenArr[2] == "true") {
+	    if (tokenArr[2] == "true" && r.stage != "Complete" && r.stage != "Denied") {
 	    	newRow.innerHTML += "<button class='btn btn-secondary' id=" + r.id + " onclick='processReimbursement(this.id)'>Process Request</button> <button class='btn btn-secondary' id=" + r.id + " onclick='denyReimbursement(this.id)'>Deny Request</button>";
 	    }
 	    table.appendChild(newRow);

@@ -39,13 +39,15 @@ public class RequestHelper {
 	
 	public void processPost(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String path = req.getServletPath();
-		System.out.println(path);
 		switch (path) {
 		case "/login":
 			login.authenticate(req, res);
 			break;
 		case "/addReimbursement":
 			reimbursement.addReimbursement(req, res);
+			break;
+		case "/addEmployee":
+			employee.addEmployee(req, res);
 			break;
 		case "/processRequest":
 			reimbursement.processReimbursement(req, res);

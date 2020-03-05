@@ -25,6 +25,7 @@ function sendAjaxGet(url, callback) {
 if (isManager == "true") {
 	document.getElementById("managerCheck").hidden = false;
 	document.getElementById("id").hidden = false;
+	document.getElementById("createaccountnav").hidden = false;
 	employeeRequestUrl = "http://localhost:8080/ers/api/employees";
 	sendAjaxGet(employeeRequestUrl, otherEmployeeTable);
 } else
@@ -66,7 +67,7 @@ function updateEmployee() {
 	
 	if (isManager == "true") {
 		var id           = document.getElementById("id").value;
-		var managerT = document.getElementById("isManager").value;
+		var managerT = document.getElementById("isManager").checked;
 	} else
 		id = tokenArr[0];
 	let firstname = document.getElementById("firstname").value;

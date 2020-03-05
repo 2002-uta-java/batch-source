@@ -56,8 +56,9 @@ public class EmployeeDelegate {
 		String email     = req.getParameter("email");
 		String phone     = req.getParameter("phone");
 		String password  = req.getParameter("password");
-		String isManager = req.getParameter("isManger");
+		String isManager = req.getParameter("isManager");
 		
+		//System.out.println(isManager);
 		//System.out.println("Email " + email == null + " Phone " + phone + " Password " + password);
 		
 		Employee tempem = new Employee();
@@ -83,11 +84,32 @@ public class EmployeeDelegate {
 			tempem.setPass(password);
 		else
 			tempem.setPass(em.getPass());
-		if (isManager != null)
-			tempem.setIsManager(Boolean.getBoolean(isManager));
-		else
-			tempem.setIsManager(em.getIsManager());
+		tempem.setIsManager(Boolean.valueOf(isManager));
+		
+		//System.out.println(tempem);
 		
 		edao.updateEmployee(tempem);
+	}
+
+	public void addEmployee(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// TODO Auto-generated method stub
+		String firstname = req.getParameter("firstname");
+		String lastname  = req.getParameter("lastname");
+		String email     = req.getParameter("email");
+		String phone     = req.getParameter("phone");
+		String password  = req.getParameter("password");
+		String isManager = req.getParameter("isManger");
+		
+		//System.out.println("Email " + email == null + " Phone " + phone + " Password " + password);
+		Employee tempem = new Employee();
+		
+		tempem.setfName(firstname);		
+		tempem.setlName(lastname);
+		tempem.setEmail(email);
+		tempem.setPhone(phone);
+		tempem.setPass(password);
+		tempem.setIsManager(Boolean.valueOf(isManager));
+		
+		edao.addEmployee(tempem);
 	}
 }

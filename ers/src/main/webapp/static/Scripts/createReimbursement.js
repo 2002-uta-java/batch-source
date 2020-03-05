@@ -6,7 +6,7 @@ document.getElementById("add-btn").addEventListener("click", createReimbursement
 
 function createReimbursement() {
 	let amount = document.getElementById("amount").value;
-    let eid    = document.getElementById("employeeid").value;
+    let email    = document.getElementById("employee-email").value;
 
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8080/ers/addReimbursement";
@@ -18,11 +18,11 @@ function createReimbursement() {
             sessionStorage.setItem("token", auth);
             window.location.href = "http://localhost:8080/ers/employeehome";
         } else if (xhr.readyState == 4) {
-            console.log("Please enter all criteria");
+            alert("Please enter all criteria");
         }
     }
 
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let requestBody = `amount=${amount}&eid=${eid}`;
+    let requestBody = `amount=${amount}&email=${email}`;
     xhr.send(requestBody);
 }

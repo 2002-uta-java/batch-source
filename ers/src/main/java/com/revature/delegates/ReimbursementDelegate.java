@@ -9,12 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDAO;
+import com.revature.dao.EmployeeDaoImpl;
 import com.revature.dao.ReimbursementDAO;
 import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.model.Employee;
 import com.revature.model.Reimbursement;
 
 public class ReimbursementDelegate {
 	private ReimbursementDAO rdao = new ReimbursementDaoImpl();
+	private EmployeeDAO edao = new EmployeeDaoImpl();
 	
 	public void getEmployee(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String requestPath = req.getServletPath();
@@ -57,9 +61,11 @@ public class ReimbursementDelegate {
 	public void addReimbursement(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		Timestamp time = new Timestamp(System.currentTimeMillis());
-		int eid = Integer.parseInt(req.getParameter("eid"));
+		String email = req.getParameter("email");
 		
-		Reimbursement re = new Reimbursement(amount, "Processing", time, eid);
+		Employee em = edao.getEmployeeByUsername(email);
+				
+		Reimbursement re = new Reimbursement(amount, "Processing", time, em.getId());
 		rdao.addReimbursement(re);
 	}
 
@@ -69,6 +75,7 @@ public class ReimbursementDelegate {
 		Reimbursement re = rdao.getReimbursement(id);
 		re.setStage("Complete");
 		rdao.updateReimbursement(re);
+		req.getRequestDispatcher("http://localhost:8080/ers/employeepage").forward(req, res);;
 	}
 
 	public void denyReimbursement(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -77,5 +84,6 @@ public class ReimbursementDelegate {
 		Reimbursement re = rdao.getReimbursement(id);
 		re.setStage("Denied");
 		rdao.updateReimbursement(re);
+		req.getRequestDispatcher("http://localhost:8080/ers/employeepage").forward(req, res);;
 	}
 }
