@@ -1,5 +1,8 @@
 package com.revature.ers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
 /**
 Expense Reimbursement System (ERS)
 
@@ -30,9 +33,9 @@ from the front end. The following user stories are required of the application:
 
 Additional Requirements:
 for testing application code
-Ensuring code quality with a static code analysis
+Ensuring code quality with a static code analysis x
 Logging using log4j or a similar logging framework
-JUnit 
+JUnit x
 
 
 Optional User Stories:
@@ -74,8 +77,10 @@ with your trainer, as long as there are equivalent user stories that can be defi
 */
 public class App 
 {
+	static final Logger logger = (Logger) LogManager.getLogger(com.revature.ers.App.class);
     public static void main( String[] args )
     {
+    	logger.info("Hi from main");
         System.out.println( "Hello World!" );
     }
 }

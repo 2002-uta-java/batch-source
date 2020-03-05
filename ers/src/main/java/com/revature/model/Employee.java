@@ -10,12 +10,13 @@ public class Employee {
 	private boolean isManager = false;
 	
 	public Employee() {}
-	public Employee(int id, String fName, String lName, String email, String phone, boolean isManager) {
+	public Employee(int id, String fName, String lName, String email, String phone, String pass, boolean isManager) {
 		this.id = id;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
 		this.phone = phone;
+		this.pass  = pass;
 		this.isManager = isManager;
 	}
 	public int getId() {

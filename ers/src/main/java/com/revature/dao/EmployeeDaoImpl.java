@@ -137,7 +137,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		
 		try {
 			connection = DAOUtilities.getConnection();
-			String sql = "INSERT INTO Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Employee (firstname, lastname, email, phone, password, isManager) VALUES (?, ?, ?, ?, ?, ?)";
 			stmt = connection.prepareStatement(sql);
 			
 			stmt.setString(1, employee.getfName());
