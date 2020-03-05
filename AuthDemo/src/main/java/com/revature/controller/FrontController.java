@@ -15,11 +15,10 @@ public class FrontController extends DefaultServlet {
 	private final RequestHelper reqHelper = new RequestHelper();
 
 	/**
-	 * @see DefaultServlet#DefaultServlet()
+	 * Default constructor (does nothing)
 	 */
 	public FrontController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -3,11 +3,8 @@ package com.revature.jfbennatt.ers.controller.delegates;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.log4j.Logger;
 
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.models.Employee;
@@ -111,17 +108,11 @@ public class ViewDelegate extends Delegate {
 	 */
 	public static final String SUCCESS = "success";
 
-	private RequestDispatcher dispatcher = null;
-
 	/**
 	 * Default constructor.
 	 */
 	public ViewDelegate() {
 		super();
-	}
-
-	public void setRequestDispatcher(final RequestDispatcher dispatcher) {
-		this.dispatcher = dispatcher;
 	}
 
 	/**
@@ -156,7 +147,6 @@ public class ViewDelegate extends Delegate {
 			throws ServletException, IOException {
 		switch (path) {
 		case HOME:
-			setMessageCookie(response);
 			request.getRequestDispatcher(EMPLOYEE_HOME_PAGE).forward(request, response);
 			break;
 		case SUBMIT_REIMBURSEMENT:
@@ -173,19 +163,6 @@ public class ViewDelegate extends Delegate {
 			break;
 		default:
 			response.sendError(404);
-		}
-	}
-
-	private void setMessageCookie(final HttpServletResponse response) {
-		final String message = dispatcher.consumeMessage();
-		Logger.getRootLogger().debug("getting message from dispatcher");
-		if (message != null) {
-			Logger.getRootLogger().debug("Setting cookie to :" + message + " and max age = 5");
-			Logger.getRootLogger().debug("Request dispatcher's message: " + dispatcher.consumeMessage());
-			final Cookie messageCookie = new Cookie(Delegate.SUCCESS_COOKIE, message);
-			// don't store this cookie, it's a one and done thing
-			messageCookie.setMaxAge(5);
-			response.addCookie(messageCookie);
 		}
 	}
 

@@ -107,11 +107,6 @@ public class RequestDispatcher {
 	 */
 	private final Delegate getEmployeesDelegate;
 	private final Delegate approvalsDelegate;
-	/**
-	 * This is used to send a message from internal delegates to the view delegate
-	 * (to display on the home page).
-	 */
-	private String message = null;
 
 	/**
 	 * Default constructor (sets up all internals).
@@ -141,8 +136,6 @@ public class RequestDispatcher {
 		this.changeDelegate.setEmployeeService(empService);
 		this.getEmployeesDelegate.setEmployeeService(empService);
 		this.approvalsDelegate.setEmployeeService(empService);
-
-		this.viewDelegate.setRequestDispatcher(this);
 	}
 
 	/**
@@ -202,16 +195,6 @@ public class RequestDispatcher {
 	 */
 	public void setFrontController(final FrontController frontController) {
 		this.staticDelegate.setFrontController(frontController);
-	}
-
-	public String consumeMessage() {
-		final String tmp = this.message;
-		this.message = null;
-		return tmp;
-	}
-
-	public void setMessage(final String message) {
-		this.message = message;
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.revature.jfbennatt.ers.controller.delegates;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,12 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.revature.jfbennatt.ers.controller.RequestDispatcher;
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * This is the delegate that handles approvals/rejections for managers.
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class ApprovalDelegate extends Delegate {
 	public static final String APPROVE = "/approve";
 	public static final String REJECT = "/reject";
+
+	/**
+	 * Default constructor (does nothing).
+	 */
+	public ApprovalDelegate() {
+		super();
+	}
 
 	@Override
 	protected void processRequest(Employee employee, String path, HttpServletRequest request,

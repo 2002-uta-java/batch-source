@@ -86,15 +86,7 @@ public abstract class Delegate {
 
 	/**
 	 * Checks that this request is an authorized request. Returns <code>null</code>
-	 * if the request is unauthorized. If the request is authorized, then this
-	 * method will setup the cookie/s so that the client has the employee
-	 * information (first and last name and token). The client should always grab
-	 * the token because it may change. <br>
-	 * This method also handles a login attempt. If the token is not set (or is
-	 * incorrect), then this method checks to see if an email and password are
-	 * included in the request, if so it attempts to login said employee and returns
-	 * an {@link Employee} object that has its fields set (particularly the token
-	 * needed for subsequent accesses).
+	 * if the request is unauthorized.
 	 * 
 	 * @param request the HTTP request being made.
 	 * @return The employee making the request or <code>null</code> if the request
@@ -179,11 +171,10 @@ public abstract class Delegate {
 
 	/**
 	 * Authenticates the request by looking at the cookie. If authenticated,
-	 * forwards to the {@link #processRequest} method. If not authenticated, it
-	 * attempts to see if this request is a login request (by checking the request
-	 * headers), if so it validates the user and, if validated, forwards to the
-	 * {@link #processRequest}. If the request isn't authenticated and isn't a valid
-	 * login attempt then this method redirects to the login page.
+	 * forwards to the {@link #processRequest} method. If not authenticated this
+	 * method redirects to the login page. If authenticated, this method sets up the
+	 * cookies so that user has their session token, first name, last name, and
+	 * email (the email makes it easier for the delegates to direct traffic).
 	 * 
 	 * @param path     URI for this request.
 	 * @param request  HTTP request being made.
@@ -211,6 +202,13 @@ public abstract class Delegate {
 		}
 	}
 
+	/**
+	 * Adds the cookie holding the user's email to the response.
+	 * 
+	 * @param employee {@link Employee} object representing the user accessing the
+	 *                 server.
+	 * @param response HTTP request.
+	 */
 	protected void addEmailCookie(Employee employee, HttpServletResponse response) {
 		final Cookie emailCookie = new Cookie(EMAIL_COOKIE_NAME, employee.getEmail());
 		emailCookie.setMaxAge(COOKIE_TIME);

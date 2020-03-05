@@ -13,6 +13,12 @@ import org.apache.log4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.jfbennatt.ers.models.Employee;
 
+/**
+ * Delegate responsible for fetching all employees (for managers).
+ * 
+ * @author Jared F Bennatt
+ *
+ */
 public class GetAllEmployeesDelegate extends Delegate {
 
 	private final ObjectMapper objMapper = new ObjectMapper();
