@@ -44,7 +44,7 @@ public class RequestHelper {
 //		System.out.println("attempted to login");
 //	}
 
-	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void processPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String path = request.getServletPath();
 		System.out.println(path + "processpost, reqhelper");
 		

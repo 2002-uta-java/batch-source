@@ -1,5 +1,9 @@
 package com.revature.project1.delegates;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,10 +27,12 @@ public class EmployeeDelegate {
 	}
 	
 	public void viewProfile(HttpServletRequest request, HttpServletResponse response) {
-		
+		String email = request.getParameter("email");
+		Appuser au = new Appuser();
+		au = as.getAppuserByEmail(email);
 	}
 
-	public void updateProfile(HttpServletRequest request, HttpServletResponse response) {
+	public void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
@@ -44,7 +50,11 @@ public class EmployeeDelegate {
 		System.out.println(au.toString());
 		
 		if(as.updateAppuser(au)) {
+			System.out.println(request.getContextPath());
 			response.setStatus(200);
+//			request.getRequestDispatcher("/static/views/employee.html");
+			response.sendRedirect("http://localhost:8080/ExpenseReimbursement/static/views/employee.html");
+			
 		} else {
 			response.setStatus(401);
 		}
