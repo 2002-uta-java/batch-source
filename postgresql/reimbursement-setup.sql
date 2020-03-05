@@ -67,7 +67,7 @@ end
 $$;
 
 select * from get_reimbs_by_empl_id(1);
-select * from get_all_processed()
+select * from get_all_processed();
 
 drop table employees;
 
