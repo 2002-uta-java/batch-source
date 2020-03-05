@@ -13,9 +13,12 @@ amount money not null,
 reimb_date date not null,
 submit_date date not null,
 reply_date date,
-reimb_status int4 check(reimb_status > 0 and reimb_status < 4) not null);
+reimb_status int4 check(reimb_status > 0
+and reimb_status < 4) not null,
+reimb_man_id int4 references employees (empl_id));
 
 drop table employees;
+
 drop table reimbursements;
 
 insert

@@ -65,6 +65,14 @@ const CHANGE_PROFILE_API = "/ERS/api/change";
 const VIEW_EMPLOYEES_PAGE = "/ERS/employees";
 // api call for getting all employees except manager making the request
 const ALL_EMP_EXCEPT_ME = "/ERS/api/employees";
+// URI for page to approve requests
+const APPROVE_REQUESTS_PAGE = "/ERS/approve";
+// api call to get all pending requests except specified manager
+const GET_ALL_PENDING_EXCEPT_ME = "/ERS/api/view/pending/all";
+// api request for approving requests (needs an /id of the reimbursement being approved after)
+const APPROVE_REQUEST = "/ERS/api/approvals/approve";
+// api request for rejecting requests (needs an /id of the reimbursement being rejected after)
+const REJECT_REQUEST = "/ERS/api/approvals/reject";
 
 // field name for Reimbursement.amount
 const REIMB_AMOUNT = 'amount';
@@ -84,6 +92,8 @@ const REIMB_STATUS = 'status';
 const REIMB_STATUSSTRING = 'statusString';
 // field name for Reimbursement.submitDate
 const REIMB_SUBMITDATE = 'submitDate';
+// field name for Reimbursement.manId
+const REIMB_MANID = 'manId';
 
 // field name for Reimbursement.email
 const EMPL_EMAIL = 'email';

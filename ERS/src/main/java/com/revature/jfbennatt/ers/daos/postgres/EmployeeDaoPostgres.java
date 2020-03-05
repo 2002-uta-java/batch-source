@@ -109,7 +109,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	/**
 	 * String representing a reimbursement is denied.
 	 */
-	public static final String DENIED = "denied";
+	public static final String REJECTED = "rejected";
 	/**
 	 * Status code for a reimbursement that is pending.
 	 */
@@ -122,6 +122,11 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	 * Status code for a reimbursement that is denied.
 	 */
 	public static final int DENIED_INT = 3;
+	/**
+	 * name of column in reimbursement's table for the manager that approved or
+	 * rejected the request
+	 */
+	public static final String REIMB_MAN_ID = "reimb_man_id";
 
 	public EmployeeDaoPostgres() {
 		super();
@@ -291,7 +296,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		case APPROVED_INT:
 			return APPROVED;
 		case DENIED_INT:
-			return DENIED;
+			return REJECTED;
 		default:
 			throw new RuntimeException(reimb.getStatus() + " is not a recognized status code");
 		}
@@ -431,7 +436,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	@Override
 	public List<Reimbursement> getPendingReimbursementsByEmployeeId(int empId) {
 		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ? and "
-				+ REIMB_STATUS + " = 1";
+				+ REIMB_STATUS + " = " + PENDING_INT;
 		final List<Reimbursement> reimbs = new ArrayList<>();
 		ResultSet rs = null;
 		try (final Connection con = ConnectionUtil.getConnection();
@@ -478,7 +483,7 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 	@Override
 	public List<Reimbursement> getProcessedReimbursementsByEmployeeId(int empId) {
 		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " = ? and "
-				+ REIMB_STATUS + " != 1";
+				+ REIMB_STATUS + " != " + PENDING_INT;
 		final List<Reimbursement> reimbs = new ArrayList<>();
 		ResultSet rs = null;
 		try (final Connection con = ConnectionUtil.getConnection();
@@ -555,7 +560,109 @@ public class EmployeeDaoPostgres implements EmployeeDao {
 		}
 
 		return employees;
+	}
 
+	@Override
+	public List<Reimbursement> getAllPendingRequestsExceptManager(int manId) {
+		final String sql = "select * from " + REIMBURSEMENTS_TABLE + " where " + REIMB_EMPL_ID + " != ? and "
+				+ REIMB_STATUS + " = 1";
+		final List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet rs = null;
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setInt(1, manId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				final Reimbursement reimb = new Reimbursement();
+				reimb.setReimbId(rs.getInt(REIMB_ID));
+				reimb.setEmplId(rs.getInt(REIMB_EMPL_ID));
+				reimb.setDescription(rs.getString(REIMB_DESCRIPT));
+				reimb.setAmount(rs.getBigDecimal(REIMB_AMOUNT));
+				reimb.setReimbDate(rs.getDate(REIMB_DATE));
+				reimb.setStatus(rs.getInt(REIMB_STATUS));
+				reimb.setStatusString(getStatus(reimb));
+				reimb.setSubmitDate(rs.getDate(REIMB_SUBMIT_DATE));
+				// need to check whether or not the reply date date is null (it can be)
+				final java.util.Date replyDate = rs.getDate(REIMB_REPLY_DATE);
+				Logger.getRootLogger().debug("Submit Date: " + replyDate + " and rs.wasNull? " + rs.wasNull());
+				if (!rs.wasNull()) {
+					// if it's not null set it, if it is, don't
+					reimb.setReplyDate(replyDate);
+				}
+
+				reimbs.add(reimb);
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return null;
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					Logger.getRootLogger().error("Failed to close ResultSet: " + e.getMessage());
+				}
+			}
+		}
+
+		return reimbs;
+	}
+
+	@Override
+	public boolean approveRequest(final int manId, final int reimbId, final java.util.Date date) {
+		final String sql = "update " + REIMBURSEMENTS_TABLE + " set " + REIMB_STATUS + " = " + APPROVED_INT + ", "
+				+ REIMB_MAN_ID + " = ?, " + REIMB_REPLY_DATE + " = ? where " + REIMB_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+
+			ps.setInt(1, manId);
+			ps.setDate(2, new Date(date.getTime()));
+			ps.setInt(3, reimbId);
+			Logger.getRootLogger().debug(ps);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update with manId " + manId + " and reimbId " + reimbId);
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we got here, it was successful
+		return true;
+	}
+
+	@Override
+	public boolean rejectRequest(int manId, int reimbId, final java.util.Date date) {
+		final String sql = "update " + REIMBURSEMENTS_TABLE + " set " + REIMB_STATUS + " = " + DENIED_INT + ", "
+				+ REIMB_MAN_ID + " = ?, " + REIMB_REPLY_DATE + " = ? where " + REIMB_ID + " = ?";
+
+		try (final Connection con = ConnectionUtil.getConnection();
+				final PreparedStatement ps = con.prepareStatement(sql)) {
+
+			ps.setInt(1, manId);
+			ps.setDate(2, new Date(date.getTime()));
+			ps.setInt(3, reimbId);
+			Logger.getRootLogger().debug(ps);
+
+			final int updated = ps.executeUpdate();
+
+			if (updated == 0) {
+				Logger.getRootLogger().error("Failed to update with manId " + manId + " and reimbId " + reimbId);
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.getRootLogger().error(e.getMessage());
+			return false;
+		}
+
+		// if we got here, it was successful
+		return true;
 	}
 
 }

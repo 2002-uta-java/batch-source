@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.jfbennatt.ers.controller.delegates.ApprovalDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.GetAllEmployeesDelegate;
@@ -67,6 +68,7 @@ public class RequestDispatcher {
 	 * api call for getting all employees (except manager calling method)
 	 */
 	public static final String GET_ALL_EMPLOYEES = "/employees";
+	public static final String APPROVALS = "/approvals";
 
 	/**
 	 * delegate for fetching static resources (from an api call)
@@ -104,6 +106,7 @@ public class RequestDispatcher {
 	 * Delegate for getting all employees (for manager)
 	 */
 	private final Delegate getEmployeesDelegate;
+	private final Delegate approvalsDelegate;
 	/**
 	 * This is used to send a message from internal delegates to the view delegate
 	 * (to display on the home page).
@@ -126,6 +129,7 @@ public class RequestDispatcher {
 		this.viewReimbDelegate = new ViewReimbursementsDelegate();
 		this.changeDelegate = new ChangeProfileDelegate();
 		this.getEmployeesDelegate = new GetAllEmployeesDelegate();
+		this.approvalsDelegate = new ApprovalDelegate();
 
 		this.empService.setEmployeeDao(new EmployeeDaoPostgres());
 		this.viewDelegate.setEmployeeService(empService);
@@ -136,6 +140,7 @@ public class RequestDispatcher {
 		this.viewReimbDelegate.setEmployeeService(empService);
 		this.changeDelegate.setEmployeeService(empService);
 		this.getEmployeesDelegate.setEmployeeService(empService);
+		this.approvalsDelegate.setEmployeeService(empService);
 
 		this.viewDelegate.setRequestDispatcher(this);
 	}
@@ -179,6 +184,8 @@ public class RequestDispatcher {
 
 			if (apiPath.startsWith(VIEW_REIMBURSEMENT_ROOT)) {
 				viewReimbDelegate.processRequest(apiPath, request, response);
+			} else if (apiPath.startsWith(APPROVALS)) {
+				approvalsDelegate.processRequest(apiPath.substring(APPROVALS.length()), request, response);
 			}
 		} else {
 			// route page requests

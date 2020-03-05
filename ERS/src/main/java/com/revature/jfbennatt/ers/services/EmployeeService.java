@@ -290,4 +290,38 @@ public class EmployeeService {
 	public List<Employee> getallEmployeesExceptManager(int manId) {
 		return empDao.getAllEmployeesExceptManager(manId);
 	}
+
+	/**
+	 * Returns a list of all reimbursements that are pending and aren't from this
+	 * manager.
+	 * 
+	 * @param manId Employee id of the requesting manager
+	 * @return {@link List} of {@link Reimbursement} objects or null if there is an
+	 *         error (an empty list is not an error).
+	 */
+	public List<Reimbursement> getAllPendingRequestsExceptManager(int manId) {
+		return empDao.getAllPendingRequestsExceptManager(manId);
+	}
+
+	/**
+	 * Approves a reimbursement by the manager.
+	 * 
+	 * @param manId   Id of manager approving request.
+	 * @param reimbId Id of reimbursement being approved.
+	 * @return Whether or not this was successful.
+	 */
+	public boolean approveRequest(final int manId, final int reimbId) {
+		return empDao.approveRequest(manId, reimbId, new Date());
+	}
+
+	/**
+	 * Rejects a reimbursement by the manager.
+	 * 
+	 * @param manId   Id of manager rejecting request.
+	 * @param reimbId Id of reimbursement being rejected.
+	 * @return Whether or not this was successful.
+	 */
+	public boolean rejectRequest(int manId, int reimbId) {
+		return empDao.rejectRequest(manId, reimbId, new Date());
+	}
 }

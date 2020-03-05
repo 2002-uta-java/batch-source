@@ -68,6 +68,14 @@ public class ViewDelegate extends Delegate {
 	 */
 	public static final String MANAGER_ALL_EMPLOYEES_PAGE = "/static/Manager/View-Employees.html";
 	/**
+	 * URI of static source to manager's page to approve requests
+	 */
+	public static final String MANAGER_APPROVE_REQUESTS_PAGE = "/static/Manager/Approve-Requests.html";
+	/**
+	 * URI of resource for the manaer to approve requests
+	 */
+	public static final String APPROVE_REQUESTS = "/approve";
+	/**
 	 * URI for manager to view employees
 	 */
 	public static final String VIEW_EMPLOYEES = "/employees";
@@ -205,6 +213,9 @@ public class ViewDelegate extends Delegate {
 			break;
 		case VIEW_EMPLOYEES:
 			request.getRequestDispatcher(MANAGER_ALL_EMPLOYEES_PAGE).forward(request, response);
+			break;
+		case APPROVE_REQUESTS:
+			request.getRequestDispatcher(MANAGER_APPROVE_REQUESTS_PAGE).forward(request, response);
 			break;
 		default:
 			response.sendError(404);

@@ -53,6 +53,15 @@ public class FrontController extends DefaultServlet {
 	}
 
 	/**
+	 * Routes calls for HTTP PUT requests.
+	 */
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		dispatcher.dispatch(request, response);
+	}
+
+	/**
 	 * Sets up any resources needed for this servlet
 	 */
 	@Override

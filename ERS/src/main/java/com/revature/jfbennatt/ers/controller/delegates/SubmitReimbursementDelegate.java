@@ -1,4 +1,4 @@
-	package com.revature.jfbennatt.ers.controller.delegates;
+package com.revature.jfbennatt.ers.controller.delegates;
 
 import java.io.IOException;
 import java.util.Date;
@@ -37,25 +37,12 @@ public class SubmitReimbursementDelegate extends Delegate {
 	 */
 	public static final Pattern AMOUNT_PATTERN = Pattern.compile(AMOUNT_REGEX);
 
-//	private RequestDispatcher dispatcher;
-
 	/**
 	 * Default constructor (does nothing).
 	 */
 	public SubmitReimbursementDelegate() {
 		super();
 	}
-
-	/**
-	 * Set the {@link RequestDispatcher} used to communicate with the
-	 * {@link ViewDelegate}.
-	 * 
-	 * @param dispatcher {@link RequestDispatcher} for this
-	 *                   SubmitReimbursementDelegate.
-	 */
-//	public void setRequestDispatcher(final RequestDispatcher dispatcher) {
-//		this.dispatcher = dispatcher;
-//	}
 
 	/**
 	 * Reads the form submitted from the client for the description, amount, and
@@ -71,19 +58,6 @@ public class SubmitReimbursementDelegate extends Delegate {
 		final String date = request.getParameter(DATE_ID);
 		Logger.getRootLogger()
 				.debug("Attempting to submit reimbursement request: " + amount + ", " + description + ", " + date);
-
-//		if (!AMOUNT_PATTERN.matcher(amount).matches()) {
-//			dispatcher.setMessage(ViewDelegate.FAIL);
-//		} else {
-//			// subimt request, give it the current time
-//			if (empService.submitRequest(employee, description, amount, date, new Date())) {
-//				dispatcher.setMessage(ViewDelegate.SUCCESS);
-//			} else {
-//				dispatcher.setMessage(ViewDelegate.FAIL);
-//			}
-//		}
-//
-//		response.sendRedirect(RequestDispatcher.CONTEXT_ROOT + HOME);
 
 		if (AMOUNT_PATTERN.matcher(amount).matches()) {
 			empService.submitRequest(employee, description, amount, date, new Date());

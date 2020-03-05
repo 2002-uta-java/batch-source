@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import org.apache.log4j.Logger;
 
 import com.revature.jfbennatt.ers.controller.RequestDispatcher;
+import com.revature.jfbennatt.ers.controller.delegates.ApprovalDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.ChangeProfileDelegate;
 import com.revature.jfbennatt.ers.controller.delegates.Delegate;
 import com.revature.jfbennatt.ers.controller.delegates.SubmitReimbursementDelegate;
@@ -112,6 +113,20 @@ public class Constants {
 			printVariable(ps, "ALL_EMP_EXCEPT_ME",
 					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.GET_ALL_EMPLOYEES,
 					"api call for getting all employees except manager making the request");
+			printVariable(ps, "APPROVE_REQUESTS_PAGE", RequestDispatcher.CONTEXT_ROOT + ViewDelegate.APPROVE_REQUESTS,
+					"URI for page to approve requests");
+			printVariable(ps, "GET_ALL_PENDING_EXCEPT_ME",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.VIEW_REIMBURSEMENT_ROOT
+							+ ViewReimbursementsDelegate.ALL_PENDING,
+					"api call to get all pending requests except specified manager");
+			printVariable(ps, "APPROVE_REQUEST",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.APPROVALS
+							+ ApprovalDelegate.APPROVE,
+					"api request for approving requests (needs an /id of the reimbursement being approved after)");
+			printVariable(ps, "REJECT_REQUEST",
+					RequestDispatcher.CONTEXT_ROOT + RequestDispatcher.API + RequestDispatcher.APPROVALS
+							+ ApprovalDelegate.REJECT,
+					"api request for rejecting requests (needs an /id of the reimbursement being rejected after)");
 
 			ps.println();
 			ps.println();

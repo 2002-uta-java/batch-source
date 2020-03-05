@@ -4,7 +4,8 @@
 
 function setupNav() {
 	// setup links for navigation
-
+	document.getElementById("approve-requests").setAttribute("href",
+			APPROVE_REQUESTS_PAGE);
 	document.getElementById("all-employees").setAttribute("href",
 			VIEW_EMPLOYEES_PAGE);
 	document.getElementById("profile-home").setAttribute("href", HOME);

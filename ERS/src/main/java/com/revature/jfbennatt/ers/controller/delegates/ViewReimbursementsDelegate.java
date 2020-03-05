@@ -30,6 +30,7 @@ public class ViewReimbursementsDelegate extends Delegate {
 	 * Resource for viewing all processed requests
 	 */
 	public static final String PROCESSED = "/processed";
+	public static final String ALL_PENDING = "/pending/all";
 
 	private final ObjectMapper objMapper = new ObjectMapper();
 
@@ -52,40 +53,43 @@ public class ViewReimbursementsDelegate extends Delegate {
 		} else if (method.equals(PROCESSED)) {
 			getAllProcessedRecordsByEmployee(employee, response);
 		} else if (employee.isManager()) {
-
+			if (method.contentEquals(ALL_PENDING)) {
+				getAllPendingRecordsExceptManager(employee, response);
+			}
 		}
+	}
+
+	private void returnRecords(final List<Reimbursement> reimbs, final HttpServletResponse response)
+			throws IOException {
+		if (reimbs != null) {
+			try (final PrintWriter pw = response.getWriter()) {
+				final String json = objMapper.writeValueAsString(reimbs);
+				Logger.getRootLogger().debug("Json: " + json);
+				pw.write(json);
+			}
+
+			response.setStatus(200);
+		} else {
+			response.setStatus(503);
+		}
+	}
+
+	private void getAllPendingRecordsExceptManager(Employee employee, HttpServletResponse response) throws IOException {
+		final List<Reimbursement> reimbs = empService.getAllPendingRequestsExceptManager(employee.getEmpId());
+
+		returnRecords(reimbs, response);
 	}
 
 	private void getAllProcessedRecordsByEmployee(Employee employee, HttpServletResponse response) throws IOException {
 		final List<Reimbursement> reimbs = empService.getProcessedReimbursementsByEmployeeId(employee.getEmpId());
 
-		if (reimbs != null) {
-			try (final PrintWriter pw = response.getWriter()) {
-				final String json = objMapper.writeValueAsString(reimbs);
-				Logger.getRootLogger().debug("Json: " + json);
-				pw.write(json);
-			}
-
-			response.setStatus(200);
-		} else {
-			response.setStatus(503);
-		}
+		returnRecords(reimbs, response);
 	}
 
 	private void getAllPendingRecordsByEmployee(Employee employee, HttpServletResponse response) throws IOException {
 		final List<Reimbursement> reimbs = empService.getPendingReimbursementsByEmployeeId(employee.getEmpId());
 
-		if (reimbs != null) {
-			try (final PrintWriter pw = response.getWriter()) {
-				final String json = objMapper.writeValueAsString(reimbs);
-				Logger.getRootLogger().debug("Json: " + json);
-				pw.write(json);
-			}
-
-			response.setStatus(200);
-		} else {
-			response.setStatus(503);
-		}
+		returnRecords(reimbs, response);
 	}
 
 }

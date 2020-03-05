@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Processed Reimbursements</title>
+<title>Manager - Approve Requests</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -23,15 +23,15 @@
 <script type="text/javascript"
 	src="/ERS/static/scripts/Manager/nav-bar.js"></script>
 <script type="text/javascript"
-	src="/ERS/static/scripts/view-processed.js"></script>
+	src="/ERS/static/scripts/Manager/approve-requests.js"></script>
 </head>
 <body>
 	<!-- the href's are set in javascript -->
 	<nav class="nav nav-pills flex-column flex-sm-row">
 		<a class="flex-sm-fill text-sm-center nav-link active"
-			id="profile-home">Home</a><a
-			class="flex-sm-fill text-sm-center nav-link active" id="profile-link">Profile</a>
-		<a class="flex-sm-fill text-sm-center nav-link active"
+			id="profile-home">Home</a> <a
+			class="flex-sm-fill text-sm-center nav-link active" id="profile-link">Profile</a><a
+			class="flex-sm-fill text-sm-center nav-link active"
 			id="all-employees">All Employees</a><a
 			class="flex-sm-fill text-sm-center nav-link active"
 			id="approve-requests">Approve Requests</a> <a
@@ -47,17 +47,15 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th scope="col">Status</th>
 				<th scope="col">Date Submitted</th>
 				<th scope="col">Amount</th>
 				<th scope="col">Description</th>
 				<th scope="col">Date of Expense</th>
-				<th scope="col">Date Approved/Denied</th>
+				<th scope="col">Action</th>
 			</tr>
 		</thead>
-		<tbody id="reimbursement-table-body">
+		<tbody id="approval-table-body">
 		</tbody>
 	</table>
-
 </body>
 </html>

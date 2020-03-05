@@ -13,6 +13,7 @@ public class Reimbursement {
 	private int status;
 	private String statusString;
 	private Date submitDate;
+	private int manId;
 
 	public Reimbursement() {
 		super();
@@ -146,5 +147,13 @@ public class Reimbursement {
 
 	public String getStatusString() {
 		return statusString;
+	}
+
+	public void setManId(final int manId) {
+		this.manId = manId;
+	}
+
+	public int getManId() {
+		return manId;
 	}
 }
