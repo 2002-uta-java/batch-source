@@ -25,7 +25,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public List<Request> getAllRequests() {
 		
-		String sql = "select * from " + reqTable;
+		String sql = "select * from " + reqTable + " r join reimburse.account a on r.empl_id = a.id order by r.date_submitted desc";
 		List<Request> requests = new ArrayList<Request>();
 		
 		try (Connection c = ConnectionUtil.getConnection();
@@ -46,8 +46,20 @@ public class RequestDaoImpl implements RequestDao {
 				if (rs.getObject("date_reviewed") != null) {
 					r.setReviewed(((Timestamp)rs.getObject("date_reviewed")).toLocalDateTime());					
 				}
+				if (rs.getObject("resolved_by") != null) {
+					r.setResolvedBy(rs.getInt("resolved_by"));					
+				}
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
+				
+				Account a = new Account();
+				a.setId(rs.getInt("empl_id"));
+				a.setName(rs.getString("name"));
+				a.setEmail(rs.getString("email"));
+				a.setAcctType(rs.getString("account_type"));
+				a.setManagerId(rs.getInt("manager_id"));
+				
+				r.setEmplAccount(a);
 				
 				requests.add(r);
 				
@@ -88,6 +100,9 @@ public class RequestDaoImpl implements RequestDao {
 				r.setSubmitted(((Timestamp)rs.getObject("date_submitted")).toLocalDateTime());
 				if (rs.getObject("date_reviewed") != null) {
 					r.setReviewed(((Timestamp)rs.getObject("date_reviewed")).toLocalDateTime());					
+				}
+				if (rs.getObject("resolved_by") != null) {
+					r.setResolvedBy(rs.getInt("resolved_by"));					
 				}
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
@@ -131,6 +146,9 @@ public class RequestDaoImpl implements RequestDao {
 				r.setSubmitted(((Timestamp)rs.getObject("date_submitted")).toLocalDateTime());
 				if (rs.getObject("date_reviewed") != null) {
 					r.setReviewed(((Timestamp)rs.getObject("date_reviewed")).toLocalDateTime());					
+				}
+				if (rs.getObject("resolved_by") != null) {
+					r.setResolvedBy(rs.getInt("resolved_by"));					
 				}
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
@@ -183,6 +201,9 @@ public class RequestDaoImpl implements RequestDao {
 				if (rs.getObject("date_reviewed") != null) {
 					r.setReviewed(((Timestamp)rs.getObject("date_reviewed")).toLocalDateTime());					
 				}
+				if (rs.getObject("resolved_by") != null) {
+					r.setResolvedBy(rs.getInt("resolved_by"));					
+				}
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
 				
@@ -225,6 +246,9 @@ public class RequestDaoImpl implements RequestDao {
 				r.setSubmitted(((Timestamp)rs.getObject("date_submitted")).toLocalDateTime());
 				if (rs.getObject("date_reviewed") != null) {
 					r.setReviewed(((Timestamp)rs.getObject("date_reviewed")).toLocalDateTime());					
+				}
+				if (rs.getObject("resolved_by") != null) {
+					r.setResolvedBy(rs.getInt("resolved_by"));					
 				}
 				r.setStatus(rs.getString("status"));
 				r.setCategory(rs.getString("category"));
@@ -278,7 +302,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int updateRequest(Request r) {
 		
-		String sql = "update " + reqTable + " set amount=?, description=?, empl_id=?, image_url=?, reimbursement_date=?, date_submitted=?, date_reviewed=?, status=?, category=? where id=?";
+		String sql = "update " + reqTable + " set amount=?, description=?, empl_id=?, image_url=?, reimbursement_date=?, date_submitted=?, date_reviewed=?, status=?, category=?, resolved_by=? where id=?";
 		
 		try (Connection c = ConnectionUtil.getConnection();
 				PreparedStatement ps = c.prepareStatement(sql);) {
@@ -292,7 +316,8 @@ public class RequestDaoImpl implements RequestDao {
 			ps.setObject(7, Timestamp.valueOf(r.getReviewed()));
 			ps.setString(8, String.valueOf(r.getStatus()));
 			ps.setString(9, String.valueOf(r.getCategory()));
-			ps.setInt(10, r.getId());
+			ps.setInt(10, r.getResolvedBy());
+			ps.setInt(11, r.getId());
 			
 			return ps.executeUpdate();
 			

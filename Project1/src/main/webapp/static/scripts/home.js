@@ -1,5 +1,7 @@
 let token;
 let user;
+let requests;
+let users;
 
 window.onload = function() {
 	token = sessionStorage.getItem("token");
@@ -94,7 +96,6 @@ function loadPageBase(xhr) {
 		document.getElementById("user-section").hidden = false;
 		document.getElementById("name-filter-section").hidden = false;
 		sendAjaxGet("http://localhost:8080/api/users/", loadUsers);
-		setTimeout(()=>{sendAjaxGet("http://localhost:8080/api/requests/", loadRequests);}, 100)
 	}
 	
 }
@@ -139,10 +140,20 @@ function loadRequests(xhr) {
 		tr.innerHTML = `<td>${req.id}</td><td>${dateStr}</td><td>$${req.amount.toFixed(2)}</td><td>${req.status}</td>`;
 		tableBody.appendChild(tr);
 
+		let resolvedBy;
+
+		if (user.acctType == "MANAGER") {
+			resolvedBy = users.filter((e)=>e.id == req.resolvedBy)[0];
+		}
+
 		const reviewSection = user.acctType == "MANAGER" ? `
 			<div class="review-section">
+				${req.status == "PENDING" ? `
 				<button class="btn btn-success approve-btn" data-reqid="${req.id}" data-type="approve-btn">Approve</button>
 				<button class="btn btn-danger deny-btn" data-reqid="${req.id}" data-type="deny-btn">Deny</button>
+				` : `
+				<h5>${req.status} By ${resolvedBy ? resolvedBy.name : "error"}</h5>
+				`}
 			</div>
 		` : `
 			<div class="review-section">
@@ -158,6 +169,7 @@ function loadRequests(xhr) {
 					<h5>Category: ${req.category}</h5>
 				</div>
 				<p>Description: ${req.description}</p>
+
 				${reviewSection}
 			</div>
 		</div></td>`;
@@ -208,17 +220,23 @@ function reviewRequest(e) {
 }
 
 function loadUsers(xhr) {
-	const users = JSON.parse(xhr.response);
+	users = JSON.parse(xhr.response);
+
+	console.table(users);
 	
 	const tableBody = document.getElementById("user-table").children[1];
 	tableBody.innerHTML = '';
 
 	for (let user of users) {
 
+		const manager = users.filter((e)=>e.id == user.managerId)[0];
+
 		const tr = document.createElement("tr");
-		tr.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.email}</td><td>${user.name}</td>`;
+		tr.innerHTML = `<td>${user.id}</td><td>${user.name}</td><td>${user.email}</td><td>${manager ? manager.name : "-"}</td>`;
 		tableBody.appendChild(tr);
 	}
+
+	sendAjaxGet("http://localhost:8080/api/requests/", loadRequests);
 
 }
 
@@ -246,13 +264,16 @@ function loadProfile() {
 			const newEmail = $("#edit-email").val();
 			const newPass = $("#edit-pass").val();
 
-			sendAjaxPut("http://localhost:8080/api/user/", {
-				name: newName,
-				email: newEmail,
-				password: newPass
-			}, loadProfile);
-		});
+			if (newName && newEmail && newPass) {
 
+				
+				sendAjaxPut("http://localhost:8080/api/user/", {
+					name: newName,
+					email: newEmail,
+					password: newPass
+				}, loadProfile);
+			}
+		});
 	});
 }
 
@@ -269,7 +290,7 @@ $("#status-filter").on("change", (e)=>{
 	}
 })
 
-$("#name-filter").on("change", (e)=>{
+$("#name-filter").on("blur", (e)=>{
 	if (user.acctType == "EMPLOYEE") {
 		sendAjaxGet("http://localhost:8080/api/users/" + user.id + "/requests", loadRequests)
 	} else if (user.acctType == "MANAGER") {

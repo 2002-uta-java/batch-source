@@ -22,6 +22,7 @@ public class Request implements Serializable {
 	private String description;
 	private String imageUrl;
 	private Category category;
+	private int resolvedBy;
 	
 	public Request() {
 		super();
@@ -59,6 +60,14 @@ public class Request implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getResolvedBy() {
+		return resolvedBy;
+	}
+
+	public void setResolvedBy(int rb) {
+		this.resolvedBy = rb;
 	}
 
 	public LocalDateTime getSubmitted() {

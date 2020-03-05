@@ -10,12 +10,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.revature.models.Account;
 import com.revature.util.ConnectionUtil;
 
 public class AccountDaoImpl implements AccountDao {
 
 	private String accountTable = "reimburse.account";
+	private final Logger log = Logger.getRootLogger();
 	
 	@Override
 	public List<Account> getAllAccounts() {
@@ -42,7 +45,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 		
 		return accounts;
@@ -76,7 +79,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.warn(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -112,7 +115,7 @@ public class AccountDaoImpl implements AccountDao {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.warn(e);
 		} finally {
 			try { if(rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
@@ -136,7 +139,7 @@ public class AccountDaoImpl implements AccountDao {
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) { 
-			e.printStackTrace();
+			log.warn(e);
 		}
 		
 		return 0;
@@ -152,7 +155,11 @@ public class AccountDaoImpl implements AccountDao {
 			ps.setString(1, a.getName());
 			ps.setString(2, a.getEmail());
 			ps.setString(3, a.getPassword());
-			ps.setInt(4, a.getManagerId());
+			if (a.getManagerId() == 0) {
+				ps.setObject(4, null);
+			} else {				
+				ps.setInt(4, a.getManagerId());
+			}
 			ps.setString(5, String.valueOf(a.getAcctType()));
 			ps.setObject(6, Timestamp.valueOf(a.getAccountCreated()));
 			ps.setInt(7, a.getId());
@@ -160,7 +167,7 @@ public class AccountDaoImpl implements AccountDao {
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) { 
-			e.printStackTrace();
+			log.warn(e);
 		}
 		
 		return 0;
@@ -178,8 +185,7 @@ public class AccountDaoImpl implements AccountDao {
 			return ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.warn(e);
 		}
 		
 		return 0;
