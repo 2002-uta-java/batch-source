@@ -4,6 +4,7 @@
         <!-- Bootstrap Core CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet"  type= "text/css" href="static/Style/site.css">
+        <meta charset="utf-8">
     </head>
       <body>
         
@@ -43,39 +44,40 @@
 
 
       <!-- GRID CONTAINER-->
-      <div class="container" ">
+      <div class="container">
 
-        <!-- LOGIN FORMS-->
-        <div class="form-group" >
-          <br>
-          <div class="display-4"> New User</div>
-          <br style="height: 5rem;">
-          
-          <label for="emailInput"> Email</label>
-          <input type="email" class="form-control" name="emailField" id="em01" aria-describedby="emailHelpId" placeholder="">
-        </div>
-        
-         <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
-        </div>
-        
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
-        </div>
-        
-        <div class="form-group">
-          <label for="passwordInput">Confirm Password</label>
-          <input type="password" class="form-control" name="passwordField" id="pw01" placeholder="">
-        </div>
-        
-        
-        <button type="submit" class="submit_btn" >Login</button>
+        <!-- REGISTRATION FORMS-->
+	    <form>
+	    	<div class="form-group">
+			    <label for="username">User Name</label>
+			    <input type="text" class="form-control" id="username_input" aria-describedby="emailHelp" placeholder="Enter User name">
+		  </div>
+		  <div class="form-group">
+			    <label for="firstname">First Name</label>
+			    <input type="text" class="form-control" id="firstname_input"  placeholder="Enter First name">
+		  </div>
+		  <div class="form-group">
+			    <label for="lastname">Last Name</label>
+			    <input type="text" class="form-control" id="lastname_input" placeholder="Enter Last name">
+		  </div>
+		  
+		  
+		  <div class="form-group">
+			    <label for="exampleInputEmail1">Email address</label>
+			    <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp" placeholder="Enter email">
+		  </div>
+		  <div class="form-group">
+			    <label for="exampleInputPassword1">Password</label>
+			    <input type="password" class="form-control" id="password_input" placeholder="Password">
+		  </div>
+				<div id="errorbox" style  ="position: -webkit-sticky;position: sticky;"></div><br>
+			  <button type="button"  id = "submit_btn" class="btn btn-primary">Submit</button>
+		</form>
+		</div>
 
-      </div>
-
+	
       <div style="height: 80rem;"></div>
+        <script src="static/new_user.js"></script>
     </body>
 
     <footer>

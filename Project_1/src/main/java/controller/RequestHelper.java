@@ -10,13 +10,12 @@ import delegates.*;
 
 public class RequestHelper {
 	private UserDelegate userDelegate = new UserDelegate();
-	private ReimbDelegate reimbDelegate = new ReimbDelegate();
 	private LoginDelegate loginDelegate = new LoginDelegate();
 	private ViewDelegate viewDelegate = new ViewDelegate();
 	
 	public void delegateGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		String path = req.getServletPath();
-		System.out.println("IT'S ALLLLIIIIIVVVVVEEEE uuu "+path);
+		System.out.println("IT'S ALLLLIIIIIVVVVVEEEE "+path);
 		if(path.startsWith("/api/")) {
 			
 			
@@ -27,6 +26,7 @@ public class RequestHelper {
 			case "userProfile":
 				userDelegate.getUserProfile(req, resp);
 				break;
+
 			default:
 				resp.sendError(404,"Path not supported");
 			}
@@ -41,6 +41,9 @@ public class RequestHelper {
 		switch(path) {
 		case "/ulogin":
 			loginDelegate.authenticate(req, resp);
+			break;
+		case "/create_user":
+			userDelegate.createNewUser(req,resp);
 			break;
 		default:
 			resp.sendError(405);

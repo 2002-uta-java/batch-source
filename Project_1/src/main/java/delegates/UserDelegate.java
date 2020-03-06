@@ -38,12 +38,36 @@ public class UserDelegate {
 			
 		}else {
 			
-		resp.sendError(400, "Invalid ID jvkjvhkvhk");
+		resp.sendError(400, "Invalid User Token");
 
 		}
 	}
+	
+	public void createNewUser(HttpServletRequest req, HttpServletResponse resp) 
+			throws IOException {
+		
+		System.out.println("CREATE NEW USER WITH CONTENT LOAD: " +req.getContentLength()+"");
+		//CONTENT LENGTH WILL NEED A DIFFERENT CHECK IF BODY IS CHANGED
+		if (req.getContentLength()==47) {
+			resp.sendError(400, "no registration data");
+			System.out.println("no registration data");
+
+		} else {
+			resp.setStatus(200);
+			String firstname = req.getParameter("firstname");
+			String lastname = req.getParameter("lastname");
+			String username = req.getParameter("username");
+			String email = req.getParameter("email");
+			String password = req.getParameter("password");
+
+			//needs error check
+			uDao.createUser(firstname, lastname, username, email, password);
+			resp.setStatus(200);
+		}
+		
+		
+	}
+
 }
-
-
 
 

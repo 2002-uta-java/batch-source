@@ -7,8 +7,9 @@ function userLogin(){
 	
 	let xhr = new XMLHttpRequest();
 	let url = "http://localhost:8080/project_one/ulogin";
-	xhr.open("POST",url);
 	
+	xhr.open("POST",url);
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xhr.onreadystatechange=function(){
 		if(this.readyState == 4 && this.status == 200){
 			console.log("Login Successful \n"+user+" : "+pw+"  "+url);
@@ -22,7 +23,7 @@ function userLogin(){
 		}
 	}
 	
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	
 	let requestBody = `username=${user}&password=${pw}`;
 	xhr.send(requestBody);
 	

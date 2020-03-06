@@ -12,21 +12,25 @@ function profileLoad(){
 	xhr.onreadystatechange=function(){
 		if(this.readyState === 4 && this.status === 200){
 			console.log("Profile Found \n");
-		
-			document.getElementById("table01").innerHTML=`	
-			<table id="table" 
-			data-toggle="table"
-			data-url="http://localhost:8080/project_one/userProfile?token=${token}"
+			var User = JSON.parse(this.responseText);
+			console.log(User);
+			document.getElementById("table01").innerHTML=
+			`<table
+			 id="table"
+			 data-toggle="table"
+			 data-flat="true"
+			 data-search="true"
+			 data-url="json/data3.json">
 			<thead>
 				<tr>
-					<th data-field="firstname">First name</th>
-					<th data-field="lastname">Last Name</th>
-					<th data-field="username">username</th>
-					<th data-field="email">email</th>
-					<th data-field="role">role</th>
+					<th data-field="${User.firstname}" data-sortable="true">${User.firstname}</th>
+					<th data-field="${User.lastname}" data-sortable="true">${User.lastname}</th>
+					<th data-field="${User.username}" data-sortable="true">${User.username}</th>
+					<th data-field="${User.email}" data-sortable="true">${User.email}</th>
+					<th data-field="${User.role}" data-sortable="true">${User.role}</th>
 				</tr>
 			</thead>
-		</table>`
+			</table>`;
 		} else if (this.readyState===4){
 			console.log("status "+this.status);
 			console.log("User not found");

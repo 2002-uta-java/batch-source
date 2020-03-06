@@ -29,7 +29,7 @@ create table Accounts
 (
 	AccountID bigSerial unique not null,
 	UserID bigserial references Users (UserID) on delete cascade,
-	Balance numeric constraint account_postive check (balance>0.0),
+	Balance bigint constraint account_postive check (balance>0.0),
 	constraint Accounts_PK primary key (AccountID)
 );
 
@@ -40,7 +40,7 @@ create table Reimbursements
 	sourceID bigserial references Users (UserID) on delete cascade,
 	superID bigserial references Users (UserID) on delete cascade,
 	status varchar(180),
-	amount numeric,
+	amount bigint,
 	constraint PK_Reimbursements primary key (requestID)
 );
 
@@ -64,6 +64,19 @@ create_user(
 $$ language sql;
 
 
+create or replace function 
+create_reimb(
+	src reimbursements.sourceID %type,
+	spr reimbursements.superid %type,
+	amm reimbursements.amount %type,
+	stt reimbursements.status %type
+) returns bigint as  $$
+	insert into Reimbursements ( sourceID, superid, amount, status )
+	values (src,spr,amm,stt)
+	returning requestID
+$$ language sql;
+
+
 create or replace function delete_user(ui users.userid %type) returns void as $$
 	delete from accounts a2 where a2.userid=ui;
 	delete from users where userid = ui;
@@ -79,6 +92,14 @@ select create_user('Bobby', 'brown','beebee','bb@google.com', 'yuppers');
 select create_user('Billy', 'brown','tubular','radical@google.com', 'yuppers');
 select create_user('Ted', 'brown','radical','tubular@google.com', 'yuppers');
 
+select create_reimb(2,1,500,'Pending');
+select create_reimb(2,1,600,'Pending');
+select create_reimb(1,1,6000,'Pending');
+select create_reimb(3,1,50,'Pending');
+select create_reimb(2,1,150,'Pending');
+
+select * from reimbursements;
+
 update users u 
 set supervisor = 1
 where u.username !='beebee';
@@ -91,9 +112,6 @@ where u.username !='beebee';
 
 update users u
 	SET 
-		firstName = 'test',
-		lastName = 'case',
-		email = 'test@tn.edu', 
 		"role" = 'Manager', 
 		"password"= 'yuppers', 
 		supervisor = 0

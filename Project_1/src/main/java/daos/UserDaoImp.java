@@ -7,6 +7,7 @@ import java.util.List;
 import java.sql.*; 
 import util.*;
 import util.ConnectionUtil;
+import models.Reimbursement;
 import models.User;
 
 public class UserDaoImp implements UserDao {
@@ -214,4 +215,92 @@ public class UserDaoImp implements UserDao {
 		}
 	}
 
+	@Override
+	public List<Reimbursement> getMyReimbursements(long uid){
+		String query = "select * from Reimbursements r where (r.sourceid = ?)";
+		List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet result  = null;
+		
+		try(Connection userConn = ConnectionUtil.getConnection()){
+			PreparedStatement pstatement =  userConn.prepareStatement(query);
+			pstatement.setLong(1, uid);
+			result = pstatement.executeQuery();
+			
+			while(result.next()) {
+				Reimbursement r = new Reimbursement();
+				r.setAmount(result.getLong("amount"));
+				r.setRequestid(result.getLong("requestid"));
+				r.setSourceid(result.getLong("sourceid"));
+				r.setSuperid(result.getLong("superid"));
+				r.setStatus(result.getString("status"));
+				
+				reimbs.add(r);
+			}
+				return reimbs;
+		
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public List<Reimbursement> accountsOverseen(long uid){
+		String query = "select * from Reimbursements r where (r.superid = ?)";
+		List<Reimbursement> reimbs = new ArrayList<>();
+		ResultSet result  = null;
+		
+		try(Connection userConn = ConnectionUtil.getConnection()){
+			PreparedStatement pstatement =  userConn.prepareStatement(query);
+			pstatement.setLong(1, uid);
+			result = pstatement.executeQuery();
+			
+			while(result.next()) {
+				Reimbursement r = new Reimbursement();
+				r.setAmount(result.getLong("amount"));
+				r.setRequestid(result.getLong("requestid"));
+				r.setSourceid(result.getLong("sourceid"));
+				r.setSuperid(result.getLong("superid"));
+				r.setStatus(result.getString("status"));
+				
+				reimbs.add(r);
+			}
+				return reimbs;
+		
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public long postRequest(long uid, long sid, long amm, String status) {
+		String sql = "{call create_reimb(?, ?, ?, ?}";
+		ResultSet result = null;
+		try(Connection userConn = ConnectionUtil.getConnection()){
+			CallableStatement pcall =  userConn.prepareCall(sql);
+			pcall.setLong(1, uid);
+			pcall.setLong(2, sid);
+			pcall.setLong(3, amm);
+			pcall.setString(4, status);
+			pcall.execute();
+			result = pcall.getResultSet();
+			if (result.next()) {
+				return result.getLong(1);
+			} else return 0;
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			//e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	@Override
+	public long stampRequest(long uid, String status) {
+		return 0;
+	}
+	
+	
 }
