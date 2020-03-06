@@ -48,6 +48,12 @@ public class ConnectionUtil {
 	 * @return {@link Connection} object to access the database.
 	 */
 	public static Connection getConnection() {
+
+		try {
+			Class.forName(Driver.class.getName());
+		} catch (ClassNotFoundException e) {
+			Logger.getRootLogger().fatal("Failed to load Postgresql JDBC driver: " + e.getMessage());
+		}
 		if (IS_TEST) {
 			return getH2Connection();
 		} else {

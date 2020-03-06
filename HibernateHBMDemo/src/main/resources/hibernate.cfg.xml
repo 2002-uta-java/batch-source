@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- credentials to connect to our db -->
+		<property name="hibernate.connection.url">jdbc:postgresql://java-2002.cfhvkame7ojc.us-east-2.rds.amazonaws.com:5432/postgres</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">password</property>
+
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<!-- validate, update, create, create-drop -->
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- mapping tags can reference resources (hbm files) or classes (with 
+			annotations) -->
+		<mapping resource="mapping/Cave.hbm.xml" />
+		<mapping resource="mapping/Beehive.hbm.xml" />
+		<mapping resource="mapping/Bear.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
