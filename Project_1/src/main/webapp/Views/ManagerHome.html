@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Manager Page</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/reimbursement">Home <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="employee-name" class="profile-link"></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profile" class="profile-link">Profile</a></li>
+                            <li><a href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+    let session=localStorage.getItem("session");
+    console.log(session);
+    if(session=='false'){
+        location.href="http://localhost:8080/login";
+    }
+
+    let emp = JSON.parse(localStorage.getItem("data"));
+    $('#employeeInput').val(emp.employeeId);
+    $('#employee-name').text(emp.firstname);
+    $('.profile-link').attr('href','/managerProfile/'+emp.employeeId);
+    $.ajax({
+        type:'get',
+        url:'http://localhost:8080/reimbursement/'+emp.employeeId,
+        success:function(response){
+            let data=JSON.parse(response);
+            let tr = '';
+            for(let i =0;i<data.length;i++){
+                tr += '<tr><td>'+data[i].reimbersementId+'</td><td>'+data[i].amount+'</td><td>'+data[i].category+'</td><td>'+data[i].status+'</td></tr>'
+            }
+            $('#request-list').append(tr);
+            console.log();
+        },
+        error:function(){
+            alert("failed");
+        }
+
+    });
+
+    function logout(){
+        localStorage.setItem("data",null);
+        localStorage.setItem("session",false);
+        location.href="http://localhost:8080/login";
+
+    }
+
+
+</script>
+</body>
+</html>
