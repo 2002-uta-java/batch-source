@@ -30,7 +30,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" id="employee-name" class="profile-link"></a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/profile" class="profile-link">Profile</a></li>
                             <li><a href="#" onclick="logout()">Logout</a></li>
@@ -144,7 +144,7 @@
         $('#page-title').text("Manager Page");
         $('#employees').show();
         $('#resolver').show();
-        $('#request-form').hide();// Manager sayfasında gizlenecek employee da görüneek ondan dolayı bu kodu koydul ok
+        $('#request-form').hide();  // will show it only in employee page
 
     }
     $.ajax({
