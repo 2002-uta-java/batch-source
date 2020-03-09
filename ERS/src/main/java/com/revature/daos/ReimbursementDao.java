@@ -14,5 +14,5 @@ public interface ReimbursementDao {
 	public String deleteReimbursement(int reimbursementId);
 
 	public List<Reimbursement> getAllReimbursements();
-
+	public List<Reimbursement> getAllReimbursementsByEmployee(int emplId);
 }

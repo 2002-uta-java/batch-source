@@ -3,6 +3,7 @@ package com.revature.delegates;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.revature.models.Employee;
+import com.revature.models.Reimbursement;
 import com.revature.services.EmployeeService;
 
 public class EmployeeDelegate {
@@ -79,8 +81,18 @@ public class EmployeeDelegate {
 		 * "title": "Manager", "username": "mHallam1", "password": "abc123", "email":
 		 * "mHallam1@revature.com", "roleId": 2 }
 		 */
-		String jsonString = IOUtils.toString(request.getInputStream());
-		Employee newEmpl = new Gson().fromJson(jsonString, Employee.class);
+		//String jsonString = IOUtils.toString(request.getInputStream());
+		//Employee newEmpl = new Gson().fromJson(jsonString, Employee.class);
+		
+		Employee newEmpl = new Employee();
+		newEmpl.setFirstName(request.getParameter("firstname"));
+		newEmpl.setLastName(request.getParameter("lastname"));	
+		newEmpl.setTitle(request.getParameter("title"));
+		newEmpl.setUsername(request.getParameter("username"));
+		newEmpl.setPassword(request.getParameter("password"));
+		newEmpl.setEmail(request.getParameter("email"));
+		newEmpl.setManagerId(2);//default to the only manager in the department for now			
+			
 
 		boolean isEmplAdded = es.addEmployee(newEmpl);
 		String message = "";

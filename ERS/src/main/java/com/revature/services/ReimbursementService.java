@@ -17,6 +17,11 @@ public class ReimbursementService {
 	public List<Reimbursement> getAllReimbursements() {
 		return (List<Reimbursement>) rd.getAllReimbursements();
 	}
+	// returns all of the reimbursements in the database
+	public List<Reimbursement> getAllReimbursementsByEmployeeId(int emplid) {
+		return (List<Reimbursement>) rd.getAllReimbursementsByEmployee(emplid);
+			
+	}
 
 	// returns specified employee requested by the id
 	public Reimbursement viewReimbursementDetails(int reimbursementId) {

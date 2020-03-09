@@ -42,7 +42,7 @@ public class FrontController extends DefaultServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("In FrontControler doget()");
+		//System.out.println("In FrontControler doget()");
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		String path = request.getRequestURI().substring(request.getContextPath().length());

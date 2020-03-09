@@ -9,33 +9,33 @@ public class Employee {
 	private String title;
 	private String username;
 	private String password;
-	private String phone;
+	//private String phone;
 	private String email;
-	private String address;
-	private String city;
-	private String state;
-	private String country;
-	private String postalCode;
-	private int roleId;
+//	private String address;
+//	private String city;
+//	private String state;
+//	private String country;
+//	private String postalCode;
+	private int managerId;
 
 	// Constructors with parameters
-	public Employee(String firstName, String lastName, String title, String username, String password, String phone,
-			String email, String address, String city, String state, String country, String postalCode, int roleId) {
-		super();
-		this.firstName = firstName;
-		this.LastName = lastName;
-		this.title = title;
-		this.username = username;
-		this.password = password;
-		this.phone = phone;
-		this.email = email;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.country = country;
-		this.postalCode = postalCode;
-		this.roleId = roleId;
-	}
+//	public Employee(String firstName, String lastName, String title, String username, String password, String phone,
+//			String email, String address, String city, String state, String country, String postalCode, int roleId) {
+//		super();
+//		this.firstName = firstName;
+//		this.LastName = lastName;
+//		this.title = title;
+//		this.username = username;
+//		this.password = password;
+//		this.phone = phone;
+//		this.email = email;
+//		this.address = address;
+//		this.city = city;
+//		this.state = state;
+//		this.country = country;
+//		this.postalCode = postalCode;
+//		this.roleId = roleId;
+//	}
 
 	// Constructors without parameters(Default)
 	public Employee() {
@@ -91,13 +91,13 @@ public class Employee {
 		this.password = password;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
+//	public String getPhone() {
+//		return phone;
+//	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
 
 	public String getEmail() {
 		return email;
@@ -107,52 +107,52 @@ public class Employee {
 		this.email = email;
 	}
 
-	public String getAddress() {
-		return address;
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
+//
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	public String getState() {
+//		return state;
+//	}
+//
+//	public void setState(String state) {
+//		this.state = state;
+//	}
+//
+//	public String getCountry() {
+//		return country;
+//	}
+//
+//	public void setCountry(String country) {
+//		this.country = country;
+//	}
+//
+//	public String getPostalCode() {
+//		return postalCode;
+//	}
+//
+//	public void setPostalCode(String postalCode) {
+//		this.postalCode = postalCode;
+//	}
+
+	public int getManagerId() {
+		return managerId;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public int getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setManagerId(int roleId) {
+		this.managerId = roleId;
 	}
 
 	// HashCode
@@ -161,18 +161,18 @@ public class Employee {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((LastName == null) ? 0 : LastName.hashCode());
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
+//		result = prime * result + ((address == null) ? 0 : address.hashCode());
+//		result = prime * result + ((city == null) ? 0 : city.hashCode());
+//		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
-		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
-		result = prime * result + roleId;
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+//		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+//		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
+		result = prime * result + managerId;
+//		result = prime * result + ((state == null) ? 0 : state.hashCode());
+	result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -192,21 +192,21 @@ public class Employee {
 				return false;
 		} else if (!LastName.equals(other.LastName))
 			return false;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
-		if (country == null) {
-			if (other.country != null)
-				return false;
-		} else if (!country.equals(other.country))
-			return false;
+//		if (address == null) {
+//			if (other.address != null)
+//				return false;
+//		} else if (!address.equals(other.address))
+//			return false;
+//		if (city == null) {
+//			if (other.city != null)
+//				return false;
+//		} else if (!city.equals(other.city))
+//			return false;
+//		if (country == null) {
+//			if (other.country != null)
+//				return false;
+//		} else if (!country.equals(other.country))
+//			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -227,23 +227,23 @@ public class Employee {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
+//		if (phone == null) {
+//			if (other.phone != null)
+//				return false;
+//		} else if (!phone.equals(other.phone))
+//			return false;
+//		if (postalCode == null) {
+//			if (other.postalCode != null)
+//				return false;
+//		} else if (!postalCode.equals(other.postalCode))
+//			return false;
+		if (managerId != other.managerId)
 			return false;
-		if (postalCode == null) {
-			if (other.postalCode != null)
-				return false;
-		} else if (!postalCode.equals(other.postalCode))
-			return false;
-		if (roleId != other.roleId)
-			return false;
-		if (state == null) {
-			if (other.state != null)
-				return false;
-		} else if (!state.equals(other.state))
-			return false;
+//		if (state == null) {
+//			if (other.state != null)
+//				return false;
+//		} else if (!state.equals(other.state))
+//			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -259,11 +259,17 @@ public class Employee {
 
 	// toString
 	@Override
+//	public String toString() {
+//		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", LastName=" + LastName + ", title="
+//				+ title + ", username=" + username + ", password=" + password + ", phone=" + phone + ", email=" + email
+//				+ ", address=" + address + ", city=" + city + ", state=" + state + ", country=" + country
+//				+ ", postalCode=" + postalCode + ", roleId=" + managerId + "]";
+//	}
+	
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", LastName=" + LastName + ", title="
-				+ title + ", username=" + username + ", password=" + password + ", phone=" + phone + ", email=" + email
-				+ ", address=" + address + ", city=" + city + ", state=" + state + ", country=" + country
-				+ ", postalCode=" + postalCode + ", roleId=" + roleId + "]";
+				+ title + ", username=" + username + ", password=" + password + ", email=" + email
+				 + ", managerId=" + managerId + "]";
 	}
 
 }

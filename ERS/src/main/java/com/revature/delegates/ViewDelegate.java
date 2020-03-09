@@ -14,25 +14,34 @@ public class ViewDelegate {
 		System.out.println("In View delegate");
 		System.out.println(uri);
 		switch (uri) {
-		case "/":{
-			request.getRequestDispatcher("/static/views/Login.html").forward(request, response);
-			break;
-		}
-		case "/employeehome":{
-			request.getRequestDispatcher("/static/views/HomePage.html").forward(request, response);
-			break;
-		}
-		case "/reimbursement":{
-			request.getRequestDispatcher("/static/views/reimbursement.html").forward(request, response);
-			break;
-		}
-		case "/profile":{
-			request.getRequestDispatcher("/static/views/profile.html").forward(request, response);
-		}
-		default: {
-			response.sendError(404, "The static resource you requested does not exist.");
-			break;
-		}
-		}
+			case "/": {
+				request.getRequestDispatcher("/static/views/index.html").forward(request, response);
+				break;
+			}
+			case "/login": {
+				request.getRequestDispatcher("/static/views/index.html").forward(request, response);
+				break;
+			}
+			case "/employeehome": {
+				request.getRequestDispatcher("/static/views/homepage.html").forward(request, response);
+				break;
+			}
+			case "/reimbursement": {
+				request.getRequestDispatcher("/static/views/reimbursement.html").forward(request, response);
+				break;
+			}
+			case "/profile": {
+				request.getRequestDispatcher("/static/views/profile.html").forward(request, response);
+				break;
+			}
+			case "/register": {
+				request.getRequestDispatcher("/static/views/register.html").forward(request, response);
+				break;
+			}
+			default: {
+				response.sendError(404, "The static resource you requested does not exist.");
+				break;
+			}
+	   }
 	}
 }

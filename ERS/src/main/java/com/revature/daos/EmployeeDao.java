@@ -8,7 +8,7 @@ public interface EmployeeDao {
 	public boolean createEmployee(Employee newEmployee);
 
 	public Employee viewEmployeeDetails(String userName);
-
+	public Employee getEmployeeDetailsById(int emplID);
 	public boolean updateEmployee(Employee updateEmployee);
 
 	public String deleteEmployee(int employeeId);

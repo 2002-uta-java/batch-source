@@ -24,8 +24,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	public boolean createEmployee(Employee newEmployee) {
-		String sql = "insert into ers.\"Employee\" (FirstName, LastName, Title, Username, Password, Phone, Email, Address, City, State, Country, PostalCode, Role_Id) "
-				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//		String sql = "insert into ers.\"Employee\" (FirstName, LastName, Title, Username, Password, Phone, Email, Address, City, State, Country, PostalCode, Role_Id) "
+//				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into ers.\"Employee\" (FirstName, LastName, Title, Username, Password, Email, manager_id) "
+				+ " values(?,?,?,?,?,?,?)";
 
 		try (Connection conn = ConnectionUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -34,14 +36,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ps.setString(3, newEmployee.getTitle());
 			ps.setString(4, newEmployee.getUsername());
 			ps.setString(5, newEmployee.getPassword());
-			ps.setString(6, newEmployee.getPhone());
-			ps.setString(7, newEmployee.getEmail());
-			ps.setString(8, newEmployee.getAddress());
-			ps.setString(9, newEmployee.getCity());
-			ps.setString(10, newEmployee.getState());
-			ps.setString(11, newEmployee.getCountry());
-			ps.setString(12, newEmployee.getPostalCode());
-			ps.setInt(13, newEmployee.getRoleId());
+//			ps.setString(6, newEmployee.getPhone());
+			ps.setString(6, newEmployee.getEmail());
+//			ps.setString(8, newEmployee.getAddress());
+//			ps.setString(9, newEmployee.getCity());
+//			ps.setString(10, newEmployee.getState());
+//			ps.setString(11, newEmployee.getCountry());
+//			ps.setString(12, newEmployee.getPostalCode());
+			ps.setInt(7, newEmployee.getManagerId());
 
 			ps.execute();
 
@@ -51,6 +53,44 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return true;
 	}
+	
+	public Employee getEmployeeDetailsById(int emplID) {
+		String sql = "SELECT * FROM ers.\"Employee\" WHERE  EmployeeId=?";
+		
+
+		Employee emplFromDB = new Employee();
+
+		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+			ps.setInt(1,emplID);
+			
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				// emplFromDB.setEmployeeId(rs.getString("EmployeeId"));
+				emplFromDB.setFirstName(rs.getString("FirstName"));
+				emplFromDB.setLastName(rs.getString("LastName"));
+				emplFromDB.setTitle(rs.getString("Title"));
+				emplFromDB.setUsername(rs.getString("Username"));
+				emplFromDB.setPassword(rs.getString("Password"));
+				//emplFromDB.setPhone(rs.getString("Phone"));
+				emplFromDB.setEmail(rs.getString("Email"));
+//				emplFromDB.setAddress(rs.getString("Address"));
+//				emplFromDB.setCity(rs.getString("City"));
+//				emplFromDB.setState(rs.getString("State"));
+//				emplFromDB.setCountry(rs.getString("Country"));
+//				emplFromDB.setPostalCode(rs.getString("PostalCode"));
+				emplFromDB.setManagerId(rs.getInt("manager_id"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// String result = "Updated Customer";
+		System.out.print("Employee object from DB " + emplFromDB);
+
+		return emplFromDB;
+	}
+
 
 	public Employee viewEmployeeDetails(String username) {
 		String sql = "SELECT * FROM ers.\"Employee\" WHERE  username=?";
@@ -70,14 +110,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				emplFromDB.setTitle(rs.getString("Title"));
 				emplFromDB.setUsername(rs.getString("Username"));
 				emplFromDB.setPassword(rs.getString("Password"));
-				emplFromDB.setPhone(rs.getString("Phone"));
+				//emplFromDB.setPhone(rs.getString("Phone"));
 				emplFromDB.setEmail(rs.getString("Email"));
-				emplFromDB.setAddress(rs.getString("Address"));
-				emplFromDB.setCity(rs.getString("City"));
-				emplFromDB.setState(rs.getString("State"));
-				emplFromDB.setCountry(rs.getString("Country"));
-				emplFromDB.setPostalCode(rs.getString("PostalCode"));
-				emplFromDB.setRoleId(rs.getInt("role_id"));
+//				emplFromDB.setAddress(rs.getString("Address"));
+//				emplFromDB.setCity(rs.getString("City"));
+//				emplFromDB.setState(rs.getString("State"));
+//				emplFromDB.setCountry(rs.getString("Country"));
+//				emplFromDB.setPostalCode(rs.getString("PostalCode"));
+				emplFromDB.setManagerId(rs.getInt("manager_id"));
 			}
 
 		} catch (SQLException e) {
@@ -90,8 +130,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	public boolean updateEmployee(Employee updateEmployee) {
-		String sql = "update ers.\"Employee\" set FirstName = ?, LastName=?, Title=?, Phone=?,"
-				+ " Email=?, Address=?, City=?, State=?, Country=?, PostalCode=?, Role_Id=?  "
+//		String sql = "update ers.\"Employee\" set FirstName = ?, LastName=?, Title=?, Phone=?,"
+//				+ " Email=?, Address=?, City=?, State=?, Country=?, PostalCode=?, Role_Id=?  "
+//				+ "where  username= ?";
+		
+		String sql = "update ers.\"Employee\" set FirstName = ?, LastName=?, Title=?,"
+				+ " Email=?, manager_id=?  "
 				+ "where  username= ?";
 
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
@@ -99,15 +143,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ps.setString(2, updateEmployee.getLastName());
 			ps.setString(3, updateEmployee.getTitle());			
 			//ps.setString(5, updateEmployee.getPassword());
-			ps.setString(4, updateEmployee.getPhone());
-			ps.setString(5, updateEmployee.getEmail());
-			ps.setString(6, updateEmployee.getAddress());
-			ps.setString(7, updateEmployee.getCity());
-			ps.setString(8, updateEmployee.getState());
-			ps.setString(9, updateEmployee.getCountry());
-			ps.setString(10, updateEmployee.getPostalCode());
-			ps.setInt(11, updateEmployee.getRoleId());
-			ps.setString(12, updateEmployee.getUsername());
+			//ps.setString(4, updateEmployee.getPhone());
+			ps.setString(4, updateEmployee.getEmail());
+//			ps.setString(6, updateEmployee.getAddress());
+//			ps.setString(7, updateEmployee.getCity());
+//			ps.setString(8, updateEmployee.getState());
+//			ps.setString(9, updateEmployee.getCountry());
+//			ps.setString(10, updateEmployee.getPostalCode());
+			ps.setInt(5, updateEmployee.getManagerId());
+			ps.setString(6, updateEmployee.getUsername());
 			
 			ps.executeUpdate();
 
@@ -152,14 +196,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				empl.setTitle(rs.getString("Title"));
 				empl.setUsername(rs.getString("Username"));
 				empl.setPassword(rs.getString("Password"));
-				empl.setPhone(rs.getString("Phone"));
+				//empl.setPhone(rs.getString("Phone"));
 				empl.setEmail(rs.getString("Email"));
-				empl.setAddress(rs.getString("Address"));
-				empl.setCity(rs.getString("City"));
-				empl.setState(rs.getString("State"));
-				empl.setCountry(rs.getString("Country"));
-				empl.setPostalCode(rs.getString("PostalCode"));
-				empl.setRoleId(rs.getInt("role_id"));
+//				empl.setAddress(rs.getString("Address"));
+//				empl.setCity(rs.getString("City"));
+//				empl.setState(rs.getString("State"));
+//				empl.setCountry(rs.getString("Country"));
+//				empl.setPostalCode(rs.getString("PostalCode"));
+				empl.setManagerId(rs.getInt("manager_id"));
 
 				employees.add(empl);
 			}

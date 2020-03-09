@@ -16,28 +16,28 @@ import com.revature.util.ConnectionUtil;
 public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	public boolean createReimbursement(Reimbursement newReimbursement) {
-		String sql = "insert into ers.\"Reimbursement\" (date, description, category, cost, status, comments, employee_id)\r\n" + 
-				"values (?,?,?,?,?,?,?)"; 
+		String sql = "insert into ers.\"Reimbursement\" (date,description, category, cost, status, comments, employee_id)\r\n"
+				+ "values (now(),?,?,?,'PENDING',?,?)";
 
 		try (Connection conn = ConnectionUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-			ps.setTimestamp(1,new Timestamp(System.currentTimeMillis()));//Current date and
-			ps.setString(2, newReimbursement.getDescription());
-			ps.setString(3, newReimbursement.getCategory());
-			ps.setString(4, newReimbursement.getCost());
-			ps.setString(5, newReimbursement.getStatus());
-			ps.setString(6, newReimbursement.getComments());
-			ps.setInt(7, newReimbursement.getEmployee_id());
-			//ps.setInt(8, newReimbursement.getReimbursementId());
-			
+			// ps.setTimestamp(1,new Timestamp(System.currentTimeMillis()));//Current date
+			// and
+			ps.setString(1, newReimbursement.getDescription());
+			ps.setString(2, newReimbursement.getCategory());
+			ps.setString(3, newReimbursement.getCost());
+			ps.setString(4, newReimbursement.getComments());
+			ps.setInt(5, newReimbursement.getEmployee_id());
+			// ps.setInt(8, newReimbursement.getReimbursementId());
+
 			ps.execute();
 
 		} catch (SQLException e) {
-			e.printStackTrace();  
+			e.printStackTrace();
 			return false;
 		}
 		return true;
-		
+
 	}
 
 	public Reimbursement viewReimbursementDetails(int reimbursementId) {
@@ -49,9 +49,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				reimburseFromDB.setReimbursementId(rs.getInt("ReimbursementId"));	    			
+				reimburseFromDB.setReimbursementId(rs.getInt("ReimbursementId"));
 				reimburseFromDB.setDate(rs.getDate("Date"));
-				reimburseFromDB.setDescription(rs.getString("Description")); 
+				reimburseFromDB.setDescription(rs.getString("Description"));
 				reimburseFromDB.setCategory(rs.getString("Category"));
 				reimburseFromDB.setCost(rs.getString("Cost"));
 				reimburseFromDB.setStatus(rs.getString("status"));
@@ -70,12 +70,12 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	public boolean updateReimbursement(Reimbursement updateReimbursement, int reimbursementid) {
-		String sql = "update ers.\"Reimbursement\" set Date=?, Description =?, \r\n" + 
-				"Category=?, Cost=?, status=?, comments=?, employee_id =? where reimbursementid=?";
+		String sql = "update ers.\"Reimbursement\" set Date=?, Description =?, \r\n"
+				+ "Category=?, Cost=?, status=?, comments=?, employee_id =? where reimbursementid=?";
 
 		try (Connection c = ConnectionUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
-			ps.setTimestamp(1,new Timestamp(System.currentTimeMillis()));//Current date and time
-			ps.setString(2, updateReimbursement.getDescription());       
+			ps.setTimestamp(1, new Timestamp(System.currentTimeMillis()));// Current date and time
+			ps.setString(2, updateReimbursement.getDescription());
 			ps.setString(3, updateReimbursement.getCategory());
 			ps.setString(4, updateReimbursement.getCost());
 			ps.setString(5, updateReimbursement.getStatus());
@@ -84,7 +84,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			ps.setInt(8, reimbursementid);// id passed in as param
 			ps.executeUpdate();
 
-		}  catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -135,5 +135,33 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return reimbursements;
 	}
 
-	
+	public List<Reimbursement> getAllReimbursementsByEmployee(int employeeid) {
+		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+		String sql = "select * from ers.\"Reimbursement\" where employee_id=?;";
+
+		try (Connection conn = ConnectionUtil.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setInt(1, employeeid);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				// get data from each employee
+				Reimbursement reim = new Reimbursement();
+				reim.setReimbursementId(rs.getInt("ReimbursementId"));
+				reim.setDate(rs.getDate("Date"));
+				reim.setDescription(rs.getString("Description"));
+				reim.setCategory(rs.getString("Category"));
+				reim.setCost(rs.getString("Cost"));
+				reim.setStatus(rs.getString("status"));
+				reim.setComments(rs.getString("comments"));
+				reim.setEmployee_id(rs.getInt("employee_id"));
+
+				reimbursements.add(reim);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return reimbursements;
+	}
+
 }

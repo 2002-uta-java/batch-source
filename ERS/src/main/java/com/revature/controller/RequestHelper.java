@@ -31,6 +31,7 @@ public class RequestHelper {
 			throws ServletException, IOException {
 		// http://localhost:8080/ERS/api/employee?username=gaddagada1
 		String path = request.getRequestURI().substring(request.getContextPath().length());
+
 		if (path.startsWith("/api/")) {
 			// determine which delegate to use based on the path
 			String record = path.substring(5).trim();
@@ -67,14 +68,6 @@ public class RequestHelper {
 				reimbursementDelegate.getAllReimbursements(request, response);
 				break;
 			}
-			case "validate": {
-				// use validation delegate
-				
-//				String username = request.getParameter("username");
-//				String password = request.getParameter("password");
-				authDelegate.authenticate(request, response);
-				break;
-			}
 			default: {
 				// send error if the api endpoint doesn't exist
 				response.sendError(404, "The API endpoint you provided does not exist.");
@@ -105,10 +98,23 @@ public class RequestHelper {
 				if (strReimbursementid.length > 0) {
 					reimbursementid = (Integer.valueOf(strReimbursementid[0])).intValue();
 
-						reimbursementDelegate.updateReimbursement(request, response, reimbursementid);
+					reimbursementDelegate.updateReimbursement(request, response, reimbursementid);
 				} else {
 					response.sendError(400, "Reimbursement Id is required for this update.");
 				}
+				break;
+			}
+			case "reimbursement/bulk": {
+				// update reimbursement
+				String strReimbursementList = request.getParameter("reimbursementsList");
+				String status = request.getParameter("status");
+//				int reimbursementid = 0;
+//				if (strReimbursementList.length > 0) {
+//					for (int i = 0; i < strReimbursementList.length; i++) {
+//						reimbursementid = (Integer.valueOf(strReimbursementList[i])).intValue();
+//						reimbursementDelegate.updateReimbursement(request, response, reimbursementid);
+//
+//					}				
 				break;
 			}
 			default: {
@@ -116,7 +122,9 @@ public class RequestHelper {
 				response.sendError(404, "The endpoint your provided does not exist.");
 			}
 			}
-		} else {
+		} else
+
+		{
 			// send invalid request error if request was sent to non api directory
 			response.sendError(400, "You cannot update data in this directory.");
 		}
@@ -125,6 +133,7 @@ public class RequestHelper {
 	public void processPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
+		System.out.println(path);
 		if (path.startsWith("/api/")) {
 			String record = path.substring(5);
 			switch (record) {
@@ -136,6 +145,14 @@ public class RequestHelper {
 			case "reimbursement": {
 				// create reimbursement
 				reimbursementDelegate.createReimbursement(request, response);
+				break;
+			}
+			case "validate": {
+				// use validation delegate
+
+//				String username = request.getParameter("username");
+//				String password = request.getParameter("password");
+				authDelegate.authenticate(request, response);
 				break;
 			}
 			default: {

@@ -2,17 +2,19 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	background-image: url('employeeandmanager.jpeg');
+	
 }
 
 .page{
 	display: flex;
 	flex-wrap: wrap;
 }
+
 /*----SECTIONS----*/
 
 .section{
 	width: 100%;
-	height: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

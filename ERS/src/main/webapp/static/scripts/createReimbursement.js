@@ -1,32 +1,58 @@
-/**
- *  createReimbursement
- */
-document.getElementById("add-btn").addEventListener("click", createReimbursement);
+let token;
+let user;
+let requests;
+let users;
 
-function createReimbursement() {
-	let description = document.getElementById("description").value;
-	let category = document.getElementById("category").value;
-	let description = document.getElementById("description").value;
-	let cost = document.getElementById("cost").value;
-	let status = document.getElementById("status").value;
-	let comments = document.getElementById("comments").value;
-    let eid    = document.getElementById("employeeId").value;
+window.onload = function() {
+	token = sessionStorage.getItem("token");	
+	if(!token){
+		window.location.href="http://localhost:8080/ERS/login";
+	}
+	document.getElementById("add-btn").addEventListener("click", createRequest);
+}
 
-    let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8080/ers/addReimbursement";
-    xhr.open("POST", url);
+function sendAjaxPost(url, params, callback){
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
 
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            let auth = xhr.getResponseHeader("Authorization");
-            sessionStorage.setItem("token", auth);
-            window.location.href = "http://localhost:8080/ers/employeehome";
-        } else if (xhr.readyState == 4) {
-            console.log("Please enter all criteria");
-        }
-    }
+	let paramStr = "";
 
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let requestBody = `cost=${cost}&eid=${eid}`;
-    xhr.send(requestBody);
+	for (let [p, v] of Object.entries(params)) {
+		paramStr += p + "=" + v + "&";
+	}
+	
+	xhr.onreadystatechange = function(){
+		if(this.readyState===4 && this.status===200){
+			callback(this);
+		} else if (this.readyState===4){
+//			window.location.href="http://localhost:8080/login";
+			console.error("Server error");
+		}
+	}
+
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Authorization",token);
+	xhr.send(paramStr);
+}
+
+
+
+function createRequest(e) {
+	
+	const amount = $("#cost").val();
+	
+
+	if (amount <= 0 || amount > 1000000) {
+		document.getElementById("invalid-notice").hidden = false;
+	} else {
+		sendAjaxPost("http://localhost:8080/ERS/api/reimbursement", {
+			description: $("#description").val(),
+			category: $("#category").val(),
+			cost: $("#cost").val(),			
+			comments: $("#comments").val()		
+			}, ()=>{
+				window.location = "http://localhost:8080/ERS/employeehome";
+		});
+	}
+
 }
