@@ -48,7 +48,7 @@ public class UserDelegate {
 		
 		System.out.println("CREATE NEW USER WITH CONTENT LOAD: " +req.getContentLength()+"");
 		//CONTENT LENGTH WILL NEED A DIFFERENT CHECK IF BODY IS CHANGED
-		if (req.getContentLength()==47) {
+		if (req.getContentLength()==61) {
 			resp.sendError(400, "no registration data");
 			System.out.println("no registration data");
 
@@ -59,9 +59,14 @@ public class UserDelegate {
 			String username = req.getParameter("username");
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
+			String role = req.getParameter("role");
 
 			//needs error check
-			uDao.createUser(firstname, lastname, username, email, password);
+			long uid = uDao.createUser(firstname, lastname, username, email, password);
+			User u = uDao.getUserByID(uid);
+			System.out.println("uid: "+uid+" role: "+role);
+			u.setRole(role);
+			uDao.updateUser(u,u.getUsername(),u.getPassword());
 			resp.setStatus(200);
 		}
 		

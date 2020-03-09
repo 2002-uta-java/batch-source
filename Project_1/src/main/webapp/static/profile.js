@@ -10,29 +10,36 @@ function profileLoad(){
 	xhr.open("GET",url);
 	
 	xhr.onreadystatechange=function(){
-		if(this.readyState === 4 && this.status === 200){
+		if(xhr.readyState === 4 && xhr.status === 200){
 			console.log("Profile Found \n");
-			var User = JSON.parse(this.responseText);
-			console.log(User);
-			document.getElementById("table01").innerHTML=
-			`<table
-			 id="table"
-			 data-toggle="table"
-			 data-flat="true"
-			 data-search="true"
-			 data-url="json/data3.json">
-			<thead>
-				<tr>
-					<th data-field="${User.firstname}" data-sortable="true">${User.firstname}</th>
-					<th data-field="${User.lastname}" data-sortable="true">${User.lastname}</th>
-					<th data-field="${User.username}" data-sortable="true">${User.username}</th>
-					<th data-field="${User.email}" data-sortable="true">${User.email}</th>
-					<th data-field="${User.role}" data-sortable="true">${User.role}</th>
-				</tr>
-			</thead>
-			</table>`;
-		} else if (this.readyState===4){
-			console.log("status "+this.status);
+			
+			var User = JSON.parse(xhr.response);
+			
+			if (User == null){
+				console.log("logged out");
+			} else{
+				document.getElementById("table01").innerHTML=
+					`<table
+					 id="table"
+					 data-toggle="table"
+					 data-flat="true"
+					 data-search="true"
+					 data-url="json/data3.json">
+					<thead>
+						<tr>
+							<th data-field="${User.firstname}" data-sortable="true">${User.firstname}</th>
+							<th data-field="${User.lastname}" data-sortable="true">${User.lastname}</th>
+							<th data-field="${User.username}" data-sortable="true">${User.username}</th>
+							<th data-field="${User.email}" data-sortable="true">${User.email}</th>
+							<th data-field="${User.role}" data-sortable="true">${User.role}</th>
+						</tr>
+					</thead>
+					</table>`;
+			}
+			
+
+		} else if (xhr.readyState===4){
+			console.log("status "+xhr.status);
 			console.log("User not found");
 		}
 	}

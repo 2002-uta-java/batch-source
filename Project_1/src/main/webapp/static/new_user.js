@@ -8,10 +8,11 @@ function newUser(){
 	let username = document.getElementById("username_input").value;
 	let email = document.getElementById("email_input").value;
 	let password = document.getElementById("password_input").value;
+	let role = document.getElementById("role_input").value;
 	console.log("fn: "+firstname);
 	
 	
-	let reqBody = `firstname=${firstname}&lastname=${lastname}&username=${username}&email=${email}&password=${password}`;
+	let reqBody = `firstname=${firstname}&lastname=${lastname}&username=${username}&email=${email}&password=${password}&role=${role}`;
 	
 	
 	let xhr  = new XMLHttpRequest(); 

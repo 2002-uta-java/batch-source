@@ -55,9 +55,9 @@ public class UserDaoImp implements UserDao {
 	}
 
 	@Override
-	public int updateUser(User u, String oldname, String oldpw) {
+	public void updateUser(User u, String oldname, String oldpw) {
 		String query = "update users u "
-				+ "set "
+				+ "SET "
 				+ "firstName = ?, "
 				+ "lastName = ?, "
 				+ "userName = ?, "
@@ -78,16 +78,13 @@ public class UserDaoImp implements UserDao {
 			pstatement.setLong(7,u.getSupervisor());
 			pstatement.setString(8, oldname);
 			pstatement.setString(9, oldpw);
-			result = pstatement.executeQuery();
-			
-			if(result.next()) {
-				return 0;
-			} else return -1;
+			pstatement.execute();
+
 		} catch (SQLException e) {
 			//TODO: send exception message to log?
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-			return -1;
+
 		}
 	}
 

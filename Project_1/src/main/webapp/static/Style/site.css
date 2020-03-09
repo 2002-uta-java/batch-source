@@ -18,6 +18,10 @@ table {
   width: 100%;
 }
 
+#logout_btn{
+	color: white;
+}
+
 .errorbox{
 	background-color:red;
 }

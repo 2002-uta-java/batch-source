@@ -17,9 +17,18 @@ function userLogin(){
 			sessionStorage.setItem("token",auth);
 			console.log(auth);
 			window.location.href="http://localhost:8080/project_one/profile";
-		} else if (this.readyState==4){
+		} else {
 			console.log();
 			console.log("Credentials invalid: "+user+" : "+pw);
+
+			document.getElementById("errorbox").innerHTML=
+			`    
+			<div class="card text-white bg-danger">
+			  <div class="card-body">
+			    <p class="card-text"> Account does not exist</p>
+			  </div>
+			</div>
+				`;
 		}
 	}
 	
