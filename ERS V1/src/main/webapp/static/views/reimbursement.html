@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Employee Reimbursement System</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">     
+      <a class="navbar-brand" href="">Expense Reimbursement System </a>           
+    </div>
+      <ul class="nav avbar-nav navbar-right" >
+		   <li><a id="Profile">Profile</a></li>
+	  </ul>
+      <ul class="nav navbar-nav navbar-right">
+           <li><a id = "logout" >Logout  <i class="fa fa-user"></i></a></li>
+      </ul>
+  </div>
+ </nav>
+
+	
+	<div class="container" id="reimbursement-form">
+		<div class="row">
+			<div class="col-md-8 offset-2">
+					<h3>Create Reimbursement</h3>
+					<div id="setLogin">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Description"
+									id="description">
+							</div>
+							<div class="form-group">
+								<select name="category" id="category" class="form-control" value="TRAVEL">
+	        						<option value="TRAVEL">Travel</option>
+	        						<option value="EDUCATION">Education</option>
+	        						<option value="SUPPLIES">Supplies</option>
+	        					</select>
+							</div>							
+				
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Cost"
+									id="cost">
+							</div>
+
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Comments"
+									id="comments">
+							</div>
+							</div>
+
+							<div class="form-group">
+								<button id="add-btn" class="btn-primary">Add</button>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<script type="text/javascript" src="static/scripts/createReimbursement.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
