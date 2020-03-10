@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Expense Reimbursement System</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="../styles/ERSLandingPage.css"> -->
+	
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>	
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     	 <a class="navbar-brand" href="">Expense Reimbursement System </a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+<!--         <li class="active"><a href="#">Home</a></li>-->
+        <!-- <li><a href="index.html">Employee</a></li> -->
+        <li><a href="#profile">Profile</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="profile1.html">Signup <i class="fa fa-user-plus"></i></a></li>
+        <li><a href="login.html">Login  <i class="fa fa-user"></i></a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+
+ <div class="container">
+<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-2">
+				<h1>Employee Information</h1>
+				<div id="setLogin">
+					<table class="table" id="emTable">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">First Name</th>
+								<th scope="col">Last Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Phone</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="updateInfo" class="col-sm-5 offset-3">
+		<div class="form-group">
+			<input type="number" class="form-control" placeholder="Employee Id"
+				id="id" hidden=true required>
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="First Name"
+				id="firstname">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Last Name"
+				id="lastname">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Email"
+				id="email">
+		</div>
+
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Phone #"
+				id="phone">
+		</div>
+
+		<div class="form-group">
+			<input type="password" class="form-control" placeholder="Password"
+				id="password">
+		</div>
+
+		<div id="managerCheck" hidden=true>
+			<p>Is a Manager?</p>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="isManager" name="isManager"value="isManagerTrue">
+			</div>
+			<br>
+		</div>
+
+		<div class="form-group">
+			<button id="update-btn" class="btn-primary">Update</button>
+		</div>
+	</div>
+</div>
+	<script type="text/javascript" src="../scripts/profile.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
