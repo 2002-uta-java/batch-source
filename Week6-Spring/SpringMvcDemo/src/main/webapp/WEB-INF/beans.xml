@@ -6,7 +6,11 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+	<!-- enable stereotype annotations -->
+	<context:component-scan base-package="com.revature"></context:component-scan>
 		
+	<!-- enable spring mvc annotations -->
+	<mvc:annotation-driven></mvc:annotation-driven>	
 		
 	<!-- set up view resolve and location for static resource retrieval -->
 	<mvc:resources location="/WEB-INF/static/" mapping="/static/**"></mvc:resources>
