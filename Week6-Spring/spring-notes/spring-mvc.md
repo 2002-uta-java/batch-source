@@ -21,10 +21,14 @@
 - @RequestMapping(method=RequestMethod.GET, value="/home")
 - @GetRequest("/home")
 - @PostRequest("/login")
-- parameterizing routes:
-    - @RequestParam("id") int id when @GetRequest("/employee")
-    - @PathVariable("id) int
+- parameterizing routes allow you annotate method parameters:
+    - @RequestParam("id") int id when an id request parameter is provided
+    - @PathVariable("id") int id when an id is included in the path (@GetMapping("/))
     - can still pass in an HttpServletRequest/Response if we want to our controller methods
-- return string representing a view name
-- return objects/text back in the response body
-- @ResponseStatus(value=HttpStatus.NOT_FOUND, reason="some description")
+- return string representing a view name, view resolver will prepend and append configured prefix and suffix 
+- return objects/text back in the response body when method is annotated with @ResponseBody
+- a method parameter annotated with @RequestBody will use jackson to map JSON into the annotated Java object 
+- @ResponseStatus(value=HttpStatus.NOT_FOUND, reason="some description") can be used to return a particular http status to the client
+- @ControllerAdvice annotation can be used to globally handle exceptions, this allows us to set response status based on certain exceptions being thrown anywhere in your application
+
+
