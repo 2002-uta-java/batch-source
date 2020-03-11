@@ -44,7 +44,7 @@
 - args: limits matching to jp's where arguments are instances of the given types
 
 
-# Paired Programming Spring AOP Exercise
+# Spring AOP Exercise
 
 Create a calculator java application with which you can perform basic arithmetic operations
 
@@ -53,18 +53,3 @@ Use Spring AOP to create advice which will:
 - log the operation arithmetically as it is performed - include the result (obtained by the join point, not from repeating the operation; you’ll have to look into the “returning” attribute of the annotation)
 E.g. if add(2, 3) is called, “2 + 3 = 5” is logged
 - prevent the division method from executing if division is attempted by 0 and log an error
-
-
-Lina + Chris
-
-Kyle + Andres
-
-Howard + Samuel
-
-Kaylan + Joe
-
-YinYu + Casey
-
-Fred + Abdellatif
-
-Michael + Mannan
