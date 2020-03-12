@@ -14,7 +14,7 @@
 - controller returns a view name or model data
     - consults view resolver if a view name
     - returned to client in response body if not
-
+<img src="mvc-workflow.png" alt="workflow of spring mvc">
 
 ### Controllers
 - @Controller defines a Spring bean says class will handle request 
