@@ -1,0 +1,48 @@
+pipeline {
+   agent any
+   
+    environment {
+        PORT="your port number"
+    }
+
+   stages {
+      stage('checkout'){
+          steps {
+            script {
+                properties([pipelineTriggers([githubPush()])])
+            }
+            git branch: 'master', url: 'your repo url'
+
+          }
+      }
+      stage('clean') {
+         steps {
+            sh 'mvn clean'
+         }
+      }
+      stage('package') {
+         steps {
+            sh 'mvn package'
+         }
+      }
+      stage('remove existing server') {
+            steps {
+                script {
+                    try {
+                        // kill any running instances
+                        sh "fuser -k ${PORT}/tcp"
+                    } catch (all) {
+                        // if it fails that should mean a server wasn't already running
+                    }
+                }
+            }
+        }
+
+        // Deploy the application
+        stage('deploy') {
+            steps {
+                sh 'nohup java -jar target/*.jar &'
+            }
+        }
+    }
+}
