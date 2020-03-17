@@ -4,5 +4,7 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd" >
+    
+    <jaxws:endpoint id="employeeService" implementor="com.revature.services.EmployeeServiceImpl" address="/employees"></jaxws:endpoint>
      
 </beans>
