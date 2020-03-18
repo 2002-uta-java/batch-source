@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.intercom.AccountClient;
+import com.revature.models.Account;
 import com.revature.models.Customer;
 
 @RestController
@@ -16,6 +19,9 @@ import com.revature.models.Customer;
 public class CustomerController {
 	
 	private Logger log = Logger.getLogger(CustomerController.class);
+	
+	@Autowired
+	private AccountClient accountClient;
 	
 	private List<Customer> customers = new ArrayList<>();
 	
@@ -38,6 +44,8 @@ public class CustomerController {
 		for(Customer customer: customers) {
 			if(customer.getId()==customerId) {
 				c = customer; 
+				List<Account> accounts = accountClient.getAccountByCustomerId(customerId);
+				customer.setAccounts(accounts);
 			}
 		}
 		return c;
