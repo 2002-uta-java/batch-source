@@ -1,0 +1,16 @@
+server:
+  port: 9998
+  
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/carolynrehm/config-server.git
+          
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 4
+    lease-renewal-interval-in-seconds: 2
