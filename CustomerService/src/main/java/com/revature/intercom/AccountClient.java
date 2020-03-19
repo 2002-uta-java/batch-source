@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.revature.models.Account;
 
-@FeignClient(name = "account-service")
+@FeignClient(name = "account-service", fallback = AccountClientIimpl.class)
 public interface AccountClient extends Serializable {
+
 	@GetMapping("accounts/customer/{id}")
 	public List<Account> getAccountsByCustomerId(@PathVariable("id") int id);
 }
