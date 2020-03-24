@@ -8,6 +8,10 @@ spring:
 eureka:
     instance:
       lease-renewal-interval-in-seconds: 2
+    client:
+      fetch-registry: true
+      service-url:
+        defaultZone: http://${CA}:8761/eureka
 
 feign:
   hystrix:
