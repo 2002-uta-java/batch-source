@@ -1,0 +1,36 @@
+server:
+  port: 8082
+  
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+---       
+spring.profiles: dev
+
+spring:
+  datasource:
+    url: jdbc:postgresql://java-2002.cdoaisum0qfz.us-east-2.rds.amazonaws.com:5432/postgres
+    username: postgres
+    password: p4ssw0rd
+ 
+---
+spring.profiles: test      
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:file:~/test
+#    username: sa
+#    password:
+    driverClassName: org.h2.Driver
